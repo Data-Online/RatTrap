@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.50709</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4FB708EA-9C9A-4330-A0AE-A26C5D54C249}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>RatTrap.Data</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BaseClasses">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\BaseClasses.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ciloci.Flee">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\Ciloci.Flee.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>4.6</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\Bin\Newtonsoft.Json.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Shared\BaseFormulaEvaluator.cs" />
+    <Compile Include="Shared\BaseFormulaUtils.cs" />
+    <Compile Include="My Project\AssemblyInfo.cs" />
+    <Compile Include="Shared\DatabaseObjects.cs" />
+    <Compile Include="Shared\RestfulUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GroupsDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GroupsSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseGroupsSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectsDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectsSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseProjectsSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectsGroupsLinkDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectsGroupsLinkSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseProjectsGroupsLinkSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Roles1Definition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Roles1SqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseRoles1SqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapIdentifiersDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapIdentifiersSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseTrapIdentifiersSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapNotesDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapNotesSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseTrapNotesSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapsDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapsSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseTrapsSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapTypesDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapTypesSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseTrapTypesSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserRolesLinkDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserRolesLinkSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseUserRolesLinkSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UsersDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UsersSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseUsersSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UsersGroupsLinkDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UsersGroupsLinkSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseUsersGroupsLinkSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,3 @@
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\Business Layer\bin\RatTrap.Business.dll
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\Business Layer\obj\Release\RatTrap.Business.csprojResolveAssemblyReference.cache
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\Business Layer\obj\Release\RatTrap.Business.dll

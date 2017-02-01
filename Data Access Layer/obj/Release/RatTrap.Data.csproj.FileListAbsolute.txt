@@ -1,0 +1,4 @@
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\Data Access Layer\bin\RatTrap.Data.dll
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\Data Access Layer\bin\Newtonsoft.Json.dll
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\Data Access Layer\obj\Release\RatTrap.Data.csprojResolveAssemblyReference.cache
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\Data Access Layer\obj\Release\RatTrap.Data.dll

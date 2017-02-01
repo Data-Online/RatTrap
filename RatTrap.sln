@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatTrap", "RatTrap.csproj", "{E9DCA64C-8062-4C62-8370-6EBC75071C9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatTrap.Data", "Data Access Layer\RatTrap.Data.csproj", "{4FB708EA-9C9A-4330-A0AE-A26C5D54C249}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatTrap.Business", "Business Layer\RatTrap.Business.csproj", "{477C0B7A-2C3E-4375-8FFD-87E551335F1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9DCA64C-8062-4C62-8370-6EBC75071C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9DCA64C-8062-4C62-8370-6EBC75071C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9DCA64C-8062-4C62-8370-6EBC75071C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9DCA64C-8062-4C62-8370-6EBC75071C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FB708EA-9C9A-4330-A0AE-A26C5D54C249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FB708EA-9C9A-4330-A0AE-A26C5D54C249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FB708EA-9C9A-4330-A0AE-A26C5D54C249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FB708EA-9C9A-4330-A0AE-A26C5D54C249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477C0B7A-2C3E-4375-8FFD-87E551335F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477C0B7A-2C3E-4375-8FFD-87E551335F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477C0B7A-2C3E-4375-8FFD-87E551335F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477C0B7A-2C3E-4375-8FFD-87E551335F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

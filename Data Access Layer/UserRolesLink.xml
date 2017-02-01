@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<XMLDefinition Generator="Iron Speed Designer" Version="12.2" Type="USER">
+  <ColumnDefinition>
+    <Column InternalName="0" Priority="1" ColumnNum="0">
+      <columnName>UserRolesId</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>Number</columnType>
+      <columnDBType>int</columnDBType>
+      <columnLengthSet>10.0</columnLengthSet>
+      <columnDefault>
+      </columnDefault>
+      <columnDBDefault>
+      </columnDBDefault>
+      <columnIndex>Y</columnIndex>
+      <columnUnique>Y</columnUnique>
+      <columnFunction>notrim</columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>Y</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed>Y</columnComputed>
+      <columnIdentity>Y</columnIdentity>
+      <columnReadOnly>Y</columnReadOnly>
+      <columnRequired>N</columnRequired>
+      <columnNotNull>Y</columnNotNull>
+      <columnCaseSensitive>N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
+      <columnFullText>N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+    </Column>
+    <Column InternalName="1" Priority="2" ColumnNum="1">
+      <columnName>UserId</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>Number</columnType>
+      <columnDBType>int</columnDBType>
+      <columnLengthSet>10.0</columnLengthSet>
+      <columnDefault>
+      </columnDefault>
+      <columnDBDefault>
+      </columnDBDefault>
+      <columnIndex>N</columnIndex>
+      <columnUnique>N</columnUnique>
+      <columnFunction>notrim</columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>N</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed>N</columnComputed>
+      <columnIdentity>N</columnIdentity>
+      <columnReadOnly>N</columnReadOnly>
+      <columnRequired>Y</columnRequired>
+      <columnNotNull>Y</columnNotNull>
+      <columnCaseSensitive>N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
+      <columnFullText>N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+      <foreignKey>
+        <columnFKName>FK_UserRolesLink_Users</columnFKName>
+        <columnFKTable>Users</columnFKTable>
+        <columnFKOwner>dbo</columnFKOwner>
+        <columnFKColumn>UserId</columnFKColumn>
+        <columnFKColumnDisplay>= LastName + ", " + FirstName</columnFKColumnDisplay>
+        <foreignKeyType>Explicit</foreignKeyType>
+      </foreignKey>
+      <applyDFKA>Y</applyDFKA>
+    </Column>
+    <Column InternalName="2" Priority="3" ColumnNum="2">
+      <columnName>RoleId</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>Number</columnType>
+      <columnDBType>int</columnDBType>
+      <columnLengthSet>10.0</columnLengthSet>
+      <columnDefault>
+      </columnDefault>
+      <columnDBDefault>
+      </columnDBDefault>
+      <columnIndex>N</columnIndex>
+      <columnUnique>N</columnUnique>
+      <columnFunction>notrim</columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>N</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed>N</columnComputed>
+      <columnIdentity>N</columnIdentity>
+      <columnReadOnly>N</columnReadOnly>
+      <columnRequired>Y</columnRequired>
+      <columnNotNull>Y</columnNotNull>
+      <columnCaseSensitive>N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
+      <columnFullText>N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+      <foreignKey>
+        <columnFKName>FK_UserRolesLink_Roles</columnFKName>
+        <columnFKTable>Roles</columnFKTable>
+        <columnFKOwner>dbo</columnFKOwner>
+        <columnFKColumn>RoleId</columnFKColumn>
+        <columnFKColumnDisplay>RoleName</columnFKColumnDisplay>
+        <foreignKeyType>Explicit</foreignKeyType>
+      </foreignKey>
+      <applyDFKA>Y</applyDFKA>
+    </Column>
+  </ColumnDefinition>
+  <TableName>UserRolesLink</TableName>
+  <Version>
+  </Version>
+  <Owner>dbo</Owner>
+  <TableAliasName>UserRolesLink_</TableAliasName>
+  <ConnectionName>DatabaseTheRatTrap</ConnectionName>
+  <PagingMethod>RowNum</PagingMethod>
+  <canCreateRecords Source="Database">Y</canCreateRecords>
+  <canEditRecords Source="Database">Y</canEditRecords>
+  <canDeleteRecords Source="Database">Y</canDeleteRecords>
+  <canViewRecords Source="Database">Y</canViewRecords>
+  <ConcurrencyMethod>BinaryChecksum</ConcurrencyMethod>
+  <AppShortName>RatTrap</AppShortName>
+  <FolderName>UserRolesLink</FolderName>
+  <MenuName>User Roles Link</MenuName>
+  <QSPath>../UserRolesLink/UserRolesLink-QuickSelector.aspx</QSPath>
+  <TableCodeName>UserRolesLink</TableCodeName>
+  <TableStoredProcPrefix>pRatTrapUserRolesLink</TableStoredProcPrefix>
+  <IsRoleTable>Y</IsRoleTable>
+  <RoleRoleID>RoleId</RoleRoleID>
+  <RoleUserID>UserId</RoleUserID>
+</XMLDefinition>

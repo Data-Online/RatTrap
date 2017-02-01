@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<XMLDefinition Generator="Iron Speed Designer" Version="12.2" Type="GENERIC">
+  <ColumnDefinition>
+    <Column InternalName="0" Priority="1" ColumnNum="0">
+      <columnName>UserGroupsId</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>Number</columnType>
+      <columnDBType>int</columnDBType>
+      <columnLengthSet>10.0</columnLengthSet>
+      <columnDefault>
+      </columnDefault>
+      <columnDBDefault>
+      </columnDBDefault>
+      <columnIndex>Y</columnIndex>
+      <columnUnique>Y</columnUnique>
+      <columnFunction>notrim</columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>Y</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed>Y</columnComputed>
+      <columnIdentity>Y</columnIdentity>
+      <columnReadOnly>Y</columnReadOnly>
+      <columnRequired>N</columnRequired>
+      <columnNotNull>Y</columnNotNull>
+      <columnCaseSensitive>N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
+      <columnFullText>N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+    </Column>
+    <Column InternalName="1" Priority="2" ColumnNum="1">
+      <columnName>UserId</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>Number</columnType>
+      <columnDBType>int</columnDBType>
+      <columnLengthSet>10.0</columnLengthSet>
+      <columnDefault>
+      </columnDefault>
+      <columnDBDefault Source="User">
+      </columnDBDefault>
+      <columnIndex>N</columnIndex>
+      <columnUnique>N</columnUnique>
+      <columnFunction>
+      </columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>N</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed Source="User">N</columnComputed>
+      <columnIdentity Source="User">N</columnIdentity>
+      <columnReadOnly Source="User">N</columnReadOnly>
+      <columnRequired>N</columnRequired>
+      <columnNotNull>N</columnNotNull>
+      <columnCaseSensitive Source="User">N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
+      <columnFullText Source="User">N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+      <foreignKey>
+        <columnFKName>FK_UsersGroupsLink_Users</columnFKName>
+        <columnFKTable>Users</columnFKTable>
+        <columnFKOwner>dbo</columnFKOwner>
+        <columnFKColumn>UserId</columnFKColumn>
+        <columnFKColumnDisplay>= Users.UserName0</columnFKColumnDisplay>
+        <foreignKeyType>Explicit</foreignKeyType>
+      </foreignKey>
+      <applyDFKA>Y</applyDFKA>
+      <InternalName>1</InternalName>
+      <columnTableClassName>
+      </columnTableClassName>
+      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
+      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
+      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
+      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
+      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
+      <applyDefaultValue>N</applyDefaultValue>
+      <readingRecordFormula>
+      </readingRecordFormula>
+      <insertingRecordFormula>
+      </insertingRecordFormula>
+      <updatingRecordFormula>
+      </updatingRecordFormula>
+      <insertingFormula>
+      </insertingFormula>
+      <updatingFormula>
+      </updatingFormula>
+    </Column>
+    <Column InternalName="2" Priority="3" ColumnNum="2">
+      <columnName>GroupId</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>Number</columnType>
+      <columnDBType>int</columnDBType>
+      <columnLengthSet>10.0</columnLengthSet>
+      <columnDefault>
+      </columnDefault>
+      <columnDBDefault>
+      </columnDBDefault>
+      <columnIndex>N</columnIndex>
+      <columnUnique>N</columnUnique>
+      <columnFunction>notrim</columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>N</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed>N</columnComputed>
+      <columnIdentity>N</columnIdentity>
+      <columnReadOnly>N</columnReadOnly>
+      <columnRequired>N</columnRequired>
+      <columnNotNull>N</columnNotNull>
+      <columnCaseSensitive>N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
+      <columnFullText>N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+      <foreignKey>
+        <columnFKName>FK_UsersGroupsLink_Groups</columnFKName>
+        <columnFKTable>Groups</columnFKTable>
+        <columnFKOwner>dbo</columnFKOwner>
+        <columnFKColumn>GroupId</columnFKColumn>
+        <columnFKColumnDisplay>GroupName</columnFKColumnDisplay>
+        <foreignKeyType>Explicit</foreignKeyType>
+      </foreignKey>
+      <applyDFKA>Y</applyDFKA>
+    </Column>
+  </ColumnDefinition>
+  <TableName>UsersGroupsLink</TableName>
+  <Version>
+  </Version>
+  <Owner>dbo</Owner>
+  <TableAliasName>UsersGroupsLink_</TableAliasName>
+  <ConnectionName>DatabaseTheRatTrap</ConnectionName>
+  <PagingMethod>RowNum</PagingMethod>
+  <canCreateRecords Source="Database">Y</canCreateRecords>
+  <canEditRecords Source="Database">Y</canEditRecords>
+  <canDeleteRecords Source="Database">Y</canDeleteRecords>
+  <canViewRecords Source="Database">Y</canViewRecords>
+  <ConcurrencyMethod>BinaryChecksum</ConcurrencyMethod>
+  <AppShortName>RatTrap</AppShortName>
+  <FolderName>UsersGroupsLink</FolderName>
+  <MenuName>Users Groups Link</MenuName>
+  <QSPath>../UsersGroupsLink/UsersGroupsLink-QuickSelector.aspx</QSPath>
+  <TableCodeName>UsersGroupsLink</TableCodeName>
+  <TableStoredProcPrefix>pRatTrapUsersGroupsLink</TableStoredProcPrefix>
+</XMLDefinition>

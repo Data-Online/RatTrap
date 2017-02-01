@@ -1,0 +1,10 @@
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\bin\RatTrap.dll.config
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\bin\RatTrap.dll
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\bin\RatTrap.Business.dll
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\bin\RatTrap.Data.dll
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\bin\Newtonsoft.Json.dll
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\bin\System.Data.SqlServerCe.dll
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\obj\Release\RatTrap.csprojResolveAssemblyReference.cache
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\obj\Release\RatTrap.Global.resources
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\obj\Release\RatTrap.csproj.GenerateResource.Cache
+P:\Projects\Cloud_Development\GitHub\RatTrap\RatTrap.ISD\obj\Release\RatTrap.dll
