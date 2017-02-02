@@ -133,7 +133,6 @@
   <Owner>dbo</Owner>
   <TableAliasName>Areas_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>
-  <InUse>N</InUse>
   <PagingMethod>RowNum</PagingMethod>
   <canCreateRecords Source="Database">Y</canCreateRecords>
   <canEditRecords Source="Database">Y</canEditRecords>
@@ -145,4 +144,5 @@
   <MenuName>Areas</MenuName>
   <QSPath>../Areas/Areas-QuickSelector.aspx</QSPath>
   <TableCodeName>Areas</TableCodeName>
+  <TableStoredProcPrefix>pRatTrapAreas</TableStoredProcPrefix>
 </XMLDefinition>

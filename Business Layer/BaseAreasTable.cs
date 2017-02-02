@@ -1,5 +1,5 @@
 ﻿// This class is "generated" and will be overwritten.
-// Your customizations should be made in TrapIdentifiersTable.cs
+// Your customizations should be made in AreasTable.cs
 
 
 using System;
@@ -16,23 +16,23 @@ namespace RatTrap.Business
 {
 
 /// <summary>
-/// The generated superclass for the <see cref="TrapIdentifiersTable"></see> class.
-/// Provides access to the schema information and record data of a database table or view named DatabaseTheRatTrap%dbo.TrapIdentifiers.
+/// The generated superclass for the <see cref="AreasTable"></see> class.
+/// Provides access to the schema information and record data of a database table or view named DatabaseTheRatTrap%dbo.Areas.
 /// </summary>
 /// <remarks>
 /// The connection details (name, location, etc.) of the database and table (or view) accessed by this class 
 /// are resolved at runtime based on the connection string in the application's Web.Config file.
 /// <para>
 /// This class is not intended to be instantiated directly.  To obtain an instance of this class, use 
-/// <see cref="TrapIdentifiersTable.Instance">TrapIdentifiersTable.Instance</see>.
+/// <see cref="AreasTable.Instance">AreasTable.Instance</see>.
 /// </para>
 /// </remarks>
-/// <seealso cref="TrapIdentifiersTable"></seealso>
+/// <seealso cref="AreasTable"></seealso>
 [SerializableAttribute()]
-public class BaseTrapIdentifiersTable : PrimaryKeyTable
+public class BaseAreasTable : PrimaryKeyTable
 {
 
-    private readonly string TableDefinitionString = TrapIdentifiersDefinition.GetXMLString();
+    private readonly string TableDefinitionString = AreasDefinition.GetXMLString();
 
 
 
@@ -40,7 +40,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 
 
 
-    protected BaseTrapIdentifiersTable()
+    protected BaseAreasTable()
     {
         this.Initialize();
     }
@@ -49,17 +49,19 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     {
         XmlTableDefinition def = new XmlTableDefinition(TableDefinitionString);
         this.TableDefinition = new TableDefinition();
-        this.TableDefinition.TableClassName = System.Reflection.Assembly.CreateQualifiedName("RatTrap.Business", "RatTrap.Business.TrapIdentifiersTable");
+        this.TableDefinition.TableClassName = System.Reflection.Assembly.CreateQualifiedName("RatTrap.Business", "RatTrap.Business.AreasTable");
         def.InitializeTableDefinition(this.TableDefinition);
         this.ConnectionName = def.GetConnectionName();
-        this.RecordClassName = System.Reflection.Assembly.CreateQualifiedName("RatTrap.Business", "RatTrap.Business.TrapIdentifiersRecord");
+        this.RecordClassName = System.Reflection.Assembly.CreateQualifiedName("RatTrap.Business", "RatTrap.Business.AreasRecord");
         this.ApplicationName = "RatTrap";
-        this.DataAdapter = new TrapIdentifiersSqlTable();
-        ((TrapIdentifiersSqlTable)this.DataAdapter).ConnectionName = this.ConnectionName;
+        this.DataAdapter = new AreasSqlTable();
+        ((AreasSqlTable)this.DataAdapter).ConnectionName = this.ConnectionName;
 		
         this.TableDefinition.AdapterMetaData = this.DataAdapter.AdapterMetaData;
-        TrapIdentifierIdColumn.CodeName = "TrapIdentifierId";
-        DescriptionColumn.CodeName = "Description";
+        AreaIdColumn.CodeName = "AreaId";
+        LatColumn.CodeName = "Lat";
+        Long0Column.CodeName = "Long0";
+        NotesColumn.CodeName = "Notes";
 
         
     }
@@ -71,9 +73,9 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 #region "Properties for columns"
 
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's TrapIdentifiers_.TrapIdentifierId column object.
+    /// This is a convenience property that provides direct access to the table's Areas_.AreaId column object.
     /// </summary>
-    public BaseClasses.Data.NumberColumn TrapIdentifierIdColumn
+    public BaseClasses.Data.NumberColumn AreaIdColumn
     {
         get
         {
@@ -84,21 +86,21 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's TrapIdentifiers_.TrapIdentifierId column object.
+    /// This is a convenience property that provides direct access to the table's Areas_.AreaId column object.
     /// </summary>
-    public static BaseClasses.Data.NumberColumn TrapIdentifierId
+    public static BaseClasses.Data.NumberColumn AreaId
     {
         get
         {
-            return TrapIdentifiersTable.Instance.TrapIdentifierIdColumn;
+            return AreasTable.Instance.AreaIdColumn;
         }
     }
     
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's TrapIdentifiers_.Description column object.
+    /// This is a convenience property that provides direct access to the table's Areas_.Lat column object.
     /// </summary>
-    public BaseClasses.Data.StringColumn DescriptionColumn
+    public BaseClasses.Data.StringColumn LatColumn
     {
         get
         {
@@ -109,13 +111,63 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's TrapIdentifiers_.Description column object.
+    /// This is a convenience property that provides direct access to the table's Areas_.Lat column object.
     /// </summary>
-    public static BaseClasses.Data.StringColumn Description
+    public static BaseClasses.Data.StringColumn Lat
     {
         get
         {
-            return TrapIdentifiersTable.Instance.DescriptionColumn;
+            return AreasTable.Instance.LatColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Areas_.Long column object.
+    /// </summary>
+    public BaseClasses.Data.StringColumn Long0Column
+    {
+        get
+        {
+            return (BaseClasses.Data.StringColumn)this.TableDefinition.ColumnList[2];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Areas_.Long column object.
+    /// </summary>
+    public static BaseClasses.Data.StringColumn Long0
+    {
+        get
+        {
+            return AreasTable.Instance.Long0Column;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Areas_.Notes column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn NotesColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[3];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Areas_.Notes column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn Notes
+    {
+        get
+        {
+            return AreasTable.Instance.NotesColumn;
         }
     }
     
@@ -128,42 +180,42 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 #region "Shared helper methods"
 
     /// <summary>
-    /// This is a shared function that can be used to get an array of TrapIdentifiersRecord records using a where clause.
+    /// This is a shared function that can be used to get an array of AreasRecord records using a where clause.
     /// </summary>
-    public static TrapIdentifiersRecord[] GetRecords(string where)
+    public static AreasRecord[] GetRecords(string where)
     {
         return GetRecords(where, null, BaseTable.MIN_PAGE_NUMBER, BaseTable.MAX_BATCH_SIZE);
     }
     
     /// <summary>
-    /// This is a shared function that can be used to get an array of TrapIdentifiersRecord records using a where clause.
+    /// This is a shared function that can be used to get an array of AreasRecord records using a where clause.
     /// </summary>
-    public static TrapIdentifiersRecord[] GetRecords(BaseFilter join, string where)
+    public static AreasRecord[] GetRecords(BaseFilter join, string where)
     {
         return GetRecords(join, where, null, BaseTable.MIN_PAGE_NUMBER, BaseTable.MAX_BATCH_SIZE);
     }
     
 
     /// <summary>
-    /// This is a shared function that can be used to get an array of TrapIdentifiersRecord records using a where and order by clause.
+    /// This is a shared function that can be used to get an array of AreasRecord records using a where and order by clause.
     /// </summary>
-    public static TrapIdentifiersRecord[] GetRecords(string where, OrderBy orderBy)
+    public static AreasRecord[] GetRecords(string where, OrderBy orderBy)
     {
         return GetRecords(where, orderBy, BaseTable.MIN_PAGE_NUMBER, BaseTable.MAX_BATCH_SIZE);
     }
     
      /// <summary>
-    /// This is a shared function that can be used to get an array of TrapIdentifiersRecord records using a where and order by clause.
+    /// This is a shared function that can be used to get an array of AreasRecord records using a where and order by clause.
     /// </summary>
-    public static TrapIdentifiersRecord[] GetRecords(BaseFilter join, string where, OrderBy orderBy)
+    public static AreasRecord[] GetRecords(BaseFilter join, string where, OrderBy orderBy)
     {
         return GetRecords(join, where, orderBy, BaseTable.MIN_PAGE_NUMBER, BaseTable.MAX_BATCH_SIZE);
     }    
     
     /// <summary>
-    /// This is a shared function that can be used to get an array of TrapIdentifiersRecord records using a where and order by clause clause with pagination.
+    /// This is a shared function that can be used to get an array of AreasRecord records using a where and order by clause clause with pagination.
     /// </summary>
-    public static TrapIdentifiersRecord[] GetRecords(string where, OrderBy orderBy, int pageIndex, int pageSize)
+    public static AreasRecord[] GetRecords(string where, OrderBy orderBy, int pageIndex, int pageSize)
     {
         SqlFilter whereFilter = null;
         if (where != null && where.Trim() != "")
@@ -171,15 +223,15 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
            whereFilter = new SqlFilter(where);
         }
         BaseClasses.Data.BaseFilter join = null;
-        ArrayList recList = TrapIdentifiersTable.Instance.GetRecordList(join, whereFilter, null, orderBy, pageIndex, pageSize);
+        ArrayList recList = AreasTable.Instance.GetRecordList(join, whereFilter, null, orderBy, pageIndex, pageSize);
 
-        return (TrapIdentifiersRecord[])recList.ToArray(Type.GetType("RatTrap.Business.TrapIdentifiersRecord"));
+        return (AreasRecord[])recList.ToArray(Type.GetType("RatTrap.Business.AreasRecord"));
     }   
     
     /// <summary>
-    /// This is a shared function that can be used to get an array of TrapIdentifiersRecord records using a where and order by clause clause with pagination.
+    /// This is a shared function that can be used to get an array of AreasRecord records using a where and order by clause clause with pagination.
     /// </summary>
-    public static TrapIdentifiersRecord[] GetRecords(BaseFilter join, string where, OrderBy orderBy, int pageIndex, int pageSize)
+    public static AreasRecord[] GetRecords(BaseFilter join, string where, OrderBy orderBy, int pageIndex, int pageSize)
     {
         SqlFilter whereFilter = null;
         if (where != null && where.Trim() != "")
@@ -187,25 +239,25 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
            whereFilter = new SqlFilter(where);
         }
 
-        ArrayList recList = TrapIdentifiersTable.Instance.GetRecordList(join, whereFilter, null, orderBy, pageIndex, pageSize);
+        ArrayList recList = AreasTable.Instance.GetRecordList(join, whereFilter, null, orderBy, pageIndex, pageSize);
 
-        return (TrapIdentifiersRecord[])recList.ToArray(Type.GetType("RatTrap.Business.TrapIdentifiersRecord"));
+        return (AreasRecord[])recList.ToArray(Type.GetType("RatTrap.Business.AreasRecord"));
     }   
 
 
-    public static TrapIdentifiersRecord[] GetRecords(
+    public static AreasRecord[] GetRecords(
 		WhereClause where,
 		OrderBy orderBy,
 		int pageIndex,
 		int pageSize)
 	{
         BaseClasses.Data.BaseFilter join = null;
-        ArrayList recList = TrapIdentifiersTable.Instance.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
+        ArrayList recList = AreasTable.Instance.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
 
-        return (TrapIdentifiersRecord[])recList.ToArray(Type.GetType("RatTrap.Business.TrapIdentifiersRecord"));
+        return (AreasRecord[])recList.ToArray(Type.GetType("RatTrap.Business.AreasRecord"));
     }
 
-    public static TrapIdentifiersRecord[] GetRecords(
+    public static AreasRecord[] GetRecords(
         BaseFilter join,
 		WhereClause where,
 		OrderBy orderBy,
@@ -213,13 +265,13 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 		int pageSize)
 	{
 
-        ArrayList recList = TrapIdentifiersTable.Instance.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
+        ArrayList recList = AreasTable.Instance.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
 
-        return (TrapIdentifiersRecord[])recList.ToArray(Type.GetType("RatTrap.Business.TrapIdentifiersRecord"));
+        return (AreasRecord[])recList.ToArray(Type.GetType("RatTrap.Business.AreasRecord"));
     }
 
 
-    public static TrapIdentifiersRecord[] GetRecords(
+    public static AreasRecord[] GetRecords(
 		WhereClause where,
 		OrderBy orderBy,
 		int pageIndex,
@@ -227,12 +279,12 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 		ref int totalRecords)
 	{
         BaseClasses.Data.BaseFilter join = null;
-        ArrayList recList = TrapIdentifiersTable.Instance.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize, ref totalRecords);
+        ArrayList recList = AreasTable.Instance.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize, ref totalRecords);
 
-        return (TrapIdentifiersRecord[])recList.ToArray(Type.GetType("RatTrap.Business.TrapIdentifiersRecord"));
+        return (AreasRecord[])recList.ToArray(Type.GetType("RatTrap.Business.AreasRecord"));
     }
 
-    public static TrapIdentifiersRecord[] GetRecords(
+    public static AreasRecord[] GetRecords(
         BaseFilter join,
 		WhereClause where,
 		OrderBy orderBy,
@@ -241,9 +293,9 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 		ref int totalRecords)
 	{
 
-        ArrayList recList = TrapIdentifiersTable.Instance.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize, ref totalRecords);
+        ArrayList recList = AreasTable.Instance.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize, ref totalRecords);
 
-        return (TrapIdentifiersRecord[])recList.ToArray(Type.GetType("RatTrap.Business.TrapIdentifiersRecord"));
+        return (AreasRecord[])recList.ToArray(Type.GetType("RatTrap.Business.AreasRecord"));
     }
 
     /// <summary>
@@ -251,11 +303,11 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static int PostGetRecordCount(SqlBuilderColumnSelection selectCols, BaseFilter join, BaseFilter finalFilter)
     {
-        return (int)TrapIdentifiersTable.Instance.GetCountResponseForPost(TrapIdentifiersTable.Instance.TableDefinition, selectCols, join, finalFilter);
+        return (int)AreasTable.Instance.GetCountResponseForPost(AreasTable.Instance.TableDefinition, selectCols, join, finalFilter);
     }
 
     /// <summary>
-    /// This is a shared function that can be used to get an array of TrapIdentifiersRecord records using a where and order by clause clause with pagination.
+    /// This is a shared function that can be used to get an array of AreasRecord records using a where and order by clause clause with pagination.
     /// </summary>
     public static ArrayList PostGetRecordList(SqlBuilderColumnSelection requestedSelection, SqlBuilderColumnSelection workingSelection, SqlBuilderColumnSelection distinctSelection,
             BaseFilter join, BaseFilter filter, GroupBy groupBy, OrderBy sortOrder, int startIndex, int count, ref int totalCount, Boolean fromDataSource, 
@@ -264,7 +316,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         ArrayList recList = null;
         if (table == null)
         {
-            recList = TrapIdentifiersTable.Instance.GetRecordListResponseForPost(TrapIdentifiersTable.Instance.TableDefinition, requestedSelection, workingSelection, distinctSelection,
+            recList = AreasTable.Instance.GetRecordListResponseForPost(AreasTable.Instance.TableDefinition, requestedSelection, workingSelection, distinctSelection,
                                                                 join, filter, groupBy, sortOrder, startIndex, count, ref totalCount, fromDataSource, isGetColumnValues);
         }
         else if (table != null)
@@ -287,7 +339,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
            whereFilter = new SqlFilter(where);
         }
 
-        return (int)TrapIdentifiersTable.Instance.GetRecordListCount(null, whereFilter, null, null);
+        return (int)AreasTable.Instance.GetRecordListCount(null, whereFilter, null, null);
     }
 
     /// <summary>
@@ -301,34 +353,34 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
            whereFilter = new SqlFilter(where);
         }
 
-        return (int)TrapIdentifiersTable.Instance.GetRecordListCount(join, whereFilter, null, null);
+        return (int)AreasTable.Instance.GetRecordListCount(join, whereFilter, null, null);
     }
 
     
     public static int GetRecordCount(WhereClause where)
     {
-        return (int)TrapIdentifiersTable.Instance.GetRecordListCount(null, where.GetFilter(), null, null);
+        return (int)AreasTable.Instance.GetRecordListCount(null, where.GetFilter(), null, null);
     }
     
     public static int GetRecordCount(BaseFilter join, WhereClause where)
     {
-        return (int)TrapIdentifiersTable.Instance.GetRecordListCount(join, where.GetFilter(), null, null);
+        return (int)AreasTable.Instance.GetRecordListCount(join, where.GetFilter(), null, null);
     }
 
 
     /// <summary>
-    /// This is a shared function that can be used to get a TrapIdentifiersRecord record using a where clause.
+    /// This is a shared function that can be used to get a AreasRecord record using a where clause.
     /// </summary>
-    public static TrapIdentifiersRecord GetRecord(string where)
+    public static AreasRecord GetRecord(string where)
     {
         OrderBy orderBy = null;
         return GetRecord(where, orderBy);
     }
     
     /// <summary>
-    /// This is a shared function that can be used to get a TrapIdentifiersRecord record using a where clause.
+    /// This is a shared function that can be used to get a AreasRecord record using a where clause.
     /// </summary>
-    public static TrapIdentifiersRecord GetRecord(BaseFilter join, string where)
+    public static AreasRecord GetRecord(BaseFilter join, string where)
     {
         OrderBy orderBy = null;
         return GetRecord(join, where, orderBy);
@@ -336,9 +388,9 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 
 
     /// <summary>
-    /// This is a shared function that can be used to get a TrapIdentifiersRecord record using a where and order by clause.
+    /// This is a shared function that can be used to get a AreasRecord record using a where and order by clause.
     /// </summary>
-    public static TrapIdentifiersRecord GetRecord(string where, OrderBy orderBy)
+    public static AreasRecord GetRecord(string where, OrderBy orderBy)
     {
         SqlFilter whereFilter = null;
         if (where != null && where.Trim() != "")
@@ -346,21 +398,21 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
            whereFilter = new SqlFilter(where);
         }
         BaseClasses.Data.BaseFilter join = null;  
-        ArrayList recList = TrapIdentifiersTable.Instance.GetRecordList(join, whereFilter, null, orderBy, BaseTable.MIN_PAGE_NUMBER, BaseTable.MIN_BATCH_SIZE);
+        ArrayList recList = AreasTable.Instance.GetRecordList(join, whereFilter, null, orderBy, BaseTable.MIN_PAGE_NUMBER, BaseTable.MIN_BATCH_SIZE);
 
-        TrapIdentifiersRecord rec = null;
+        AreasRecord rec = null;
         if (recList.Count > 0)
         {
-            rec = (TrapIdentifiersRecord)recList[0];
+            rec = (AreasRecord)recList[0];
         }
 
         return rec;
     }
     
     /// <summary>
-    /// This is a shared function that can be used to get a TrapIdentifiersRecord record using a where and order by clause.
+    /// This is a shared function that can be used to get a AreasRecord record using a where and order by clause.
     /// </summary>
-    public static TrapIdentifiersRecord GetRecord(BaseFilter join, string where, OrderBy orderBy)
+    public static AreasRecord GetRecord(BaseFilter join, string where, OrderBy orderBy)
     {
         SqlFilter whereFilter = null;
         if (where != null && where.Trim() != "")
@@ -368,12 +420,12 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
            whereFilter = new SqlFilter(where);
         }
         
-        ArrayList recList = TrapIdentifiersTable.Instance.GetRecordList(join, whereFilter, null, orderBy, BaseTable.MIN_PAGE_NUMBER, BaseTable.MIN_BATCH_SIZE);
+        ArrayList recList = AreasTable.Instance.GetRecordList(join, whereFilter, null, orderBy, BaseTable.MIN_PAGE_NUMBER, BaseTable.MIN_BATCH_SIZE);
 
-        TrapIdentifiersRecord rec = null;
+        AreasRecord rec = null;
         if (recList.Count > 0)
         {
-            rec = (TrapIdentifiersRecord)recList[0];
+            rec = (AreasRecord)recList[0];
         }
 
         return rec;
@@ -391,7 +443,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         SqlBuilderColumnSelection retCol = new SqlBuilderColumnSelection(false, true);
         retCol.AddColumn(col);
 
-        return TrapIdentifiersTable.Instance.GetColumnValues(retCol, null, where.GetFilter(), null, orderBy, BaseTable.MIN_PAGE_NUMBER, maxItems);
+        return AreasTable.Instance.GetColumnValues(retCol, null, where.GetFilter(), null, orderBy, BaseTable.MIN_PAGE_NUMBER, maxItems);
 
     }
 
@@ -407,7 +459,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         SqlBuilderColumnSelection retCol = new SqlBuilderColumnSelection(false, true);
         retCol.AddColumn(col);
 
-        return TrapIdentifiersTable.Instance.GetColumnValues(retCol, join, where.GetFilter(), null, orderBy, BaseTable.MIN_PAGE_NUMBER, maxItems);
+        return AreasTable.Instance.GetColumnValues(retCol, join, where.GetFilter(), null, orderBy, BaseTable.MIN_PAGE_NUMBER, maxItems);
 
     }
       
@@ -416,8 +468,8 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static System.Data.DataTable GetDataTable(string where)
     {
-        TrapIdentifiersRecord[] recs = GetRecords(where);
-        return  TrapIdentifiersTable.Instance.CreateDataTable(recs, null);
+        AreasRecord[] recs = GetRecords(where);
+        return  AreasTable.Instance.CreateDataTable(recs, null);
     }
 
     /// <summary>
@@ -425,8 +477,8 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static System.Data.DataTable GetDataTable(BaseFilter join, string where)
     {
-        TrapIdentifiersRecord[] recs = GetRecords(join, where);
-        return  TrapIdentifiersTable.Instance.CreateDataTable(recs, null);
+        AreasRecord[] recs = GetRecords(join, where);
+        return  AreasTable.Instance.CreateDataTable(recs, null);
     }
 
 
@@ -435,8 +487,8 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static System.Data.DataTable GetDataTable(string where, OrderBy orderBy)
     {
-        TrapIdentifiersRecord[] recs = GetRecords(where, orderBy);
-        return  TrapIdentifiersTable.Instance.CreateDataTable(recs, null);
+        AreasRecord[] recs = GetRecords(where, orderBy);
+        return  AreasTable.Instance.CreateDataTable(recs, null);
     }
    
     /// <summary>
@@ -444,8 +496,8 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static System.Data.DataTable GetDataTable(BaseFilter join, string where, OrderBy orderBy)
     {
-        TrapIdentifiersRecord[] recs = GetRecords(join, where, orderBy);
-        return  TrapIdentifiersTable.Instance.CreateDataTable(recs, null);
+        AreasRecord[] recs = GetRecords(join, where, orderBy);
+        return  AreasTable.Instance.CreateDataTable(recs, null);
     }
    
     
@@ -454,8 +506,8 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static System.Data.DataTable GetDataTable(string where, OrderBy orderBy, int pageIndex, int pageSize)
     {
-        TrapIdentifiersRecord[] recs = GetRecords(where, orderBy, pageIndex, pageSize);
-        return  TrapIdentifiersTable.Instance.CreateDataTable(recs, null);
+        AreasRecord[] recs = GetRecords(where, orderBy, pageIndex, pageSize);
+        return  AreasTable.Instance.CreateDataTable(recs, null);
     }
     
     /// <summary>
@@ -463,8 +515,8 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static System.Data.DataTable GetDataTable(BaseFilter join, string where, OrderBy orderBy, int pageIndex, int pageSize)
     {
-        TrapIdentifiersRecord[] recs = GetRecords(join, where, orderBy, pageIndex, pageSize);
-        return  TrapIdentifiersTable.Instance.CreateDataTable(recs, null);
+        AreasRecord[] recs = GetRecords(join, where, orderBy, pageIndex, pageSize);
+        return  AreasTable.Instance.CreateDataTable(recs, null);
     }    
     
     /// <summary>
@@ -478,7 +530,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         }
         
         SqlFilter whereFilter = new SqlFilter(where);
-        TrapIdentifiersTable.Instance.DeleteRecordList(whereFilter);
+        AreasTable.Instance.DeleteRecordList(whereFilter);
     }
     
     /// <summary>
@@ -492,7 +544,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
            whereFilter = new SqlFilter(where);
         }
         
-        return  TrapIdentifiersTable.Instance.ExportRecordData(whereFilter);
+        return  AreasTable.Instance.ExportRecordData(whereFilter);
     }
    
     public static string Export(WhereClause where)
@@ -503,7 +555,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
             whereFilter = where.GetFilter();
         }
 
-        return TrapIdentifiersTable.Instance.ExportRecordData(whereFilter);
+        return AreasTable.Instance.ExportRecordData(whereFilter);
     }
     
 	public static string GetSum(
@@ -516,7 +568,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         SqlBuilderColumnSelection colSel = new SqlBuilderColumnSelection(false, false);
         colSel.AddColumn(col, SqlBuilderColumnOperation.OperationType.Sum);
 
-        return TrapIdentifiersTable.Instance.GetColumnStatistics(colSel, null, where.GetFilter(), null, orderBy, pageIndex, pageSize);
+        return AreasTable.Instance.GetColumnStatistics(colSel, null, where.GetFilter(), null, orderBy, pageIndex, pageSize);
     }
     
 	public static string GetSum(
@@ -530,7 +582,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         SqlBuilderColumnSelection colSel = new SqlBuilderColumnSelection(false, false);
         colSel.AddColumn(col, SqlBuilderColumnOperation.OperationType.Sum);
 
-        return TrapIdentifiersTable.Instance.GetColumnStatistics(colSel, join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
+        return AreasTable.Instance.GetColumnStatistics(colSel, join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
     }    
     
     public static string GetCount(
@@ -543,7 +595,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         SqlBuilderColumnSelection colSel = new SqlBuilderColumnSelection(false, false);
         colSel.AddColumn(col, SqlBuilderColumnOperation.OperationType.Count);
 
-        return TrapIdentifiersTable.Instance.GetColumnStatistics(colSel, null, where.GetFilter(), null, orderBy, pageIndex, pageSize);
+        return AreasTable.Instance.GetColumnStatistics(colSel, null, where.GetFilter(), null, orderBy, pageIndex, pageSize);
     }
     
     public static string GetCount(
@@ -557,7 +609,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         SqlBuilderColumnSelection colSel = new SqlBuilderColumnSelection(false, false);
         colSel.AddColumn(col, SqlBuilderColumnOperation.OperationType.Count);
 
-        return TrapIdentifiersTable.Instance.GetColumnStatistics(colSel, join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
+        return AreasTable.Instance.GetColumnStatistics(colSel, join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
     }
 
     /// <summary>
@@ -565,7 +617,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static BaseColumn[] GetColumns() 
     {
-        return TrapIdentifiersTable.Instance.TableDefinition.Columns;
+        return AreasTable.Instance.TableDefinition.Columns;
     }
 
     /// <summary>
@@ -573,7 +625,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>   
     public static ColumnList GetColumnList() 
     {
-        return TrapIdentifiersTable.Instance.TableDefinition.ColumnList;
+        return AreasTable.Instance.TableDefinition.ColumnList;
     }
 
     /// <summary>
@@ -581,7 +633,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// </summary>
     public static IRecord CreateNewRecord() 
     {
-        return TrapIdentifiersTable.Instance.CreateRecord();
+        return AreasTable.Instance.CreateRecord();
     }
 
     /// <summary>
@@ -590,7 +642,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// <param name="tempId">ID of the new record.</param>   
     public static IRecord CreateNewRecord(string tempId) 
     {
-        return TrapIdentifiersTable.Instance.CreateRecord(tempId);
+        return AreasTable.Instance.CreateRecord(tempId);
     }
 
     /// <summary>
@@ -616,7 +668,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// <param name="uniqueColumnName">Unique name of the column to fetch.</param>
     public static BaseColumn GetColumn(string uniqueColumnName) 
     {
-        BaseColumn column = TrapIdentifiersTable.Instance.TableDefinition.ColumnList.GetByUniqueName(uniqueColumnName);
+        BaseColumn column = AreasTable.Instance.TableDefinition.ColumnList.GetByUniqueName(uniqueColumnName);
         return column;
     }
     
@@ -627,31 +679,33 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
     /// <param name="name">name of the column to fetch.</param>
     public static BaseColumn GetColumnByName(string name)
     {
-        BaseColumn column = TrapIdentifiersTable.Instance.TableDefinition.ColumnList.GetByInternalName(name);
+        BaseColumn column = AreasTable.Instance.TableDefinition.ColumnList.GetByInternalName(name);
         return column;
     } 
 
         //Convenience method for getting a record using a string-based record identifier
-        public static TrapIdentifiersRecord GetRecord(string id, bool bMutable)
+        public static AreasRecord GetRecord(string id, bool bMutable)
         {
-            return (TrapIdentifiersRecord)TrapIdentifiersTable.Instance.GetRecordData(id, bMutable);
+            return (AreasRecord)AreasTable.Instance.GetRecordData(id, bMutable);
         }
 
         //Convenience method for getting a record using a KeyValue record identifier
-        public static TrapIdentifiersRecord GetRecord(KeyValue id, bool bMutable)
+        public static AreasRecord GetRecord(KeyValue id, bool bMutable)
         {
-            return (TrapIdentifiersRecord)TrapIdentifiersTable.Instance.GetRecordData(id, bMutable);
+            return (AreasRecord)AreasTable.Instance.GetRecordData(id, bMutable);
         }
 
         //Convenience method for creating a record
         public KeyValue NewRecord(
-        string TrapIdentifierIdValue, 
-        string DescriptionValue
+        string LatValue, 
+        string Long0Value, 
+        string NotesValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
-                    rec.SetString(TrapIdentifierIdValue, TrapIdentifierIdColumn);
-        rec.SetString(DescriptionValue, DescriptionColumn);
+                    rec.SetString(LatValue, LatColumn);
+        rec.SetString(Long0Value, Long0Column);
+        rec.SetString(NotesValue, NotesColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized
@@ -665,7 +719,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 		/// <param name="kv">Keyvalue of the record to be deleted.</param>
 		public static void DeleteRecord(KeyValue kv)
 		{
-			TrapIdentifiersTable.Instance.DeleteOneRecord(kv);
+			AreasTable.Instance.DeleteOneRecord(kv);
 		}
 
 		/// <summary>
@@ -677,7 +731,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 			bool recordExist = true;
 			try
 			{
-				TrapIdentifiersTable.GetRecord(kv, false);
+				AreasTable.GetRecord(kv, false);
 			}
 			catch (Exception)
 			{
@@ -691,9 +745,9 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         /// </summary>
         public static ColumnList GetPrimaryKeyColumns() 
         {
-            if (!(TrapIdentifiersTable.Instance.TableDefinition.PrimaryKey == null)) 
+            if (!(AreasTable.Instance.TableDefinition.PrimaryKey == null)) 
             {
-                return TrapIdentifiersTable.Instance.TableDefinition.PrimaryKey.Columns;
+                return AreasTable.Instance.TableDefinition.PrimaryKey.Columns;
             }
             else 
             {
@@ -708,10 +762,10 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         public static KeyValue GetKeyValue(object key) 
         {
             KeyValue kv = null;
-            if (!(TrapIdentifiersTable.Instance.TableDefinition.PrimaryKey == null)) 
+            if (!(AreasTable.Instance.TableDefinition.PrimaryKey == null)) 
             {
                 bool isCompositePrimaryKey = false;
-                isCompositePrimaryKey = TrapIdentifiersTable.Instance.TableDefinition.PrimaryKey.IsCompositeKey;
+                isCompositePrimaryKey = AreasTable.Instance.TableDefinition.PrimaryKey.IsCompositeKey;
                 if ((isCompositePrimaryKey && key.GetType().IsArray)) 
                 {
                     //  If the key is composite, then construct a key value.
@@ -720,12 +774,12 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
                     if (!(keyArray == null)) 
                     {
                         int length = keyArray.Length;
-                        ColumnList pkColumns = TrapIdentifiersTable.Instance.TableDefinition.PrimaryKey.Columns;
+                        ColumnList pkColumns = AreasTable.Instance.TableDefinition.PrimaryKey.Columns;
                         int index = 0;
                         foreach (BaseColumn pkColumn in pkColumns) 
                         {
                             string keyString = ((keyArray.GetValue(index)).ToString());
-                            if (TrapIdentifiersTable.Instance.TableDefinition.TableType == BaseClasses.Data.TableDefinition.TableTypes.Virtual)
+                            if (AreasTable.Instance.TableDefinition.TableType == BaseClasses.Data.TableDefinition.TableTypes.Virtual)
                             {
                                 kv.AddElement(pkColumn.UniqueName, keyString);
                             }
@@ -741,7 +795,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
                 else 
                 {
                     //  If the key is not composite, then get the key value.
-                    kv = TrapIdentifiersTable.Instance.TableDefinition.PrimaryKey.ParseValue(((key).ToString()));
+                    kv = AreasTable.Instance.TableDefinition.PrimaryKey.ParseValue(((key).ToString()));
                 }
             }
             return kv;
@@ -752,7 +806,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
         /// </summary>
         public static string GetDFKA(BaseRecord rec, BaseColumn col)
 		{
-			ForeignKey fkColumn = TrapIdentifiersTable.Instance.TableDefinition.GetExpandableNonCompositeForeignKey(col);
+			ForeignKey fkColumn = AreasTable.Instance.TableDefinition.GetExpandableNonCompositeForeignKey(col);
 			if (fkColumn == null)
 				return null;
 			String _DFKA = fkColumn.PrimaryKeyDisplayColumns;
@@ -788,7 +842,7 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 		{
 		    if (keyValue == null)
 				return null;
-			ForeignKey fkColumn = TrapIdentifiersTable.Instance.TableDefinition.GetExpandableNonCompositeForeignKey(col);
+			ForeignKey fkColumn = AreasTable.Instance.TableDefinition.GetExpandableNonCompositeForeignKey(col);
 			if (fkColumn == null)
 				return null;
 			String _DFKA = fkColumn.PrimaryKeyDisplayColumns;

@@ -68,136 +68,148 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.cs" />
-    <Compile Include="GroupsTable.cs" >
+    <Compile Include="GroupsTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseGroupsTable.cs" >
+    <Compile Include="BaseGroupsTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GroupsRecord.cs" >
+    <Compile Include="GroupsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseGroupsRecord.cs" >
+    <Compile Include="BaseGroupsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProjectsTable.cs" >
+    <Compile Include="ProjectsTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseProjectsTable.cs" >
+    <Compile Include="BaseProjectsTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProjectsRecord.cs" >
+    <Compile Include="ProjectsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseProjectsRecord.cs" >
+    <Compile Include="BaseProjectsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProjectsGroupsLinkTable.cs" >
+    <Compile Include="ProjectsGroupsLinkTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseProjectsGroupsLinkTable.cs" >
+    <Compile Include="BaseProjectsGroupsLinkTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProjectsGroupsLinkRecord.cs" >
+    <Compile Include="ProjectsGroupsLinkRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseProjectsGroupsLinkRecord.cs" >
+    <Compile Include="BaseProjectsGroupsLinkRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Roles1Table.cs" >
+    <Compile Include="Roles1Table.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseRoles1Table.cs" >
+    <Compile Include="BaseRoles1Table.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Roles1Record.cs" >
+    <Compile Include="Roles1Record.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseRoles1Record.cs" >
+    <Compile Include="BaseRoles1Record.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapIdentifiersTable.cs" >
+    <Compile Include="TrapIdentifiersTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapIdentifiersTable.cs" >
+    <Compile Include="BaseTrapIdentifiersTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapIdentifiersRecord.cs" >
+    <Compile Include="TrapIdentifiersRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapIdentifiersRecord.cs" >
+    <Compile Include="BaseTrapIdentifiersRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapNotesTable.cs" >
+    <Compile Include="TrapNotesTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapNotesTable.cs" >
+    <Compile Include="BaseTrapNotesTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapNotesRecord.cs" >
+    <Compile Include="TrapNotesRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapNotesRecord.cs" >
+    <Compile Include="BaseTrapNotesRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapsTable.cs" >
+    <Compile Include="TrapsTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapsTable.cs" >
+    <Compile Include="BaseTrapsTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapsRecord.cs" >
+    <Compile Include="TrapsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapsRecord.cs" >
+    <Compile Include="BaseTrapsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapTypesTable.cs" >
+    <Compile Include="TrapTypesTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapTypesTable.cs" >
+    <Compile Include="BaseTrapTypesTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapTypesRecord.cs" >
+    <Compile Include="TrapTypesRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapTypesRecord.cs" >
+    <Compile Include="BaseTrapTypesRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserRolesLinkTable.cs" >
+    <Compile Include="UserRolesLinkTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUserRolesLinkTable.cs" >
+    <Compile Include="BaseUserRolesLinkTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserRolesLinkRecord.cs" >
+    <Compile Include="UserRolesLinkRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUserRolesLinkRecord.cs" >
+    <Compile Include="BaseUserRolesLinkRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersTable.cs" >
+    <Compile Include="UsersTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUsersTable.cs" >
+    <Compile Include="BaseUsersTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersRecord.cs" >
+    <Compile Include="UsersRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUsersRecord.cs" >
+    <Compile Include="BaseUsersRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLinkTable.cs" >
+    <Compile Include="UsersGroupsLinkTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUsersGroupsLinkTable.cs" >
+    <Compile Include="BaseUsersGroupsLinkTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLinkRecord.cs" >
+    <Compile Include="UsersGroupsLinkRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUsersGroupsLinkRecord.cs" >
+    <Compile Include="BaseUsersGroupsLinkRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreasTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseAreasTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreasRecord.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseAreasRecord.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

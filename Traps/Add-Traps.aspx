@@ -35,7 +35,9 @@
 
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
                   <asp:panel id="CollapsibleRegion" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
-                    <asp:panel id="TrapsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"></td><td class="tableCellValue"> </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="Group">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="GroupId" redirecturl=""></BaseClasses:QuickSelector> </td></tr><tr><td class="tableCellLabel"></td><td class="tableCellValue"> </td></tr></table></asp:panel>
+                    <asp:panel id="TrapsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="Group">	</asp:Literal></td><td class="tableCellValue"><asp:Literal runat="server" id="GroupId"></asp:Literal> </td><td class="tableCellValue"></td><td class="tableCellValue"></td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeIdLabel" Text="Trap Type">	</asp:Literal></td><td class="tableCellValue"><asp:RadioButtonList runat="server" id="TrapTypeId" RepeatLayout="Flow"></asp:RadioButtonList></td><td class="tableCellValue"><asp:Literal runat="server" id="TrapIdentifierIdLabel" Text="Trap Identifier">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+<asp:DropDownList runat="server" id="TrapIdentifierId" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
+</td></tr></table></asp:panel>
 
                   </td></tr></table>
 </asp:panel>

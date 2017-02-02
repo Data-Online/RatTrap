@@ -49,6 +49,7 @@ The tags are case-sensitive and should contain the following case-sensitive attr
     </siteMapNode>
     <siteMapNode title="Traps" description="Traps" url="~/Traps/Add-Traps.aspx?" imageUrl="" roles="" order="6">
       <siteMapNode title="{Menu:Add} Traps" description="{Menu:Add} Traps" url="~/Traps/Add-Traps.aspx" imageUrl="" roles="" order="1" />
+      <siteMapNode title="{Menu:Edit} Traps" description="{Menu:Edit} Traps" url="~/Traps/Edit-Traps-Table.aspx" imageUrl="" roles="" order="9" />
     </siteMapNode>
     <siteMapNode title="Users" description="Users" url="~/Users/Show-Users-Table.aspx?" imageUrl="" roles="" order="7">
       <siteMapNode title="{Menu:Add} Users" description="{Menu:Add} Users" url="~/Users/Add-Users.aspx" imageUrl="" roles="" order="1" />

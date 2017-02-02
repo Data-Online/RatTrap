@@ -597,7 +597,9 @@
         &lt;Value&gt;
                         &amp;lt;GEN:RECORD NAME="UsersRecordControl"&amp;gt;&amp;lt;/GEN:RECORD&amp;gt;
             &lt;/Value&gt;
+        &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -609,6 +611,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Epilog&gt;
       &lt;Value&gt;
@@ -642,6 +645,7 @@
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
   &lt;Layout Name="UsersRecordControl" Type="RecordPanel" PanelControlName="UsersRecordControl"&gt;
+    &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;img src="../Images/space.gif" class="panelTLSpace" alt="" /&amp;gt;&lt;/Value&gt;
@@ -669,6 +673,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -698,6 +703,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -712,6 +718,7 @@
         &lt;Value&gt;
                   &amp;lt;asp:panel id="CollapsibleRegion" runat="server"&amp;gt;&amp;lt;GEN:PANEL NAME="Panel"/&amp;gt;&amp;lt;/asp:panel&amp;gt;
                 &lt;/Value&gt;
+        &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;CellAttributes&gt;
@@ -721,6 +728,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -749,7 +757,9 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
+    &lt;Epilog /&gt;
     &lt;TableAttributes&gt;
       &lt;Attribute&gt;
         &lt;Name&gt;class&lt;/Name&gt;
@@ -770,6 +780,7 @@
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
   &lt;Layout Name="Header" Type="PanelHeader" PanelControlName="UsersRecordControl"&gt;
+    &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
@@ -798,7 +809,9 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
+    &lt;Epilog /&gt;
     &lt;TableAttributes&gt;
       &lt;Attribute&gt;
         &lt;Name&gt;cellpadding&lt;/Name&gt;
@@ -819,6 +832,7 @@
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
   &lt;Layout Name="TitleRegion" PanelControlName="UsersRecordControl"&gt;
+    &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
@@ -835,28 +849,9 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="TitleRegionPanel" Type="BlankPanel" PanelControlName="UsersRecordControl"&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:HTML NAME="Title0"/&amp;gt;&lt;/Value&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
+    &lt;Epilog /&gt;
     &lt;TableAttributes&gt;
       &lt;Attribute&gt;
         &lt;Name&gt;cellpadding&lt;/Name&gt;
@@ -873,6 +868,7 @@
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
   &lt;Layout Name="Panel" PanelControlName="UsersRecordControl"&gt;
+    &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
@@ -880,7 +876,9 @@
                   &lt;/Value&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
+    &lt;Epilog /&gt;
     &lt;TableAttributes&gt;
       &lt;Attribute&gt;
         &lt;Name&gt;class&lt;/Name&gt;
@@ -905,6 +903,7 @@
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
   &lt;Layout Name="Fields" Type="RecordGrid" PanelControlName="UsersRecordControl"&gt;
+    &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="FirstNameLabel"/&amp;gt;&lt;/Value&gt;
@@ -942,6 +941,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -980,6 +980,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -1018,6 +1019,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -1056,6 +1058,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -1092,7 +1095,9 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
+    &lt;Epilog /&gt;
     &lt;TableAttributes&gt;
       &lt;Attribute&gt;
         &lt;Name&gt;cellpadding&lt;/Name&gt;
@@ -1113,11 +1118,15 @@
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
   &lt;Layout Name="PageButtons" Type="PageButton"&gt;
+    &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:PANEL NAME="PageButtonsPanel"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
+    &lt;Epilog /&gt;
     &lt;TableAttributes&gt;
       &lt;Attribute&gt;
         &lt;Name&gt;cellpadding&lt;/Name&gt;
@@ -1138,14 +1147,19 @@
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
   &lt;Layout Name="PageButtonsPanel" Type="BlankPanel"&gt;
+    &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:BUTTON NAME="SaveButton"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:BUTTON NAME="CancelButton"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
+    &lt;Epilog /&gt;
     &lt;TableAttributes&gt;
       &lt;Attribute&gt;
         &lt;Name&gt;cellpadding&lt;/Name&gt;

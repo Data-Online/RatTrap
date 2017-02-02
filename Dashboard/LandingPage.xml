@@ -61,6 +61,38 @@
       </PassthroughAttributes>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>Label2</Name>
+      <Type>Label</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>My Groups</Value>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>MyGroupsButton</Name>
+      <Type>ImageButton</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>CausesValidation</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>Custom</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ImageUrl</Name>
+          <Value>../Images/MyGroups.png</Value>
+        </Attribute>
+        <Attribute>
+          <Name>RedirectURL</Name>
+          <Value>../UsersGroupsLink/Show-UsersGroupsLink-Gallery.aspx</Value>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>PageTitle</Name>
       <Type>Literal</Type>
       <PassthroughAttributes>
@@ -178,6 +210,54 @@
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:LABEL NAME="Label1" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:IMAGEBUTTON NAME="MyGroupsButton" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:LABEL NAME="Label2" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;RowAttributes /&gt;

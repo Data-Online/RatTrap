@@ -1,6 +1,6 @@
 ﻿
-// This file implements the code-behind class for LandingPage.aspx.
-// LandingPage.Controls.vb contains the Table, Row and Record control classes
+// This file implements the code-behind class for Edit_Traps_Table.aspx.
+// Edit_Traps_Table.Controls.vb contains the Table, Row and Record control classes
 // for the page.  Best practices calls for overriding methods in the Row or Record control classes.
 
 #region "Using statements"    
@@ -29,15 +29,15 @@ using RatTrap.Data;
 namespace RatTrap.UI
 {
   
-public partial class LandingPage
+public partial class Edit_Traps_Table
         : BaseApplicationPage
-// Code-behind class for the LandingPage page.
+// Code-behind class for the Edit_Traps_Table page.
 // Place your customizations in Section 1. Do not modify Section 2.
 {
         
       #region "Section 1: Place your customizations here."
 
-      public LandingPage()
+      public Edit_Traps_Table()
         {
             this.Initialize();
     
@@ -191,56 +191,17 @@ public partial class LandingPage
       
     
         // Write out the Set methods
+        
+        public void SetTrapsTableControl()
+        {
+            SetTrapsTableControl_Base(); 
+        }
                      
         
         // Write out the methods for DataSource
         
 
 
-public void SetUsersButton()
-        {
-            SetUsersButton_Base(); 
-        }              
-public void UsersButton_Click(object sender, ImageClickEventArgs args)
-        {
-          // Click handler for UsersButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          UsersButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
-public void SetGroupsButton()
-        {
-            SetGroupsButton_Base(); 
-        }              
-public void GroupsButton_Click(object sender, ImageClickEventArgs args)
-        {
-          // Click handler for GroupsButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          GroupsButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
-//public void SetGroupsButton1()
-//        {
-//            SetGroupsButton1_Base(); 
-//        }              
-//public void GroupsButton1_Click(object sender, ImageClickEventArgs args)
-//        {
-//          // Click handler for GroupsButton1.
-//          // Customize by adding code before the call or replace the call to the Base function with your own code.
-//          GroupsButton1_Click_Base(sender, args);
-//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-//        }
-public void SetMyGroupsButton()
-        {
-            SetMyGroupsButton_Base(); 
-        }              
-public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
-        {
-          // Click handler for MyGroupsButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          MyGroupsButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -258,19 +219,33 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
         }
         
     
-        public System.Web.UI.WebControls.ImageButton GroupsButton;
+        public ThemeButtonWithArrow ActionsButton;
+                
+        public System.Web.UI.WebControls.ImageButton AddButton;
         
-        public System.Web.UI.WebControls.Label Label;
+        public System.Web.UI.WebControls.ImageButton DeleteButton;
         
-        public System.Web.UI.WebControls.Label Label1;
-        
-        public System.Web.UI.WebControls.Label Label2;
-        
-        public System.Web.UI.WebControls.ImageButton MyGroupsButton;
-        
+        public ThemeButton FilterButton;
+                
+        public ThemeButtonWithArrow FiltersButton;
+                
         public System.Web.UI.WebControls.Literal PageTitle;
         
-        public System.Web.UI.WebControls.ImageButton UsersButton;
+        public PaginationModern Pagination;
+                
+        public System.Web.UI.WebControls.ImageButton ResetButton;
+        
+        public System.Web.UI.WebControls.ImageButton SaveButton;
+        
+        public System.Web.UI.WebControls.Label SortByLabel;
+        
+        public System.Web.UI.WebControls.Literal Title0;
+            
+        public System.Web.UI.WebControls.CheckBox ToggleAll;
+        
+        public RatTrap.UI.Controls.Edit_Traps_Table.TrapsTableControl TrapsTableControl;
+          
+        public System.Web.UI.WebControls.Literal TrapTypeIdLabel1;
         
         public ValidationSummary ValidationSummary1;
 
@@ -293,12 +268,6 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
 
           // Setup the pagination events.
         
-                    this.GroupsButton.Click += GroupsButton_Click;
-                        
-                    this.MyGroupsButton.Click += MyGroupsButton_Click;
-                        
-                    this.UsersButton.Click += UsersButton_Click;
-                        
           this.ClearControlsFromSession();    
     
           System.Web.HttpContext.Current.Session["isd_geo_location"] = "<location><error>LOCATION_ERROR_DISABLED</error></location>";
@@ -339,7 +308,7 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("NOT_ANONYMOUS");
+            this.Authorize("");
              if (!this.IsPostBack)
              {
             
@@ -358,7 +327,7 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
     }
 
     
-            Page.Title = "Users";
+            Page.Title = ExpandResourceValue("{Title:Edit} Traps");
         
         if (!IsPostBack)
             AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
@@ -448,6 +417,15 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
       {
           // Load data for each record and table UI control.
         
+          switch (control)
+          {
+          
+              case "TrapsTableControl":
+                 SetTrapsTableControl();
+                 break;
+               
+          }
+        
       }
       
     
@@ -455,6 +433,8 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
       public void SaveData_Base()
       {
       
+        this.TrapsTableControl.SaveData();
+        
       }
       
      
@@ -549,18 +529,14 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
     
                 // Load and bind data for each record and table UI control.
                 
+        SetTrapsTableControl();
+        
     
                 // Load data for chart.
                 
             
                 // initialize aspx controls
                 
-                SetGroupsButton();
-              
-                SetMyGroupsButton();
-              
-                SetUsersButton();
-              
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -642,176 +618,21 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
                 
         // Write out the Set methods
         
-        public void SetGroupsButton_Base()                
-              
-        {
+        public void SetTrapsTableControl_Base()           
         
-   
+        {        
+            if (TrapsTableControl.Visible)
+            {
+                TrapsTableControl.LoadData();
+                TrapsTableControl.DataBind();
+            }
         }
-            
-        public void SetMyGroupsButton_Base()                
-              
-        {
-        
-   
-        }
-            
-        public void SetUsersButton_Base()                
-              
-        {
-        
-   
-        }
-                
+          
 
         // Write out the DataSource properties and methods
                 
 
         // Write out event methods for the page events
-        
-        // event handler for ImageButton
-        public void GroupsButton_Click_Base(object sender, ImageClickEventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Groups/Show-Groups-Table.aspx";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
-                url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-            //This method is initially empty to implement custom click handler.
-      
-                url = this.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-      this.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for ImageButton
-        public void MyGroupsButton_Click_Base(object sender, ImageClickEventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../UsersGroupsLink/Show-UsersGroupsLink-Gallery.aspx";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
-                url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-            //This method is initially empty to implement custom click handler.
-      
-                url = this.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-      this.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for ImageButton
-        public void UsersButton_Click_Base(object sender, ImageClickEventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Users/Show-Users-Table.aspx";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
-                url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-            //This method is initially empty to implement custom click handler.
-      
-                url = this.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-      this.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
         
       
 

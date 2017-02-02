@@ -62,7 +62,8 @@
       </columnDBDefault>
       <columnIndex>N</columnIndex>
       <columnUnique>N</columnUnique>
-      <columnFunction>notrim</columnFunction>
+      <columnFunction>
+      </columnFunction>
       <columnDBFormat>
       </columnDBFormat>
       <columnPK>N</columnPK>
@@ -89,6 +90,22 @@
         <foreignKeyType>Explicit</foreignKeyType>
       </foreignKey>
       <applyDFKA>Y</applyDFKA>
+      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
+      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
+      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
+      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
+      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
+      <applyDefaultValue>N</applyDefaultValue>
+      <insertingRecordFormula>
+      </insertingRecordFormula>
+      <readingRecordFormula>
+      </readingRecordFormula>
+      <updatingRecordFormula>
+      </updatingRecordFormula>
+      <insertingFormula>
+      </insertingFormula>
+      <updatingFormula>
+      </updatingFormula>
     </Column>
     <Column InternalName="2" Priority="3" ColumnNum="2">
       <columnName>GroupId</columnName>
@@ -189,7 +206,7 @@
     </Column>
   </ColumnDefinition>
   <TableName>Traps</TableName>
-  <Version>1</Version>
+  <Version>3</Version>
   <Owner>dbo</Owner>
   <TableAliasName>Traps_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>

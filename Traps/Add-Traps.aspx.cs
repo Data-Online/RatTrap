@@ -263,7 +263,7 @@ public partial class Add_Traps
     
         public ThemeButton CancelButton;
                 
-        public BaseClasses.Web.UI.WebControls.QuickSelector GroupId;
+        public System.Web.UI.WebControls.Literal GroupId;
             
         public System.Web.UI.WebControls.Literal GroupIdLabel;
         
@@ -275,8 +275,16 @@ public partial class Add_Traps
                 
         public System.Web.UI.WebControls.Literal Title0;
             
+        public System.Web.UI.WebControls.DropDownList TrapIdentifierId;
+            
+        public System.Web.UI.WebControls.Literal TrapIdentifierIdLabel;
+        
         public RatTrap.UI.Controls.Add_Traps.TrapsRecordControl TrapsRecordControl;
           
+        public System.Web.UI.WebControls.RadioButtonList TrapTypeId;
+            
+        public System.Web.UI.WebControls.Literal TrapTypeIdLabel;
+        
         public ValidationSummary ValidationSummary1;
 
   

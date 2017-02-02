@@ -12,7 +12,7 @@ namespace RatTrap.Business
 public class TrapIdentifiersDefinition
 {
 #region "Definition (XML) for TrapIdentifiersDefinition table"
-	//Next 73 lines contain Table Definition (XML) for table "TrapIdentifiersDefinition"
+	//Next 97 lines contain Table Definition (XML) for table "TrapIdentifiersDefinition"
 	private static string _DefinitionString = "";
 	
 #endregion
@@ -41,14 +41,14 @@ public class TrapIdentifiersDefinition
          tbf.Append(      @"<columnDBDefault></columnDBDefault>");
          tbf.Append(      @"<columnIndex>Y</columnIndex>");
          tbf.Append(      @"<columnUnique>Y</columnUnique>");
-         tbf.Append(      @"<columnFunction>notrim</columnFunction>");
+         tbf.Append(      @"<columnFunction></columnFunction>");
          tbf.Append(      @"<columnDBFormat></columnDBFormat>");
          tbf.Append(      @"<columnPK>Y</columnPK>");
          tbf.Append(      @"<columnPermanent>N</columnPermanent>");
-         tbf.Append(      @"<columnComputed>Y</columnComputed>");
-         tbf.Append(      @"<columnIdentity>Y</columnIdentity>");
-         tbf.Append(      @"<columnReadOnly>Y</columnReadOnly>");
-         tbf.Append(      @"<columnRequired>N</columnRequired>");
+         tbf.Append(      @"<columnComputed>N</columnComputed>");
+         tbf.Append(      @"<columnIdentity>N</columnIdentity>");
+         tbf.Append(      @"<columnReadOnly>N</columnReadOnly>");
+         tbf.Append(      @"<columnRequired>Y</columnRequired>");
          tbf.Append(      @"<columnNotNull>Y</columnNotNull>");
          tbf.Append(      @"<columnCaseSensitive>N</columnCaseSensitive>");
          tbf.Append(      @"<columnCollation></columnCollation>");
@@ -56,6 +56,18 @@ public class TrapIdentifiersDefinition
          tbf.Append(      @"<columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>");
          tbf.Append(      @"<columnTableAliasName></columnTableAliasName>");
          tbf.Append(      @"<applyLabelText>Y</applyLabelText>");
+         tbf.Append(      @"<applyDFKA>N</applyDFKA>");
+         tbf.Append(      @"<applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>");
+         tbf.Append(      @"<applyInitializeReadingRecord>N</applyInitializeReadingRecord>");
+         tbf.Append(      @"<applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>");
+         tbf.Append(      @"<applyValidateInsertingRecord>N</applyValidateInsertingRecord>");
+         tbf.Append(      @"<applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>");
+         tbf.Append(      @"<applyDefaultValue>N</applyDefaultValue>");
+         tbf.Append(      @"<insertingRecordFormula></insertingRecordFormula>");
+         tbf.Append(      @"<readingRecordFormula></readingRecordFormula>");
+         tbf.Append(      @"<updatingRecordFormula></updatingRecordFormula>");
+         tbf.Append(      @"<insertingFormula></insertingFormula>");
+         tbf.Append(      @"<updatingFormula></updatingFormula>");
          tbf.Append(    "</Column>");
          tbf.Append(    @"<Column InternalName=""1"" Priority=""2"" ColumnNum=""1"">");
          tbf.Append(      @"<columnName>Description</columnName>");
@@ -82,10 +94,22 @@ public class TrapIdentifiersDefinition
          tbf.Append(      @"<columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>");
          tbf.Append(      @"<columnTableAliasName></columnTableAliasName>");
          tbf.Append(      @"<applyLabelText>Y</applyLabelText>");
+         tbf.Append(      @"<applyDFKA>N</applyDFKA>");
+         tbf.Append(      @"<applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>");
+         tbf.Append(      @"<applyInitializeReadingRecord>N</applyInitializeReadingRecord>");
+         tbf.Append(      @"<applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>");
+         tbf.Append(      @"<applyValidateInsertingRecord>N</applyValidateInsertingRecord>");
+         tbf.Append(      @"<applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>");
+         tbf.Append(      @"<applyDefaultValue>N</applyDefaultValue>");
+         tbf.Append(      @"<insertingRecordFormula></insertingRecordFormula>");
+         tbf.Append(      @"<readingRecordFormula></readingRecordFormula>");
+         tbf.Append(      @"<updatingRecordFormula></updatingRecordFormula>");
+         tbf.Append(      @"<insertingFormula></insertingFormula>");
+         tbf.Append(      @"<updatingFormula></updatingFormula>");
          tbf.Append(    "</Column>");
          tbf.Append(  "</ColumnDefinition>");
          tbf.Append(  @"<TableName>TrapIdentifiers</TableName>");
-         tbf.Append(  @"<Version></Version>");
+         tbf.Append(  @"<Version>2</Version>");
          tbf.Append(  @"<Owner>dbo</Owner>");
          tbf.Append(  @"<TableAliasName>TrapIdentifiers_</TableAliasName>");
          tbf.Append(  @"<ConnectionName>DatabaseTheRatTrap</ConnectionName>");
@@ -96,10 +120,10 @@ public class TrapIdentifiersDefinition
          tbf.Append(  @"<canViewRecords Source=""Database"">Y</canViewRecords>");
          tbf.Append(  @"<ConcurrencyMethod>BinaryChecksum</ConcurrencyMethod>");
          tbf.Append(  @"<AppShortName>RatTrap</AppShortName>");
+         tbf.Append(  @"<TableCodeName>TrapIdentifiers</TableCodeName>");
          tbf.Append(  @"<FolderName>TrapIdentifiers</FolderName>");
          tbf.Append(  @"<MenuName>Trap Identifiers</MenuName>");
          tbf.Append(  @"<QSPath>../TrapIdentifiers/TrapIdentifiers-QuickSelector.aspx</QSPath>");
-         tbf.Append(  @"<TableCodeName>TrapIdentifiers</TableCodeName>");
          tbf.Append(  @"<TableStoredProcPrefix>pRatTrapTrapIdentifiers</TableStoredProcPrefix>");
          tbf.Append("</XMLDefinition>");
          _DefinitionString = tbf.ToString();

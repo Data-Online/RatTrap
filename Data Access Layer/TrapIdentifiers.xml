@@ -13,15 +13,16 @@
       </columnDBDefault>
       <columnIndex>Y</columnIndex>
       <columnUnique>Y</columnUnique>
-      <columnFunction>notrim</columnFunction>
+      <columnFunction>
+      </columnFunction>
       <columnDBFormat>
       </columnDBFormat>
       <columnPK>Y</columnPK>
       <columnPermanent>N</columnPermanent>
-      <columnComputed>Y</columnComputed>
-      <columnIdentity>Y</columnIdentity>
-      <columnReadOnly>Y</columnReadOnly>
-      <columnRequired>N</columnRequired>
+      <columnComputed>N</columnComputed>
+      <columnIdentity>N</columnIdentity>
+      <columnReadOnly>N</columnReadOnly>
+      <columnRequired>Y</columnRequired>
       <columnNotNull>Y</columnNotNull>
       <columnCaseSensitive>N</columnCaseSensitive>
       <columnCollation>
@@ -31,6 +32,23 @@
       <columnTableAliasName>
       </columnTableAliasName>
       <applyLabelText>Y</applyLabelText>
+      <applyDFKA>N</applyDFKA>
+      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
+      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
+      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
+      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
+      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
+      <applyDefaultValue>N</applyDefaultValue>
+      <insertingRecordFormula>
+      </insertingRecordFormula>
+      <readingRecordFormula>
+      </readingRecordFormula>
+      <updatingRecordFormula>
+      </updatingRecordFormula>
+      <insertingFormula>
+      </insertingFormula>
+      <updatingFormula>
+      </updatingFormula>
     </Column>
     <Column InternalName="1" Priority="2" ColumnNum="1">
       <columnName>Description</columnName>
@@ -62,11 +80,27 @@
       <columnTableAliasName>
       </columnTableAliasName>
       <applyLabelText>Y</applyLabelText>
+      <applyDFKA>N</applyDFKA>
+      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
+      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
+      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
+      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
+      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
+      <applyDefaultValue>N</applyDefaultValue>
+      <insertingRecordFormula>
+      </insertingRecordFormula>
+      <readingRecordFormula>
+      </readingRecordFormula>
+      <updatingRecordFormula>
+      </updatingRecordFormula>
+      <insertingFormula>
+      </insertingFormula>
+      <updatingFormula>
+      </updatingFormula>
     </Column>
   </ColumnDefinition>
   <TableName>TrapIdentifiers</TableName>
-  <Version>
-  </Version>
+  <Version>2</Version>
   <Owner>dbo</Owner>
   <TableAliasName>TrapIdentifiers_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>
@@ -77,9 +111,9 @@
   <canViewRecords Source="Database">Y</canViewRecords>
   <ConcurrencyMethod>BinaryChecksum</ConcurrencyMethod>
   <AppShortName>RatTrap</AppShortName>
+  <TableCodeName>TrapIdentifiers</TableCodeName>
   <FolderName>TrapIdentifiers</FolderName>
   <MenuName>Trap Identifiers</MenuName>
   <QSPath>../TrapIdentifiers/TrapIdentifiers-QuickSelector.aspx</QSPath>
-  <TableCodeName>TrapIdentifiers</TableCodeName>
   <TableStoredProcPrefix>pRatTrapTrapIdentifiers</TableStoredProcPrefix>
 </XMLDefinition>

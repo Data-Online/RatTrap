@@ -92,7 +92,16 @@
 			            'If it is an aspx page the check for the other conditions.
 			            If IsNothing(parameterRequired) OrElse parameterRequired.Equals("true", System.StringComparison.InvariantCultureIgnoreCase) Then
 			                Try
-			                    
+			                    Dim wc As WhereClause = New WhereClause
+						Dim rec() As GroupsRecord = GroupsTable.GetRecords(wc, Nothing, 0, 1)
+						If rec.Length > 0 Then
+							Dim param As String = HttpUtility.UrlEncode(rec(0).GetID.ToXmlString)
+							If isEncrypted.Equals("true", System.StringComparison.InvariantCultureIgnoreCase) Then
+								param = Me.Encrypt(param)
+							End If
+							pageURL = pageURL & "?" & "Groups" & "=" & param
+						End If
+
 			                Catch ex As Exception
 			                    Utils.RegisterJScriptAlert(Me, "Page_Load_Error_Message", ex.Message)
 			                    Return

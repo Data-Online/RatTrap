@@ -80,103 +80,112 @@
     <Compile Include="Shared\RestfulUtils.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GroupsDefinition.cs" >
+    <Compile Include="GroupsDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GroupsSqlTable.cs" >
+    <Compile Include="GroupsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseGroupsSqlTable.cs" >
+    <Compile Include="BaseGroupsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProjectsDefinition.cs" >
+    <Compile Include="ProjectsDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProjectsSqlTable.cs" >
+    <Compile Include="ProjectsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseProjectsSqlTable.cs" >
+    <Compile Include="BaseProjectsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProjectsGroupsLinkDefinition.cs" >
+    <Compile Include="ProjectsGroupsLinkDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProjectsGroupsLinkSqlTable.cs" >
+    <Compile Include="ProjectsGroupsLinkSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseProjectsGroupsLinkSqlTable.cs" >
+    <Compile Include="BaseProjectsGroupsLinkSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Roles1Definition.cs" >
+    <Compile Include="Roles1Definition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Roles1SqlTable.cs" >
+    <Compile Include="Roles1SqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseRoles1SqlTable.cs" >
+    <Compile Include="BaseRoles1SqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapIdentifiersDefinition.cs" >
+    <Compile Include="TrapIdentifiersDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapIdentifiersSqlTable.cs" >
+    <Compile Include="TrapIdentifiersSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapIdentifiersSqlTable.cs" >
+    <Compile Include="BaseTrapIdentifiersSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapNotesDefinition.cs" >
+    <Compile Include="TrapNotesDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapNotesSqlTable.cs" >
+    <Compile Include="TrapNotesSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapNotesSqlTable.cs" >
+    <Compile Include="BaseTrapNotesSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapsDefinition.cs" >
+    <Compile Include="TrapsDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapsSqlTable.cs" >
+    <Compile Include="TrapsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapsSqlTable.cs" >
+    <Compile Include="BaseTrapsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapTypesDefinition.cs" >
+    <Compile Include="TrapTypesDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapTypesSqlTable.cs" >
+    <Compile Include="TrapTypesSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapTypesSqlTable.cs" >
+    <Compile Include="BaseTrapTypesSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserRolesLinkDefinition.cs" >
+    <Compile Include="UserRolesLinkDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserRolesLinkSqlTable.cs" >
+    <Compile Include="UserRolesLinkSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUserRolesLinkSqlTable.cs" >
+    <Compile Include="BaseUserRolesLinkSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersDefinition.cs" >
+    <Compile Include="UsersDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersSqlTable.cs" >
+    <Compile Include="UsersSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUsersSqlTable.cs" >
+    <Compile Include="BaseUsersSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLinkDefinition.cs" >
+    <Compile Include="UsersGroupsLinkDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLinkSqlTable.cs" >
+    <Compile Include="UsersGroupsLinkSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseUsersGroupsLinkSqlTable.cs" >
+    <Compile Include="BaseUsersGroupsLinkSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreasDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreasSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseAreasSqlTable.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

@@ -147,6 +147,48 @@ public class BaseTrapIdentifiersRecord : PrimaryKeyRecord
 	}
 
 	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapIdentifiers_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapIdentifiers_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapIdentifiers_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapIdentifiers_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapIdentifiers_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapIdentifierIdColumn);
+	}
+	/// <summary>
 	/// This is a convenience method that provides direct access to the value of the record's TrapIdentifiers_.Description field.
 	/// </summary>
 	public ColumnValue GetDescriptionValue()

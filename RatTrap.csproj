@@ -515,11 +515,18 @@
       <DependentUpon>SignOut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.aspx.cs" >
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.aspx.cs">
       <DependentUpon>Show-UsersGroupsLink-Gallery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.Controls.cs" >
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Traps\Edit-Traps-Table.aspx.cs" >
+      <DependentUpon>Edit-Traps-Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traps\Edit-Traps-Table.Controls.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -822,7 +829,8 @@
     <Content Include="Security\SendUserInfo.aspx" />
     <Content Include="Security\SignIn.aspx" />
     <Content Include="Security\SignOut.aspx" />
-    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.aspx"  />
+    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.aspx" />
+    <Content Include="Traps\Edit-Traps-Table.aspx"  />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

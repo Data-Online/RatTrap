@@ -51,6 +51,29 @@ public class UsersRecordControl : BaseUsersRecordControl
 
   
 
+//public class UsersGroupsLinkTableControl : BaseUsersGroupsLinkTableControl
+//{
+//    // The BaseUsersGroupsLinkTableControl class implements the LoadData, DataBind, CreateWhereClause
+//    // and other methods to load and display the data in a table control.
+//
+//    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+//    // The UsersGroupsLinkTableControlRow class offers another place where you can customize
+//    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+//    
+//}
+//
+//public class UsersGroupsLinkTableControlRow : BaseUsersGroupsLinkTableControlRow
+//{
+//      
+//        // The BaseUsersGroupsLinkTableControlRow implements code for a ROW within the
+//        // the UsersGroupsLinkTableControl table.  The BaseUsersGroupsLinkTableControlRow implements the DataBind and SaveData methods.
+//        // The loading of data is actually performed by the LoadData method in the base class of UsersGroupsLinkTableControl.
+//
+//        // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
+//        // SaveData, GetUIData, and Validate methods.
+//        
+//}
+//
 #endregion
 
   

@@ -219,35 +219,89 @@ public partial class Show_UsersGroupsLink_Gallery
         }
         
     
+        public ThemeButtonWithArrow Actions2Button;
+                
         public ThemeButtonWithArrow ActionsButton;
                 
+        public System.Web.UI.WebControls.ImageButton DeleteButton1;
+        
+        public System.Web.UI.WebControls.Literal Description;
+            
+        public System.Web.UI.WebControls.ImageButton EditButton1;
+        
         public System.Web.UI.WebControls.ImageButton ExcelButton;
+        
+        public System.Web.UI.WebControls.ImageButton ExcelButton1;
+        
+        public System.Web.UI.WebControls.ImageButton ExcelButton2;
         
         public ThemeButton FilterButton;
                 
+        public ThemeButton FilterButton1;
+                
+        public ThemeButtonWithArrow Filters1Button;
+                
         public ThemeButtonWithArrow FiltersButton;
                 
+        public AjaxControlToolkit.TabContainer GroupsRecordControlTabContainer;
+        
         public System.Web.UI.WebControls.ImageButton ImportButton;
         
+        public System.Web.UI.WebControls.ImageButton ImportButton1;
+        
+        public System.Web.UI.WebControls.ImageButton ImportButton2;
+        
+        public System.Web.UI.WebControls.Label Label;
+        
         public System.Web.UI.WebControls.ImageButton NewButton;
+        
+        public System.Web.UI.WebControls.ImageButton NewButton1;
+        
+        public System.Web.UI.WebControls.ImageButton NewButton2;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
         public InfinitePagination Pagination;
                 
+        public PaginationModern Pagination1;
+                
+        public PaginationModern Pagination2;
+                
         public System.Web.UI.WebControls.ImageButton PDFButton;
         
+        public System.Web.UI.WebControls.ImageButton PDFButton1;
+        
+        public System.Web.UI.WebControls.ImageButton PDFButton2;
+        
+        public System.Web.UI.WebControls.LinkButton ProjectIdLabel;
+        
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Gallery.ProjectsGroupsLinkTableControl ProjectsGroupsLinkTableControl;
+          
         public System.Web.UI.WebControls.ImageButton ResetButton;
+        
+        public System.Web.UI.WebControls.ImageButton ResetButton1;
         
         public System.Web.UI.WebControls.Label SortByLabel;
         
+        public System.Web.UI.WebControls.Label SortByLabel1;
+        
         public System.Web.UI.WebControls.Literal Title0;
             
-        public System.Web.UI.WebControls.Literal UserIdLabel1;
+        public System.Web.UI.WebControls.Literal Title1;
+            
+        public System.Web.UI.WebControls.Literal Title2;
+            
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Gallery.TrapsTableControl TrapsTableControl;
+          
+        public System.Web.UI.WebControls.Literal TrapTypeIdLabel2;
         
         public RatTrap.UI.Controls.Show_UsersGroupsLink_Gallery.UsersGroupsLinkTableControl UsersGroupsLinkTableControl;
           
         public System.Web.UI.WebControls.ImageButton WordButton;
+        
+        public System.Web.UI.WebControls.ImageButton WordButton1;
+        
+        public System.Web.UI.WebControls.ImageButton WordButton2;
         
         public ValidationSummary ValidationSummary1;
 
@@ -329,7 +383,7 @@ public partial class Show_UsersGroupsLink_Gallery
     }
 
     
-            Page.Title = "Users Groups Link";
+            Page.Title = "My Groups";
         
         if (!IsPostBack)
             AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
