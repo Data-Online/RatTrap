@@ -1,4 +1,4 @@
-﻿/**********************************************************************
+/**********************************************************************
  * Styles.css                                                         *
  *                                                                    *
  * This file is initially empty and you can add any additional styles *
@@ -26,26 +26,3 @@
  * not specified in the original declaration of the menus style.      *
  *                                                                    *
  **********************************************************************/
-.largeText {
-	color: Green;
-	font-family: 'PT Sans Narrow', Arial, Verdana, sans-serif;
-	font-size: 30px;
-	padding-bottom: 0px;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 8px;
-	text-align: center;
-	vertical-align: top;
-}
-
-.mediumText {
-	color: Green;
-	font-family: 'PT Sans Narrow', Arial, Verdana, sans-serif;
-	font-size: 20px;
-	padding-bottom: 0px;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 8px;
-	text-align: center;
-	vertical-align: top;
-}

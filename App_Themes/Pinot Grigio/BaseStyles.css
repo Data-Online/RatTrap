@@ -19,20 +19,10 @@ HTML { /* language direction flow of content on page */
  * Page Background Styles                                             *
  **********************************************************************/
 .pageBackground, .pBack { /* body */
-	background-attachment: fixed;
-	background-color: #805e33;
-	background-image: url(../../Images/pBack.jpg);
-	background-position: center top;
-	background-repeat: repeat-x;
-	font-family: Arial, Verdana, sans-serif;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 120px;
-	width: 1000px;
-	}
-
-.blank { /* blank master page content vertical offset */
-	margin-top: 0px;
+	/* background-color: #edeef0; */
+	background-image: url(../../Images/pBackTile.png);
+	margin: 0px;
+	width: 100%;
 	}
 
 .pWrapper { /* page content container */
@@ -113,40 +103,60 @@ HTML { /* language direction flow of content on page */
 	display: none;
 	}
 
+.pContent {
+	width: 100%;
+	}
+
 
 /**********************************************************************
  * Page Margin Styles                                                 *
  **********************************************************************/
 .marginTL { /* page centering top left margin */
-	display: none;
+	background-color: #666666;
+	border-bottom: 1px solid #d7d7d7;
+	width: 50%;
 	}
 
 .marginTR { /* page centering top right margin */
-	display: none;
+	background-color: #666666;
+	border-bottom: 1px solid #d7d7d7;
+	width: 50%;
 	}
 
 .marginmL { /* page centering left margin (horizontal menu row) */
-	display: none;
+	background: -moz-linear-gradient( center top, #fbfbfb 50%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.5, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	border-bottom: 1px solid #d7d7d7;
+	border-top: 1px solid #ffffff;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#ececec');
 	}
 
 .marginmR { /* page centering right margin (horizontal menu row) */
-	display: none;
+	background: -moz-linear-gradient( center top, #fbfbfb 50%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.5, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	border-bottom: 1px solid #d7d7d7;
+	border-top: 1px solid #ffffff;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#ececec');
 	}
 
 .marginL { /* page centering left margin */
-	display: none;
+	border-bottom: 1px solid #d7d7d7;
+	border-top: 1px solid #ffffff;
 	}
 
 .marginR { /* page centering right margin */
-	display: none;
+	border-bottom: 1px solid #d7d7d7;
+	border-top: 1px solid #ffffff;
 	}
 
 .marginBL { /* page centering bottom left margin */
-	display: none;
+	background-color: #666666;
 	}
 
 .marginBR { /* page centering bottom right margin */
-	display: none;
+	background-color: #666666;
 	}
 
 
@@ -154,49 +164,45 @@ HTML { /* language direction flow of content on page */
  * Page Center Styles                                                 *
  **********************************************************************/
 .pcT { /* page container top center edge (header container) */
-	background-color: #1a1918;
-	margin-bottom: 3px;
-	height: 44px;
-	left: 0px;
-	padding-top: 20px;
-	position: fixed;
-	text-align: center;
-	top: 0px;
-	width: 100%;
-	z-index: 200;
-	}
-
-.logoBG { /* inner header container */
-	margin-left: auto;
-	margin-right: auto;
-	width: 1000px;
+	background-color: #666666;
+	border-bottom: 1px solid #d7d7d7;
+	height: 60px;
 	}
 
 .pcmL { /* page container left middle edge (horizontal menu row) */
-	/* background-color: transparent; */
-	background-color: #1a1918;
+	background: -moz-linear-gradient( center top, #fbfbfb 50%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.5, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	border-bottom: 1px solid #d7d7d7;
+	border-top: 1px solid #ffffff;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#ececec');
 	}
 
 .pcmC { /* page container center (horizontal menu container) */
-	/* background-color: transparent; */
-	background-color: #1a1918;
-	height: 46px; 
-	left: 0px;
-	position: fixed; 
-	top: 64px;
-	width: 100%;
-	z-index: 100;
+	background: -moz-linear-gradient( center top, #fbfbfb 50%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.5, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	border-bottom: 1px solid #d7d7d7;
+	border-top: 1px solid #ffffff;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#ececec');
 	}
 
 .pcL { /* page container left middle edge (vertical menu container) */
-	padding-right: 6px;
+	border-bottom: 1px solid #d7d7d7;
+	border-top: 1px solid #ffffff;
+	padding-top: 10px;
 	vertical-align: top;
 	}
 
 .pcC { /* page container center (contents of page container) */
+	border-bottom: 1px solid #d7d7d7;
+	border-top: 1px solid #ffffff;
+	height: 678px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
 	text-align: center;
 	vertical-align: top;
-	width: 100%;
 	}
 
 .pcBL { /* page container bottom left edge */
@@ -204,8 +210,12 @@ HTML { /* language direction flow of content on page */
 	}
 
 .pcB { /* page container bottom center edge (footer container) */
+	background-color: #666666;
+	height: 30px;
+	padding-left: 13px;
+	padding-right: 13px;
+	padding: 16px;
 	vertical-align: top;
-	width: 100%;
 	}
 
 
@@ -217,13 +227,13 @@ HTML { /* language direction flow of content on page */
 	}
 
 .pHeaderL { /* page header left edge */
-	width: 250px;
+	width: 0px;
 	}
 
 .pHeaderC { /* page header logo container */
-	text-align: center;
+	text-align: left;
 	vertical-align: middle;
-	width: 500px;
+	width: 750px;
 	}
 
 .pHeaderR { /* page header security panel container */
@@ -236,11 +246,11 @@ HTML { /* language direction flow of content on page */
  * Button/Link Styles                                                 *
  **********************************************************************/
 a:link, a:visited {
-	color: #bfb6ac;
+	color: #e47a00;
 	}
 
 a:hover {
-	color: #bfb6ac;
+	color: #e47a00;
 	text-decoration: none;
 	}
 
@@ -254,7 +264,7 @@ a.button_link,
 .thc a.button_link,
 .tic a.button_link,
 .ttc a.button_link { /* link text of buttons */ 
-	color: #bfb6ac;
+	color: #e47a00;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 10px;
 	font-weight: bold;
@@ -266,27 +276,41 @@ a.button_link,
 	width: 100%;
 	}
 
-.themeButton { /* theme button wrapper */
-	background: -moz-linear-gradient( center top, #6b645c 5%, #5c564f 100% );
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #6b645c), color-stop(1, #5c564f) );
-	background: -ms-linear-gradient(top, #6b645c 5%, #5c564f 100%);
-	border: 1px solid #80776e;
+.themeButton {
+	/*
+	-moz-border-radius: 3px;
+	-moz-box-shadow: inset 0px -1px 0px 0px #ffffff;
+	-webkit-border-radius: 3px;
+	-webkit-box-shadow: inset 0px -1px 0px 0px #ffffff;
+	*/
+	background: -moz-linear-gradient( center top, #fbfbfb 5%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	box-shadow: 0px -1px 0px #ffffff inset;
+	border: 1px solid #d1d1d1;
 	border-radius: 3px;
 	display: inline-block;
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#6b645c', endColorStr='#5c564f');
+    	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fbfbfb', endColorStr='#ececec');
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 3px 7px 3px 7px;
+	padding: 5px 7px 5px 7px;
 	text-decoration: none;
+	text-shadow: 1px 1px 0px #ffffff;
 	white-space: nowrap;
 	}
 
+/*
+.themeButton a.button_link {
+	color: #666666;
+	}
+*/
+
 .prbggo a.button_link { /* link text of buttons within pagination row */
 	border: 0px;
-	color: #bfb6ac;
+	color: #666666;
 	font-size: 11px;
-	font-weight: normal;
+	font-weight: bold;
 	padding-left: 4px;
 	padding-right: 4px;
 	text-transform: uppercase;
@@ -303,23 +327,22 @@ a.button_link:hover,
 .thc a.button_link:hover,
 .tic a.button_link:hover,
 .ttc a.button_link:hover { /* link text of buttons hover state */
-	color: #bfb6ac;
+	color: #e47a00;
 	padding-left: 4px;
 	padding-right: 4px;
 	text-decoration: none;
 	}
 
-.themeButton:hover { /* theme button wrapper hover state */
-	background: -moz-linear-gradient( center top, #595959 5%, #363636 100% );
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #595959), color-stop(1, #363636) );
-	background: -ms-linear-gradient(top, #595959 5%, #363636 100%);
-	border: 1px solid #e7d5bc;
-	color: #bfb6ac;
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#595959', endColorStr='#363636');
-	-moz-transition: all 0.2s ease-in-out 0s;
+.themeButton:hover {
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fbfbfb), color-stop(1, #ececec) );
+	background: -moz-linear-gradient( center top, #fbfbfb 5%, #ececec 100% );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	border: 1px solid #aaaaaa;
+	box-shadow: 0px 0px 1px #bbbbbb;
+	color: #e47a00;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fbfbfb', endColorStr='#ececec');
 	white-space: nowrap;
 	}
-
 
 .dfv a,
 .dialog_field_value a,
@@ -329,7 +352,7 @@ a.button_link:hover,
 .ttc a,
 .ttch a,
 .ttcs a { /* data grid data link text */
-	color: #bfb6ac;
+	color: #e47a00;
 	cursor: pointer !important;
 	text-decoration: none;
 	}
@@ -342,17 +365,17 @@ a.button_link:hover,
 .ttc a:hover,
 .ttch a:hover,
 .ttcs a:hover { /* data grid data link text hover state */
-	color: #bfb6ac;
+	color: #e47a00;
 	text-decoration: underline;
 	}
 
 a.truncatedText {
-	color: #dddddd;
+	color: #555555;
 	text-decoration: none;
 	}
 
 a.truncatedText:hover {
-	color: #bfb6ac;
+	color: #e47a00;
 	text-decoration: underline;
 	}
 
@@ -370,64 +393,80 @@ a.skipNavigationLinks:hover {
  * Multi-level Menu Styles                                            *
  **********************************************************************/
 .MLMmenuAlign { /* horizontal menu container alignment */
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 6px;
-	position: relative;
-	text-align: center;
-	top: 0px;
-	width: 1px;
 	}
 
 .MLMmenu { /* horizontal menu container */	
 	}
 
 .MLMmC { /* horizontal menu item container */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 18px;
-	padding: 8px;
+	border-left: 1px solid #fbfbfb;
+	border-right: 1px solid #f7f7f7;
+	border-top: 1px solid #fbfbfb;
+	font-size: 11px;
+	padding: 12px;
 	}
 
 .MLMmC a { /* horizontal menu item link text */
-	color: #f8e8ce;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	color: #666666;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-weight: bold;
 	text-decoration: none;
+	text-shadow: 1px 1px 0px #ffffff;
 	text-transform: uppercase;
 	}
 
 .MLMmoC { /* horizontal menu item hover state */
-	background-color: #242321;
+	background: -moz-linear-gradient( center top, #ff9012 5%, #e47a00 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff9012), color-stop(1, #e47100) );
+	background: -ms-linear-gradient(top, #ff9012 5%, #e47100 100%);
+	border-left: 1px solid #bbbbbb;
+	border-right: 1px solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9012', endColorstr='#e47100');
 	}
 
-.MLMmoC a, .MLMmoC a:hover { /* horizontal menu item hover state link text */
-	background-color: transparent;
+.MLMmoC a { /* horizontal menu item hover state link text */
+	color: #ffffff;
+	text-shadow: 1px 1px 0px #999999;
 	}
 
 .MLMmenusub { /* horizontal submenu container (menu leaves) */
-	background-color: #33302c;
-	opacity: 0.9;
+	border-bottom: 1px solid #bbbbbb;
+	border-left: 1px solid #bbbbbb;
+	border-right: 1px solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	z-index: 100;
 	}
 
 .MLMsubmC { /* horizontal submenu item container */
-	background-color: #363636;
+	background-color: #fffdfa;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-top: 1px dotted #dddddd;
 	font-size: 11px;
-	padding: 6px;
-	text-align: left;
+	padding: 8px;
 	width: 100%;
 	}
 
 .MLMsubmC a { /* horizontal submenu item link text */	
-	color: #f8e8ce;
+	color: #555555;
 	cursor: pointer !important;
 	font-family: Arial, Verdana, Georgia, sans-serif;
-	text-transform: uppercase;
+	text-transform: none;
 	}
 
 .MLMsubmoC { /* horizontal submenu item hover state */
-	background-color: #a59176;
+	background-color: #fff3e5;
 	}
 
 .MLMsubmoC a { /* horizontal submenu item hover state link text */
-	color: #111111;
+	color: #e47a00;
 	}
 
 .MLMmbbg { /* horizontal menu bottom trim */
@@ -435,69 +474,81 @@ a.skipNavigationLinks:hover {
 	}
 
 .MLMmenuVAlign { /* vertical menu container alignment */
-	background-color: #1a1918;
 	}
 
 .MLMmenuV { /* vertical menu container */
+	position: relative;
 	}
 
 .MLMmvC { /* vertical menu item container */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 18px;
-	padding: 8px;
+	border-bottom: 1px solid #fbfbfb;
+	border-left: 1px solid #fbfbfb;
+	border-top: 1px solid #fbfbfb;
+	font-size: 11px;
+	padding: 12px;
 	}
 
 .MLMmvC a { /* vertical menu item link text */
-	color: #f8e8ce;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+	color: #666666;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-weight: bold;
 	text-decoration: none;
+	text-shadow: 1px 1px 0px #ffffff;
 	text-transform: uppercase;
 	}
 
 .MLMmvoC { /* vertical menu item hover state */
-	background-color: #242321;
+	background: -moz-linear-gradient( center top, #ff9012 5%, #e47a00 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff9012), color-stop(1, #e47100) );
+	background: -ms-linear-gradient(top, #ff9012 5%, #e47100 100%);
+	border-bottom: 1px solid #bbbbbb;
+	border-left: 1px solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9012', endColorstr='#e47100');
 	}
 
-.MLMmvoC a, .MLMmvoC a:hover { /* vertical menu item hover state link text */
-	background-color: transparent;
+.MLMmvoC a { /* vertical menu item hover state link text */
+	color: #ffffff;
+	text-shadow: 1px 1px 0px #999999;
 	}
 
-div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
-	background-color: #33302c;
+.MLMmenuVsub { /* vertical submenu container (menu leaves) */
+	border-bottom: 1px solid #bbbbbb;
+	border-left: 1px solid #bbbbbb;
+	border-right: 1px solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
 	border-bottom-right-radius: 4px;
 	border-top-right-radius: 4px;
-	border-bottom: 1px solid #80776e;
-	border-left: none;
-	border-right: 1px solid #80776e;
-	border-top: 1px solid #80776e;
-	opacity: 0.9;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-right: 1px;
-	padding-top: 1px;
-	display: inline;
+	z-index: 100;
 	}
 
 .MLMsubmvC { /* vertical submenu item container */
-	background-color: #363636;
+	background-color: #fffdfa;
+	border-bottom-right-radius: 3px;
+	border-top: 1px dotted #dddddd;
+	border-top-right-radius: 3px;
 	font-size: 11px;
-	padding: 6px;
-	text-align: left;
+	padding: 8px;
 	width: 100%;
 	}
 
 .MLMsubmvC a { /* vertical submenu item link text */	
-	color: #f8e8ce;
+	color: #555555;
 	cursor: pointer !important;
 	font-family: Arial, Verdana, Georgia, sans-serif;
-	text-transform: uppercase;
+	text-transform: none;
 	}
 
 .MLMsubmvoC { /* vertical submenu item hover state */
-	background-color: #a59176;
+	background-color: #fff3e5;
 	}
 
 .MLMsubmvoC a { /* vertical submenu item hover state link text */
-	color: #111111;
+	color: #e47a00;
 	}
 
 .MLMmveTL { /* vertical menu top left edge */
@@ -529,15 +580,12 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
  * Footer Styles                                            	      *
  **********************************************************************/
 .footer { /* footer content */
-	color: #ffffff;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
+	color: #dddddd;
+	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 11px;
-	padding-left: 10px;
-	padding-top: 10px;
-	text-transform: none;
-	vertical-align: top;
-	white-space: nowrap;
-	width: 200px;
+	padding-top: 6px;	
+	text-transform: uppercase;
+	width: 100%;
 	}
 
 
@@ -588,16 +636,21 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .dialog_view, .dv, .panelC { /* panel container (includes panel header) */
+	/*
 	-moz-border-radius: 4px;
-	-moz-box-shadow: 0px -1px 0px #bbbbbb;
+	-moz-box-shadow: 0px 0px 3px #bbbbbb;
 	-webkit-border-radius: 4px;
-	-webkit-box-shadow: 0px -1px 0px #bbbbbb;
+	-webkit-box-shadow: 0px 0px 3px #bbbbbb;
+	*/
+	background-color: #f7f7f7;
+	background-color: #ffffff;
 	border-radius: 4px;
-	box-shadow: 0px 0px 4px #333333;
+	box-shadow: 0px 0px 3px #bbbbbb;
 	margin-bottom: 10px;
+	padding-bottom: 2px;
 	text-align: left;
 	vertical-align: top;
-	width: 100%;
+	width: 1000px;
 	}
 
 .panelR { /* panel container right edge */
@@ -612,9 +665,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .panelPaginationC { /* panel container pagination center */
-	background-color: #736d66;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
+	background-color: #ffffff;
 	height: 30px;
 	text-align: center;
 	width: 100%;
@@ -666,20 +717,20 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .panelSearchBox {
-	background-color: #a1a09d;
-	border-radius: 4px;
-	box-shadow: inset 0px 1px 2px #666666;
-	height: 16px;
-	padding: 0px;	
+	background-color: #ffffff;
+	border-radius: 14px;
+	box-shadow: inset 0px 1px 2px #dddddd;
+	height: 22px;
+	padding-bottom: 0px;	
 	padding-left: 8px;
 	padding-right: 4px;
+	padding-top: 0px;	
 	width: 286px;
 	}
 
 .Search_Input, .si { /* search textbox */
-	background-color: #a1a09d;
 	border: none;
-	color: #ffffff;
+	color: #555555;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 11px;
 	font-weight: normal;
@@ -688,9 +739,8 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	} 
 
 .Search_InputHint { /* "search for..." text inside search textbox */
-	background-color: #a1a09d;
 	border: none;
-	color: #eeeeee;
+	color: #999999;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 11px;
 	font-weight: normal;
@@ -702,7 +752,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	border: 1px solid #dddddd;
 	border-radius: 4px;
 	box-shadow: inset 0px 1px 2px #dddddd;
-	color: #eeeeee;
+	color: #555555;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 11px;
 	padding-bottom: 2px;
@@ -724,30 +774,13 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	padding-top: 2px;
 	} 
 
-.recordPanelButtonsAlignment, .rpbAlign { /* page buttons padding */
+.recordPanelButtonsAlignment, .rpbAlign { /* page buttons alignment */
 	padding-bottom: 5px;
 	padding-top: 5px;
 	}
-
-.recordPanelButtonsAlignment table { /* page buttons alignment */
-	/* margin-left: auto; */ /* uncomment out to center align page buttons */
-	/* margin-right: auto; */ /* uncomment out to center align page buttons */
-	}
-
-.pageButtonsContainer { /* page buttons container */
-	margin-left: auto;
-	margin-right: auto;
-	width: 1000px;
-	}
-
+    
 .buttonPadding { /* page buttons padding */
-	padding-right: 6px;
-	}
-
-.floatContainer {
-	margin-left: auto;
-	margin-right: auto;
-	width: 1000px;
+	margin-right: 6px;
 	}
 
 
@@ -767,11 +800,14 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .dialog_header, .dh { /* panel header container */
-	background-color: #5c564f;
-	border-bottom: 1px solid #797269;
+	background-color: #eeeeee;
+	background: -moz-linear-gradient( center top, #fbfbfb 5%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
-	vertical-align: top;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#ececec');
+	height: 40px;
 	}
 
 .dialogHeaderBackground, .dhb { /* panel header */
@@ -782,11 +818,12 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .dialog_header_text, .dht { /* panel header title text */
-	color: #f8e8ce;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 16px;
+	color: #e47a00;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 18px;
 	font-weight: normal;
 	padding-left: 10px;
+	text-shadow: 1px 1px 0px #cccccc;
 	text-transform: uppercase;
 	white-space: nowrap;
 	}
@@ -800,18 +837,17 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .dialog_body, .dBody { /* panel content container (excludes panel header) */ 
-	background-color: #6b645c;
-	color: #eeeeee;
+	color: #555555;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
-	padding: 8px;
+	padding: 10px;
 	text-align: left;	
 	}
 	
 .field_label, .fl { /* field label on top */
 	color: #bbbbbb;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	font-weight: normal;
 	padding-top: 4px;
 	padding-right: 4px;
@@ -825,8 +861,8 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .field_label_on_side, .fls { /* field label on side */
 	color: #bbbbbb;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	font-weight: normal; 
 	padding-bottom: 8px;
 	padding-left: 4px;
@@ -839,27 +875,28 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .field_value, .fv { /* field value */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding: 0px;
 	}
 
 .field_input, .fi { /* input textbox */
-	background-color: #eeeeee;
-	border: 1px solid #cccccc;
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
 	border-radius: 2px;
-	box-shadow: inset 1px 1px 1px #aaaaaa;
-	color: #666666;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	box-shadow: inset 0px 1px 2px #dddddd;
+	color: #555555;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding-left: 4px;
+	padding-right: 4px;
 	padding-top: 2px;
 	vertical-align: top;
 	}
 
 .dialog_field_value, .dfv { /* panel field value text */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding-top: 4px;
 	padding-right: 4px;
 	padding-bottom: 8px;
@@ -869,22 +906,21 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .Filter_Input, .fili { /* filter drop-down list */
-	background-color: #eeeeee;
-	border: 1px solid #cccccc;
-	border-radius: 2px;
-	box-shadow: inset 1px 1px 1px #aaaaaa;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	box-shadow: inset 0px 1px 2px #dddddd;
 	color: #666666;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
-	padding-bottom: 0px;
-	padding-left: 2px;
-	padding-right: 2px;
-	vertical-align: top;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
+	margin-bottom: 4px;
+	margin-left: 2px;
+	margin-right: 2px;
+	padding-top: 0px;
 	}
 
 .filter_area, .fila { /* filter label */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding: 4px 7px 4px 7px;
 	text-align: right;
 	vertical-align: middle;
@@ -907,7 +943,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .rangeFilterText, .rft { /* range filter label */
-	color: #eeeeee;
+	color: #555555;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
 	font-weight: normal;
@@ -922,11 +958,9 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
  * Dropshadow Styles                        			      * 
  **********************************************************************/
 .imageDropshadow { /* image thumbnail dropshadow */
-	/*
 	-moz-box-shadow: 4px 4px 6px #bbbbbb;
 	-webkit-box-shadow: 4px 4px 6px #bbbbbb;
 	box-shadow: 4px 4px 6px #bbbbbb;
-	*/
 	}
 
 
@@ -972,11 +1006,11 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 .thcs,
 .thcnb,
 .thcwb { /* column header container (above select checkbox) */
-	background-color: #736d66;
-	border-bottom: 1px solid #797269;
-	color: #eeeeee;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	background-color: #fefefe;	
+	border-bottom: 1px solid #dddddd;
+	color: #555555;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	font-weight: normal;
 	padding-bottom: 5px;
 	padding-left: 6px;
@@ -990,10 +1024,10 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 .column_header_scrolling a,
 .tch a,
 .tchs a { /* column header link text */
-	color: #eeeeee;
+	color: #555555;
 	cursor: pointer !important;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	font-weight: normal;
 	text-decoration: none;
 	} 
@@ -1002,13 +1036,13 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 .column_header_scrolling a:hover,
 .tch a:hover,
 .tchs a:hover { /* column header link text hover state */
-	color: #bfb6ac;
+	color: #e47a00;
 	text-decoration: underline;
 	}
 
 .icon_cell, .alt_icon_cell, .tic, .taic { /* deprecated: data grid row button container */
 	background-color: #ffffff;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1016,8 +1050,8 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .icon_cell_highlighted, .alt_icon_cell_highlighted, .tich, .taich { /* deprecated: data grid row button container highlighted state */
-	background-color: #363636;
-	border-bottom: 1px dotted #dddddd;
+	background-color: #fffdfa;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1026,7 +1060,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .icon_cell_selected, .tics { /* deprecated: data grid row button container selected state */
 	background-color: #f6f6f6;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1035,8 +1069,8 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .ticnb { /* data grid row button container */
 	background-color: #ffffff;
-	border-bottom: 1px dotted #dddddd;
-	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #dddddd;
+	/* border-top: 1px solid #ffffff; */
 	padding-left: 2px;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1044,8 +1078,8 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .tichnb { /* data grid row button container highlighted state */
-	background-color: #363636;
-	border-bottom: 1px dotted #dddddd;
+	background-color: #fffdfa;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-left: 2px;
 	padding-top: 3px;
@@ -1055,7 +1089,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .ticsnb { /* data grid row button container selected state */
 	background-color: #f6f6f6;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-left: 2px;
 	padding-top: 3px;
@@ -1065,7 +1099,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	
 .ticwb { /* data grid select checkbox container */
 	background-color: #ffffff;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1073,8 +1107,8 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .tichwb { /* data grid select checkbox container highlighted state */
-	background-color: #363636;
-	border-bottom: 1px dotted #dddddd;
+	background-color: #fffdfa;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1083,7 +1117,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .ticswb { /* data grid select checkbox container selected state */
 	background-color: #f6f6f6;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1092,7 +1126,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .tichb { /* data grid right-most row button container (when no select checkbox is present) */
 	background-color: #ffffff;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1100,8 +1134,8 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .tichhb { /* data grid right-most row button container (when no select checkbox is present) highlighted state */
-	background-color: #363636;
-	border-bottom: 1px dotted #dddddd;
+	background-color: #fffdfa;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1110,7 +1144,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .ticshb { /* data grid right-most row button container (when no select checkbox is present) selected state */
 	background-color: #f6f6f6;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	padding-top: 3px;
 	vertical-align: top;
@@ -1119,43 +1153,42 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 			
 .icon_cell_empty, .tice { /* data grid row button container (when no row button is present) */
 	background-color: #ffffff;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	width: 0px;
 	}
 
 .icon_cell_highlighted_empty, .tiche { /* data grid row button container (when no row button is present) highlighted state */
-	background-color: #363636;
-	border-bottom: 1px dotted #dddddd;
+	background-color: #fffdfa;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	width: 0px;
 	}
 
 .icon_cell_selected_empty, .ticse { /* data grid row button container (when no row button is present) selected state */
 	background-color: #f6f6f6;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
 	width: 0px;
 	}
 	
 .table_cell, .alt_table_cell, .ttc, .tatc { /* data grid data container */
 	background-color: #ffffff;
-	border-bottom: 1px dotted #dddddd;
-	border-top: 1px solid #ffffff;
-	color: #eeeeee;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	border-bottom: 1px solid #dddddd;
+	color: #555555;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding: 5px;
 	vertical-align: top;
 	text-align: left;
 	}
 
 .table_cell_highlighted, .alt_table_cell_highlighted, .ttch, .tatch { /* data grid data container highlighted state */
-	background-color: #363636;
-	border-bottom: 1px dotted #dddddd;
+	background-color: #fffdfa;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding: 5px;
 	vertical-align: top;
 	text-align: left;
@@ -1163,10 +1196,10 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .table_cell_selected, .ttcs { /* data grid data container selected state */
 	background-color: #f6f6f6;
-	border-bottom: 1px dotted #dddddd;
+	border-bottom: 1px solid #dddddd;
 	border-top: 1px solid #ffffff;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding: 5px;
 	vertical-align: top;
 	text-align: left;
@@ -1185,8 +1218,8 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .totals_cell, .tpttc { /* data grid totals container */
 	background-color: #ffffff;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding: 5px;
 	text-align: left;
 	vertical-align: top;
@@ -1195,46 +1228,46 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 
 .totals_cell_value, .tpttcv { /* data grid totals text */
 	background-color: #ffffff;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding: 5px;
 	text-align: right;
 	vertical-align: top;
 	}
 
 .page_total_label, .tptl { /* data grid page totals label */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding-left: 20px;
 	vertical-align: middle;
 	white-space: nowrap;	
 	}
 
 .page_total_value, .tptv { /* data grid page totals text */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding: 3px;
 	}
 
 .grand_total_label, .tgtl { /* data grid grand total label */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding-left: 20px;
 	vertical-align: middle;
 	white-space: nowrap;	
 	}
 
 .grand_total_value, .tgtv { /* data grid grand total text */
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	font-weight: normal;
 	padding: 3px;
 	}
 
 .tableCellLabel {/* table cell field label text */
-	color: #aaaaaa;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	color: #bbbbbb;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding-bottom: 4px;
 	padding-left: 6px;
 	padding-right: 2px;
@@ -1246,9 +1279,9 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	}
 
 .tableCellValue { /* table cell field value text */
-	color: #eeeeee;
-	font-family: 'PT Sans Narrow', Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	color: #555555;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 12px;
 	padding-bottom: 4px;
 	padding-left: 4px;
 	padding-right: 4px;
@@ -1257,12 +1290,12 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	vertical-align: top;
 	}
 
-.tableRowDivider { /* table row divider between consecutive records */
-	border-bottom: 1px solid #797269;
-	height: 1px;
+.tableRowDivider {
+	border-bottom: 1px dotted #eeeeee;
+	height: 10px;
 	}
 
-.tableRowButton { /* table row buttons container */
+.tableRowButton {
 	font-size: 4px;
 	padding-left: 2px;
 	padding-top: 8px;
@@ -1270,33 +1303,7 @@ div.MLMmenuVsub { /* vertical submenu container (menu leaves) */
 	width: 16px;
 	}
 
-input.button_link { /* table row button */
-	background: -moz-linear-gradient( center top, #6b645c 5%, #5c564f 100% );
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #6b645c), color-stop(1, #5c564f) );
-	background: -ms-linear-gradient(top, #6b645c 5%, #5c564f 100%);
-	border: 1px solid #666666;
-	border-radius: 3px;
-	display: inline-block;
-    	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#6b645c', endColorStr='#5c564f');
-	margin-bottom: 4px;
-	margin-left: 2px;
-	margin-right: 2px;
-	margin-top: 4px;
-	padding: 4px; 
-	}
-
-input.button_link:hover { /* table row button hover state */
-	background: -moz-linear-gradient( center top, #595959 5%, #363636 100% );
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #595959), color-stop(1, #363636) );
-	background: -ms-linear-gradient(top, #595959 5%, #363636 100%);
-	border: 1px solid #00ff00;
-	box-shadow: 0px 0px 0px 1px #e7d5bc;
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#595959', endColorStr='#363636');
-	-moz-transition: all 0.2s ease-in-out 0s;
-	}
-
 .tableRowButtonsCellHorizontal { /* table row buttons horizontal orientation */
-	padding-top: 4px;
 	vertical-align: top;
 	white-space: nowrap;
 	width: 16px;
@@ -1304,6 +1311,9 @@ input.button_link:hover { /* table row button hover state */
 
 .tableRowButtonsCellHorizontal input.button_link { /* table row button (horizontal orientation) */
 	display: inline;
+	padding-left: 2px; 
+	padding-right: 2px;
+	padding-top: 8px;
 	}
 
 .tableRowButtonsCellHorizontal input.button_link:hover { /* table row button hover state (horizontal orientation) */
@@ -1318,19 +1328,24 @@ input.button_link:hover { /* table row button hover state */
 
 .tableRowButtonsCellVertical input.button_link { /* table row button (vertical orientation) */
 	display: block;
+	padding: 2px;
 	}
 
 .tableRowButtonsCellVertical input.button_link:hover { /* table row button hover state (vertical orientation) */
 	}
 
-.tableCellSelectCheckbox { /* table row select checkbox container */
+.tableCellSelectCheckbox {
 	padding-left: 6px;
-	padding-top: 8px;
+	padding-top: 7px;
 	vertical-align: top;
 	width: 16px;
 	}
 
 .tableRowsEdge, .tre { /* data grid container */
+	border-top: 1px solid #ffffff;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
 	}
 
 
@@ -1348,12 +1363,12 @@ div.fixedHeaderContainer .dBody {
 	}
 
 div.fixedHeaderBackground { /* wrapper of fixed header and scroll region */
-	background-color: #736d66; /* echo background color of thc */
+	background-color: #fefefe; /* echo background color of thc */
 	position: relative;
 	}
 
 div.fixedHeaderScrollRegion { /* wrapper of scroll region */
-	background-color: #6b645c; /* echo background color of dBody */
+	background-color: #ffffff; /* echo background color of dBody */
 	height: 640px; /* height of scroll region */
 	overflow-x: hidden; /* bug 94583 - hide unnecessary horizontal scroll bar */
 	overflow-y: auto; /* render scroll bar if necessary */
@@ -1376,7 +1391,7 @@ div.fixedHeader { /* wrapper of each fixed header label */
 	}
 
 div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox padding */
-	padding: 5px 6px 5px 6px;
+	padding: 4px 6px 4px 6px;
 	}
 
 .tableCellValue:last-child { /* bug 94583 - compensate for presence of browser vertical scrolling bar when scroll region wider than browser width */ 
@@ -1389,7 +1404,7 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
  **********************************************************************/
 .pagination_row, .pr { /* button bar/pagination row container (classic style needed for workflow page type) */
 	background-color: #eeeeee;
-	color: #bfb6ac;
+	color: #e47a00;
 	height: 30px;
 	padding-top: 4px;
 	vertical-align: middle;
@@ -1400,9 +1415,9 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	}
 
 .prbg { /* pagination row button container */
-	color: #eeeeee;
+	color: #666666;
 	font-family: Arial, Verdana, Georgia, sans-serif;
-	font-size: 11px;
+	font-size: 12px;
 	font-weight: normal;
 	padding-left: 3px;
 	padding-right: 3px;
@@ -1429,14 +1444,12 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	}
 
 .Pagination_Input, .pri { /* pagination row input textbox/drop-down list container */
-	background-color: #a1a09d;
-	border: none; 
+	border: 1px solid #dddddd;
 	border-radius: 4px;
-	box-shadow: inset 0px 1px 2px #666666;
-	color: #ffffff;
+	box-shadow: inset 0px 1px 2px #dddddd;
+	color: #666666;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 11px;
-	padding-left: 6px;
 	padding-top: 2px;
 	text-align: center;
 	}
@@ -1451,92 +1464,29 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
  * Tab Control Styles                                                 *
  **********************************************************************/
 .ajax__tab_xp { /* tab container alignment */
-	margin: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 10px;
 	padding: 0px;
 	text-align: left;
 	}
 
-.ajax__tab_xp div.ajax__tab_body { /* tab container */
-	background-color: #666666;
-	background-color: transparent;
-	border: none;
+.pContent .ajax__tab_xp .ajax__tab_body { /* tab container */
 	margin: 0px;
 	padding: 0px;
 	}
 
-.ajax__tab_panel { /* tab container background */
-	background-color: transparent;
-	}
-
-.ajax__tab_xp div.ajax__tab_header { /* tab container top edge */
-	background-image: none;
-	}
-
-.ajax__tab_xp .ajax__tab_active span.ajax__tab_outer, .ajax__tab_xp div.ajax__tab_header .ajax__tab_active span.ajax__tab_outer { /* tab container active tab */
-	background-color: #837c74;
-	background-image: none;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	border-bottom: none;
-	border-left: 1px solid #aaaaaa;
-	border-right: 1px solid #555555;
-	border-top: 2px solid #e7d5bc;
-	}
-
-.ajax__tab_xp .ajax__tab_hover span.ajax__tab_outer, .ajax__tab_xp div.ajax__tab_header .ajax__tab_hover span.ajax__tab_outer { /* tab container hovered-over tab */
-	background-color: #6b645c;
-	background-image: none;
-	border-bottom: none;
-	}
-
-.ajax__tab_xp span.ajax__tab_outer, .ajax__tab_xp div.ajax__tab_header span.ajax__tab_outer { /* tab container non-active tab */
-	background-color: #736d66;
-	background-image: none;
-	border-bottom: none; 
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-	border-left: 1px solid #aaaaaa;
-	border-right: 1px solid #555555;
-	border-top: 1px solid #aaaaaa;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	}
-
-.ajax__tab_xp .ajax__tab_active span.ajax__tab_inner, .ajax__tab_xp div.ajax__tab_header .ajax__tab_active span.ajax__tab_inner { /* tab container active tab contents */
-	background-image: none;
-	}
-
-.ajax__tab_xp .ajax__tab_hover span.ajax__tab_inner, .ajax__tab_xp div.ajax__tab_header .ajax__tab_hover span.ajax__tab_inner { /* tab container hovered-over tab contents */
-	background-image: none;
-	}
-
-.ajax__tab_xp span.ajax__tab_inner, .ajax__tab_xp div.ajax__tab_header span.ajax__tab_inner { /* tab container non-active tab background image */
-	background-image: none;
-	}
-
-.ajax__tab_xp .ajax__tab_active span.ajax__tab_tab, .ajax__tab_xp div.ajax__tab_header .ajax__tab_active .ajax__tab_tab { /* tab container active tab background image */
-	background-image: none;
-	}
-
-.ajax__tab_xp .ajax__tab_hover span.ajax__tab_tab, .ajax__tab_xp div.ajax__tab_header .ajax__tab_hover .ajax__tab_tab { /* tab container hovered-over tab background image */
-	background-color: #6b645c;
-	background-image: none;
-	}
-
-.ajax__tab_xp span.ajax__tab_tab, .ajax__tab_xp div.ajax__tab_header .ajax__tab_tab { /* tab container tab text */
-	background-image: none;
-	color: #ffffff;
-	}
-
 .ajax__tab_xp .dialog_view, .ajax__tab_xp .dv { /* panel container within tab container */
+	/*
 	-moz-border-radius: none; 
-	-moz-box-shadow: 0px -1px 0px #bbbbbb;
-	-webkit-box-shadow: 0px -1px 0px #bbbbbb;
-	background-color: #837c74;
-	border-top-left-radius: 0px;
-	box-shadow: 0px 0px 4px #333333;
+	-moz-box-shadow: none; 
+	-webkit-border-radius: none; 
+	-webkit-box-shadow: none; 
+	*/
+	background-color: #fdfdfd;
+	border-radius: none;
+	box-shadow: none; 
 	margin: 0px;
 	padding: 0px;
 	text-align: left;
@@ -1544,25 +1494,11 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	width: 100%;
 	}
 
-.tableCellValue .ajax__tab_xp .dv { /* panel container within tab container within table */
-	-moz-box-shadow: none;
-	-webkit-border-radius: none; 
-	border-bottom: 1px solid #aaaaaa;
-	border-left: 1px solid #aaaaaa;
-	border-right: 1px solid #aaaaaa;
-	border-top: none; 
-	box-shadow: none;
-	width: 100%;
+.ajax__tab_xp .dv table {
 	}
 
 .ajax__tab_xp .dBody, div.fixedHeaderContainer .ajax__tab_xp .dBody { /* panel content container (excludes panel header) within tab container */ 
-	background-color: #837c74;
-	border: none;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 4px;
-	padding: 6px;
+	border: 0px;
 	}
 
 .ajax__tab_xp .tre { /* data grid container within tab container */
@@ -1587,12 +1523,12 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	}
 	
 .signInBar a { /* sign in bar link text */
-	color: #bfb6ac;
+	color: #e47a00;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 11px;
-	font-weight: normal;
+	font-weight: bold;
 	text-decoration: none;
-	text-transform: none;
+	text-transform: uppercase;
 	white-space: nowrap;
 	}
 
@@ -1633,10 +1569,10 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 
 
 /**********************************************************************
- * Actions/Filters/Settings Popup Styles                              *
+ * Filter/Language Popup Styles                                       *
  **********************************************************************/
 .popupPosition {
-	/* z-index: 100; */
+	z-index: 100;
 	}
 
 .popupWrapper { /* popup container */
@@ -1644,27 +1580,27 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	-moz-box-shadow: 0px 0px 10px #999999;
 	-webkit-border-radius: 4px;
 	-webkit-box-shadow: 0px 0px 10px #999999;
-	background-color: #363636;
-	border: 1px solid #80776e;
+	background-color: #fffdfa;
+	border: 1px solid #dddddd;
 	border-radius: 4px;
-	box-shadow: 0px 0px 10px #444444;
-	color: #eeeeee;
+	box-shadow: 0px 0px 10px #999999;
+	color: #555555;
 	display: inline-block;
 	font-family: Arial, Verdana, Georgia, sans-serif;
-	font-size: 11px;
+	font-size: 12px;
 	left: 0px;
-	padding: 2px;
+	padding: 10px;
 	position: absolute;
 	text-align: left;
 	top: 0px;
 	visibility: hidden;
-	z-index: 200;
+	z-index: 10;
 	}
 
 .popupTableCellLabel {/* popup table cell field label text */
-	color: #f8e8ce;
+	color: #bbbbbb;
 	font-family: Arial, Verdana, Georgia, sans-serif;
-	font-size: 11px;
+	font-size: 12px;
 	padding-bottom: 4px;
 	padding-left: 6px;
 	padding-right: 2px;
@@ -1676,7 +1612,7 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	}
 
 .popupTableCellValue { /* popup table cell field value text */
-	color: #eeeeee;
+	color: #555555;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
 	padding: 4px;
@@ -1686,38 +1622,6 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 
 .popupTableCellValue div { /* make sure any div container (e.g., .net tab container) appears/hides with its parent, the actions/filters popup  */
 	visibility: inherit !important;
-	}
-
-.popupTableCellAction { /* popup action item cell */
-	background-color: #363636;
-	font-size: 11px;
-	padding: 8px;
-	text-align: left;
-	width: 100%;
-	}
-
-.popupTableCellAction:hover { /* popup action item cell hover state */
-	background-color: #a59176;
-	}
-
-.popupTableCellAction a { /* popup action item link */
-	color: #f8e8ce;
-	cursor: pointer !important;
-	font-family: Arial, Verdana, Georgia, sans-serif;
-	text-transform: uppercase;
-	text-decoration: none;
-	}
-
-.popupTableCellAction a:hover { /* popup action item link hover state */
-	}
-
-.popupTableRowDivider { /* popup filter divider, separating "filter by" from "sort by" */
-	border-top: 1px solid #4d4843;
-	padding-bottom: 6px;
-	}
-
-.popupWrapper .Filter_Input { /* filter drop-down list within popup */
-	font-size: 11px;
 	}
 
 
@@ -1731,12 +1635,12 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	}
 
 .detailRolloverTitle { /* detail rollover popup title */
-	color: #bfb6ac;
+	color: #666666;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
-	font-weight: normal;
+	font-weight: bold;
 	height: 10px;
-	padding: 4px 10px 4px 10px;
+	padding-left: 2px;
 	vertical-align: middle;
 	width: 100%;
 	}
@@ -1746,8 +1650,6 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	}
 
 .detailRolloverPopupCloseButtonAlignment { /* detail rollover popup close button container */
-	padding-left: 4px;
-	padding-right: 4px;
 	}
 
 .detailRolloverTL { /* detail rollover popup top left edge */
@@ -1766,7 +1668,6 @@ div.fixedHeaderSelectAllCheckboxPadding { /* fixed header select all checkbox pa
 	}
 
 .detailRolloverC { /* detail rollover popup center */
-	padding: 10px;
 	}
 
 .detailRolloverR { /* detail rollover popup right middle edge */
@@ -1888,8 +1789,8 @@ div.updatingContainer img { /* AJAX smooth panel update loading icon */
  * Web Accordion Styles                                               * 
  **********************************************************************/
 .accordionHeader { /* accordion header area */ 
-	background-color: #5c564f;
-	border: 1px dotted #dddddd;
+	background-color: #666666;
+	border: 1px solid #dddddd;
 	padding-bottom: 10px;
 	padding-top: 10px;
 	vertical-align: middle;
@@ -1898,7 +1799,7 @@ div.updatingContainer img { /* AJAX smooth panel update loading icon */
 .accordionHeaderTitle { /* accordion header area title */
 	color: #dddddd;
 	font-family: Arial, Verdana, Georgia, sans-serif;
-	font-size: 15px;
+	font-size: 12px;
 	font-weight: normal;
 	text-align: left;
 	text-transform: none;
@@ -1911,8 +1812,7 @@ div.updatingContainer img { /* AJAX smooth panel update loading icon */
  * Gallery Styles                                                     * 
  **********************************************************************/
 .gallerydBody {
-	background-color: #6b645c;
-	color: #eeeeee;
+	color: #555555;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
 	padding: 0px;
@@ -1977,13 +1877,13 @@ div.updatingContainer img { /* AJAX smooth panel update loading icon */
 	}
 
 .galleryDescriptionBackground a.button_link { /* gallery item description link */
-	color: #f8e8ce;
+	color: #e47a00;
 	padding: 0px;
 	text-decoration: none;
 	}
 
 .galleryDescriptionBackground a.button_link:hover { /* gallery item description link hover state */
-	color: #f8e8ce;
+	color: #e47a00;
 	padding: 0px;
 	text-decoration: underline;
 	}
@@ -2004,15 +1904,8 @@ div.updatingContainer img { /* AJAX smooth panel update loading icon */
 /**********************************************************************
  * Configuration/Error Page Styles                                    *
  **********************************************************************/
-.pContent { /* configure error page panel container (excludes panel header) */
-	background-color: #6b645c;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-	width: 100%;
-	}
-
 .configureErrorPagesText { /* configure/error page body text */
-	color: #eeeeee;
+	color: #555555;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
 	}
@@ -2040,9 +1933,6 @@ span.tracecontent table { /* .NET trace log background color */
  * Import Wizard Styles                                               * 
  **********************************************************************/
 .importWizardpBack { /* import wizard body */
-	background-image: url(../../Images/pBack.jpg);
-	background-position: center top;
-	background-repeat: repeat-x;
 	}
 
 .importWizardmarginTL { /* import wizard page centering top left margin */
@@ -2073,7 +1963,7 @@ span.tracecontent table { /* .NET trace log background color */
 	}
 
 .importWizarddv { /* panel container (includes panel header) */
-	background-color: #6b645c;
+	background-color: #ffffff;
 	border-radius: 4px;
 	box-shadow: 0px 0px 3px #bbbbbb;
 	margin-bottom: 10px;
@@ -2088,18 +1978,14 @@ span.tracecontent table { /* .NET trace log background color */
 .importWizarddBody { /* panel content container (excludes panel header) */ 
 	}
 
-.importWizarddBody .ttc { /* import wizard table cells */
-	background-color: transparent;
-	}
-
 
 /**********************************************************************
  * Quick Popup Styles                                                 *
  **********************************************************************/
 .QDialog { /* quick popup container */ 
-	background-color: #6b645c;
+	background-color: #ffffff;
 	border-radius: 4px;
-	box-shadow: 0px 0px 6px #111111;
+	box-shadow: 0px 0px 6px #333333;
 	left: 200px;
 	margin: 0px;
 	overflow: hidden;
@@ -2111,7 +1997,6 @@ span.tracecontent table { /* .NET trace log background color */
 .QpBack { /* body of page displayed within quick popup */
 	margin: 0px;
 	}
-
 
 /**********************************************************************
  * Quick Selector Styles                                              *
@@ -2130,33 +2015,35 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .themeButtonMini { /* small theme button */
-	background: -moz-linear-gradient( center top, #6b645c 5%, #5c564f 100% );
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #6b645c), color-stop(1, #5c564f) );
-	background: -ms-linear-gradient(top, #6b645c 5%, #5c564f 100%);
-	border: 1px solid #80776e;
+	background: -moz-linear-gradient( center top, #fbfbfb 5%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	box-shadow: 0px -1px 0px #ffffff inset;
+	border: 1px solid #d1d1d1;
 	border-radius: 3px;
 	display: inline-block;
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#6b645c', endColorStr='#5c564f');
+    	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fbfbfb', endColorStr='#ececec');
 	padding-bottom: 2px; 
 	padding-left: 4px; 
 	padding-right: 4px; 
 	padding-top: 2px; 
+	text-shadow: 0px 1px 0px #ffffff;
 	white-space: nowrap;
 	}
 
 .themeButtonMini:hover { /* small theme button hover state */
-	-moz-transition: all 0.2s ease-in-out 0s;
-	background: -moz-linear-gradient( center top, #595959 5%, #363636 100% );
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #595959), color-stop(1, #363636) );
-	background: -ms-linear-gradient(top, #595959 5%, #363636 100%);
-	border: 1px solid #e7d5bc;
-	color: #bfb6ac;
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#595959', endColorStr='#363636');
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fbfbfb), color-stop(1, #ececec) );
+	background: -moz-linear-gradient( center top, #fbfbfb 5%, #ececec 100% );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	border: 1px solid #aaaaaa;
+	box-shadow: 0px 0px 1px #bbbbbb;
+	color: #e47a00;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fbfbfb', endColorStr='#ececec');
 	white-space: nowrap;
 	}
 
 .themeButtonMini a.button_link, .themeButtonMini a.button_link:hover, .themeButtonMini a, .themeButtonMini a:hover { /* link within small theme button */ 
-	color: #bfb6ac;
+	color: #e47a00;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 11px;
 	font-weight: normal;
@@ -2198,12 +2085,15 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSdh { /* quick selector title bar */
-	background-color: #5c564f;
-	border-bottom: 1px solid #797269;
+	background-color: #eeeeee;
+	background: -moz-linear-gradient( center top, #fbfbfb 5%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#ececec');
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-top: 10px;
-	height: 30px;
+	padding-top: 6px;
+	height: 34px;
 	left: 0px;
 	position: fixed;
 	top: 0px;
@@ -2226,7 +2116,11 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSfooter { /* quick selector footer bar */
-	background-color: #736d66;
+	background-color: #eeeeee;
+	background: -moz-linear-gradient( center top, #fbfbfb 5%, #ececec 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fbfbfb), color-stop(1, #ececec) );
+	background: -ms-linear-gradient(top, #fbfbfb 5%, #ececec 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#ececec');
 	height: 38px;
 	left: 0px;
 	padding-left: 10px;
@@ -2259,18 +2153,19 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QStr { /* quick selector row */
+	background-color: #ffffff;
 	}
 
 .QStr:hover, .QStrHighlighted, .QStrHighlighted:hover, .QStrSelected:hover { /* quick selector hover/highlighted state */
-	background-color: #363636;
+	background-color: #f7eee3;
 	}
 
 .QStrSelected { /* quick selector selected state */
-	background-color: #5c564f;
+	background-color: #faf5ee;
 	}
 
 .QSthc { /* quick selector header cell */
-	color: #eeeeee;
+	color: #555555;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
@@ -2285,7 +2180,7 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSthc a { /* link within quick selector header cell */
-	color: #bfb6ac;
+	color: #e47a00;
 	font-weight: bold;
 	text-decoration: none;
 	}
@@ -2294,7 +2189,7 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSthc a.button_link { /* link with class button_link within quick selector header cell */
-	color: #bfb6ac;
+	color: #e47a00;
 	font-weight: bold;
 	text-decoration: none;
 	}
@@ -2303,8 +2198,8 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSttc { /* quick selector cell */
-	border-bottom: 1px solid #797269;
-	color: #eeeeee;
+	border-bottom: 1px dotted #eeeeee;
+	color: #666666;
 	font-family: Arial, Verdana, Georgia, sans-serif;
 	font-size: 12px;
 	height: 14.5px;
@@ -2323,7 +2218,7 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSttc a { /* link within quick selector cell */
-	color: #bfb6ac;
+	color: #e47a00;
 	text-decoration: none;
 	}
 
@@ -2331,7 +2226,7 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSttc a.button_link { /* link with class button_link within quick selector cell */
-	color: #bfb6ac;
+	color: #e47a00;
 	text-decoration: none;
 	}
 
@@ -2343,7 +2238,7 @@ div.modal { /* modal popup parent overlay */
  * Quick (Add/Edit) Page Styles                                       *
  **********************************************************************/
 .QSContainer .pContent { /* quick page configure error page panel */
-	width: 794px;
+	width: 801px;
 	}
 
 .QSContainer .dv, .QSContainer .dialog_view, .QSContainer .panelC { /* quick page panel */
@@ -2359,7 +2254,7 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSContainer .dh2 { /* quick page top panel header */
-	background-color: #5c564f;
+	background-color: #eeeeee;
 	height: 32px;
 	left: 0px;
 	position: fixed;
@@ -2390,7 +2285,11 @@ div.modal { /* modal popup parent overlay */
 	}
 
 .QSContainer .scrollRegion .pageButtonsContainer { /* quick page page buttons (save, cancel) container */
-	background-color: #736d66;
+	background-color: #eeeeee;
+	background: -moz-linear-gradient( center top, #ececec 5%, #fbfbfb 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ececec), color-stop(1, #fbfbfb) );
+	background: -ms-linear-gradient(top, #ececec 5%, #fbfbfb 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ececec', endColorstr='#fbfbfb');
 	height: 40px;
 	left: 0px;
 	padding-left: 10px;
@@ -2409,7 +2308,7 @@ div.modal { /* modal popup parent overlay */
 
 .QPCloseBarButtonPosition { /* quick page close button position */
 	padding-right: 10px;
-	padding-top: 10px;
+	padding-top: 8px;
 	}
 
 .QPContainerPanelPadding { /* quick page panel position */
@@ -2424,5 +2323,4 @@ div.modal { /* modal popup parent overlay */
 	height: 0px;
 	width: 0px;
 	}
-
 
