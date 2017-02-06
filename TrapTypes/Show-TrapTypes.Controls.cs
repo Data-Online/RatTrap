@@ -1846,9 +1846,9 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
               
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifierId Asc"));
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifier Asc"));
               
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifierId Desc"));
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifier Desc"));
               
             try
             {          
@@ -2060,7 +2060,7 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                                 
                 string javascriptCall = "";
                 
-                    javascriptCall = "initializePopupPage2(document.getElementById('" + MiscUtils.FindControlRecursively(this, "TrapsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
+                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "TrapsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
                        
                     this.NewButton.Attributes["onClick"] = javascriptCall + "return false;";            
                 }
@@ -2465,7 +2465,7 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                                 
                 string javascriptCall = "";
                 
-                    javascriptCall = "initializePopupPage2(document.getElementById('" + MiscUtils.FindControlRecursively(this, "TrapsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
+                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "TrapsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
                 AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "NewButton_Click", javascriptCall, true);
         
             }

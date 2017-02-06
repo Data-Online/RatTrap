@@ -200,16 +200,28 @@
     <Compile Include="BaseUsersGroupsLinkRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreasTable.cs" >
+    <Compile Include="AreasTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseAreasTable.cs" >
+    <Compile Include="BaseAreasTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreasRecord.cs" >
+    <Compile Include="AreasRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseAreasRecord.cs" >
+    <Compile Include="BaseAreasRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapRecordsTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseTrapRecordsTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapRecordsRecord.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseTrapRecordsRecord.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

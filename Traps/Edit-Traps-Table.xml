@@ -14,6 +14,7 @@
     <Layout>Traps\Edit-Traps-Table.html</Layout>
     <DisplayName>Edit-Traps-Table</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
+    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>-1903246113-19831</CheckSum>
   </Self>
   <ComposedOf>
@@ -522,11 +523,11 @@
           <Value>Trap Type {Txt:Descending}</Value>
         </Item>
         <Item>
-          <Name>TrapIdentifierId Asc</Name>
+          <Name>TrapIdentifier Asc</Name>
           <Value>Trap Identifier {Txt:Ascending}</Value>
         </Item>
         <Item>
-          <Name>TrapIdentifierId Desc</Name>
+          <Name>TrapIdentifier Desc</Name>
           <Value>Trap Identifier {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>

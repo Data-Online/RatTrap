@@ -263,7 +263,6 @@
   <Owner>dbo</Owner>
   <TableAliasName>TrapRecords_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>
-  <InUse>N</InUse>
   <PagingMethod>RowNum</PagingMethod>
   <canCreateRecords Source="Database">Y</canCreateRecords>
   <canEditRecords Source="Database">Y</canEditRecords>
@@ -275,4 +274,5 @@
   <MenuName>Trap Records</MenuName>
   <QSPath>../TrapRecords/TrapRecords-QuickSelector.aspx</QSPath>
   <TableCodeName>TrapRecords</TableCodeName>
+  <TableStoredProcPrefix>pRatTrapTrapRecords</TableStoredProcPrefix>
 </XMLDefinition>

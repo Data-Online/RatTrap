@@ -485,11 +485,11 @@
           <Value>Trap Type {Txt:Descending}</Value>
         </Item>
         <Item>
-          <Name>TrapIdentifierId Asc</Name>
+          <Name>TrapIdentifier Asc</Name>
           <Value>Trap Identifier {Txt:Ascending}</Value>
         </Item>
         <Item>
-          <Name>TrapIdentifierId Desc</Name>
+          <Name>TrapIdentifier Desc</Name>
           <Value>Trap Identifier {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>

@@ -61,7 +61,7 @@ public class BaseTrapsTable : PrimaryKeyTable
         TrapIdColumn.CodeName = "TrapId";
         TrapTypeIdColumn.CodeName = "TrapTypeId";
         GroupIdColumn.CodeName = "GroupId";
-        TrapIdentifierIdColumn.CodeName = "TrapIdentifierId";
+        TrapIdentifierColumn.CodeName = "TrapIdentifier";
 
         
     }
@@ -148,26 +148,26 @@ public class BaseTrapsTable : PrimaryKeyTable
     
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's Traps_.TrapIdentifierId column object.
+    /// This is a convenience property that provides direct access to the table's Traps_.TrapIdentifier column object.
     /// </summary>
-    public BaseClasses.Data.NumberColumn TrapIdentifierIdColumn
+    public BaseClasses.Data.StringColumn TrapIdentifierColumn
     {
         get
         {
-            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[3];
+            return (BaseClasses.Data.StringColumn)this.TableDefinition.ColumnList[3];
         }
     }
     
 
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's Traps_.TrapIdentifierId column object.
+    /// This is a convenience property that provides direct access to the table's Traps_.TrapIdentifier column object.
     /// </summary>
-    public static BaseClasses.Data.NumberColumn TrapIdentifierId
+    public static BaseClasses.Data.StringColumn TrapIdentifier
     {
         get
         {
-            return TrapsTable.Instance.TrapIdentifierIdColumn;
+            return TrapsTable.Instance.TrapIdentifierColumn;
         }
     }
     
@@ -699,13 +699,13 @@ public class BaseTrapsTable : PrimaryKeyTable
         public KeyValue NewRecord(
         string TrapTypeIdValue, 
         string GroupIdValue, 
-        string TrapIdentifierIdValue
+        string TrapIdentifierValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
                     rec.SetString(TrapTypeIdValue, TrapTypeIdColumn);
         rec.SetString(GroupIdValue, GroupIdColumn);
-        rec.SetString(TrapIdentifierIdValue, TrapIdentifierIdColumn);
+        rec.SetString(TrapIdentifierValue, TrapIdentifierColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

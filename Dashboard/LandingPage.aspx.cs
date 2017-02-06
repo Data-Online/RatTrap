@@ -727,7 +727,7 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../UsersGroupsLink/Show-UsersGroupsLink-Gallery.aspx";
+            string url = @"../UsersGroupsLink/Show-UsersGroupsLink-Table.aspx";
             
             if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
                 url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];

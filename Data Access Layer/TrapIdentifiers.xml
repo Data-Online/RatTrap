@@ -19,10 +19,10 @@
       </columnDBFormat>
       <columnPK>Y</columnPK>
       <columnPermanent>N</columnPermanent>
-      <columnComputed>N</columnComputed>
-      <columnIdentity>N</columnIdentity>
-      <columnReadOnly>N</columnReadOnly>
-      <columnRequired>Y</columnRequired>
+      <columnComputed>Y</columnComputed>
+      <columnIdentity>Y</columnIdentity>
+      <columnReadOnly>Y</columnReadOnly>
+      <columnRequired>N</columnRequired>
       <columnNotNull>Y</columnNotNull>
       <columnCaseSensitive>N</columnCaseSensitive>
       <columnCollation>
@@ -100,7 +100,7 @@
     </Column>
   </ColumnDefinition>
   <TableName>TrapIdentifiers</TableName>
-  <Version>2</Version>
+  <Version>3</Version>
   <Owner>dbo</Owner>
   <TableAliasName>TrapIdentifiers_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>

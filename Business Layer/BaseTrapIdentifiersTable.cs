@@ -645,13 +645,11 @@ public class BaseTrapIdentifiersTable : PrimaryKeyTable
 
         //Convenience method for creating a record
         public KeyValue NewRecord(
-        string TrapIdentifierIdValue, 
         string DescriptionValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
-                    rec.SetString(TrapIdentifierIdValue, TrapIdentifierIdColumn);
-        rec.SetString(DescriptionValue, DescriptionColumn);
+                    rec.SetString(DescriptionValue, DescriptionColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

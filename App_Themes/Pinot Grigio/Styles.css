@@ -1,4 +1,4 @@
-/**********************************************************************
+﻿/**********************************************************************
  * Styles.css                                                         *
  *                                                                    *
  * This file is initially empty and you can add any additional styles *
@@ -26,3 +26,14 @@
  * not specified in the original declaration of the menus style.      *
  *                                                                    *
  **********************************************************************/
+.largeText { /* table cell field value text */
+	color: #555555;
+	font-family: Arial, Verdana, Georgia, sans-serif;
+	font-size: 16px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 8px;
+	text-align: left;
+	vertical-align: top;
+	}

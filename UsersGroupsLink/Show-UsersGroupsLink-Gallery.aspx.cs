@@ -221,6 +221,8 @@ public partial class Show_UsersGroupsLink_Gallery
     
         public ThemeButtonWithArrow Actions2Button;
                 
+        public ThemeButtonWithArrow Actions3Button;
+                
         public ThemeButtonWithArrow ActionsButton;
                 
         public System.Web.UI.WebControls.ImageButton DeleteButton1;
@@ -235,11 +237,17 @@ public partial class Show_UsersGroupsLink_Gallery
         
         public System.Web.UI.WebControls.ImageButton ExcelButton2;
         
+        public System.Web.UI.WebControls.ImageButton ExcelButton3;
+        
         public ThemeButton FilterButton;
                 
         public ThemeButton FilterButton1;
                 
+        public ThemeButton FilterButton2;
+                
         public ThemeButtonWithArrow Filters1Button;
+                
+        public ThemeButtonWithArrow Filters2Button;
                 
         public ThemeButtonWithArrow FiltersButton;
                 
@@ -251,6 +259,8 @@ public partial class Show_UsersGroupsLink_Gallery
         
         public System.Web.UI.WebControls.ImageButton ImportButton2;
         
+        public System.Web.UI.WebControls.ImageButton ImportButton3;
+        
         public System.Web.UI.WebControls.Label Label;
         
         public System.Web.UI.WebControls.ImageButton NewButton;
@@ -258,6 +268,8 @@ public partial class Show_UsersGroupsLink_Gallery
         public System.Web.UI.WebControls.ImageButton NewButton1;
         
         public System.Web.UI.WebControls.ImageButton NewButton2;
+        
+        public System.Web.UI.WebControls.ImageButton NewButton3;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
@@ -267,11 +279,15 @@ public partial class Show_UsersGroupsLink_Gallery
                 
         public PaginationModern Pagination2;
                 
+        public PaginationModern Pagination3;
+                
         public System.Web.UI.WebControls.ImageButton PDFButton;
         
         public System.Web.UI.WebControls.ImageButton PDFButton1;
         
         public System.Web.UI.WebControls.ImageButton PDFButton2;
+        
+        public System.Web.UI.WebControls.ImageButton PDFButton3;
         
         public System.Web.UI.WebControls.LinkButton ProjectIdLabel;
         
@@ -281,9 +297,13 @@ public partial class Show_UsersGroupsLink_Gallery
         
         public System.Web.UI.WebControls.ImageButton ResetButton1;
         
+        public System.Web.UI.WebControls.ImageButton ResetButton2;
+        
         public System.Web.UI.WebControls.Label SortByLabel;
         
         public System.Web.UI.WebControls.Label SortByLabel1;
+        
+        public System.Web.UI.WebControls.Label SortByLabel2;
         
         public System.Web.UI.WebControls.Literal Title0;
             
@@ -291,17 +311,29 @@ public partial class Show_UsersGroupsLink_Gallery
             
         public System.Web.UI.WebControls.Literal Title2;
             
+        public System.Web.UI.WebControls.Literal Title3;
+            
+        public System.Web.UI.WebControls.LinkButton TrapIdentifierLabel;
+        
         public RatTrap.UI.Controls.Show_UsersGroupsLink_Gallery.TrapsTableControl TrapsTableControl;
           
+        public System.Web.UI.WebControls.LinkButton TrapTypeIdLabel1;
+        
         public System.Web.UI.WebControls.Literal TrapTypeIdLabel2;
         
+        public System.Web.UI.WebControls.Literal UserIdLabel2;
+        
         public RatTrap.UI.Controls.Show_UsersGroupsLink_Gallery.UsersGroupsLinkTableControl UsersGroupsLinkTableControl;
+          
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Gallery.UsersGroupsLinkTableControl1 UsersGroupsLinkTableControl1;
           
         public System.Web.UI.WebControls.ImageButton WordButton;
         
         public System.Web.UI.WebControls.ImageButton WordButton1;
         
         public System.Web.UI.WebControls.ImageButton WordButton2;
+        
+        public System.Web.UI.WebControls.ImageButton WordButton3;
         
         public ValidationSummary ValidationSummary1;
 
@@ -364,7 +396,7 @@ public partial class Show_UsersGroupsLink_Gallery
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("");
+            this.Authorize("NOT_ANONYMOUS");
              if (!this.IsPostBack)
              {
             

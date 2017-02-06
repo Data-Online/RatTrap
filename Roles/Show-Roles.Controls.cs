@@ -2871,7 +2871,7 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
                                 
                 string javascriptCall = "";
                 
-                    javascriptCall = "initializePopupPage2(document.getElementById('" + MiscUtils.FindControlRecursively(this, "UsersTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
+                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "UsersTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
                        
                     this.NewButton.Attributes["onClick"] = javascriptCall + "return false;";            
                 }
@@ -3115,7 +3115,7 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
                                 
                 string javascriptCall = "";
                 
-                    javascriptCall = "initializePopupPage2(document.getElementById('" + MiscUtils.FindControlRecursively(this, "UsersTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
+                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "UsersTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
                 AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "NewButton_Click", javascriptCall, true);
         
             }

@@ -68,21 +68,21 @@
                     <table id="UsersGroupsLinkTableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thc" style="display:none" colspan="3"></th></tr><asp:Repeater runat="server" id="UsersGroupsLinkTableControlRepeater">		<ITEMTEMPLATE>
 		<asp:Repeater runat="server" id="UsersGroupsLinkTableControlRepeater1">				<ITEMTEMPLATE>
 <tr><asp:Repeater runat="server" id="UsersGroupsLinkTableControlCellRepeater">		<ITEMTEMPLATE>		<RatTrap:UsersGroupsLinkTableControlRow runat="server" id="UsersGroupsLinkTableControlRow">
-<td class="largeText" style="width:33%;"><%= SystemUtils.GenerateEnterKeyCaptureBeginTag(FindControlRecursively("CancelButton"))%>
+<td class="largeText" style="width:33%;text-align:center;"><span style="white-space:nowrap;">
+<asp:Literal runat="server" id="UserId0" visible="False"></asp:Literal></span>
+ <br />
+<asp:LinkButton runat="server" id="GroupId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> <br />
+</td><td class="largeText" style="width:66%;text-align:center;"><%= SystemUtils.GenerateEnterKeyCaptureBeginTag(FindControlRecursively("CancelButton"))%>
 <%= SystemUtils.GenerateEnterKeyCaptureBeginTag(FindControlRecursively("EditButton"))%>
 <%= SystemUtils.GenerateEnterKeyCaptureBeginTag(FindControlRecursively("OKButton"))%>
 <%= SystemUtils.GenerateEnterKeyCaptureBeginTag(FindControlRecursively("SaveAndNewButton"))%>
 <%= SystemUtils.GenerateEnterKeyCaptureBeginTag(FindControlRecursively("SaveButton"))%>
-<span style="white-space:nowrap;">
-<asp:Literal runat="server" id="UserId0" visible="False"></asp:Literal></span>
- <br />
-<asp:LinkButton runat="server" id="GroupId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> <br />
-<RatTrap:GroupsRecordControl runat="server" id="GroupsRecordControl">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td></td><td></td><td></td></tr><tr><td></td><td>
+<RatTrap:GroupsRecordControl runat="server" id="GroupsRecordControl">	<table cellpadding="0" cellspacing="0" border="0" style="width:33%"><tr><td></td><td></td></tr><tr><td></td><td>
                   <asp:panel id="CollapsibleRegion1" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
                     <asp:panel id="GroupsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"></table></asp:panel>
 
                   </td><td><BaseClasses:TabContainer runat="server" id="GroupsRecordControlTabContainer" onclientactivetabchanged="fixedHeaderTab" panellayout="Tabbed"> 
- <BaseClasses:TabPanel runat="server" id="TrapsTab" HeaderText="Traps">	<ContentTemplate> 
+ <BaseClasses:TabPanel runat="server" id="TabPanel" HeaderText="Traps">	<ContentTemplate> 
   <RatTrap:TrapsTableControl runat="server" id="TrapsTableControl">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td class="panelTL"><img src="../Images/space.gif" class="panelTLSpace" alt="" /></td><td class="panelT"></td><td class="panelTR"><img src="../Images/space.gif" class="panelTRSpace" alt="" /></td></tr><tr><td class="panelHeaderL"></td><td class="dh">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="dhel"><img src="../Images/space.gif" alt="" /></td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="dht" valign="middle">
                         <asp:Literal runat="server" id="Title2" Text="&lt;%#String.Concat(&quot;Traps&quot;) %>">	</asp:Literal>
@@ -128,16 +128,14 @@
 
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
                   <asp:panel id="CollapsibleRegion4" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tre">
-                    <table id="TrapsTableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thc" colspan="2" style="display:none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th></tr><asp:Repeater runat="server" id="TrapsTableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:TrapsTableControlRow runat="server" id="TrapsTableControlRow">
+                    <table id="TrapsTableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thc" colspan="2"></th><th class="thc"><asp:LinkButton runat="server" id="TrapTypeIdLabel1" tooltip="Sort by TrapTypeId" Text="Trap Type" CausesValidation="False">	</asp:LinkButton></th><th class="thc"><asp:LinkButton runat="server" id="TrapIdentifierLabel" tooltip="Sort by TrapIdentifier" Text="Trap Identifier" CausesValidation="False">	</asp:LinkButton></th><th class="thc"></th><th class="thc"></th><th class="thc"></th><th class="thc"></th></tr><asp:Repeater runat="server" id="TrapsTableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:TrapsTableControlRow runat="server" id="TrapsTableControlRow">
 <tr><td class="tableRowButtonsCellVertical" scope="row" style="font-size: 5px;" colspan="2">
                                   <asp:ImageButton runat="server" id="EditRowButton" causesvalidation="False" commandname="Redirect" cssclass="button_link" imageurl="../Images/icon_edit.gif" onmouseout="this.src=&#39;../Images/icon_edit.gif&#39;" onmouseover="this.src=&#39;../Images/icon_edit_over.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Txt:EditRecord&quot;, &quot;RatTrap&quot;) %>">		
 	</asp:ImageButton>                                 
                                 
                                   <asp:ImageButton runat="server" id="DeleteRowButton" causesvalidation="False" commandname="DeleteRecord" cssclass="button_link" imageurl="../Images/icon_delete.gif" onmouseout="this.src=&#39;../Images/icon_delete.gif&#39;" onmouseover="this.src=&#39;../Images/icon_delete_over.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Txt:DeleteRecord&quot;, &quot;RatTrap&quot;) %>">		
 	</asp:ImageButton>                                 
-                                </td><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeIdLabel" Text="Trap Type">	</asp:Literal> 
-</td><td class="tableCellValue"><asp:LinkButton runat="server" id="TrapTypeId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> </td><td class="tableCellLabel"> 
-</td><td class="tableCellValue"> </td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="8"></td></tr></RatTrap:TrapsTableControlRow>
+                                </td><td class="tableCellLabel"><asp:LinkButton runat="server" id="TrapTypeId" causesvalidation="False" commandname="Redirect"></asp:LinkButton></td><td class="tableCellValue"><asp:Literal runat="server" id="TrapIdentifier"></asp:Literal></td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="8"></td></tr></RatTrap:TrapsTableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>
@@ -153,10 +151,10 @@
 </RatTrap:TrapsTableControl>
  
  </ContentTemplate></BaseClasses:TabPanel> 
- <BaseClasses:TabPanel runat="server" id="ProjectsTab" HeaderText="Associated Projects">	<ContentTemplate> 
+ <BaseClasses:TabPanel runat="server" id="TabPanel1" HeaderText="ProjectsGroupsLink">	<ContentTemplate> 
   <RatTrap:ProjectsGroupsLinkTableControl runat="server" id="ProjectsGroupsLinkTableControl">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td class="panelTL"><img src="../Images/space.gif" class="panelTLSpace" alt="" /></td><td class="panelT"></td><td class="panelTR"><img src="../Images/space.gif" class="panelTRSpace" alt="" /></td></tr><tr><td class="panelHeaderL"></td><td class="dh">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="dhel"><img src="../Images/space.gif" alt="" /></td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="dht" valign="middle">
-                        <asp:Literal runat="server" id="Title1" Text="&lt;%#String.Concat(&quot;Associated with these Projects&quot;) %>">	</asp:Literal>
+                        <asp:Literal runat="server" id="Title1" Text="&lt;%#String.Concat(&quot;Associated Projects&quot;) %>">	</asp:Literal>
                       </td></tr></table>
 </td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0" style="width: 100%;"><tr><td></td><td class="prbbc"></td><td class="prbbc"></td><td><div id="Actions1Div" runat="server" class="popupWrapper">
                 <table border="0" cellpadding="0" cellspacing="0"><tr><td></td><td></td><td></td><td></td><td></td><td></td><td style="text-align: right;" class="popupTableCellValue"><input type="image" src="../Images/closeButton.gif" onmouseover="this.src='../Images/closeButtonOver.gif'" onmouseout="this.src='../Images/closeButton.gif'" alt="" onclick="ISD_HidePopupPanel();return false;" align="top" /><br /></td></tr><tr><td></td><td>
@@ -217,9 +215,75 @@
 </RatTrap:ProjectsGroupsLinkTableControl>
  
  </ContentTemplate></BaseClasses:TabPanel> 
+ <BaseClasses:TabPanel runat="server" id="TabPanel2" HeaderText="UsersGroupsLink">	<ContentTemplate> 
+  <RatTrap:UsersGroupsLinkTableControl1 runat="server" id="UsersGroupsLinkTableControl1">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td class="panelTL"><img src="../Images/space.gif" class="panelTLSpace" alt="" /></td><td class="panelT"></td><td class="panelTR"><img src="../Images/space.gif" class="panelTRSpace" alt="" /></td></tr><tr><td class="panelHeaderL"></td><td class="dh">
+                  <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="dhel"><img src="../Images/space.gif" alt="" /></td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="dht" valign="middle">
+                        <asp:Literal runat="server" id="Title3" Text="&lt;%#String.Concat(&quot;Users Groups Link&quot;) %>">	</asp:Literal>
+                      </td></tr></table>
+</td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0" style="width: 100%;"><tr><td></td><td class="prbbc"></td><td class="prbbc"></td><td><div id="Actions3Div" runat="server" class="popupWrapper">
+                <table border="0" cellpadding="0" cellspacing="0"><tr><td></td><td></td><td></td><td></td><td></td><td></td><td style="text-align: right;" class="popupTableCellValue"><input type="image" src="../Images/closeButton.gif" onmouseover="this.src='../Images/closeButtonOver.gif'" onmouseout="this.src='../Images/closeButton.gif'" alt="" onclick="ISD_HidePopupPanel();return false;" align="top" /><br /></td></tr><tr><td></td><td>
+                    <asp:ImageButton runat="server" id="NewButton3" causesvalidation="false" commandname="Redirect" imageurl="../Images/ButtonBarNew.gif" onmouseout="this.src=&#39;../Images/ButtonBarNew.gif&#39;" onmouseover="this.src=&#39;../Images/ButtonBarNewOver.gif&#39;" redirectstyle="Popup" tooltip="&lt;%# GetResourceValue(&quot;Btn:Add&quot;, &quot;RatTrap&quot;) %>">		
+	</asp:ImageButton>
+                  </td><td>
+                    <asp:ImageButton runat="server" id="PDFButton3" causesvalidation="false" commandname="ReportData" imageurl="../Images/ButtonBarPDFExport.gif" onmouseout="this.src=&#39;../Images/ButtonBarPDFExport.gif&#39;" onmouseover="this.src=&#39;../Images/ButtonBarPDFExportOver.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Btn:PDF&quot;, &quot;RatTrap&quot;) %>">		
+	</asp:ImageButton>
+                  </td><td>
+                    <asp:ImageButton runat="server" id="WordButton3" causesvalidation="false" commandname="ExportToWord" imageurl="../Images/ButtonBarWordExport.gif" onmouseout="this.src=&#39;../Images/ButtonBarWordExport.gif&#39;" onmouseover="this.src=&#39;../Images/ButtonBarWordExportOver.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Btn:Word&quot;, &quot;RatTrap&quot;) %>">		
+	</asp:ImageButton>
+                  </td><td>
+                    <asp:ImageButton runat="server" id="ExcelButton3" causesvalidation="false" commandname="ExportDataExcel" imageurl="../Images/ButtonBarExcelExport.gif" onmouseout="this.src=&#39;../Images/ButtonBarExcelExport.gif&#39;" onmouseover="this.src=&#39;../Images/ButtonBarExcelExportOver.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Btn:ExportExcel&quot;, &quot;RatTrap&quot;) %>">		
+	</asp:ImageButton>
+                  </td><td>
+                    <asp:ImageButton runat="server" id="ImportButton3" causesvalidation="false" commandname="ImportCSV" imageurl="../Images/ButtonBarImport.gif" onmouseout="this.src=&#39;../Images/ButtonBarImport.gif&#39;" onmouseover="this.src=&#39;../Images/ButtonBarImportOver.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Btn:Import&quot;, &quot;RatTrap&quot;) %>">		
+	</asp:ImageButton>
+                  </td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>
+
+                </div></td><td class="prbbc"></td><td class="prspace"></td><td class="prbbc" style="text-align:right"><RatTrap:ThemeButtonWithArrow runat="server" id="Actions3Button" button-causesvalidation="False" button-commandname="Custom" button-onclientclick="return ISD_ShowPopupPanel(&#39;Actions3Div&#39;,&#39;Actions3Button&#39;,this);" button-text="&lt;%# GetResourceValue(&quot;Btn:Actions&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:Actions&quot;, &quot;RatTrap&quot;) %>"></RatTrap:ThemeButtonWithArrow></td><td class="prbbc" style="text-align:right">
+            <RatTrap:ThemeButtonWithArrow runat="server" id="Filters2Button" button-causesvalidation="False" button-commandname="Custom" button-onclientclick="return ISD_ShowPopupPanel(&#39;Filters2Div&#39;,&#39;Filters2Button&#39;,this);" button-text="&lt;%# GetResourceValue(&quot;Btn:Filters&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:Filters&quot;, &quot;RatTrap&quot;) %>"></RatTrap:ThemeButtonWithArrow>
+          </td><td class="prbbc"><img src="../Images/space.gif" alt="" style="width: 10px" /></td><td class="prspaceEnd">&nbsp;</td><td></td></tr></table>
+</td><td class="dher"><img src="../Images/space.gif" alt="" /></td><td>
+                          <div id="Filters2Div" runat="server" class="popupWrapper">
+                          <table cellpadding="0" cellspacing="0" border="0"><tr><td class="popupTableCellLabel"></td><td class="popupTableCellValue"></td><td class="popupTableCellValue"></td><td class="popupTableCellValue"></td><td style="text-align: right;" class="popupTableCellValue"><input type="image" src="../Images/closeButton.gif" onmouseover="this.src='../Images/closeButtonOver.gif'" onmouseout="this.src='../Images/closeButton.gif'" alt="" onclick="ISD_HidePopupPanel();return false;" align="top" /><br /></td></tr><tr><td class="popupTableCellLabel"><asp:Literal runat="server" id="UserIdLabel2" Text="User">	</asp:Literal></td><td colspan="2" class="popupTableCellValue"><%= SystemUtils.GenerateEnterKeyCaptureBeginTag(FindControlRecursively("FilterButton2"))%>
+<BaseClasses:QuickSelector runat="server" id="UserIdFilter1" onkeypress="dropDownListTypeAhead(this,false)" redirecturl="" selectionmode="Single">	</BaseClasses:QuickSelector><%= SystemUtils.GenerateEnterKeyCaptureEndTag(FindControlRecursively("FilterButton2"))%>
+</td><td class="popupTableCellValue"><RatTrap:ThemeButton runat="server" id="FilterButton2" button-causesvalidation="False" button-commandname="Search" button-text="&lt;%# GetResourceValue(&quot;Btn:SearchGoButtonText&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:SearchGoButtonText&quot;, &quot;RatTrap&quot;) %>" postback="False"></RatTrap:ThemeButton></td><td class="popupTableCellValue">
+                                  <asp:ImageButton runat="server" id="ResetButton2" causesvalidation="false" commandname="ResetFilters" imageurl="../Images/ButtonBarReset.gif" onmouseout="this.src=&#39;../Images/ButtonBarReset.gif&#39;" onmouseover="this.src=&#39;../Images/ButtonBarResetOver.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Btn:Reset&quot;, &quot;RatTrap&quot;) %>">		
+	</asp:ImageButton>
+                                </td></tr><tr><td class="popupTableCellLabel"></td><td class="popupTableCellValue"></td><td class="popupTableCellValue"></td><td class="popupTableCellValue"></td><td class="popupTableCellValue"></td></tr><tr><td class="popupTableCellLabel"><asp:Label runat="server" id="SortByLabel2" Text="&lt;%# GetResourceValue(&quot;Txt:SortBy&quot;, &quot;RatTrap&quot;) %>">	</asp:Label></td><td class="popupTableCellValue"><asp:DropDownList runat="server" id="SortControl2" autopostback="True" cssclass="Filter_Input" priorityno="1">	</asp:DropDownList></td><td class="popupTableCellValue"></td><td class="popupTableCellValue"></td><td class="popupTableCellValue"></td></tr></table>
+
+                          </div>
+                        </td><td class="dher"><img src="../Images/space.gif" alt="" /></td></tr></table>
+
+                </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
+                  <asp:panel id="CollapsibleRegion5" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tre">
+                    <table id="UsersGroupsLinkTableControl1Grid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thc" colspan="2" style="display:none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th><th class="thc" style="display: none"></th></tr><asp:Repeater runat="server" id="UsersGroupsLinkTableControl1Repeater">		<ITEMTEMPLATE>		<RatTrap:UsersGroupsLinkTableControl1Row runat="server" id="UsersGroupsLinkTableControl1Row">
+<tr><td class="tableRowButtonsCellVertical" scope="row" style="font-size: 5px;" colspan="2">
+                                  <asp:ImageButton runat="server" id="EditRowButton1" causesvalidation="False" commandname="Redirect" cssclass="button_link" imageurl="../Images/icon_edit.gif" onmouseout="this.src=&#39;../Images/icon_edit.gif&#39;" onmouseover="this.src=&#39;../Images/icon_edit_over.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Txt:EditRecord&quot;, &quot;RatTrap&quot;) %>">		
+	</asp:ImageButton>                                 
+                                
+                                  <asp:ImageButton runat="server" id="DeleteRowButton1" causesvalidation="False" commandname="DeleteRecord" cssclass="button_link" imageurl="../Images/icon_delete.gif" onmouseout="this.src=&#39;../Images/icon_delete.gif&#39;" onmouseover="this.src=&#39;../Images/icon_delete_over.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Txt:DeleteRecord&quot;, &quot;RatTrap&quot;) %>">		
+	</asp:ImageButton>                                 
+                                </td><td class="tableCellLabel"><asp:Literal runat="server" id="UserIdLabel" Text="User">	</asp:Literal> 
+</td><td class="tableCellValue"><span style="white-space:nowrap;">
+<asp:LinkButton runat="server" id="UserId1" causesvalidation="False" commandname="Redirect"></asp:LinkButton></span>
+ </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="8"></td></tr></RatTrap:UsersGroupsLinkTableControl1Row>
+</ITEMTEMPLATE>
+
+</asp:Repeater>
+</table>
+
+                  </td></tr></table>
+</asp:panel>
+                </td><td class="panelR"></td></tr><tr><td class="panelL"></td><td class="panelPaginationC">
+                    <RatTrap:PaginationModern runat="server" id="Pagination3"></RatTrap:PaginationModern>
+                    <!--To change the position of the pagination control, please search for "prspace" on the Online Help for instruction. -->
+                  </td><td class="panelR"></td></tr><tr><td class="panelBL"><img src="../Images/space.gif" class="panelBLSpace" alt="" /></td><td class="panelB"></td><td class="panelBR"><img src="../Images/space.gif" class="panelBRSpace" alt="" /></td></tr></table>
+	<asp:hiddenfield id="UsersGroupsLinkTableControl1_PostbackTracker" runat="server" />
+</RatTrap:UsersGroupsLinkTableControl1>
+ 
+ </ContentTemplate></BaseClasses:TabPanel> 
 </BaseClasses:TabContainer></td></tr></table>
 </asp:panel>
-                </td><td></td></tr><tr><td></td><td></td><td></td></tr></table>
+                </td></tr></table>
 	<asp:hiddenfield id="GroupsRecordControl_PostbackTracker" runat="server" />
 </RatTrap:GroupsRecordControl>
 <%= SystemUtils.GenerateEnterKeyCaptureEndTag(FindControlRecursively("SaveButton"))%>

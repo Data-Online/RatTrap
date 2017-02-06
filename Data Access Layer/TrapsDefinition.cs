@@ -12,7 +12,7 @@ namespace RatTrap.Business
 public class TrapsDefinition
 {
 #region "Definition (XML) for TrapsDefinition table"
-	//Next 186 lines contain Table Definition (XML) for table "TrapsDefinition"
+	//Next 177 lines contain Table Definition (XML) for table "TrapsDefinition"
 	private static string _DefinitionString = "";
 	
 #endregion
@@ -162,16 +162,16 @@ public class TrapsDefinition
          tbf.Append(      @"<updatingFormula></updatingFormula>");
          tbf.Append(    "</Column>");
          tbf.Append(    @"<Column InternalName=""3"" Priority=""4"" ColumnNum=""3"">");
-         tbf.Append(      @"<columnName>TrapIdentifierId</columnName>");
+         tbf.Append(      @"<columnName>TrapIdentifier</columnName>");
          tbf.Append(      @"<columnUIName>Trap Identifier</columnUIName>");
-         tbf.Append(      @"<columnType>Number</columnType>");
-         tbf.Append(      @"<columnDBType>int</columnDBType>");
-         tbf.Append(      @"<columnLengthSet>10.0</columnLengthSet>");
+         tbf.Append(      @"<columnType>String</columnType>");
+         tbf.Append(      @"<columnDBType>nvarchar</columnDBType>");
+         tbf.Append(      @"<columnLengthSet>50</columnLengthSet>");
          tbf.Append(      @"<columnDefault></columnDefault>");
          tbf.Append(      @"<columnDBDefault></columnDBDefault>");
          tbf.Append(      @"<columnIndex>N</columnIndex>");
          tbf.Append(      @"<columnUnique>N</columnUnique>");
-         tbf.Append(      @"<columnFunction>notrim</columnFunction>");
+         tbf.Append(      @"<columnFunction></columnFunction>");
          tbf.Append(      @"<columnDBFormat></columnDBFormat>");
          tbf.Append(      @"<columnPK>N</columnPK>");
          tbf.Append(      @"<columnPermanent>N</columnPermanent>");
@@ -180,25 +180,16 @@ public class TrapsDefinition
          tbf.Append(      @"<columnReadOnly>N</columnReadOnly>");
          tbf.Append(      @"<columnRequired>N</columnRequired>");
          tbf.Append(      @"<columnNotNull>N</columnNotNull>");
-         tbf.Append(      @"<columnCaseSensitive>N</columnCaseSensitive>");
-         tbf.Append(      @"<columnCollation></columnCollation>");
+         tbf.Append(      @"<columnCaseSensitive Source=""Database"">N</columnCaseSensitive>");
+         tbf.Append(      @"<columnCollation>Latin1_General_CI_AS</columnCollation>");
          tbf.Append(      @"<columnFullText>N</columnFullText>");
          tbf.Append(      @"<columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>");
          tbf.Append(      @"<columnTableAliasName></columnTableAliasName>");
          tbf.Append(      @"<applyLabelText>Y</applyLabelText>");
-         tbf.Append(      @"<foreignKey>");
-         tbf.Append(        @"<columnFKName>FK_Traps_TrapIdentifiers</columnFKName>");
-         tbf.Append(        @"<columnFKTable>RatTrap.Business.TrapIdentifiersTable, RatTrap.Business</columnFKTable>");
-         tbf.Append(        @"<columnFKOwner>dbo</columnFKOwner>");
-         tbf.Append(        @"<columnFKColumn>TrapIdentifierId</columnFKColumn>");
-         tbf.Append(        @"<columnFKColumnDisplay>Description</columnFKColumnDisplay>");
-         tbf.Append(        @"<foreignKeyType>Explicit</foreignKeyType>");
-         tbf.Append(      "</foreignKey>");
-         tbf.Append(      @"<applyDFKA>Y</applyDFKA>");
          tbf.Append(    "</Column>");
          tbf.Append(  "</ColumnDefinition>");
          tbf.Append(  @"<TableName>Traps</TableName>");
-         tbf.Append(  @"<Version>3</Version>");
+         tbf.Append(  @"<Version>4</Version>");
          tbf.Append(  @"<Owner>dbo</Owner>");
          tbf.Append(  @"<TableAliasName>Traps_</TableAliasName>");
          tbf.Append(  @"<ConnectionName>DatabaseTheRatTrap</ConnectionName>");

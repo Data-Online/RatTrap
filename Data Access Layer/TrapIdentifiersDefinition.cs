@@ -45,10 +45,10 @@ public class TrapIdentifiersDefinition
          tbf.Append(      @"<columnDBFormat></columnDBFormat>");
          tbf.Append(      @"<columnPK>Y</columnPK>");
          tbf.Append(      @"<columnPermanent>N</columnPermanent>");
-         tbf.Append(      @"<columnComputed>N</columnComputed>");
-         tbf.Append(      @"<columnIdentity>N</columnIdentity>");
-         tbf.Append(      @"<columnReadOnly>N</columnReadOnly>");
-         tbf.Append(      @"<columnRequired>Y</columnRequired>");
+         tbf.Append(      @"<columnComputed>Y</columnComputed>");
+         tbf.Append(      @"<columnIdentity>Y</columnIdentity>");
+         tbf.Append(      @"<columnReadOnly>Y</columnReadOnly>");
+         tbf.Append(      @"<columnRequired>N</columnRequired>");
          tbf.Append(      @"<columnNotNull>Y</columnNotNull>");
          tbf.Append(      @"<columnCaseSensitive>N</columnCaseSensitive>");
          tbf.Append(      @"<columnCollation></columnCollation>");
@@ -109,7 +109,7 @@ public class TrapIdentifiersDefinition
          tbf.Append(    "</Column>");
          tbf.Append(  "</ColumnDefinition>");
          tbf.Append(  @"<TableName>TrapIdentifiers</TableName>");
-         tbf.Append(  @"<Version>2</Version>");
+         tbf.Append(  @"<Version>3</Version>");
          tbf.Append(  @"<Owner>dbo</Owner>");
          tbf.Append(  @"<TableAliasName>TrapIdentifiers_</TableAliasName>");
          tbf.Append(  @"<ConnectionName>DatabaseTheRatTrap</ConnectionName>");

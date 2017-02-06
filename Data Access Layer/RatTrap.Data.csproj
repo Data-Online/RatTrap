@@ -179,13 +179,22 @@
     <Compile Include="BaseUsersGroupsLinkSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreasDefinition.cs" >
+    <Compile Include="AreasDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreasSqlTable.cs" >
+    <Compile Include="AreasSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseAreasSqlTable.cs" >
+    <Compile Include="BaseAreasSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapRecordsDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapRecordsSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseTrapRecordsSqlTable.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
