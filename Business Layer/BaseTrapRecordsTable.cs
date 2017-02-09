@@ -62,6 +62,7 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         TrapIdColumn.CodeName = "TrapId";
         BaitTypeColumn.CodeName = "BaitType";
         DateOfCheckColumn.CodeName = "DateOfCheck";
+        DateOfCheckColumn.Name = EvaluateFormula("\"Date Checked\"");
         SpeciesColumn.CodeName = "Species";
         SexColumn.CodeName = "Sex";
         NotesColumn.CodeName = "Notes";

@@ -70,7 +70,6 @@
   <Owner>dbo</Owner>
   <TableAliasName>Sex_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>
-  <InUse>N</InUse>
   <PagingMethod>RowNum</PagingMethod>
   <canCreateRecords Source="Database">Y</canCreateRecords>
   <canEditRecords Source="Database">Y</canEditRecords>
@@ -82,4 +81,5 @@
   <MenuName>Sex</MenuName>
   <QSPath>../Sex/Sex-QuickSelector.aspx</QSPath>
   <TableCodeName>Sex</TableCodeName>
+  <TableStoredProcPrefix>pRatTrapSex</TableStoredProcPrefix>
 </XMLDefinition>

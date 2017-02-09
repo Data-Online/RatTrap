@@ -369,20 +369,6 @@
     <Compile Include="Traps\Add-Traps.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Traps\Edit-Traps.aspx.cs">
-      <DependentUpon>Edit-Traps.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Traps\Edit-Traps.Controls.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Traps\Show-Traps.aspx.cs">
-      <DependentUpon>Show-Traps.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Traps\Show-Traps.Controls.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="TrapTypes\Add-TrapTypes.aspx.cs">
       <DependentUpon>Add-TrapTypes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -416,13 +402,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Users\Edit-Users.Controls.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Users\Show-Users.aspx.cs">
-      <DependentUpon>Show-Users.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Users\Show-Users.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Groups\Groups-QuickSelector.aspx.cs">
@@ -515,25 +494,11 @@
       <DependentUpon>SignOut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.aspx.cs">
-      <DependentUpon>Show-UsersGroupsLink-Gallery.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.Controls.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Traps\Edit-Traps-Table.aspx.cs">
       <DependentUpon>Edit-Traps-Table.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Traps\Edit-Traps-Table.Controls.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery1.aspx.cs">
-      <DependentUpon>Show-UsersGroupsLink-Gallery1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery1.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table.aspx.cs">
@@ -543,18 +508,123 @@
     <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Projects\Edit-Projects-Table.aspx.cs" >
+    <Compile Include="Projects\Edit-Projects-Table.aspx.cs">
       <DependentUpon>Edit-Projects-Table.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projects\Edit-Projects-Table.Controls.cs" >
+    <Compile Include="Projects\Edit-Projects-Table.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\Areas-QuickSelector.aspx.cs" >
+    <Compile Include="Areas\Areas-QuickSelector.aspx.cs">
       <DependentUpon>Areas-QuickSelector.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Areas\Areas-QuickSelector.Controls.cs" >
+    <Compile Include="Areas\Areas-QuickSelector.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaitTypes\BaitTypes-QuickSelector.aspx.cs">
+      <DependentUpon>BaitTypes-QuickSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaitTypes\BaitTypes-QuickSelector.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sex\Sex-QuickSelector.aspx.cs">
+      <DependentUpon>Sex-QuickSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sex\Sex-QuickSelector.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Species\Species-QuickSelector.aspx.cs">
+      <DependentUpon>Species-QuickSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Species\Species-QuickSelector.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Traps\Show-Traps-Table.aspx.cs">
+      <DependentUpon>Show-Traps-Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traps\Show-Traps-Table.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Traps\Edit-Traps.aspx.cs">
+      <DependentUpon>Edit-Traps.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traps\Edit-Traps.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapRecords\Add-TrapRecords.aspx.cs">
+      <DependentUpon>Add-TrapRecords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrapRecords\Add-TrapRecords.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapRecords\Edit-TrapRecords.aspx.cs">
+      <DependentUpon>Edit-TrapRecords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrapRecords\Edit-TrapRecords.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Projects\Add-Projects.aspx.cs">
+      <DependentUpon>Add-Projects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Projects\Add-Projects.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Add-Areas.aspx.cs">
+      <DependentUpon>Add-Areas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Areas\Add-Areas.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Edit-Areas.aspx.cs">
+      <DependentUpon>Edit-Areas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Areas\Edit-Areas.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Show-Areas.aspx.cs">
+      <DependentUpon>Show-Areas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Areas\Show-Areas.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Projects\Show-Projects-Table.aspx.cs">
+      <DependentUpon>Show-Projects-Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Projects\Show-Projects-Table.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Users\Show-Users-Detail.aspx.cs">
+      <DependentUpon>Show-Users-Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Show-Users-Detail.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Users\Show-Users.aspx.cs">
+      <DependentUpon>Show-Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Show-Users.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Projects\Show-Projects.aspx.cs" >
+      <DependentUpon>Show-Projects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Projects\Show-Projects.Controls.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -641,14 +711,11 @@
     <Content Include="TrapNotes\Edit-TrapNotes.aspx" />
     <Content Include="TrapNotes\Show-TrapNotes.aspx" />
     <Content Include="Traps\Add-Traps.aspx" />
-    <Content Include="Traps\Edit-Traps.aspx" />
-    <Content Include="Traps\Show-Traps.aspx" />
     <Content Include="TrapTypes\Add-TrapTypes.aspx" />
     <Content Include="TrapTypes\Edit-TrapTypes.aspx" />
     <Content Include="TrapTypes\Show-TrapTypes.aspx" />
     <Content Include="Users\Add-Users.aspx" />
     <Content Include="Users\Edit-Users.aspx" />
-    <Content Include="Users\Show-Users.aspx" />
     <Content Include="Groups\Groups-QuickSelector.aspx" />
     <Content Include="Projects\Projects-QuickSelector.aspx" />
     <Content Include="Users\Users-QuickSelector.aspx" />
@@ -664,7 +731,6 @@
     <Content Include="Security\SendUserInfo.aspx" />
     <Content Include="Security\SignIn.aspx" />
     <Content Include="Security\SignOut.aspx" />
-    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery.aspx" />
     <Content Include="Traps\Edit-Traps-Table.aspx" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\ASCXControlPlaceholder.gif" />
@@ -864,10 +930,24 @@
     <Content Include="App_GlobalResources\BaseClasses.resx" />
     <Content Include="App_GlobalResources\RatTrap.en-NZ.resx" />
     <Content Include="App_GlobalResources\RatTrap.resx" />
-    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Gallery1.aspx" />
     <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Table.aspx" />
-    <Content Include="Projects\Edit-Projects-Table.aspx"  />
-    <Content Include="Areas\Areas-QuickSelector.aspx"  />
+    <Content Include="Projects\Edit-Projects-Table.aspx" />
+    <Content Include="Areas\Areas-QuickSelector.aspx" />
+    <Content Include="BaitTypes\BaitTypes-QuickSelector.aspx" />
+    <Content Include="Sex\Sex-QuickSelector.aspx" />
+    <Content Include="Species\Species-QuickSelector.aspx" />
+    <Content Include="Traps\Show-Traps-Table.aspx" />
+    <Content Include="Traps\Edit-Traps.aspx" />
+    <Content Include="TrapRecords\Add-TrapRecords.aspx" />
+    <Content Include="TrapRecords\Edit-TrapRecords.aspx" />
+    <Content Include="Projects\Add-Projects.aspx" />
+    <Content Include="Areas\Add-Areas.aspx" />
+    <Content Include="Areas\Edit-Areas.aspx" />
+    <Content Include="Areas\Show-Areas.aspx" />
+    <Content Include="Projects\Show-Projects-Table.aspx" />
+    <Content Include="Users\Show-Users-Detail.aspx" />
+    <Content Include="Users\Show-Users.aspx" />
+    <Content Include="Projects\Show-Projects.aspx"  />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

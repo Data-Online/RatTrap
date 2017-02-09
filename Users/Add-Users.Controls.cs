@@ -91,19 +91,11 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
               // Register the event handlers.
 
           
-              this.CreatedBy.SelectedIndexChanged += CreatedBy_SelectedIndexChanged;                  
-                
-              this.UpdatedBy.SelectedIndexChanged += UpdatedBy_SelectedIndexChanged;                  
-                
-              this.CreatedOn.TextChanged += CreatedOn_TextChanged;
-            
               this.FirstName.TextChanged += FirstName_TextChanged;
             
               this.LastName.TextChanged += LastName_TextChanged;
             
               this.Password.TextChanged += Password_TextChanged;
-            
-              this.UpdatedOn.TextChanged += UpdatedOn_TextChanged;
             
               this.UserName0.TextChanged += UserName0_TextChanged;
             
@@ -183,10 +175,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
 
             // Call the Set methods for each controls on the panel
         
-                SetCreatedBy();
-                SetCreatedByLabel();
-                SetCreatedOn();
-                SetCreatedOnLabel();
                 SetFirstName();
                 SetFirstNameLabel();
                 SetLastName();
@@ -194,10 +182,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 SetPassword();
                 SetPasswordLabel();
                 
-                SetUpdatedBy();
-                SetUpdatedByLabel();
-                SetUpdatedOn();
-                SetUpdatedOnLabel();
                 SetUserName0();
                 SetUserNameLabel();
 
@@ -223,144 +207,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
         }
         
         
-        public virtual void SetCreatedBy()
-        {
-            				
-        
-        
-            string selectedValue = null;
-            
-            // figure out the selectedValue
-                  
-            
-            
-            // Set the CreatedBy QuickSelector on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.Users database record.
-            
-            // this.DataSource is the DatabaseTheRatTrap%dbo.Users record retrieved from the database.
-            // this.CreatedBy is the ASP:QuickSelector on the webpage.
-            
-            // You can modify this method directly, or replace it with a call to
-            //     base.SetCreatedBy();
-            // and add your own custom code before or after the call to the base function.
-
-            
-            // Default Value could also be NULL.
-            if (this.DataSource != null && this.DataSource.IsCreated)
-            {
-                
-                selectedValue = this.DataSource.CreatedBy.ToString();
-                
-            }
-            else
-            {
-                
-            
-                selectedValue = EvaluateFormula("URL(\"CreatedBy\")");
-                
-            }
-
-            
-            // Add the Please Select item.
-            if (selectedValue == null || selectedValue == "")
-                  MiscUtils.ResetSelectedItem(this.CreatedBy, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-                        
-                  
-            // Populate the item(s) to the control
-            
-            this.CreatedBy.SetFieldMaxLength(50);
-            
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
-            FormulaEvaluator evaluator = new FormulaEvaluator();
-              
-            if (selectedValue != null &&
-                selectedValue.Trim() != "" &&
-                !MiscUtils.SetSelectedValue(this.CreatedBy, selectedValue) &&
-                !MiscUtils.SetSelectedDisplayText(this.CreatedBy, selectedValue))
-            {
-
-                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Users.UserId = selectedValue
-                    
-                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
-                WhereClause whereClause2 = new WhereClause();
-                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(UsersTable.UserId0, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
-                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
-
-                // Execute the query
-                try
-                {
-                    UsersRecord[] rc = UsersTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
-                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
-                    // if find a record, add it to the dropdown and set it as selected item
-                    if (rc != null && rc.Length == 1)
-                    {
-                        UsersRecord itemValue = rc[0];
-                        string cvalue = null;
-                        string fvalue = null;                        
-                        if (itemValue.UserId0Specified)
-                            cvalue = itemValue.UserId0.ToString(); 
-                        Boolean _isExpandableNonCompositeForeignKey = UsersTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(UsersTable.CreatedBy);
-                        if(_isExpandableNonCompositeForeignKey && UsersTable.CreatedBy.IsApplyDisplayAs)
-                            fvalue = UsersTable.GetDFKA(itemValue, UsersTable.CreatedBy);
-                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(UsersTable.UserId0);
-                            					
-                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-                        MiscUtils.ResetSelectedItem(this.CreatedBy, new ListItem(fvalue, cvalue));                      
-                    }
-                }
-                catch
-                {
-                }
-
-                    					
-            }					
-                        
-              string url = this.ModifyRedirectUrl("../Users/Users-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.CreatedBy.ClientID + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= LastName + \", \" + FirstName")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("UserId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.CreatedBy.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(CreatedBy.AutoPostBack).ToLower() + ", event); return false;";
-                  
-                
-                  
-        }
-                
-        public virtual void SetCreatedOn()
-        {
-            
-                    
-            // Set the CreatedOn TextBox on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.Users database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.Users record retrieved from the database.
-            // this.CreatedOn is the ASP:TextBox on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.CreatedOnSpecified) {
-                								
-                // If the CreatedOn is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(UsersTable.CreatedOn, @"g");
-                                
-                this.CreatedOn.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // CreatedOn is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.CreatedOn.Text = UsersTable.CreatedOn.Format(UsersTable.CreatedOn.DefaultValue, @"g");
-            		
-            }
-            
-              this.CreatedOn.TextChanged += CreatedOn_TextChanged;
-                               
-        }
-                
         public virtual void SetFirstName()
         {
             
@@ -460,144 +306,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
                                
         }
                 
-        public virtual void SetUpdatedBy()
-        {
-            				
-        
-        
-            string selectedValue = null;
-            
-            // figure out the selectedValue
-                  
-            
-            
-            // Set the UpdatedBy QuickSelector on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.Users database record.
-            
-            // this.DataSource is the DatabaseTheRatTrap%dbo.Users record retrieved from the database.
-            // this.UpdatedBy is the ASP:QuickSelector on the webpage.
-            
-            // You can modify this method directly, or replace it with a call to
-            //     base.SetUpdatedBy();
-            // and add your own custom code before or after the call to the base function.
-
-            
-            // Default Value could also be NULL.
-            if (this.DataSource != null && this.DataSource.IsCreated)
-            {
-                
-                selectedValue = this.DataSource.UpdatedBy.ToString();
-                
-            }
-            else
-            {
-                
-            
-                selectedValue = EvaluateFormula("URL(\"UpdatedBy\")");
-                
-            }
-
-            
-            // Add the Please Select item.
-            if (selectedValue == null || selectedValue == "")
-                  MiscUtils.ResetSelectedItem(this.UpdatedBy, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-                        
-                  
-            // Populate the item(s) to the control
-            
-            this.UpdatedBy.SetFieldMaxLength(50);
-            
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
-            FormulaEvaluator evaluator = new FormulaEvaluator();
-              
-            if (selectedValue != null &&
-                selectedValue.Trim() != "" &&
-                !MiscUtils.SetSelectedValue(this.UpdatedBy, selectedValue) &&
-                !MiscUtils.SetSelectedDisplayText(this.UpdatedBy, selectedValue))
-            {
-
-                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Users.UserId = selectedValue
-                    
-                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
-                WhereClause whereClause2 = new WhereClause();
-                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(UsersTable.UserId0, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
-                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
-
-                // Execute the query
-                try
-                {
-                    UsersRecord[] rc = UsersTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
-                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
-                    // if find a record, add it to the dropdown and set it as selected item
-                    if (rc != null && rc.Length == 1)
-                    {
-                        UsersRecord itemValue = rc[0];
-                        string cvalue = null;
-                        string fvalue = null;                        
-                        if (itemValue.UserId0Specified)
-                            cvalue = itemValue.UserId0.ToString(); 
-                        Boolean _isExpandableNonCompositeForeignKey = UsersTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(UsersTable.UpdatedBy);
-                        if(_isExpandableNonCompositeForeignKey && UsersTable.UpdatedBy.IsApplyDisplayAs)
-                            fvalue = UsersTable.GetDFKA(itemValue, UsersTable.UpdatedBy);
-                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(UsersTable.UserId0);
-                            					
-                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-                        MiscUtils.ResetSelectedItem(this.UpdatedBy, new ListItem(fvalue, cvalue));                      
-                    }
-                }
-                catch
-                {
-                }
-
-                    					
-            }					
-                        
-              string url = this.ModifyRedirectUrl("../Users/Users-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.UpdatedBy.ClientID + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= LastName + \", \" + FirstName")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("UserId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.UpdatedBy.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(UpdatedBy.AutoPostBack).ToLower() + ", event); return false;";
-                  
-                
-                  
-        }
-                
-        public virtual void SetUpdatedOn()
-        {
-            
-                    
-            // Set the UpdatedOn TextBox on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.Users database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.Users record retrieved from the database.
-            // this.UpdatedOn is the ASP:TextBox on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.UpdatedOnSpecified) {
-                								
-                // If the UpdatedOn is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(UsersTable.UpdatedOn, @"g");
-                                
-                this.UpdatedOn.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // UpdatedOn is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.UpdatedOn.Text = UsersTable.UpdatedOn.Format(UsersTable.UpdatedOn.DefaultValue, @"g");
-            		
-            }
-            
-              this.UpdatedOn.TextChanged += UpdatedOn_TextChanged;
-                               
-        }
-                
         public virtual void SetUserName0()
         {
             
@@ -631,18 +339,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
                                
         }
                 
-        public virtual void SetCreatedByLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetCreatedOnLabel()
-                  {
-                  
-                    
-        }
-                
         public virtual void SetFirstNameLabel()
                   {
                   
@@ -656,18 +352,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
         }
                 
         public virtual void SetPasswordLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetUpdatedByLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetUpdatedOnLabel()
                   {
                   
                     
@@ -835,45 +519,13 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
       
             // Call the Get methods for each of the user interface controls.
         
-            GetCreatedBy();
-            GetCreatedOn();
             GetFirstName();
             GetLastName();
             GetPassword();
-            GetUpdatedBy();
-            GetUpdatedOn();
             GetUserName0();
         }
         
         
-        public virtual void GetCreatedBy()
-        {
-         // Retrieve the value entered by the user on the CreatedBy ASP:QuickSelector, and
-            // save it into the CreatedBy field in DataSource DatabaseTheRatTrap%dbo.Users record.
-            
-            // Custom validation should be performed in Validate, not here.
-            
-            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.CreatedBy), UsersTable.CreatedBy);			
-                			 
-        }
-                
-        public virtual void GetCreatedOn()
-        {
-            
-            // Retrieve the value entered by the user on the CreatedOn ASP:TextBox, and
-            // save it into the CreatedOn field in DataSource DatabaseTheRatTrap%dbo.Users record.
-            // Parse will also validate the date to ensure it is of the proper format
-            // and a valid date.  The format is verified based on the current culture 
-            // settings including the order of month, day and year and the separator character.
-            // Parse throws an exception if the date is invalid.
-            // Custom validation should be performed in Validate, not here.
-                    
-            // Save the value to data source
-            this.DataSource.Parse(this.CreatedOn.Text, UsersTable.CreatedOn);							
-                          
-                      
-        }
-                
         public virtual void GetFirstName()
         {
             
@@ -910,36 +562,15 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
             
             // Custom validation should be performed in Validate, not here.
                     
-                if (this.Password.Text.Trim(new char[] {'*'}) != "" || this.Password.Text.Length != 6) 
-                    this.DataSource.Parse(this.Password.Text, UsersTable.Password);			                        
-                      
-        }
-                
-        public virtual void GetUpdatedBy()
-        {
-         // Retrieve the value entered by the user on the UpdatedBy ASP:QuickSelector, and
-            // save it into the UpdatedBy field in DataSource DatabaseTheRatTrap%dbo.Users record.
-            
-            // Custom validation should be performed in Validate, not here.
-            
-            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.UpdatedBy), UsersTable.UpdatedBy);			
-                			 
-        }
-                
-        public virtual void GetUpdatedOn()
-        {
-            
-            // Retrieve the value entered by the user on the UpdatedOn ASP:TextBox, and
-            // save it into the UpdatedOn field in DataSource DatabaseTheRatTrap%dbo.Users record.
-            // Parse will also validate the date to ensure it is of the proper format
-            // and a valid date.  The format is verified based on the current culture 
-            // settings including the order of month, day and year and the separator character.
-            // Parse throws an exception if the date is invalid.
-            // Custom validation should be performed in Validate, not here.
-                    
-            // Save the value to data source
-            this.DataSource.Parse(this.UpdatedOn.Text, UsersTable.UpdatedOn);							
-                          
+            if (!(this.Password.TextMode == TextBoxMode.Password) || !(this.Password.Text.Trim() == "")) {
+                        
+                string PasswordformattedValue = this.DataSource.Format(UsersTable.Password);
+                            
+                if (this.Password.Text.Trim() != PasswordformattedValue) {
+                    // Save the value to data source
+                    this.DataSource.Parse(this.Password.Text, UsersTable.Password);							
+                }
+            }
                       
         }
                 
@@ -1284,25 +915,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
     
         // Generate set method for buttons
         
-        protected virtual void CreatedBy_SelectedIndexChanged(object sender, EventArgs args)
-        {
-          									
-
-        }
-                      
-                    
-        protected virtual void UpdatedBy_SelectedIndexChanged(object sender, EventArgs args)
-        {
-          									
-
-        }
-                      
-                    
-        protected virtual void CreatedOn_TextChanged(object sender, EventArgs args)
-        {
-                    
-              }
-            
         protected virtual void FirstName_TextChanged(object sender, EventArgs args)
         {
                     
@@ -1314,11 +926,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
               }
             
         protected virtual void Password_TextChanged(object sender, EventArgs args)
-        {
-                    
-              }
-            
-        protected virtual void UpdatedOn_TextChanged(object sender, EventArgs args)
         {
                     
               }
@@ -1440,30 +1047,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
        
 #region "Helper Properties"
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector CreatedBy {
-            get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CreatedBy");
-            }
-        }              
-            
-        public System.Web.UI.WebControls.Literal CreatedByLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CreatedByLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.TextBox CreatedOn {
-            get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CreatedOn");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal CreatedOnLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CreatedOnLabel");
-            }
-        }
-        
         public System.Web.UI.WebControls.TextBox FirstName {
             get {
                 return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FirstName");
@@ -1503,30 +1086,6 @@ public class BaseUsersRecordControl : RatTrap.UI.BaseApplicationRecordControl
         public System.Web.UI.WebControls.Literal Title0 {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Title0");
-            }
-        }
-        
-        public BaseClasses.Web.UI.WebControls.QuickSelector UpdatedBy {
-            get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UpdatedBy");
-            }
-        }              
-            
-        public System.Web.UI.WebControls.Literal UpdatedByLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UpdatedByLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.TextBox UpdatedOn {
-            get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UpdatedOn");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal UpdatedOnLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UpdatedOnLabel");
             }
         }
         

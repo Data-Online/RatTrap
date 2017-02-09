@@ -14,6 +14,7 @@
     <Layout>Projects\Edit-Projects-Table.html</Layout>
     <DisplayName>Edit-Projects-Table</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
+    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>14345054-21236</CheckSum>
   </Self>
   <ComposedOf>
@@ -541,6 +542,28 @@
       <Type>Table</Type>
       <PanelStyle>EditTable</PanelStyle>
       <Table>DatabaseTheRatTrap%dbo.Projects</Table>
+      <QueryDefinition>
+        <WhereClause>
+          <Position>1</Position>
+          <TableAlias>DatabaseTheRatTrap%dbo.Projects_</TableAlias>
+          <Field>[DatabaseTheRatTrap%dbo.Projects_].[ProjectId]</Field>
+          <Operator>=</Operator>
+          <Operand>
+            <Type>Formula</Type>
+            <Value>URL("Projects")</Value>
+          </Operand>
+          <IgnoreBlankString>Yes</IgnoreBlankString>
+        </WhereClause>
+        <Operators>
+          <Operator xsi:nil="true" />
+        </Operators>
+        <TableAliases>
+          <Alias>
+            <AliasName>DatabaseTheRatTrap%dbo.Projects_</AliasName>
+            <TableName>DatabaseTheRatTrap%dbo.Projects</TableName>
+          </Alias>
+        </TableAliases>
+      </QueryDefinition>
       <PassthroughAttributes>
         <Attribute>
           <Name>HasScrolling</Name>
@@ -557,6 +580,10 @@
         <Attribute>
           <Name>InternalUse:DataSource</Name>
           <Value>TableOrQuery</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSourceArg</Name>
+          <Value />
         </Attribute>
         <Attribute>
           <Name>NumberOfColumns</Name>
@@ -583,6 +610,7 @@
           <Value>Pagination-TotalPages</Value>
         </Attribute>
       </PassthroughAttributes>
+      <OrderBys />
     </ContainedComponent>
     <ContainedComponent>
       <Name>ResetButton</Name>

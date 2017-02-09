@@ -12,7 +12,7 @@ namespace RatTrap.Business
 public class TrapRecordsDefinition
 {
 #region "Definition (XML) for TrapRecordsDefinition table"
-	//Next 240 lines contain Table Definition (XML) for table "TrapRecordsDefinition"
+	//Next 254 lines contain Table Definition (XML) for table "TrapRecordsDefinition"
 	private static string _DefinitionString = "";
 	
 #endregion
@@ -129,30 +129,44 @@ public class TrapRecordsDefinition
          tbf.Append(    "</Column>");
          tbf.Append(    @"<Column InternalName=""3"" Priority=""4"" ColumnNum=""3"">");
          tbf.Append(      @"<columnName>DateOfCheck</columnName>");
-         tbf.Append(      @"<columnUIName>Date Of Check</columnUIName>");
+         tbf.Append(      @"<columnUIName Source=""User"">= &quot;Date Checked&quot;</columnUIName>");
          tbf.Append(      @"<columnType>Date</columnType>");
          tbf.Append(      @"<columnDBType>datetime</columnDBType>");
          tbf.Append(      @"<columnLengthSet></columnLengthSet>");
          tbf.Append(      @"<columnDefault></columnDefault>");
-         tbf.Append(      @"<columnDBDefault></columnDBDefault>");
+         tbf.Append(      @"<columnDBDefault Source=""User""></columnDBDefault>");
          tbf.Append(      @"<columnIndex>N</columnIndex>");
          tbf.Append(      @"<columnUnique>N</columnUnique>");
-         tbf.Append(      @"<columnFunction>notrim</columnFunction>");
-         tbf.Append(      @"<columnFormat>g</columnFormat>");
-         tbf.Append(      @"<columnDBFormat>g</columnDBFormat>");
+         tbf.Append(      @"<columnFunction></columnFunction>");
+         tbf.Append(      @"<columnFormat Source=""User""></columnFormat>");
+         tbf.Append(      @"<columnDBFormat></columnDBFormat>");
          tbf.Append(      @"<columnPK>N</columnPK>");
          tbf.Append(      @"<columnPermanent>N</columnPermanent>");
-         tbf.Append(      @"<columnComputed>N</columnComputed>");
-         tbf.Append(      @"<columnIdentity>N</columnIdentity>");
-         tbf.Append(      @"<columnReadOnly>N</columnReadOnly>");
+         tbf.Append(      @"<columnComputed Source=""User"">N</columnComputed>");
+         tbf.Append(      @"<columnIdentity Source=""User"">N</columnIdentity>");
+         tbf.Append(      @"<columnReadOnly Source=""User"">N</columnReadOnly>");
          tbf.Append(      @"<columnRequired>N</columnRequired>");
          tbf.Append(      @"<columnNotNull>N</columnNotNull>");
-         tbf.Append(      @"<columnCaseSensitive>N</columnCaseSensitive>");
+         tbf.Append(      @"<columnCaseSensitive Source=""User"">N</columnCaseSensitive>");
          tbf.Append(      @"<columnCollation></columnCollation>");
-         tbf.Append(      @"<columnFullText>N</columnFullText>");
+         tbf.Append(      @"<columnFullText Source=""User"">N</columnFullText>");
          tbf.Append(      @"<columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>");
          tbf.Append(      @"<columnTableAliasName></columnTableAliasName>");
          tbf.Append(      @"<applyLabelText>Y</applyLabelText>");
+         tbf.Append(      @"<InternalName>3</InternalName>");
+         tbf.Append(      @"<columnTableClassName></columnTableClassName>");
+         tbf.Append(      @"<applyInitializeReadingRecord>N</applyInitializeReadingRecord>");
+         tbf.Append(      @"<applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>");
+         tbf.Append(      @"<applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>");
+         tbf.Append(      @"<applyValidateInsertingRecord>N</applyValidateInsertingRecord>");
+         tbf.Append(      @"<applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>");
+         tbf.Append(      @"<applyDefaultValue>N</applyDefaultValue>");
+         tbf.Append(      @"<applyDFKA>N</applyDFKA>");
+         tbf.Append(      @"<readingRecordFormula></readingRecordFormula>");
+         tbf.Append(      @"<insertingRecordFormula></insertingRecordFormula>");
+         tbf.Append(      @"<updatingRecordFormula></updatingRecordFormula>");
+         tbf.Append(      @"<insertingFormula></insertingFormula>");
+         tbf.Append(      @"<updatingFormula></updatingFormula>");
          tbf.Append(    "</Column>");
          tbf.Append(    @"<Column InternalName=""4"" Priority=""5"" ColumnNum=""4"">");
          tbf.Append(      @"<columnName>Species</columnName>");

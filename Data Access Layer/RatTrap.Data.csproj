@@ -188,13 +188,58 @@
     <Compile Include="BaseAreasSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapRecordsDefinition.cs" >
+    <Compile Include="TrapRecordsDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapRecordsSqlTable.cs" >
+    <Compile Include="TrapRecordsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapRecordsSqlTable.cs" >
+    <Compile Include="BaseTrapRecordsSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaitTypesDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaitTypesSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseBaitTypesSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SexDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SexSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseSexSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpeciesDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpeciesSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseSpeciesSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectNotesDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectNotesSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseProjectNotesSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreaNotesDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreaNotesSqlTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseAreaNotesSqlTable.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

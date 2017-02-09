@@ -759,27 +759,30 @@
     </ContainedComponent>
     <ContainedComponent>
       <Name>GroupNameLabel</Name>
-      <Type>Literal</Type>
+      <Type>FieldSort</Type>
       <PassthroughAttributes>
         <Attribute>
           <Name>Consumers</Name>
           <Value>GroupsTableControl</Value>
         </Attribute>
         <Attribute>
-          <Name>InternalUse:Field</Name>
+          <Name>Field</Name>
           <Value>GroupName</Value>
         </Attribute>
         <Attribute>
-          <Name>InternalUse:Table</Name>
+          <Name>Table</Name>
           <Value>DatabaseTheRatTrap%dbo.Groups</Value>
         </Attribute>
         <Attribute>
           <Name>Text</Name>
           <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Groups%GroupName</Value>
         </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Sort by GroupName</Value>
+        </Attribute>
       </PassthroughAttributes>
       <InsideControl>GroupsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
       <Name>GroupNameLabel1</Name>
@@ -1630,27 +1633,30 @@
     </ContainedComponent>
     <ContainedComponent>
       <Name>RoleNameLabel</Name>
-      <Type>Literal</Type>
+      <Type>FieldSort</Type>
       <PassthroughAttributes>
         <Attribute>
           <Name>Consumers</Name>
           <Value>Roles1TableControl</Value>
         </Attribute>
         <Attribute>
-          <Name>InternalUse:Field</Name>
+          <Name>Field</Name>
           <Value>RoleName</Value>
         </Attribute>
         <Attribute>
-          <Name>InternalUse:Table</Name>
+          <Name>Table</Name>
           <Value>DatabaseTheRatTrap%dbo.Roles</Value>
         </Attribute>
         <Attribute>
           <Name>Text</Name>
           <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Roles%RoleName</Value>
         </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Sort by RoleName</Value>
+        </Attribute>
       </PassthroughAttributes>
       <InsideControl>Roles1TableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
       <Name>RoleNameLabel1</Name>
@@ -2233,7 +2239,7 @@
         </Attribute>
         <Attribute>
           <Name>InternalUse:ApplyInitializeFormula</Name>
-          <Value>true</Value>
+          <Value>false</Value>
         </Attribute>
         <Attribute>
           <Name>InternalUse:ApplyStaticList</Name>
@@ -3725,7 +3731,11 @@
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;largeText&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;style&lt;/Name&gt;
+            &lt;AttributeValue&gt;text-align:left;&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -3734,7 +3744,7 @@
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -3743,7 +3753,7 @@
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -4610,7 +4620,8 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
+        &lt;Value&gt;&amp;amp;nbsp; 
+&amp;lt;GEN:FIELDLABEL NAME="GroupNameLabel" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -4674,17 +4685,15 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="GroupNameLabel"/&amp;gt; 
-&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="GroupName"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="GroupName" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -5492,7 +5501,8 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
+        &lt;Value&gt;&amp;amp;nbsp; 
+&amp;lt;GEN:FIELDLABEL NAME="RoleNameLabel" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -5556,8 +5566,6 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="RoleNameLabel"/&amp;gt; 
-&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -5566,7 +5574,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="RoleName"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="RoleName" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;

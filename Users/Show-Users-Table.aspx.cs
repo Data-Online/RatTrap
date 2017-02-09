@@ -274,6 +274,8 @@ public partial class Show_Users_Table
                 
         public System.Web.UI.WebControls.Literal FirstNameLabel1;
         
+        public System.Web.UI.WebControls.LinkButton GroupNameLabel;
+        
         public System.Web.UI.WebControls.Literal GroupNameLabel1;
         
         public System.Web.UI.WebControls.ImageButton ImportButton;
@@ -303,6 +305,8 @@ public partial class Show_Users_Table
         public System.Web.UI.WebControls.ImageButton ResetButton1;
         
         public System.Web.UI.WebControls.ImageButton ResetButton2;
+        
+        public System.Web.UI.WebControls.LinkButton RoleNameLabel;
         
         public System.Web.UI.WebControls.Literal RoleNameLabel1;
         

@@ -173,28 +173,6 @@ public partial class Show_Users
         }
         
     
-        [System.Web.Services.WebMethod]
-        public static string[] GetAutoCompletionList_SearchText(string prefixText, int count)
-        {
-            // GetSearchTextCompletionList gets the list of suggestions from the database.
-            // prefixText is the search text typed by the user .
-            // count specifies the number of suggestions to be returned.
-            // Customize by adding code before or after the call to  GetAutoCompletionList_SearchText_Base()
-            // or replace the call to GetAutoCompletionList_SearchText_Base().
-            return GetAutoCompletionList_SearchText_Base(prefixText, count);
-        }
-      
-        [System.Web.Services.WebMethod]
-        public static string[] GetAutoCompletionList_SearchText1(string prefixText, int count)
-        {
-            // GetSearchText1CompletionList gets the list of suggestions from the database.
-            // prefixText is the search text typed by the user .
-            // count specifies the number of suggestions to be returned.
-            // Customize by adding code before or after the call to  GetAutoCompletionList_SearchText1_Base()
-            // or replace the call to GetAutoCompletionList_SearchText1_Base().
-            return GetAutoCompletionList_SearchText1_Base(prefixText, count);
-        }
-      
       protected override void BasePage_PreRender(object sender, EventArgs e)
       {
           base.BasePage_PreRender(sender, e);
@@ -211,14 +189,14 @@ public partial class Show_Users
 
       // Page Event Handlers - buttons, sort, links
       
-        public void EditButton_Click(object sender, EventArgs args)
-        {
-
-          // Click handler for EditButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          EditButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
+//        public void EditButton_Click(object sender, EventArgs args)
+//        {
+//
+//          // Click handler for EditButton.
+//          // Customize by adding code before the call or replace the call to the Base function with your own code.
+//          EditButton_Click_Base(sender, args);
+//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+//        }
             
         public void OKButton_Click(object sender, EventArgs args)
         {
@@ -232,30 +210,15 @@ public partial class Show_Users
     
         // Write out the Set methods
         
-        public void SetUsersTabContainer()
-        {
-            SetUsersTabContainer_Base(); 
-        }
-        
-        public void SetGroupsTableControl()
-        {
-            SetGroupsTableControl_Base(); 
-        }
-        
-        public void SetRoles1TableControl()
-        {
-            SetRoles1TableControl_Base(); 
-        }
-        
         public void SetUsersRecordControl()
         {
             SetUsersRecordControl_Base(); 
         }
         
-        public void SetEditButton()
-        {
-            SetEditButton_Base(); 
-        }              
+//        public void SetEditButton()
+//        {
+//            SetEditButton_Base(); 
+//        }              
             
         public void SetOKButton()
         {
@@ -284,108 +247,26 @@ public partial class Show_Users
         }
         
     
-        public ThemeButtonWithArrow Actions1Button;
-                
-        public ThemeButtonWithArrow Actions2Button;
-                
-        public System.Web.UI.WebControls.Literal CreatedBy;
+        public System.Web.UI.WebControls.Literal eMail;
             
-        public System.Web.UI.WebControls.Literal CreatedByLabel;
+        public System.Web.UI.WebControls.Literal eMailLabel;
         
-        public System.Web.UI.WebControls.Literal CreatedOn;
-            
-        public System.Web.UI.WebControls.Literal CreatedOnLabel;
-        
-        public System.Web.UI.WebControls.ImageButton DialogEditButton;
-        
-        public ThemeButton EditButton;
-                
-        public ThemeButton FilterButton1;
-                
-        public ThemeButton FilterButton2;
-                
-        public ThemeButtonWithArrow Filters1Button;
-                
-        public ThemeButtonWithArrow Filters2Button;
-                
         public System.Web.UI.WebControls.Literal FirstName;
             
-        public System.Web.UI.WebControls.Literal FirstNameLabel;
-        
-        public System.Web.UI.WebControls.Literal GroupNameLabel1;
-        
-        public RatTrap.UI.Controls.Show_Users.GroupsTableControl GroupsTableControl;
-          
         public System.Web.UI.WebControls.Literal LastName;
             
-        public System.Web.UI.WebControls.Literal LastNameLabel;
-        
-        public System.Web.UI.WebControls.ImageButton NewButton;
-        
-        public System.Web.UI.WebControls.ImageButton NewButton1;
-        
         public ThemeButton OKButton;
                 
         public System.Web.UI.WebControls.Literal PageTitle;
         
-        public PaginationModern Pagination;
-                
-        public PaginationModern Pagination1;
-                
-        public System.Web.UI.WebControls.ImageButton RefreshButton;
-        
-        public System.Web.UI.WebControls.ImageButton RefreshButton1;
-        
-        public System.Web.UI.WebControls.ImageButton ResetButton;
-        
-        public System.Web.UI.WebControls.ImageButton ResetButton1;
-        
-        public System.Web.UI.WebControls.Literal RoleNameLabel1;
-        
-        public RatTrap.UI.Controls.Show_Users.Roles1TableControl Roles1TableControl;
-          
-        public System.Web.UI.WebControls.ImageButton SaveButton;
-        
-        public System.Web.UI.WebControls.ImageButton SaveButton1;
-        
-        public System.Web.UI.WebControls.ImageButton SearchButton;
-        
-        public System.Web.UI.WebControls.ImageButton SearchButton1;
-        
-        public System.Web.UI.WebControls.TextBox SearchText;
-        
-        public System.Web.UI.WebControls.TextBox SearchText1;
-        
-        public System.Web.UI.WebControls.DropDownList ShowSelectedFilter;
-        
-        public System.Web.UI.WebControls.DropDownList ShowSelectedFilter1;
-        
-        public System.Web.UI.WebControls.Literal ShowSelectedFilterLabel;
-        
-        public System.Web.UI.WebControls.Literal ShowSelectedFilterLabel1;
-        
-        public System.Web.UI.WebControls.Label SortByLabel1;
-        
-        public System.Web.UI.WebControls.Label SortByLabel2;
-        
         public System.Web.UI.WebControls.Literal Title0;
             
-        public System.Web.UI.WebControls.Literal UpdatedBy;
-            
-        public System.Web.UI.WebControls.Literal UpdatedByLabel;
-        
-        public System.Web.UI.WebControls.Literal UpdatedOn;
-            
-        public System.Web.UI.WebControls.Literal UpdatedOnLabel;
-        
         public System.Web.UI.WebControls.Literal UserName0;
             
         public System.Web.UI.WebControls.Literal UserNameLabel;
         
         public RatTrap.UI.Controls.Show_Users.UsersRecordControl UsersRecordControl;
           
-        public AjaxControlToolkit.TabContainer UsersTabContainer;
-        
         public ValidationSummary ValidationSummary1;
 
   
@@ -407,8 +288,6 @@ public partial class Show_Users
 
           // Setup the pagination events.
         
-                    this.EditButton.Button.Click += EditButton_Click;
-                        
                     this.OKButton.Button.Click += OKButton_Click;
                         
           this.ClearControlsFromSession();    
@@ -563,14 +442,6 @@ public partial class Show_Users
           switch (control)
           {
           
-              case "GroupsTableControl":
-                 SetGroupsTableControl();
-                 break;
-          
-              case "Roles1TableControl":
-                 SetRoles1TableControl();
-                 break;
-          
               case "UsersRecordControl":
                  SetUsersRecordControl();
                  break;
@@ -586,10 +457,6 @@ public partial class Show_Users
       
         this.UsersRecordControl.SaveData();
         
-            this.GroupsTableControl.SaveData();
-          
-            this.Roles1TableControl.SaveData();
-          
       }
       
      
@@ -661,28 +528,6 @@ public partial class Show_Users
       }  
       
         
-    public static string[] GetAutoCompletionList_SearchText_Base(string prefixText, int count)
-    {
-        // Since this method is a shared/static method it does not maintain information about page or controls within the page.
-        // Hence we can not invoke any method associated with any controls.
-        // So, if we need to use any control in the page we need to instantiate it.
-        RatTrap.UI.Controls.Show_Users.Roles1TableControl control = new RatTrap.UI.Controls.Show_Users.Roles1TableControl();
-        
-        return control.GetAutoCompletionList_SearchText(prefixText, count);
-            
-    }
-      
-    public static string[] GetAutoCompletionList_SearchText1_Base(string prefixText, int count)
-    {
-        // Since this method is a shared/static method it does not maintain information about page or controls within the page.
-        // Hence we can not invoke any method associated with any controls.
-        // So, if we need to use any control in the page we need to instantiate it.
-        RatTrap.UI.Controls.Show_Users.GroupsTableControl control = new RatTrap.UI.Controls.Show_Users.GroupsTableControl();
-        
-        return control.GetAutoCompletionList_SearchText1(prefixText, count);
-            
-    }
-      
 
     // Load data from database into UI controls.
     // Modify LoadData in Section 1 above to customize.  Or override DataBind() in
@@ -702,19 +547,11 @@ public partial class Show_Users
                 this.DataBind();
                 
                 
-                
-            SetUsersTabContainer(); 
-          
+                    
     
                 // Load and bind data for each record and table UI control.
                 
         SetUsersRecordControl();
-        
-          SetGroupsTableControl();
-
-        
-          SetRoles1TableControl();
-
         
     
                 // Load data for chart.
@@ -722,19 +559,8 @@ public partial class Show_Users
             
                 // initialize aspx controls
                 
-                SetEditButton();
-              
                 SetOKButton();
               
-                //Set the corresponding menu item to be highlighted for this page
-                System.Web.UI.MasterPage pageMaster = this.Master;
-                if (!(pageMaster == null)) {
-                IMenuComponent menuComponent = ((IMenuComponent)(this.Master.FindControl("_Menu")));
-                    if (!(menuComponent == null)) {
-                        menuComponent.HiliteSettings = "UsersMenuItem";
-                    }
-                }
-            
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -816,39 +642,6 @@ public partial class Show_Users
                 
         // Write out the Set methods
         
-        public void SetUsersTabContainer_Base()           
-        
-        {
-                            
-                   
-            if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "true") 
-                MiscUtils.FindControlRecursively(this, "UsersTabContainer").Visible = true;
-            else if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "false") 
-                MiscUtils.FindControlRecursively(this, "UsersTabContainer").Visible = false;
-         
-  
-        }      
-      
-        public void SetGroupsTableControl_Base()           
-        
-        {        
-            if (GroupsTableControl.Visible)
-            {
-                GroupsTableControl.LoadData();
-                GroupsTableControl.DataBind();
-            }
-        }
-      
-        public void SetRoles1TableControl_Base()           
-        
-        {        
-            if (Roles1TableControl.Visible)
-            {
-                Roles1TableControl.LoadData();
-                Roles1TableControl.DataBind();
-            }
-        }
-      
         public void SetUsersRecordControl_Base()           
         
         {        
@@ -859,13 +652,6 @@ public partial class Show_Users
             }
         }
       
-        public void SetEditButton_Base()                
-              
-        {
-        
-   
-        }
-            
         public void SetOKButton_Base()                
               
         {
@@ -878,53 +664,6 @@ public partial class Show_Users
                 
 
         // Write out event methods for the page events
-        
-        // event handler for Button
-        public void EditButton_Click_Base(object sender, EventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Users/Edit-Users.aspx?Users={PK}";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
-                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.ShouldSaveControlsToSession = true;
-      this.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
         
         // event handler for Button
         public void OKButton_Click_Base(object sender, EventArgs args)

@@ -263,12 +263,6 @@ public partial class Add_Users
     
         public ThemeButton CancelButton;
                 
-        public BaseClasses.Web.UI.WebControls.QuickSelector CreatedBy;
-            
-        public System.Web.UI.WebControls.Literal CreatedByLabel;
-        
-        public System.Web.UI.WebControls.Literal CreatedOnLabel;
-        
         public System.Web.UI.WebControls.Literal FirstNameLabel;
         
         public System.Web.UI.WebControls.Literal LastNameLabel;
@@ -283,12 +277,6 @@ public partial class Add_Users
                 
         public System.Web.UI.WebControls.Literal Title0;
             
-        public BaseClasses.Web.UI.WebControls.QuickSelector UpdatedBy;
-            
-        public System.Web.UI.WebControls.Literal UpdatedByLabel;
-        
-        public System.Web.UI.WebControls.Literal UpdatedOnLabel;
-        
         public System.Web.UI.WebControls.Literal UserNameLabel;
         
         public RatTrap.UI.Controls.Add_Users.UsersRecordControl UsersRecordControl;

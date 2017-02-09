@@ -179,6 +179,38 @@ public class BaseAreasRecord : PrimaryKeyRecord
 		this.SetValue(cv, TableUtils.LatColumn);
 	}
 	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Areas_.Name field.
+	/// </summary>
+	public ColumnValue GetNameValue()
+	{
+		return this.GetValue(TableUtils.NameColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Areas_.Name field.
+	/// </summary>
+	public string GetNameFieldValue()
+	{
+		return this.GetValue(TableUtils.NameColumn).ToString();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Name field.
+	/// </summary>
+	public void SetNameFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.NameColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Name field.
+	/// </summary>
+	public void SetNameFieldValue(string val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.NameColumn);
+	}
+	/// <summary>
 	/// This is a convenience method that provides direct access to the value of the record's Areas_.Long field.
 	/// </summary>
 	public ColumnValue GetLong0Value()
@@ -209,64 +241,6 @@ public class BaseAreasRecord : PrimaryKeyRecord
 	{
 		ColumnValue cv = new ColumnValue(val);
 		this.SetValue(cv, TableUtils.Long0Column);
-	}
-	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's Areas_.Notes field.
-	/// </summary>
-	public ColumnValue GetNotesValue()
-	{
-		return this.GetValue(TableUtils.NotesColumn);
-	}
-
-	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's Areas_.Notes field.
-	/// </summary>
-	public Int32 GetNotesFieldValue()
-	{
-		return this.GetValue(TableUtils.NotesColumn).ToInt32();
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Notes field.
-	/// </summary>
-	public void SetNotesFieldValue(ColumnValue val)
-	{
-		this.SetValue(val, TableUtils.NotesColumn);
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Notes field.
-	/// </summary>
-	public void SetNotesFieldValue(string val)
-	{
-		this.SetString(val, TableUtils.NotesColumn);
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Notes field.
-	/// </summary>
-	public void SetNotesFieldValue(double val)
-	{
-		ColumnValue cv = new ColumnValue(val);
-		this.SetValue(cv, TableUtils.NotesColumn);
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Notes field.
-	/// </summary>
-	public void SetNotesFieldValue(decimal val)
-	{
-		ColumnValue cv = new ColumnValue(val);
-		this.SetValue(cv, TableUtils.NotesColumn);
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Notes field.
-	/// </summary>
-	public void SetNotesFieldValue(long val)
-	{
-		ColumnValue cv = new ColumnValue(val);
-		this.SetValue(cv, TableUtils.NotesColumn);
 	}
 
 
@@ -361,6 +335,49 @@ public class BaseAreasRecord : PrimaryKeyRecord
 		}
 	}
 	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Areas_.Name field.
+	/// </summary>
+	public string Name
+	{
+		get
+		{
+			return this.GetValue(TableUtils.NameColumn).ToString();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.NameColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool NameSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.NameColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Name field.
+	/// </summary>
+	public string NameDefault
+	{
+		get
+		{
+			return TableUtils.NameColumn.DefaultValue;
+		}
+	}
+	/// <summary>
 	/// This is a property that provides direct access to the value of the record's Areas_.Long field.
 	/// </summary>
 	public string Long0
@@ -401,49 +418,6 @@ public class BaseAreasRecord : PrimaryKeyRecord
 		get
 		{
 			return TableUtils.Long0Column.DefaultValue;
-		}
-	}
-	/// <summary>
-	/// This is a property that provides direct access to the value of the record's Areas_.Notes field.
-	/// </summary>
-	public Int32 Notes
-	{
-		get
-		{
-			return this.GetValue(TableUtils.NotesColumn).ToInt32();
-		}
-		set
-		{
-			ColumnValue cv = new ColumnValue(value);
-			this.SetValue(cv, TableUtils.NotesColumn);
-		}
-	}
-
-
-	/// <summary>
-	/// This is a convenience method that can be used to determine that the column is set.
-	/// </summary>
-	public bool NotesSpecified
-	{
-		get
-		{
-			ColumnValue val = this.GetValue(TableUtils.NotesColumn);
-            if (val == null || val.IsNull)
-            {
-                return false;
-            }
-            return true;
-		}
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Areas_.Notes field.
-	/// </summary>
-	public string NotesDefault
-	{
-		get
-		{
-			return TableUtils.NotesColumn.DefaultValue;
 		}
 	}
 

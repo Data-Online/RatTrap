@@ -88,8 +88,8 @@
 	</asp:ImageButton>
                                   
                                     <br /><br />
-                                  </td><td class="tableCellLabel"><asp:Literal runat="server" id="FirstName"></asp:Literal> 
-<asp:Literal runat="server" id="LastName"></asp:Literal></td><td class="tableCellValue"><asp:Literal runat="server" id="UserNameLabel" Text="User Name">	</asp:Literal></td><td class="tableCellLabel"><asp:Literal runat="server" id="UserName0"></asp:Literal></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr id="UsersTableControlAltRow" runat="server"><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableCellValue" colspan="6"><BaseClasses:TabContainer runat="server" id="UsersTabContainer" panellayout="Tabbed">
+                                  </td><td class="largeText" style="text-align:left;"><asp:Literal runat="server" id="FirstName"></asp:Literal> 
+<asp:Literal runat="server" id="LastName"></asp:Literal></td><td class="tableCellLabel"><asp:Literal runat="server" id="UserNameLabel" Text="User Name">	</asp:Literal></td><td class="tableCellValue"><asp:Literal runat="server" id="UserName0"></asp:Literal></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr id="UsersTableControlAltRow" runat="server"><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableCellValue" colspan="6"><BaseClasses:TabContainer runat="server" id="UsersTabContainer" panellayout="Tabbed">
  <BaseClasses:TabPanel runat="server" id="GroupsTabPanel" HeaderText="Groups">	<ContentTemplate>
   <RatTrap:GroupsTableControl runat="server" id="GroupsTableControl">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td></td><td></td><td></td></tr><tr><td class="panelHeaderL"></td><td class="dh">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="dhel"><img src="../Images/space.gif" alt="" /></td><td class="dhb"></td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0" style="width: 100%;"><tr><td></td><td class="prbbc"></td><td class="prbbc"></td><td><div id="Actions2Div" runat="server" class="popupWrapper">
@@ -134,11 +134,11 @@
 
                 </td><td class="panelHeaderR"></td></tr><tr><td></td><td>
                   <asp:panel id="CollapsibleRegion2" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tre">
-                    <table id="GroupsTableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thcnb"></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th></tr><asp:Repeater runat="server" id="GroupsTableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:GroupsTableControlRow runat="server" id="GroupsTableControlRow">
+                    <table id="GroupsTableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thcnb"></th><th class="thc">&nbsp;</th><th class="thc">&nbsp; 
+<asp:LinkButton runat="server" id="GroupNameLabel" tooltip="Sort by GroupName" Text="Group Name" CausesValidation="False">	</asp:LinkButton></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th></tr><asp:Repeater runat="server" id="GroupsTableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:GroupsTableControlRow runat="server" id="GroupsTableControlRow">
 <tr><td class="tableCellSelectCheckbox">
                       <asp:CheckBox runat="server" id="SelectRow2" onclick="moveToThisTableRow(this);">	</asp:CheckBox>
-                    </td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupNameLabel" Text="Group Name">	</asp:Literal> 
-</td><td class="tableCellValue"><asp:Literal runat="server" id="GroupName"></asp:Literal> </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:GroupsTableControlRow>
+                    </td><td class="tableCellValue"></td><td class="tableCellValue"><asp:Literal runat="server" id="GroupName"></asp:Literal></td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:GroupsTableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>
@@ -200,11 +200,11 @@
 
                 </td><td class="panelHeaderR"></td></tr><tr><td></td><td>
                   <asp:panel id="CollapsibleRegion1" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tre">
-                    <table id="Roles1TableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thcnb"></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th></tr><asp:Repeater runat="server" id="Roles1TableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:Roles1TableControlRow runat="server" id="Roles1TableControlRow">
+                    <table id="Roles1TableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thcnb"></th><th class="thc">&nbsp;</th><th class="thc">&nbsp; 
+<asp:LinkButton runat="server" id="RoleNameLabel" tooltip="Sort by RoleName" Text="Role Name" CausesValidation="False">	</asp:LinkButton></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th></tr><asp:Repeater runat="server" id="Roles1TableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:Roles1TableControlRow runat="server" id="Roles1TableControlRow">
 <tr><td class="tableCellSelectCheckbox">
                       <asp:CheckBox runat="server" id="SelectRow1" onclick="moveToThisTableRow(this);">	</asp:CheckBox>
-                    </td><td class="tableCellLabel"><asp:Literal runat="server" id="RoleNameLabel" Text="Role Name">	</asp:Literal> 
-</td><td class="tableCellValue"><asp:Literal runat="server" id="RoleName"></asp:Literal> </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:Roles1TableControlRow>
+                    </td><td class="tableCellLabel"></td><td class="tableCellValue"><asp:Literal runat="server" id="RoleName"></asp:Literal></td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:Roles1TableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>

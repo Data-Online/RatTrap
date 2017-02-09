@@ -208,7 +208,6 @@ public class BaseGroupsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             // Call the Set methods for each controls on the panel
         
                 SetGroupName();
-                SetGroupNameLabel();
                 
 
       
@@ -288,12 +287,6 @@ public class BaseGroupsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 this.GroupName.Text = "&nbsp;";
             }
                                      
-        }
-                
-        public virtual void SetGroupNameLabel()
-                  {
-                  
-                    
         }
                 
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
@@ -691,12 +684,6 @@ public class BaseGroupsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             }
         }
             
-        public System.Web.UI.WebControls.Literal GroupNameLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupNameLabel");
-            }
-        }
-        
         public System.Web.UI.WebControls.CheckBox SelectRow2 {
             get {
                 return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SelectRow2");
@@ -905,10 +892,6 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
             if (this.InSession(this.ShowSelectedFilter1))
             initialVal = this.GetFromSession(this.ShowSelectedFilter1);
             
-              else
-              
-              initialVal = EvaluateFormula("\"--Included--\"");
-            
 
             if (initialVal != "") {
             
@@ -966,6 +949,8 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
         
        // Setup the sorting events.
         
+              this.GroupNameLabel.Click += GroupNameLabel_Click;
+            
             // Setup the button events.
           
                     this.NewButton2.Click += NewButton2_Click;
@@ -1290,6 +1275,7 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
                 
                 
                 SetGroupNameFilter();
+                SetGroupNameLabel();
                 SetGroupNameLabel1();
                 
                 
@@ -2225,6 +2211,12 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
       
         // Create Set, WhereClause, and Populate Methods
         
+        public virtual void SetGroupNameLabel()
+                  {
+                  
+                    
+        }
+                
         public virtual void SetGroupNameLabel1()
                   {
                   
@@ -2887,6 +2879,36 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
 
         // Generate the event handling functions for sorting events.
         
+        public virtual void GroupNameLabel_Click(object sender, EventArgs args)
+        {
+            //Sorts by GroupName when clicked.
+              
+            // Get previous sorting state for GroupName.
+        
+            OrderByItem sd = this.CurrentSortOrder.Find(GroupsTable.GroupName);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for GroupName.
+                this.CurrentSortOrder.Reset();
+
+    
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+              this.CurrentSortOrder.Add(GroupsTable.GroupName, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by GroupName, so just reverse.
+                sd.Reverse();
+            }
+        
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+              
+        }
+            
 
         // Generate the event handling functions for button events.
         
@@ -3353,6 +3375,12 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
             }
         }              
         
+        public System.Web.UI.WebControls.LinkButton GroupNameLabel {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupNameLabel");
+            }
+        }
+        
         public System.Web.UI.WebControls.Literal GroupNameLabel1 {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupNameLabel1");
@@ -3668,7 +3696,6 @@ public class BaseRoles1TableControlRow : RatTrap.UI.BaseApplicationRecordControl
             // Call the Set methods for each controls on the panel
         
                 SetRoleName();
-                SetRoleNameLabel();
                 
 
       
@@ -3748,12 +3775,6 @@ public class BaseRoles1TableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 this.RoleName.Text = "&nbsp;";
             }
                                      
-        }
-                
-        public virtual void SetRoleNameLabel()
-                  {
-                  
-                    
         }
                 
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
@@ -4151,12 +4172,6 @@ public class BaseRoles1TableControlRow : RatTrap.UI.BaseApplicationRecordControl
             }
         }
             
-        public System.Web.UI.WebControls.Literal RoleNameLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "RoleNameLabel");
-            }
-        }
-        
         public System.Web.UI.WebControls.CheckBox SelectRow1 {
             get {
                 return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SelectRow1");
@@ -4422,6 +4437,8 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
         
        // Setup the sorting events.
         
+              this.RoleNameLabel.Click += RoleNameLabel_Click;
+            
             // Setup the button events.
           
                     this.NewButton1.Click += NewButton1_Click;
@@ -4750,6 +4767,7 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
                 
                 
                 SetRoleNameFilter();
+                SetRoleNameLabel();
                 SetRoleNameLabel1();
                 
                 
@@ -5681,6 +5699,12 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
       
         // Create Set, WhereClause, and Populate Methods
         
+        public virtual void SetRoleNameLabel()
+                  {
+                  
+                    
+        }
+                
         public virtual void SetRoleNameLabel1()
                   {
                   
@@ -6343,6 +6367,36 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
 
         // Generate the event handling functions for sorting events.
         
+        public virtual void RoleNameLabel_Click(object sender, EventArgs args)
+        {
+            //Sorts by RoleName when clicked.
+              
+            // Get previous sorting state for RoleName.
+        
+            OrderByItem sd = this.CurrentSortOrder.Find(Roles1Table.RoleName);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for RoleName.
+                this.CurrentSortOrder.Reset();
+
+    
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+              this.CurrentSortOrder.Add(Roles1Table.RoleName, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by RoleName, so just reverse.
+                sd.Reverse();
+            }
+        
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+              
+        }
+            
 
         // Generate the event handling functions for button events.
         
@@ -6832,6 +6886,12 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
                 return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "RoleNameFilter");
             }
         }              
+        
+        public System.Web.UI.WebControls.LinkButton RoleNameLabel {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "RoleNameLabel");
+            }
+        }
         
         public System.Web.UI.WebControls.Literal RoleNameLabel1 {
             get {

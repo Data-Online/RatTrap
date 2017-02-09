@@ -217,7 +217,6 @@ public class BaseGroupsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 
                 
                 SetGroupName();
-                SetGroupNameLabel();
                 SetGroupsTabContainer();
                 
                 
@@ -298,12 +297,6 @@ public class BaseGroupsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 this.GroupName.Text = "&nbsp;";
             }
                                      
-        }
-                
-        public virtual void SetGroupNameLabel()
-                  {
-                  
-                    
         }
                 
         public virtual void SetGroupsTabContainer()    
@@ -904,12 +897,6 @@ public class BaseGroupsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             }
         }
             
-        public System.Web.UI.WebControls.Literal GroupNameLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupNameLabel");
-            }
-        }
-        
         public AjaxControlToolkit.TabContainer GroupsTabContainer {
             get {
                 return (AjaxControlToolkit.TabContainer)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupsTabContainer");
@@ -3868,7 +3855,6 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             // Call the Set methods for each controls on the panel
         
                 SetDescription();
-                SetDescriptionLabel();
                 
 
       
@@ -3948,12 +3934,6 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
                 this.Description.Text = "&nbsp;";
             }
                                      
-        }
-                
-        public virtual void SetDescriptionLabel()
-                  {
-                  
-                    
         }
                 
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
@@ -4351,12 +4331,6 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             }
         }
             
-        public System.Web.UI.WebControls.Literal DescriptionLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DescriptionLabel");
-            }
-        }
-        
         public System.Web.UI.WebControls.CheckBox SelectRow1 {
             get {
                 return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SelectRow1");
@@ -4582,6 +4556,8 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
         
        // Setup the sorting events.
         
+              this.DescriptionLabel.Click += DescriptionLabel_Click;
+            
             // Setup the button events.
           
                     this.NewButton1.Click += NewButton1_Click;
@@ -4901,6 +4877,7 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
             // Call the Set methods for each controls on the panel
         
                 
+                SetDescriptionLabel();
                 
                 
                 
@@ -5790,6 +5767,12 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
       
         // Create Set, WhereClause, and Populate Methods
         
+        public virtual void SetDescriptionLabel()
+                  {
+                  
+                    
+        }
+                
         public virtual void SetShowSelectedFilterLabel()
                   {
                   
@@ -6057,7 +6040,7 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
         
               try
               {
-                    string url = "../Shared/ConfigureAddRecord.aspx?TabVisible=False&SaveAndNewVisible=False";
+                    string url = "../Projects/Add-Projects.aspx?TabVisible=False&SaveAndNewVisible=False";
               
                       
                     url = this.ModifyRedirectUrl(url, "", true);
@@ -6068,7 +6051,7 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
                                 
                 string javascriptCall = "";
                 
-                    javascriptCall = "initializePopupPage2(document.getElementById('" + MiscUtils.FindControlRecursively(this, "ProjectsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
+                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "ProjectsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
                        
                     this.NewButton1.Attributes["onClick"] = javascriptCall + "return false;";            
                 }
@@ -6264,6 +6247,36 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
 
         // Generate the event handling functions for sorting events.
         
+        public virtual void DescriptionLabel_Click(object sender, EventArgs args)
+        {
+            //Sorts by Description when clicked.
+              
+            // Get previous sorting state for Description.
+        
+            OrderByItem sd = this.CurrentSortOrder.Find(ProjectsTable.Description);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for Description.
+                this.CurrentSortOrder.Reset();
+
+    
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+              this.CurrentSortOrder.Add(ProjectsTable.Description, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by Description, so just reverse.
+                sd.Reverse();
+            }
+        
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+              
+        }
+            
 
         // Generate the event handling functions for button events.
         
@@ -6277,7 +6290,7 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../Shared/ConfigureAddRecord.aspx?TabVisible=False&SaveAndNewVisible=False";
+            string url = @"../Projects/Add-Projects.aspx?TabVisible=False&SaveAndNewVisible=False";
             
         bool shouldRedirect = true;
         string target = null;
@@ -6309,7 +6322,7 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
                                 
                 string javascriptCall = "";
                 
-                    javascriptCall = "initializePopupPage2(document.getElementById('" + MiscUtils.FindControlRecursively(this, "ProjectsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
+                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "ProjectsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
                 AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "NewButton1_Click", javascriptCall, true);
         
             }
@@ -6699,6 +6712,12 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
             }
         }
         
+        public System.Web.UI.WebControls.LinkButton DescriptionLabel {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DescriptionLabel");
+            }
+        }
+        
         public RatTrap.UI.IThemeButton FilterButton1 {
             get {
                 return (RatTrap.UI.IThemeButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FilterButton1");
@@ -7020,10 +7039,9 @@ public class BaseUsersTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             // Call the Set methods for each controls on the panel
         
                 SetFirstName();
-                SetFirstNameLabel();
                 SetLastName();
-                SetLastNameLabel();
                 
+                SetUserName0();
 
       
 
@@ -7144,16 +7162,44 @@ public class BaseUsersTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                                      
         }
                 
-        public virtual void SetFirstNameLabel()
-                  {
-                  
+        public virtual void SetUserName0()
+        {
+            
                     
-        }
-                
-        public virtual void SetLastNameLabel()
-                  {
+            // Set the UserName Literal on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Users database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Users record retrieved from the database.
+            // this.UserName0 is the ASP:Literal on the webpage.
                   
-                    
+            if (this.DataSource != null && this.DataSource.UserName0Specified) {
+                								
+                // If the UserName is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(UsersTable.UserName0);
+                                
+                formattedValue = HttpUtility.HtmlEncode(formattedValue);
+                this.UserName0.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // UserName is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.UserName0.Text = UsersTable.UserName0.Format(UsersTable.UserName0.DefaultValue);
+            		
+            }
+            
+            // If the UserName is NULL or blank, then use the value specified  
+            // on Properties.
+            if (this.UserName0.Text == null ||
+                this.UserName0.Text.Trim().Length == 0) {
+                // Set the value specified on the Properties.
+                this.UserName0.Text = "&nbsp;";
+            }
+                                     
         }
                 
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
@@ -7312,6 +7358,7 @@ public class BaseUsersTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         
             GetFirstName();
             GetLastName();
+            GetUserName0();
         }
         
         
@@ -7321,6 +7368,11 @@ public class BaseUsersTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         }
                 
         public virtual void GetLastName()
+        {
+            
+        }
+                
+        public virtual void GetUserName0()
         {
             
         }
@@ -7557,29 +7609,23 @@ public class BaseUsersTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             }
         }
             
-        public System.Web.UI.WebControls.Literal FirstNameLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FirstNameLabel");
-            }
-        }
-        
         public System.Web.UI.WebControls.Literal LastName {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LastName");
             }
         }
             
-        public System.Web.UI.WebControls.Literal LastNameLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LastNameLabel");
-            }
-        }
-        
         public System.Web.UI.WebControls.CheckBox SelectRow2 {
             get {
                 return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SelectRow2");
             }
         }              
+            
+        public System.Web.UI.WebControls.Literal UserName0 {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserName0");
+            }
+        }
             
     #endregion
 
@@ -7840,6 +7886,12 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
         
        // Setup the sorting events.
         
+              this.FirstNameLabel.Click += FirstNameLabel_Click;
+            
+              this.LastNameLabel.Click += LastNameLabel_Click;
+            
+              this.UserNameLabel.Click += UserNameLabel_Click;
+            
             // Setup the button events.
           
                     this.NewButton2.Click += NewButton2_Click;
@@ -8145,20 +8197,6 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
             index++;
         }
            
-          ArrayList list = new ArrayList();
-          
-          foreach(System.Web.UI.WebControls.RepeaterItem repItem in rep.Items)
-          {
-          UsersTableControlRow recControl = (UsersTableControlRow)(repItem.FindControl("UsersTableControlRow"));
-            
-            list.Add(recControl.FirstName.ID);
-             
-            list.Add(recControl.LastName.ID);
-                         
-            break;
-          }
-          base.InitializeDuplicateItems(list);
-          
     
             // Call the Set methods for each controls on the panel
         
@@ -8166,7 +8204,9 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
                 
                 
                 SetFirstNameFilter();
+                SetFirstNameLabel();
                 SetFirstNameLabel1();
+                SetLastNameLabel();
                 
                 
                 
@@ -8178,6 +8218,7 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
                 SetShowSelectedFilterLabel1();
                 SetSortByLabel2();
                 SetSortControl2();
+                SetUserNameLabel();
                 SetNewButton2();
               
                 SetRefreshButton2();
@@ -9060,6 +9101,10 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
                             rec.Parse(recControl.LastName.Text, UsersTable.LastName);
                   }
                 
+                        if (recControl.UserName0.Text != "") {
+                            rec.Parse(recControl.UserName0.Text, UsersTable.UserName0);
+                  }
+                
               newUIDataList.Add(recControl.PreservedUIData());
               newRecordList.Add(rec);
             }
@@ -9127,7 +9172,19 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
       
         // Create Set, WhereClause, and Populate Methods
         
+        public virtual void SetFirstNameLabel()
+                  {
+                  
+                    
+        }
+                
         public virtual void SetFirstNameLabel1()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetLastNameLabel()
                   {
                   
                     
@@ -9150,6 +9207,12 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
                       //To override this property you can uncomment the following property and add you own value.
                       //this.SortByLabel2.Text = "Some value";
                     
+                    
+        }
+                
+        public virtual void SetUserNameLabel()
+                  {
+                  
                     
         }
                 
@@ -9797,6 +9860,96 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
 
         // Generate the event handling functions for sorting events.
         
+        public virtual void FirstNameLabel_Click(object sender, EventArgs args)
+        {
+            //Sorts by FirstName when clicked.
+              
+            // Get previous sorting state for FirstName.
+        
+            OrderByItem sd = this.CurrentSortOrder.Find(UsersTable.FirstName);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for FirstName.
+                this.CurrentSortOrder.Reset();
+
+    
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+              this.CurrentSortOrder.Add(UsersTable.FirstName, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by FirstName, so just reverse.
+                sd.Reverse();
+            }
+        
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+              
+        }
+            
+        public virtual void LastNameLabel_Click(object sender, EventArgs args)
+        {
+            //Sorts by LastName when clicked.
+              
+            // Get previous sorting state for LastName.
+        
+            OrderByItem sd = this.CurrentSortOrder.Find(UsersTable.LastName);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for LastName.
+                this.CurrentSortOrder.Reset();
+
+    
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+              this.CurrentSortOrder.Add(UsersTable.LastName, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by LastName, so just reverse.
+                sd.Reverse();
+            }
+        
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+              
+        }
+            
+        public virtual void UserNameLabel_Click(object sender, EventArgs args)
+        {
+            //Sorts by UserName when clicked.
+              
+            // Get previous sorting state for UserName.
+        
+            OrderByItem sd = this.CurrentSortOrder.Find(UsersTable.UserName0);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for UserName.
+                this.CurrentSortOrder.Reset();
+
+    
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+              this.CurrentSortOrder.Add(UsersTable.UserName0, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by UserName, so just reverse.
+                sd.Reverse();
+            }
+        
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+              
+        }
+            
 
         // Generate the event handling functions for button events.
         
@@ -10263,9 +10416,21 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
             }
         }              
         
+        public System.Web.UI.WebControls.LinkButton FirstNameLabel {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FirstNameLabel");
+            }
+        }
+        
         public System.Web.UI.WebControls.Literal FirstNameLabel1 {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FirstNameLabel1");
+            }
+        }
+        
+        public System.Web.UI.WebControls.LinkButton LastNameLabel {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LastNameLabel");
             }
         }
         
@@ -10334,6 +10499,12 @@ public class BaseUsersTableControl : RatTrap.UI.BaseApplicationTableControl
           return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortControl2");
           }
           }
+        
+        public System.Web.UI.WebControls.LinkButton UserNameLabel {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserNameLabel");
+            }
+        }
         
 #endregion
 

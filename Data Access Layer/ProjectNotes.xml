@@ -144,7 +144,6 @@
   <Owner>dbo</Owner>
   <TableAliasName>ProjectNotes_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>
-  <InUse>N</InUse>
   <PagingMethod>RowNum</PagingMethod>
   <canCreateRecords Source="Database">Y</canCreateRecords>
   <canEditRecords Source="Database">Y</canEditRecords>
@@ -153,4 +152,8 @@
   <ConcurrencyMethod>BinaryChecksum</ConcurrencyMethod>
   <AppShortName>RatTrap</AppShortName>
   <TableCodeName>ProjectNotes</TableCodeName>
+  <FolderName>ProjectNotes</FolderName>
+  <MenuName>Project Notes</MenuName>
+  <QSPath>../ProjectNotes/ProjectNotes-QuickSelector.aspx</QSPath>
+  <TableStoredProcPrefix>pRatTrapProjectNotes</TableStoredProcPrefix>
 </XMLDefinition>

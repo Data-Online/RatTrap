@@ -53,40 +53,6 @@
       <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>Actions3Button</Name>
-      <Type>Button</Type>
-      <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Button-CausesValidation</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-CommandName</Name>
-          <Value>Custom</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Consumers</Name>
-          <Value>page</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Onclientclick</Name>
-          <Value>return ISD_ShowPopupPanel('Actions3Div','Actions3Button',this);</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Text</Name>
-          <Value>Btn:Actions</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-        <Attribute>
-          <Name>Button-ToolTip</Name>
-          <Value>Btn:Actions</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>ActionsButton</Name>
       <Type>Button</Type>
       <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
@@ -211,6 +177,10 @@
           <Value>Txt:DeleteRecord</Value>
           <Type>ResourceReference</Type>
         </Attribute>
+        <Attribute>
+          <Name>Visible</Name>
+          <Value>False</Value>
+        </Attribute>
       </PassthroughAttributes>
       <InsideControl>UsersGroupsLinkTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
@@ -263,56 +233,6 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>DeleteRowButton2</Name>
-      <Type>ImageButton</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CommandName</Name>
-          <Value>DeleteRecord</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ConfirmMessage</Name>
-          <Value>DeleteRecordConfirm</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>UsersGroupsLinkTableControl1Row</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CssClass</Name>
-          <Value>button_link</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/icon_delete.gif</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseout</Name>
-          <Value>this.src='../Images/icon_delete.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseover</Name>
-          <Value>this.src='../Images/icon_delete_over.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ToolTip</Name>
-          <Value>Txt:DeleteRecord</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
@@ -462,6 +382,10 @@
           <Value>Txt:EditRecord</Value>
           <Type>ResourceReference</Type>
         </Attribute>
+        <Attribute>
+          <Name>Visible</Name>
+          <Value>False</Value>
+        </Attribute>
       </PassthroughAttributes>
       <InsideControl>UsersGroupsLinkTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
@@ -500,7 +424,7 @@
         </Attribute>
         <Attribute>
           <Name>RedirectURL</Name>
-          <Value>../Traps/Edit-Traps.aspx?Traps={PK}</Value>
+          <Value>../Traps/Edit-Traps.aspx?Traps={TrapsTableControlRow:PK}</Value>
         </Attribute>
         <Attribute>
           <Name>ToolTip</Name>
@@ -509,51 +433,6 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>EditRowButton2</Name>
-      <Type>ImageButton</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CommandName</Name>
-          <Value>Redirect</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CssClass</Name>
-          <Value>button_link</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/icon_edit.gif</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseout</Name>
-          <Value>this.src='../Images/icon_edit.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseover</Name>
-          <Value>this.src='../Images/icon_edit_over.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>RedirectURL</Name>
-          <Value>../Shared/ConfigureEditRecord.aspx</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ToolTip</Name>
-          <Value>Txt:EditRecord</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
@@ -677,46 +556,6 @@
       <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>ExcelButton3</Name>
-      <Type>ImageButton</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>false</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CommandName</Name>
-          <Value>ExportDataExcel</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>UsersGroupsLinkTableControl1</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/ButtonBarExcelExport.gif</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseout</Name>
-          <Value>this.src='../Images/ButtonBarExcelExport.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseover</Name>
-          <Value>this.src='../Images/ButtonBarExcelExportOver.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ToolTip</Name>
-          <Value>Btn:ExportExcel</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>FilterButton</Name>
       <Type>Button</Type>
       <Layout>..\Shared\ThemeButton.ascx</Layout>
@@ -785,40 +624,6 @@
       <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>FilterButton2</Name>
-      <Type>Button</Type>
-      <Layout>..\Shared\ThemeButton.ascx</Layout>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Button-CausesValidation</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-CommandName</Name>
-          <Value>Search</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Consumers</Name>
-          <Value>UserIdFilter1</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Text</Name>
-          <Value>Btn:SearchGoButtonText</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-        <Attribute>
-          <Name>Button-ToolTip</Name>
-          <Value>Btn:SearchGoButtonText</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>Filters1Button</Name>
       <Type>Button</Type>
       <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
@@ -851,40 +656,6 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>Filters2Button</Name>
-      <Type>Button</Type>
-      <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Button-CausesValidation</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-CommandName</Name>
-          <Value>Custom</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Consumers</Name>
-          <Value>page</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Onclientclick</Name>
-          <Value>return ISD_ShowPopupPanel('Filters2Div','Filters2Button',this);</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Text</Name>
-          <Value>Btn:Filters</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-        <Attribute>
-          <Name>Button-ToolTip</Name>
-          <Value>Btn:Filters</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>FiltersButton</Name>
@@ -924,20 +695,16 @@
       <Name>GroupId</Name>
       <Type>FieldValue</Type>
       <Field>GroupId</Field>
-      <FieldValueStyle>LinkButton</FieldValueStyle>
+      <FieldValueStyle>Literal</FieldValueStyle>
       <Table>DatabaseTheRatTrap%dbo.UsersGroupsLink</Table>
       <PassthroughAttributes>
         <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>False</Value>
+          <Name>FieldMaxLength</Name>
+          <Value>Default</Value>
         </Attribute>
         <Attribute>
-          <Name>CommandName</Name>
-          <Value>Redirect</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>page</Value>
+          <Name>HTMLEncodeValue</Name>
+          <Value>Default</Value>
         </Attribute>
         <Attribute>
           <Name>InternalUse:ApplySaveToField</Name>
@@ -948,8 +715,32 @@
           <Value>Parent</Value>
         </Attribute>
         <Attribute>
-          <Name>RedirectURL</Name>
-          <Value>../Groups/Show-Groups.aspx?Groups={UsersGroupsLinkTableControlRow:FK:FK_UsersGroupsLink_Groups}</Value>
+          <Name>PopupDisplay</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupThreshold</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowHeight</Name>
+          <Value>200</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowPersist</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowScrollBar</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowTitle</Name>
+          <Value>%ISD_DEFAULT%</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowWidth</Name>
+          <Value>300</Value>
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>UsersGroupsLinkTableControl</InsideControl>
@@ -1234,50 +1025,6 @@
       <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>ImportButton3</Name>
-      <Type>ImageButton</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>false</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CommandName</Name>
-          <Value>ImportCSV</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>page</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/ButtonBarImport.gif</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseout</Name>
-          <Value>this.src='../Images/ButtonBarImport.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseover</Name>
-          <Value>this.src='../Images/ButtonBarImportOver.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>RedirectURL</Name>
-          <Value>../Shared/SelectFileToImport.aspx?TableName=UsersGroupsLink</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ToolTip</Name>
-          <Value>Btn:Import</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>Label</Name>
       <Type>Label</Type>
       <PassthroughAttributes>
@@ -1466,58 +1213,6 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>NewButton3</Name>
-      <Type>ImageButton</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>false</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CommandName</Name>
-          <Value>Redirect</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>page</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ControlToUpdate</Name>
-          <Value>UsersGroupsLinkTableControl1</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/ButtonBarNew.gif</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseout</Name>
-          <Value>this.src='../Images/ButtonBarNew.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseover</Name>
-          <Value>this.src='../Images/ButtonBarNewOver.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>RedirectStyle</Name>
-          <Value>Popup</Value>
-        </Attribute>
-        <Attribute>
-          <Name>RedirectURL</Name>
-          <Value>../Shared/ConfigureAddRecord.aspx?TabVisible=False&amp;SaveAndNewVisible=False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ToolTip</Name>
-          <Value>Btn:Add</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>PageTitle</Name>
@@ -1778,52 +1473,16 @@
       <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>PDFButton3</Name>
-      <Type>ImageButton</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>false</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CommandName</Name>
-          <Value>ReportData</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>UsersGroupsLinkTableControl1</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/ButtonBarPDFExport.gif</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseout</Name>
-          <Value>this.src='../Images/ButtonBarPDFExport.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseover</Name>
-          <Value>this.src='../Images/ButtonBarPDFExportOver.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ToolTip</Name>
-          <Value>Btn:PDF</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>ProjectId</Name>
       <Type>FieldValue</Type>
       <Field>ProjectId</Field>
       <FieldValueStyle>LinkButton</FieldValueStyle>
       <Table>DatabaseTheRatTrap%dbo.ProjectsGroupsLink</Table>
       <PassthroughAttributes>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>Redirect</Value>
+        </Attribute>
         <Attribute>
           <Name>HTMLEncodeValue</Name>
           <Value>Default</Value>
@@ -1835,6 +1494,10 @@
         <Attribute>
           <Name>InternalUse:DataSource</Name>
           <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>RedirectURL</Name>
+          <Value>../Projects/Show-Projects.aspx?Projects={ProjectsGroupsLinkTableControlRow:FK:FK_ProjectsGroupsLink_Projects}</Value>
         </Attribute>
         <Attribute>
           <Name>TextFormat</Name>
@@ -2061,46 +1724,6 @@
       <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>ResetButton2</Name>
-      <Type>ImageButton</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>false</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CommandName</Name>
-          <Value>ResetFilters</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>UsersGroupsLinkTableControl1</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/ButtonBarReset.gif</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseout</Name>
-          <Value>this.src='../Images/ButtonBarReset.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseover</Name>
-          <Value>this.src='../Images/ButtonBarResetOver.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ToolTip</Name>
-          <Value>Btn:Reset</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>SortByLabel</Name>
       <Type>Label</Type>
       <PassthroughAttributes>
@@ -2123,18 +1746,6 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>SortByLabel2</Name>
-      <Type>Label</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>Txt:SortBy</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>SortControl</Name>
@@ -2251,60 +1862,6 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>SortControl2</Name>
-      <Type>OrderSort</Type>
-      <FieldValueStyle>DropDownList</FieldValueStyle>
-      <SpecifiedItems>
-        <Item>
-          <Name>--PLEASE_SELECT--</Name>
-          <Value>{Txt:PleaseSelect}</Value>
-        </Item>
-        <Item>
-          <Name>UserId Asc</Name>
-          <Value>User {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>UserId Desc</Name>
-          <Value>User {Txt:Descending}</Value>
-        </Item>
-      </SpecifiedItems>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>AutoPostBack</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CssClass</Name>
-          <Value>Filter_Input</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyQuery</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyStaticList</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:GenerateSpecificItems</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.UsersGroupsLink</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:TreatAs</Name>
-          <Value>FieldFilter</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PriorityNo</Name>
-          <Value>3</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>TabPanel</Name>
@@ -2806,98 +2363,28 @@
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>UserIdFilter1</Name>
-      <Type>FieldFilter</Type>
-      <FieldValueStyle>QuickSelector</FieldValueStyle>
+      <Name>UserIdLabel</Name>
+      <Type>FieldSort</Type>
       <PassthroughAttributes>
         <Attribute>
           <Name>Consumers</Name>
           <Value>UsersGroupsLinkTableControl1</Value>
-        </Attribute>
-        <Attribute>
-          <Name>EnterKeyCaptureToButton</Name>
-          <Value>FilterButton2</Value>
         </Attribute>
         <Attribute>
           <Name>Field</Name>
           <Value>UserId</Value>
         </Attribute>
         <Attribute>
-          <Name>FilterOperator</Name>
-          <Value>=</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyInitializeFormula</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:InitializeFormula</Name>
-          <Value>URL("UserId")</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.UsersGroupsLink</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onkeypress</Name>
-          <Value>dropDownListTypeAhead(this,false)</Value>
-        </Attribute>
-        <Attribute>
-          <Name>RedirectURL</Name>
-          <Value />
-        </Attribute>
-        <Attribute>
-          <Name>SelectionMode</Name>
-          <Value>Single</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
-      <ControlsToFilter>
-        <ControlToFilter>
-          <Active>true</Active>
-          <ControlName>UsersGroupsLinkTableControl1</ControlName>
-        </ControlToFilter>
-      </ControlsToFilter>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>UserIdLabel</Name>
-      <Type>Literal</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>UsersGroupsLinkTableControl1</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Field</Name>
-          <Value>UserId</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
+          <Name>Table</Name>
           <Value>DatabaseTheRatTrap%dbo.UsersGroupsLink</Value>
         </Attribute>
         <Attribute>
           <Name>Text</Name>
           <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.UsersGroupsLink%UserId</Value>
         </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>UserIdLabel2</Name>
-      <Type>Literal</Type>
-      <PassthroughAttributes>
         <Attribute>
-          <Name>InternalUse:Field</Name>
-          <Value>UserId</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.UsersGroupsLink</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.UsersGroupsLink%UserId</Value>
+          <Name>ToolTip</Name>
+          <Value>Sort by UserId</Value>
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
@@ -3161,46 +2648,6 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>WordButton3</Name>
-      <Type>ImageButton</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>CausesValidation</Name>
-          <Value>false</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CommandName</Name>
-          <Value>ExportToWord</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>UsersGroupsLinkTableControl1</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/ButtonBarWordExport.gif</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseout</Name>
-          <Value>this.src='../Images/ButtonBarWordExport.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onmouseover</Name>
-          <Value>this.src='../Images/ButtonBarWordExportOver.gif'</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PostBack</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>ToolTip</Name>
-          <Value>Btn:Word</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>UsersGroupsLinkTableControl1</InsideControl>
     </ContainedComponent>
   </ComposedOf>
   <LayoutDefinition>&lt;![CDATA[&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -6030,8 +5477,14 @@
     &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Description" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes /&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Description" /&amp;gt; 
+&amp;amp;nbsp;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;colspan&lt;/Name&gt;
+            &lt;AttributeValue&gt;3&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;RowAttributes /&gt;
     &lt;/Row&gt;
@@ -6243,7 +5696,6 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:PANEL NAME="Actions3" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -6261,11 +5713,6 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;
-                          &amp;lt;div id="Filters2Div" runat="server" class="popupWrapper"&amp;gt;
-                          &amp;lt;GEN:PANEL NAME="Filters2" /&amp;gt;
-                          &amp;lt;/div&amp;gt;
-                        &lt;/Value&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
@@ -6335,435 +5782,6 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Actions3" Type="PanelButton" PanelControlName="UsersGroupsLinkTableControl1"&gt;
-    &lt;Prolog /&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;div id="Actions3Div" runat="server" class="popupWrapper"&amp;gt;
-                &amp;lt;GEN:PANEL NAME="Actions3Panel" /&amp;gt;
-                &amp;lt;/div&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prspace&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:Button NAME="Actions3Button" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;text-align:right&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-            &amp;lt;GEN:Button NAME="Filters2Button" /&amp;gt;
-          &lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;text-align:right&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt="" style="width: 10px" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prspaceEnd&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Epilog /&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;style&lt;/Name&gt;
-        &lt;AttributeValue&gt;width: 100%;&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="Actions3Panel" Type="BlankPanel" PanelControlName="UsersGroupsLinkTableControl1"&gt;
-    &lt;Prolog /&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;input type="image" src="../Images/closeButton.gif" onmouseover="this.src='../Images/closeButtonOver.gif'" onmouseout="this.src='../Images/closeButton.gif'" alt="" onclick="ISD_HidePopupPanel();return false;" align="top" /&amp;gt;&amp;lt;br /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;text-align: right;&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                    &amp;lt;GEN:ImageButton NAME="NewButton3" /&amp;gt;
-                  &lt;/Value&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                    &amp;lt;GEN:ImageButton NAME="PDFButton3" /&amp;gt;
-                  &lt;/Value&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                    &amp;lt;GEN:ImageButton NAME="WordButton3" /&amp;gt;
-                  &lt;/Value&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                    &amp;lt;GEN:ImageButton NAME="ExcelButton3" /&amp;gt;
-                  &lt;/Value&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                    &amp;lt;GEN:ImageButton NAME="ImportButton3" /&amp;gt;
-                  &lt;/Value&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Epilog /&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="Filters2" Type="SearchAndFilter" PanelControlName="UsersGroupsLinkTableControl1"&gt;
-    &lt;Prolog /&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;input type="image" src="../Images/closeButton.gif" onmouseover="this.src='../Images/closeButtonOver.gif'" onmouseout="this.src='../Images/closeButton.gif'" alt="" onclick="ISD_HidePopupPanel();return false;" align="top" /&amp;gt;&amp;lt;br /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;text-align: right;&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="UserIdLabel2" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDFILTER NAME="UserIdFilter1" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;colspan&lt;/Name&gt;
-            &lt;AttributeValue&gt;2&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:BUTTON NAME="FilterButton2" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                                  &amp;lt;GEN:IMAGEBUTTON NAME="ResetButton2" /&amp;gt;
-                                &lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:LABEL NAME="SortByLabel2" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:ORDERSORT NAME="SortControl2" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Epilog /&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
   &lt;Layout Name="Panel5" PanelControlName="UsersGroupsLinkTableControl1"&gt;
     &lt;Prolog /&gt;
     &lt;Row&gt;
@@ -6808,18 +5826,11 @@
     &lt;Prolog /&gt;
     &lt;Row Type="Header"&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="UserIdLabel" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;colspan&lt;/Name&gt;
-            &lt;AttributeValue&gt;2&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display:none&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -6829,9 +5840,13 @@
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
           &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -6841,10 +5856,6 @@
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
@@ -6853,10 +5864,6 @@
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
@@ -6864,34 +5871,6 @@
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -6904,42 +5883,15 @@
     &lt;/Row&gt;
     &lt;Row Type="Repeater"&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;
-                                  &amp;lt;GEN:IMAGEBUTTON NAME="EditRowButton2"&amp;gt;&amp;lt;/GEN:IMAGEBUTTON&amp;gt;                                 
-                                
-                                  &amp;lt;GEN:IMAGEBUTTON NAME="DeleteRowButton2"&amp;gt;&amp;lt;/GEN:IMAGEBUTTON&amp;gt;                                 
-                                &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="UserId1" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableRowButtonsCellVertical&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;scope&lt;/Name&gt;
-            &lt;AttributeValue&gt;row&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;font-size: 5px;&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;colspan&lt;/Name&gt;
-            &lt;AttributeValue&gt;2&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="UserIdLabel" /&amp;gt; 
-&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="UserId1" /&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -6990,7 +5942,7 @@
           &lt;/Attribute&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;colspan&lt;/Name&gt;
-            &lt;AttributeValue&gt;8&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;6&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;

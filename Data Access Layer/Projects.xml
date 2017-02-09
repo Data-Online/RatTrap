@@ -106,7 +106,7 @@
       <columnLengthSet>10.0</columnLengthSet>
       <columnDefault>
       </columnDefault>
-      <columnDBDefault>
+      <columnDBDefault Source="User">
       </columnDBDefault>
       <columnIndex>N</columnIndex>
       <columnUnique>N</columnUnique>
@@ -116,15 +116,15 @@
       </columnDBFormat>
       <columnPK>N</columnPK>
       <columnPermanent>N</columnPermanent>
-      <columnComputed>N</columnComputed>
-      <columnIdentity>N</columnIdentity>
-      <columnReadOnly>N</columnReadOnly>
+      <columnComputed Source="User">N</columnComputed>
+      <columnIdentity Source="User">N</columnIdentity>
+      <columnReadOnly Source="User">N</columnReadOnly>
       <columnRequired>Y</columnRequired>
       <columnNotNull>Y</columnNotNull>
-      <columnCaseSensitive>N</columnCaseSensitive>
+      <columnCaseSensitive Source="User">N</columnCaseSensitive>
       <columnCollation>
       </columnCollation>
-      <columnFullText>N</columnFullText>
+      <columnFullText Source="User">N</columnFullText>
       <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
       <columnTableAliasName>
       </columnTableAliasName>
@@ -134,10 +134,10 @@
         <columnFKTable>Areas</columnFKTable>
         <columnFKOwner>dbo</columnFKOwner>
         <columnFKColumn>AreaId</columnFKColumn>
-        <columnFKColumnDisplay>Lat</columnFKColumnDisplay>
+        <columnFKColumnDisplay>= Areas.Name</columnFKColumnDisplay>
         <foreignKeyType>Explicit</foreignKeyType>
       </foreignKey>
-      <applyDFKA>N</applyDFKA>
+      <applyDFKA>Y</applyDFKA>
       <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
       <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
       <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
@@ -154,6 +154,9 @@
       </insertingFormula>
       <updatingFormula>
       </updatingFormula>
+      <InternalName>2</InternalName>
+      <columnTableClassName>
+      </columnTableClassName>
     </Column>
   </ColumnDefinition>
   <TableName>Projects</TableName>

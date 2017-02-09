@@ -291,6 +291,8 @@ public class BaseProjectsGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationR
                                   
                                 
                 this.ProjectId.Text = formattedValue;
+                
+                  this.ProjectId.ToolTip = "Go to " + this.ProjectId.Text.Replace("<wbr/>", "");
                    
             } 
             
@@ -639,18 +641,46 @@ public class BaseProjectsGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationR
         public virtual void ProjectId_Click(object sender, EventArgs args)
         {
               
+            // The redirect URL is set on the Properties, Custom Properties or Actions.
+            // The ModifyRedirectURL call resolves the parameters before the
+            // Response.Redirect redirects the page to the URL.  
+            // Any code after the Response.Redirect call will not be executed, since the page is
+            // redirected to the URL.
+            
+            string url = @"../Projects/Show-Projects.aspx?Projects={ProjectsGroupsLinkTableControlRow:FK:FK_ProjectsGroupsLink_Projects}";
+            
+            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
+                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
+            
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
             try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
                 
+                url = this.ModifyRedirectUrl(url, "",true);
+                url = this.Page.ModifyRedirectUrl(url, "",true);
+              
             } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  shouldRedirect = false;
                   this.Page.ErrorOnPage = true;
 
             // Report the error message to the end user
             BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
     
             } finally {
-    
+                DbUtils.EndTransaction();
             }
-    
+            if (shouldRedirect) {
+                this.Page.ShouldSaveControlsToSession = true;
+      this.Page.Response.Redirect(url);
+        
+            }
+        
         }
             
             
@@ -3445,7 +3475,7 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../Traps/Edit-Traps.aspx?Traps={PK}";
+            string url = @"../Traps/Edit-Traps.aspx?Traps={TrapsTableControlRow:PK}";
             
             if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
                 url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
@@ -6673,8 +6703,6 @@ public class BaseUsersGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationReco
                         
                     this.EditRowButton.Click += EditRowButton_Click;
                         
-                    this.GroupId.Click += GroupId_Click;
-                        
         }
 
         public virtual void LoadData()  
@@ -6768,11 +6796,11 @@ public class BaseUsersGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationReco
         {
             
                     
-            // Set the GroupId LinkButton on the webpage with value from the
+            // Set the GroupId Literal on the webpage with value from the
             // DatabaseTheRatTrap%dbo.UsersGroupsLink database record.
 
             // this.DataSource is the DatabaseTheRatTrap%dbo.UsersGroupsLink record retrieved from the database.
-            // this.GroupId is the ASP:LinkButton on the webpage.
+            // this.GroupId is the ASP:Literal on the webpage.
                   
             if (this.DataSource != null && this.DataSource.GroupIdSpecified) {
                 								
@@ -6788,9 +6816,8 @@ public class BaseUsersGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationReco
                      formattedValue = this.DataSource.Format(UsersGroupsLinkTable.GroupId);
                                   
                                 
+                formattedValue = HttpUtility.HtmlEncode(formattedValue);
                 this.GroupId.Text = formattedValue;
-                
-                  this.GroupId.ToolTip = "Go to " + this.GroupId.Text.Replace("<wbr/>", "");
                    
             } 
             
@@ -7213,54 +7240,6 @@ public class BaseUsersGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationReco
             
             
         
-        // event handler for LinkButton
-        public virtual void GroupId_Click(object sender, EventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Groups/Show-Groups.aspx?Groups={UsersGroupsLinkTableControlRow:FK:FK_UsersGroupsLink_Groups}";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
-                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-                url = this.Page.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.Page.ShouldSaveControlsToSession = true;
-      this.Page.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
-        
   
         private Hashtable _PreviousUIData = new Hashtable();
         public virtual Hashtable PreviousUIData {
@@ -7362,9 +7341,9 @@ public class BaseUsersGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationReco
             }
         }
         
-        public System.Web.UI.WebControls.LinkButton GroupId {
+        public System.Web.UI.WebControls.Literal GroupId {
             get {
-                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupId");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupId");
             }
         }
             
@@ -9461,16 +9440,16 @@ public class BaseUsersGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableCo
                             // The 3rd parameter represent the default alignment of column using the data
                             // The 4th parameter represent the maximum length of the data value being shown
                                                  if (BaseClasses.Utils.MiscUtils.IsNull(record.GroupId)){
-                                 report.AddData("${GroupId}", "",ReportEnum.Align.Left);
+                                 report.AddData("${GroupId}", "",ReportEnum.Align.Left, 300);
                              }else{
                                  Boolean _isExpandableNonCompositeForeignKey;
                                  String _DFKA = "";
                                  _isExpandableNonCompositeForeignKey = UsersGroupsLinkTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(UsersGroupsLinkTable.GroupId);
                                  _DFKA = UsersGroupsLinkTable.GetDFKA(record.GroupId.ToString(), UsersGroupsLinkTable.GroupId,null);
                                  if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  UsersGroupsLinkTable.GroupId.IsApplyDisplayAs){
-                                     report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left);
+                                     report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left, 300);
                                  }else{
-                                     report.AddData("${GroupId}", record.Format(UsersGroupsLinkTable.GroupId), ReportEnum.Align.Left);
+                                     report.AddData("${GroupId}", record.Format(UsersGroupsLinkTable.GroupId), ReportEnum.Align.Left, 300);
                                  }
                              }
 
@@ -9596,16 +9575,16 @@ public class BaseUsersGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableCo
                             // The 3rd parameter represents the default alignment of column using the data
                             // The 4th parameter represents the maximum length of the data value being shown
                              if (BaseClasses.Utils.MiscUtils.IsNull(record.GroupId)){
-                                 report.AddData("${GroupId}", "",ReportEnum.Align.Left);
+                                 report.AddData("${GroupId}", "",ReportEnum.Align.Left, 300);
                              }else{
                                  Boolean _isExpandableNonCompositeForeignKey;
                                  String _DFKA = "";
                                  _isExpandableNonCompositeForeignKey = UsersGroupsLinkTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(UsersGroupsLinkTable.GroupId);
                                  _DFKA = UsersGroupsLinkTable.GetDFKA(record.GroupId.ToString(), UsersGroupsLinkTable.GroupId,null);
                                  if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  UsersGroupsLinkTable.GroupId.IsApplyDisplayAs){
-                                     report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left);
+                                     report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left, 300);
                                  }else{
-                                     report.AddData("${GroupId}", record.Format(UsersGroupsLinkTable.GroupId), ReportEnum.Align.Left);
+                                     report.AddData("${GroupId}", record.Format(UsersGroupsLinkTable.GroupId), ReportEnum.Align.Left, 300);
                                  }
                              }
 
@@ -10087,17 +10066,11 @@ public class BaseUsersGroupsLinkTableControl1Row : RatTrap.UI.BaseApplicationRec
         // To customize, override this method in UsersGroupsLinkTableControl1Row.
         protected virtual void Control_Load(object sender, System.EventArgs e)
         {      
-        
-              // Show confirmation message on Click
-              this.DeleteRowButton2.Attributes.Add("onClick", "return (confirm(\"" + ((BaseApplicationPage)this.Page).GetResourceValue("DeleteRecordConfirm", "RatTrap") + "\"));");            
+                    
         
               // Register the event handlers.
 
           
-                    this.DeleteRowButton2.Click += DeleteRowButton2_Click;
-                        
-                    this.EditRowButton2.Click += EditRowButton2_Click;
-                        
                     this.UserId1.Click += UserId1_Click;
                         
         }
@@ -10155,14 +10128,7 @@ public class BaseUsersGroupsLinkTableControl1Row : RatTrap.UI.BaseApplicationRec
 
             // Call the Set methods for each controls on the panel
         
-                
-                
                 SetUserId1();
-                SetUserIdLabel();
-                SetDeleteRowButton2();
-              
-                SetEditRowButton2();
-              
 
       
 
@@ -10225,12 +10191,6 @@ public class BaseUsersGroupsLinkTableControl1Row : RatTrap.UI.BaseApplicationRec
             		
             }
                                
-        }
-                
-        public virtual void SetUserIdLabel()
-                  {
-                  
-                    
         }
                 
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
@@ -10551,98 +10511,6 @@ public class BaseUsersGroupsLinkTableControl1Row : RatTrap.UI.BaseApplicationRec
     
         // Generate set method for buttons
         
-        public virtual void SetDeleteRowButton2()                
-              
-        {
-        
-   
-        }
-            
-        public virtual void SetEditRowButton2()                
-              
-        {
-        
-   
-        }
-            
-        // event handler for ImageButton
-        public virtual void DeleteRowButton2_Click(object sender, ImageClickEventArgs args)
-        {
-              
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-            if (!this.Page.IsPageRefresh) {
-        
-                this.Delete();
-              
-            }
-      this.Page.CommitTransaction(sender);
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-    
-        }
-            
-            
-        
-        // event handler for ImageButton
-        public virtual void EditRowButton2_Click(object sender, ImageClickEventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Shared/ConfigureEditRecord.aspx";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
-                url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-                url = this.Page.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.Page.ShouldSaveControlsToSession = true;
-      this.Page.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
-        
         // event handler for LinkButton
         public virtual void UserId1_Click(object sender, EventArgs args)
         {
@@ -10780,30 +10648,12 @@ public class BaseUsersGroupsLinkTableControl1Row : RatTrap.UI.BaseApplicationRec
        
 #region "Helper Properties"
         
-        public System.Web.UI.WebControls.ImageButton DeleteRowButton2 {
-            get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DeleteRowButton2");
-            }
-        }
-        
-        public System.Web.UI.WebControls.ImageButton EditRowButton2 {
-            get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "EditRowButton2");
-            }
-        }
-        
         public System.Web.UI.WebControls.LinkButton UserId1 {
             get {
                 return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserId1");
             }
         }
             
-        public System.Web.UI.WebControls.Literal UserIdLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserIdLabel");
-            }
-        }
-        
     #endregion
 
     #region "Helper Functions"
@@ -10921,67 +10771,6 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
     
            // Setup the filter and search.
         
-            if (!this.Page.IsPostBack)
-            {
-                string initialVal = "";
-                
-                  if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
-                  {
-                  initialVal = "";
-                  }
-                
-                if  (this.InSession(this.SortControl2)) 				
-                    initialVal = this.GetFromSession(this.SortControl2);
-                
-                if (initialVal != null && initialVal != "")		
-                {
-                        
-                    this.SortControl2.Items.Add(new ListItem(initialVal, initialVal));
-                        
-                    this.SortControl2.SelectedValue = initialVal;
-                            
-                    }
-            }
-            if (!this.Page.IsPostBack)
-            {
-                string initialVal = "";
-                if  (this.InSession(this.UserIdFilter1)) 				
-                    initialVal = this.GetFromSession(this.UserIdFilter1);
-                
-                else
-                    
-                    initialVal = EvaluateFormula("URL(\"UserId\")");
-                
-                if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
-                {
-                initialVal = "";
-                }
-              
-                if (initialVal != null && initialVal != "")		
-                {
-                        
-                    string[] UserIdFilter1itemListFromSession = initialVal.Split(',');
-                    int index = 0;
-                    foreach (string item in UserIdFilter1itemListFromSession)
-                    {
-                        if (index == 0 && item.ToString().Equals(""))
-                        {
-                            // do nothing
-                        }
-                        else
-                        {
-                            this.UserIdFilter1.Items.Add(item);
-                            this.UserIdFilter1.Items[index].Selected = true;
-                            index += 1;
-                        }
-                    }
-                    foreach (ListItem listItem in this.UserIdFilter1.Items)
-                    {
-                        listItem.Selected = true;
-                    }
-                        
-                    }
-            }
 
 
       
@@ -11030,30 +10819,10 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
         
        // Setup the sorting events.
         
-            // Setup the button events.
-          
-                    this.ExcelButton3.Click += ExcelButton3_Click;
-                        
-                    this.ImportButton3.Click += ImportButton3_Click;
-                        
-                    this.NewButton3.Click += NewButton3_Click;
-                        
-                    this.PDFButton3.Click += PDFButton3_Click;
-                        
-                    this.ResetButton2.Click += ResetButton2_Click;
-                        
-                    this.WordButton3.Click += WordButton3_Click;
-                        
-                    this.Actions3Button.Button.Click += Actions3Button_Click;
-                        
-                    this.FilterButton2.Button.Click += FilterButton2_Click;
-                        
-                    this.Filters2Button.Button.Click += Filters2Button_Click;
-                        
-            this.SortControl2.SelectedIndexChanged += new EventHandler(SortControl2_SelectedIndexChanged);
+              this.UserIdLabel.Click += UserIdLabel_Click;
             
-              this.UserIdFilter1.SelectedIndexChanged += UserIdFilter1_SelectedIndexChanged;                  
-                        
+            // Setup the button events.
+                  
         
          //' Setup events for others
                
@@ -11291,37 +11060,7 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
         
                 
                 
-                
-                
-                
-                
-                
-                
-                
-                SetSortByLabel2();
-                SetSortControl2();
-                
-                SetUserIdFilter1();
-                SetUserIdLabel2();
-                
-                SetExcelButton3();
-              
-                SetImportButton3();
-              
-                SetNewButton3();
-              
-                SetPDFButton3();
-              
-                SetResetButton2();
-              
-                SetWordButton3();
-              
-                SetActions3Button();
-              
-                SetFilterButton2();
-              
-                SetFilters2Button();
-              
+                SetUserIdLabel();
             // setting the state of expand or collapse alternative rows
       
             // Load data for each record and table UI control.
@@ -11332,9 +11071,7 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
             // this method calls the set method for controls with special formula like running total, sum, rank, etc
             SetFormulaControls();
             
-             
-              SetFilters2Button();
-                     
+                    
         }
         
         
@@ -11346,15 +11083,6 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
     }
 
         
-    public virtual void AddWarningMessageOnClick() {
-    
-        if (this.TotalRecords > 10000)
-          this.ExcelButton3.Attributes.Add("onClick", "return (confirm('" + ((BaseApplicationPage)this.Page).GetResourceValue("ExportConfirm", "RatTrap") + "'));");
-        else
-          this.ExcelButton3.Attributes.Remove("onClick");
-      
-    }
-  
         public void PreFetchForeignKeyValues() {
             if (this.DataSource == null) {
                 return;
@@ -11366,13 +11094,7 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
 
         public virtual void RegisterPostback()
         {
-        
-              this.Page.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"ExcelButton3"));
-                        
-              this.Page.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"PDFButton3"));
-                        
-              this.Page.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"WordButton3"));
-                                
+                
         }
         
 
@@ -11458,10 +11180,6 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
         {
 
 
-            
-            this.UserIdFilter1.ClearSelection();
-            
-            this.SortControl2.ClearSelection();
             
             this.CurrentSortOrder.Reset();
             if (this.InSession(this, "Order_By")) {
@@ -11616,30 +11334,7 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
               }
             
       HttpContext.Current.Session["UsersGroupsLinkTableControl1WhereClause"] = selectedRecordKeyValue.ToXmlString();
-    
-            if (MiscUtils.IsValueSelected(this.UserIdFilter1)) {
-                        
-                int selectedItemCount = 0;
-                foreach (ListItem item in this.UserIdFilter1.Items){
-                    if (item.Selected) {
-                        selectedItemCount += 1;
-                        
-                          
-                    }
-                }
-                WhereClause filter = new WhereClause();
-                foreach (ListItem item in this.UserIdFilter1.Items){
-                    if ((item.Selected) && ((item.Value == "--ANY--") || (item.Value == "--PLEASE_SELECT--")) && (selectedItemCount > 1)){
-                        item.Selected = false;
-                    }
-                    if (item.Selected){
-                        filter.iOR(UsersGroupsLinkTable.UserId0, BaseFilter.ComparisonOperator.EqualsTo, item.Value, false, false);
-                    }
-                }
-                wc.iAND(filter);
-                    
-            }
-                           
+         
             return wc;
         }
         
@@ -11672,30 +11367,6 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
     
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
-      String UserIdFilter1SelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "UserIdFilter1_Ajax"];
-            if (MiscUtils.IsValueSelected(UserIdFilter1SelectedValue)) {
-
-              
-        if (UserIdFilter1SelectedValue != null){
-                        string[] UserIdFilter1itemListFromSession = UserIdFilter1SelectedValue.Split(',');
-                        int index = 0;
-                        WhereClause filter = new WhereClause();
-                        foreach (string item in UserIdFilter1itemListFromSession)
-                        {
-                            if (index == 0 && item.ToString().Equals(""))
-                            {
-                            }
-                            else
-                            {
-                                filter.iOR(UsersGroupsLinkTable.UserId0, BaseFilter.ComparisonOperator.EqualsTo, item, false, false);
-                                index += 1;
-                            }
-                        }
-                        wc.iAND(filter);
-        }
-                
-      }
-                      
 
             return wc;
         }
@@ -11948,250 +11619,12 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
       
         // Create Set, WhereClause, and Populate Methods
         
-        public virtual void SetSortByLabel2()
-                  {
-                  
-                      //Code for the text property is generated inside the .aspx file. 
-                      //To override this property you can uncomment the following property and add you own value.
-                      //this.SortByLabel2.Text = "Some value";
-                    
-                    
-        }
-                
-        public virtual void SetUserIdLabel2()
+        public virtual void SetUserIdLabel()
                   {
                   
                     
         }
                 
-        public virtual void SetSortControl2()
-        {
-            
-                this.PopulateSortControl2(MiscUtils.GetSelectedValue(this.SortControl2,  GetFromSession(this.SortControl2)), 500);					
-                    
-
-        }
-            
-        public virtual void SetUserIdFilter1()
-        {
-            
-            ArrayList UserIdFilter1selectedFilterItemList = new ArrayList();
-            string UserIdFilter1itemsString = null;
-            if (this.InSession(this.UserIdFilter1))
-                UserIdFilter1itemsString = this.GetFromSession(this.UserIdFilter1);
-            
-            if (UserIdFilter1itemsString != null)
-            {
-                string[] UserIdFilter1itemListFromSession = UserIdFilter1itemsString.Split(',');
-                foreach (string item in UserIdFilter1itemListFromSession)
-                {
-                    UserIdFilter1selectedFilterItemList.Add(item);
-                }
-            }
-              
-            			
-            this.PopulateUserIdFilter1(MiscUtils.GetSelectedValueList(this.UserIdFilter1, UserIdFilter1selectedFilterItemList), 500);
-                    
-              string url = this.ModifyRedirectUrl("../Users/Users-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.UserIdFilter1.ClientID + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= Users.UserName0")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("UserId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--ANY--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:All")) + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.UserIdFilter1.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(UserIdFilter1.AutoPostBack).ToLower() + ", event); return false;";
-                  
-                             
-        }
-            
-        // Get the filters' data for SortControl2.
-                
-        protected virtual void PopulateSortControl2(string selectedValue, int maxItems)
-                    
-        {
-            
-              
-                this.SortControl2.Items.Clear();
-                
-              // 1. Setup the static list items
-              
-                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("{Txt:PleaseSelect}"), "--PLEASE_SELECT--"));
-              
-                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("User {Txt:Ascending}"), "UserId Asc"));
-              
-                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("User {Txt:Descending}"), "UserId Desc"));
-              
-            try
-            {          
-                // Set the selected value.
-                MiscUtils.SetSelectedValue(this.SortControl2, selectedValue);
-
-               
-            }
-            catch
-            {
-            }
-              
-            if (this.SortControl2.SelectedValue != null && this.SortControl2.Items.FindByValue(this.SortControl2.SelectedValue) == null)
-                this.SortControl2.SelectedValue = null;
-              
-        }
-            
-        // Get the filters' data for UserIdFilter1.
-                
-        protected virtual void PopulateUserIdFilter1(ArrayList selectedValue, int maxItems)
-                    
-        {
-        
-            
-            //Setup the WHERE clause.
-                        
-            WhereClause wc = this.CreateWhereClause_UserIdFilter1();            
-            this.UserIdFilter1.Items.Clear();
-            			  			
-            // Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_UserIdFilter1 function.
-            // It is better to customize the where clause there.
-             
-            OrderBy orderBy = new OrderBy(false, false);
-            
-
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object> ();
-
-            
- 
-            string noValueFormat = Page.GetResourceValue("Txt:Other", "RatTrap");
-
-            UsersRecord[] itemValues  = null;
-            if (wc.RunQuery)
-            {
-                int counter = 0;
-                int pageNum = 0;
-                FormulaEvaluator evaluator = new FormulaEvaluator();
-                ArrayList listDuplicates = new ArrayList();
-                
-                do
-                {
-                    
-                    itemValues = UsersTable.GetRecords(wc, orderBy, pageNum, maxItems);
-                                    
-                    foreach (UsersRecord itemValue in itemValues) 
-                    {
-                        // Create the item and add to the list.
-                        string cvalue = null;
-                        string fvalue = null;
-                        if (itemValue.UserId0Specified) 
-                        {
-                            cvalue = itemValue.UserId0.ToString();
-                            if (counter < maxItems && this.UserIdFilter1.Items.FindByValue(cvalue) == null)
-                            {
-                                    
-                                Boolean _isExpandableNonCompositeForeignKey = UsersGroupsLinkTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(UsersGroupsLinkTable.UserId0);
-                                if(_isExpandableNonCompositeForeignKey && UsersGroupsLinkTable.UserId0.IsApplyDisplayAs)
-                                     fvalue = UsersGroupsLinkTable.GetDFKA(itemValue, UsersGroupsLinkTable.UserId0);
-                                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                                     fvalue = itemValue.Format(UsersTable.UserId0);
-                                   					
-                                if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-
-                                if (fvalue == null) {
-                                    fvalue = "";
-                                }
-
-                                fvalue = fvalue.Trim();
-
-                                if ( fvalue.Length > 50 ) {
-                                   fvalue = fvalue.Substring(0, 50) + "...";
-                                }
-
-                                ListItem dupItem = this.UserIdFilter1.Items.FindByText(fvalue);
-								
-                                if (dupItem != null) {
-                                    listDuplicates.Add(fvalue);
-                                    if (!string.IsNullOrEmpty(dupItem.Value))
-                                    {
-                                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
-                                    }
-                                }
-
-                                ListItem newItem = new ListItem(fvalue, cvalue);
-                                this.UserIdFilter1.Items.Add(newItem);
-
-                                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
-                                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
-                                }
-
-                                counter += 1;
-                            }
-                        }
-                    }
-                    pageNum++;
-                }
-                while (itemValues.Length == maxItems && counter < maxItems);
-            }
-        
-                      
-            try
-            {
-      
-                
-            }
-            catch
-            {
-            }
-            
-            
-            this.UserIdFilter1.SetFieldMaxLength(50);
-                                 
-                  
-            // Add the selected value.
-            if (this.UserIdFilter1.Items.Count == 0)
-                this.UserIdFilter1.Items.Add(new ListItem(Page.GetResourceValue("Txt:All", "RatTrap"), "--ANY--"));
-            
-            // Mark all items to be selected.
-            foreach (ListItem item in this.UserIdFilter1.Items)
-            {
-                item.Selected = true;
-            }
-                               
-        }
-            
-        public virtual WhereClause CreateWhereClause_UserIdFilter1()
-        {
-            // Create a where clause for the filter UserIdFilter1.
-            // This function is called by the Populate method to load the items 
-            // in the UserIdFilter1QuickSelector
-        
-            ArrayList UserIdFilter1selectedFilterItemList = new ArrayList();
-            string UserIdFilter1itemsString = null;
-            if (this.InSession(this.UserIdFilter1))
-                UserIdFilter1itemsString = this.GetFromSession(this.UserIdFilter1);
-            
-            if (UserIdFilter1itemsString != null)
-            {
-                string[] UserIdFilter1itemListFromSession = UserIdFilter1itemsString.Split(',');
-                foreach (string item in UserIdFilter1itemListFromSession)
-                {
-                    UserIdFilter1selectedFilterItemList.Add(item);
-                }
-            }
-              
-            UserIdFilter1selectedFilterItemList = MiscUtils.GetSelectedValueList(this.UserIdFilter1, UserIdFilter1selectedFilterItemList); 
-            WhereClause wc = new WhereClause();
-            if (UserIdFilter1selectedFilterItemList == null || UserIdFilter1selectedFilterItemList.Count == 0)
-                wc.RunQuery = false;
-            else            
-            {
-                foreach (string item in UserIdFilter1selectedFilterItemList)
-                {
-            	  
-                    wc.iOR(UsersTable.UserId0, BaseFilter.ComparisonOperator.EqualsTo, item);                  
-                  
-                                 
-                }
-            }
-            return wc;
-        
-        }
-      
 
     
         protected virtual void Control_PreRender(object sender, System.EventArgs e)
@@ -12225,17 +11658,6 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
             base.SaveControlsToSession();
             // Save filter controls to values to session.
         
-            this.SaveToSession(this.SortControl2, this.SortControl2.SelectedValue);
-                  
-            ArrayList UserIdFilter1selectedFilterItemList = MiscUtils.GetSelectedValueList(this.UserIdFilter1, null);
-            string UserIdFilter1SessionString = "";
-            if (UserIdFilter1selectedFilterItemList != null){
-                foreach (string item in UserIdFilter1selectedFilterItemList){
-                    UserIdFilter1SessionString = String.Concat(UserIdFilter1SessionString ,"," , item);
-                }
-            }
-            this.SaveToSession(this.UserIdFilter1, UserIdFilter1SessionString);
-                  
             
                     
             // Save pagination state to session.
@@ -12263,17 +11685,6 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
         {
             // Save filter controls to values to session.
           
-            this.SaveToSession(this.SortControl2, this.SortControl2.SelectedValue);
-                  
-            ArrayList UserIdFilter1selectedFilterItemList = MiscUtils.GetSelectedValueList(this.UserIdFilter1, null);
-            string UserIdFilter1SessionString = "";
-            if (UserIdFilter1selectedFilterItemList != null){
-                foreach (string item in UserIdFilter1selectedFilterItemList){
-                    UserIdFilter1SessionString = String.Concat(UserIdFilter1SessionString ,"," , item);
-                }
-            }
-            this.SaveToSession("UserIdFilter1_Ajax", UserIdFilter1SessionString);
-          
            HttpContext.Current.Session["AppRelativeVirtualPath"] = this.Page.AppRelativeVirtualPath;
          
         }
@@ -12284,8 +11695,6 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
             base.ClearControlsFromSession();
             // Clear filter controls values from the session.
         
-            this.RemoveFromSession(this.SortControl2);
-            this.RemoveFromSession(this.UserIdFilter1);
             
             // Clear pagination state from session.
          
@@ -12370,102 +11779,7 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
         }
 
         // Generate set method for buttons
-        
-        public virtual void SetExcelButton3()                
-              
-        {
-        
-   
-        }
-            
-        public virtual void SetImportButton3()                
-              
-        {
-        							
-                    this.ImportButton3.PostBackUrl = "../Shared/SelectFileToImport.aspx?TableName=UsersGroupsLink" ;
-                    this.ImportButton3.Attributes["onClick"] = "window.open('" + this.Page.EncryptUrlParameter(this.ImportButton3.PostBackUrl) + "','importWindow', 'width=700, height=500,top=' +(screen.availHeight-500)/2 + ',left=' + (screen.availWidth-700)/2+ ', resizable=yes, scrollbars=yes,modal=yes'); return false;";
-                        
-   
-        }
-            
-        public virtual void SetNewButton3()                
-              
-        {
-        
-              try
-              {
-                    string url = "../Shared/ConfigureAddRecord.aspx?TabVisible=False&SaveAndNewVisible=False";
-              
-                      
-                    url = this.ModifyRedirectUrl(url, "", true);
-                    
-                    url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-                    
-                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(MiscUtils.FindControlRecursively(this, "UsersGroupsLinkTableControl1_PostbackTracker").ClientID);                           
-                                
-                string javascriptCall = "";
-                
-                    javascriptCall = "initializePopupPage2(document.getElementById('" + MiscUtils.FindControlRecursively(this, "UsersGroupsLinkTableControl1_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
-                       
-                    this.NewButton3.Attributes["onClick"] = javascriptCall + "return false;";            
-                }
-                catch
-                {
-                    // do nothing.  If the code above fails, server side click event, NewButton3_ClickNewButton3_Click will be trigger when user click the button.
-                }
-                  
-   
-        }
-            
-        public virtual void SetPDFButton3()                
-              
-        {
-        
-   
-        }
-            
-        public virtual void SetResetButton2()                
-              
-        {
-        
-   
-        }
-            
-        public virtual void SetWordButton3()                
-              
-        {
-        
-   
-        }
-            
-        public virtual void SetActions3Button()                
-              
-        {
-        
-   
-        }
-            
-        public virtual void SetFilterButton2()                
-              
-        {
-        
-   
-        }
-            
-        public virtual void SetFilters2Button()                
-              
-        {
-                
-         IThemeButtonWithArrow themeButtonFilters2Button = (IThemeButtonWithArrow)(MiscUtils.FindControlRecursively(this, "Filters2Button"));
-         themeButtonFilters2Button.ArrowImage.ImageUrl = "../Images/ButtonExpandArrow.png";
-    
-      
-            if (MiscUtils.IsValueSelected(UserIdFilter1))
-                themeButtonFilters2Button.ArrowImage.ImageUrl = "../Images/ButtonCheckmark.png";
-        
-   
-        }
-               
+           
         
         // Generate the event handling functions for pagination events.
         
@@ -12592,615 +11906,43 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
 
         // Generate the event handling functions for sorting events.
         
-
-        // Generate the event handling functions for button events.
-        
-        // event handler for ImageButton
-        public virtual void ExcelButton3_Click(object sender, ImageClickEventArgs args)
+        public virtual void UserIdLabel_Click(object sender, EventArgs args)
         {
+            //Sorts by UserId when clicked.
               
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-            
-            // To customize the columns or the format, override this function in Section 1 of the page
-            // and modify it to your liking.
-            // Build the where clause based on the current filter and search criteria
-            // Create the Order By clause based on the user's current sorting preference.
-            
-                WhereClause wc = null;
-                wc = CreateWhereClause();
-                OrderBy orderBy = null;
-              
-                orderBy = CreateOrderBy();
-              
-              bool done = false;
-              object val = "";
-              CompoundFilter join = CreateCompoundJoinFilter();
-              
-              // Read pageSize records at a time and write out the Excel file.
-              int totalRowsReturned = 0;
-
-
-              this.TotalRecords = UsersGroupsLinkTable.GetRecordCount(join, wc);
-              if (this.TotalRecords > 10000)
-              {
-              
-                // Add each of the columns in order of export.
-                BaseColumn[] columns = new BaseColumn[] {
-                             UsersGroupsLinkTable.UserId0,
-             null};
-                ExportDataToCSV exportData = new ExportDataToCSV(UsersGroupsLinkTable.Instance,wc,orderBy,columns);
-                exportData.StartExport(this.Page.Response, true);
-
-                DataForExport dataForCSV = new DataForExport(UsersGroupsLinkTable.Instance, wc, orderBy, columns,join);
-
-                //  Read pageSize records at a time and write out the CSV file.
-                while (!done)
-                {
-                ArrayList recList = dataForCSV.GetRows(exportData.pageSize);
-                if (recList == null)
-                break; //we are done
-
-                totalRowsReturned = recList.Count;
-                foreach (BaseRecord rec in recList)
-                {
-                foreach (BaseColumn col in dataForCSV.ColumnList)
-                {
-                if (col == null)
-                continue;
-
-                if (!dataForCSV.IncludeInExport(col))
-                continue;
-
-                val = rec.GetValue(col).ToString();
-                exportData.WriteColumnData(val, dataForCSV.IsString(col));
-                }
-                exportData.WriteNewRow();
-                }
-
-                //  If we already are below the pageSize, then we are done.
-                if (totalRowsReturned < exportData.pageSize)
-                {
-                done = true;
-                }
-                }
-                exportData.FinishExport(this.Page.Response);
-              
-              }
-              else
-              {
-              // Create an instance of the ExportDataToExcel class with the table class, where clause and order by.
-              ExportDataToExcel excelReport = new ExportDataToExcel(UsersGroupsLinkTable.Instance, wc, orderBy);
-              // Add each of the columns in order of export.
-              // To customize the data type, change the second parameter of the new ExcelColumn to be
-              // a format string from Excel's Format Cell menu. For example "dddd, mmmm dd, yyyy h:mm AM/PM;@", "#,##0.00"
-
-              if (this.Page.Response == null)
-              return;
-
-              excelReport.CreateExcelBook();
-
-              int width = 0;
-              int columnCounter = 0;
-              DataForExport data = new DataForExport(UsersGroupsLinkTable.Instance, wc, orderBy, null,join);
-                           data.ColumnList.Add(new ExcelColumn(UsersGroupsLinkTable.UserId0, "Default"));
-
-
-              //  First write out the Column Headers
-              foreach (ExcelColumn col in data.ColumnList)
-              {
-              width = excelReport.GetExcelCellWidth(col);
-              if (data.IncludeInExport(col))
-              {
-              excelReport.AddColumnToExcelBook(columnCounter, col.ToString(), excelReport.GetExcelDataType(col), width, excelReport.GetDisplayFormat(col));
-              columnCounter++;
-              }
-              }
-              
-              while (!done)
-              {
-              ArrayList recList = data.GetRows(excelReport.pageSize);
-
-              if (recList == null)
-              {
-              break;
-              }
-              totalRowsReturned = recList.Count;
-
-              foreach (BaseRecord rec in recList)
-              {
-              excelReport.AddRowToExcelBook();
-              columnCounter = 0;
-              foreach (ExcelColumn col in data.ColumnList)
-              {
-              if (!data.IncludeInExport(col))
-              continue;
-
-              Boolean _isExpandableNonCompositeForeignKey = col.DisplayColumn.TableDefinition.IsExpandableNonCompositeForeignKey(col.DisplayColumn);
-              if (_isExpandableNonCompositeForeignKey && col.DisplayColumn.IsApplyDisplayAs)
-              {
-                val = UsersGroupsLinkTable.GetDFKA(rec.GetValue(col.DisplayColumn).ToString(), col.DisplayColumn, null) as string;
-                if (String.IsNullOrEmpty(val as string))
-                {
-                  val = rec.Format(col.DisplayColumn);
-                }
-              }
-              else
-                val = excelReport.GetValueForExcelExport(col, rec);
-              
-              excelReport.AddCellToExcelRow(columnCounter, excelReport.GetExcelDataType(col), val, col.DisplayFormat);
-
-              columnCounter++;
-              }
-              }
-
-              // If we already are below the pageSize, then we are done.
-              if (totalRowsReturned < excelReport.pageSize)
-              {
-              done = true;
-              }
-              }
-              excelReport.SaveExcelBook(this.Page.Response);
-              }
-            
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-    
-        }
-            
-            
+            // Get previous sorting state for UserId.
         
-        // event handler for ImageButton
-        public virtual void ImportButton3_Click(object sender, ImageClickEventArgs args)
-        {
-              
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  this.Page.ErrorOnPage = true;
+            OrderByItem sd = this.CurrentSortOrder.Find(UsersGroupsLinkTable.UserId0);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for UserId.
+                this.CurrentSortOrder.Reset();
 
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
     
-            } finally {
-                DbUtils.EndTransaction();
-            }
-    
-        }
-            
-            
-        
-        // event handler for ImageButton
-        public virtual void NewButton3_Click(object sender, ImageClickEventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Shared/ConfigureAddRecord.aspx?TabVisible=False&SaveAndNewVisible=False";
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-                url = this.Page.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.Page.ErrorOnPage = true;
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
 
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.Page.ShouldSaveControlsToSession = true;
-      
-                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(MiscUtils.FindControlRecursively(this, "UsersGroupsLinkTableControl1_PostbackTracker").ClientID);                           
-                                
-                string javascriptCall = "";
-                
-                    javascriptCall = "initializePopupPage2(document.getElementById('" + MiscUtils.FindControlRecursively(this, "UsersGroupsLinkTableControl1_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
-                AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "NewButton3_Click", javascriptCall, true);
-        
+              this.CurrentSortOrder.Add(UsersGroupsLinkTable.UserId0, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by UserId, so just reverse.
+                sd.Reverse();
             }
         
-        }
-            
-            
-        
-        // event handler for ImageButton
-        public virtual void PDFButton3_Click(object sender, ImageClickEventArgs args)
-        {
-              
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-
-                PDFReport report = new PDFReport();
-
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table.PDFButton3.report");
-                // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
-                report.Title = "UsersGroupsLink";
-                // If Show-UsersGroupsLink-Table.PDFButton3.report specifies a valid report template,
-                // AddColumn methods will generate a report template.   
-                // Each AddColumn method-call specifies a column
-                // The 1st parameter represents the text of the column header
-                // The 2nd parameter represents the horizontal alignment of the column header
-                // The 3rd parameter represents the text format of the column detail
-                // The 4th parameter represents the horizontal alignment of the column detail
-                // The 5th parameter represents the relative width of the column
-                 report.AddColumn(UsersGroupsLinkTable.UserId0.Name, ReportEnum.Align.Left, "${UserId0}", ReportEnum.Align.Left, 15);
-
-  
-                int rowsPerQuery = 5000;
-                int recordCount = 0;
-                                
-                report.Page = Page.GetResourceValue("Txt:Page", "RatTrap");
-                report.ApplicationPath = this.Page.MapPath(Page.Request.ApplicationPath);
-
-                
-                ColumnList columns = UsersGroupsLinkTable.GetColumnList();
-                
-                WhereClause whereClause = null;
-                whereClause = CreateWhereClause();
-                OrderBy orderBy = CreateOrderBy();
-                BaseFilter joinFilter = CreateCompoundJoinFilter();
-                
-                int pageNum = 0;
-                int totalRows = UsersGroupsLinkTable.GetRecordCount(joinFilter,whereClause);
-                UsersGroupsLinkRecord[] records = null;
-                
-                do
-                {
-                    
-                    records = UsersGroupsLinkTable.GetRecords(joinFilter,whereClause, orderBy, pageNum, rowsPerQuery);
-                     if (records != null && records.Length > 0 && whereClause.RunQuery)
-                    {
-                        foreach ( UsersGroupsLinkRecord record in records)
-                    
-                        {
-                            // AddData method takes four parameters   
-                            // The 1st parameter represent the data format
-                            // The 2nd parameter represent the data value
-                            // The 3rd parameter represent the default alignment of column using the data
-                            // The 4th parameter represent the maximum length of the data value being shown
-                                                 if (BaseClasses.Utils.MiscUtils.IsNull(record.UserId0)){
-                                 report.AddData("${UserId0}", "",ReportEnum.Align.Left);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = UsersGroupsLinkTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(UsersGroupsLinkTable.UserId0);
-                                 _DFKA = UsersGroupsLinkTable.GetDFKA(record.UserId0.ToString(), UsersGroupsLinkTable.UserId0,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  UsersGroupsLinkTable.UserId0.IsApplyDisplayAs){
-                                     report.AddData("${UserId0}", _DFKA,ReportEnum.Align.Left);
-                                 }else{
-                                     report.AddData("${UserId0}", record.Format(UsersGroupsLinkTable.UserId0), ReportEnum.Align.Left);
-                                 }
-                             }
-
-                            report.WriteRow();
-                        }
-                        pageNum++;
-                        recordCount += records.Length;
-                    }
-                }
-                while (records != null && recordCount < totalRows && whereClause.RunQuery);
-                	
-                
-                report.Close();
-                BaseClasses.Utils.NetUtils.WriteResponseBinaryAttachment(this.Page.Response, report.Title + ".pdf", report.ReportInByteArray, 0, true);
-            
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-    
-        }
-            
-            
-        
-        // event handler for ImageButton
-        public virtual void ResetButton2_Click(object sender, ImageClickEventArgs args)
-        {
-              
-            try {
-                
-              this.UserIdFilter1.ClearSelection();
-            
-           
-            this.SortControl2.ClearSelection();
-          
-              this.CurrentSortOrder.Reset();
-              if (this.InSession(this, "Order_By"))
-                  this.CurrentSortOrder = OrderBy.FromXmlString(this.GetFromSession(this, "Order_By", null));
-              else
-              {
-                  this.CurrentSortOrder = new OrderBy(true, false);
-                  
-              }
-                
 
             // Setting the DataChanged to true results in the page being refreshed with
             // the most recent data from the database.  This happens in PreRender event
             // based on the current sort, search and filter criteria.
             this.DataChanged = true;
-                
-            } catch (Exception ex) {
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-    
-            }
-    
-        }
-            
-            
-        
-        // event handler for ImageButton
-        public virtual void WordButton3_Click(object sender, ImageClickEventArgs args)
-        {
               
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-
-                WordReport report = new WordReport();
-
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table.WordButton3.word");
-                // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
-                report.Title = "UsersGroupsLink";
-                // If Show-UsersGroupsLink-Table.WordButton3.report specifies a valid report template,
-                // AddColumn methods will generate a report template.
-                // Each AddColumn method-call specifies a column
-                // The 1st parameter represents the text of the column header
-                // The 2nd parameter represents the horizontal alignment of the column header
-                // The 3rd parameter represents the text format of the column detail
-                // The 4th parameter represents the horizontal alignment of the column detail
-                // The 5th parameter represents the relative width of the column
-                 report.AddColumn(UsersGroupsLinkTable.UserId0.Name, ReportEnum.Align.Left, "${UserId0}", ReportEnum.Align.Left, 15);
-
-                WhereClause whereClause = null;
-                whereClause = CreateWhereClause();
-            
-                OrderBy orderBy = CreateOrderBy();
-                BaseFilter joinFilter = CreateCompoundJoinFilter();
-                
-
-                int rowsPerQuery = 5000;
-                int pageNum = 0;
-                int recordCount = 0;
-                int totalRows = UsersGroupsLinkTable.GetRecordCount(joinFilter,whereClause);
-
-                report.Page = Page.GetResourceValue("Txt:Page", "RatTrap");
-                report.ApplicationPath = this.Page.MapPath(Page.Request.ApplicationPath);
-
-                ColumnList columns = UsersGroupsLinkTable.GetColumnList();
-                UsersGroupsLinkRecord[] records = null;
-                do
-                {
-                    records = UsersGroupsLinkTable.GetRecords(joinFilter,whereClause, orderBy, pageNum, rowsPerQuery);
-                    if (records != null && records.Length > 0 && whereClause.RunQuery)
-                    {
-                        foreach ( UsersGroupsLinkRecord record in records)
-                        {
-                            // AddData method takes four parameters
-                            // The 1st parameter represents the data format
-                            // The 2nd parameter represents the data value
-                            // The 3rd parameter represents the default alignment of column using the data
-                            // The 4th parameter represents the maximum length of the data value being shown
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.UserId0)){
-                                 report.AddData("${UserId0}", "",ReportEnum.Align.Left);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = UsersGroupsLinkTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(UsersGroupsLinkTable.UserId0);
-                                 _DFKA = UsersGroupsLinkTable.GetDFKA(record.UserId0.ToString(), UsersGroupsLinkTable.UserId0,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  UsersGroupsLinkTable.UserId0.IsApplyDisplayAs){
-                                     report.AddData("${UserId0}", _DFKA,ReportEnum.Align.Left);
-                                 }else{
-                                     report.AddData("${UserId0}", record.Format(UsersGroupsLinkTable.UserId0), ReportEnum.Align.Left);
-                                 }
-                             }
-
-                            report.WriteRow();
-                        }
-                        pageNum++;
-                        recordCount += records.Length;
-                    }
-                }
-                while (records != null && recordCount < totalRows && whereClause.RunQuery);
-                report.save();
-                BaseClasses.Utils.NetUtils.WriteResponseBinaryAttachment(this.Page.Response, report.Title + ".doc", report.ReportInByteArray, 0, true);
-          
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-    
         }
             
-            
-        
-        // event handler for Button
-        public virtual void Actions3Button_Click(object sender, EventArgs args)
-        {
-              
-            try {
-                
-            //This method is initially empty to implement custom click handler.
-      
-            } catch (Exception ex) {
-                  this.Page.ErrorOnPage = true;
 
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-    
-            }
-    
-        }
-            
-            
-        
-        // event handler for Button
-        public virtual void FilterButton2_Click(object sender, EventArgs args)
-        {
-              
-            try {
-                
-            this.DataChanged = true;
-          
-            } catch (Exception ex) {
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-    
-            }
-    
-        }
-            
-            
-        
-        // event handler for Button
-        public virtual void Filters2Button_Click(object sender, EventArgs args)
-        {
-              
-            try {
-                
-            //This method is initially empty to implement custom click handler.
-      
-            } catch (Exception ex) {
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-    
-            }
-    
-        }
-            
-            
+        // Generate the event handling functions for button events.
         
 
 
         // Generate the event handling functions for filter and search events.
         
-        // event handler for OrderSort
-        protected virtual void SortControl2_SelectedIndexChanged(object sender, EventArgs args)
-        {
-              
-                  string SelVal3 = this.SortControl2.SelectedValue.ToUpper();
-                  string[] words3 = SelVal3.Split(' ');
-                  if (SelVal3 != "" )
-                  {
-                  SelVal3 = SelVal3.Replace(words3[words3.Length - 1], "").TrimEnd();
-                  foreach (BaseClasses.Data.BaseColumn ColumnNam in UsersGroupsLinkTable.GetColumns())
-                  {
-                  if (ColumnNam.Name.ToUpper().Equals(SelVal3))
-                  {
-                  SelVal3 = ColumnNam.InternalName;
-                  }
-                  }
-                  }
-
-                
-                OrderByItem sd = this.CurrentSortOrder.Find(UsersGroupsLinkTable.GetColumnByName(SelVal3));
-                if (sd == null || this.CurrentSortOrder.Items != null)
-                {
-                // First time sort, so add sort order for Discontinued.
-                if (UsersGroupsLinkTable.GetColumnByName(SelVal3) != null)
-                {
-                  this.CurrentSortOrder.Reset();
-                }
-
-                //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
-                if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
-
-                
-                  if (SelVal3 != "--PLEASE_SELECT--" && UsersGroupsLinkTable.GetColumnByName(SelVal3) != null)
-                  {
-                    if (words3[words3.Length - 1].Contains("ASC"))
-                  {
-                  this.CurrentSortOrder.Add(UsersGroupsLinkTable.GetColumnByName(SelVal3),OrderByItem.OrderDir.Asc);
-                    }
-                    else
-                    {
-                      if (words3[words3.Length - 1].Contains("DESC"))
-                  {
-                  this.CurrentSortOrder.Add(UsersGroupsLinkTable.GetColumnByName(SelVal3),OrderByItem.OrderDir.Desc );
-                      }
-                    }
-                  }
-                
-                }
-                this.DataChanged = true;
-              				
-        }
-            
-        // event handler for FieldFilter
-        protected virtual void UserIdFilter1_SelectedIndexChanged(object sender, EventArgs args)
-        {
-            // Setting the DataChanged to True results in the page being refreshed with
-            // the most recent data from the database.  This happens in PreRender event
-            // based on the current sort, search and filter criteria.
-            this.DataChanged = true;
-            
-           				
-        }
-            
     
         // Generate the event handling functions for others
         	  
@@ -13275,71 +12017,11 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
 
 #region "Helper Properties"
         
-        public RatTrap.UI.IThemeButtonWithArrow Actions3Button {
-            get {
-                return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Actions3Button");
-            }
-        }
-        
-        public System.Web.UI.WebControls.ImageButton ExcelButton3 {
-            get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ExcelButton3");
-            }
-        }
-        
-        public RatTrap.UI.IThemeButton FilterButton2 {
-            get {
-                return (RatTrap.UI.IThemeButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FilterButton2");
-            }
-        }
-        
-        public RatTrap.UI.IThemeButtonWithArrow Filters2Button {
-            get {
-                return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Filters2Button");
-            }
-        }
-        
-        public System.Web.UI.WebControls.ImageButton ImportButton3 {
-            get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ImportButton3");
-            }
-        }
-        
-        public System.Web.UI.WebControls.ImageButton NewButton3 {
-            get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "NewButton3");
-            }
-        }
-        
         public RatTrap.UI.IPaginationModern Pagination3 {
             get {
                 return (RatTrap.UI.IPaginationModern)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Pagination3");
             }
         }
-        
-        public System.Web.UI.WebControls.ImageButton PDFButton3 {
-            get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "PDFButton3");
-            }
-        }
-        
-        public System.Web.UI.WebControls.ImageButton ResetButton2 {
-            get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ResetButton2");
-            }
-        }
-        
-        public System.Web.UI.WebControls.Label SortByLabel2 {
-            get {
-                return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortByLabel2");
-            }
-        }
-        
-          public System.Web.UI.WebControls.DropDownList SortControl2 {
-          get {
-          return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortControl2");
-          }
-          }
         
         public System.Web.UI.WebControls.Literal Title3 {
             get {
@@ -13347,21 +12029,9 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
             }
         }
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector UserIdFilter1 {
+        public System.Web.UI.WebControls.LinkButton UserIdLabel {
             get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserIdFilter1");
-            }
-        }              
-        
-        public System.Web.UI.WebControls.Literal UserIdLabel2 {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserIdLabel2");
-            }
-        }
-        
-        public System.Web.UI.WebControls.ImageButton WordButton3 {
-            get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "WordButton3");
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserIdLabel");
             }
         }
         

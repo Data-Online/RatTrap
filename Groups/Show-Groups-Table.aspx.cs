@@ -258,6 +258,8 @@ public partial class Show_Groups_Table
                 
         public ThemeButtonWithArrow ActionsButton;
                 
+        public System.Web.UI.WebControls.LinkButton DescriptionLabel;
+        
         public System.Web.UI.WebControls.ImageButton ExcelButton;
         
         public ThemeButton FilterButton;
@@ -272,6 +274,8 @@ public partial class Show_Groups_Table
                 
         public ThemeButtonWithArrow FiltersButton;
                 
+        public System.Web.UI.WebControls.LinkButton FirstNameLabel;
+        
         public System.Web.UI.WebControls.Literal FirstNameLabel1;
         
         public System.Web.UI.WebControls.Literal GroupNameLabel1;
@@ -279,6 +283,8 @@ public partial class Show_Groups_Table
         public RatTrap.UI.Controls.Show_Groups_Table.GroupsTableControl GroupsTableControl;
           
         public System.Web.UI.WebControls.ImageButton ImportButton;
+        
+        public System.Web.UI.WebControls.LinkButton LastNameLabel;
         
         public System.Web.UI.WebControls.ImageButton NewButton;
         
@@ -338,6 +344,8 @@ public partial class Show_Groups_Table
         
         public System.Web.UI.WebControls.Literal Title0;
             
+        public System.Web.UI.WebControls.LinkButton UserNameLabel;
+        
         public System.Web.UI.WebControls.ImageButton WordButton;
         
         public ValidationSummary ValidationSummary1;

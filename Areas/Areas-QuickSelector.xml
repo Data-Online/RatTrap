@@ -14,6 +14,7 @@
     <Layout>Areas\Areas-QuickSelector.html</Layout>
     <DisplayName>Areas-QuickSelector</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
+    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
   </Self>
   <ComposedOf>
     <ContainedComponent>
@@ -35,7 +36,7 @@
         </Attribute>
         <Attribute>
           <Name>Button-RedirectURL</Name>
-          <Value>../Shared/ConfigureAddRecord.aspx</Value>
+          <Value>../Areas/Add-Areas.aspx</Value>
         </Attribute>
         <Attribute>
           <Name>Button-Text</Name>

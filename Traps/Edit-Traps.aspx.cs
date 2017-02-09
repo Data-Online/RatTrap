@@ -210,6 +210,21 @@ public partial class Edit_Traps
     
         // Write out the Set methods
         
+        public void SetTrapsTabContainer()
+        {
+            SetTrapsTabContainer_Base(); 
+        }
+        
+        public void SetTrapNotesTableControl()
+        {
+            SetTrapNotesTableControl_Base(); 
+        }
+        
+        public void SetTrapRecordsTableControl()
+        {
+            SetTrapRecordsTableControl_Base(); 
+        }
+        
         public void SetTrapsRecordControl()
         {
             SetTrapsRecordControl_Base(); 
@@ -247,20 +262,76 @@ public partial class Edit_Traps
         }
         
     
+        public ThemeButtonWithArrow Actions1Button;
+                
+        public ThemeButtonWithArrow Actions2Button;
+                
+        public System.Web.UI.WebControls.ImageButton AddButton;
+        
+        public System.Web.UI.WebControls.ImageButton AddButton1;
+        
+        public System.Web.UI.WebControls.LinkButton BaitTypeLabel;
+        
+        public System.Web.UI.WebControls.Literal BaitTypeLabel1;
+        
         public ThemeButton CancelButton;
                 
-        public BaseClasses.Web.UI.WebControls.QuickSelector GroupId;
+        public System.Web.UI.WebControls.LinkButton DateOfCheckLabel;
+        
+        public System.Web.UI.WebControls.ImageButton DeleteButton;
+        
+        public System.Web.UI.WebControls.ImageButton DeleteButton1;
+        
+        public ThemeButtonWithArrow Filters1Button;
+                
+        public ThemeButtonWithArrow Filters2Button;
+                
+        public ThemeButton GoButton;
+                
+        public System.Web.UI.WebControls.Literal GroupId;
             
         public System.Web.UI.WebControls.Literal GroupIdLabel;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
+        public PaginationModern Pagination;
+                
+        public PaginationModern Pagination1;
+                
+        public System.Web.UI.WebControls.ImageButton ResetButton;
+        
         public ThemeButton SaveButton;
                 
+        public System.Web.UI.WebControls.LinkButton SexLabel;
+        
+        public System.Web.UI.WebControls.Label SortByLabel1;
+        
+        public System.Web.UI.WebControls.Label SortByLabel2;
+        
+        public System.Web.UI.WebControls.LinkButton SpeciesLabel;
+        
+        public System.Web.UI.WebControls.Literal SpeciesLabel1;
+        
         public System.Web.UI.WebControls.Literal Title0;
             
+        public System.Web.UI.WebControls.CheckBox ToggleAll1;
+        
+        public System.Web.UI.WebControls.CheckBox ToggleAll2;
+        
+        public System.Web.UI.WebControls.Literal TrapIdentifierLabel;
+        
+        public RatTrap.UI.Controls.Edit_Traps.TrapNotesTableControl TrapNotesTableControl;
+          
+        public RatTrap.UI.Controls.Edit_Traps.TrapRecordsTableControl TrapRecordsTableControl;
+          
         public RatTrap.UI.Controls.Edit_Traps.TrapsRecordControl TrapsRecordControl;
           
+        public AjaxControlToolkit.TabContainer TrapsTabContainer;
+        
+        public BaseClasses.Web.UI.WebControls.QuickSelector TrapTypeId;
+            
+        public System.Web.UI.WebControls.Literal TrapTypeIdLabel;
+        
         public ValidationSummary ValidationSummary1;
 
   
@@ -440,6 +511,14 @@ public partial class Edit_Traps
           switch (control)
           {
           
+              case "TrapNotesTableControl":
+                 SetTrapNotesTableControl();
+                 break;
+          
+              case "TrapRecordsTableControl":
+                 SetTrapRecordsTableControl();
+                 break;
+          
               case "TrapsRecordControl":
                  SetTrapsRecordControl();
                  break;
@@ -545,7 +624,9 @@ public partial class Edit_Traps
                 this.DataBind();
                 
                 
-                    
+                
+            SetTrapsTabContainer(); 
+          
     
                 // Load and bind data for each record and table UI control.
                 
@@ -561,15 +642,6 @@ public partial class Edit_Traps
               
                 SetSaveButton();
               
-                //Set the corresponding menu item to be highlighted for this page
-                System.Web.UI.MasterPage pageMaster = this.Master;
-                if (!(pageMaster == null)) {
-                IMenuComponent menuComponent = ((IMenuComponent)(this.Master.FindControl("_Menu")));
-                    if (!(menuComponent == null)) {
-                        menuComponent.HiliteSettings = "TrapsMenuItem";
-                    }
-                }
-            
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -651,6 +723,39 @@ public partial class Edit_Traps
                 
         // Write out the Set methods
         
+        public void SetTrapsTabContainer_Base()           
+        
+        {
+                            
+                   
+            if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "true") 
+                MiscUtils.FindControlRecursively(this, "TrapsTabContainer").Visible = true;
+            else if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "false") 
+                MiscUtils.FindControlRecursively(this, "TrapsTabContainer").Visible = false;
+         
+  
+        }      
+      
+        public void SetTrapNotesTableControl_Base()           
+        
+        {        
+            if (TrapNotesTableControl.Visible)
+            {
+                TrapNotesTableControl.LoadData();
+                TrapNotesTableControl.DataBind();
+            }
+        }
+      
+        public void SetTrapRecordsTableControl_Base()           
+        
+        {        
+            if (TrapRecordsTableControl.Visible)
+            {
+                TrapRecordsTableControl.LoadData();
+                TrapRecordsTableControl.DataBind();
+            }
+        }
+      
         public void SetTrapsRecordControl_Base()           
         
         {        

@@ -212,16 +212,76 @@
     <Compile Include="BaseAreasRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapRecordsTable.cs" >
+    <Compile Include="TrapRecordsTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapRecordsTable.cs" >
+    <Compile Include="BaseTrapRecordsTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapRecordsRecord.cs" >
+    <Compile Include="TrapRecordsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseTrapRecordsRecord.cs" >
+    <Compile Include="BaseTrapRecordsRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaitTypesTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseBaitTypesTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaitTypesRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseBaitTypesRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SexTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseSexTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SexRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseSexRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpeciesTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseSpeciesTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpeciesRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseSpeciesRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectNotesTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseProjectNotesTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectNotesRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseProjectNotesRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreaNotesTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseAreaNotesTable.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreaNotesRecord.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseAreaNotesRecord.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

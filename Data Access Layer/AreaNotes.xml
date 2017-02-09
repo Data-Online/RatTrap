@@ -110,7 +110,6 @@
   <Owner>dbo</Owner>
   <TableAliasName>AreaNotes_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>
-  <InUse>N</InUse>
   <PagingMethod>RowNum</PagingMethod>
   <canCreateRecords Source="Database">Y</canCreateRecords>
   <canEditRecords Source="Database">Y</canEditRecords>
@@ -122,4 +121,5 @@
   <MenuName>Area Notes</MenuName>
   <QSPath>../AreaNotes/AreaNotes-QuickSelector.aspx</QSPath>
   <TableCodeName>AreaNotes</TableCodeName>
+  <TableStoredProcPrefix>pRatTrapAreaNotes</TableStoredProcPrefix>
 </XMLDefinition>

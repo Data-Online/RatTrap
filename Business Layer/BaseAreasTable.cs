@@ -60,8 +60,8 @@ public class BaseAreasTable : PrimaryKeyTable
         this.TableDefinition.AdapterMetaData = this.DataAdapter.AdapterMetaData;
         AreaIdColumn.CodeName = "AreaId";
         LatColumn.CodeName = "Lat";
+        NameColumn.CodeName = "Name";
         Long0Column.CodeName = "Long0";
-        NotesColumn.CodeName = "Notes";
 
         
     }
@@ -123,13 +123,38 @@ public class BaseAreasTable : PrimaryKeyTable
     
     
     /// <summary>
+    /// This is a convenience property that provides direct access to the table's Areas_.Name column object.
+    /// </summary>
+    public BaseClasses.Data.StringColumn NameColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.StringColumn)this.TableDefinition.ColumnList[2];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Areas_.Name column object.
+    /// </summary>
+    public static BaseClasses.Data.StringColumn Name
+    {
+        get
+        {
+            return AreasTable.Instance.NameColumn;
+        }
+    }
+    
+    
+    /// <summary>
     /// This is a convenience property that provides direct access to the table's Areas_.Long column object.
     /// </summary>
     public BaseClasses.Data.StringColumn Long0Column
     {
         get
         {
-            return (BaseClasses.Data.StringColumn)this.TableDefinition.ColumnList[2];
+            return (BaseClasses.Data.StringColumn)this.TableDefinition.ColumnList[3];
         }
     }
     
@@ -143,31 +168,6 @@ public class BaseAreasTable : PrimaryKeyTable
         get
         {
             return AreasTable.Instance.Long0Column;
-        }
-    }
-    
-    
-    /// <summary>
-    /// This is a convenience property that provides direct access to the table's Areas_.Notes column object.
-    /// </summary>
-    public BaseClasses.Data.NumberColumn NotesColumn
-    {
-        get
-        {
-            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[3];
-        }
-    }
-    
-
-    
-    /// <summary>
-    /// This is a convenience property that provides direct access to the table's Areas_.Notes column object.
-    /// </summary>
-    public static BaseClasses.Data.NumberColumn Notes
-    {
-        get
-        {
-            return AreasTable.Instance.NotesColumn;
         }
     }
     
@@ -698,14 +698,14 @@ public class BaseAreasTable : PrimaryKeyTable
         //Convenience method for creating a record
         public KeyValue NewRecord(
         string LatValue, 
-        string Long0Value, 
-        string NotesValue
+        string NameValue, 
+        string Long0Value
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
                     rec.SetString(LatValue, LatColumn);
+        rec.SetString(NameValue, NameColumn);
         rec.SetString(Long0Value, Long0Column);
-        rec.SetString(NotesValue, NotesColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized
