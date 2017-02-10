@@ -64,30 +64,32 @@ public class GroupsTableControl : BaseGroupsTableControl
 }
 
   
-public class ProjectNotesTableControlRow : BaseProjectNotesTableControlRow
-{
-      
-        // The BaseProjectNotesTableControlRow implements code for a ROW within the
-        // the ProjectNotesTableControl table.  The BaseProjectNotesTableControlRow implements the DataBind and SaveData methods.
-        // The loading of data is actually performed by the LoadData method in the base class of ProjectNotesTableControl.
-
-        // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
-        // SaveData, GetUIData, and Validate methods.
-        
-}
+//public class ProjectNotesTableControlRow : BaseProjectNotesTableControlRow
+//{
+//      
+//        // The BaseProjectNotesTableControlRow implements code for a ROW within the
+//        // the ProjectNotesTableControl table.  The BaseProjectNotesTableControlRow implements the DataBind and SaveData methods.
+//        // The loading of data is actually performed by the LoadData method in the base class of ProjectNotesTableControl.
+//
+//        // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
+//        // SaveData, GetUIData, and Validate methods.
+//        
+//}
+//
 
   
 
-public class ProjectNotesTableControl : BaseProjectNotesTableControl
-{
-    // The BaseProjectNotesTableControl class implements the LoadData, DataBind, CreateWhereClause
-    // and other methods to load and display the data in a table control.
-
-    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
-    // The ProjectNotesTableControlRow class offers another place where you can customize
-    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
-    
-}
+//public class ProjectNotesTableControl : BaseProjectNotesTableControl
+//{
+//    // The BaseProjectNotesTableControl class implements the LoadData, DataBind, CreateWhereClause
+//    // and other methods to load and display the data in a table control.
+//
+//    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+//    // The ProjectNotesTableControlRow class offers another place where you can customize
+//    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+//    
+//}
+//
 
   
 public class ProjectsTableControlRow : BaseProjectsTableControlRow
@@ -130,6 +132,27 @@ public class ProjectsTableControl : BaseProjectsTableControl
 
   
 
+public class ProjectNotesTableControl1 : BaseProjectNotesTableControl1
+{
+    // The BaseProjectNotesTableControl1 class implements the LoadData, DataBind, CreateWhereClause
+    // and other methods to load and display the data in a table control.
+
+    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+    // The ProjectNotesTableControl1Row class offers another place where you can customize
+    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+    
+}
+public class ProjectNotesTableControl1Row : BaseProjectNotesTableControl1Row
+{
+      
+        // The BaseProjectNotesTableControl1Row implements code for a ROW within the
+        // the ProjectNotesTableControl1 table.  The BaseProjectNotesTableControl1Row implements the DataBind and SaveData methods.
+        // The loading of data is actually performed by the LoadData method in the base class of ProjectNotesTableControl1.
+
+        // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
+        // SaveData, GetUIData, and Validate methods.
+        
+}
 #endregion
 
   
@@ -475,8 +498,8 @@ public class BaseGroupsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             bool hasFiltersGroupsTableControl = false;
             hasFiltersGroupsTableControl = hasFiltersGroupsTableControl && false; // suppress warning
       
-            bool hasFiltersProjectNotesTableControl = false;
-            hasFiltersProjectNotesTableControl = hasFiltersProjectNotesTableControl && false; // suppress warning
+            bool hasFiltersProjectNotesTableControl1 = false;
+            hasFiltersProjectNotesTableControl1 = hasFiltersProjectNotesTableControl1 && false; // suppress warning
       
             bool hasFiltersProjectsTableControl = false;
             hasFiltersProjectsTableControl = hasFiltersProjectsTableControl && false; // suppress warning
@@ -3580,11 +3603,11 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
 
     }
   
-// Base class for the ProjectNotesTableControlRow control on the Show_Projects_Table page.
-// Do not modify this class. Instead override any method in ProjectNotesTableControlRow.
-public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordControl
+// Base class for the ProjectNotesTableControl1Row control on the Show_Projects_Table page.
+// Do not modify this class. Instead override any method in ProjectNotesTableControl1Row.
+public class BaseProjectNotesTableControl1Row : RatTrap.UI.BaseApplicationRecordControl
 {
-        public BaseProjectNotesTableControlRow()
+        public BaseProjectNotesTableControl1Row()
         {
             this.Init += Control_Init;
             this.Load += Control_Load;
@@ -3592,20 +3615,26 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
             this.EvaluateFormulaDelegate = new DataSource.EvaluateFormulaDelegate(this.EvaluateFormula);
         }
 
-        // To customize, override this method in ProjectNotesTableControlRow.
+        // To customize, override this method in ProjectNotesTableControl1Row.
         protected virtual void Control_Init(object sender, System.EventArgs e)
         {
                 
         }
 
-        // To customize, override this method in ProjectNotesTableControlRow.
+        // To customize, override this method in ProjectNotesTableControl1Row.
         protected virtual void Control_Load(object sender, System.EventArgs e)
         {      
-                    
+        
+              // Show confirmation message on Click
+              this.DeleteRowButton1.Attributes.Add("onClick", "return (confirm(\"" + ((BaseApplicationPage)this.Page).GetResourceValue("DeleteRecordConfirm", "RatTrap") + "\"));");            
         
               // Register the event handlers.
 
           
+                    this.DeleteRowButton1.Click += DeleteRowButton1_Click;
+                        
+              this.Note1.TextChanged += Note1_TextChanged;
+            
         }
 
         public virtual void LoadData()  
@@ -3625,7 +3654,7 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
             }
       
             // Since this is a row in the table, the data for this row is loaded by the 
-            // LoadData method of the BaseProjectNotesTableControl when the data for the entire
+            // LoadData method of the BaseProjectNotesTableControl1 when the data for the entire
             // table is loaded.
             
             this.DataSource = new ProjectNotesRecord();
@@ -3661,8 +3690,11 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
 
             // Call the Set methods for each controls on the panel
         
-                SetNote();
-                SetNoteLabel();
+                
+                SetNote1();
+                
+                SetDeleteRowButton1();
+              
 
       
 
@@ -3686,15 +3718,24 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
         }
         
         
-        public virtual void SetNote()
+        public virtual void SetNote1()
         {
             
+            // If data was retrieved from UI previously, restore it
+            if (this.PreviousUIData.ContainsKey(this.Note1.ID))
+            {
+            
+                this.Note1.Text = this.PreviousUIData[this.Note1.ID].ToString();
+              
+                return;
+            }
+            
                     
-            // Set the Note Literal on the webpage with value from the
+            // Set the Note TextBox on the webpage with value from the
             // DatabaseTheRatTrap%dbo.ProjectNotes database record.
 
             // this.DataSource is the DatabaseTheRatTrap%dbo.ProjectNotes record retrieved from the database.
-            // this.Note is the ASP:Literal on the webpage.
+            // this.Note1 is the ASP:TextBox on the webpage.
                   
             if (this.DataSource != null && this.DataSource.NoteSpecified) {
                 								
@@ -3702,8 +3743,7 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
                 // The Format method will use the Display Format
                string formattedValue = this.DataSource.Format(ProjectNotesTable.Note);
                                 
-                formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.Note.Text = formattedValue;
+                this.Note1.Text = formattedValue;
                    
             } 
             
@@ -3712,24 +3752,12 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
                 // Note is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.Note.Text = ProjectNotesTable.Note.Format(ProjectNotesTable.Note.DefaultValue);
+              this.Note1.Text = ProjectNotesTable.Note.Format(ProjectNotesTable.Note.DefaultValue);
             		
             }
             
-            // If the Note is NULL or blank, then use the value specified  
-            // on Properties.
-            if (this.Note.Text == null ||
-                this.Note.Text.Trim().Length == 0) {
-                // Set the value specified on the Properties.
-                this.Note.Text = "&nbsp;";
-            }
-                                     
-        }
-                
-        public virtual void SetNoteLabel()
-                  {
-                  
-                    
+              this.Note1.TextChanged += Note1_TextChanged;
+                               
         }
                 
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
@@ -3871,8 +3899,8 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
                 this.DataSource.Save();
                 
                 // Set the DataChanged flag to True for the for the related panels so they get refreshed as well.
-                ((ProjectNotesTableControl)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl")).DataChanged = true;
-                ((ProjectNotesTableControl)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl")).ResetData = true;
+                ((ProjectNotesTableControl1)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl1")).DataChanged = true;
+                ((ProjectNotesTableControl1)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl1")).ResetData = true;
             }
             
       
@@ -3900,17 +3928,26 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
       
             // Call the Get methods for each of the user interface controls.
         
-            GetNote();
+            GetNote1();
         }
         
         
-        public virtual void GetNote()
+        public virtual void GetNote1()
         {
             
+            // Retrieve the value entered by the user on the Note ASP:TextBox, and
+            // save it into the Note field in DataSource DatabaseTheRatTrap%dbo.ProjectNotes record.
+            
+            // Custom validation should be performed in Validate, not here.
+                    
+            // Save the value to data source
+            this.DataSource.Parse(this.Note1.Text, ProjectNotesTable.Note);							
+                          
+                      
         }
                 
 
-      // To customize, override this method in ProjectNotesTableControlRow.
+      // To customize, override this method in ProjectNotesTableControl1Row.
       
         public virtual WhereClause CreateWhereClause()
          
@@ -3919,8 +3956,8 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
             bool hasFiltersGroupsTableControl = false;
             hasFiltersGroupsTableControl = hasFiltersGroupsTableControl && false; // suppress warning
       
-            bool hasFiltersProjectNotesTableControl = false;
-            hasFiltersProjectNotesTableControl = hasFiltersProjectNotesTableControl && false; // suppress warning
+            bool hasFiltersProjectNotesTableControl1 = false;
+            hasFiltersProjectNotesTableControl1 = hasFiltersProjectNotesTableControl1 && false; // suppress warning
       
             bool hasFiltersProjectsTableControl = false;
             hasFiltersProjectsTableControl = hasFiltersProjectsTableControl && false; // suppress warning
@@ -3959,8 +3996,8 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
             // Setting the DataChanged to True results in the page being refreshed with
             // the most recent data from the database.  This happens in PreRender event
             // based on the current sort, search and filter criteria.
-            ((ProjectNotesTableControl)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl")).DataChanged = true;
-            ((ProjectNotesTableControl)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl")).ResetData = true;
+            ((ProjectNotesTableControl1)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl1")).DataChanged = true;
+            ((ProjectNotesTableControl1)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl1")).ResetData = true;
         }
 
         protected virtual void Control_PreRender(object sender, System.EventArgs e)
@@ -4041,6 +4078,54 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
     
         // Generate set method for buttons
         
+        public virtual void SetDeleteRowButton1()                
+              
+        {
+        
+   
+        }
+            
+        // event handler for ImageButton
+        public virtual void DeleteRowButton1_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+            if (!this.Page.IsPageRefresh) {
+        ProjectNotesTableControl1 tc= ((ProjectNotesTableControl1)MiscUtils.GetParentControlObject(this, "ProjectNotesTableControl1"));
+                if (tc != null){
+                    if (!this.IsNewRecord){
+                        tc.AddToDeletedRecordIds((ProjectNotesTableControl1Row)this);
+                    }
+                    this.Visible = false;
+                    tc.SetFormulaControls();                    
+                }
+              
+            }
+      
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        protected virtual void Note1_TextChanged(object sender, EventArgs args)
+        {
+                    
+              }
+            
   
         private Hashtable _PreviousUIData = new Hashtable();
         public virtual Hashtable PreviousUIData {
@@ -4056,10 +4141,10 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
         
         public String RecordUniqueId {
             get {
-                return (string)this.ViewState["BaseProjectNotesTableControlRow_Rec"];
+                return (string)this.ViewState["BaseProjectNotesTableControl1Row_Rec"];
             }
             set {
-                this.ViewState["BaseProjectNotesTableControlRow_Rec"] = value;
+                this.ViewState["BaseProjectNotesTableControl1Row_Rec"] = value;
             }
         }
         
@@ -4130,18 +4215,24 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
        
 #region "Helper Properties"
         
-        public System.Web.UI.WebControls.Literal Note {
+        public System.Web.UI.WebControls.ImageButton DeleteRowButton1 {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Note");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal NoteLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "NoteLabel");
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DeleteRowButton1");
             }
         }
         
+        public System.Web.UI.WebControls.TextBox Note1 {
+            get {
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Note1");
+            }
+        }
+            
+        public System.Web.UI.WebControls.CheckBox SelectRow {
+            get {
+                return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SelectRow");
+            }
+        }              
+            
     #endregion
 
     #region "Helper Functions"
@@ -4240,12 +4331,12 @@ public class BaseProjectNotesTableControlRow : RatTrap.UI.BaseApplicationRecordC
 }
 
   
-// Base class for the ProjectNotesTableControl control on the Show_Projects_Table page.
-// Do not modify this class. Instead override any method in ProjectNotesTableControl.
-public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableControl
+// Base class for the ProjectNotesTableControl1 control on the Show_Projects_Table page.
+// Do not modify this class. Instead override any method in ProjectNotesTableControl1.
+public class BaseProjectNotesTableControl1 : RatTrap.UI.BaseApplicationTableControl
 {
          
-       public BaseProjectNotesTableControl()
+       public BaseProjectNotesTableControl1()
         {
             this.Init += Control_Init;
             this.Load += Control_Load;
@@ -4268,16 +4359,56 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
                   initialVal = "";
                   }
                 
-                if  (this.InSession(this.SortControl1)) 				
-                    initialVal = this.GetFromSession(this.SortControl1);
+                if  (this.InSession(this.SortControl3)) 				
+                    initialVal = this.GetFromSession(this.SortControl3);
                 
                 if (initialVal != null && initialVal != "")		
                 {
                         
-                    this.SortControl1.Items.Add(new ListItem(initialVal, initialVal));
+                    this.SortControl3.Items.Add(new ListItem(initialVal, initialVal));
                         
-                    this.SortControl1.SelectedValue = initialVal;
+                    this.SortControl3.SelectedValue = initialVal;
                             
+                    }
+            }
+            if (!this.Page.IsPostBack)
+            {
+                string initialVal = "";
+                if  (this.InSession(this.NoteFilter1)) 				
+                    initialVal = this.GetFromSession(this.NoteFilter1);
+                
+                else
+                    
+                    initialVal = EvaluateFormula("URL(\"Note\")");
+                
+                if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
+                {
+                initialVal = "";
+                }
+              
+                if (initialVal != null && initialVal != "")		
+                {
+                        
+                    string[] NoteFilter1itemListFromSession = initialVal.Split(',');
+                    int index = 0;
+                    foreach (string item in NoteFilter1itemListFromSession)
+                    {
+                        if (index == 0 && item.ToString().Equals(""))
+                        {
+                            // do nothing
+                        }
+                        else
+                        {
+                            this.NoteFilter1.Items.Add(item);
+                            this.NoteFilter1.Items[index].Selected = true;
+                            index += 1;
+                        }
+                    }
+                    foreach (ListItem listItem in this.NoteFilter1.Items)
+                    {
+                        listItem.Selected = true;
+                    }
+                        
                     }
             }
 
@@ -4310,17 +4441,19 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         
             SaveControlsToSession_Ajax();
         
+              // Show confirmation message on Click
+              this.DeleteButton.Attributes.Add("onClick", "return (confirm(\"" + ((BaseApplicationPage)this.Page).GetResourceValue("DeleteConfirm", "RatTrap") + "\"));");
             // Setup the pagination events.
             
-                    this.Pagination1.FirstPage.Click += Pagination1_FirstPage_Click;
+                    this.Pagination3.FirstPage.Click += Pagination3_FirstPage_Click;
                         
-                    this.Pagination1.LastPage.Click += Pagination1_LastPage_Click;
+                    this.Pagination3.LastPage.Click += Pagination3_LastPage_Click;
                         
-                    this.Pagination1.NextPage.Click += Pagination1_NextPage_Click;
+                    this.Pagination3.NextPage.Click += Pagination3_NextPage_Click;
                         
-                    this.Pagination1.PageSizeButton.Click += Pagination1_PageSizeButton_Click;
+                    this.Pagination3.PageSizeButton.Click += Pagination3_PageSizeButton_Click;
                         
-                    this.Pagination1.PreviousPage.Click += Pagination1_PreviousPage_Click;
+                    this.Pagination3.PreviousPage.Click += Pagination3_PreviousPage_Click;
                         
 
             string url =""; //to avoid warning in VS as its not being used
@@ -4330,10 +4463,24 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         
             // Setup the button events.
           
-                    this.Filters1Button.Button.Click += Filters1Button_Click;
+                    this.AddButton.Click += AddButton_Click;
                         
-            this.SortControl1.SelectedIndexChanged += new EventHandler(SortControl1_SelectedIndexChanged);
-                    
+                    this.DeleteButton.Click += DeleteButton_Click;
+                        
+                    this.ResetButton1.Click += ResetButton1_Click;
+                        
+                    this.SaveButton1.Click += SaveButton1_Click;
+                        
+                    this.Actions3Button.Button.Click += Actions3Button_Click;
+                        
+                    this.FilterButton1.Button.Click += FilterButton1_Click;
+                        
+                    this.Filters3Button.Button.Click += Filters3Button_Click;
+                        
+            this.SortControl3.SelectedIndexChanged += new EventHandler(SortControl3_SelectedIndexChanged);
+            
+              this.NoteFilter1.SelectedIndexChanged += NoteFilter1_SelectedIndexChanged;                  
+                        
         
          //' Setup events for others
                
@@ -4389,7 +4536,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
                 if (this.AddNewRecord > 0) {
                     // Make sure to preserve the previously entered data on new rows.
                     ArrayList postdata = new ArrayList(0);
-                    foreach (ProjectNotesTableControlRow rc in this.GetRecordControls()) {
+                    foreach (ProjectNotesTableControl1Row rc in this.GetRecordControls()) {
                         if (!rc.IsNewRecord) {
                             rc.DataSource = rc.GetRecord();
                             rc.GetUIData();
@@ -4541,7 +4688,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         
         // Bind the repeater with the list of records to expand the UI.
         
-        System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectNotesTableControlRepeater"));
+        System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectNotesTableControl1Repeater"));
         if (rep == null){return;}
         rep.DataSource = this.DataSource;
         rep.DataBind();
@@ -4552,7 +4699,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         {
         
             // Loop through all rows in the table, set its DataSource and call DataBind().
-            ProjectNotesTableControlRow recControl = (ProjectNotesTableControlRow)(repItem.FindControl("ProjectNotesTableControlRow"));
+            ProjectNotesTableControl1Row recControl = (ProjectNotesTableControl1Row)(repItem.FindControl("ProjectNotesTableControl1Row"));
             recControl.DataSource = this.DataSource[index];            
             if (this.UIData.Count > index)
                 recControl.PreviousUIData = this.UIData[index];
@@ -4569,9 +4716,30 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         
                 
                 
-                SetSortByLabel1();
-                SetSortControl1();
-                SetFilters1Button();
+                
+                
+                
+                SetNoteFilter1();
+                SetNoteLabel2();
+                
+                
+                
+                SetSortByLabel3();
+                SetSortControl3();
+                
+                SetAddButton();
+              
+                SetDeleteButton();
+              
+                SetResetButton1();
+              
+                SetSaveButton1();
+              
+                SetActions3Button();
+              
+                SetFilterButton1();
+              
+                SetFilters3Button();
               
             // setting the state of expand or collapse alternative rows
       
@@ -4584,7 +4752,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             SetFormulaControls();
             
              
-              SetFilters1Button();
+              SetFilters3Button();
                      
         }
         
@@ -4600,7 +4768,9 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
 
         public virtual void RegisterPostback()
         {
-                
+        
+              this.Page.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"SaveButton1"));
+                                
         }
         
 
@@ -4714,32 +4884,32 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             if (DbUtils.GetCreatedRecords(this.DataSource).Length > 0)                      
                     
             {
-                this.Pagination1.CurrentPage.Text = (this.PageIndex + 1).ToString();
+                this.Pagination3.CurrentPage.Text = (this.PageIndex + 1).ToString();
             } 
             else
             {
-                this.Pagination1.CurrentPage.Text = "0";
+                this.Pagination3.CurrentPage.Text = "0";
             }
-            this.Pagination1.PageSize.Text = this.PageSize.ToString();
+            this.Pagination3.PageSize.Text = this.PageSize.ToString();
     
-            // Bind the buttons for ProjectNotesTableControl pagination.
+            // Bind the buttons for ProjectNotesTableControl1 pagination.
         
-            this.Pagination1.FirstPage.Enabled = !(this.PageIndex == 0);
+            this.Pagination3.FirstPage.Enabled = !(this.PageIndex == 0);
             if (this._TotalPages < 0)             // if the total pages is not determined yet, enable last and next buttons
-                this.Pagination1.LastPage.Enabled = true;
+                this.Pagination3.LastPage.Enabled = true;
             else if (this._TotalPages == 0)          // if the total pages is determined and it is 0, enable last and next buttons
-                this.Pagination1.LastPage.Enabled = false;            
+                this.Pagination3.LastPage.Enabled = false;            
             else                                     // if the total pages is the last page, disable last and next buttons
-                this.Pagination1.LastPage.Enabled = !(this.PageIndex == this.TotalPages - 1);            
+                this.Pagination3.LastPage.Enabled = !(this.PageIndex == this.TotalPages - 1);            
           
             if (this._TotalPages < 0)             // if the total pages is not determined yet, enable last and next buttons
-                this.Pagination1.NextPage.Enabled = true;
+                this.Pagination3.NextPage.Enabled = true;
             else if (this._TotalPages == 0)          // if the total pages is determined and it is 0, enable last and next buttons
-                this.Pagination1.NextPage.Enabled = false;            
+                this.Pagination3.NextPage.Enabled = false;            
             else                                     // if the total pages is the last page, disable last and next buttons
-                this.Pagination1.NextPage.Enabled = !(this.PageIndex == this.TotalPages - 1);            
+                this.Pagination3.NextPage.Enabled = !(this.PageIndex == this.TotalPages - 1);            
           
-            this.Pagination1.PreviousPage.Enabled = !(this.PageIndex == 0);    
+            this.Pagination3.PreviousPage.Enabled = !(this.PageIndex == 0);    
         }
  
         public virtual void SaveData()
@@ -4748,7 +4918,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             // to save their data.  This function is called by the Click handler of the
             // Save button.  The button handler should Start/Commit/End a transaction.
               
-            foreach (ProjectNotesTableControlRow recCtl in this.GetRecordControls())
+            foreach (ProjectNotesTableControl1Row recCtl in this.GetRecordControls())
             {
         
                 if (this.InDeletedRecordIds(recCtl)) {
@@ -4772,7 +4942,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             this.ResetData = true;
           
             // Set IsNewRecord to False for all records - since everything has been saved and is no longer "new"
-            foreach (ProjectNotesTableControlRow recCtl in this.GetRecordControls()){
+            foreach (ProjectNotesTableControl1Row recCtl in this.GetRecordControls()){
                 recCtl.IsNewRecord = false;
             }
       
@@ -4843,8 +5013,31 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
               return wc;
               }
             
-      HttpContext.Current.Session["ProjectNotesTableControlWhereClause"] = selectedRecordKeyValue.ToXmlString();
-         
+      HttpContext.Current.Session["ProjectNotesTableControl1WhereClause"] = selectedRecordKeyValue.ToXmlString();
+    
+            if (MiscUtils.IsValueSelected(this.NoteFilter1)) {
+                        
+                int selectedItemCount = 0;
+                foreach (ListItem item in this.NoteFilter1.Items){
+                    if (item.Selected) {
+                        selectedItemCount += 1;
+                        
+                          
+                    }
+                }
+                WhereClause filter = new WhereClause();
+                foreach (ListItem item in this.NoteFilter1.Items){
+                    if ((item.Selected) && ((item.Value == "--ANY--") || (item.Value == "--PLEASE_SELECT--")) && (selectedItemCount > 1)){
+                        item.Selected = false;
+                    }
+                    if (item.Selected){
+                        filter.iOR(ProjectNotesTable.Note, BaseFilter.ComparisonOperator.EqualsTo, item.Value, false, false);
+                    }
+                }
+                wc.iAND(filter);
+                    
+            }
+                           
             return wc;
         }
         
@@ -4862,7 +5055,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             
             String appRelativeVirtualPath = (String)HttpContext.Current.Session["AppRelativeVirtualPath"];
             
-      string selectedRecordInProjectsTableControl = HttpContext.Current.Session["ProjectNotesTableControlWhereClause"] as string;
+      string selectedRecordInProjectsTableControl = HttpContext.Current.Session["ProjectNotesTableControl1WhereClause"] as string;
       
       if (selectedRecordInProjectsTableControl != null && KeyValue.IsXmlKey(selectedRecordInProjectsTableControl))
       {
@@ -4877,6 +5070,30 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
     
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
+      String NoteFilter1SelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "NoteFilter1_Ajax"];
+            if (MiscUtils.IsValueSelected(NoteFilter1SelectedValue)) {
+
+              
+        if (NoteFilter1SelectedValue != null){
+                        string[] NoteFilter1itemListFromSession = NoteFilter1SelectedValue.Split(',');
+                        int index = 0;
+                        WhereClause filter = new WhereClause();
+                        foreach (string item in NoteFilter1itemListFromSession)
+                        {
+                            if (index == 0 && item.ToString().Equals(""))
+                            {
+                            }
+                            else
+                            {
+                                filter.iOR(ProjectNotesTable.Note, BaseFilter.ComparisonOperator.EqualsTo, item, false, false);
+                                index += 1;
+                            }
+                        }
+                        wc.iAND(filter);
+        }
+                
+      }
+                      
 
             return wc;
         }
@@ -5027,9 +5244,9 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         protected virtual void GetPageSize()
         {
         
-            if (this.Pagination1.PageSize.Text.Length > 0) {
+            if (this.Pagination3.PageSize.Text.Length > 0) {
                 try {
-                    // this.PageSize = Convert.ToInt32(this.Pagination1.PageSize.Text);
+                    // this.PageSize = Convert.ToInt32(this.Pagination3.PageSize.Text);
                 } catch (Exception ) {
                 }
             }
@@ -5046,20 +5263,20 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             // and add to the list.
             if (!this.ResetData)
             {
-              System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectNotesTableControlRepeater"));
+              System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectNotesTableControl1Repeater"));
               if (rep == null){return;}
               
                 foreach (System.Web.UI.WebControls.RepeaterItem repItem in rep.Items)
                 {
                 
                 // Loop through all rows in the table, set its DataSource and call DataBind().
-                ProjectNotesTableControlRow recControl = (ProjectNotesTableControlRow)(repItem.FindControl("ProjectNotesTableControlRow"));
+                ProjectNotesTableControl1Row recControl = (ProjectNotesTableControl1Row)(repItem.FindControl("ProjectNotesTableControl1Row"));
       
             if (recControl.Visible && recControl.IsNewRecord) {
       ProjectNotesRecord rec = new ProjectNotesRecord();
         
-                        if (recControl.Note.Text != "") {
-                            rec.Parse(recControl.Note.Text, ProjectNotesTable.Note);
+                        if (recControl.Note1.Text != "") {
+                            rec.Parse(recControl.Note1.Text, ProjectNotesTable.Note);
                   }
                 
               newUIDataList.Add(recControl.PreservedUIData());
@@ -5094,7 +5311,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         }
 
         
-        public void AddToDeletedRecordIds(ProjectNotesTableControlRow rec)
+        public void AddToDeletedRecordIds(ProjectNotesTableControl1Row rec)
         {
             if (rec.IsNewRecord) {
                 return;
@@ -5107,7 +5324,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             this.DeletedRecordIds += "[" + rec.RecordUniqueId + "]";
         }
 
-        protected virtual bool InDeletedRecordIds(ProjectNotesTableControlRow rec)            
+        protected virtual bool InDeletedRecordIds(ProjectNotesTableControl1Row rec)            
         {
             if (this.DeletedRecordIds == null || this.DeletedRecordIds.Length == 0) {
                 return (false);
@@ -5129,45 +5346,82 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
       
         // Create Set, WhereClause, and Populate Methods
         
-        public virtual void SetSortByLabel1()
+        public virtual void SetNoteLabel2()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetSortByLabel3()
                   {
                   
                       //Code for the text property is generated inside the .aspx file. 
                       //To override this property you can uncomment the following property and add you own value.
-                      //this.SortByLabel1.Text = "Some value";
+                      //this.SortByLabel3.Text = "Some value";
                     
                     
         }
                 
-        public virtual void SetSortControl1()
+        public virtual void SetSortControl3()
         {
             
-                this.PopulateSortControl1(MiscUtils.GetSelectedValue(this.SortControl1,  GetFromSession(this.SortControl1)), 500);					
+                this.PopulateSortControl3(MiscUtils.GetSelectedValue(this.SortControl3,  GetFromSession(this.SortControl3)), 500);					
                     
 
         }
             
-        // Get the filters' data for SortControl1.
+        public virtual void SetNoteFilter1()
+        {
+            
+            ArrayList NoteFilter1selectedFilterItemList = new ArrayList();
+            string NoteFilter1itemsString = null;
+            if (this.InSession(this.NoteFilter1))
+                NoteFilter1itemsString = this.GetFromSession(this.NoteFilter1);
+            
+            if (NoteFilter1itemsString != null)
+            {
+                string[] NoteFilter1itemListFromSession = NoteFilter1itemsString.Split(',');
+                foreach (string item in NoteFilter1itemListFromSession)
+                {
+                    NoteFilter1selectedFilterItemList.Add(item);
+                }
+            }
+              
+            			
+            this.PopulateNoteFilter1(MiscUtils.GetSelectedValueList(this.NoteFilter1, NoteFilter1selectedFilterItemList), 500);
+                    
+              string url = this.ModifyRedirectUrl("../ProjectNotes/ProjectNotes-QuickSelector.aspx", "", true);
+              
+              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+              
+              url += "?Target=" + this.NoteFilter1.ClientID + "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("Note")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--ANY--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:All")) + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              
+              this.NoteFilter1.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(NoteFilter1.AutoPostBack).ToLower() + ", event); return false;";
+                  
+                             
+        }
+            
+        // Get the filters' data for SortControl3.
                 
-        protected virtual void PopulateSortControl1(string selectedValue, int maxItems)
+        protected virtual void PopulateSortControl3(string selectedValue, int maxItems)
                     
         {
             
               
-                this.SortControl1.Items.Clear();
+                this.SortControl3.Items.Clear();
                 
               // 1. Setup the static list items
               
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("{Txt:PleaseSelect}"), "--PLEASE_SELECT--"));
+                this.SortControl3.Items.Add(new ListItem(this.Page.ExpandResourceValue("{Txt:PleaseSelect}"), "--PLEASE_SELECT--"));
               
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Note {Txt:Ascending}"), "Note Asc"));
+                this.SortControl3.Items.Add(new ListItem(this.Page.ExpandResourceValue("Note {Txt:Ascending}"), "Note Asc"));
               
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Note {Txt:Descending}"), "Note Desc"));
+                this.SortControl3.Items.Add(new ListItem(this.Page.ExpandResourceValue("Note {Txt:Descending}"), "Note Desc"));
               
             try
             {          
                 // Set the selected value.
-                MiscUtils.SetSelectedValue(this.SortControl1, selectedValue);
+                MiscUtils.SetSelectedValue(this.SortControl3, selectedValue);
 
                
             }
@@ -5175,11 +5429,144 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             {
             }
               
-            if (this.SortControl1.SelectedValue != null && this.SortControl1.Items.FindByValue(this.SortControl1.SelectedValue) == null)
-                this.SortControl1.SelectedValue = null;
+            if (this.SortControl3.SelectedValue != null && this.SortControl3.Items.FindByValue(this.SortControl3.SelectedValue) == null)
+                this.SortControl3.SelectedValue = null;
               
         }
             
+        // Get the filters' data for NoteFilter1.
+                
+        protected virtual void PopulateNoteFilter1(ArrayList selectedValue, int maxItems)
+                    
+        {
+        
+            
+            //Setup the WHERE clause.
+                        
+            WhereClause wc = this.CreateWhereClause_NoteFilter1();            
+            this.NoteFilter1.Items.Clear();
+            			  			
+            // Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_NoteFilter1 function.
+            // It is better to customize the where clause there.
+             
+            
+            
+            OrderBy orderBy = new OrderBy(false, false);
+            orderBy.Add(ProjectNotesTable.Note, OrderByItem.OrderDir.Asc);                
+            
+            
+            string[] values = new string[0];
+            if (wc.RunQuery)
+            {
+            
+                values = ProjectNotesTable.GetValues(ProjectNotesTable.Note, wc, orderBy, maxItems);
+            
+            }
+            
+            ArrayList listDuplicates = new ArrayList();
+            foreach (string cvalue in values)
+            {
+            // Create the item and add to the list.
+            string fvalue;
+            if ( ProjectNotesTable.Note.IsColumnValueTypeBoolean()) {
+                    fvalue = cvalue;
+                }else {
+                    fvalue = ProjectNotesTable.Note.Format(cvalue);
+                }
+                if (fvalue == null) {
+                    fvalue = "";
+                }
+
+                fvalue = fvalue.Trim();
+
+                if ( fvalue.Length > 50 ) {
+                    fvalue = fvalue.Substring(0, 50) + "...";
+                }
+
+                ListItem dupItem = this.NoteFilter1.Items.FindByText(fvalue);
+								
+                if (dupItem != null) {
+                    listDuplicates.Add(fvalue);
+                    if (!string.IsNullOrEmpty(dupItem.Value))
+                    {
+                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
+                    }
+                }
+
+                ListItem newItem = new ListItem(fvalue, cvalue);
+                this.NoteFilter1.Items.Add(newItem);
+
+                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
+                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
+                }
+            }
+
+                          
+            try
+            {
+      
+                
+            }
+            catch
+            {
+            }
+            
+            
+            this.NoteFilter1.SetFieldMaxLength(50);
+                                 
+                  
+            // Add the selected value.
+            if (this.NoteFilter1.Items.Count == 0)
+                this.NoteFilter1.Items.Add(new ListItem(Page.GetResourceValue("Txt:All", "RatTrap"), "--ANY--"));
+            
+            // Mark all items to be selected.
+            foreach (ListItem item in this.NoteFilter1.Items)
+            {
+                item.Selected = true;
+            }
+                               
+        }
+            
+        public virtual WhereClause CreateWhereClause_NoteFilter1()
+        {
+            // Create a where clause for the filter NoteFilter1.
+            // This function is called by the Populate method to load the items 
+            // in the NoteFilter1QuickSelector
+        
+            ArrayList NoteFilter1selectedFilterItemList = new ArrayList();
+            string NoteFilter1itemsString = null;
+            if (this.InSession(this.NoteFilter1))
+                NoteFilter1itemsString = this.GetFromSession(this.NoteFilter1);
+            
+            if (NoteFilter1itemsString != null)
+            {
+                string[] NoteFilter1itemListFromSession = NoteFilter1itemsString.Split(',');
+                foreach (string item in NoteFilter1itemListFromSession)
+                {
+                    NoteFilter1selectedFilterItemList.Add(item);
+                }
+            }
+              
+            NoteFilter1selectedFilterItemList = MiscUtils.GetSelectedValueList(this.NoteFilter1, NoteFilter1selectedFilterItemList); 
+            WhereClause wc = new WhereClause();
+            if (NoteFilter1selectedFilterItemList == null || NoteFilter1selectedFilterItemList.Count == 0)
+                wc.RunQuery = false;
+            else            
+            {
+                foreach (string item in NoteFilter1selectedFilterItemList)
+                {
+            
+      
+   
+                    wc.iOR(ProjectNotesTable.Note, BaseFilter.ComparisonOperator.EqualsTo, item);
+
+                                
+                }
+            }
+            return wc;
+        
+        }
+      
 
     
         protected virtual void Control_PreRender(object sender, System.EventArgs e)
@@ -5194,10 +5581,11 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
                     // Re-load the data and update the web page if necessary.
                     // This is typically done during a postback (filter, search button, sort, pagination button).
                     // In each of the other click handlers, simply set DataChanged to True to reload the data.
-                    
+                    bool added = (this.AddNewRecord > 0);
                     this.LoadData();
                     this.DataBind();					
                     
+                    if (added) this.SetFocusToAddedRow();
                 }
                                 
             } catch (Exception ex) {
@@ -5207,13 +5595,43 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             }
         }
         
+            protected virtual void SetFocusToAddedRow()
+            {
+            System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)this.FindControl("ProjectNotesTableControl1Repeater");
+            if (rep == null || rep.Items.Count == 0) return; 			
+            foreach (System.Web.UI.WebControls.RepeaterItem repItem in rep.Items) {
+                // Loop through all rows in the table, set its DataSource and call DataBind().
+                ProjectNotesTableControl1Row recControl = (ProjectNotesTableControl1Row)repItem.FindControl("ProjectNotesTableControl1Row");
+                if(recControl.IsNewRecord) {
+                    foreach (Control field in recControl.Controls) {
+                    if (field.Visible && this.Page.IsControlEditable(field, false)) {
+                        //set focus on the first editable field in the new row
+                        field.Focus();
+                        UpdatePanel updPan = (UpdatePanel)this.Page.FindControlRecursively("UpdatePanel1");
+                        if (updPan != null) updPan.Update();
+                        return;
+                        }
+                    }
+                    return;
+                }
+            }
+        }
         
         protected override void SaveControlsToSession()
         {
             base.SaveControlsToSession();
             // Save filter controls to values to session.
         
-            this.SaveToSession(this.SortControl1, this.SortControl1.SelectedValue);
+            this.SaveToSession(this.SortControl3, this.SortControl3.SelectedValue);
+                  
+            ArrayList NoteFilter1selectedFilterItemList = MiscUtils.GetSelectedValueList(this.NoteFilter1, null);
+            string NoteFilter1SessionString = "";
+            if (NoteFilter1selectedFilterItemList != null){
+                foreach (string item in NoteFilter1selectedFilterItemList){
+                    NoteFilter1SessionString = String.Concat(NoteFilter1SessionString ,"," , item);
+                }
+            }
+            this.SaveToSession(this.NoteFilter1, NoteFilter1SessionString);
                   
             
                     
@@ -5242,8 +5660,17 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         {
             // Save filter controls to values to session.
           
-            this.SaveToSession(this.SortControl1, this.SortControl1.SelectedValue);
+            this.SaveToSession(this.SortControl3, this.SortControl3.SelectedValue);
                   
+            ArrayList NoteFilter1selectedFilterItemList = MiscUtils.GetSelectedValueList(this.NoteFilter1, null);
+            string NoteFilter1SessionString = "";
+            if (NoteFilter1selectedFilterItemList != null){
+                foreach (string item in NoteFilter1selectedFilterItemList){
+                    NoteFilter1SessionString = String.Concat(NoteFilter1SessionString ,"," , item);
+                }
+            }
+            this.SaveToSession("NoteFilter1_Ajax", NoteFilter1SessionString);
+          
            HttpContext.Current.Session["AppRelativeVirtualPath"] = this.Page.AppRelativeVirtualPath;
          
         }
@@ -5254,7 +5681,8 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             base.ClearControlsFromSession();
             // Clear filter controls values from the session.
         
-            this.RemoveFromSession(this.SortControl1);
+            this.RemoveFromSession(this.SortControl3);
+            this.RemoveFromSession(this.NoteFilter1);
             
             // Clear pagination state from session.
          
@@ -5272,7 +5700,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         {
             base.LoadViewState(savedState);
 
-            string orderByStr = (string)ViewState["ProjectNotesTableControl_OrderBy"];
+            string orderByStr = (string)ViewState["ProjectNotesTableControl1_OrderBy"];
           
             if (orderByStr != null && orderByStr.Length > 0) {
                 this.CurrentSortOrder = BaseClasses.Data.OrderBy.FromXmlString(orderByStr);
@@ -5283,7 +5711,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             }
           
 
-            Control Pagination = this.FindControl("Pagination1");
+            Control Pagination = this.FindControl("Pagination3");
             String PaginationType = "";
             if (Pagination != null){
               Control Summary = Pagination.FindControl("_Summary");
@@ -5323,7 +5751,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         {            
           
             if (this.CurrentSortOrder != null) {
-                this.ViewState["ProjectNotesTableControl_OrderBy"] = this.CurrentSortOrder.ToXmlString();
+                this.ViewState["ProjectNotesTableControl1_OrderBy"] = this.CurrentSortOrder.ToXmlString();
             }
           
 
@@ -5340,14 +5768,61 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
 
         // Generate set method for buttons
         
-        public virtual void SetFilters1Button()                
+        public virtual void SetAddButton()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetDeleteButton()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetResetButton1()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetSaveButton1()                
+              
+        {
+        
+                    this.SaveButton1.Attributes.Add("onclick", "SubmitHRefOnce(this, \"" + this.Page.GetResourceValue("Txt:SaveRecord", "RatTrap") + "\");");
+                  
+   
+        }
+            
+        public virtual void SetActions3Button()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetFilterButton1()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetFilters3Button()                
               
         {
                 
-         IThemeButtonWithArrow themeButtonFilters1Button = (IThemeButtonWithArrow)(MiscUtils.FindControlRecursively(this, "Filters1Button"));
-         themeButtonFilters1Button.ArrowImage.ImageUrl = "../Images/ButtonExpandArrow.png";
+         IThemeButtonWithArrow themeButtonFilters3Button = (IThemeButtonWithArrow)(MiscUtils.FindControlRecursively(this, "Filters3Button"));
+         themeButtonFilters3Button.ArrowImage.ImageUrl = "../Images/ButtonExpandArrow.png";
     
       
+            if (MiscUtils.IsValueSelected(NoteFilter1))
+                themeButtonFilters3Button.ArrowImage.ImageUrl = "../Images/ButtonCheckmark.png";
+        
    
         }
                
@@ -5355,7 +5830,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         // Generate the event handling functions for pagination events.
         
         // event handler for ImageButton
-        public virtual void Pagination1_FirstPage_Click(object sender, ImageClickEventArgs args)
+        public virtual void Pagination3_FirstPage_Click(object sender, ImageClickEventArgs args)
         {
               
             try {
@@ -5378,7 +5853,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             
         
         // event handler for ImageButton
-        public virtual void Pagination1_LastPage_Click(object sender, ImageClickEventArgs args)
+        public virtual void Pagination3_LastPage_Click(object sender, ImageClickEventArgs args)
         {
               
             try {
@@ -5401,7 +5876,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             
         
         // event handler for ImageButton
-        public virtual void Pagination1_NextPage_Click(object sender, ImageClickEventArgs args)
+        public virtual void Pagination3_NextPage_Click(object sender, ImageClickEventArgs args)
         {
               
             try {
@@ -5424,16 +5899,16 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             
         
         // event handler for LinkButton
-        public virtual void Pagination1_PageSizeButton_Click(object sender, EventArgs args)
+        public virtual void Pagination3_PageSizeButton_Click(object sender, EventArgs args)
         {
               
             try {
                 
             this.DataChanged = true;
       
-            this.PageSize = this.Pagination1.GetCurrentPageSize();
+            this.PageSize = this.Pagination3.GetCurrentPageSize();
       
-            this.PageIndex = Convert.ToInt32(this.Pagination1.CurrentPage.Text) - 1;
+            this.PageIndex = Convert.ToInt32(this.Pagination3.CurrentPage.Text) - 1;
       
             } catch (Exception ex) {
                   this.Page.ErrorOnPage = true;
@@ -5450,7 +5925,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             
         
         // event handler for ImageButton
-        public virtual void Pagination1_PreviousPage_Click(object sender, ImageClickEventArgs args)
+        public virtual void Pagination3_PreviousPage_Click(object sender, ImageClickEventArgs args)
         {
               
             try {
@@ -5480,8 +5955,192 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
 
         // Generate the event handling functions for button events.
         
+        // event handler for ImageButton
+        public virtual void AddButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+            this.AddNewRecord = 1;
+            this.DataChanged = true;
+      
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void DeleteButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+            if (!this.Page.IsPageRefresh) {
+        
+                this.DeleteSelectedRecords(true);
+                this.SetFormulaControls();
+          
+            }
+      
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void ResetButton1_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                
+              this.NoteFilter1.ClearSelection();
+            
+           
+            this.SortControl3.ClearSelection();
+          
+              this.CurrentSortOrder.Reset();
+              if (this.InSession(this, "Order_By"))
+                  this.CurrentSortOrder = OrderBy.FromXmlString(this.GetFromSession(this, "Order_By", null));
+              else
+              {
+                  this.CurrentSortOrder = new OrderBy(true, false);
+                  
+              }
+                
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+                
+            } catch (Exception ex) {
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+    
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void SaveButton1_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+        
+              if (!this.Page.IsPageRefresh)
+              {
+                  this.SaveData();
+              }
+
+          this.Page.CommitTransaction(sender);
+          // Set IsNewRecord to False for all records - since everything has been saved and is no longer "new"
+           
+                foreach (ProjectNotesTableControl1Row recCtl in this.GetRecordControls()){
+                     
+                    recCtl.IsNewRecord = false;
+                }
+      
+          // Set DeletedRecordsIds to Nothing since we have deleted all pending deletes.
+          
+                this.DeletedRecordIds = null;
+            
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
         // event handler for Button
-        public virtual void Filters1Button_Click(object sender, EventArgs args)
+        public virtual void Actions3Button_Click(object sender, EventArgs args)
+        {
+              
+            try {
+                
+            //This method is initially empty to implement custom click handler.
+      
+            } catch (Exception ex) {
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+    
+        }
+            
+            
+        
+        // event handler for Button
+        public virtual void FilterButton1_Click(object sender, EventArgs args)
+        {
+              
+            try {
+                
+            this.DataChanged = true;
+          
+            } catch (Exception ex) {
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+    
+        }
+            
+            
+        
+        // event handler for Button
+        public virtual void Filters3Button_Click(object sender, EventArgs args)
         {
               
             try {
@@ -5507,10 +6166,10 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         // Generate the event handling functions for filter and search events.
         
         // event handler for OrderSort
-        protected virtual void SortControl1_SelectedIndexChanged(object sender, EventArgs args)
+        protected virtual void SortControl3_SelectedIndexChanged(object sender, EventArgs args)
         {
               
-                  string SelVal1 = this.SortControl1.SelectedValue.ToUpper();
+                  string SelVal1 = this.SortControl3.SelectedValue.ToUpper();
                   string[] words1 = SelVal1.Split(' ');
                   if (SelVal1 != "" )
                   {
@@ -5556,6 +6215,17 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
                 }
                 this.DataChanged = true;
               				
+        }
+            
+        // event handler for FieldFilter
+        protected virtual void NoteFilter1_SelectedIndexChanged(object sender, EventArgs args)
+        {
+            // Setting the DataChanged to True results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+            
+           				
         }
             
     
@@ -5632,30 +6302,84 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
 
 #region "Helper Properties"
         
-        public RatTrap.UI.IThemeButtonWithArrow Filters1Button {
+        public RatTrap.UI.IThemeButtonWithArrow Actions3Button {
             get {
-                return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Filters1Button");
+                return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Actions3Button");
             }
         }
         
-        public RatTrap.UI.IPaginationModern Pagination1 {
+        public System.Web.UI.WebControls.ImageButton AddButton {
             get {
-                return (RatTrap.UI.IPaginationModern)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Pagination1");
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "AddButton");
             }
         }
         
-        public System.Web.UI.WebControls.Label SortByLabel1 {
+        public System.Web.UI.WebControls.ImageButton DeleteButton {
             get {
-                return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortByLabel1");
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DeleteButton");
             }
         }
         
-          public System.Web.UI.WebControls.DropDownList SortControl1 {
+        public RatTrap.UI.IThemeButton FilterButton1 {
+            get {
+                return (RatTrap.UI.IThemeButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FilterButton1");
+            }
+        }
+        
+        public RatTrap.UI.IThemeButtonWithArrow Filters3Button {
+            get {
+                return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Filters3Button");
+            }
+        }
+        
+        public BaseClasses.Web.UI.WebControls.QuickSelector NoteFilter1 {
+            get {
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "NoteFilter1");
+            }
+        }              
+        
+        public System.Web.UI.WebControls.Literal NoteLabel2 {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "NoteLabel2");
+            }
+        }
+        
+        public RatTrap.UI.IPaginationModern Pagination3 {
+            get {
+                return (RatTrap.UI.IPaginationModern)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Pagination3");
+            }
+        }
+        
+        public System.Web.UI.WebControls.ImageButton ResetButton1 {
+            get {
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ResetButton1");
+            }
+        }
+        
+        public System.Web.UI.WebControls.ImageButton SaveButton1 {
+            get {
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SaveButton1");
+            }
+        }
+        
+        public System.Web.UI.WebControls.Label SortByLabel3 {
+            get {
+                return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortByLabel3");
+            }
+        }
+        
+          public System.Web.UI.WebControls.DropDownList SortControl3 {
           get {
-          return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortControl1");
+          return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortControl3");
           }
           }
         
+        public System.Web.UI.WebControls.CheckBox ToggleAll {
+            get {
+                return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ToggleAll");
+            }
+        }              
+            
 #endregion
 
 #region "Helper Functions"
@@ -5674,7 +6398,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         {
             bool needToProcess = AreAnyUrlParametersForMe(url, arg);
             if (needToProcess) {
-                ProjectNotesTableControlRow recCtl = this.GetSelectedRecordControl();
+                ProjectNotesTableControl1Row recCtl = this.GetSelectedRecordControl();
                 if (recCtl == null && url.IndexOf("{") >= 0) {
                     // Localization.
                     throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
@@ -5695,7 +6419,7 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
         {
             bool needToProcess = AreAnyUrlParametersForMe(url, arg);
             if (needToProcess) {
-                ProjectNotesTableControlRow recCtl = this.GetSelectedRecordControl();
+                ProjectNotesTableControl1Row recCtl = this.GetSelectedRecordControl();
                 if (recCtl == null && url.IndexOf("{") >= 0) {
                     // Localization.
                     throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
@@ -5719,29 +6443,52 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             return url;
         }
           
-        public virtual ProjectNotesTableControlRow GetSelectedRecordControl()
+        public virtual int GetSelectedRecordIndex()
         {
+            int counter = 0;
+            foreach (ProjectNotesTableControl1Row recControl in this.GetRecordControls())
+            {
+                if (recControl.SelectRow.Checked) {
+                    return counter;
+                }
+                counter += 1;
+            }
+            return -1;
+        }
         
+        public virtual ProjectNotesTableControl1Row GetSelectedRecordControl()
+        {
+        ProjectNotesTableControl1Row[] selectedList = this.GetSelectedRecordControls();
+            if (selectedList.Length == 0) {
             return null;
+            }
+            return selectedList[0];
           
         }
 
-        public virtual ProjectNotesTableControlRow[] GetSelectedRecordControls()
+        public virtual ProjectNotesTableControl1Row[] GetSelectedRecordControls()
         {
         
-            return (ProjectNotesTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_Projects_Table.ProjectNotesTableControlRow")));
+            ArrayList selectedList = new ArrayList(25);
+            foreach (ProjectNotesTableControl1Row recControl in this.GetRecordControls())
+            {
+                if (recControl.SelectRow != null && recControl.SelectRow.Checked) {
+                    selectedList.Add(recControl);
+                }
+            }
+            return (ProjectNotesTableControl1Row[])(selectedList.ToArray(Type.GetType("RatTrap.UI.Controls.Show_Projects_Table.ProjectNotesTableControl1Row")));
           
         }
 
         public virtual void DeleteSelectedRecords(bool deferDeletion)
         {
-            ProjectNotesTableControlRow[] recordList = this.GetSelectedRecordControls();
+            ProjectNotesTableControl1Row[] recordList = this.GetSelectedRecordControls();
             if (recordList.Length == 0) {
                 // Localization.
                 throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
             }
             
-            foreach (ProjectNotesTableControlRow recCtl in recordList)
+            foreach (ProjectNotesTableControl1Row recCtl in recordList)
             {
                 if (deferDeletion) {
                     if (!recCtl.IsNewRecord) {
@@ -5750,6 +6497,8 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
                   
                     }
                     recCtl.Visible = false;
+                
+                    recCtl.SelectRow.Checked = false;
                 
                 } else {
                 
@@ -5764,11 +6513,11 @@ public class BaseProjectNotesTableControl : RatTrap.UI.BaseApplicationTableContr
             }
         }
 
-        public virtual ProjectNotesTableControlRow[] GetRecordControls()
+        public virtual ProjectNotesTableControl1Row[] GetRecordControls()
         {
-            Control[] recCtrls = BaseClasses.Utils.MiscUtils.FindControlsRecursively(this, "ProjectNotesTableControlRow");
-	          List<ProjectNotesTableControlRow> list = new List<ProjectNotesTableControlRow>();
-	          foreach (ProjectNotesTableControlRow recCtrl in recCtrls) {
+            Control[] recCtrls = BaseClasses.Utils.MiscUtils.FindControlsRecursively(this, "ProjectNotesTableControl1Row");
+	          List<ProjectNotesTableControl1Row> list = new List<ProjectNotesTableControl1Row>();
+	          foreach (ProjectNotesTableControl1Row recCtrl in recCtrls) {
 		          list.Add(recCtrl);
 	          }
 	          return list.ToArray();
@@ -5889,9 +6638,7 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
                 
                 
                 
-                
-                
-                SetProjectsTabContainer();
+                SetProjectsTableControlTabContainer();
                 SetDeleteRowButton();
               
                 SetEditRowButton();
@@ -5918,7 +6665,7 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             bool shouldResetControl = false;
             if (shouldResetControl) { }; // prototype usage to void compiler warnings
                       
-        SetProjectNotesTableControl();
+        SetProjectNotesTableControl1();
 
         
             SetGroupsTableControl();
@@ -6015,15 +6762,15 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
                     
         }
                 
-        public virtual void SetProjectsTabContainer()    
+        public virtual void SetProjectsTableControlTabContainer()    
         
         {
                             
                    
             if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "true") 
-                MiscUtils.FindControlRecursively(this, "ProjectsTabContainer").Visible = true;
+                MiscUtils.FindControlRecursively(this, "ProjectsTableControlTabContainer").Visible = true;
             else if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "false") 
-                MiscUtils.FindControlRecursively(this, "ProjectsTabContainer").Visible = false;
+                MiscUtils.FindControlRecursively(this, "ProjectsTableControlTabContainer").Visible = false;
          
   
         }      
@@ -6038,13 +6785,13 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             }
         }
       
-        public virtual void SetProjectNotesTableControl()           
+        public virtual void SetProjectNotesTableControl1()           
         
         {        
-            if (ProjectNotesTableControl.Visible)
+            if (ProjectNotesTableControl1.Visible)
             {
-                ProjectNotesTableControl.LoadData();
-                ProjectNotesTableControl.DataBind();
+                ProjectNotesTableControl1.LoadData();
+                ProjectNotesTableControl1.DataBind();
             }
         }
       
@@ -6189,8 +6936,8 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             
             this.CheckSum = "";
             // For Master-Detail relationships, save data on the Detail table(s)            
-          ProjectNotesTableControl recProjectNotesTableControl = (ProjectNotesTableControl)(MiscUtils.FindControlRecursively(this, "ProjectNotesTableControl"));
-        recProjectNotesTableControl.SaveData();
+          ProjectNotesTableControl1 recProjectNotesTableControl1 = (ProjectNotesTableControl1)(MiscUtils.FindControlRecursively(this, "ProjectNotesTableControl1"));
+        recProjectNotesTableControl1.SaveData();
         GroupsTableControl recGroupsTableControl = (GroupsTableControl)(MiscUtils.FindControlRecursively(this, "GroupsTableControl"));
             recGroupsTableControl.SaveData();
             
@@ -6231,8 +6978,8 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             bool hasFiltersGroupsTableControl = false;
             hasFiltersGroupsTableControl = hasFiltersGroupsTableControl && false; // suppress warning
       
-            bool hasFiltersProjectNotesTableControl = false;
-            hasFiltersProjectNotesTableControl = hasFiltersProjectNotesTableControl && false; // suppress warning
+            bool hasFiltersProjectNotesTableControl1 = false;
+            hasFiltersProjectNotesTableControl1 = hasFiltersProjectNotesTableControl1 && false; // suppress warning
       
             bool hasFiltersProjectsTableControl = false;
             hasFiltersProjectsTableControl = hasFiltersProjectsTableControl && false; // suppress warning
@@ -6685,15 +7432,15 @@ public class BaseProjectsTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             }
         }
         
-        public ProjectNotesTableControl ProjectNotesTableControl {
+        public ProjectNotesTableControl1 ProjectNotesTableControl1 {
             get {
-                return (ProjectNotesTableControl)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectNotesTableControl");
+                return (ProjectNotesTableControl1)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectNotesTableControl1");
             }
         }
         
-        public AjaxControlToolkit.TabContainer ProjectsTabContainer {
+        public AjaxControlToolkit.TabContainer ProjectsTableControlTabContainer {
             get {
-                return (AjaxControlToolkit.TabContainer)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectsTabContainer");
+                return (AjaxControlToolkit.TabContainer)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectsTableControlTabContainer");
             }
         }
         
@@ -7218,6 +7965,8 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
                 SetSearchText();
                 SetSortByLabel();
                 SetSortControl();
+                
+                
                 
                 
                 SetExcelButton();

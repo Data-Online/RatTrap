@@ -243,19 +243,27 @@ public partial class Show_Projects_Table
     
         public ThemeButtonWithArrow Actions2Button;
                 
+        public ThemeButtonWithArrow Actions3Button;
+                
         public ThemeButtonWithArrow ActionsButton;
                 
+        public System.Web.UI.WebControls.ImageButton AddButton;
+        
         public System.Web.UI.WebControls.Literal AreaIdLabel1;
+        
+        public System.Web.UI.WebControls.ImageButton DeleteButton;
         
         public System.Web.UI.WebControls.ImageButton ExcelButton;
         
         public ThemeButton FilterButton;
                 
+        public ThemeButton FilterButton1;
+                
         public ThemeButton FilterButton2;
                 
-        public ThemeButtonWithArrow Filters1Button;
-                
         public ThemeButtonWithArrow Filters2Button;
+                
+        public ThemeButtonWithArrow Filters3Button;
                 
         public ThemeButtonWithArrow FiltersButton;
                 
@@ -267,13 +275,15 @@ public partial class Show_Projects_Table
         
         public System.Web.UI.WebControls.ImageButton NewButton2;
         
+        public System.Web.UI.WebControls.Literal NoteLabel2;
+        
         public System.Web.UI.WebControls.Literal PageTitle;
         
         public PaginationModern Pagination;
                 
-        public PaginationModern Pagination1;
-                
         public PaginationModern Pagination2;
+                
+        public PaginationModern Pagination3;
                 
         public System.Web.UI.WebControls.ImageButton PDFButton;
         
@@ -283,9 +293,13 @@ public partial class Show_Projects_Table
         
         public System.Web.UI.WebControls.ImageButton ResetButton;
         
+        public System.Web.UI.WebControls.ImageButton ResetButton1;
+        
         public System.Web.UI.WebControls.ImageButton ResetButton2;
         
         public System.Web.UI.WebControls.ImageButton SaveButton;
+        
+        public System.Web.UI.WebControls.ImageButton SaveButton1;
         
         public System.Web.UI.WebControls.ImageButton SearchButton;
         
@@ -301,12 +315,14 @@ public partial class Show_Projects_Table
         
         public System.Web.UI.WebControls.Label SortByLabel;
         
-        public System.Web.UI.WebControls.Label SortByLabel1;
-        
         public System.Web.UI.WebControls.Label SortByLabel2;
+        
+        public System.Web.UI.WebControls.Label SortByLabel3;
         
         public System.Web.UI.WebControls.Literal Title0;
             
+        public System.Web.UI.WebControls.CheckBox ToggleAll;
+        
         public System.Web.UI.WebControls.ImageButton WordButton;
         
         public ValidationSummary ValidationSummary1;

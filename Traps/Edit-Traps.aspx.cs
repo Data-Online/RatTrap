@@ -270,6 +270,8 @@ public partial class Edit_Traps
         
         public System.Web.UI.WebControls.ImageButton AddButton1;
         
+        public System.Web.UI.WebControls.ImageButton AddButton2;
+        
         public System.Web.UI.WebControls.LinkButton BaitTypeLabel;
         
         public System.Web.UI.WebControls.Literal BaitTypeLabel1;

@@ -620,11 +620,25 @@
     <Compile Include="Users\Show-Users.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Projects\Show-Projects.aspx.cs" >
+    <Compile Include="Projects\Show-Projects.aspx.cs">
       <DependentUpon>Show-Projects.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projects\Show-Projects.Controls.cs" >
+    <Compile Include="Projects\Show-Projects.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectNotes\ProjectNotes-QuickSelector.aspx.cs">
+      <DependentUpon>ProjectNotes-QuickSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectNotes\ProjectNotes-QuickSelector.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AreaNotes\AreaNotes-QuickSelector.aspx.cs" >
+      <DependentUpon>AreaNotes-QuickSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaNotes\AreaNotes-QuickSelector.Controls.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -947,7 +961,9 @@
     <Content Include="Projects\Show-Projects-Table.aspx" />
     <Content Include="Users\Show-Users-Detail.aspx" />
     <Content Include="Users\Show-Users.aspx" />
-    <Content Include="Projects\Show-Projects.aspx"  />
+    <Content Include="Projects\Show-Projects.aspx" />
+    <Content Include="ProjectNotes\ProjectNotes-QuickSelector.aspx" />
+    <Content Include="AreaNotes\AreaNotes-QuickSelector.aspx"  />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

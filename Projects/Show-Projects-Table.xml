@@ -53,6 +53,40 @@
       <InsideControl>GroupsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>Actions3Button</Name>
+      <Type>Button</Type>
+      <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Button-CausesValidation</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-CommandName</Name>
+          <Value>Custom</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Consumers</Name>
+          <Value>page</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Onclientclick</Name>
+          <Value>return ISD_ShowPopupPanel('Actions3Div','Actions3Button',this);</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Text</Name>
+          <Value>Btn:Actions</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Button-ToolTip</Name>
+          <Value>Btn:Actions</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>ActionsButton</Name>
       <Type>Button</Type>
       <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
@@ -85,6 +119,46 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>ProjectsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>AddButton</Name>
+      <Type>ImageButton</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>CausesValidation</Name>
+          <Value>false</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>AddRecord</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ImageURL</Name>
+          <Value>../Images/ButtonBarNew.gif</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseout</Name>
+          <Value>this.src='../Images/ButtonBarNew.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseover</Name>
+          <Value>this.src='../Images/ButtonBarNewOver.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PostBack</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Btn:Add</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>AreaId</Name>
@@ -219,6 +293,55 @@
       <InsideControl>ProjectsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>DeleteButton</Name>
+      <Type>ImageButton</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>CausesValidation</Name>
+          <Value>false</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandArgument</Name>
+          <Value>DeleteOnUpdate</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>DeleteRecord</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ConfirmMessage</Name>
+          <Value>DeleteConfirm</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ImageURL</Name>
+          <Value>../Images/ButtonBarDelete.gif</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseout</Name>
+          <Value>this.src='../Images/ButtonBarDelete.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseover</Name>
+          <Value>this.src='../Images/ButtonBarDeleteOver.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PostBack</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Btn:Delete</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>DeleteRowButton</Name>
       <Type>ImageButton</Type>
       <PassthroughAttributes>
@@ -266,6 +389,60 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>ProjectsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>DeleteRowButton1</Name>
+      <Type>ImageButton</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>CausesValidation</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandArgument</Name>
+          <Value>DeleteOnUpdate</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>DeleteRecord</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ConfirmMessage</Name>
+          <Value>DeleteRecordConfirm</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>ProjectNotesTableControl1Row</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CssClass</Name>
+          <Value>button_link</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ImageURL</Name>
+          <Value>../Images/icon_delete.gif</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseout</Name>
+          <Value>this.src='../Images/icon_delete.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseover</Name>
+          <Value>this.src='../Images/icon_delete_over.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PostBack</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Txt:DeleteRecord</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
@@ -496,6 +673,40 @@
       <InsideControl>ProjectsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>FilterButton1</Name>
+      <Type>Button</Type>
+      <Layout>..\Shared\ThemeButton.ascx</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Button-CausesValidation</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-CommandName</Name>
+          <Value>Search</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Consumers</Name>
+          <Value>NoteFilter1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Text</Name>
+          <Value>Btn:SearchGoButtonText</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Button-ToolTip</Name>
+          <Value>Btn:SearchGoButtonText</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>PostBack</Name>
+          <Value>False</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>FilterButton2</Name>
       <Type>Button</Type>
       <Layout>..\Shared\ThemeButton.ascx</Layout>
@@ -530,40 +741,6 @@
       <InsideControl>GroupsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>Filters1Button</Name>
-      <Type>Button</Type>
-      <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Button-CausesValidation</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-CommandName</Name>
-          <Value>Custom</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Consumers</Name>
-          <Value>page</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Onclientclick</Name>
-          <Value>return ISD_ShowPopupPanel('Filters1Div','Filters1Button',this);</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Text</Name>
-          <Value>Btn:Filters</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-        <Attribute>
-          <Name>Button-ToolTip</Name>
-          <Value>Btn:Filters</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>ProjectNotesTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>Filters2Button</Name>
       <Type>Button</Type>
       <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
@@ -596,6 +773,40 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>GroupsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Filters3Button</Name>
+      <Type>Button</Type>
+      <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Button-CausesValidation</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-CommandName</Name>
+          <Value>Custom</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Consumers</Name>
+          <Value>page</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Onclientclick</Name>
+          <Value>return ISD_ShowPopupPanel('Filters3Div','Filters3Button',this);</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Text</Name>
+          <Value>Btn:Filters</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Button-ToolTip</Name>
+          <Value>Btn:Filters</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>FiltersButton</Name>
@@ -854,22 +1065,6 @@
       <ParentControlName>ProjectsTableControl</ParentControlName>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>GroupsTabPanel</Name>
-      <Type>TabPanel</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>ParentTabContainer</Name>
-          <Value>ProjectsTabContainer</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>Groups in Project</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>ProjectsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>ImportButton</Name>
       <Type>ImageButton</Type>
       <PassthroughAttributes>
@@ -1018,22 +1213,22 @@
       <InsideControl>GroupsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>Note</Name>
+      <Name>Note1</Name>
       <Type>FieldValue</Type>
       <Field>Note</Field>
-      <FieldValueStyle>Literal</FieldValueStyle>
+      <FieldValueStyle>TextBox</FieldValueStyle>
       <Table>DatabaseTheRatTrap%dbo.ProjectNotes</Table>
       <PassthroughAttributes>
         <Attribute>
-          <Name>FieldMaxLength</Name>
-          <Value>Default</Value>
+          <Name>Columns</Name>
+          <Value>60</Value>
         </Attribute>
         <Attribute>
-          <Name>HTMLEncodeValue</Name>
-          <Value>Default</Value>
+          <Name>CssClass</Name>
+          <Value>field_input</Value>
         </Attribute>
         <Attribute>
-          <Name>InternalUse:ApplySaveToField</Name>
+          <Name>EnableIncrementDecrementButtons</Name>
           <Value>False</Value>
         </Attribute>
         <Attribute>
@@ -1041,53 +1236,87 @@
           <Value>Parent</Value>
         </Attribute>
         <Attribute>
-          <Name>NullValueText</Name>
-          <Value>&amp;nbsp;</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupDisplay</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupThreshold</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowHeight</Name>
-          <Value>200</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowPersist</Name>
+          <Name>Note1RequiredFieldValidator:Enabled</Name>
           <Value>False</Value>
         </Attribute>
         <Attribute>
-          <Name>PopupWindowScrollBar</Name>
-          <Value>True</Value>
+          <Name>Note1RequiredFieldValidator:Text</Name>
+          <Value>*</Value>
         </Attribute>
         <Attribute>
-          <Name>PopupWindowTitle</Name>
-          <Value>%ISD_DEFAULT%</Value>
+          <Name>RichTextEditorType</Name>
+          <Value>ASP Multi-line</Value>
         </Attribute>
         <Attribute>
-          <Name>PopupWindowWidth</Name>
-          <Value>300</Value>
+          <Name>Rows</Name>
+          <Value>4</Value>
         </Attribute>
         <Attribute>
-          <Name>TextFormat</Name>
-          <Value>{0}</Value>
+          <Name>TextMode</Name>
+          <Value>MultiLine</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>ProjectNotesTableControl</InsideControl>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>NoteLabel</Name>
-      <Type>Literal</Type>
+      <Name>NoteFilter1</Name>
+      <Type>FieldFilter</Type>
+      <FieldValueStyle>QuickSelector</FieldValueStyle>
       <PassthroughAttributes>
         <Attribute>
           <Name>Consumers</Name>
-          <Value>ProjectNotesTableControl</Value>
+          <Value>ProjectNotesTableControl1</Value>
         </Attribute>
+        <Attribute>
+          <Name>EnterKeyCaptureToButton</Name>
+          <Value>FilterButton1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Field</Name>
+          <Value>Note</Value>
+        </Attribute>
+        <Attribute>
+          <Name>FilterOperator</Name>
+          <Value>=</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplyInitializeFormula</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:InitializeFormula</Name>
+          <Value>URL("Note")</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.ProjectNotes</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onkeypress</Name>
+          <Value>dropDownListTypeAhead(this,false)</Value>
+        </Attribute>
+        <Attribute>
+          <Name>RedirectURL</Name>
+          <Value />
+        </Attribute>
+        <Attribute>
+          <Name>SelectionMode</Name>
+          <Value>Single</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
+      <ControlsToFilter>
+        <ControlToFilter>
+          <Active>true</Active>
+          <ControlName>ProjectNotesTableControl1</ControlName>
+        </ControlToFilter>
+      </ControlsToFilter>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>NoteLabel2</Name>
+      <Type>Literal</Type>
+      <PassthroughAttributes>
         <Attribute>
           <Name>InternalUse:Field</Name>
           <Value>Note</Value>
@@ -1101,8 +1330,7 @@
           <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.ProjectNotes%Note</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>ProjectNotesTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>PageTitle</Name>
@@ -1147,38 +1375,6 @@
       <InsideControl>ProjectsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>Pagination1</Name>
-      <Type>Pagination</Type>
-      <Layout>..\Shared\PaginationModern.ascx</Layout>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>FirstPage-Consumers</Name>
-          <Value>ProjectNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:TableControl</Name>
-          <Value>ProjectNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>LastPage-Consumers</Name>
-          <Value>ProjectNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NextPage-Consumers</Name>
-          <Value>ProjectNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PageSizeButton-Consumers</Name>
-          <Value>ProjectNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PreviousPage-Consumers</Name>
-          <Value>ProjectNotesTableControl</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>ProjectNotesTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>Pagination2</Name>
       <Type>Pagination</Type>
       <Layout>..\Shared\PaginationModern.ascx</Layout>
@@ -1209,6 +1405,38 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>GroupsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Pagination3</Name>
+      <Type>Pagination</Type>
+      <Layout>..\Shared\PaginationModern.ascx</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FirstPage-Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:TableControl</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>LastPage-Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NextPage-Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PageSizeButton-Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PreviousPage-Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>PDFButton</Name>
@@ -1251,9 +1479,9 @@
       <InsideControl>ProjectsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>ProjectNotesTableControl</Name>
+      <Name>ProjectNotesTableControl1</Name>
       <Type>Table</Type>
-      <PanelStyle>RecInTable_DSepRow_Child</PanelStyle>
+      <PanelStyle>EditTable</PanelStyle>
       <Table>DatabaseTheRatTrap%dbo.ProjectNotes</Table>
       <PassthroughAttributes>
         <Attribute>
@@ -1282,19 +1510,19 @@
         </Attribute>
         <Attribute>
           <Name>PaginationCurrentPage</Name>
-          <Value>Pagination1-CurrentPage</Value>
+          <Value>Pagination3-CurrentPage</Value>
         </Attribute>
         <Attribute>
           <Name>PaginationPageSize</Name>
-          <Value>Pagination1-PageSize</Value>
+          <Value>Pagination3-PageSize</Value>
         </Attribute>
         <Attribute>
           <Name>PaginationTotalItems</Name>
-          <Value>Pagination1-TotalItems</Value>
+          <Value>Pagination3-TotalItems</Value>
         </Attribute>
         <Attribute>
           <Name>PaginationTotalPages</Name>
-          <Value>Pagination1-TotalPages</Value>
+          <Value>Pagination3-TotalPages</Value>
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>ProjectsTableControl</InsideControl>
@@ -1314,42 +1542,6 @@
           <ForeignKeyName>FK_ProjectNotes_Projects1</ForeignKeyName>
         </Query>
       </Querys>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>ProjectNotesTabPanel</Name>
-      <Type>TabPanel</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>ParentTabContainer</Name>
-          <Value>ProjectsTabContainer</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>Project Notes</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>ProjectsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>ProjectsTabContainer</Name>
-      <Type>TabContainer</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>InternalUse:ApplyVisibleFormula</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:VisibleFormula</Name>
-          <Value>URL("TabVisible")</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PanelLayout</Name>
-          <Value>Tabbed</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>ProjectsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
       <Name>ProjectsTableControl</Name>
@@ -1398,6 +1590,30 @@
           <Value>Pagination-TotalPages</Value>
         </Attribute>
       </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>ProjectsTableControlTabContainer</Name>
+      <Type>TabContainer</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>InternalUse:ApplyVisibleFormula</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:VisibleFormula</Name>
+          <Value>URL("TabVisible")</Value>
+        </Attribute>
+        <Attribute>
+          <Name>OnClientActiveTabChanged</Name>
+          <Value>fixedHeaderTab</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PanelLayout</Name>
+          <Value>Tabbed</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
       <Name>RefreshButton2</Name>
@@ -1480,6 +1696,46 @@
       <InsideControl>ProjectsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>ResetButton1</Name>
+      <Type>ImageButton</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>CausesValidation</Name>
+          <Value>false</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>ResetFilters</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ImageURL</Name>
+          <Value>../Images/ButtonBarReset.gif</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseout</Name>
+          <Value>this.src='../Images/ButtonBarReset.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseover</Name>
+          <Value>this.src='../Images/ButtonBarResetOver.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PostBack</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Btn:Reset</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>ResetButton2</Name>
       <Type>ImageButton</Type>
       <PassthroughAttributes>
@@ -1558,6 +1814,46 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>GroupsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>SaveButton1</Name>
+      <Type>ImageButton</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>CausesValidation</Name>
+          <Value>true</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>UpdateData</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>ProjectNotesTableControl1</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ImageURL</Name>
+          <Value>../Images/ButtonBarSave.gif</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseout</Name>
+          <Value>this.src='../Images/ButtonBarSave.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>onmouseover</Name>
+          <Value>this.src='../Images/ButtonBarSaveOver.gif'</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PostBack</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Btn:Save</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>SearchButton</Name>
@@ -1758,6 +2054,18 @@
       <InsideControl>GroupsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>SelectRow</Name>
+      <Type>Selection</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>onclick</Name>
+          <Value>moveToThisTableRow(this);</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>SelectRow2</Name>
       <Type>Selection</Type>
       <PassthroughAttributes>
@@ -1839,18 +2147,6 @@
       <InsideControl>ProjectsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>SortByLabel1</Name>
-      <Type>Label</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>Txt:SortBy</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>ProjectNotesTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>SortByLabel2</Name>
       <Type>Label</Type>
       <PassthroughAttributes>
@@ -1861,6 +2157,18 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>GroupsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>SortByLabel3</Name>
+      <Type>Label</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>Txt:SortBy</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>SortControl</Name>
@@ -1925,60 +2233,6 @@
       <InsideControl>ProjectsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>SortControl1</Name>
-      <Type>OrderSort</Type>
-      <FieldValueStyle>DropDownList</FieldValueStyle>
-      <SpecifiedItems>
-        <Item>
-          <Name>--PLEASE_SELECT--</Name>
-          <Value>{Txt:PleaseSelect}</Value>
-        </Item>
-        <Item>
-          <Name>Note Asc</Name>
-          <Value>Note {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>Note Desc</Name>
-          <Value>Note {Txt:Descending}</Value>
-        </Item>
-      </SpecifiedItems>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>AutoPostBack</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CssClass</Name>
-          <Value>Filter_Input</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyQuery</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyStaticList</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:GenerateSpecificItems</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.ProjectNotes</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:TreatAs</Name>
-          <Value>FieldFilter</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PriorityNo</Name>
-          <Value>1</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>ProjectNotesTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>SortControl2</Name>
       <Type>OrderSort</Type>
       <FieldValueStyle>DropDownList</FieldValueStyle>
@@ -2033,6 +2287,90 @@
       <InsideControl>GroupsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>SortControl3</Name>
+      <Type>OrderSort</Type>
+      <FieldValueStyle>DropDownList</FieldValueStyle>
+      <SpecifiedItems>
+        <Item>
+          <Name>--PLEASE_SELECT--</Name>
+          <Value>{Txt:PleaseSelect}</Value>
+        </Item>
+        <Item>
+          <Name>Note Asc</Name>
+          <Value>Note {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Note Desc</Name>
+          <Value>Note {Txt:Descending}</Value>
+        </Item>
+      </SpecifiedItems>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>AutoPostBack</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CssClass</Name>
+          <Value>Filter_Input</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplyQuery</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplyStaticList</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:GenerateSpecificItems</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.ProjectNotes</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:TreatAs</Name>
+          <Value>FieldFilter</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PriorityNo</Name>
+          <Value>1</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>TabPanel</Name>
+      <Type>TabPanel</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>ParentTabContainer</Name>
+          <Value>ProjectsTableControlTabContainer</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>Notes</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>TabPanel1</Name>
+      <Type>TabPanel</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>ParentTabContainer</Name>
+          <Value>ProjectsTableControlTabContainer</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>Groups in Project</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>Title0</Name>
       <Type>Html</Type>
       <PassthroughAttributes>
@@ -2046,6 +2384,17 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>ProjectsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>ToggleAll</Name>
+      <Type>Selection</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>onclick</Name>
+          <Value>toggleAllCheckboxes(this);</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>ProjectNotesTableControl1</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>UpdatePanel1</Name>
@@ -3148,14 +3497,13 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:TABCONTAINER NAME="ProjectsTabContainer"&amp;gt;
- 
- &amp;lt;GEN:TABPANEL NAME="ProjectNotesTabPanel"&amp;gt;
-  &amp;lt;GEN:TABLE NAME="ProjectNotesTableControl" /&amp;gt;
- &amp;lt;/GEN:TABPANEL&amp;gt;
- &amp;lt;GEN:TABPANEL NAME="GroupsTabPanel"&amp;gt;
-  &amp;lt;GEN:TABLE NAME="GroupsTableControl" /&amp;gt;
- &amp;lt;/GEN:TABPANEL&amp;gt;
+        &lt;Value&gt;&amp;lt;GEN:TABCONTAINER NAME="ProjectsTableControlTabContainer"&amp;gt; 
+ &amp;lt;GEN:TABPANEL NAME="TabPanel"&amp;gt; 
+  &amp;lt;GEN:TABLE NAME="ProjectNotesTableControl1" /&amp;gt; 
+ &amp;lt;/GEN:TABPANEL&amp;gt; 
+ &amp;lt;GEN:TABPANEL NAME="TabPanel1"&amp;gt; 
+  &amp;lt;GEN:TABLE NAME="GroupsTableControl" /&amp;gt; 
+ &amp;lt;/GEN:TABPANEL&amp;gt; 
 &amp;lt;/GEN:TABCONTAINER&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -3226,7 +3574,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="ProjectNotesTableControl" Type="TablePanel" PanelControlName="ProjectNotesTableControl"&gt;
+  &lt;Layout Name="ProjectNotesTableControl1" Type="TablePanel" PanelControlName="ProjectNotesTableControl1"&gt;
     &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -3251,7 +3599,7 @@
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
-                  &amp;lt;GEN:PANEL NAME="Header1"/&amp;gt;
+                  &amp;lt;GEN:PANEL NAME="Header3"/&amp;gt;
                 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -3276,7 +3624,7 @@
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
-                  &amp;lt;asp:panel id="CollapsibleRegion1" runat="server"&amp;gt;&amp;lt;GEN:PANEL NAME="Panel1"/&amp;gt;&amp;lt;/asp:panel&amp;gt;
+                  &amp;lt;asp:panel id="CollapsibleRegion3" runat="server"&amp;gt;&amp;lt;GEN:PANEL NAME="Panel3"/&amp;gt;&amp;lt;/asp:panel&amp;gt;
                 &lt;/Value&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
@@ -3291,7 +3639,7 @@
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
-                    &amp;lt;GEN:PAGINATION NAME="Pagination1"&amp;gt;&amp;lt;/GEN:PAGINATION&amp;gt;
+                    &amp;lt;GEN:PAGINATION NAME="Pagination3"&amp;gt;&amp;lt;/GEN:PAGINATION&amp;gt;
                     &amp;lt;!--To change the position of the pagination control, please search for "prspace" on the Online Help for instruction. --&amp;gt;
                   &lt;/Value&gt;
         &lt;CellAttributes&gt;
@@ -3338,7 +3686,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Header1" Type="PanelHeader" PanelControlName="ProjectNotesTableControl"&gt;
+  &lt;Layout Name="Header3" Type="PanelHeader" PanelControlName="ProjectNotesTableControl1"&gt;
     &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -3351,6 +3699,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:PANEL NAME="TitleRegion1"/&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -3359,18 +3708,27 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:PANEL NAME="Actions1"/&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:PANEL NAME="Actions3"/&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;dhb&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;dher&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
-                          &amp;lt;div id="Filters1Div" runat="server" class="popupWrapper" &amp;gt;
-                          &amp;lt;GEN:PANEL NAME="Filters1"/&amp;gt;
+                          &amp;lt;div id="Filters3Div" runat="server" class="popupWrapper" &amp;gt;
+                          &amp;lt;GEN:PANEL NAME="Filters3"/&amp;gt;
                           &amp;lt;/div&amp;gt;
                         &lt;/Value&gt;
         &lt;CellAttributes /&gt;
@@ -3406,15 +3764,84 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Actions1" Type="PanelButton" PanelControlName="ProjectNotesTableControl"&gt;
+  &lt;Layout Name="TitleRegion1" PanelControlName="ProjectNotesTableControl1"&gt;
+    &lt;Prolog /&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="Actions3" Type="PanelButton" PanelControlName="ProjectNotesTableControl1"&gt;
     &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;div id="Actions3Div" runat="server" class="popupWrapper" &amp;gt;
+                &amp;lt;GEN:PANEL NAME="Actions3Panel"/&amp;gt;
+                &amp;lt;/div&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;prspace&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:Button NAME="Actions3Button" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;style&lt;/Name&gt;
+            &lt;AttributeValue&gt;text-align:right&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
         &lt;Value&gt;
-            &amp;lt;GEN:Button NAME="Filters1Button"  /&amp;gt;
+            &amp;lt;GEN:Button NAME="Filters3Button"  /&amp;gt;
           &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -3470,7 +3897,98 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Filters1" Type="SearchAndFilter" PanelControlName="ProjectNotesTableControl"&gt;
+  &lt;Layout Name="Actions3Panel" Type="BlankPanel" PanelControlName="ProjectNotesTableControl1"&gt;
+    &lt;Prolog /&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;input type="image" src="../Images/closeButton.gif" onmouseover="this.src='../Images/closeButtonOver.gif'" onmouseout="this.src='../Images/closeButton.gif'" alt="" onclick="ISD_HidePopupPanel();return false;" align="top" /&amp;gt;&amp;lt;br/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;style&lt;/Name&gt;
+            &lt;AttributeValue&gt;text-align: right;&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                    &amp;lt;GEN:ImageButton NAME="AddButton" /&amp;gt;
+                  &lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                    &amp;lt;GEN:ImageButton NAME="DeleteButton" /&amp;gt;
+                  &lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                    &amp;lt;GEN:ImageButton NAME="SaveButton1" /&amp;gt;
+                  &lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="Filters3" Type="SearchAndFilter" PanelControlName="ProjectNotesTableControl1"&gt;
     &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -3522,6 +4040,51 @@
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="NoteLabel2"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;popupTableCellLabel&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDFILTER NAME="NoteFilter1"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;colspan&lt;/Name&gt;
+            &lt;AttributeValue&gt;2&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:BUTTON NAME="FilterButton1"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                                  &amp;lt;GEN:IMAGEBUTTON NAME="ResetButton1" /&amp;gt;
+                                &lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -3565,7 +4128,7 @@
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:LABEL NAME="SortByLabel1"/&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:LABEL NAME="SortByLabel3"/&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -3574,7 +4137,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:ORDERSORT NAME="SortControl1"/&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:ORDERSORT NAME="SortControl3"/&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -3624,12 +4187,12 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Panel1" PanelControlName="ProjectNotesTableControl"&gt;
+  &lt;Layout Name="Panel3" PanelControlName="ProjectNotesTableControl1"&gt;
     &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
-                    &amp;lt;GEN:PANEL NAME="Fields1"/&amp;gt;
+                    &amp;lt;GEN:PANEL NAME="Fields3"/&amp;gt;
                   &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -3664,18 +4227,19 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Fields1" Type="TableGridRegular" PanelControlName="ProjectNotesTableControl"&gt;
+  &lt;Layout Name="Fields3" Type="TableGridRegular" PanelControlName="ProjectNotesTableControl1"&gt;
     &lt;Prolog /&gt;
     &lt;Row Type="Header"&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:SELECTION NAME="ToggleAll"&amp;gt;&amp;lt;/GEN:SELECTION&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;thcnb&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
           &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
+            &lt;Name&gt;colspan&lt;/Name&gt;
+            &lt;AttributeValue&gt;2&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -3683,59 +4247,34 @@
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;thcnb&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -3748,17 +4287,43 @@
     &lt;/Row&gt;
     &lt;Row Type="Repeater"&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="NoteLabel"/&amp;gt; 
-&lt;/Value&gt;
+        &lt;Value&gt;
+                              &amp;lt;GEN:SELECTION NAME="SelectRow" TYPE="Single" /&amp;gt;                              
+                            &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;tableCellSelectCheckbox&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;scope&lt;/Name&gt;
+            &lt;AttributeValue&gt;row&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;style&lt;/Name&gt;
+            &lt;AttributeValue&gt;font-size: 5px;&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;colspan&lt;/Name&gt;
+            &lt;AttributeValue&gt;2&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Note"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;
+                          
+                        
+                          &amp;lt;GEN:IMAGEBUTTON NAME="DeleteRowButton1"&amp;gt;&amp;lt;/GEN:IMAGEBUTTON&amp;gt;
+                        &lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;tableRowButtonsCellVertical&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Note1"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -3766,7 +4331,7 @@
           &lt;/Attribute&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;colspan&lt;/Name&gt;
-            &lt;AttributeValue&gt;5&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;3&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;

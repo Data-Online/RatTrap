@@ -277,6 +277,8 @@ public partial class Edit_Areas
         
         public System.Web.UI.WebControls.Literal LongLabel;
         
+        public System.Web.UI.WebControls.Literal NameLabel;
+        
         public System.Web.UI.WebControls.Literal PageTitle;
         
         public PaginationModern Pagination;

@@ -1,6 +1,6 @@
 ﻿
-// This file implements the code-behind class for Edit_Projects_Table.aspx.
-// Edit_Projects_Table.Controls.vb contains the Table, Row and Record control classes
+// This file implements the code-behind class for AreaNotes_QuickSelector.aspx.
+// AreaNotes_QuickSelector.Controls.vb contains the Table, Row and Record control classes
 // for the page.  Best practices calls for overriding methods in the Row or Record control classes.
 
 #region "Using statements"    
@@ -29,15 +29,15 @@ using RatTrap.Data;
 namespace RatTrap.UI
 {
   
-public partial class Edit_Projects_Table
+public partial class AreaNotes_QuickSelector
         : BaseApplicationPage
-// Code-behind class for the Edit_Projects_Table page.
+// Code-behind class for the AreaNotes_QuickSelector page.
 // Place your customizations in Section 1. Do not modify Section 2.
 {
         
       #region "Section 1: Place your customizations here."
 
-      public Edit_Projects_Table()
+      public AreaNotes_QuickSelector()
         {
             this.Initialize();
     
@@ -174,14 +174,14 @@ public partial class Edit_Projects_Table
         
     
         [System.Web.Services.WebMethod]
-        public static string[] GetAutoCompletionList_SearchText(string prefixText, int count)
+        public static string[] GetAutoCompletionList_Search(string prefixText, int count)
         {
-            // GetSearchTextCompletionList gets the list of suggestions from the database.
+            // GetSearchCompletionList gets the list of suggestions from the database.
             // prefixText is the search text typed by the user .
             // count specifies the number of suggestions to be returned.
-            // Customize by adding code before or after the call to  GetAutoCompletionList_SearchText_Base()
-            // or replace the call to GetAutoCompletionList_SearchText_Base().
-            return GetAutoCompletionList_SearchText_Base(prefixText, count);
+            // Customize by adding code before or after the call to  GetAutoCompletionList_Search_Base()
+            // or replace the call to GetAutoCompletionList_Search_Base().
+            return GetAutoCompletionList_Search_Base(prefixText, count);
         }
       
       protected override void BasePage_PreRender(object sender, EventArgs e)
@@ -203,9 +203,9 @@ public partial class Edit_Projects_Table
     
         // Write out the Set methods
         
-        public void SetProjectsTableControl()
+        public void SetSelectorTableControl()
         {
-            SetProjectsTableControl_Base(); 
+            SetSelectorTableControl_Base(); 
         }
                      
         
@@ -213,54 +213,6 @@ public partial class Edit_Projects_Table
         
 
 
-//public void SetSaveButton1()
-//        {
-//            SetSaveButton1_Base(); 
-//        }              
-//public void SaveButton1_Click(object sender, EventArgs args)
-//        {
-//
-//          // Click handler for SaveButton1.
-//          // Customize by adding code before the call or replace the call to the Base function with your own code.
-//          SaveButton1_Click_Base(sender, args);
-//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-//        }
-//public void SetCancelButton()
-//        {
-//            SetCancelButton_Base(); 
-//        }              
-//public void CancelButton_Click(object sender, EventArgs args)
-//        {
-//
-//          // Click handler for CancelButton.
-//          // Customize by adding code before the call or replace the call to the Base function with your own code.
-//          CancelButton_Click_Base(sender, args);
-//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-//        }
-public void SetSaveButton2()
-        {
-            SetSaveButton2_Base(); 
-        }              
-public void SetCancelButton1()
-        {
-            SetCancelButton1_Base(); 
-        }              
-public void SaveButton2_Click(object sender, EventArgs args)
-        {
-
-          // Click handler for SaveButton2.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          SaveButton2_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
-public void CancelButton1_Click(object sender, EventArgs args)
-        {
-
-          // Click handler for CancelButton1.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          CancelButton1_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -278,42 +230,22 @@ public void CancelButton1_Click(object sender, EventArgs args)
         }
         
     
-        public ThemeButtonWithArrow ActionsButton;
+        public ThemeButton AddButton;
                 
-        public System.Web.UI.WebControls.ImageButton AddButton;
-        
-        public System.Web.UI.WebControls.Literal AreaIdLabel1;
-        
-        public ThemeButton CancelButton1;
+        public ThemeButton ClearButton;
                 
-        public System.Web.UI.WebControls.ImageButton DeleteButton;
-        
-        public ThemeButton FilterButton;
-                
-        public ThemeButtonWithArrow FiltersButton;
+        public ThemeButton CommitButton;
                 
         public System.Web.UI.WebControls.Literal PageTitle;
         
         public PaginationModern Pagination;
                 
-        public RatTrap.UI.Controls.Edit_Projects_Table.ProjectsTableControl ProjectsTableControl;
-          
-        public System.Web.UI.WebControls.ImageButton ResetButton;
+        public System.Web.UI.WebControls.TextBox Search;
         
-        public System.Web.UI.WebControls.ImageButton SaveButton;
-        
-        public ThemeButton SaveButton2;
-                
         public System.Web.UI.WebControls.ImageButton SearchButton;
         
-        public System.Web.UI.WebControls.TextBox SearchText;
-        
-        public System.Web.UI.WebControls.Label SortByLabel;
-        
-        public System.Web.UI.WebControls.Literal Title0;
-            
-        public System.Web.UI.WebControls.CheckBox ToggleAll;
-        
+        public RatTrap.UI.Controls.AreaNotes_QuickSelector.SelectorTableControl SelectorTableControl;
+          
         public ValidationSummary ValidationSummary1;
 
   
@@ -335,10 +267,6 @@ public void CancelButton1_Click(object sender, EventArgs args)
 
           // Setup the pagination events.
         
-                    this.CancelButton1.Button.Click += CancelButton1_Click;
-                        
-                    this.SaveButton2.Button.Click += SaveButton2_Click;
-                        
           this.ClearControlsFromSession();    
     
           System.Web.HttpContext.Current.Session["isd_geo_location"] = "<location><error>LOCATION_ERROR_DISABLED</error></location>";
@@ -353,9 +281,7 @@ public void CancelButton1_Click(object sender, EventArgs args)
 
         private void Base_RegisterPostback()
         {
-        
-              this.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"SaveButton2"));
-                                
+                
         }
 
         protected void BasePage_PreRender_Base(object sender, System.EventArgs e)
@@ -381,7 +307,7 @@ public void CancelButton1_Click(object sender, EventArgs args)
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("NOT_ANONYMOUS");
+            this.Authorize("");
              if (!this.IsPostBack)
              {
             
@@ -400,10 +326,10 @@ public void CancelButton1_Click(object sender, EventArgs args)
     }
 
     
-            Page.Title = ExpandResourceValue("{Title:Edit} Projects");
+            Page.Title = "Page";
         
         if (!IsPostBack)
-            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
+            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QSSize');", true);
         
             }
 
@@ -493,8 +419,8 @@ public void CancelButton1_Click(object sender, EventArgs args)
           switch (control)
           {
           
-              case "ProjectsTableControl":
-                 SetProjectsTableControl();
+              case "SelectorTableControl":
+                 SetSelectorTableControl();
                  break;
                
           }
@@ -506,7 +432,7 @@ public void CancelButton1_Click(object sender, EventArgs args)
       public void SaveData_Base()
       {
       
-        this.ProjectsTableControl.SaveData();
+        this.SelectorTableControl.SaveData();
         
       }
       
@@ -579,14 +505,14 @@ public void CancelButton1_Click(object sender, EventArgs args)
       }  
       
         
-    public static string[] GetAutoCompletionList_SearchText_Base(string prefixText, int count)
+    public static string[] GetAutoCompletionList_Search_Base(string prefixText, int count)
     {
         // Since this method is a shared/static method it does not maintain information about page or controls within the page.
         // Hence we can not invoke any method associated with any controls.
         // So, if we need to use any control in the page we need to instantiate it.
-        RatTrap.UI.Controls.Edit_Projects_Table.ProjectsTableControl control = new RatTrap.UI.Controls.Edit_Projects_Table.ProjectsTableControl();
+        RatTrap.UI.Controls.AreaNotes_QuickSelector.SelectorTableControl control = new RatTrap.UI.Controls.AreaNotes_QuickSelector.SelectorTableControl();
         
-        return control.GetAutoCompletionList_SearchText(prefixText, count);
+        return control.GetAutoCompletionList_Search(prefixText, count);
             
     }
       
@@ -613,7 +539,7 @@ public void CancelButton1_Click(object sender, EventArgs args)
     
                 // Load and bind data for each record and table UI control.
                 
-        SetProjectsTableControl();
+        SetSelectorTableControl();
         
     
                 // Load data for chart.
@@ -621,10 +547,6 @@ public void CancelButton1_Click(object sender, EventArgs args)
             
                 // initialize aspx controls
                 
-                SetCancelButton1();
-              
-                SetSaveButton2();
-              
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -706,144 +628,21 @@ public void CancelButton1_Click(object sender, EventArgs args)
                 
         // Write out the Set methods
         
-        public void SetProjectsTableControl_Base()           
+        public void SetSelectorTableControl_Base()           
         
         {        
-            if (ProjectsTableControl.Visible)
+            if (SelectorTableControl.Visible)
             {
-                ProjectsTableControl.LoadData();
-                ProjectsTableControl.DataBind();
+                SelectorTableControl.LoadData();
+                SelectorTableControl.DataBind();
             }
         }
-      
-        public void SetCancelButton1_Base()                
-              
-        {
-        
-   
-        }
-            
-        public void SetSaveButton2_Base()                
-              
-        {
-        
-                    this.SaveButton2.Button.Attributes.Add("onclick", "SubmitHRefOnce(this, \"" + this.GetResourceValue("Txt:SaveRecord", "RatTrap") + "\");");
-                  
-   
-        }
-                
+          
 
         // Write out the DataSource properties and methods
                 
 
         // Write out event methods for the page events
-        
-        // event handler for Button
-        public void CancelButton1_Click_Base(object sender, EventArgs args)
-        {
-              
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                
-          
-                // if target is specified meaning that is opened on popup or new window
-                if (!string.IsNullOrEmpty(Page.Request["target"]))
-                {
-                    shouldRedirect = false;
-                    AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "ClosePopup", "closePopupPage();", true);                   
-                }
-      
-            } catch (Exception ex) {
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-    
-            }
-            if (shouldRedirect) {
-                this.ShouldSaveControlsToSession = true;
-      this.RedirectBack();
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for Button
-        public void SaveButton2_Click_Base(object sender, EventArgs args)
-        {
-              
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-        
-              if (!this.IsPageRefresh)
-              {
-                  this.SaveData();
-              }
-
-          this.CommitTransaction(sender);
-            string field = "";
-            string formula = "";
-            string displayFieldName = "";
-            string value = "";
-            if(value == null) value = ""; // added to remove warning from VS
-            string id = ""; 
-            if(id == null) id = ""; //added to avoid warning in VS
-            
-            // retrieve necessary URL parameters
-            if (!String.IsNullOrEmpty(Page.Request["Target"]) )
-                target = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Target");
-            if (!String.IsNullOrEmpty(Page.Request["IndexField"]))
-                field = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("IndexField");
-            if (!String.IsNullOrEmpty(Page.Request["Formula"]))
-                formula = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Formula");
-            if (!String.IsNullOrEmpty(Page.Request["DFKA"]))
-                displayFieldName = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("DFKA");
-            
-            if (!string.IsNullOrEmpty(target) && !string.IsNullOrEmpty(field))
-            {
-          
-           }
-           else if (!string.IsNullOrEmpty(target))
-           {
-                BaseClasses.Utils.MiscUtils.RegisterAddButtonScript(this, target, null, null);           
-                shouldRedirect = false;       
-           }
-         
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.ShouldSaveControlsToSession = true;
-      this.RedirectBack();
-        
-            }
-        
-        }
-            
-            
         
       
 

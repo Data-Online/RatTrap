@@ -210,25 +210,25 @@ public partial class Show_Areas
     
         // Write out the Set methods
         
-        public void SetAreasTabContainer()
-        {
-            SetAreasTabContainer_Base(); 
-        }
+//        public void SetAreasTabContainer()
+//        {
+//            SetAreasTabContainer_Base(); 
+//        }
         
-        public void SetAreaNotesTableControl()
-        {
-            SetAreaNotesTableControl_Base(); 
-        }
+//        public void SetAreaNotesTableControl()
+//        {
+//            SetAreaNotesTableControl_Base(); 
+//        }
         
         public void SetAreasRecordControl()
         {
             SetAreasRecordControl_Base(); 
         }
         
-        public void SetProjectsTableControl()
-        {
-            SetProjectsTableControl_Base(); 
-        }
+//        public void SetProjectsTableControl()
+//        {
+//            SetProjectsTableControl_Base(); 
+//        }
         
         public void SetEditButton()
         {
@@ -262,31 +262,29 @@ public partial class Show_Areas
         }
         
     
-        public ThemeButtonWithArrow Actions1Button;
+        public ThemeButtonWithArrow ActionsButton;
                 
-        public ThemeButtonWithArrow Actions2Button;
-                
-        public RatTrap.UI.Controls.Show_Areas.AreaNotesTableControl AreaNotesTableControl;
+        public System.Web.UI.WebControls.ImageButton AddButton;
+        
+        public RatTrap.UI.Controls.Show_Areas.AreaNotesTableControl1 AreaNotesTableControl1;
           
         public RatTrap.UI.Controls.Show_Areas.AreasRecordControl AreasRecordControl;
           
-        public AjaxControlToolkit.TabContainer AreasTabContainer;
+        public AjaxControlToolkit.TabContainer AreasRecordControlTabContainer;
         
+        public System.Web.UI.WebControls.ImageButton DeleteButton;
+        
+        public System.Web.UI.WebControls.Literal Description;
+            
         public System.Web.UI.WebControls.ImageButton DialogEditButton;
         
         public ThemeButton EditButton;
                 
-        public System.Web.UI.WebControls.ImageButton ExcelButton;
-        
-        public System.Web.UI.WebControls.ImageButton ExcelButton1;
-        
-        public ThemeButtonWithArrow Filters1Button;
+        public ThemeButton FilterButton;
                 
-        public ThemeButtonWithArrow Filters2Button;
+        public ThemeButtonWithArrow FiltersButton;
                 
-        public System.Web.UI.WebControls.ImageButton ImportButton;
-        
-        public System.Web.UI.WebControls.ImageButton ImportButton1;
+        public System.Web.UI.WebControls.Label Label;
         
         public System.Web.UI.WebControls.Literal Lat;
             
@@ -296,33 +294,27 @@ public partial class Show_Areas
             
         public System.Web.UI.WebControls.Literal LongLabel;
         
-        public System.Web.UI.WebControls.ImageButton NewButton;
-        
-        public System.Web.UI.WebControls.ImageButton NewButton1;
+        public System.Web.UI.WebControls.Literal Name;
+            
+        public System.Web.UI.WebControls.Literal NoteLabel3;
         
         public ThemeButton OKButton;
                 
         public System.Web.UI.WebControls.Literal PageTitle;
         
-        public PaginationModern Pagination;
+        public PaginationModern Pagination2;
                 
-        public PaginationModern Pagination1;
-                
-        public System.Web.UI.WebControls.ImageButton PDFButton;
-        
-        public System.Web.UI.WebControls.ImageButton PDFButton1;
-        
-        public RatTrap.UI.Controls.Show_Areas.ProjectsTableControl ProjectsTableControl;
+        public RatTrap.UI.Controls.Show_Areas.ProjectsRecordControl1 ProjectsRecordControl1;
           
-        public System.Web.UI.WebControls.Label SortByLabel1;
+        public System.Web.UI.WebControls.ImageButton ResetButton;
         
-        public System.Web.UI.WebControls.Label SortByLabel2;
+        public System.Web.UI.WebControls.ImageButton SaveButton;
+        
+        public System.Web.UI.WebControls.Label SortByLabel;
         
         public System.Web.UI.WebControls.Literal Title0;
             
-        public System.Web.UI.WebControls.ImageButton WordButton;
-        
-        public System.Web.UI.WebControls.ImageButton WordButton1;
+        public System.Web.UI.WebControls.CheckBox ToggleAll;
         
         public ValidationSummary ValidationSummary1;
 
@@ -501,16 +493,8 @@ public partial class Show_Areas
           switch (control)
           {
           
-              case "AreaNotesTableControl":
-                 SetAreaNotesTableControl();
-                 break;
-          
               case "AreasRecordControl":
                  SetAreasRecordControl();
-                 break;
-          
-              case "ProjectsTableControl":
-                 SetProjectsTableControl();
                  break;
                
           }
@@ -614,9 +598,7 @@ public partial class Show_Areas
                 this.DataBind();
                 
                 
-                
-            SetAreasTabContainer(); 
-          
+                    
     
                 // Load and bind data for each record and table UI control.
                 
@@ -713,29 +695,6 @@ public partial class Show_Areas
                 
         // Write out the Set methods
         
-        public void SetAreasTabContainer_Base()           
-        
-        {
-                            
-                   
-            if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "true") 
-                MiscUtils.FindControlRecursively(this, "AreasTabContainer").Visible = true;
-            else if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "false") 
-                MiscUtils.FindControlRecursively(this, "AreasTabContainer").Visible = false;
-         
-  
-        }      
-      
-        public void SetAreaNotesTableControl_Base()           
-        
-        {        
-            if (AreaNotesTableControl.Visible)
-            {
-                AreaNotesTableControl.LoadData();
-                AreaNotesTableControl.DataBind();
-            }
-        }
-      
         public void SetAreasRecordControl_Base()           
         
         {        
@@ -743,16 +702,6 @@ public partial class Show_Areas
             {
                 AreasRecordControl.LoadData();
                 AreasRecordControl.DataBind();
-            }
-        }
-      
-        public void SetProjectsTableControl_Base()           
-        
-        {        
-            if (ProjectsTableControl.Visible)
-            {
-                ProjectsTableControl.LoadData();
-                ProjectsTableControl.DataBind();
             }
         }
       

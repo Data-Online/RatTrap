@@ -4474,6 +4474,8 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
           
                     this.AddButton1.Click += AddButton1_Click;
                         
+                    this.AddButton2.Click += AddButton2_Click;
+                        
                     this.DeleteButton1.Click += DeleteButton1_Click;
                         
                     this.ResetButton.Click += ResetButton_Click;
@@ -4727,6 +4729,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         
                 
                 
+                
                 SetBaitTypeFilter();
                 SetBaitTypeLabel();
                 SetBaitTypeLabel1();
@@ -4744,6 +4747,8 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 SetSpeciesLabel1();
                 
                 SetAddButton1();
+              
+                SetAddButton2();
               
                 SetDeleteButton1();
               
@@ -6136,6 +6141,13 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
    
         }
             
+        public virtual void SetAddButton2()                
+              
+        {
+        
+   
+        }
+            
         public virtual void SetDeleteButton1()                
               
         {
@@ -6432,6 +6444,33 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         
         // event handler for ImageButton
         public virtual void AddButton1_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+            this.AddNewRecord = 1;
+            this.DataChanged = true;
+      
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void AddButton2_Click(object sender, ImageClickEventArgs args)
         {
               
             try {
@@ -6757,6 +6796,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         public System.Web.UI.WebControls.ImageButton AddButton1 {
             get {
                 return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "AddButton1");
+            }
+        }
+        
+        public System.Web.UI.WebControls.ImageButton AddButton2 {
+            get {
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "AddButton2");
             }
         }
         
