@@ -134,8 +134,8 @@
 <asp:Literal runat="server" id="DateOfCheck"></asp:Literal></span>
  </td><td class="tableCellLabel"><asp:Literal runat="server" id="SexLabel" Text="Sex">	</asp:Literal> 
 </td><td class="tableCellValue"><asp:Literal runat="server" id="Sex"></asp:Literal> </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="SpeciesLabel" Text="Species">	</asp:Literal> 
-</td><td class="tableCellValue"><asp:Literal runat="server" id="Species"></asp:Literal> </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="NotesLabel" Text="Notes">	</asp:Literal> 
-</td><td class="tableCellValue" colspan="5"><asp:Literal runat="server" id="Notes"></asp:Literal> </td></tr><tr><td class="tableRowDivider" colspan="6"></td></tr></RatTrap:TrapRecordsTableControlRow>
+</td><td class="tableCellValue"><asp:Literal runat="server" id="Species"></asp:Literal> </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableCellLabel"> 
+</td><td class="tableCellValue" colspan="5"> </td></tr><tr><td class="tableRowDivider" colspan="6"></td></tr></RatTrap:TrapRecordsTableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>

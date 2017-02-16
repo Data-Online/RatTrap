@@ -294,6 +294,162 @@ public class BaseTrapsRecord : PrimaryKeyRecord
 		ColumnValue cv = new ColumnValue(val);
 		this.SetValue(cv, TableUtils.TrapIdentifierColumn);
 	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.Active field.
+	/// </summary>
+	public ColumnValue GetActiveValue()
+	{
+		return this.GetValue(TableUtils.ActiveColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.Active field.
+	/// </summary>
+	public bool GetActiveFieldValue()
+	{
+		return this.GetValue(TableUtils.ActiveColumn).ToBoolean();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Active field.
+	/// </summary>
+	public void SetActiveFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.ActiveColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Active field.
+	/// </summary>
+	public void SetActiveFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.ActiveColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Active field.
+	/// </summary>
+	public void SetActiveFieldValue(bool val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.ActiveColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public ColumnValue GetLocationIdValue()
+	{
+		return this.GetValue(TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public Int32 GetLocationIdFieldValue()
+	{
+		return this.GetValue(TableUtils.LocationIdColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LocationIdColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public ColumnValue GetProjectIdValue()
+	{
+		return this.GetValue(TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public Int32 GetProjectIdFieldValue()
+	{
+		return this.GetValue(TableUtils.ProjectIdColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.ProjectIdColumn);
+	}
 
 
 #endregion
@@ -470,6 +626,136 @@ public class BaseTrapsRecord : PrimaryKeyRecord
 		get
 		{
 			return TableUtils.TrapIdentifierColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Traps_.Active field.
+	/// </summary>
+	public bool Active
+	{
+		get
+		{
+			return this.GetValue(TableUtils.ActiveColumn).ToBoolean();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+	   		this.SetValue(cv, TableUtils.ActiveColumn);
+		}
+	}
+	
+	
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool ActiveSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.ActiveColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Active field.
+	/// </summary>
+	public string ActiveDefault
+	{
+		get
+		{
+			return TableUtils.ActiveColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public Int32 LocationId
+	{
+		get
+		{
+			return this.GetValue(TableUtils.LocationIdColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.LocationIdColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool LocationIdSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.LocationIdColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.LocationId field.
+	/// </summary>
+	public string LocationIdDefault
+	{
+		get
+		{
+			return TableUtils.LocationIdColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public Int32 ProjectId
+	{
+		get
+		{
+			return this.GetValue(TableUtils.ProjectIdColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.ProjectIdColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool ProjectIdSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.ProjectIdColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.ProjectId field.
+	/// </summary>
+	public string ProjectIdDefault
+	{
+		get
+		{
+			return TableUtils.ProjectIdColumn.DefaultValue;
 		}
 	}
 

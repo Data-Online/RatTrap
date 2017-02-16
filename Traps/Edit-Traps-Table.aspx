@@ -97,14 +97,9 @@
 
                 </div></td><td class="prbbc"></td><td class="prspace"></td><td class="prbbc" style="text-align:right"><RatTrap:ThemeButtonWithArrow runat="server" id="Actions1Button" button-causesvalidation="False" button-commandname="Custom" button-onclientclick="return ISD_ShowPopupPanel(&#39;Actions1Div&#39;,&#39;Actions1Button&#39;,this);" button-text="&lt;%# GetResourceValue(&quot;Btn:Actions&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:Actions&quot;, &quot;RatTrap&quot;) %>"></RatTrap:ThemeButtonWithArrow></td><td class="prbbc" style="text-align:right">
             <RatTrap:ThemeButtonWithArrow runat="server" id="Filters1Button" button-causesvalidation="False" button-commandname="Custom" button-onclientclick="return ISD_ShowPopupPanel(&#39;Filters1Div&#39;,&#39;Filters1Button&#39;,this);" button-text="&lt;%# GetResourceValue(&quot;Btn:Filters&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:Filters&quot;, &quot;RatTrap&quot;) %>"></RatTrap:ThemeButtonWithArrow>
-          </td><td class="prbbc"><img src="../Images/space.gif" alt="" style="width: 10px" /></td><td class="panelSearchBox"><table><tr><td><%= SystemUtils.GenerateEnterKeyCaptureBeginTag(FindControlRecursively("SearchButton1"))%>
-
-                <asp:TextBox runat="server" id="TrapRecordsSearchText" columns="50" cssclass="Search_Input">	</asp:TextBox>
-<asp:AutoCompleteExtender id="TrapRecordsSearchTextAutoCompleteExtender" runat="server" TargetControlID="TrapRecordsSearchText" ServiceMethod="GetAutoCompletionList_TrapRecordsSearchText" MinimumPrefixLength="2" CompletionInterval="700" CompletionSetCount="10" CompletionListCssClass="autotypeahead_completionListElement" CompletionListItemCssClass="autotypeahead_listItem " CompletionListHighlightedItemCssClass="autotypeahead_highlightedListItem">
-</asp:AutoCompleteExtender>
-
-              <%= SystemUtils.GenerateEnterKeyCaptureEndTag(FindControlRecursively("SearchButton1"))%>
-</td><td>
+          </td><td class="prbbc"><img src="../Images/space.gif" alt="" style="width: 10px" /></td><td class="panelSearchBox"><table><tr><td>
+                
+              </td><td>
                 <asp:ImageButton runat="server" id="SearchButton1" causesvalidation="False" commandname="Search" imageurl="../Images/panelSearchButton.png" tooltip="&lt;%# GetResourceValue(&quot;Btn:SearchGoButtonText&quot;, &quot;RatTrap&quot;) %>">		
 	</asp:ImageButton>
               </td></tr></table>
@@ -155,9 +150,8 @@
 </span>
  </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="SexLabel" Text="Sex">	</asp:Literal> 
 </td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="Sex" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"><asp:Literal runat="server" id="SpeciesLabel" Text="Species">	</asp:Literal> 
-</td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="Species" redirecturl=""></BaseClasses:QuickSelector> </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="NotesLabel" Text="Notes">	</asp:Literal> 
-</td><td class="tableCellValue" colspan="3"><asp:TextBox runat="server" id="Notes" MaxLength="200" columns="60" cssclass="field_input" rows="4" textmode="MultiLine"></asp:TextBox>&nbsp;
-<BaseClasses:TextBoxMaxLengthValidator runat="server" id="NotesTextBoxMaxLengthValidator" ControlToValidate="Notes" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Notes&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator> </td></tr><tr><td class="tableRowDivider" colspan="8"></td></tr></RatTrap:TrapRecordsTableControlRow>
+</td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="Species" redirecturl=""></BaseClasses:QuickSelector> </td></tr><tr><td class="tableCellLabel"> 
+</td><td class="tableCellValue" colspan="3"> </td></tr><tr><td class="tableRowDivider" colspan="8"></td></tr></RatTrap:TrapRecordsTableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>

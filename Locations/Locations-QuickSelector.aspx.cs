@@ -1,6 +1,6 @@
 ﻿
-// This file implements the code-behind class for Edit_TrapRecords.aspx.
-// Edit_TrapRecords.Controls.vb contains the Table, Row and Record control classes
+// This file implements the code-behind class for Locations_QuickSelector.aspx.
+// Locations_QuickSelector.Controls.vb contains the Table, Row and Record control classes
 // for the page.  Best practices calls for overriding methods in the Row or Record control classes.
 
 #region "Using statements"    
@@ -29,15 +29,15 @@ using RatTrap.Data;
 namespace RatTrap.UI
 {
   
-public partial class Edit_TrapRecords
+public partial class Locations_QuickSelector
         : BaseApplicationPage
-// Code-behind class for the Edit_TrapRecords page.
+// Code-behind class for the Locations_QuickSelector page.
 // Place your customizations in Section 1. Do not modify Section 2.
 {
         
       #region "Section 1: Place your customizations here."
 
-      public Edit_TrapRecords()
+      public Locations_QuickSelector()
         {
             this.Initialize();
     
@@ -173,6 +173,17 @@ public partial class Edit_TrapRecords
         }
         
     
+        [System.Web.Services.WebMethod]
+        public static string[] GetAutoCompletionList_Search(string prefixText, int count)
+        {
+            // GetSearchCompletionList gets the list of suggestions from the database.
+            // prefixText is the search text typed by the user .
+            // count specifies the number of suggestions to be returned.
+            // Customize by adding code before or after the call to  GetAutoCompletionList_Search_Base()
+            // or replace the call to GetAutoCompletionList_Search_Base().
+            return GetAutoCompletionList_Search_Base(prefixText, count);
+        }
+      
       protected override void BasePage_PreRender(object sender, EventArgs e)
       {
           base.BasePage_PreRender(sender, e);
@@ -189,42 +200,14 @@ public partial class Edit_TrapRecords
 
       // Page Event Handlers - buttons, sort, links
       
-        public void CancelButton_Click(object sender, EventArgs args)
-        {
-
-          // Click handler for CancelButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          CancelButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
-            
-        public void SaveButton_Click(object sender, EventArgs args)
-        {
-
-          // Click handler for SaveButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          SaveButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
-            
     
         // Write out the Set methods
         
-        public void SetTrapRecordsRecordControl()
+        public void SetSelectorTableControl()
         {
-            SetTrapRecordsRecordControl_Base(); 
+            SetSelectorTableControl_Base(); 
         }
-        
-        public void SetCancelButton()
-        {
-            SetCancelButton_Base(); 
-        }              
-            
-        public void SetSaveButton()
-        {
-            SetSaveButton_Base(); 
-        }              
-                         
+                     
         
         // Write out the methods for DataSource
         
@@ -247,33 +230,21 @@ public partial class Edit_TrapRecords
         }
         
     
-        public BaseClasses.Web.UI.WebControls.QuickSelector BaitType;
-            
-        public System.Web.UI.WebControls.Literal BaitTypeLabel;
-        
-        public ThemeButton CancelButton;
+        public ThemeButton AddButton;
                 
-        public System.Web.UI.WebControls.Literal DateOfCheckLabel;
-        
+        public ThemeButton ClearButton;
+                
+        public ThemeButton CommitButton;
+                
         public System.Web.UI.WebControls.Literal PageTitle;
         
-        public ThemeButton SaveButton;
+        public PaginationModern Pagination;
                 
-        public BaseClasses.Web.UI.WebControls.QuickSelector Sex;
-            
-        public System.Web.UI.WebControls.Literal SexLabel;
+        public System.Web.UI.WebControls.TextBox Search;
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector Species;
-            
-        public System.Web.UI.WebControls.Literal SpeciesLabel;
+        public System.Web.UI.WebControls.ImageButton SearchButton;
         
-        public System.Web.UI.WebControls.Literal Title0;
-            
-        public BaseClasses.Web.UI.WebControls.QuickSelector TrapId;
-            
-        public System.Web.UI.WebControls.Literal TrapIdLabel;
-        
-        public RatTrap.UI.Controls.Edit_TrapRecords.TrapRecordsRecordControl TrapRecordsRecordControl;
+        public RatTrap.UI.Controls.Locations_QuickSelector.SelectorTableControl SelectorTableControl;
           
         public ValidationSummary ValidationSummary1;
 
@@ -296,10 +267,6 @@ public partial class Edit_TrapRecords
 
           // Setup the pagination events.
         
-                    this.CancelButton.Button.Click += CancelButton_Click;
-                        
-                    this.SaveButton.Button.Click += SaveButton_Click;
-                        
           this.ClearControlsFromSession();    
     
           System.Web.HttpContext.Current.Session["isd_geo_location"] = "<location><error>LOCATION_ERROR_DISABLED</error></location>";
@@ -314,9 +281,7 @@ public partial class Edit_TrapRecords
 
         private void Base_RegisterPostback()
         {
-        
-              this.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"SaveButton"));
-                                
+                
         }
 
         protected void BasePage_PreRender_Base(object sender, System.EventArgs e)
@@ -342,7 +307,7 @@ public partial class Edit_TrapRecords
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("NOT_ANONYMOUS");
+            this.Authorize("");
              if (!this.IsPostBack)
              {
             
@@ -361,10 +326,10 @@ public partial class Edit_TrapRecords
     }
 
     
-            Page.Title = ExpandResourceValue("{Title:Edit} Trap Records");
+            Page.Title = "Page";
         
         if (!IsPostBack)
-            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
+            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QSSize');", true);
         
             }
 
@@ -454,8 +419,8 @@ public partial class Edit_TrapRecords
           switch (control)
           {
           
-              case "TrapRecordsRecordControl":
-                 SetTrapRecordsRecordControl();
+              case "SelectorTableControl":
+                 SetSelectorTableControl();
                  break;
                
           }
@@ -467,7 +432,7 @@ public partial class Edit_TrapRecords
       public void SaveData_Base()
       {
       
-        this.TrapRecordsRecordControl.SaveData();
+        this.SelectorTableControl.SaveData();
         
       }
       
@@ -540,6 +505,17 @@ public partial class Edit_TrapRecords
       }  
       
         
+    public static string[] GetAutoCompletionList_Search_Base(string prefixText, int count)
+    {
+        // Since this method is a shared/static method it does not maintain information about page or controls within the page.
+        // Hence we can not invoke any method associated with any controls.
+        // So, if we need to use any control in the page we need to instantiate it.
+        RatTrap.UI.Controls.Locations_QuickSelector.SelectorTableControl control = new RatTrap.UI.Controls.Locations_QuickSelector.SelectorTableControl();
+        
+        return control.GetAutoCompletionList_Search(prefixText, count);
+            
+    }
+      
 
     // Load data from database into UI controls.
     // Modify LoadData in Section 1 above to customize.  Or override DataBind() in
@@ -563,7 +539,7 @@ public partial class Edit_TrapRecords
     
                 // Load and bind data for each record and table UI control.
                 
-        SetTrapRecordsRecordControl();
+        SetSelectorTableControl();
         
     
                 // Load data for chart.
@@ -571,10 +547,6 @@ public partial class Edit_TrapRecords
             
                 // initialize aspx controls
                 
-                SetCancelButton();
-              
-                SetSaveButton();
-              
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -656,168 +628,21 @@ public partial class Edit_TrapRecords
                 
         // Write out the Set methods
         
-        public void SetTrapRecordsRecordControl_Base()           
+        public void SetSelectorTableControl_Base()           
         
         {        
-            if (TrapRecordsRecordControl.Visible)
+            if (SelectorTableControl.Visible)
             {
-                TrapRecordsRecordControl.LoadData();
-                TrapRecordsRecordControl.DataBind();
+                SelectorTableControl.LoadData();
+                SelectorTableControl.DataBind();
             }
         }
-      
-        public void SetCancelButton_Base()                
-              
-        {
-        
-   
-        }
-            
-        public void SetSaveButton_Base()                
-              
-        {
-        
-                    this.SaveButton.Button.Attributes.Add("onclick", "SubmitHRefOnce(this, \"" + this.GetResourceValue("Txt:SaveRecord", "RatTrap") + "\");");
-                  
-   
-        }
-                
+          
 
         // Write out the DataSource properties and methods
                 
 
         // Write out event methods for the page events
-        
-        // event handler for Button
-        public void CancelButton_Click_Base(object sender, EventArgs args)
-        {
-              
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                
-          
-                // if target is specified meaning that is opened on popup or new window
-                if (!string.IsNullOrEmpty(Page.Request["target"]))
-                {
-                    shouldRedirect = false;
-                    AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "ClosePopup", "closePopupPage();", true);                   
-                }
-      
-            } catch (Exception ex) {
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-    
-            }
-            if (shouldRedirect) {
-                this.ShouldSaveControlsToSession = true;
-      this.RedirectBack();
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for Button
-        public void SaveButton_Click_Base(object sender, EventArgs args)
-        {
-              
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-        
-              if (!this.IsPageRefresh)
-              {
-                  this.SaveData();
-              }
-
-          this.CommitTransaction(sender);
-            string field = "";
-            string formula = "";
-            string displayFieldName = "";
-            string value = "";
-            if(value == null) value = ""; // added to remove warning from VS
-            string id = ""; 
-            if(id == null) id = ""; //added to avoid warning in VS
-            
-            // retrieve necessary URL parameters
-            if (!String.IsNullOrEmpty(Page.Request["Target"]) )
-                target = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Target");
-            if (!String.IsNullOrEmpty(Page.Request["IndexField"]))
-                field = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("IndexField");
-            if (!String.IsNullOrEmpty(Page.Request["Formula"]))
-                formula = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Formula");
-            if (!String.IsNullOrEmpty(Page.Request["DFKA"]))
-                displayFieldName = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("DFKA");
-            
-            if (!string.IsNullOrEmpty(target) && !string.IsNullOrEmpty(field))
-            {
-          
-
-                  if (this.TrapRecordsRecordControl != null && this.TrapRecordsRecordControl.DataSource != null)
-                  {
-                        id = this.TrapRecordsRecordControl.DataSource.GetValue(this.TrapRecordsRecordControl.DataSource.TableAccess.TableDefinition.ColumnList.GetByAnyName(field)).ToString();
-                        if (!string.IsNullOrEmpty(formula))
-                        {
-                            System.Collections.Generic.IDictionary<String, Object> variables = new System.Collections.Generic.Dictionary<String, Object>();
-                            variables.Add(this.TrapRecordsRecordControl.DataSource.TableAccess.TableDefinition.TableCodeName, this.TrapRecordsRecordControl.DataSource);
-                            value = EvaluateFormula(formula, this.TrapRecordsRecordControl.DataSource, null,variables);
-                        }
-                        else if (displayFieldName == "") 
-                        {
-                            value = id;
-                        }
-                        else
-                        {
-                            value = this.TrapRecordsRecordControl.DataSource.GetValue(this.TrapRecordsRecordControl.DataSource.TableAccess.TableDefinition.ColumnList.GetByAnyName(displayFieldName)).ToString();
-                        }
-                  }
-                  if (value == null)
-                      value = id;
-                  BaseClasses.Utils.MiscUtils.RegisterAddButtonScript(this, target, id, value);
-                  shouldRedirect = false;
-                
-           }
-           else if (!string.IsNullOrEmpty(target))
-           {
-                BaseClasses.Utils.MiscUtils.RegisterAddButtonScript(this, target, null, null);           
-                shouldRedirect = false;       
-           }
-         
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.ShouldSaveControlsToSession = true;
-      this.RedirectBack();
-        
-            }
-        
-        }
-            
-            
         
       
 

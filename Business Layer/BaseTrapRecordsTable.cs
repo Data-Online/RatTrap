@@ -65,7 +65,11 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         DateOfCheckColumn.Name = EvaluateFormula("\"Date Checked\"");
         SpeciesColumn.CodeName = "Species";
         SexColumn.CodeName = "Sex";
-        NotesColumn.CodeName = "Notes";
+        CommentsColumn.CodeName = "Comments";
+        LocationIdColumn.CodeName = "LocationId";
+        ProjectIdColumn.CodeName = "ProjectId";
+        GroupIdColumn.CodeName = "GroupId";
+        TrapTypeIdColumn.CodeName = "TrapTypeId";
 
         
     }
@@ -227,9 +231,9 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
     
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's TrapRecords_.Notes column object.
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.Comments column object.
     /// </summary>
-    public BaseClasses.Data.StringColumn NotesColumn
+    public BaseClasses.Data.StringColumn CommentsColumn
     {
         get
         {
@@ -240,13 +244,113 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
 
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's TrapRecords_.Notes column object.
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.Comments column object.
     /// </summary>
-    public static BaseClasses.Data.StringColumn Notes
+    public static BaseClasses.Data.StringColumn Comments
     {
         get
         {
-            return TrapRecordsTable.Instance.NotesColumn;
+            return TrapRecordsTable.Instance.CommentsColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.LocationId column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn LocationIdColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[7];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.LocationId column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn LocationId
+    {
+        get
+        {
+            return TrapRecordsTable.Instance.LocationIdColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.ProjectId column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn ProjectIdColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[8];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.ProjectId column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn ProjectId
+    {
+        get
+        {
+            return TrapRecordsTable.Instance.ProjectIdColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.GroupId column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn GroupIdColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[9];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.GroupId column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn GroupId
+    {
+        get
+        {
+            return TrapRecordsTable.Instance.GroupIdColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.TrapTypeId column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn TrapTypeIdColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[10];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.TrapTypeId column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn TrapTypeId
+    {
+        get
+        {
+            return TrapRecordsTable.Instance.TrapTypeIdColumn;
         }
     }
     
@@ -781,7 +885,11 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         string DateOfCheckValue, 
         string SpeciesValue, 
         string SexValue, 
-        string NotesValue
+        string CommentsValue, 
+        string LocationIdValue, 
+        string ProjectIdValue, 
+        string GroupIdValue, 
+        string TrapTypeIdValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
@@ -790,7 +898,11 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         rec.SetString(DateOfCheckValue, DateOfCheckColumn);
         rec.SetString(SpeciesValue, SpeciesColumn);
         rec.SetString(SexValue, SexColumn);
-        rec.SetString(NotesValue, NotesColumn);
+        rec.SetString(CommentsValue, CommentsColumn);
+        rec.SetString(LocationIdValue, LocationIdColumn);
+        rec.SetString(ProjectIdValue, ProjectIdColumn);
+        rec.SetString(GroupIdValue, GroupIdColumn);
+        rec.SetString(TrapTypeIdValue, TrapTypeIdColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

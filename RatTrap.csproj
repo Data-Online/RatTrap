@@ -84,6 +84,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -634,11 +635,18 @@
     <Compile Include="ProjectNotes\ProjectNotes-QuickSelector.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreaNotes\AreaNotes-QuickSelector.aspx.cs" >
+    <Compile Include="AreaNotes\AreaNotes-QuickSelector.aspx.cs">
       <DependentUpon>AreaNotes-QuickSelector.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AreaNotes\AreaNotes-QuickSelector.Controls.cs" >
+    <Compile Include="AreaNotes\AreaNotes-QuickSelector.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Locations\Locations-QuickSelector.aspx.cs">
+      <DependentUpon>Locations-QuickSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Locations\Locations-QuickSelector.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -963,7 +971,8 @@
     <Content Include="Users\Show-Users.aspx" />
     <Content Include="Projects\Show-Projects.aspx" />
     <Content Include="ProjectNotes\ProjectNotes-QuickSelector.aspx" />
-    <Content Include="AreaNotes\AreaNotes-QuickSelector.aspx"  />
+    <Content Include="AreaNotes\AreaNotes-QuickSelector.aspx" />
+    <Content Include="Locations\Locations-QuickSelector.aspx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">
@@ -989,9 +998,7 @@
       <Name>RatTrap.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dashboard\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -21,7 +21,105 @@ namespace RatTrap.UI
     {
 
 
-    }
+   
+		#region "Code Customization"
+		
+		/// <summary>
+		/// Calls custom stored procedure.
+		/// </summary>
+		public void CallCustomStoredProcedureToAdd() 
+		{
+			// Step 1: Configure parameters for your stored procedure if the stored procedure accepts parameters.
+			// Each database type has different parameter type.
+			// Please change them accordingly to fit your application's logic.
+			// SQL Server: 
+			//	Parameter type: System.Data.SqlDbType
+			// Oracle:
+			//	Parameter type: System.Data.OracleClient.OracleType
+			// MySql:
+			// 	Parameter type: MySql.Data.MySqlClient.MySqlDbType
+			
+			BaseClasses.Data.StoredProcedureParameter firstParameter = null;
+			
+			//  For SQL Server: use parameter type System.Data.SqlDbType
+			firstParameter = new BaseClasses.Data.StoredProcedureParameter("@pk_EmployeeFirstName", "John", System.Data.SqlDbType.VarChar, System.Data.ParameterDirection.Input);
+			
+			//  For Oracle: use parameter type System.Data.OracleClient.OracleType
+			//firstParameter = new BaseClasses.Data.StoredProcedureParameter("pk_EmployeeFirstName", "John", System.Data.OracleClient.OracleType.VarChar, System.Data.ParameterDirection.Input);
+			
+			//  For MySql: use parameter type MySql.Data.MySqlClient.MySqlDbType 
+			//firstParameter = new BaseClasses.Data.StoredProcedureParameter("@pk_EmployeeFirstName", "John", MySql.Data.MySqlClient.MySqlDbType.VarChar, System.Data.ParameterDirection.Input, true);
+		
+		
+			BaseClasses.Data.StoredProcedureParameter secondParameter = null;
+			//  For SQL Server: use parameter type System.Data.SqlDbType
+			secondParameter = new BaseClasses.Data.StoredProcedureParameter("@pk_EmployeeLastName", "Smith", System.Data.SqlDbType.VarChar, System.Data.ParameterDirection.Input);
+			
+			//  For Oracle: use parameter type System.Data.OracleClient.OracleType
+			//secondParameter = new BaseClasses.Data.StoredProcedureParameter("pk_EmployeeLastName", "Smith", System.Data.OracleClient.OracleType.VarChar, System.Data.ParameterDirection.Input);
+			
+			//  For MySql: use parameter type MySql.Data.MySqlClient.MySqlDbType 
+			//secondParameter = new BaseClasses.Data.StoredProcedureParameter("@pk_EmployeeLastName", "Smith", MySql.Data.MySqlClient.MySqlDbType.VarChar, System.Data.ParameterDirection.Input, true);
+			
+			//  Handle the case where the primary key column is of type uniqueidentifier
+			//  with a default value of newid().  In this case the value may be set in
+			//  the stored procedure so we'll need to get the value back via  
+			//  an output parameter.
+			BaseClasses.Data.StoredProcedureParameter thirdParameter = null;
+			thirdParameter = new BaseClasses.Data.StoredProcedureParameter("@pk_OutputParameter", null, System.Data.SqlDbType.Int, System.Data.ParameterDirection.Output);
+			
+		  /// In the case if Output prarmeter is a string set its size:
+		  /// string myvar = "";
+		  /// thirdParameter = New BaseClasses.Data.StoredProcedureParameter("@paramName", myvar, System.Data.SqlDbType.VarChar, System.Data.ParameterDirection.Output)
+		  /// NOTE: if this parameter has a string type such as varchar, nvarchar, string, etc. you have to set its size:
+		  /// thirdParameter.Size = 10
+				
+		  
+			// Step 2: Add the configured parameters to an array list.
+			BaseClasses.Data.StoredProcedureParameter[] parameterList = new BaseClasses.Data.StoredProcedureParameter[3];
+			parameterList[0] = firstParameter;
+			parameterList[1] = secondParameter;
+			parameterList[2] = thirdParameter;
+			BaseClasses.Data.StoredProcedure myStoredProcedure = null;
+		
+		
+			// Step 3: Connect to the stored procedure.
+			// "DatabaseNorthwind1" is a connection string obtained from Web.config 
+			// located in application's root directory.	
+			myStoredProcedure = new BaseClasses.Data.StoredProcedure("DatabaseNorthwind1", "Stored_Procedure_Name", parameterList);
+		
+			// Step 4: Run the stored procedure to insert a new record using the specified values.    
+			// RunNonQuery() will return true if stored procedure successfully executed. Otherwise, it will return false.
+			// Use RunQuery or RunNonQuery.  RunQuery is used when a set of records is being returned.  RunNonQuery is used when one or more values are returned through output parameters.
+			if (myStoredProcedure.RunNonQuery()) 
+			{
+				//  Get new primary key value if 
+				//  value for primary key column
+				//  will be set in the stored procedure.
+				foreach (System.Data.IDataParameter outputParameter in myStoredProcedure.OutputParameters) 
+				{
+					object primaryKeyValue = outputParameter.Value;
+				}
+			}
+			else
+			{
+			    ///You can raise an exception in the custom stored procedure and catch the exception and reporting it to the user.
+			    ///To raise the exception:
+			
+			    ///SET NOCOUNT ON;
+			    ///RAISERROR (N'My custom error message goes here', 11, 1)
+			
+			    ///IMPORTANT: If you raise an error that has a severity level of 10 or less, it is considered  
+			    ///a warning, and no exception is raised. The severity of the error must be between 11 and 20
+			    ///for an exception to be thrown.
+			
+			    ///Once the exception is raised, you can look at:
+			    ///myStoredProcedure.ErrorMessage to get the text of the error message and use RegisterJScriptAlert to report this to the user.
+			}
+		}
+		    
+		#endregion
+		 }
 
   
 
@@ -687,7 +785,8 @@ namespace RatTrap.UI
 		public virtual string GetResourceValue(string keyVal, string appName)
 		{
             return(AppResources.GetResourceValue(keyVal, appName));
-		}
+		}
+
         public virtual string GetResourceValue(string keyVal)
         {
             return(AppResources.GetResourceValue(keyVal, null));

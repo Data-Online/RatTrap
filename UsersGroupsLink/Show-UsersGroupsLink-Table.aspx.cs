@@ -257,6 +257,8 @@ public partial class Show_UsersGroupsLink_Table
         
         public System.Web.UI.WebControls.Label Label1;
         
+        public System.Web.UI.WebControls.LinkButton LocationIdLabel;
+        
         public System.Web.UI.WebControls.ImageButton NewButton;
         
         public System.Web.UI.WebControls.ImageButton NewButton1;
@@ -280,6 +282,10 @@ public partial class Show_UsersGroupsLink_Table
         public System.Web.UI.WebControls.ImageButton PDFButton2;
         
         public System.Web.UI.WebControls.LinkButton ProjectIdLabel;
+        
+        public System.Web.UI.WebControls.LinkButton ProjectIdLabel1;
+        
+        public System.Web.UI.WebControls.Literal ProjectIdLabel2;
         
         public RatTrap.UI.Controls.Show_UsersGroupsLink_Table.ProjectsGroupsLinkTableControl ProjectsGroupsLinkTableControl;
           

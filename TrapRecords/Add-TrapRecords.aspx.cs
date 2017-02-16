@@ -269,8 +269,6 @@ public partial class Add_TrapRecords
                 
         public System.Web.UI.WebControls.Literal DateOfCheckLabel;
         
-        public System.Web.UI.WebControls.Literal NotesLabel;
-        
         public System.Web.UI.WebControls.Literal PageTitle;
         
         public ThemeButton SaveAndNewButton;

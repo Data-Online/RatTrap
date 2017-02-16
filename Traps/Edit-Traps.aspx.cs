@@ -266,6 +266,10 @@ public partial class Edit_Traps
                 
         public ThemeButtonWithArrow Actions2Button;
                 
+        public System.Web.UI.WebControls.CheckBox Active;
+            
+        public System.Web.UI.WebControls.Literal ActiveLabel;
+        
         public System.Web.UI.WebControls.ImageButton AddButton;
         
         public System.Web.UI.WebControls.ImageButton AddButton1;
@@ -290,9 +294,11 @@ public partial class Edit_Traps
                 
         public ThemeButton GoButton;
                 
-        public System.Web.UI.WebControls.Literal GroupId;
+        public System.Web.UI.WebControls.Literal GroupId1;
             
-        public System.Web.UI.WebControls.Literal GroupIdLabel;
+        public BaseClasses.Web.UI.WebControls.QuickSelector LocationId;
+            
+        public System.Web.UI.WebControls.Literal LocationIdLabel;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
@@ -300,6 +306,10 @@ public partial class Edit_Traps
                 
         public PaginationModern Pagination1;
                 
+        public System.Web.UI.WebControls.DropDownList ProjectId;
+            
+        public System.Web.UI.WebControls.Literal ProjectIdLabel;
+        
         public System.Web.UI.WebControls.ImageButton ResetButton;
         
         public ThemeButton SaveButton;
@@ -420,7 +430,7 @@ public partial class Edit_Traps
     }
 
     
-            Page.Title = ExpandResourceValue("{Title:Edit} Traps");
+            Page.Title = ExpandResourceValue("{Title:Edit} Trap");
         
         if (!IsPostBack)
             AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);

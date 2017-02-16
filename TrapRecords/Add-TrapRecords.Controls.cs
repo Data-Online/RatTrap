@@ -101,8 +101,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                 
               this.DateOfCheck.TextChanged += DateOfCheck_TextChanged;
             
-              this.Notes.TextChanged += Notes_TextChanged;
-            
         }
 
         public virtual void LoadData()  
@@ -196,8 +194,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                 SetBaitTypeLabel();
                 SetDateOfCheck();
                 SetDateOfCheckLabel();
-                SetNotes();
-                SetNotesLabel();
                 SetSex();
                 SetSexLabel();
                 SetSpecies();
@@ -363,39 +359,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
             }
             
               this.DateOfCheck.TextChanged += DateOfCheck_TextChanged;
-                               
-        }
-                
-        public virtual void SetNotes()
-        {
-            
-                    
-            // Set the Notes TextBox on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Notes is the ASP:TextBox on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.NotesSpecified) {
-                								
-                // If the Notes is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapRecordsTable.Notes);
-                                
-                this.Notes.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // Notes is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.Notes.Text = TrapRecordsTable.Notes.Format(TrapRecordsTable.Notes.DefaultValue);
-            		
-            }
-            
-              this.Notes.TextChanged += Notes_TextChanged;
                                
         }
                 
@@ -689,7 +652,7 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                         if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.TrapId.IsApplyDisplayAs)
                             fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.TrapId);
                         if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(TrapsTable.TrapId);
+                            fvalue = itemValue.Format(TrapsTable.TrapIdentifier);
                             					
                         if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
                         MiscUtils.ResetSelectedItem(this.TrapId, new ListItem(fvalue, cvalue));                      
@@ -706,7 +669,7 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
               
               url = this.Page.ModifyRedirectUrl(url, "", true);                                  
               
-              url += "?Target=" + this.TrapId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("TrapId")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              url += "?Target=" + this.TrapId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("TrapIdentifier")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
               
               this.TrapId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(TrapId.AutoPostBack).ToLower() + ", event); return false;";
                   
@@ -725,12 +688,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                   
                         this.DateOfCheckLabel.Text = EvaluateFormula("\"Date Checked\"");
                       
-                    
-        }
-                
-        public virtual void SetNotesLabel()
-                  {
-                  
                     
         }
                 
@@ -915,7 +872,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
         
             GetBaitType();
             GetDateOfCheck();
-            GetNotes();
             GetSex();
             GetSpecies();
             GetTrapId();
@@ -946,20 +902,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                     
             // Save the value to data source
             this.DataSource.Parse(this.DateOfCheck.Text, TrapRecordsTable.DateOfCheck);							
-                          
-                      
-        }
-                
-        public virtual void GetNotes()
-        {
-            
-            // Retrieve the value entered by the user on the Notes ASP:TextBox, and
-            // save it into the Notes field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
-            
-            // Custom validation should be performed in Validate, not here.
-                    
-            // Save the value to data source
-            this.DataSource.Parse(this.Notes.Text, TrapRecordsTable.Notes);							
                           
                       
         }
@@ -1345,11 +1287,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                     
               }
             
-        protected virtual void Notes_TextChanged(object sender, EventArgs args)
-        {
-                    
-              }
-            
   
         private Hashtable _PreviousUIData = new Hashtable();
         public virtual Hashtable PreviousUIData {
@@ -1483,18 +1420,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
         public System.Web.UI.WebControls.Literal DateOfCheckLabel {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DateOfCheckLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.TextBox Notes {
-            get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Notes");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal NotesLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "NotesLabel");
             }
         }
         

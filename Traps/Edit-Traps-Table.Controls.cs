@@ -135,8 +135,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 
               this.DateOfCheck.TextChanged += DateOfCheck_TextChanged;
             
-              this.Notes.TextChanged += Notes_TextChanged;
-            
         }
 
         public virtual void LoadData()  
@@ -198,8 +196,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 SetDateOfCheckLabel();
                 
                 
-                SetNotes();
-                SetNotesLabel();
                 
                 SetSex();
                 SetSexLabel();
@@ -392,48 +388,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             }
             
               this.DateOfCheck.TextChanged += DateOfCheck_TextChanged;
-                               
-        }
-                
-        public virtual void SetNotes()
-        {
-            
-            // If data was retrieved from UI previously, restore it
-            if (this.PreviousUIData.ContainsKey(this.Notes.ID))
-            {
-            
-                this.Notes.Text = this.PreviousUIData[this.Notes.ID].ToString();
-              
-                return;
-            }
-            
-                    
-            // Set the Notes TextBox on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Notes is the ASP:TextBox on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.NotesSpecified) {
-                								
-                // If the Notes is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapRecordsTable.Notes);
-                                
-                this.Notes.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // Notes is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.Notes.Text = TrapRecordsTable.Notes.Format(TrapRecordsTable.Notes.DefaultValue);
-            		
-            }
-            
-              this.Notes.TextChanged += Notes_TextChanged;
                                
         }
                 
@@ -687,12 +641,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                     
         }
                 
-        public virtual void SetNotesLabel()
-                  {
-                  
-                    
-        }
-                
         public virtual void SetSexLabel()
                   {
                   
@@ -875,7 +823,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         
             GetBaitType();
             GetDateOfCheck();
-            GetNotes();
             GetSex();
             GetSpecies();
         }
@@ -905,20 +852,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                     
             // Save the value to data source
             this.DataSource.Parse(this.DateOfCheck.Text, TrapRecordsTable.DateOfCheck);							
-                          
-                      
-        }
-                
-        public virtual void GetNotes()
-        {
-            
-            // Retrieve the value entered by the user on the Notes ASP:TextBox, and
-            // save it into the Notes field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
-            
-            // Custom validation should be performed in Validate, not here.
-                    
-            // Save the value to data source
-            this.DataSource.Parse(this.Notes.Text, TrapRecordsTable.Notes);							
                           
                       
         }
@@ -1253,11 +1186,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                     
               }
             
-        protected virtual void Notes_TextChanged(object sender, EventArgs args)
-        {
-                    
-              }
-            
   
         private Hashtable _PreviousUIData = new Hashtable();
         public virtual Hashtable PreviousUIData {
@@ -1380,18 +1308,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         public System.Web.UI.WebControls.ImageButton EditRowButton1 {
             get {
                 return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "EditRowButton1");
-            }
-        }
-        
-        public System.Web.UI.WebControls.TextBox Notes {
-            get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Notes");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal NotesLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "NotesLabel");
             }
         }
         
@@ -1689,24 +1605,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                         
                     }
             }
-            if (!this.Page.IsPostBack)
-            {
-                string initialVal = "";
-                if  (this.InSession(this.TrapRecordsSearchText)) 				
-                    initialVal = this.GetFromSession(this.TrapRecordsSearchText);
-                
-                if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
-                {
-                initialVal = "";
-                }
-              
-                if (initialVal != null && initialVal != "")		
-                {
-                        
-                    this.TrapRecordsSearchText.Text = initialVal;
-                            
-                    }
-            }
 
 
       
@@ -1787,8 +1685,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                         
         
          //' Setup events for others
-            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "TrapRecordsSearchTextSearchBoxText", "setSearchBoxText(\"" + BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null) + "\", \"" + TrapRecordsSearchText.ClientID + "\");", true);
-             
+               
         }
 
         public virtual void LoadData()
@@ -2041,7 +1938,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 SetSpeciesLabel1();
                 
                 
-                SetTrapRecordsSearchText();
                 SetAddButton1();
               
                 SetDeleteButton1();
@@ -2412,51 +2308,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 wc.iAND(filter);
                     
             }
-                      
-            if (MiscUtils.IsValueSelected(this.TrapRecordsSearchText)) {
-                if (this.TrapRecordsSearchText.Text == BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null) ) {
-                        this.TrapRecordsSearchText.Text = "";
-                } else {
-                  // Strip "..." from begin and ending of the search text, otherwise the search will return 0 values as in database "..." is not stored.
-                  if (this.TrapRecordsSearchText.Text.StartsWith("...")) {
-                      this.TrapRecordsSearchText.Text = this.TrapRecordsSearchText.Text.Substring(3,this.TrapRecordsSearchText.Text.Length-3);
-                  }
-                  if (this.TrapRecordsSearchText.Text.EndsWith("...")) {
-                      this.TrapRecordsSearchText.Text = this.TrapRecordsSearchText.Text.Substring(0,this.TrapRecordsSearchText.Text.Length-3);
-                      // Strip the last word as well as it is likely only a partial word
-                      int endindex = this.TrapRecordsSearchText.Text.Length - 1;
-                      while (!Char.IsWhiteSpace(TrapRecordsSearchText.Text[endindex]) && endindex > 0) {
-                          endindex--;
-                      }
-                      if (endindex > 0) {
-                          this.TrapRecordsSearchText.Text = this.TrapRecordsSearchText.Text.Substring(0, endindex);
-                      }
-                  }
-                }
-                string formatedSearchText = MiscUtils.GetSelectedValue(this.TrapRecordsSearchText, this.GetFromSession(this.TrapRecordsSearchText));
-                // After stripping "..." see if the search text is null or empty.
-                if (MiscUtils.IsValueSelected(this.TrapRecordsSearchText)) {
-                      
-                    // These clauses are added depending on operator and fields selected in Control's property page, bindings tab.
-                  
-                    WhereClause search = new WhereClause();
-                    
-        ColumnList cols = new ColumnList();
-      
-      cols.Add(TrapRecordsTable.Notes, true);
-      
-      foreach(BaseColumn col in cols)
-      {
-      
-          search.iOR(col, BaseFilter.ComparisonOperator.Contains, MiscUtils.GetSelectedValue(this.TrapRecordsSearchText, this.GetFromSession(this.TrapRecordsSearchText)), true, false);
-        
-      }
-    
-                    wc.iAND(search);
-                  
-                }
-            }
-                       
+                           
             return wc;
         }
         
@@ -2561,106 +2413,11 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 
       }
                       
-            if (MiscUtils.IsValueSelected(searchText) && fromSearchControl == "TrapRecordsSearchText") {
-                String formatedSearchText = searchText;
-                // strip "..." from begin and ending of the search text, otherwise the search will return 0 values as in database "..." is not stored.
-                if (searchText.StartsWith("...")) {
-                    formatedSearchText = searchText.Substring(3,searchText.Length-3);
-                }
-                if (searchText.EndsWith("...")) {
-                    formatedSearchText = searchText.Substring(0,searchText.Length-3);
-                }
-                // After stripping "...", trim any leading and trailing whitespaces 
-                formatedSearchText = formatedSearchText.Trim();
-                // After stripping "..." see if the search text is null or empty.
-                if (MiscUtils.IsValueSelected(searchText)) {
-                      
-                    // These clauses are added depending on operator and fields selected in Control's property page, bindings tab.
-                  
-                    WhereClause search = new WhereClause();
-                    
-                    if (StringUtils.InvariantLCase(AutoTypeAheadSearch).Equals("wordsstartingwithsearchstring")) {
-                
-        ColumnList cols = new ColumnList();
-      
-      cols.Add(TrapRecordsTable.Notes, true);
-      
-      foreach(BaseColumn col in cols)
-      {
-      
-                  search.iOR(col, BaseFilter.ComparisonOperator.Starts_With, formatedSearchText, true, false);
-                  search.iOR(col, BaseFilter.ComparisonOperator.Contains, AutoTypeAheadWordSeparators + formatedSearchText, true, false);
-                
-      }
-    
-                    } else {
-                        
-        ColumnList cols = new ColumnList();
-      
-      cols.Add(TrapRecordsTable.Notes, true);
-      
-      foreach(BaseColumn col in cols)
-      {
-      
-                  search.iOR(col, BaseFilter.ComparisonOperator.Contains, formatedSearchText, true, false);
-      }
-    
-                    } 
-                    wc.iAND(search);
-                  
-                }
-            }
-                  
 
             return wc;
         }
 
         
-        public virtual string[] GetAutoCompletionList_TrapRecordsSearchText(String prefixText,int count)
-        {
-            ArrayList resultList = new ArrayList();
-            ArrayList wordList= new ArrayList();
-            
-            CompoundFilter filterJoin = CreateCompoundJoinFilter();    
-            WhereClause wc = CreateWhereClause(prefixText,"TrapRecordsSearchText", "WordsStartingWithSearchString", "[^a-zA-Z0-9]");
-            if(count==0) count = 10;
-            RatTrap.Business.TrapRecordsRecord[] recordList  = TrapRecordsTable.GetRecords(filterJoin, wc, null, 0, count, ref count);
-            String resultItem = "";
-            if (resultItem == "") resultItem = "";
-            foreach (TrapRecordsRecord rec in recordList ){
-                // Exit the loop if recordList count has reached AutoTypeAheadListSize.
-                if (resultList.Count >= count) {
-                    break;
-                }
-                // If the field is configured to Display as Foreign key, Format() method returns the 
-                // Display as Forien Key value instead of original field value.
-                // Since search had to be done in multiple fields (selected in Control's page property, binding tab) in a record,
-                // We need to find relevent field to display which matches the prefixText and is not already present in the result list.
-        
-                resultItem = rec.Format(TrapRecordsTable.Notes);
-  
-                if (resultItem != null) {
-                    string prText = prefixText;
-                    if(TrapRecordsTable.Notes.IsFullTextSearchable) {
-                        FullTextExpression ft = new FullTextExpression();
-                        prText = ft.GetFirstNonExcludedTerm(prText);
-                    }
-                    if (!string.IsNullOrEmpty(prText) && resultItem.ToUpper(System.Threading.Thread.CurrentThread.CurrentCulture).Contains(prText.ToUpper(System.Threading.Thread.CurrentThread.CurrentCulture))) {
-                        bool isAdded = FormatSuggestions(prText, resultItem, 50, "InMiddleOfMatchedString", "WordsStartingWithSearchString", "[^a-zA-Z0-9]", resultList, TrapRecordsTable.Notes.IsFullTextSearchable);
-                        if (isAdded) {
-                            continue;
-                        }
-                    }
-                }
-                      
-            }
-              
-            resultList.Sort();
-            string[] result = new string[resultList.Count];
-            Array.Copy(resultList.ToArray(), result, resultList.Count);
-            return result;
-        }
-          
           
          public virtual bool FormatSuggestions(String prefixText, String resultItem,
                                               int columnLength, String AutoTypeAheadDisplayFoundText,
@@ -2842,10 +2599,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                         }
                         if (recControl.DateOfCheck.Text != "") {
                             rec.Parse(recControl.DateOfCheck.Text, TrapRecordsTable.DateOfCheck);
-                  }
-                
-                        if (recControl.Notes.Text != "") {
-                            rec.Parse(recControl.Notes.Text, TrapRecordsTable.Notes);
                   }
                 
                         if (MiscUtils.IsValueSelected(recControl.Sex)) {
@@ -3050,14 +2803,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                              
         }
             
-        public virtual void SetTrapRecordsSearchText()
-        {
-                                            
-            this.TrapRecordsSearchText.Attributes.Add("onfocus", "if(this.value=='" + BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null) + "') {this.value='';this.className='Search_Input';}");
-            this.TrapRecordsSearchText.Attributes.Add("onblur", "if(this.value=='') {this.value='" + BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null) + "';this.className='Search_InputHint';}");
-                                   
-        }
-            
         // Get the filters' data for SortControl1.
                 
         protected virtual void PopulateSortControl1(string selectedValue, int maxItems)
@@ -3086,6 +2831,26 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Species {Txt:Ascending}"), "Species Asc"));
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Species {Txt:Descending}"), "Species Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Ascending}"), "TrapTypeId Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Ascending}"), "Comments Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Descending}"), "Comments Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Ascending}"), "LocationId Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Descending}"), "LocationId Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Ascending}"), "GroupId Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Descending}"), "GroupId Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Ascending}"), "ProjectId Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
               
             try
             {          
@@ -3655,8 +3420,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
             this.SaveToSession(this.SpeciesFilter, SpeciesFilterSessionString);
                   
-            this.SaveToSession(this.TrapRecordsSearchText, this.TrapRecordsSearchText.Text);
-                  
             
                     
             // Save pagination state to session.
@@ -3713,8 +3476,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
             this.SaveToSession("SpeciesFilter_Ajax", SpeciesFilterSessionString);
           
-      this.SaveToSession("TrapRecordsSearchText_Ajax", this.TrapRecordsSearchText.Text);
-              
            HttpContext.Current.Session["AppRelativeVirtualPath"] = this.Page.AppRelativeVirtualPath;
          
         }
@@ -3729,7 +3490,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             this.RemoveFromSession(this.BaitTypeFilter1);
             this.RemoveFromSession(this.SexFilter);
             this.RemoveFromSession(this.SpeciesFilter);
-            this.RemoveFromSession(this.TrapRecordsSearchText);
             
             // Clear pagination state from session.
          
@@ -4143,8 +3903,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
            
             this.SortControl1.ClearSelection();
           
-              this.TrapRecordsSearchText.Text = "";
-            
               this.CurrentSortOrder.Reset();
               if (this.InSession(this, "Order_By"))
                   this.CurrentSortOrder = OrderBy.FromXmlString(this.GetFromSession(this, "Order_By", null));
@@ -4587,12 +4345,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }              
             
-        public System.Web.UI.WebControls.TextBox TrapRecordsSearchText {
-            get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapRecordsSearchText");
-            }
-        }
-        
 #endregion
 
 #region "Helper Functions"
@@ -7057,6 +6809,18 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifier Asc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifier Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Ascending}"), "Active Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Descending}"), "Active Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Ascending}"), "LocationId Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Descending}"), "LocationId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Ascending}"), "ProjectId Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
               
             try
             {          

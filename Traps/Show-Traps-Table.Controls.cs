@@ -2419,8 +2419,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 SetBaitTypeLabel();
                 SetDateOfCheck();
                 SetDateOfCheckLabel();
-                SetNotes();
-                SetNotesLabel();
                 SetSex();
                 SetSexLabel();
                 SetSpecies();
@@ -2536,46 +2534,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                                      
         }
                 
-        public virtual void SetNotes()
-        {
-            
-                    
-            // Set the Notes Literal on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Notes is the ASP:Literal on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.NotesSpecified) {
-                								
-                // If the Notes is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapRecordsTable.Notes);
-                                
-                formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.Notes.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // Notes is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.Notes.Text = TrapRecordsTable.Notes.Format(TrapRecordsTable.Notes.DefaultValue);
-            		
-            }
-            
-            // If the Notes is NULL or blank, then use the value specified  
-            // on Properties.
-            if (this.Notes.Text == null ||
-                this.Notes.Text.Trim().Length == 0) {
-                // Set the value specified on the Properties.
-                this.Notes.Text = "&nbsp;";
-            }
-                                     
-        }
-                
         public virtual void SetSex()
         {
             
@@ -2683,12 +2641,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                   
                         this.DateOfCheckLabel.Text = EvaluateFormula("\"Date Checked\"");
                       
-                    
-        }
-                
-        public virtual void SetNotesLabel()
-                  {
-                  
                     
         }
                 
@@ -2874,7 +2826,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         
             GetBaitType();
             GetDateOfCheck();
-            GetNotes();
             GetSex();
             GetSpecies();
         }
@@ -2886,11 +2837,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         }
                 
         public virtual void GetDateOfCheck()
-        {
-            
-        }
-                
-        public virtual void GetNotes()
         {
             
         }
@@ -3147,18 +3093,6 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         public System.Web.UI.WebControls.Literal DateOfCheckLabel {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DateOfCheckLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.Literal Notes {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Notes");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal NotesLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "NotesLabel");
             }
         }
         
@@ -4122,10 +4056,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                             rec.Parse(recControl.DateOfCheck.Text, TrapRecordsTable.DateOfCheck);
                   }
                 
-                        if (recControl.Notes.Text != "") {
-                            rec.Parse(recControl.Notes.Text, TrapRecordsTable.Notes);
-                  }
-                
                         if (recControl.Sex.Text != "") {
                             rec.Parse(recControl.Sex.Text, TrapRecordsTable.Sex);
                   }
@@ -4240,10 +4170,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Date Of Check {Txt:Descending}"), "DateOfCheck Desc"));
               
-                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Notes {Txt:Ascending}"), "Notes Asc"));
-              
-                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Notes {Txt:Descending}"), "Notes Desc"));
-              
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Sex {Txt:Ascending}"), "Sex Asc"));
               
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Sex {Txt:Descending}"), "Sex Desc"));
@@ -4251,6 +4177,26 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Species {Txt:Ascending}"), "Species Asc"));
               
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Species {Txt:Descending}"), "Species Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Ascending}"), "TrapTypeId Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Ascending}"), "Comments Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Descending}"), "Comments Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Ascending}"), "LocationId Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Descending}"), "LocationId Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Ascending}"), "GroupId Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Descending}"), "GroupId Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Ascending}"), "ProjectId Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
               
             try
             {          
@@ -7142,6 +7088,18 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Ascending}"), "TrapTypeId Asc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Ascending}"), "Active Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Descending}"), "Active Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Ascending}"), "LocationId Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Descending}"), "LocationId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Ascending}"), "ProjectId Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
               
             try
             {          

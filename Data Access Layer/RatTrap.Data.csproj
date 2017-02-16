@@ -233,13 +233,22 @@
     <Compile Include="BaseProjectNotesSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreaNotesDefinition.cs" >
+    <Compile Include="AreaNotesDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreaNotesSqlTable.cs" >
+    <Compile Include="AreaNotesSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseAreaNotesSqlTable.cs" >
+    <Compile Include="BaseAreaNotesSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LocationsDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LocationsSqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseLocationsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

@@ -419,36 +419,268 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 		this.SetValue(cv, TableUtils.SexColumn);
 	}
 	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.Notes field.
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.Comments field.
 	/// </summary>
-	public ColumnValue GetNotesValue()
+	public ColumnValue GetCommentsValue()
 	{
-		return this.GetValue(TableUtils.NotesColumn);
+		return this.GetValue(TableUtils.CommentsColumn);
 	}
 
 	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.Notes field.
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.Comments field.
 	/// </summary>
-	public string GetNotesFieldValue()
+	public string GetCommentsFieldValue()
 	{
-		return this.GetValue(TableUtils.NotesColumn).ToString();
+		return this.GetValue(TableUtils.CommentsColumn).ToString();
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Notes field.
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comments field.
 	/// </summary>
-	public void SetNotesFieldValue(ColumnValue val)
+	public void SetCommentsFieldValue(ColumnValue val)
 	{
-		this.SetValue(val, TableUtils.NotesColumn);
+		this.SetValue(val, TableUtils.CommentsColumn);
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Notes field.
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comments field.
 	/// </summary>
-	public void SetNotesFieldValue(string val)
+	public void SetCommentsFieldValue(string val)
 	{
 		ColumnValue cv = new ColumnValue(val);
-		this.SetValue(cv, TableUtils.NotesColumn);
+		this.SetValue(cv, TableUtils.CommentsColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public ColumnValue GetLocationIdValue()
+	{
+		return this.GetValue(TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public Int32 GetLocationIdFieldValue()
+	{
+		return this.GetValue(TableUtils.LocationIdColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LocationIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public void SetLocationIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LocationIdColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public ColumnValue GetProjectIdValue()
+	{
+		return this.GetValue(TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public Int32 GetProjectIdFieldValue()
+	{
+		return this.GetValue(TableUtils.ProjectIdColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.ProjectIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public void SetProjectIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.ProjectIdColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public ColumnValue GetGroupIdValue()
+	{
+		return this.GetValue(TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public Int32 GetGroupIdFieldValue()
+	{
+		return this.GetValue(TableUtils.GroupIdColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.GroupIdColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public ColumnValue GetTrapTypeIdValue()
+	{
+		return this.GetValue(TableUtils.TrapTypeIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public Int32 GetTrapTypeIdFieldValue()
+	{
+		return this.GetValue(TableUtils.TrapTypeIdColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public void SetTrapTypeIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.TrapTypeIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public void SetTrapTypeIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.TrapTypeIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public void SetTrapTypeIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapTypeIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public void SetTrapTypeIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapTypeIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public void SetTrapTypeIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapTypeIdColumn);
 	}
 
 
@@ -716,18 +948,18 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 		}
 	}
 	/// <summary>
-	/// This is a property that provides direct access to the value of the record's TrapRecords_.Notes field.
+	/// This is a property that provides direct access to the value of the record's TrapRecords_.Comments field.
 	/// </summary>
-	public string Notes
+	public string Comments
 	{
 		get
 		{
-			return this.GetValue(TableUtils.NotesColumn).ToString();
+			return this.GetValue(TableUtils.CommentsColumn).ToString();
 		}
 		set
 		{
 			ColumnValue cv = new ColumnValue(value);
-			this.SetValue(cv, TableUtils.NotesColumn);
+			this.SetValue(cv, TableUtils.CommentsColumn);
 		}
 	}
 
@@ -735,11 +967,11 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 	/// <summary>
 	/// This is a convenience method that can be used to determine that the column is set.
 	/// </summary>
-	public bool NotesSpecified
+	public bool CommentsSpecified
 	{
 		get
 		{
-			ColumnValue val = this.GetValue(TableUtils.NotesColumn);
+			ColumnValue val = this.GetValue(TableUtils.CommentsColumn);
             if (val == null || val.IsNull)
             {
                 return false;
@@ -749,13 +981,185 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Notes field.
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comments field.
 	/// </summary>
-	public string NotesDefault
+	public string CommentsDefault
 	{
 		get
 		{
-			return TableUtils.NotesColumn.DefaultValue;
+			return TableUtils.CommentsColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public Int32 LocationId
+	{
+		get
+		{
+			return this.GetValue(TableUtils.LocationIdColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.LocationIdColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool LocationIdSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.LocationIdColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.LocationId field.
+	/// </summary>
+	public string LocationIdDefault
+	{
+		get
+		{
+			return TableUtils.LocationIdColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public Int32 ProjectId
+	{
+		get
+		{
+			return this.GetValue(TableUtils.ProjectIdColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.ProjectIdColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool ProjectIdSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.ProjectIdColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.ProjectId field.
+	/// </summary>
+	public string ProjectIdDefault
+	{
+		get
+		{
+			return TableUtils.ProjectIdColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public Int32 GroupId
+	{
+		get
+		{
+			return this.GetValue(TableUtils.GroupIdColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.GroupIdColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool GroupIdSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.GroupIdColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.GroupId field.
+	/// </summary>
+	public string GroupIdDefault
+	{
+		get
+		{
+			return TableUtils.GroupIdColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public Int32 TrapTypeId
+	{
+		get
+		{
+			return this.GetValue(TableUtils.TrapTypeIdColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.TrapTypeIdColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool TrapTypeIdSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.TrapTypeIdColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.TrapTypeId field.
+	/// </summary>
+	public string TrapTypeIdDefault
+	{
+		get
+		{
+			return TableUtils.TrapTypeIdColumn.DefaultValue;
 		}
 	}
 

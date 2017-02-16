@@ -202,16 +202,16 @@ public partial class Edit_Traps_Table
         
 
 
-[System.Web.Services.WebMethod]
-        public static string[] GetAutoCompletionList_TrapRecordsSearchText(string prefixText, int count)
-        {
-            // GetTrapRecordsSearchTextCompletionList gets the list of suggestions from the database.
-            // prefixText is the search text typed by the user .
-            // count specifies the number of suggestions to be returned.
-            // Customize by adding code before or after the call to  GetAutoCompletionList_TrapRecordsSearchText_Base()
-            // or replace the call to GetAutoCompletionList_TrapRecordsSearchText_Base().
-            return GetAutoCompletionList_TrapRecordsSearchText_Base(prefixText, count);
-        }
+//[System.Web.Services.WebMethod]
+//        public static string[] GetAutoCompletionList_TrapRecordsSearchText(string prefixText, int count)
+//        {
+//            // GetTrapRecordsSearchTextCompletionList gets the list of suggestions from the database.
+//            // prefixText is the search text typed by the user .
+//            // count specifies the number of suggestions to be returned.
+//            // Customize by adding code before or after the call to  GetAutoCompletionList_TrapRecordsSearchText_Base()
+//            // or replace the call to GetAutoCompletionList_TrapRecordsSearchText_Base().
+//            return GetAutoCompletionList_TrapRecordsSearchText_Base(prefixText, count);
+//        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -284,8 +284,6 @@ public partial class Edit_Traps_Table
         public System.Web.UI.WebControls.CheckBox ToggleAll;
         
         public System.Web.UI.WebControls.CheckBox ToggleAll1;
-        
-        public System.Web.UI.WebControls.TextBox TrapRecordsSearchText;
         
         public RatTrap.UI.Controls.Edit_Traps_Table.TrapsTableControl TrapsTableControl;
           
@@ -550,17 +548,6 @@ public partial class Edit_Traps_Table
       }  
       
         
-    public static string[] GetAutoCompletionList_TrapRecordsSearchText_Base(string prefixText, int count)
-    {
-        // Since this method is a shared/static method it does not maintain information about page or controls within the page.
-        // Hence we can not invoke any method associated with any controls.
-        // So, if we need to use any control in the page we need to instantiate it.
-        RatTrap.UI.Controls.Edit_Traps_Table.TrapRecordsTableControl control = new RatTrap.UI.Controls.Edit_Traps_Table.TrapRecordsTableControl();
-        
-        return control.GetAutoCompletionList_TrapRecordsSearchText(prefixText, count);
-            
-    }
-      
 
     // Load data from database into UI controls.
     // Modify LoadData in Section 1 above to customize.  Or override DataBind() in

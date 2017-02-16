@@ -272,16 +272,28 @@
     <Compile Include="BaseProjectNotesRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreaNotesTable.cs" >
+    <Compile Include="AreaNotesTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseAreaNotesTable.cs" >
+    <Compile Include="BaseAreaNotesTable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AreaNotesRecord.cs" >
+    <Compile Include="AreaNotesRecord.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseAreaNotesRecord.cs" >
+    <Compile Include="BaseAreaNotesRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LocationsTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseLocationsTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LocationsRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseLocationsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

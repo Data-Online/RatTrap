@@ -33,16 +33,18 @@
 
                         <RatTrap:TrapsRecordControl runat="server" id="TrapsRecordControl">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td class="panelTL"><img src="../Images/space.gif" class="panelTLSpace" alt="" /></td><td class="panelT"></td><td class="panelTR"><img src="../Images/space.gif" class="panelTRSpace" alt="" /></td></tr><tr><td class="panelHeaderL"></td><td class="dh">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="dhel"><img src="../Images/space.gif" alt="" /></td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="dht" valign="middle">
-                        <asp:Literal runat="server" id="Title0" Text="&lt;%#String.Concat(GetResourceValue(&quot;Title:Edit&quot;),&quot;&quot;,&quot; Traps&quot;) %>">	</asp:Literal>
-                      </td></tr></table>
+                        <asp:Literal runat="server" id="Title0" Text="&lt;%#String.Concat(GetResourceValue(&quot;Title:Edit&quot;),&quot;&quot;,&quot; Trap&quot;) %>">	</asp:Literal>
+                      </td><td class="dht" valign="middle"></td><td class="tableCellValue" style="text-align:right;"><asp:Literal runat="server" id="GroupId1"></asp:Literal> </td></tr></table>
 </td><td class="dher"><img src="../Images/space.gif" alt="" /></td></tr></table>
 
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
                   <asp:panel id="CollapsibleRegion" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
-                    <asp:panel id="TrapsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeIdLabel" Text="Trap Type">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="TrapTypeId" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="Group">	</asp:Literal></td><td class="tableCellValue"><asp:Literal runat="server" id="GroupId"></asp:Literal> </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapIdentifierLabel" Text="Trap Identifier">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+                    <asp:panel id="TrapsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapIdentifierLabel" Text="Trap Identifier">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
 <asp:TextBox runat="server" id="TrapIdentifier" Columns="40" MaxLength="50" cssclass="field_input"></asp:TextBox>&nbsp;
 <BaseClasses:TextBoxMaxLengthValidator runat="server" id="TrapIdentifierTextBoxMaxLengthValidator" ControlToValidate="TrapIdentifier" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Trap Identifier&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></span>
- </td><td class="tableCellValue"></td><td class="tableCellValue"></td><td class="tableCellValue"></td><td class="tableCellValue"></td></tr></table></asp:panel>
+ </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellValue"></td><td class="tableCellValue"></td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeIdLabel" Text="Trap Type">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="TrapTypeId" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"></td><td class="tableCellLabel"></td><td class="tableCellLabel"><asp:Literal runat="server" id="ProjectIdLabel" Text="Assigned to Project">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+<asp:DropDownList runat="server" id="ProjectId" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
+</td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="ActiveLabel" Text="Active">	</asp:Literal></td><td class="tableCellValue"><asp:CheckBox runat="server" id="Active"></asp:CheckBox></td><td class="tableCellLabel"></td><td class="tableCellLabel"></td><td class="tableCellLabel"><asp:Literal runat="server" id="LocationIdLabel" Text="Current Location">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="LocationId" redirecturl=""></BaseClasses:QuickSelector></td></tr></table></asp:panel>
 
                   </td></tr></table>
 </asp:panel>
@@ -114,9 +116,8 @@
 <asp:DropDownList runat="server" id="Sex" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
 </td><td class="tableCellValue"><span style="white-space:nowrap;">
 <asp:DropDownList runat="server" id="Species" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
-</td><td class="tableCellLabel"></td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="NotesLabel" Text="Notes">	</asp:Literal> 
-</td><td class="tableCellValue" colspan="3"><asp:TextBox runat="server" id="Notes" MaxLength="200" columns="60" cssclass="field_input" rows="4" textmode="MultiLine"></asp:TextBox>&nbsp;
-<BaseClasses:TextBoxMaxLengthValidator runat="server" id="NotesTextBoxMaxLengthValidator" ControlToValidate="Notes" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Notes&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator> </td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td><td class="tableRowDivider"></td></tr></RatTrap:TrapRecordsTableControlRow>
+</td><td class="tableCellLabel"></td></tr><tr><td class="tableCellLabel"> 
+</td><td class="tableCellValue" colspan="3"> </td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td><td class="tableRowDivider"></td></tr></RatTrap:TrapRecordsTableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>
