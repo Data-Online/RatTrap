@@ -1,6 +1,6 @@
 ﻿
 // This file implements the TableControl, TableControlRow, and RecordControl classes for the 
-// Locations_QuickSelector.aspx page.  The Row or RecordControl classes are the 
+// Edit_Locations_Table1.aspx page.  The Row or RecordControl classes are the 
 // ideal place to add code customizations. For example, you can override the LoadData, 
 // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
 
@@ -31,19 +31,19 @@ using RatTrap;
 #endregion
 
   
-namespace RatTrap.UI.Controls.Locations_QuickSelector
+namespace RatTrap.UI.Controls.Edit_Locations_Table1
 {
   
 
 #region "Section 1: Place your customizations here."
 
     
-public class SelectorTableControlRow : BaseSelectorTableControlRow
+public class LocationsTableControlRow : BaseLocationsTableControlRow
 {
       
-        // The BaseSelectorTableControlRow implements code for a ROW within the
-        // the SelectorTableControl table.  The BaseSelectorTableControlRow implements the DataBind and SaveData methods.
-        // The loading of data is actually performed by the LoadData method in the base class of SelectorTableControl.
+        // The BaseLocationsTableControlRow implements code for a ROW within the
+        // the LocationsTableControl table.  The BaseLocationsTableControlRow implements the DataBind and SaveData methods.
+        // The loading of data is actually performed by the LoadData method in the base class of LocationsTableControl.
 
         // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
         // SaveData, GetUIData, and Validate methods.
@@ -52,13 +52,13 @@ public class SelectorTableControlRow : BaseSelectorTableControlRow
 
   
 
-public class SelectorTableControl : BaseSelectorTableControl
+public class LocationsTableControl : BaseLocationsTableControl
 {
-    // The BaseSelectorTableControl class implements the LoadData, DataBind, CreateWhereClause
+    // The BaseLocationsTableControl class implements the LoadData, DataBind, CreateWhereClause
     // and other methods to load and display the data in a table control.
 
     // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
-    // The SelectorTableControlRow class offers another place where you can customize
+    // The LocationsTableControlRow class offers another place where you can customize
     // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
     
 }
@@ -72,11 +72,11 @@ public class SelectorTableControl : BaseSelectorTableControl
 #region "Section 2: Do not modify this section."
     
     
-// Base class for the SelectorTableControlRow control on the Locations_QuickSelector page.
-// Do not modify this class. Instead override any method in SelectorTableControlRow.
-public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordControl
+// Base class for the LocationsTableControlRow control on the Edit_Locations_Table1 page.
+// Do not modify this class. Instead override any method in LocationsTableControlRow.
+public class BaseLocationsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
 {
-        public BaseSelectorTableControlRow()
+        public BaseLocationsTableControlRow()
         {
             this.Init += Control_Init;
             this.Load += Control_Load;
@@ -84,20 +84,34 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             this.EvaluateFormulaDelegate = new DataSource.EvaluateFormulaDelegate(this.EvaluateFormula);
         }
 
-        // To customize, override this method in SelectorTableControlRow.
+        // To customize, override this method in LocationsTableControlRow.
         protected virtual void Control_Init(object sender, System.EventArgs e)
         {
                 
         }
 
-        // To customize, override this method in SelectorTableControlRow.
+        // To customize, override this method in LocationsTableControlRow.
         protected virtual void Control_Load(object sender, System.EventArgs e)
         {      
-                    
+        
+              // Show confirmation message on Click
+              this.DeleteRowButton.Attributes.Add("onClick", "return (confirm(\"" + ((BaseApplicationPage)this.Page).GetResourceValue("DeleteRecordConfirm", "RatTrap") + "\"));");            
         
               // Register the event handlers.
 
           
+                    this.DeleteRowButton.Click += DeleteRowButton_Click;
+                        
+                    this.EditRowButton.Click += EditRowButton_Click;
+                        
+                    this.ViewRowButton.Click += ViewRowButton_Click;
+                        
+              this.Comments.TextChanged += Comments_TextChanged;
+            
+              this.Lat.TextChanged += Lat_TextChanged;
+            
+              this.Long0.TextChanged += Long0_TextChanged;
+            
         }
 
         public virtual void LoadData()  
@@ -117,7 +131,7 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             }
       
             // Since this is a row in the table, the data for this row is loaded by the 
-            // LoadData method of the BaseSelectorTableControl when the data for the entire
+            // LoadData method of the BaseLocationsTableControl when the data for the entire
             // table is loaded.
             
             this.DataSource = new LocationsRecord();
@@ -153,7 +167,22 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
 
             // Call the Set methods for each controls on the panel
         
-                SetQuickSelectorItem();
+                SetComments();
+                SetCommentsLabel();
+                
+                
+                SetLat();
+                SetLatLabel();
+                SetLong0();
+                SetLongLabel();
+                
+                
+                SetDeleteRowButton();
+              
+                SetEditRowButton();
+              
+                SetViewRowButton();
+              
 
       
 
@@ -174,103 +203,153 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             bool shouldResetControl = false;
             if (shouldResetControl) { }; // prototype usage to void compiler warnings
             
-              // Register row click event to handle row selection
-              RegisterRowForSelection();
-              
-            
         }
         
         
-        public virtual void SetQuickSelectorItem()
+        public virtual void SetComments()
+        {
+            
+            // If data was retrieved from UI previously, restore it
+            if (this.PreviousUIData.ContainsKey(this.Comments.ID))
+            {
+            
+                this.Comments.Text = this.PreviousUIData[this.Comments.ID].ToString();
+              
+                return;
+            }
+            
+                    
+            // Set the Comments TextBox on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Locations database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
+            // this.Comments is the ASP:TextBox on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.CommentsSpecified) {
+                								
+                // If the Comments is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(LocationsTable.Comments);
+                                
+                this.Comments.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Comments is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Comments.Text = LocationsTable.Comments.Format(LocationsTable.Comments.DefaultValue);
+            		
+            }
+            
+              this.Comments.TextChanged += Comments_TextChanged;
+                               
+        }
+                
+        public virtual void SetLat()
+        {
+            
+            // If data was retrieved from UI previously, restore it
+            if (this.PreviousUIData.ContainsKey(this.Lat.ID))
+            {
+            
+                this.Lat.Text = this.PreviousUIData[this.Lat.ID].ToString();
+              
+                return;
+            }
+            
+                    
+            // Set the Lat TextBox on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Locations database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
+            // this.Lat is the ASP:TextBox on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.LatSpecified) {
+                								
+                // If the Lat is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(LocationsTable.Lat);
+                                
+                this.Lat.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Lat is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Lat.Text = LocationsTable.Lat.Format(LocationsTable.Lat.DefaultValue);
+            		
+            }
+            
+              this.Lat.TextChanged += Lat_TextChanged;
+                               
+        }
+                
+        public virtual void SetLong0()
+        {
+            
+            // If data was retrieved from UI previously, restore it
+            if (this.PreviousUIData.ContainsKey(this.Long0.ID))
+            {
+            
+                this.Long0.Text = this.PreviousUIData[this.Long0.ID].ToString();
+              
+                return;
+            }
+            
+                    
+            // Set the Long TextBox on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Locations database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
+            // this.Long0 is the ASP:TextBox on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.Long0Specified) {
+                								
+                // If the Long is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(LocationsTable.Long0);
+                                
+                this.Long0.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Long is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Long0.Text = LocationsTable.Long0.Format(LocationsTable.Long0.DefaultValue);
+            		
+            }
+            
+              this.Long0.TextChanged += Long0_TextChanged;
+                               
+        }
+                
+        public virtual void SetCommentsLabel()
                   {
                   
-                        this.QuickSelectorItem.Text = EvaluateFormula("SelectorTableControl.GetQuickSelectorDisplayText(SelectorTableControlRow)");
-                    
                     
         }
+                
+        public virtual void SetLatLabel()
+                  {
+                  
                     
-        /// 
-        /// Register row click event and set the row class name to be QStrSelected to highlight the row
-        /// 
-        /// 
-        public virtual void RegisterRowForSelection()
-        {
-	        string target = "";
-	        string field = "";
-	        string formula = "";
-	        string displayFieldName = "";
-	        bool multiSelection = false;
-
-	        // retrieve necessary URL parameters
-	        if (!string.IsNullOrEmpty(Page.Request["Target"])) {
-		        target = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Target");
-	        }
-	        if (!string.IsNullOrEmpty(Page.Request["IndexField"])) {
-		        field = ((BaseApplicationPage)this.Page).GetDecryptedURLParameter("IndexField");
-	        }
-	        if (!string.IsNullOrEmpty(Page.Request["Formula"])) {
-		        formula = ((BaseApplicationPage)this.Page).GetDecryptedURLParameter("Formula");
-	        }
-	        if (!string.IsNullOrEmpty(Page.Request["DFKA"])) {
-		        displayFieldName = ((BaseApplicationPage)this.Page).GetDecryptedURLParameter("DFKA");
-	        }
-	        if (!string.IsNullOrEmpty(Page.Request["Mode"])) {
-		        multiSelection = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Mode") == "FieldFilterMultiSelection";
-	        }
-	        if (string.IsNullOrEmpty(target) || string.IsNullOrEmpty(field)) {
-		        return;
-	        }
-
-	        BaseColumn col = this.DataSource.TableAccess.TableDefinition.ColumnList.GetByAnyName(field);
-	        string value = this.DataSource.GetValue(col).ToString();
-	        string text = "";
-	        if (!string.IsNullOrEmpty(formula)) {
-		        System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();
-		        variables.Add(this.DataSource.TableAccess.TableDefinition.TableCodeName, this.DataSource);
-		        text = EvaluateFormula(formula, this.DataSource, "", variables);
-	        } else if (!string.IsNullOrEmpty(displayFieldName)) {
-		        BaseColumn col2 = this.DataSource.TableAccess.TableDefinition.ColumnList.GetByAnyName(displayFieldName);
-		        text = this.DataSource.GetValue(col2).ToString();
-	        } else {
-		        text = value;
-	        }
-	        if (value == null) {
-		        value = "";
-	        }
-	        if (text == null) {
-		        text = value;
-	        }
-
-	        // find a hidden quick selector control which can be found on the Page Directive dialog.  And store the selection
-	        QuickSelector qsSelection = (QuickSelector)this.Page.FindControlRecursively("QSSelection");
-	        bool selected = false;
-	        ListItemCollection selectedItems = qsSelection.Items;
-	        if (selectedItems.Contains(new ListItem(text, value))) {
-		        selected = true;
-	        }
-
-	        foreach (Control ctrl in this.Controls) {
-		        if (object.ReferenceEquals(ctrl.GetType(), typeof(System.Web.UI.HtmlControls.HtmlTableRow))) {
-			        System.Web.UI.HtmlControls.HtmlTableRow row = (System.Web.UI.HtmlControls.HtmlTableRow)ctrl;
-
-			        // register onclick event which marks the row to be selected or deselected when the row is clicked
-			        row.Attributes["onclick"] = "selectorMultiSelectRowClick(this, '" + qsSelection.ClientID + "', '" + value.Replace("\\", "\\\\").Replace("\r", "\\r").Replace("\n", "\\n").Replace("'", "\\'") + "', '" + text.Replace("\\", "\\\\").Replace("\r", " ").Replace("\n", " ").Replace("'", "\\'") + "', '" + "');";
-			        if (!multiSelection) {
-				        // for single selection, commit the selection and close the popup immediately
-				        row.Attributes["onclick"] += "CommitSelection();";
-			        }
-			        if (selected) {
-				        row.Attributes["class"] = "QStrSelected";
-			        }
-		        }
-
-	        }
-
-
         }
-
-
-        
+                
+        public virtual void SetLongLabel()
+                  {
+                  
+                    
+        }
+                
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
 
         public virtual string EvaluateFormula(string formula, BaseClasses.Data.BaseRecord dataSourceForEvaluate, string format, System.Collections.Generic.IDictionary<string, object> variables, bool includeDS, FormulaEvaluator e)
@@ -396,8 +475,8 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
                 this.DataSource.Save();
                 
                 // Set the DataChanged flag to True for the for the related panels so they get refreshed as well.
-                ((SelectorTableControl)MiscUtils.GetParentControlObject(this, "SelectorTableControl")).DataChanged = true;
-                ((SelectorTableControl)MiscUtils.GetParentControlObject(this, "SelectorTableControl")).ResetData = true;
+                ((LocationsTableControl)MiscUtils.GetParentControlObject(this, "LocationsTableControl")).DataChanged = true;
+                ((LocationsTableControl)MiscUtils.GetParentControlObject(this, "LocationsTableControl")).ResetData = true;
             }
             
       
@@ -425,18 +504,63 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
       
             // Call the Get methods for each of the user interface controls.
         
+            GetComments();
+            GetLat();
+            GetLong0();
         }
         
         
+        public virtual void GetComments()
+        {
+            
+            // Retrieve the value entered by the user on the Comments ASP:TextBox, and
+            // save it into the Comments field in DataSource DatabaseTheRatTrap%dbo.Locations record.
+            
+            // Custom validation should be performed in Validate, not here.
+                    
+            // Save the value to data source
+            this.DataSource.Parse(this.Comments.Text, LocationsTable.Comments);							
+                          
+                      
+        }
+                
+        public virtual void GetLat()
+        {
+            
+            // Retrieve the value entered by the user on the Lat ASP:TextBox, and
+            // save it into the Lat field in DataSource DatabaseTheRatTrap%dbo.Locations record.
+            
+            // Custom validation should be performed in Validate, not here.
+                    
+            // Save the value to data source
+            this.DataSource.Parse(this.Lat.Text, LocationsTable.Lat);							
+                          
+                      
+        }
+                
+        public virtual void GetLong0()
+        {
+            
+            // Retrieve the value entered by the user on the Long ASP:TextBox, and
+            // save it into the Long field in DataSource DatabaseTheRatTrap%dbo.Locations record.
+            
+            // Custom validation should be performed in Validate, not here.
+                    
+            // Save the value to data source
+            this.DataSource.Parse(this.Long0.Text, LocationsTable.Long0);							
+                          
+                      
+        }
+                
 
-      // To customize, override this method in SelectorTableControlRow.
+      // To customize, override this method in LocationsTableControlRow.
       
         public virtual WhereClause CreateWhereClause()
          
         {
     
-            bool hasFiltersSelectorTableControl = false;
-            hasFiltersSelectorTableControl = hasFiltersSelectorTableControl && false; // suppress warning
+            bool hasFiltersLocationsTableControl = false;
+            hasFiltersLocationsTableControl = hasFiltersLocationsTableControl && false; // suppress warning
       
             return null;
         
@@ -472,8 +596,8 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
             // Setting the DataChanged to True results in the page being refreshed with
             // the most recent data from the database.  This happens in PreRender event
             // based on the current sort, search and filter criteria.
-            ((SelectorTableControl)MiscUtils.GetParentControlObject(this, "SelectorTableControl")).DataChanged = true;
-            ((SelectorTableControl)MiscUtils.GetParentControlObject(this, "SelectorTableControl")).ResetData = true;
+            ((LocationsTableControl)MiscUtils.GetParentControlObject(this, "LocationsTableControl")).DataChanged = true;
+            ((LocationsTableControl)MiscUtils.GetParentControlObject(this, "LocationsTableControl")).ResetData = true;
         }
 
         protected virtual void Control_PreRender(object sender, System.EventArgs e)
@@ -554,6 +678,174 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
     
         // Generate set method for buttons
         
+        public virtual void SetDeleteRowButton()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetEditRowButton()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetViewRowButton()                
+              
+        {
+        
+   
+        }
+            
+        // event handler for ImageButton
+        public virtual void DeleteRowButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+            if (!this.Page.IsPageRefresh) {
+        LocationsTableControl tc= ((LocationsTableControl)MiscUtils.GetParentControlObject(this, "LocationsTableControl"));
+                if (tc != null){
+                    if (!this.IsNewRecord){
+                        tc.AddToDeletedRecordIds((LocationsTableControlRow)this);
+                    }
+                    this.Visible = false;
+                    tc.SetFormulaControls();                    
+                }
+              
+            }
+      
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void EditRowButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            // The redirect URL is set on the Properties, Custom Properties or Actions.
+            // The ModifyRedirectURL call resolves the parameters before the
+            // Response.Redirect redirects the page to the URL.  
+            // Any code after the Response.Redirect call will not be executed, since the page is
+            // redirected to the URL.
+            
+            string url = @"../Locations/Edit-Locations.aspx?Locations={PK}";
+            
+            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
+                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
+            
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+                url = this.ModifyRedirectUrl(url, "",true);
+                url = this.Page.ModifyRedirectUrl(url, "",true);
+              
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  shouldRedirect = false;
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+            if (shouldRedirect) {
+                this.Page.ShouldSaveControlsToSession = true;
+      this.Page.Response.Redirect(url);
+        
+            }
+        
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void ViewRowButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            // The redirect URL is set on the Properties, Custom Properties or Actions.
+            // The ModifyRedirectURL call resolves the parameters before the
+            // Response.Redirect redirects the page to the URL.  
+            // Any code after the Response.Redirect call will not be executed, since the page is
+            // redirected to the URL.
+            
+            string url = @"../Shared/ConfigureViewRecord.aspx";
+            
+            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
+                url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
+            
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+                url = this.ModifyRedirectUrl(url, "",true);
+                url = this.Page.ModifyRedirectUrl(url, "",true);
+              
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  shouldRedirect = false;
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+            if (shouldRedirect) {
+                this.Page.ShouldSaveControlsToSession = true;
+      this.Page.Response.Redirect(url);
+        
+            }
+        
+        }
+            
+            
+        
+        protected virtual void Comments_TextChanged(object sender, EventArgs args)
+        {
+                    
+              }
+            
+        protected virtual void Lat_TextChanged(object sender, EventArgs args)
+        {
+                    
+              }
+            
+        protected virtual void Long0_TextChanged(object sender, EventArgs args)
+        {
+                    
+              }
+            
   
         private Hashtable _PreviousUIData = new Hashtable();
         public virtual Hashtable PreviousUIData {
@@ -569,10 +861,10 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
         
         public String RecordUniqueId {
             get {
-                return (string)this.ViewState["BaseSelectorTableControlRow_Rec"];
+                return (string)this.ViewState["BaseLocationsTableControlRow_Rec"];
             }
             set {
-                this.ViewState["BaseSelectorTableControlRow_Rec"] = value;
+                this.ViewState["BaseLocationsTableControlRow_Rec"] = value;
             }
         }
         
@@ -643,9 +935,63 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
        
 #region "Helper Properties"
         
-        public System.Web.UI.WebControls.Literal QuickSelectorItem {
+        public System.Web.UI.WebControls.TextBox Comments {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "QuickSelectorItem");
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Comments");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal CommentsLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentsLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.ImageButton DeleteRowButton {
+            get {
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DeleteRowButton");
+            }
+        }
+        
+        public System.Web.UI.WebControls.ImageButton EditRowButton {
+            get {
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "EditRowButton");
+            }
+        }
+        
+        public System.Web.UI.WebControls.TextBox Lat {
+            get {
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Lat");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal LatLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LatLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.TextBox Long0 {
+            get {
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Long0");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal LongLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LongLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.CheckBox SelectRow {
+            get {
+                return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SelectRow");
+            }
+        }              
+            
+        public System.Web.UI.WebControls.ImageButton ViewRowButton {
+            get {
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ViewRowButton");
             }
         }
         
@@ -747,12 +1093,12 @@ public class BaseSelectorTableControlRow : RatTrap.UI.BaseApplicationRecordContr
 }
 
   
-// Base class for the SelectorTableControl control on the Locations_QuickSelector page.
-// Do not modify this class. Instead override any method in SelectorTableControl.
-public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
+// Base class for the LocationsTableControl control on the Edit_Locations_Table1 page.
+// Do not modify this class. Instead override any method in LocationsTableControl.
+public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
 {
          
-       public BaseSelectorTableControl()
+       public BaseLocationsTableControl()
         {
             this.Init += Control_Init;
             this.Load += Control_Load;
@@ -769,8 +1115,33 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             if (!this.Page.IsPostBack)
             {
                 string initialVal = "";
-                if  (this.InSession(this.Search)) 				
-                    initialVal = this.GetFromSession(this.Search);
+                
+                  if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
+                  {
+                  initialVal = "";
+                  }
+                
+                if  (this.InSession(this.SortControl)) 				
+                    initialVal = this.GetFromSession(this.SortControl);
+                
+                if (initialVal != null && initialVal != "")		
+                {
+                        
+                    this.SortControl.Items.Add(new ListItem(initialVal, initialVal));
+                        
+                    this.SortControl.SelectedValue = initialVal;
+                            
+                    }
+            }
+            if (!this.Page.IsPostBack)
+            {
+                string initialVal = "";
+                if  (this.InSession(this.CommentsFilter)) 				
+                    initialVal = this.GetFromSession(this.CommentsFilter);
+                
+                else
+                    
+                    initialVal = EvaluateFormula("URL(\"Comments\")");
                 
                 if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
                 {
@@ -780,8 +1151,26 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
                 if (initialVal != null && initialVal != "")		
                 {
                         
-                    this.Search.Text = initialVal;
-                            
+                    string[] CommentsFilteritemListFromSession = initialVal.Split(',');
+                    int index = 0;
+                    foreach (string item in CommentsFilteritemListFromSession)
+                    {
+                        if (index == 0 && item.ToString().Equals(""))
+                        {
+                            // do nothing
+                        }
+                        else
+                        {
+                            this.CommentsFilter.Items.Add(item);
+                            this.CommentsFilter.Items[index].Selected = true;
+                            index += 1;
+                        }
+                    }
+                    foreach (ListItem listItem in this.CommentsFilter.Items)
+                    {
+                        listItem.Selected = true;
+                    }
+                        
                     }
             }
 
@@ -797,19 +1186,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             {
                    
                 this.CurrentSortOrder = new OrderBy(true, false);
-                
-              if (this.CurrentSortOrder.Items.Length == 0)
-              {
-                  ColumnList columnsFromURL = GetColumnListFromURLParameters(false, true);
-                  if (columnsFromURL.Count == 0)
-                      columnsFromURL = GetColumnListFromURLParameters(true, false);
-                  foreach(BaseColumn col in columnsFromURL)
-                  {
-                      if (col.ColumnType.ToString() != "Very_Large_String" && col.ColumnType.ToString() != "Password")
-                          this.CurrentSortOrder.Add(col, OrderByItem.OrderDir.Asc);                      
-                  }
-              }
-     
+            
         }
 
 
@@ -826,6 +1203,8 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         
             SaveControlsToSession_Ajax();
         
+              // Show confirmation message on Click
+              this.DeleteButton.Attributes.Add("onClick", "return (confirm(\"" + ((BaseApplicationPage)this.Page).GetResourceValue("DeleteConfirm", "RatTrap") + "\"));");
             // Setup the pagination events.
             
                     this.Pagination.FirstPage.Click += Pagination_FirstPage_Click;
@@ -846,18 +1225,27 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         
             // Setup the button events.
           
-                    this.SearchButton.Click += SearchButton_Click;
+                    this.AddButton.Click += AddButton_Click;
                         
-                    this.AddButton.Button.Click += AddButton_Click;
+                    this.DeleteButton.Click += DeleteButton_Click;
                         
-                    this.ClearButton.Button.Click += ClearButton_Click;
+                    this.ResetButton.Click += ResetButton_Click;
                         
-                    this.CommitButton.Button.Click += CommitButton_Click;
-                                
+                    this.SaveButton.Click += SaveButton_Click;
+                        
+                    this.ActionsButton.Button.Click += ActionsButton_Click;
+                        
+                    this.FilterButton.Button.Click += FilterButton_Click;
+                        
+                    this.FiltersButton.Button.Click += FiltersButton_Click;
+                        
+            this.SortControl.SelectedIndexChanged += new EventHandler(SortControl_SelectedIndexChanged);
+            
+              this.CommentsFilter.SelectedIndexChanged += CommentsFilter_SelectedIndexChanged;                  
+                        
         
          //' Setup events for others
-            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "SearchSearchBoxText", "setSearchBoxText(\"" + BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null) + "\", \"" + Search.ClientID + "\");", true);
-             
+               
         }
 
         public virtual void LoadData()
@@ -910,7 +1298,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
                 if (this.AddNewRecord > 0) {
                     // Make sure to preserve the previously entered data on new rows.
                     ArrayList postdata = new ArrayList(0);
-                    foreach (SelectorTableControlRow rc in this.GetRecordControls()) {
+                    foreach (LocationsTableControlRow rc in this.GetRecordControls()) {
                         if (!rc.IsNewRecord) {
                             rc.DataSource = rc.GetRecord();
                             rc.GetUIData();
@@ -960,9 +1348,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         {    
             // by default, Select * will be executed to get a list of records.  If you want to run Select Distinct with certain column only, add the column to selCols
             ColumnList selCols = new ColumnList();                 
-            
-            selCols = GetColumnListFromURLParameters(true, true);            
-           
+               
     
             // If you want to specify certain columns to be in the select statement, you can write code similar to the following:
             // However, if you don't specify PK, row button click might show an error message.
@@ -974,8 +1360,8 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
             // If the parameters doesn't specify specific columns in the Select statement, then run Select *
             // Alternatively, if the parameters specifies to include PK, also run Select *
-                      
-            if (selCols.Count == 0 || selCols.HasPrimaryKey())
+            
+            if (selCols.Count == 0)                 
                   
             {
               
@@ -1004,9 +1390,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
             // By default, Select * will be executed to get a list of records.  If you want to run Select Distinct with certain column only, add the column to selCols
             ColumnList selCols = new ColumnList();                 
-            
-            selCols = GetColumnListFromURLParameters(true, true);            
-           
+               
 
 
             // If you want to specify certain columns to be in the select statement, you can write code similar to the following:
@@ -1019,8 +1403,8 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
             // If the parameters doesn't specify specific columns in the Select statement, then run Select *
             // Alternatively, if the parameters specifies to include PK, also run Select *
-                      
-            if (selCols.Count == 0 || selCols.HasPrimaryKey())
+            
+            if (selCols.Count == 0)                 
                      
             
                 return LocationsTable.GetRecordCount(join, where);
@@ -1035,47 +1419,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
         }
         
-                  
-        public virtual ColumnList GetColumnListFromURLParameters(bool includeIndexFieldParameter, bool includeFormulaAndDFKAParameter)
-        {    
-            string field = "";
-            string formula = "";
-            string displayFieldName = "";
-            ColumnList columnList = new ColumnList();
-            // retrieve necessary URL parameters
-            if (!String.IsNullOrEmpty(Page.Request["IndexField"]))
-                field = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("IndexField");           
-            if (!String.IsNullOrEmpty(Page.Request["Formula"]))
-                formula = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Formula");
-            if (!String.IsNullOrEmpty(Page.Request["DFKA"]))
-                displayFieldName = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("DFKA");
-            
-            if (includeIndexFieldParameter && field != "")
-            {
-                BaseColumn col = LocationsTable.GetColumnByName(field);
-                if (col != null  && !columnList.Contains(col)) 
-                    columnList.Add(col);             
-            }
-            if (includeFormulaAndDFKAParameter) 
-            {
-                if (formula != "")
-                {
-                    foreach (BaseColumn col in MiscUtils.GetFormulaFieldList(formula, LocationsTable.Instance.TableDefinition))
-                    {
-                        if (col != null && !columnList.Contains(col))
-                            columnList.Add(col);             
-                    }
-                }
-                else if (displayFieldName != "")
-                {
-                    BaseColumn col = LocationsTable.GetColumnByName(displayFieldName);
-                    if (col != null && !columnList.Contains(col))
-                        columnList.Add(col);             
-                }
-            }
-            return columnList;            
-        }                
-       
+      
     
       public override void DataBind()
       {
@@ -1106,7 +1450,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         
         // Bind the repeater with the list of records to expand the UI.
         
-        System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SelectorTableControlRepeater"));
+        System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationsTableControlRepeater"));
         if (rep == null){return;}
         rep.DataSource = this.DataSource;
         rep.DataBind();
@@ -1117,7 +1461,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         {
         
             // Loop through all rows in the table, set its DataSource and call DataBind().
-            SelectorTableControlRow recControl = (SelectorTableControlRow)(repItem.FindControl("SelectorTableControlRow"));
+            LocationsTableControlRow recControl = (LocationsTableControlRow)(repItem.FindControl("LocationsTableControlRow"));
             recControl.DataSource = this.DataSource[index];            
             if (this.UIData.Count > index)
                 recControl.PreviousUIData = this.UIData[index];
@@ -1134,17 +1478,31 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         
                 
                 
+                SetCommentsFilter();
+                SetCommentsLabel1();
                 
                 
-                SetSearch();
                 
-                SetSearchButton();
-              
+                
+                
+                
+                SetSortByLabel();
+                SetSortControl();
+                
+                
                 SetAddButton();
               
-                SetClearButton();
+                SetDeleteButton();
               
-                SetCommitButton();
+                SetResetButton();
+              
+                SetSaveButton();
+              
+                SetActionsButton();
+              
+                SetFilterButton();
+              
+                SetFiltersButton();
               
             // setting the state of expand or collapse alternative rows
       
@@ -1156,20 +1514,9 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             // this method calls the set method for controls with special formula like running total, sum, rank, etc
             SetFormulaControls();
             
-     
-              // Mark OK button to be invisible for single selection mode
-              
-            
-              if ((this.Page as BaseApplicationPage).GetDecryptedURLParameter("Mode") != "FieldFilterMultiSelection")
-                  this.CommitButton.Visible = false;
-            
-              if ((this.Page as BaseApplicationPage).GetDecryptedURLParameter("Mode") != "FieldValueSingleSelection")
-                  this.AddButton.Visible = false;
-                  
-              RegisterJSClearSelection();
-              RegisterJSCommitSelection();
-                  
-                           
+             
+              SetFiltersButton();
+                     
         }
         
         
@@ -1184,7 +1531,9 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
         public virtual void RegisterPostback()
         {
-                
+        
+              this.Page.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"SaveButton"));
+                                
         }
         
 
@@ -1271,6 +1620,10 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
 
             
+            this.CommentsFilter.ClearSelection();
+            
+            this.SortControl.ClearSelection();
+            
             this.CurrentSortOrder.Reset();
             if (this.InSession(this, "Order_By")) {
                 this.CurrentSortOrder = OrderBy.FromXmlString(this.GetFromSession(this, "Order_By", null));
@@ -1306,7 +1659,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             }
             this.Pagination.PageSize.Text = this.PageSize.ToString();
     
-            // Bind the buttons for SelectorTableControl pagination.
+            // Bind the buttons for LocationsTableControl pagination.
         
             this.Pagination.FirstPage.Enabled = !(this.PageIndex == 0);
             if (this._TotalPages < 0)             // if the total pages is not determined yet, enable last and next buttons
@@ -1332,7 +1685,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             // to save their data.  This function is called by the Click handler of the
             // Save button.  The button handler should Start/Commit/End a transaction.
               
-            foreach (SelectorTableControlRow recCtl in this.GetRecordControls())
+            foreach (LocationsTableControlRow recCtl in this.GetRecordControls())
             {
         
                 if (this.InDeletedRecordIds(recCtl)) {
@@ -1356,7 +1709,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             this.ResetData = true;
           
             // Set IsNewRecord to False for all records - since everything has been saved and is no longer "new"
-            foreach (SelectorTableControlRow recCtl in this.GetRecordControls()){
+            foreach (LocationsTableControlRow recCtl in this.GetRecordControls()){
                 recCtl.IsNewRecord = false;
             }
       
@@ -1409,60 +1762,29 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             // 3. User selected filter criteria.
             
         
-            if (MiscUtils.IsValueSelected(this.Search)) {
-                if (this.Search.Text == BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null) ) {
-                        this.Search.Text = "";
-                } else {
-                  // Strip "..." from begin and ending of the search text, otherwise the search will return 0 values as in database "..." is not stored.
-                  if (this.Search.Text.StartsWith("...")) {
-                      this.Search.Text = this.Search.Text.Substring(3,this.Search.Text.Length-3);
-                  }
-                  if (this.Search.Text.EndsWith("...")) {
-                      this.Search.Text = this.Search.Text.Substring(0,this.Search.Text.Length-3);
-                      // Strip the last word as well as it is likely only a partial word
-                      int endindex = this.Search.Text.Length - 1;
-                      while (!Char.IsWhiteSpace(Search.Text[endindex]) && endindex > 0) {
-                          endindex--;
-                      }
-                      if (endindex > 0) {
-                          this.Search.Text = this.Search.Text.Substring(0, endindex);
-                      }
-                  }
+            if (MiscUtils.IsValueSelected(this.CommentsFilter)) {
+                        
+                int selectedItemCount = 0;
+                foreach (ListItem item in this.CommentsFilter.Items){
+                    if (item.Selected) {
+                        selectedItemCount += 1;
+                        
+                          
+                    }
                 }
-                string formatedSearchText = MiscUtils.GetSelectedValue(this.Search, this.GetFromSession(this.Search));
-                // After stripping "..." see if the search text is null or empty.
-                if (MiscUtils.IsValueSelected(this.Search)) {
-                      
-                    // These clauses are added depending on operator and fields selected in Control's property page, bindings tab.
-                  
-                    WhereClause search = new WhereClause();
+                WhereClause filter = new WhereClause();
+                foreach (ListItem item in this.CommentsFilter.Items){
+                    if ((item.Selected) && ((item.Value == "--ANY--") || (item.Value == "--PLEASE_SELECT--")) && (selectedItemCount > 1)){
+                        item.Selected = false;
+                    }
+                    if (item.Selected){
+                        filter.iOR(LocationsTable.Comments, BaseFilter.ComparisonOperator.EqualsTo, item.Value, false, false);
+                    }
+                }
+                wc.iAND(filter);
                     
-        ColumnList cols = GetColumnListFromURLParameters(false, true);
-        if (cols.Count == 0)
-        cols = GetColumnListFromURLParameters(true, false);
-      
-      foreach(BaseColumn col in cols)
-      {
-      
-          search.iOR(col, BaseFilter.ComparisonOperator.Contains, MiscUtils.GetSelectedValue(this.Search, this.GetFromSession(this.Search)), true, false);
-        
-      }
-    
-                    wc.iAND(search);
-                  
-                }
             }
-                              
-    
-		        if (!string.IsNullOrEmpty(this.Page.Request["dependOnField"]) && this.Page.Request["dependOnVal"] != null) {
-			          BaseColumn dependOnCol = LocationsTable.GetColumnByName(this.Page.GetDecryptedURLParameter("dependOnField"));
-                if (dependOnCol != null){                
-			              WhereClause dependOnWC = new WhereClause(dependOnCol, BaseFilter.ComparisonOperator.EqualsTo, this.Page.GetDecryptedURLParameter("dependOnVal"));
-                    wc.iAND(dependOnWC);
-                }
-		        }
-
-            
+                           
             return wc;
         }
         
@@ -1482,90 +1804,35 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
-            if (MiscUtils.IsValueSelected(searchText) && fromSearchControl == "Search") {
-                String formatedSearchText = searchText;
-                // strip "..." from begin and ending of the search text, otherwise the search will return 0 values as in database "..." is not stored.
-                if (searchText.StartsWith("...")) {
-                    formatedSearchText = searchText.Substring(3,searchText.Length-3);
-                }
-                if (searchText.EndsWith("...")) {
-                    formatedSearchText = searchText.Substring(0,searchText.Length-3);
-                }
-                // After stripping "...", trim any leading and trailing whitespaces 
-                formatedSearchText = formatedSearchText.Trim();
-                // After stripping "..." see if the search text is null or empty.
-                if (MiscUtils.IsValueSelected(searchText)) {
+      String CommentsFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "CommentsFilter_Ajax"];
+            if (MiscUtils.IsValueSelected(CommentsFilterSelectedValue)) {
+
+              
+        if (CommentsFilterSelectedValue != null){
+                        string[] CommentsFilteritemListFromSession = CommentsFilterSelectedValue.Split(',');
+                        int index = 0;
+                        WhereClause filter = new WhereClause();
+                        foreach (string item in CommentsFilteritemListFromSession)
+                        {
+                            if (index == 0 && item.ToString().Equals(""))
+                            {
+                            }
+                            else
+                            {
+                                filter.iOR(LocationsTable.Comments, BaseFilter.ComparisonOperator.EqualsTo, item, false, false);
+                                index += 1;
+                            }
+                        }
+                        wc.iAND(filter);
+        }
+                
+      }
                       
-                    // These clauses are added depending on operator and fields selected in Control's property page, bindings tab.
-                  
-                    WhereClause search = new WhereClause();
-                    
-                    if (StringUtils.InvariantLCase(AutoTypeAheadSearch).Equals("wordsstartingwithsearchstring")) {
-                
-        ColumnList cols = GetColumnListFromURLParameters(false, true);
-        if (cols.Count == 0)
-        cols = GetColumnListFromURLParameters(true, false);
-      
-      foreach(BaseColumn col in cols)
-      {
-      
-                  search.iOR(col, BaseFilter.ComparisonOperator.Starts_With, formatedSearchText, true, false);
-                  search.iOR(col, BaseFilter.ComparisonOperator.Contains, AutoTypeAheadWordSeparators + formatedSearchText, true, false);
-                
-      }
-    
-                    } else {
-                        
-        ColumnList cols = GetColumnListFromURLParameters(false, true);
-        if (cols.Count == 0)
-        cols = GetColumnListFromURLParameters(true, false);
-      
-      foreach(BaseColumn col in cols)
-      {
-      
-                  search.iOR(col, BaseFilter.ComparisonOperator.Contains, formatedSearchText, true, false);
-      }
-    
-                    } 
-                    wc.iAND(search);
-                  
-                }
-            }
-                  
 
             return wc;
         }
 
         
-        public virtual string[] GetAutoCompletionList_Search(String prefixText,int count)
-        {
-            ArrayList resultList = new ArrayList();
-            ArrayList wordList= new ArrayList();
-            
-            CompoundFilter filterJoin = CreateCompoundJoinFilter();    
-            WhereClause wc = CreateWhereClause(prefixText,"Search", "WordsStartingWithSearchString", "[^a-zA-Z0-9]");
-            if(count==0) count = 10;
-            RatTrap.Business.LocationsRecord[] recordList  = LocationsTable.GetRecords(filterJoin, wc, null, 0, count, ref count);
-            String resultItem = "";
-            if (resultItem == "") resultItem = "";
-            foreach (LocationsRecord rec in recordList ){
-                // Exit the loop if recordList count has reached AutoTypeAheadListSize.
-                if (resultList.Count >= count) {
-                    break;
-                }
-                // If the field is configured to Display as Foreign key, Format() method returns the 
-                // Display as Forien Key value instead of original field value.
-                // Since search had to be done in multiple fields (selected in Control's page property, binding tab) in a record,
-                // We need to find relevent field to display which matches the prefixText and is not already present in the result list.
-                        
-            }
-              
-            resultList.Sort();
-            string[] result = new string[resultList.Count];
-            Array.Copy(resultList.ToArray(), result, resultList.Count);
-            return result;
-        }
-          
           
          public virtual bool FormatSuggestions(String prefixText, String resultItem,
                                               int columnLength, String AutoTypeAheadDisplayFoundText,
@@ -1730,18 +1997,30 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             // and add to the list.
             if (!this.ResetData)
             {
-              System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SelectorTableControlRepeater"));
+              System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationsTableControlRepeater"));
               if (rep == null){return;}
               
                 foreach (System.Web.UI.WebControls.RepeaterItem repItem in rep.Items)
                 {
                 
                 // Loop through all rows in the table, set its DataSource and call DataBind().
-                SelectorTableControlRow recControl = (SelectorTableControlRow)(repItem.FindControl("SelectorTableControlRow"));
+                LocationsTableControlRow recControl = (LocationsTableControlRow)(repItem.FindControl("LocationsTableControlRow"));
       
             if (recControl.Visible && recControl.IsNewRecord) {
       LocationsRecord rec = new LocationsRecord();
         
+                        if (recControl.Comments.Text != "") {
+                            rec.Parse(recControl.Comments.Text, LocationsTable.Comments);
+                  }
+                
+                        if (recControl.Lat.Text != "") {
+                            rec.Parse(recControl.Lat.Text, LocationsTable.Lat);
+                  }
+                
+                        if (recControl.Long0.Text != "") {
+                            rec.Parse(recControl.Long0.Text, LocationsTable.Long0);
+                  }
+                
               newUIDataList.Add(recControl.PreservedUIData());
               newRecordList.Add(rec);
             }
@@ -1774,7 +2053,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         }
 
         
-        public void AddToDeletedRecordIds(SelectorTableControlRow rec)
+        public void AddToDeletedRecordIds(LocationsTableControlRow rec)
         {
             if (rec.IsNewRecord) {
                 return;
@@ -1787,7 +2066,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             this.DeletedRecordIds += "[" + rec.RecordUniqueId + "]";
         }
 
-        protected virtual bool InDeletedRecordIds(SelectorTableControlRow rec)            
+        protected virtual bool InDeletedRecordIds(LocationsTableControlRow rec)            
         {
             if (this.DeletedRecordIds == null || this.DeletedRecordIds.Length == 0) {
                 return (false);
@@ -1809,14 +2088,235 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
       
         // Create Set, WhereClause, and Populate Methods
         
-        public virtual void SetSearch()
+        public virtual void SetCommentsLabel1()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetSortByLabel()
+                  {
+                  
+                      //Code for the text property is generated inside the .aspx file. 
+                      //To override this property you can uncomment the following property and add you own value.
+                      //this.SortByLabel.Text = "Some value";
+                    
+                    
+        }
+                
+        public virtual void SetSortControl()
         {
-                                            
-            this.Search.Attributes.Add("onfocus", "if(this.value=='" + BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null) + "') {this.value='';this.className='Search_Input';}");
-            this.Search.Attributes.Add("onblur", "if(this.value=='') {this.value='" + BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null) + "';this.className='Search_InputHint';}");
-                                   
+            
+                this.PopulateSortControl(MiscUtils.GetSelectedValue(this.SortControl,  GetFromSession(this.SortControl)), 500);					
+                    
+
         }
             
+        public virtual void SetCommentsFilter()
+        {
+            
+            ArrayList CommentsFilterselectedFilterItemList = new ArrayList();
+            string CommentsFilteritemsString = null;
+            if (this.InSession(this.CommentsFilter))
+                CommentsFilteritemsString = this.GetFromSession(this.CommentsFilter);
+            
+            if (CommentsFilteritemsString != null)
+            {
+                string[] CommentsFilteritemListFromSession = CommentsFilteritemsString.Split(',');
+                foreach (string item in CommentsFilteritemListFromSession)
+                {
+                    CommentsFilterselectedFilterItemList.Add(item);
+                }
+            }
+              
+            			
+            this.PopulateCommentsFilter(MiscUtils.GetSelectedValueList(this.CommentsFilter, CommentsFilterselectedFilterItemList), 500);
+                    
+              string url = this.ModifyRedirectUrl("../Locations/Locations-QuickSelector.aspx", "", true);
+              
+              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+              
+              url += "?Target=" + this.CommentsFilter.ClientID + "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("Comments")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--ANY--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:All")) + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              
+              this.CommentsFilter.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(CommentsFilter.AutoPostBack).ToLower() + ", event); return false;";
+                  
+                             
+        }
+            
+        // Get the filters' data for SortControl.
+                
+        protected virtual void PopulateSortControl(string selectedValue, int maxItems)
+                    
+        {
+            
+              
+                this.SortControl.Items.Clear();
+                
+              // 1. Setup the static list items
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("{Txt:PleaseSelect}"), "--PLEASE_SELECT--"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Ascending}"), "Comments Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Descending}"), "Comments Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Lat {Txt:Ascending}"), "Lat Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Lat {Txt:Descending}"), "Lat Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Long {Txt:Ascending}"), "Long Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Long {Txt:Descending}"), "Long Desc"));
+              
+            try
+            {          
+                // Set the selected value.
+                MiscUtils.SetSelectedValue(this.SortControl, selectedValue);
+
+               
+            }
+            catch
+            {
+            }
+              
+            if (this.SortControl.SelectedValue != null && this.SortControl.Items.FindByValue(this.SortControl.SelectedValue) == null)
+                this.SortControl.SelectedValue = null;
+              
+        }
+            
+        // Get the filters' data for CommentsFilter.
+                
+        protected virtual void PopulateCommentsFilter(ArrayList selectedValue, int maxItems)
+                    
+        {
+        
+            
+            //Setup the WHERE clause.
+                        
+            WhereClause wc = this.CreateWhereClause_CommentsFilter();            
+            this.CommentsFilter.Items.Clear();
+            			  			
+            // Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_CommentsFilter function.
+            // It is better to customize the where clause there.
+             
+            
+            
+            OrderBy orderBy = new OrderBy(false, false);
+            orderBy.Add(LocationsTable.Comments, OrderByItem.OrderDir.Asc);                
+            
+            
+            string[] values = new string[0];
+            if (wc.RunQuery)
+            {
+            
+                values = LocationsTable.GetValues(LocationsTable.Comments, wc, orderBy, maxItems);
+            
+            }
+            
+            ArrayList listDuplicates = new ArrayList();
+            foreach (string cvalue in values)
+            {
+            // Create the item and add to the list.
+            string fvalue;
+            if ( LocationsTable.Comments.IsColumnValueTypeBoolean()) {
+                    fvalue = cvalue;
+                }else {
+                    fvalue = LocationsTable.Comments.Format(cvalue);
+                }
+                if (fvalue == null) {
+                    fvalue = "";
+                }
+
+                fvalue = fvalue.Trim();
+
+                if ( fvalue.Length > 50 ) {
+                    fvalue = fvalue.Substring(0, 50) + "...";
+                }
+
+                ListItem dupItem = this.CommentsFilter.Items.FindByText(fvalue);
+								
+                if (dupItem != null) {
+                    listDuplicates.Add(fvalue);
+                    if (!string.IsNullOrEmpty(dupItem.Value))
+                    {
+                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
+                    }
+                }
+
+                ListItem newItem = new ListItem(fvalue, cvalue);
+                this.CommentsFilter.Items.Add(newItem);
+
+                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
+                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
+                }
+            }
+
+                          
+            try
+            {
+      
+                
+            }
+            catch
+            {
+            }
+            
+            
+            this.CommentsFilter.SetFieldMaxLength(50);
+                                 
+                  
+            // Add the selected value.
+            if (this.CommentsFilter.Items.Count == 0)
+                this.CommentsFilter.Items.Add(new ListItem(Page.GetResourceValue("Txt:All", "RatTrap"), "--ANY--"));
+            
+            // Mark all items to be selected.
+            foreach (ListItem item in this.CommentsFilter.Items)
+            {
+                item.Selected = true;
+            }
+                               
+        }
+            
+        public virtual WhereClause CreateWhereClause_CommentsFilter()
+        {
+            // Create a where clause for the filter CommentsFilter.
+            // This function is called by the Populate method to load the items 
+            // in the CommentsFilterQuickSelector
+        
+            ArrayList CommentsFilterselectedFilterItemList = new ArrayList();
+            string CommentsFilteritemsString = null;
+            if (this.InSession(this.CommentsFilter))
+                CommentsFilteritemsString = this.GetFromSession(this.CommentsFilter);
+            
+            if (CommentsFilteritemsString != null)
+            {
+                string[] CommentsFilteritemListFromSession = CommentsFilteritemsString.Split(',');
+                foreach (string item in CommentsFilteritemListFromSession)
+                {
+                    CommentsFilterselectedFilterItemList.Add(item);
+                }
+            }
+              
+            CommentsFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.CommentsFilter, CommentsFilterselectedFilterItemList); 
+            WhereClause wc = new WhereClause();
+            if (CommentsFilterselectedFilterItemList == null || CommentsFilterselectedFilterItemList.Count == 0)
+                wc.RunQuery = false;
+            else            
+            {
+                foreach (string item in CommentsFilterselectedFilterItemList)
+                {
+            
+      
+   
+                    wc.iOR(LocationsTable.Comments, BaseFilter.ComparisonOperator.EqualsTo, item);
+
+                                
+                }
+            }
+            return wc;
+        
+        }
+      
 
     
         protected virtual void Control_PreRender(object sender, System.EventArgs e)
@@ -1831,10 +2331,11 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
                     // Re-load the data and update the web page if necessary.
                     // This is typically done during a postback (filter, search button, sort, pagination button).
                     // In each of the other click handlers, simply set DataChanged to True to reload the data.
-                    
+                    bool added = (this.AddNewRecord > 0);
                     this.LoadData();
                     this.DataBind();					
                     
+                    if (added) this.SetFocusToAddedRow();
                 }
                                 
             } catch (Exception ex) {
@@ -1844,13 +2345,43 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             }
         }
         
+            protected virtual void SetFocusToAddedRow()
+            {
+            System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)this.FindControl("LocationsTableControlRepeater");
+            if (rep == null || rep.Items.Count == 0) return; 			
+            foreach (System.Web.UI.WebControls.RepeaterItem repItem in rep.Items) {
+                // Loop through all rows in the table, set its DataSource and call DataBind().
+                LocationsTableControlRow recControl = (LocationsTableControlRow)repItem.FindControl("LocationsTableControlRow");
+                if(recControl.IsNewRecord) {
+                    foreach (Control field in recControl.Controls) {
+                    if (field.Visible && this.Page.IsControlEditable(field, false)) {
+                        //set focus on the first editable field in the new row
+                        field.Focus();
+                        UpdatePanel updPan = (UpdatePanel)this.Page.FindControlRecursively("UpdatePanel1");
+                        if (updPan != null) updPan.Update();
+                        return;
+                        }
+                    }
+                    return;
+                }
+            }
+        }
         
         protected override void SaveControlsToSession()
         {
             base.SaveControlsToSession();
             // Save filter controls to values to session.
         
-            this.SaveToSession(this.Search, this.Search.Text);
+            this.SaveToSession(this.SortControl, this.SortControl.SelectedValue);
+                  
+            ArrayList CommentsFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.CommentsFilter, null);
+            string CommentsFilterSessionString = "";
+            if (CommentsFilterselectedFilterItemList != null){
+                foreach (string item in CommentsFilterselectedFilterItemList){
+                    CommentsFilterSessionString = String.Concat(CommentsFilterSessionString ,"," , item);
+                }
+            }
+            this.SaveToSession(this.CommentsFilter, CommentsFilterSessionString);
                   
             
                     
@@ -1879,8 +2410,17 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         {
             // Save filter controls to values to session.
           
-      this.SaveToSession("Search_Ajax", this.Search.Text);
-              
+            this.SaveToSession(this.SortControl, this.SortControl.SelectedValue);
+                  
+            ArrayList CommentsFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.CommentsFilter, null);
+            string CommentsFilterSessionString = "";
+            if (CommentsFilterselectedFilterItemList != null){
+                foreach (string item in CommentsFilterselectedFilterItemList){
+                    CommentsFilterSessionString = String.Concat(CommentsFilterSessionString ,"," , item);
+                }
+            }
+            this.SaveToSession("CommentsFilter_Ajax", CommentsFilterSessionString);
+          
            HttpContext.Current.Session["AppRelativeVirtualPath"] = this.Page.AppRelativeVirtualPath;
          
         }
@@ -1891,7 +2431,8 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             base.ClearControlsFromSession();
             // Clear filter controls values from the session.
         
-            this.RemoveFromSession(this.Search);
+            this.RemoveFromSession(this.SortControl);
+            this.RemoveFromSession(this.CommentsFilter);
             
             // Clear pagination state from session.
          
@@ -1909,7 +2450,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         {
             base.LoadViewState(savedState);
 
-            string orderByStr = (string)ViewState["SelectorTableControl_OrderBy"];
+            string orderByStr = (string)ViewState["LocationsTableControl_OrderBy"];
           
             if (orderByStr != null && orderByStr.Length > 0) {
                 this.CurrentSortOrder = BaseClasses.Data.OrderBy.FromXmlString(orderByStr);
@@ -1960,7 +2501,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         {            
           
             if (this.CurrentSortOrder != null) {
-                this.ViewState["SelectorTableControl_OrderBy"] = this.CurrentSortOrder.ToXmlString();
+                this.ViewState["LocationsTableControl_OrderBy"] = this.CurrentSortOrder.ToXmlString();
             }
           
 
@@ -1977,52 +2518,60 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
         // Generate set method for buttons
         
-        public virtual void SetSearchButton()                
-              
-        {
-        
-   
-        }
-            
         public virtual void SetAddButton()                
               
         {
         
-              try
-              {
-                    string url = "../Locations/Add-Locations.aspx?SaveAndNewVisible=False";
-              
-                      
-                    url = this.ModifyRedirectUrl(url, "", true);
-                    
-                    url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-                    
-                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("NewWindow") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(MiscUtils.FindControlRecursively(this, "SelectorTableControl_PostbackTracker").ClientID);                           
-                                
-                string javascriptCall = "";
-                
-                    javascriptCall = "initializeNewWindow(document.getElementById('" + MiscUtils.FindControlRecursively(this, "SelectorTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                  
-                       
-                    this.AddButton.Button.Attributes["onClick"] = javascriptCall + "return false;";            
-                }
-                catch
-                {
-                    // do nothing.  If the code above fails, server side click event, AddButton_ClickAddButton_Click will be trigger when user click the button.
-                }
-                  
    
         }
             
-        public virtual void SetClearButton()                
+        public virtual void SetDeleteButton()                
               
         {
         
    
         }
             
-        public virtual void SetCommitButton()                
+        public virtual void SetResetButton()                
               
         {
+        
+   
+        }
+            
+        public virtual void SetSaveButton()                
+              
+        {
+        
+                    this.SaveButton.Attributes.Add("onclick", "SubmitHRefOnce(this, \"" + this.Page.GetResourceValue("Txt:SaveRecord", "RatTrap") + "\");");
+                  
+   
+        }
+            
+        public virtual void SetActionsButton()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetFilterButton()                
+              
+        {
+        
+   
+        }
+            
+        public virtual void SetFiltersButton()                
+              
+        {
+                
+         IThemeButtonWithArrow themeButtonFiltersButton = (IThemeButtonWithArrow)(MiscUtils.FindControlRecursively(this, "FiltersButton"));
+         themeButtonFiltersButton.ArrowImage.ImageUrl = "../Images/ButtonExpandArrow.png";
+    
+      
+            if (MiscUtils.IsValueSelected(CommentsFilter))
+                themeButtonFiltersButton.ArrowImage.ImageUrl = "../Images/ButtonCheckmark.png";
         
    
         }
@@ -2157,7 +2706,169 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         // Generate the event handling functions for button events.
         
         // event handler for ImageButton
-        public virtual void SearchButton_Click(object sender, ImageClickEventArgs args)
+        public virtual void AddButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+            this.AddNewRecord = 1;
+            this.DataChanged = true;
+      
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void DeleteButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+            if (!this.Page.IsPageRefresh) {
+        
+                this.DeleteSelectedRecords(true);
+                this.SetFormulaControls();
+          
+            }
+      
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void ResetButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                
+              this.CommentsFilter.ClearSelection();
+            
+           
+            this.SortControl.ClearSelection();
+          
+              this.CurrentSortOrder.Reset();
+              if (this.InSession(this, "Order_By"))
+                  this.CurrentSortOrder = OrderBy.FromXmlString(this.GetFromSession(this, "Order_By", null));
+              else
+              {
+                  this.CurrentSortOrder = new OrderBy(true, false);
+                  
+              }
+                
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+                
+            } catch (Exception ex) {
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+    
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public virtual void SaveButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+        
+              if (!this.Page.IsPageRefresh)
+              {
+                  this.SaveData();
+              }
+
+          this.Page.CommitTransaction(sender);
+          // Set IsNewRecord to False for all records - since everything has been saved and is no longer "new"
+           
+                foreach (LocationsTableControlRow recCtl in this.GetRecordControls()){
+                     
+                    recCtl.IsNewRecord = false;
+                }
+      
+          // Set DeletedRecordsIds to Nothing since we have deleted all pending deletes.
+          
+                this.DeletedRecordIds = null;
+            
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        // event handler for Button
+        public virtual void ActionsButton_Click(object sender, EventArgs args)
+        {
+              
+            try {
+                
+            //This method is initially empty to implement custom click handler.
+      
+            } catch (Exception ex) {
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+    
+        }
+            
+            
+        
+        // event handler for Button
+        public virtual void FilterButton_Click(object sender, EventArgs args)
         {
               
             try {
@@ -2179,98 +2890,13 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             
         
         // event handler for Button
-        public virtual void AddButton_Click(object sender, EventArgs args)
+        public virtual void FiltersButton_Click(object sender, EventArgs args)
         {
               
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Locations/Add-Locations.aspx?SaveAndNewVisible=False";
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
+            try {
+                
+            //This method is initially empty to implement custom click handler.
       
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-                url = this.Page.ModifyRedirectUrl(url, "",true);
-              
-            string[] parameters = "Target,IndexField,Formula,DFKA".Split(',');
-            string paramString = "";
-            if (parameters.Length > 0)
-            {
-                foreach(string param in parameters)
-                {
-                    if (Page.Request[param] != "")
-                        paramString += "&" + param + "=" + Page.Request[param];
-                }  
-                paramString = paramString.TrimStart('&');                        
-                if (url.Contains("?")) 
-                    url = url + "&" + paramString;
-                else
-                    url = url + "?" + paramString;
-            }
-       
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.Page.ShouldSaveControlsToSession = true;
-      
-                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("NewWindow") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(MiscUtils.FindControlRecursively(this, "SelectorTableControl_PostbackTracker").ClientID);                           
-                                
-                string javascriptCall = "";
-                
-                    javascriptCall = "initializeNewWindow(document.getElementById('" + MiscUtils.FindControlRecursively(this, "SelectorTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                  
-                AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "AddButton_Click", javascriptCall, true);
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for Button
-        public virtual void ClearButton_Click(object sender, EventArgs args)
-        {
-              
-            try {
-                
-            } catch (Exception ex) {
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-    
-            }
-    
-        }
-            
-            
-        
-        // event handler for Button
-        public virtual void CommitButton_Click(object sender, EventArgs args)
-        {
-              
-            try {
-                
             } catch (Exception ex) {
                   this.Page.ErrorOnPage = true;
 
@@ -2289,6 +2915,69 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
         // Generate the event handling functions for filter and search events.
         
+        // event handler for OrderSort
+        protected virtual void SortControl_SelectedIndexChanged(object sender, EventArgs args)
+        {
+              
+                  string SelVal1 = this.SortControl.SelectedValue.ToUpper();
+                  string[] words1 = SelVal1.Split(' ');
+                  if (SelVal1 != "" )
+                  {
+                  SelVal1 = SelVal1.Replace(words1[words1.Length - 1], "").TrimEnd();
+                  foreach (BaseClasses.Data.BaseColumn ColumnNam in LocationsTable.GetColumns())
+                  {
+                  if (ColumnNam.Name.ToUpper().Equals(SelVal1))
+                  {
+                  SelVal1 = ColumnNam.InternalName;
+                  }
+                  }
+                  }
+
+                
+                OrderByItem sd = this.CurrentSortOrder.Find(LocationsTable.GetColumnByName(SelVal1));
+                if (sd == null || this.CurrentSortOrder.Items != null)
+                {
+                // First time sort, so add sort order for Discontinued.
+                if (LocationsTable.GetColumnByName(SelVal1) != null)
+                {
+                  this.CurrentSortOrder.Reset();
+                }
+
+                //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+                if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+                
+                  if (SelVal1 != "--PLEASE_SELECT--" && LocationsTable.GetColumnByName(SelVal1) != null)
+                  {
+                    if (words1[words1.Length - 1].Contains("ASC"))
+                  {
+                  this.CurrentSortOrder.Add(LocationsTable.GetColumnByName(SelVal1),OrderByItem.OrderDir.Asc);
+                    }
+                    else
+                    {
+                      if (words1[words1.Length - 1].Contains("DESC"))
+                  {
+                  this.CurrentSortOrder.Add(LocationsTable.GetColumnByName(SelVal1),OrderByItem.OrderDir.Desc );
+                      }
+                    }
+                  }
+                
+                }
+                this.DataChanged = true;
+              				
+        }
+            
+        // event handler for FieldFilter
+        protected virtual void CommentsFilter_SelectedIndexChanged(object sender, EventArgs args)
+        {
+            // Setting the DataChanged to True results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+            
+           				
+        }
+            
     
         // Generate the event handling functions for others
         	  
@@ -2363,21 +3052,45 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
 
 #region "Helper Properties"
         
-        public RatTrap.UI.IThemeButton AddButton {
+        public RatTrap.UI.IThemeButtonWithArrow ActionsButton {
             get {
-                return (RatTrap.UI.IThemeButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "AddButton");
+                return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ActionsButton");
             }
         }
         
-        public RatTrap.UI.IThemeButton ClearButton {
+        public System.Web.UI.WebControls.ImageButton AddButton {
             get {
-                return (RatTrap.UI.IThemeButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ClearButton");
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "AddButton");
             }
         }
         
-        public RatTrap.UI.IThemeButton CommitButton {
+        public BaseClasses.Web.UI.WebControls.QuickSelector CommentsFilter {
             get {
-                return (RatTrap.UI.IThemeButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommitButton");
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentsFilter");
+            }
+        }              
+        
+        public System.Web.UI.WebControls.Literal CommentsLabel1 {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentsLabel1");
+            }
+        }
+        
+        public System.Web.UI.WebControls.ImageButton DeleteButton {
+            get {
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DeleteButton");
+            }
+        }
+        
+        public RatTrap.UI.IThemeButton FilterButton {
+            get {
+                return (RatTrap.UI.IThemeButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FilterButton");
+            }
+        }
+        
+        public RatTrap.UI.IThemeButtonWithArrow FiltersButton {
+            get {
+                return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "FiltersButton");
             }
         }
         
@@ -2387,18 +3100,42 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             }
         }
         
-        public System.Web.UI.WebControls.TextBox Search {
+        public System.Web.UI.WebControls.ImageButton ResetButton {
             get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Search");
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ResetButton");
             }
         }
         
-        public System.Web.UI.WebControls.ImageButton SearchButton {
+        public System.Web.UI.WebControls.ImageButton SaveButton {
             get {
-                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SearchButton");
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SaveButton");
             }
         }
         
+        public System.Web.UI.WebControls.Label SortByLabel {
+            get {
+                return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortByLabel");
+            }
+        }
+        
+          public System.Web.UI.WebControls.DropDownList SortControl {
+          get {
+          return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SortControl");
+          }
+          }
+        
+        public System.Web.UI.WebControls.Literal Title0 {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Title0");
+            }
+        }
+        
+        public System.Web.UI.WebControls.CheckBox ToggleAll {
+            get {
+                return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ToggleAll");
+            }
+        }              
+            
 #endregion
 
 #region "Helper Functions"
@@ -2417,7 +3154,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         {
             bool needToProcess = AreAnyUrlParametersForMe(url, arg);
             if (needToProcess) {
-                SelectorTableControlRow recCtl = this.GetSelectedRecordControl();
+                LocationsTableControlRow recCtl = this.GetSelectedRecordControl();
                 if (recCtl == null && url.IndexOf("{") >= 0) {
                     // Localization.
                     throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
@@ -2438,7 +3175,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
         {
             bool needToProcess = AreAnyUrlParametersForMe(url, arg);
             if (needToProcess) {
-                SelectorTableControlRow recCtl = this.GetSelectedRecordControl();
+                LocationsTableControlRow recCtl = this.GetSelectedRecordControl();
                 if (recCtl == null && url.IndexOf("{") >= 0) {
                     // Localization.
                     throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
@@ -2462,29 +3199,52 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             return url;
         }
           
-        public virtual SelectorTableControlRow GetSelectedRecordControl()
+        public virtual int GetSelectedRecordIndex()
         {
+            int counter = 0;
+            foreach (LocationsTableControlRow recControl in this.GetRecordControls())
+            {
+                if (recControl.SelectRow.Checked) {
+                    return counter;
+                }
+                counter += 1;
+            }
+            return -1;
+        }
         
+        public virtual LocationsTableControlRow GetSelectedRecordControl()
+        {
+        LocationsTableControlRow[] selectedList = this.GetSelectedRecordControls();
+            if (selectedList.Length == 0) {
             return null;
+            }
+            return selectedList[0];
           
         }
 
-        public virtual SelectorTableControlRow[] GetSelectedRecordControls()
+        public virtual LocationsTableControlRow[] GetSelectedRecordControls()
         {
         
-            return (SelectorTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Locations_QuickSelector.SelectorTableControlRow")));
+            ArrayList selectedList = new ArrayList(25);
+            foreach (LocationsTableControlRow recControl in this.GetRecordControls())
+            {
+                if (recControl.SelectRow != null && recControl.SelectRow.Checked) {
+                    selectedList.Add(recControl);
+                }
+            }
+            return (LocationsTableControlRow[])(selectedList.ToArray(Type.GetType("RatTrap.UI.Controls.Edit_Locations_Table1.LocationsTableControlRow")));
           
         }
 
         public virtual void DeleteSelectedRecords(bool deferDeletion)
         {
-            SelectorTableControlRow[] recordList = this.GetSelectedRecordControls();
+            LocationsTableControlRow[] recordList = this.GetSelectedRecordControls();
             if (recordList.Length == 0) {
                 // Localization.
                 throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
             }
             
-            foreach (SelectorTableControlRow recCtl in recordList)
+            foreach (LocationsTableControlRow recCtl in recordList)
             {
                 if (deferDeletion) {
                     if (!recCtl.IsNewRecord) {
@@ -2493,6 +3253,8 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
                   
                     }
                     recCtl.Visible = false;
+                
+                    recCtl.SelectRow.Checked = false;
                 
                 } else {
                 
@@ -2507,11 +3269,11 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             }
         }
 
-        public virtual SelectorTableControlRow[] GetRecordControls()
+        public virtual LocationsTableControlRow[] GetRecordControls()
         {
-            Control[] recCtrls = BaseClasses.Utils.MiscUtils.FindControlsRecursively(this, "SelectorTableControlRow");
-	          List<SelectorTableControlRow> list = new List<SelectorTableControlRow>();
-	          foreach (SelectorTableControlRow recCtrl in recCtrls) {
+            Control[] recCtrls = BaseClasses.Utils.MiscUtils.FindControlsRecursively(this, "LocationsTableControlRow");
+	          List<LocationsTableControlRow> list = new List<LocationsTableControlRow>();
+	          foreach (LocationsTableControlRow recCtrl in recCtrls) {
 		          list.Add(recCtrl);
 	          }
 	          return list.ToArray();
@@ -2524,78 +3286,6 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             }
         }
         
-                
-        private System.Collections.Generic.Dictionary<int, string> _QuickSelectorDisplayText;
-        /// <summary>
-        /// Get the quick selector display text in rows by passing the row object
-        /// </summary>
-        /// <param name="row">row object</param>
-        /// <returns>text to display on quick selector row</returns>
-        /// <remarks></remarks>
-        public string GetQuickSelectorDisplayText(SelectorTableControlRow row)
-        {
-              if (_QuickSelectorDisplayText == null) {
-	              _QuickSelectorDisplayText = new System.Collections.Generic.Dictionary<int, string>();
-	              string displayText = "";
-	              List<string> displayTextInUsed = new List<string>();
-	              System.Collections.Generic.Dictionary<int, string> displayTextWithID = new System.Collections.Generic.Dictionary<int, string>();
-
-	              // Go through all record object and figure the display text from URL parameters
-	              for (int i = 0; i <= this.DataSource.Length - 1; i++) {
-		              BaseRecord r = (BaseRecord)this.DataSource[i];
-		              displayText = "";
-		              if (!string.IsNullOrEmpty(this.Page.Request["Formula"])) {
-			              displayText = BaseFormulaUtils.EvaluateFormula(this.Page.GetDecryptedURLParameter("Formula"), r);
-		              } else if (!string.IsNullOrEmpty(this.Page.Request["DFKA"])) {
-			              BaseColumn col = r.TableAccess.TableDefinition.ColumnList.GetByAnyName(this.Page.GetDecryptedURLParameter("DFKA"));
-			              displayText = r.GetValue(col).ToString();
-		              }
-		              if (string.IsNullOrEmpty(displayText) && !string.IsNullOrEmpty(this.Page.Request["IndexField"])) {
-			              BaseColumn col = r.TableAccess.TableDefinition.ColumnList.GetByAnyName(this.Page.GetDecryptedURLParameter("IndexField"));
-			              displayText = r.GetValue(col).ToString();
-		              }
-		              _QuickSelectorDisplayText.Add(i, displayText);
-
-
-		              if (!string.IsNullOrEmpty(this.Page.Request["IndexField"])) {
-			              // if the display text is used for more than one time, get the display text that shows the ID
-			              if (displayTextInUsed.Contains(displayText)) {
-				              System.Collections.Generic.Dictionary<int, string>.Enumerator enumerator = _QuickSelectorDisplayText.GetEnumerator();
-				              while (enumerator.MoveNext()) {
-					              if (enumerator.Current.Value == displayText) {
-						              BaseColumn col = r.TableAccess.TableDefinition.ColumnList.GetByAnyName(this.Page.GetDecryptedURLParameter("IndexField"));
-						              string id = this.DataSource[enumerator.Current.Key].GetValue(col).ToString();
-						              if (!string.IsNullOrEmpty(id)) {
-							              if (displayTextWithID.ContainsKey(enumerator.Current.Key)) {
-								              displayTextWithID[enumerator.Current.Key] = enumerator.Current.Value + " (" + id + ")";
-							              } else {
-								              displayTextWithID.Add(enumerator.Current.Key, enumerator.Current.Value + " (" + id + ")");
-							              }
-						              }
-					              }
-				              }
-			              } 
-                    else {
-				              displayTextInUsed.Add(displayText);
-			              }
-		              }
-	              }
-
-	              // merge the result
-	              System.Collections.Generic.Dictionary<int, string>.Enumerator enumerator2 = displayTextWithID.GetEnumerator();
-	              while (enumerator2.MoveNext()) {
-		              _QuickSelectorDisplayText[enumerator2.Current.Key] = enumerator2.Current.Value;
-	              }
-
-              }
-              int index = 0;
-              for (int i = 0; i <= this.DataSource.Length - 1; i++) {
-	              if (object.ReferenceEquals(this.DataSource[i], row.DataSource)) {
-		              index = i;
-	              }
-              }
-              return _QuickSelectorDisplayText[index];
-        }                 
                 
 
         

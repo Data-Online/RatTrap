@@ -2809,9 +2809,11 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                         
               this.BaitType.SelectedIndexChanged += BaitType_SelectedIndexChanged;
             
+              this.Species.SelectedIndexChanged += Species_SelectedIndexChanged;
+            
               this.Sex.SelectedIndexChanged += Sex_SelectedIndexChanged;
             
-              this.Species.SelectedIndexChanged += Species_SelectedIndexChanged;
+              this.Comment.TextChanged += Comment_TextChanged;
             
               this.DateOfCheck.TextChanged += DateOfCheck_TextChanged;
             
@@ -2871,6 +2873,8 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             // Call the Set methods for each controls on the panel
         
                 SetBaitType();
+                SetComment();
+                SetCommentLabel();
                 SetDateOfCheck();
                 
                 
@@ -2963,6 +2967,48 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                   
         }
                 
+        public virtual void SetComment()
+        {
+            
+            // If data was retrieved from UI previously, restore it
+            if (this.PreviousUIData.ContainsKey(this.Comment.ID))
+            {
+            
+                this.Comment.Text = this.PreviousUIData[this.Comment.ID].ToString();
+              
+                return;
+            }
+            
+                    
+            // Set the Comment TextBox on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
+            // this.Comment is the ASP:TextBox on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.CommentSpecified) {
+                								
+                // If the Comment is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(TrapRecordsTable.Comment);
+                                
+                this.Comment.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Comment is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Comment.Text = TrapRecordsTable.Comment.Format(TrapRecordsTable.Comment.DefaultValue);
+            		
+            }
+            
+              this.Comment.TextChanged += Comment_TextChanged;
+                               
+        }
+                
         public virtual void SetDateOfCheck()
         {
             
@@ -3025,11 +3071,11 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             }
             
             
-            // Set the Sex DropDownList on the webpage with value from the
+            // Set the Sex RadioButtonList on the webpage with value from the
             // DatabaseTheRatTrap%dbo.TrapRecords database record.
             
             // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Sex is the ASP:DropDownList on the webpage.
+            // this.Sex is the ASP:RadioButtonList on the webpage.
             
             // You can modify this method directly, or replace it with a call to
             //     base.SetSex();
@@ -3059,7 +3105,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                   
             // Populate the item(s) to the control
             
-            this.PopulateSexDropDownList(selectedValue, 100);              
+            this.PopulateSexRadioButtonList(selectedValue, 100);              
                 
                   
         }
@@ -3121,6 +3167,12 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             this.PopulateSpeciesDropDownList(selectedValue, 100);              
                 
                   
+        }
+                
+        public virtual void SetCommentLabel()
+                  {
+                  
+                    
         }
                 
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
@@ -3292,6 +3344,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             // Call the Get methods for each of the user interface controls.
         
             GetBaitType();
+            GetComment();
             GetDateOfCheck();
             GetSex();
             GetSpecies();
@@ -3307,6 +3360,20 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             
             this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.BaitType), TrapRecordsTable.BaitType);			
                 			 
+        }
+                
+        public virtual void GetComment()
+        {
+            
+            // Retrieve the value entered by the user on the Comment ASP:TextBox, and
+            // save it into the Comment field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
+            
+            // Custom validation should be performed in Validate, not here.
+                    
+            // Save the value to data source
+            this.DataSource.Parse(this.Comment.Text, TrapRecordsTable.Comment);							
+                          
+                      
         }
                 
         public virtual void GetDateOfCheck()
@@ -3328,7 +3395,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 
         public virtual void GetSex()
         {
-         // Retrieve the value entered by the user on the Sex ASP:DropDownList, and
+         // Retrieve the value entered by the user on the Sex ASP:RadioButtonList, and
             // save it into the Sex field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
             
             // Custom validation should be performed in Validate, not here.
@@ -3509,7 +3576,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             				
         }
         
-        public virtual WhereClause CreateWhereClause_SexDropDownList() 
+        public virtual WhereClause CreateWhereClause_SexRadioButtonList() 
         {
             // By default, we simply return a new WhereClause.
             // Add additional where clauses to restrict the items shown in the dropdown list.
@@ -3682,21 +3749,18 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         }
                   
         // Fill the Sex list.
-        protected virtual void PopulateSexDropDownList(string selectedValue, int maxItems) 
+        protected virtual void PopulateSexRadioButtonList(string selectedValue, int maxItems) 
         {
             		  					                
             this.Sex.Items.Clear();
             
             // 1. Setup the static list items        
-            
-              // Add the Please Select item.
-              this.Sex.Items.Insert(0, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
             		  			
-            // 2. Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_SexDropDownList function.
+            // 2. Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_SexRadioButtonList function.
             // It is better to customize the where clause there.
             
                       
-            WhereClause wc = CreateWhereClause_SexDropDownList();
+            WhereClause wc = CreateWhereClause_SexRadioButtonList();
                         
                 
             // Create the ORDER BY clause to sort based on the displayed value.							
@@ -3707,7 +3771,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object> ();
             FormulaEvaluator evaluator = new FormulaEvaluator();
 
-            // 3. Read a total of maxItems from the database and insert them into the SexDropDownList.
+            // 3. Read a total of maxItems from the database and insert them into the SexRadioButtonList.
             SexRecord[] itemValues  = null;
             if (wc.RunQuery)
             {
@@ -3831,9 +3895,8 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             
             // 1. Setup the static list items        
             
-              // Add the Please Select item.
-              this.Species.Items.Insert(0, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-            		  			
+                this.Species.Items.Add(new ListItem(this.Page.ExpandResourceValue("{Txt:PleaseSelect}"), "--PLEASE_SELECT--"));
+              		  			
             // 2. Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_SpeciesDropDownList function.
             // It is better to customize the where clause there.
             
@@ -4064,6 +4127,21 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
            						
         }
             
+        protected virtual void Species_SelectedIndexChanged(object sender, EventArgs args)
+        {
+            // for the value inserted by quick add button or large list selector, 
+            // the value is necessary to be inserted by this event during postback 
+            string val = (string)(this.Page.Session[Species.ClientID + "_SelectedValue"]);
+            string displayText = (string)(this.Page.Session[Species.ClientID + "_SelectedDisplayText"]);
+            if (!string.IsNullOrEmpty(displayText) && !string.IsNullOrEmpty(val)) {
+	            this.Species.Items.Add(new ListItem(displayText, val));
+	            this.Species.SelectedIndex = this.Species.Items.Count - 1;
+	            this.Page.Session.Remove(Species.ClientID + "_SelectedValue");
+	            this.Page.Session.Remove(Species.ClientID + "_SelectedDisplayText");
+            }
+           						
+        }
+            
         protected virtual void Sex_SelectedIndexChanged(object sender, EventArgs args)
         {
             // for the value inserted by quick add button or large list selector, 
@@ -4079,20 +4157,10 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
            						
         }
             
-        protected virtual void Species_SelectedIndexChanged(object sender, EventArgs args)
+        protected virtual void Comment_TextChanged(object sender, EventArgs args)
         {
-            // for the value inserted by quick add button or large list selector, 
-            // the value is necessary to be inserted by this event during postback 
-            string val = (string)(this.Page.Session[Species.ClientID + "_SelectedValue"]);
-            string displayText = (string)(this.Page.Session[Species.ClientID + "_SelectedDisplayText"]);
-            if (!string.IsNullOrEmpty(displayText) && !string.IsNullOrEmpty(val)) {
-	            this.Species.Items.Add(new ListItem(displayText, val));
-	            this.Species.SelectedIndex = this.Species.Items.Count - 1;
-	            this.Page.Session.Remove(Species.ClientID + "_SelectedValue");
-	            this.Page.Session.Remove(Species.ClientID + "_SelectedDisplayText");
-            }
-           						
-        }
+                    
+              }
             
         protected virtual void DateOfCheck_TextChanged(object sender, EventArgs args)
         {
@@ -4194,6 +4262,18 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             }
         }
             
+        public System.Web.UI.WebControls.TextBox Comment {
+            get {
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Comment");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal CommentLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentLabel");
+            }
+        }
+        
         public System.Web.UI.WebControls.TextBox DateOfCheck {
             get {
                 return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DateOfCheck");
@@ -4218,9 +4298,9 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             }
         }              
             
-        public System.Web.UI.WebControls.DropDownList Sex {
+        public System.Web.UI.WebControls.RadioButtonList Sex {
             get {
-                return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Sex");
+                return (System.Web.UI.WebControls.RadioButtonList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Sex");
             }
         }
             
@@ -5390,6 +5470,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                         if (MiscUtils.IsValueSelected(recControl.BaitType)) {
                             rec.Parse(recControl.BaitType.SelectedItem.Value, TrapRecordsTable.BaitType);
                         }
+                        if (recControl.Comment.Text != "") {
+                            rec.Parse(recControl.Comment.Text, TrapRecordsTable.Comment);
+                  }
+                
                         if (recControl.DateOfCheck.Text != "") {
                             rec.Parse(recControl.DateOfCheck.Text, TrapRecordsTable.DateOfCheck);
                   }
@@ -5618,10 +5702,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
               
-                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Ascending}"), "Comments Asc"));
-              
-                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Descending}"), "Comments Desc"));
-              
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Ascending}"), "LocationId Asc"));
               
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Descending}"), "LocationId Desc"));
@@ -5633,6 +5713,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Ascending}"), "ProjectId Asc"));
               
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comment {Txt:Ascending}"), "Comment Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comment {Txt:Descending}"), "Comment Desc"));
               
             try
             {          
@@ -7141,11 +7225,13 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
               // Register the event handlers.
 
           
+                    this.ImageButton.Click += ImageButton_Click;
+                        
               this.LocationId.SelectedIndexChanged += LocationId_SelectedIndexChanged;                  
                 
-              this.TrapTypeId.SelectedIndexChanged += TrapTypeId_SelectedIndexChanged;                  
-                
               this.ProjectId.SelectedIndexChanged += ProjectId_SelectedIndexChanged;
+            
+              this.TrapTypeId.SelectedIndexChanged += TrapTypeId_SelectedIndexChanged;
             
               this.Active.CheckedChanged += Active_CheckedChanged;
             
@@ -7243,6 +7329,7 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 SetActive();
                 SetActiveLabel();
                 SetGroupId1();
+                
                 SetLocationId();
                 SetLocationIdLabel();
                 SetProjectId();
@@ -7252,6 +7339,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 SetTrapIdentifierLabel();
                 SetTrapTypeId();
                 SetTrapTypeIdLabel();
+                SetImageButton();
+              
 
       
 
@@ -7561,11 +7650,11 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                   
             
             
-            // Set the TrapTypeId QuickSelector on the webpage with value from the
+            // Set the TrapTypeId DropDownList on the webpage with value from the
             // DatabaseTheRatTrap%dbo.Traps database record.
             
             // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
-            // this.TrapTypeId is the ASP:QuickSelector on the webpage.
+            // this.TrapTypeId is the ASP:DropDownList on the webpage.
             
             // You can modify this method directly, or replace it with a call to
             //     base.SetTrapTypeId();
@@ -7591,70 +7680,11 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                     selectedValue = TrapsTable.TrapTypeId.DefaultValue;
                 				
             }			
-                
-            // Add the Please Select item.
-            if (selectedValue == null || selectedValue == "")
-                  MiscUtils.ResetSelectedItem(this.TrapTypeId, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-                        
+                            
                   
             // Populate the item(s) to the control
             
-            this.TrapTypeId.SetFieldMaxLength(50);
-            
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
-            FormulaEvaluator evaluator = new FormulaEvaluator();
-              
-            if (selectedValue != null &&
-                selectedValue.Trim() != "" &&
-                !MiscUtils.SetSelectedValue(this.TrapTypeId, selectedValue) &&
-                !MiscUtils.SetSelectedDisplayText(this.TrapTypeId, selectedValue))
-            {
-
-                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.TrapTypes.TrapTypeId = selectedValue
-                    
-                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
-                WhereClause whereClause2 = new WhereClause();
-                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(TrapTypesTable.TrapTypeId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
-                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
-
-                // Execute the query
-                try
-                {
-                    TrapTypesRecord[] rc = TrapTypesTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
-                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
-                    // if find a record, add it to the dropdown and set it as selected item
-                    if (rc != null && rc.Length == 1)
-                    {
-                        TrapTypesRecord itemValue = rc[0];
-                        string cvalue = null;
-                        string fvalue = null;                        
-                        if (itemValue.TrapTypeIdSpecified)
-                            cvalue = itemValue.TrapTypeId.ToString(); 
-                        Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapTypeId);
-                        if(_isExpandableNonCompositeForeignKey && TrapsTable.TrapTypeId.IsApplyDisplayAs)
-                            fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.TrapTypeId);
-                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(TrapTypesTable.TrapType);
-                            					
-                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-                        MiscUtils.ResetSelectedItem(this.TrapTypeId, new ListItem(fvalue, cvalue));                      
-                    }
-                }
-                catch
-                {
-                }
-
-                    					
-            }					
-                        
-              string url = this.ModifyRedirectUrl("../TrapTypes/TrapTypes-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.TrapTypeId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("TrapType")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapTypeId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.TrapTypeId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(TrapTypeId.AutoPostBack).ToLower() + ", event); return false;";
-                  
+            this.PopulateTrapTypeIdDropDownList(selectedValue, 100);              
                 
                   
         }
@@ -7925,7 +7955,7 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 
         public virtual void GetTrapTypeId()
         {
-         // Retrieve the value entered by the user on the TrapTypeId ASP:QuickSelector, and
+         // Retrieve the value entered by the user on the TrapTypeId ASP:DropDownList, and
             // save it into the TrapTypeId field in DataSource DatabaseTheRatTrap%dbo.Traps record.
             
             // Custom validation should be performed in Validate, not here.
@@ -8266,6 +8296,15 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
     
         // Generate set method for buttons
         
+        public virtual void SetImageButton()                
+              
+        {
+        
+                    this.ImageButton.Attributes.Add("onclick", "SubmitHRefOnce(this, \"" + this.Page.GetResourceValue("Txt:SaveRecord", "RatTrap") + "\");");
+                  
+   
+        }
+            
         public virtual WhereClause CreateWhereClause_ProjectIdDropDownList() 
         {
             // By default, we simply return a new WhereClause.
@@ -8283,6 +8322,21 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
     
             return whereClause;				
+        }
+        
+        public virtual WhereClause CreateWhereClause_TrapTypeIdDropDownList() 
+        {
+            // By default, we simply return a new WhereClause.
+            // Add additional where clauses to restrict the items shown in the dropdown list.
+            						
+            // This WhereClause is for the DatabaseTheRatTrap%dbo.TrapTypes table.
+            // Examples:
+            // wc.iAND(TrapTypesTable.TrapType, BaseFilter.ComparisonOperator.EqualsTo, "XYZ");
+            // wc.iAND(TrapTypesTable.Active, BaseFilter.ComparisonOperator.EqualsTo, "1");
+            
+            WhereClause wc = new WhereClause();
+            return wc;
+            				
         }
         
         // Fill the ProjectId list.
@@ -8430,14 +8484,180 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                         
         }
                   
-        protected virtual void LocationId_SelectedIndexChanged(object sender, EventArgs args)
+        // Fill the TrapTypeId list.
+        protected virtual void PopulateTrapTypeIdDropDownList(string selectedValue, int maxItems) 
         {
-          									
-
-        }
+            		  					                
+            this.TrapTypeId.Items.Clear();
+            
+            // 1. Setup the static list items        
+            
+              // Add the Please Select item.
+              this.TrapTypeId.Items.Insert(0, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+            		  			
+            // 2. Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_TrapTypeIdDropDownList function.
+            // It is better to customize the where clause there.
+            
                       
+            WhereClause wc = CreateWhereClause_TrapTypeIdDropDownList();
+                        
+                
+            // Create the ORDER BY clause to sort based on the displayed value.							
+                
+            OrderBy orderBy = new OrderBy(false, false);
+                          orderBy.Add(TrapTypesTable.TrapType, OrderByItem.OrderDir.Asc);
+
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object> ();
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+
+            // 3. Read a total of maxItems from the database and insert them into the TrapTypeIdDropDownList.
+            TrapTypesRecord[] itemValues  = null;
+            if (wc.RunQuery)
+            {
+                int counter = 0;
+                int pageNum = 0;	
+                ArrayList listDuplicates = new ArrayList();
+
+                do
+                {
+                    itemValues = TrapTypesTable.GetRecords(wc, orderBy, pageNum, maxItems);
+                    foreach (TrapTypesRecord itemValue in itemValues) 
+                    {
+                        // Create the item and add to the list.
+                        string cvalue = null;
+                        string fvalue = null;
+                        if (itemValue.TrapTypeIdSpecified) 
+                        {
+                            cvalue = itemValue.TrapTypeId.ToString().ToString();
+                            if (counter < maxItems && this.TrapTypeId.Items.FindByValue(cvalue) == null)
+                            {
+                                     
+                                Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapTypeId);
+                                if(_isExpandableNonCompositeForeignKey && TrapsTable.TrapTypeId.IsApplyDisplayAs)
+                                    fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.TrapTypeId);
+                                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                                    fvalue = itemValue.Format(TrapTypesTable.TrapType);
+                                    		
+
+                                if (fvalue == null || fvalue.Trim() == "") 
+                                    fvalue = cvalue;
+
+                                if (fvalue == null) {
+                                    fvalue = "";
+                                }
+
+                                fvalue = fvalue.Trim();
+
+                                if ( fvalue.Length > 50 ) {
+                                    fvalue = fvalue.Substring(0, 50) + "...";
+                                }
+
+                                ListItem dupItem = this.TrapTypeId.Items.FindByText(fvalue);
+								
+                                if (dupItem != null) {
+                                    listDuplicates.Add(fvalue);
+                                    if (!string.IsNullOrEmpty(dupItem.Value))
+                                    {
+                                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
+                                    }
+                                }
+
+                                ListItem newItem = new ListItem(fvalue, cvalue);
+                                this.TrapTypeId.Items.Add(newItem);
+
+                                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
+                                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
+                                }
+
+                                counter += 1;
+                            }
+                        }
+                    }
+                    pageNum++;
+                }
+                while (itemValues.Length == maxItems && counter < maxItems);
+            }
+                        
+                                        
+            // 4. Set the selected value (insert if not already present).
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.TrapTypeId, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.TrapTypeId, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.TrapTypes.TrapTypeId = selectedValue
                     
-        protected virtual void TrapTypeId_SelectedIndexChanged(object sender, EventArgs args)
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(TrapTypesTable.TrapTypeId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    TrapTypesRecord[] rc = TrapTypesTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        TrapTypesRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.TrapTypeIdSpecified)
+                            cvalue = itemValue.TrapTypeId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapTypeId);
+                        if(_isExpandableNonCompositeForeignKey && TrapsTable.TrapTypeId.IsApplyDisplayAs)
+                            fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.TrapTypeId);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(TrapTypesTable.TrapType);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.TrapTypeId, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+        }
+                  
+        // event handler for ImageButton
+        public virtual void ImageButton_Click(object sender, ImageClickEventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+        
+              if (!this.Page.IsPageRefresh)
+              {
+                  this.Page.SaveData();
+              }
+
+          this.Page.CommitTransaction(sender);
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        protected virtual void LocationId_SelectedIndexChanged(object sender, EventArgs args)
         {
           									
 
@@ -8455,6 +8675,21 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
 	            this.ProjectId.SelectedIndex = this.ProjectId.Items.Count - 1;
 	            this.Page.Session.Remove(ProjectId.ClientID + "_SelectedValue");
 	            this.Page.Session.Remove(ProjectId.ClientID + "_SelectedDisplayText");
+            }
+           						
+        }
+            
+        protected virtual void TrapTypeId_SelectedIndexChanged(object sender, EventArgs args)
+        {
+            // for the value inserted by quick add button or large list selector, 
+            // the value is necessary to be inserted by this event during postback 
+            string val = (string)(this.Page.Session[TrapTypeId.ClientID + "_SelectedValue"]);
+            string displayText = (string)(this.Page.Session[TrapTypeId.ClientID + "_SelectedDisplayText"]);
+            if (!string.IsNullOrEmpty(displayText) && !string.IsNullOrEmpty(val)) {
+	            this.TrapTypeId.Items.Add(new ListItem(displayText, val));
+	            this.TrapTypeId.SelectedIndex = this.TrapTypeId.Items.Count - 1;
+	            this.Page.Session.Remove(TrapTypeId.ClientID + "_SelectedValue");
+	            this.Page.Session.Remove(TrapTypeId.ClientID + "_SelectedDisplayText");
             }
            						
         }
@@ -8599,6 +8834,12 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             }
         }
             
+        public System.Web.UI.WebControls.ImageButton ImageButton {
+            get {
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ImageButton");
+            }
+        }
+        
         public BaseClasses.Web.UI.WebControls.QuickSelector LocationId {
             get {
                 return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationId");
@@ -8641,11 +8882,11 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             }
         }
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector TrapTypeId {
+        public System.Web.UI.WebControls.DropDownList TrapTypeId {
             get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeId");
+                return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeId");
             }
-        }              
+        }
             
         public System.Web.UI.WebControls.Literal TrapTypeIdLabel {
             get {

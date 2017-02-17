@@ -3,19 +3,18 @@
   <Generator>Iron Speed Designer</Generator>
   <Version>12.2.0</Version>
   <Self>
-    <Name>Show-Traps-Table</Name>
+    <Name>Show-Locations-Table</Name>
     <Type>Page</Type>
     <SubType>DotNet</SubType>
     <MasterLayout>../Master Pages/HorizontalMenu.master</MasterLayout>
     <NewWindowMasterLayout>../Master Pages/Blank.master</NewWindowMasterLayout>
     <PopupMasterLayout>../Master Pages/Popup.master</PopupMasterLayout>
     <PopupCssClass>QPageSize</PopupCssClass>
-    <GenerateDirectory>Traps</GenerateDirectory>
-    <Layout>Traps\Show-Traps-Table.html</Layout>
-    <DisplayName>Show-Traps-Table</DisplayName>
+    <GenerateDirectory>Locations</GenerateDirectory>
+    <Layout>Locations\Show-Locations-Table.html</Layout>
+    <DisplayName>Show-Locations-Table</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
-    <CheckSum>-185855413-44975</CheckSum>
+    <CheckSum>-1467022318-37765</CheckSum>
   </Self>
   <ComposedOf>
     <ContainedComponent>
@@ -50,14 +49,101 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Active</Name>
+      <Type>FieldValue</Type>
+      <Field>Active</Field>
+      <FieldValueStyle>Literal</FieldValueStyle>
+      <Table>DatabaseTheRatTrap%dbo.Traps</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FieldMaxLength</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>HTMLEncodeValue</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplySaveToField</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NullValueText</Name>
+          <Value>&amp;nbsp;</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupDisplay</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupThreshold</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowHeight</Name>
+          <Value>200</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowPersist</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowScrollBar</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowTitle</Name>
+          <Value>%ISD_DEFAULT%</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowWidth</Name>
+          <Value>300</Value>
+        </Attribute>
+        <Attribute>
+          <Name>TextFormat</Name>
+          <Value>{0}</Value>
+        </Attribute>
+      </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>BaitType</Name>
+      <Name>ActiveLabel</Name>
+      <Type>Literal</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>TrapsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Field</Name>
+          <Value>Active</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.Traps</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Traps%Active</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Comments</Name>
       <Type>FieldValue</Type>
-      <Field>BaitType</Field>
+      <Field>Comments</Field>
       <FieldValueStyle>Literal</FieldValueStyle>
-      <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
+      <Table>DatabaseTheRatTrap%dbo.Locations</Table>
       <PassthroughAttributes>
         <Attribute>
           <Name>FieldMaxLength</Name>
@@ -112,119 +198,105 @@
           <Value>{0}</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>BaitTypeLabel</Name>
-      <Type>Literal</Type>
+      <Name>CommentsFilter</Name>
+      <Type>FieldFilter</Type>
+      <FieldValueStyle>QuickSelector</FieldValueStyle>
       <PassthroughAttributes>
         <Attribute>
           <Name>Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
+          <Value>LocationsTableControl</Value>
         </Attribute>
         <Attribute>
-          <Name>InternalUse:Field</Name>
-          <Value>BaitType</Value>
+          <Name>EnterKeyCaptureToButton</Name>
+          <Value>FilterButton</Value>
         </Attribute>
         <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.TrapRecords</Value>
+          <Name>Field</Name>
+          <Value>Comments</Value>
         </Attribute>
         <Attribute>
-          <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.TrapRecords%BaitType</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>DateOfCheck</Name>
-      <Type>FieldValue</Type>
-      <Field>DateOfCheck</Field>
-      <FieldValueStyle>Literal</FieldValueStyle>
-      <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>FieldMaxLength</Name>
-          <Value>Default</Value>
+          <Name>FilterOperator</Name>
+          <Value>=</Value>
         </Attribute>
         <Attribute>
-          <Name>HTMLEncodeValue</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplySaveToField</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:DataSource</Name>
-          <Value>Parent</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NullValueText</Name>
-          <Value>&amp;nbsp;</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupDisplay</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupThreshold</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowHeight</Name>
-          <Value>200</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowPersist</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowScrollBar</Name>
+          <Name>InternalUse:ApplyInitializeFormula</Name>
           <Value>True</Value>
         </Attribute>
         <Attribute>
-          <Name>PopupWindowTitle</Name>
-          <Value>%ISD_DEFAULT%</Value>
+          <Name>InternalUse:InitializeFormula</Name>
+          <Value>URL("Comments")</Value>
         </Attribute>
         <Attribute>
-          <Name>PopupWindowWidth</Name>
-          <Value>300</Value>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.Locations</Value>
         </Attribute>
         <Attribute>
-          <Name>TextFormat</Name>
-          <Value>{0}</Value>
+          <Name>onkeypress</Name>
+          <Value>dropDownListTypeAhead(this,false)</Value>
+        </Attribute>
+        <Attribute>
+          <Name>RedirectURL</Name>
+          <Value />
+        </Attribute>
+        <Attribute>
+          <Name>SelectionMode</Name>
+          <Value>Single</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
+      <InsideControl>LocationsTableControl</InsideControl>
+      <ControlsToFilter>
+        <ControlToFilter>
+          <Active>true</Active>
+          <ControlName>LocationsTableControl</ControlName>
+        </ControlToFilter>
+      </ControlsToFilter>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>DateOfCheckLabel</Name>
+      <Name>CommentsLabel</Name>
       <Type>Literal</Type>
       <PassthroughAttributes>
         <Attribute>
           <Name>Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
+          <Value>LocationsTableControl</Value>
         </Attribute>
         <Attribute>
           <Name>InternalUse:Field</Name>
-          <Value>DateOfCheck</Value>
+          <Value>Comments</Value>
         </Attribute>
         <Attribute>
           <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.TrapRecords</Value>
+          <Value>DatabaseTheRatTrap%dbo.Locations</Value>
         </Attribute>
         <Attribute>
           <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.TrapRecords%DateOfCheck</Value>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Locations%Comments</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>CommentsLabel1</Name>
+      <Type>Literal</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>InternalUse:Field</Name>
+          <Value>Comments</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.Locations</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Locations%Comments</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>DeleteRowButton</Name>
@@ -245,7 +317,7 @@
         </Attribute>
         <Attribute>
           <Name>Consumers</Name>
-          <Value>TrapsTableControlRow</Value>
+          <Value>LocationsTableControlRow</Value>
         </Attribute>
         <Attribute>
           <Name>CssClass</Name>
@@ -273,7 +345,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
@@ -310,7 +382,7 @@
         </Attribute>
         <Attribute>
           <Name>RedirectURL</Name>
-          <Value>../Traps/Edit-Traps.aspx?Traps={PK}</Value>
+          <Value>../Locations/Edit-Locations.aspx?Locations={PK}</Value>
         </Attribute>
         <Attribute>
           <Name>ToolTip</Name>
@@ -318,7 +390,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
@@ -335,7 +407,7 @@
         </Attribute>
         <Attribute>
           <Name>Consumers</Name>
-          <Value>TrapsTableControl</Value>
+          <Value>LocationsTableControl</Value>
         </Attribute>
         <Attribute>
           <Name>ImageURL</Name>
@@ -359,7 +431,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>ExpandRowButton</Name>
@@ -403,7 +475,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
@@ -421,7 +493,7 @@
         </Attribute>
         <Attribute>
           <Name>Button-Consumers</Name>
-          <Value>TrapTypeIdFilter</Value>
+          <Value>CommentsFilter</Value>
         </Attribute>
         <Attribute>
           <Name>Button-Text</Name>
@@ -438,7 +510,7 @@
           <Value>False</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>Filters1Button</Name>
@@ -472,41 +544,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapNotesTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>Filters2Button</Name>
-      <Type>Button</Type>
-      <Layout>..\Shared\ThemeButtonWithArrow.html</Layout>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Button-CausesValidation</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-CommandName</Name>
-          <Value>Custom</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Consumers</Name>
-          <Value>page</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Onclientclick</Name>
-          <Value>return ISD_ShowPopupPanel('Filters2Div','Filters2Button',this);</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Button-Text</Name>
-          <Value>Btn:Filters</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-        <Attribute>
-          <Name>Button-ToolTip</Name>
-          <Value>Btn:Filters</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
+      <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>FiltersButton</Name>
@@ -540,7 +578,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>GroupId</Name>
@@ -635,7 +673,7 @@
         </Attribute>
         <Attribute>
           <Name>RedirectURL</Name>
-          <Value>../Shared/SelectFileToImport.aspx?TableName=Traps</Value>
+          <Value>../Shared/SelectFileToImport.aspx?TableName=Locations</Value>
         </Attribute>
         <Attribute>
           <Name>ToolTip</Name>
@@ -643,7 +681,249 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Lat</Name>
+      <Type>FieldValue</Type>
+      <Field>Lat</Field>
+      <FieldValueStyle>Literal</FieldValueStyle>
+      <Table>DatabaseTheRatTrap%dbo.Locations</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FieldMaxLength</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>HTMLEncodeValue</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplySaveToField</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NullValueText</Name>
+          <Value>&amp;nbsp;</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupDisplay</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupThreshold</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowHeight</Name>
+          <Value>200</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowPersist</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowScrollBar</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowTitle</Name>
+          <Value>%ISD_DEFAULT%</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowWidth</Name>
+          <Value>300</Value>
+        </Attribute>
+        <Attribute>
+          <Name>TextFormat</Name>
+          <Value>{0}</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>LatLabel</Name>
+      <Type>Literal</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>LocationsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Field</Name>
+          <Value>Lat</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.Locations</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Locations%Lat</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>LocationsTabContainer</Name>
+      <Type>TabContainer</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>InternalUse:ApplyVisibleFormula</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:VisibleFormula</Name>
+          <Value>URL("TabVisible")</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PanelLayout</Name>
+          <Value>Tabbed</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>LocationsTableControl</Name>
+      <Type>Table</Type>
+      <PanelStyle>RecInTable_RISepC_Parent</PanelStyle>
+      <Table>DatabaseTheRatTrap%dbo.Locations</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>HasScrolling</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>HideDataUntilSearched</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InitialRowDisplayStyle</Name>
+          <Value>FirstRowExpanded</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>TableOrQuery</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NumberOfColumns</Name>
+          <Value>3</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PageSize</Name>
+          <Value>10</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PaginationCurrentPage</Name>
+          <Value>Pagination-CurrentPage</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PaginationPageSize</Name>
+          <Value>Pagination-PageSize</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PaginationTotalItems</Name>
+          <Value>Pagination-TotalItems</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PaginationTotalPages</Name>
+          <Value>Pagination-TotalPages</Value>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Long0</Name>
+      <Type>FieldValue</Type>
+      <Field>Long</Field>
+      <FieldValueStyle>Literal</FieldValueStyle>
+      <Table>DatabaseTheRatTrap%dbo.Locations</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FieldMaxLength</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>HTMLEncodeValue</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplySaveToField</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NullValueText</Name>
+          <Value>&amp;nbsp;</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupDisplay</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupThreshold</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowHeight</Name>
+          <Value>200</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowPersist</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowScrollBar</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowTitle</Name>
+          <Value>%ISD_DEFAULT%</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowWidth</Name>
+          <Value>300</Value>
+        </Attribute>
+        <Attribute>
+          <Name>TextFormat</Name>
+          <Value>{0}</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>LongLabel</Name>
+      <Type>Literal</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>LocationsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Field</Name>
+          <Value>Long</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.Locations</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Locations%Long</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
       <Name>NewButton</Name>
@@ -663,7 +943,7 @@
         </Attribute>
         <Attribute>
           <Name>ControlToUpdate</Name>
-          <Value>TrapsTableControl</Value>
+          <Value>LocationsTableControl</Value>
         </Attribute>
         <Attribute>
           <Name>ImageURL</Name>
@@ -687,7 +967,7 @@
         </Attribute>
         <Attribute>
           <Name>RedirectURL</Name>
-          <Value>../Traps/Add-Traps.aspx?TabVisible=False&amp;SaveAndNewVisible=False</Value>
+          <Value>../Locations/Add-Locations.aspx?TabVisible=False&amp;SaveAndNewVisible=False</Value>
         </Attribute>
         <Attribute>
           <Name>ToolTip</Name>
@@ -695,94 +975,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>Note</Name>
-      <Type>FieldValue</Type>
-      <Field>Note</Field>
-      <FieldValueStyle>Literal</FieldValueStyle>
-      <Table>DatabaseTheRatTrap%dbo.TrapNotes</Table>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>FieldMaxLength</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>HTMLEncodeValue</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplySaveToField</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:DataSource</Name>
-          <Value>Parent</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NullValueText</Name>
-          <Value>&amp;nbsp;</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupDisplay</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupThreshold</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowHeight</Name>
-          <Value>200</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowPersist</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowScrollBar</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowTitle</Name>
-          <Value>%ISD_DEFAULT%</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowWidth</Name>
-          <Value>300</Value>
-        </Attribute>
-        <Attribute>
-          <Name>TextFormat</Name>
-          <Value>{0}</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapNotesTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>NoteLabel</Name>
-      <Type>Literal</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>TrapNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Field</Name>
-          <Value>Note</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.TrapNotes</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.TrapNotes%Note</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapNotesTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>PageTitle</Name>
@@ -790,7 +983,7 @@
       <PassthroughAttributes>
         <Attribute>
           <Name>Text</Name>
-          <Value>Traps</Value>
+          <Value>Locations</Value>
         </Attribute>
       </PassthroughAttributes>
     </ContainedComponent>
@@ -801,6 +994,38 @@
       <PassthroughAttributes>
         <Attribute>
           <Name>FirstPage-Consumers</Name>
+          <Value>LocationsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:TableControl</Name>
+          <Value>LocationsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>LastPage-Consumers</Name>
+          <Value>LocationsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NextPage-Consumers</Name>
+          <Value>LocationsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PageSizeButton-Consumers</Name>
+          <Value>LocationsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PreviousPage-Consumers</Name>
+          <Value>LocationsTableControl</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Pagination1</Name>
+      <Type>Pagination</Type>
+      <Layout>..\Shared\PaginationModern.ascx</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FirstPage-Consumers</Name>
           <Value>TrapsTableControl</Value>
         </Attribute>
         <Attribute>
@@ -825,70 +1050,6 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>Pagination1</Name>
-      <Type>Pagination</Type>
-      <Layout>..\Shared\PaginationModern.ascx</Layout>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>FirstPage-Consumers</Name>
-          <Value>TrapNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:TableControl</Name>
-          <Value>TrapNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>LastPage-Consumers</Name>
-          <Value>TrapNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NextPage-Consumers</Name>
-          <Value>TrapNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PageSizeButton-Consumers</Name>
-          <Value>TrapNotesTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PreviousPage-Consumers</Name>
-          <Value>TrapNotesTableControl</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapNotesTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>Pagination2</Name>
-      <Type>Pagination</Type>
-      <Layout>..\Shared\PaginationModern.ascx</Layout>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>FirstPage-Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:TableControl</Name>
-          <Value>TrapRecordsTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>LastPage-Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NextPage-Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PageSizeButton-Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PreviousPage-Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>PDFButton</Name>
@@ -904,7 +1065,7 @@
         </Attribute>
         <Attribute>
           <Name>Consumers</Name>
-          <Value>TrapsTableControl</Value>
+          <Value>LocationsTableControl</Value>
         </Attribute>
         <Attribute>
           <Name>ImageURL</Name>
@@ -928,7 +1089,66 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>ProjectId</Name>
+      <Type>FieldValue</Type>
+      <Field>ProjectId</Field>
+      <FieldValueStyle>LinkButton</FieldValueStyle>
+      <Table>DatabaseTheRatTrap%dbo.Traps</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>CausesValidation</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>Redirect</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>page</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplySaveToField</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>RedirectURL</Name>
+          <Value>../Projects/Show-Projects.aspx?Projects={TrapsTableControlRow:FK:FK_Traps_Projects}</Value>
+        </Attribute>
+      </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>ProjectIdLabel</Name>
+      <Type>Literal</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>TrapsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Field</Name>
+          <Value>ProjectId</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.Traps</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Traps%ProjectId</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
       <Name>ResetButton</Name>
@@ -944,7 +1164,7 @@
         </Attribute>
         <Attribute>
           <Name>Consumers</Name>
-          <Value>TrapsTableControl</Value>
+          <Value>LocationsTableControl</Value>
         </Attribute>
         <Attribute>
           <Name>ImageURL</Name>
@@ -968,94 +1188,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>Sex</Name>
-      <Type>FieldValue</Type>
-      <Field>Sex</Field>
-      <FieldValueStyle>Literal</FieldValueStyle>
-      <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>FieldMaxLength</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>HTMLEncodeValue</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplySaveToField</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:DataSource</Name>
-          <Value>Parent</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NullValueText</Name>
-          <Value>&amp;nbsp;</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupDisplay</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupThreshold</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowHeight</Name>
-          <Value>200</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowPersist</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowScrollBar</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowTitle</Name>
-          <Value>%ISD_DEFAULT%</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowWidth</Name>
-          <Value>300</Value>
-        </Attribute>
-        <Attribute>
-          <Name>TextFormat</Name>
-          <Value>{0}</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>SexLabel</Name>
-      <Type>Literal</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Field</Name>
-          <Value>Sex</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.TrapRecords</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.TrapRecords%Sex</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>SortByLabel</Name>
@@ -1067,7 +1200,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>SortByLabel1</Name>
@@ -1079,19 +1212,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapNotesTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>SortByLabel2</Name>
-      <Type>Label</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>Txt:SortBy</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
+      <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>SortControl</Name>
@@ -1103,12 +1224,106 @@
           <Value>{Txt:PleaseSelect}</Value>
         </Item>
         <Item>
+          <Name>Comments Asc</Name>
+          <Value>Comments {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Comments Desc</Name>
+          <Value>Comments {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>Lat Asc</Name>
+          <Value>Lat {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Lat Desc</Name>
+          <Value>Lat {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>Long Asc</Name>
+          <Value>Long {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Long Desc</Name>
+          <Value>Long {Txt:Descending}</Value>
+        </Item>
+        <Item>
           <Name>GroupId Asc</Name>
           <Value>Group {Txt:Ascending}</Value>
         </Item>
         <Item>
           <Name>GroupId Desc</Name>
           <Value>Group {Txt:Descending}</Value>
+        </Item>
+      </SpecifiedItems>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>AutoPostBack</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CssClass</Name>
+          <Value>Filter_Input</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplyQuery</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplyStaticList</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:GenerateSpecificItems</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.Locations</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:TreatAs</Name>
+          <Value>FieldFilter</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PriorityNo</Name>
+          <Value>1</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>LocationsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>SortControl1</Name>
+      <Type>OrderSort</Type>
+      <FieldValueStyle>DropDownList</FieldValueStyle>
+      <SpecifiedItems>
+        <Item>
+          <Name>--PLEASE_SELECT--</Name>
+          <Value>{Txt:PleaseSelect}</Value>
+        </Item>
+        <Item>
+          <Name>Active Asc</Name>
+          <Value>Active {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Active Desc</Name>
+          <Value>Active {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>GroupId Asc</Name>
+          <Value>Group {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>GroupId Desc</Name>
+          <Value>Group {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>ProjectId Asc</Name>
+          <Value>Project {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>ProjectId Desc</Name>
+          <Value>Project {Txt:Descending}</Value>
         </Item>
         <Item>
           <Name>TrapIdentifier Asc</Name>
@@ -1125,30 +1340,6 @@
         <Item>
           <Name>TrapTypeId Desc</Name>
           <Value>Trap Type {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>Active Asc</Name>
-          <Value>Active {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>Active Desc</Name>
-          <Value>Active {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>LocationId Asc</Name>
-          <Value>Location {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>LocationId Desc</Name>
-          <Value>Location {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>ProjectId Asc</Name>
-          <Value>Project {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>ProjectId Desc</Name>
-          <Value>Project {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
@@ -1188,265 +1379,6 @@
       <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>SortControl1</Name>
-      <Type>OrderSort</Type>
-      <FieldValueStyle>DropDownList</FieldValueStyle>
-      <SpecifiedItems>
-        <Item>
-          <Name>--PLEASE_SELECT--</Name>
-          <Value>{Txt:PleaseSelect}</Value>
-        </Item>
-        <Item>
-          <Name>Note Asc</Name>
-          <Value>Note {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>Note Desc</Name>
-          <Value>Note {Txt:Descending}</Value>
-        </Item>
-      </SpecifiedItems>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>AutoPostBack</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CssClass</Name>
-          <Value>Filter_Input</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyQuery</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyStaticList</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:GenerateSpecificItems</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.TrapNotes</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:TreatAs</Name>
-          <Value>FieldFilter</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PriorityNo</Name>
-          <Value>1</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapNotesTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>SortControl2</Name>
-      <Type>OrderSort</Type>
-      <FieldValueStyle>DropDownList</FieldValueStyle>
-      <SpecifiedItems>
-        <Item>
-          <Name>--PLEASE_SELECT--</Name>
-          <Value>{Txt:PleaseSelect}</Value>
-        </Item>
-        <Item>
-          <Name>BaitType Asc</Name>
-          <Value>Bait Type {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>BaitType Desc</Name>
-          <Value>Bait Type {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>DateOfCheck Asc</Name>
-          <Value>Date Of Check {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>DateOfCheck Desc</Name>
-          <Value>Date Of Check {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>Sex Asc</Name>
-          <Value>Sex {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>Sex Desc</Name>
-          <Value>Sex {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>Species Asc</Name>
-          <Value>Species {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>Species Desc</Name>
-          <Value>Species {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>TrapTypeId Asc</Name>
-          <Value>Trap Type {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>TrapTypeId Desc</Name>
-          <Value>Trap Type {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>LocationId Asc</Name>
-          <Value>Location {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>LocationId Desc</Name>
-          <Value>Location {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>GroupId Asc</Name>
-          <Value>Group {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>GroupId Desc</Name>
-          <Value>Group {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>ProjectId Asc</Name>
-          <Value>Project {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>ProjectId Desc</Name>
-          <Value>Project {Txt:Descending}</Value>
-        </Item>
-        <Item>
-          <Name>Comment Asc</Name>
-          <Value>Comment {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>Comment Desc</Name>
-          <Value>Comment {Txt:Descending}</Value>
-        </Item>
-      </SpecifiedItems>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>AutoPostBack</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>CssClass</Name>
-          <Value>Filter_Input</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyQuery</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyStaticList</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:GenerateSpecificItems</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.TrapRecords</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:TreatAs</Name>
-          <Value>FieldFilter</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PriorityNo</Name>
-          <Value>1</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>Species</Name>
-      <Type>FieldValue</Type>
-      <Field>Species</Field>
-      <FieldValueStyle>Literal</FieldValueStyle>
-      <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>FieldMaxLength</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>HTMLEncodeValue</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplySaveToField</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:DataSource</Name>
-          <Value>Parent</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NullValueText</Name>
-          <Value>&amp;nbsp;</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupDisplay</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupThreshold</Name>
-          <Value>Default</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowHeight</Name>
-          <Value>200</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowPersist</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowScrollBar</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowTitle</Name>
-          <Value>%ISD_DEFAULT%</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PopupWindowWidth</Name>
-          <Value>300</Value>
-        </Attribute>
-        <Attribute>
-          <Name>TextFormat</Name>
-          <Value>{0}</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>SpeciesLabel</Name>
-      <Type>Literal</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>TrapRecordsTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Field</Name>
-          <Value>Species</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.TrapRecords</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.TrapRecords%Species</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapRecordsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>Title0</Name>
       <Type>Html</Type>
       <PassthroughAttributes>
@@ -1456,10 +1388,10 @@
         </Attribute>
         <Attribute>
           <Name>Text</Name>
-          <Value>&lt;%#String.Concat("Traps") %&gt;</Value>
+          <Value>&lt;%#String.Concat("Locations") %&gt;</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>TrapIdentifier</Name>
@@ -1549,10 +1481,10 @@
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>TrapNotesTableControl</Name>
+      <Name>TrapsTableControl</Name>
       <Type>Table</Type>
       <PanelStyle>RecInTable_DSepRow_Child</PanelStyle>
-      <Table>DatabaseTheRatTrap%dbo.TrapNotes</Table>
+      <Table>DatabaseTheRatTrap%dbo.Traps</Table>
       <PassthroughAttributes>
         <Attribute>
           <Name>HasScrolling</Name>
@@ -1595,188 +1527,39 @@
           <Value>Pagination1-TotalPages</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
       <Querys>
         <Query>
           <LeftQueryContent>
             <Type>TableField</Type>
-            <Prefix>DatabaseTheRatTrap%dbo.TrapNotes</Prefix>
-            <Suffix>TrapId</Suffix>
+            <Prefix>DatabaseTheRatTrap%dbo.Traps</Prefix>
+            <Suffix>LocationId</Suffix>
           </LeftQueryContent>
           <RightQueryContent>
             <Type>Control</Type>
-            <Prefix>TrapsTableControl</Prefix>
-            <Suffix>TrapId</Suffix>
+            <Prefix>LocationsTableControl</Prefix>
+            <Suffix>LocationId</Suffix>
           </RightQueryContent>
-          <ForeignKeyName>FK_TrapNotes_Traps</ForeignKeyName>
+          <ForeignKeyName>FK_Traps_Locations</ForeignKeyName>
         </Query>
       </Querys>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>TrapNotesTabPanel</Name>
+      <Name>TrapsTabPanel</Name>
       <Type>TabPanel</Type>
       <PassthroughAttributes>
         <Attribute>
           <Name>ParentTabContainer</Name>
-          <Value>TrapsTabContainer</Value>
+          <Value>LocationsTabContainer</Value>
         </Attribute>
         <Attribute>
           <Name>Text</Name>
-          <Value>Trap Notes</Value>
+          <Value>Traps at this Location</Value>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>TrapRecordsTableControl</Name>
-      <Type>Table</Type>
-      <PanelStyle>RecInTable_DSepRow_Child</PanelStyle>
-      <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>HasScrolling</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>HideDataUntilSearched</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InitialRowDisplayStyle</Name>
-          <Value>FirstRowExpanded</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:DataSource</Name>
-          <Value>TableOrQuery</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NumberOfColumns</Name>
-          <Value>3</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PageSize</Name>
-          <Value>10</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PaginationCurrentPage</Name>
-          <Value>Pagination2-CurrentPage</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PaginationPageSize</Name>
-          <Value>Pagination2-PageSize</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PaginationTotalItems</Name>
-          <Value>Pagination2-TotalItems</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PaginationTotalPages</Name>
-          <Value>Pagination2-TotalPages</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-      <Querys>
-        <Query>
-          <LeftQueryContent>
-            <Type>TableField</Type>
-            <Prefix>DatabaseTheRatTrap%dbo.TrapRecords</Prefix>
-            <Suffix>TrapId</Suffix>
-          </LeftQueryContent>
-          <RightQueryContent>
-            <Type>Control</Type>
-            <Prefix>TrapsTableControl</Prefix>
-            <Suffix>TrapId</Suffix>
-          </RightQueryContent>
-          <ForeignKeyName>FK_TrapRecords_Traps</ForeignKeyName>
-        </Query>
-      </Querys>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>TrapRecordsTabPanel</Name>
-      <Type>TabPanel</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>ParentTabContainer</Name>
-          <Value>TrapsTabContainer</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>Trap Records</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>TrapsTabContainer</Name>
-      <Type>TabContainer</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>InternalUse:ApplyVisibleFormula</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:VisibleFormula</Name>
-          <Value>URL("TabVisible")</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PanelLayout</Name>
-          <Value>Tabbed</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
-      <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>TrapsTableControl</Name>
-      <Type>Table</Type>
-      <PanelStyle>RecInTable_RISepC_Parent</PanelStyle>
-      <Table>DatabaseTheRatTrap%dbo.Traps</Table>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>HasScrolling</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>HideDataUntilSearched</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InitialRowDisplayStyle</Name>
-          <Value>FirstRowExpanded</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:DataSource</Name>
-          <Value>TableOrQuery</Value>
-        </Attribute>
-        <Attribute>
-          <Name>NumberOfColumns</Name>
-          <Value>3</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PageSize</Name>
-          <Value>10</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PaginationCurrentPage</Name>
-          <Value>Pagination-CurrentPage</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PaginationPageSize</Name>
-          <Value>Pagination-PageSize</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PaginationTotalItems</Name>
-          <Value>Pagination-TotalItems</Value>
-        </Attribute>
-        <Attribute>
-          <Name>PaginationTotalPages</Name>
-          <Value>Pagination-TotalPages</Value>
-        </Attribute>
-      </PassthroughAttributes>
     </ContainedComponent>
     <ContainedComponent>
       <Name>TrapTypeId</Name>
@@ -1814,60 +1597,6 @@
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>TrapTypeIdFilter</Name>
-      <Type>FieldFilter</Type>
-      <FieldValueStyle>QuickSelector</FieldValueStyle>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Consumers</Name>
-          <Value>TrapsTableControl</Value>
-        </Attribute>
-        <Attribute>
-          <Name>EnterKeyCaptureToButton</Name>
-          <Value>FilterButton</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Field</Name>
-          <Value>TrapTypeId</Value>
-        </Attribute>
-        <Attribute>
-          <Name>FilterOperator</Name>
-          <Value>=</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:ApplyInitializeFormula</Name>
-          <Value>True</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:InitializeFormula</Name>
-          <Value>URL("TrapTypeId")</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.Traps</Value>
-        </Attribute>
-        <Attribute>
-          <Name>onkeypress</Name>
-          <Value>dropDownListTypeAhead(this,false)</Value>
-        </Attribute>
-        <Attribute>
-          <Name>RedirectURL</Name>
-          <Value />
-        </Attribute>
-        <Attribute>
-          <Name>SelectionMode</Name>
-          <Value>Single</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
-      <ControlsToFilter>
-        <ControlToFilter>
-          <Active>true</Active>
-          <ControlName>TrapsTableControl</ControlName>
-        </ControlToFilter>
-      </ControlsToFilter>
-    </ContainedComponent>
-    <ContainedComponent>
       <Name>TrapTypeIdLabel</Name>
       <Type>Literal</Type>
       <PassthroughAttributes>
@@ -1890,25 +1619,6 @@
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>TrapTypeIdLabel1</Name>
-      <Type>Literal</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>InternalUse:Field</Name>
-          <Value>TrapTypeId</Value>
-        </Attribute>
-        <Attribute>
-          <Name>InternalUse:Table</Name>
-          <Value>DatabaseTheRatTrap%dbo.Traps</Value>
-        </Attribute>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Traps%TrapTypeId</Value>
-        </Attribute>
-      </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>UpdatePanel1</Name>
@@ -1934,7 +1644,7 @@
         </Attribute>
         <Attribute>
           <Name>Consumers</Name>
-          <Value>TrapsTableControl</Value>
+          <Value>LocationsTableControl</Value>
         </Attribute>
         <Attribute>
           <Name>ImageURL</Name>
@@ -1958,7 +1668,7 @@
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>
-      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideControl>LocationsTableControl</InsideControl>
     </ContainedComponent>
   </ComposedOf>
   <LayoutDefinition>&lt;![CDATA[&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -1974,7 +1684,7 @@
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
-                        &amp;lt;GEN:TABLE NAME="TrapsTableControl"&amp;gt;&amp;lt;/GEN:TABLE&amp;gt;
+                        &amp;lt;GEN:TABLE NAME="LocationsTableControl"&amp;gt;&amp;lt;/GEN:TABLE&amp;gt;
             &lt;/Value&gt;
       &lt;/Cell&gt;
     &lt;/Row&gt;
@@ -2009,7 +1719,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="TrapsTableControl" Type="TablePanel" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="LocationsTableControl" Type="TablePanel" PanelControlName="LocationsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;img src="../Images/space.gif" class="panelTLSpace" alt="" /&amp;gt;&lt;/Value&gt;
@@ -2167,7 +1877,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Header" Type="PanelHeader" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="Header" Type="PanelHeader" PanelControlName="LocationsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
@@ -2241,7 +1951,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="TitleRegion" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="TitleRegion" PanelControlName="LocationsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
@@ -2274,7 +1984,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="TitleRegionPanel" Type="BlankPanel" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="TitleRegionPanel" Type="BlankPanel" PanelControlName="LocationsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:HTML NAME="Title0"/&amp;gt;&lt;/Value&gt;
@@ -2295,7 +2005,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Panel" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="Panel" PanelControlName="LocationsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
@@ -2332,7 +2042,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Filters" Type="SearchAndFilter" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="Filters" Type="SearchAndFilter" PanelControlName="LocationsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;CellAttributes&gt;
@@ -2383,7 +2093,7 @@
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapTypeIdLabel1"/&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="CommentsLabel1"/&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -2392,7 +2102,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDFILTER NAME="TrapTypeIdFilter"/&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDFILTER NAME="CommentsFilter"/&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;colspan&lt;/Name&gt;
@@ -2526,7 +2236,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Actions" Type="PanelButton" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="Actions" Type="PanelButton" PanelControlName="LocationsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell /&gt;
       &lt;Cell&gt;
@@ -2633,7 +2343,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="ActionsPanel" Type="BlankPanel" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="ActionsPanel" Type="BlankPanel" PanelControlName="LocationsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell /&gt;
       &lt;Cell /&gt;
@@ -2709,7 +2419,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Fields" Type="TableGridRegular" PanelControlName="TrapsTableControl"&gt;
+  &lt;Layout Name="Fields" Type="TableGridRegular" PanelControlName="LocationsTableControl"&gt;
     &lt;Row Type="Header"&gt;
       &lt;Cell&gt;
         &lt;CellAttributes&gt;
@@ -2831,13 +2541,17 @@
             &lt;AttributeValue&gt;font-size: 5px;&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
           &lt;Attribute&gt;
+            &lt;Name&gt;rowspan&lt;/Name&gt;
+            &lt;AttributeValue&gt;2&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
             &lt;Name&gt;colspan&lt;/Name&gt;
             &lt;AttributeValue&gt;3&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapTypeIdLabel"/&amp;gt; 
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="LatLabel"/&amp;gt; 
 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -2847,7 +2561,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="TrapTypeId"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Lat"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -2856,7 +2570,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapIdentifierLabel"/&amp;gt; 
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="LongLabel"/&amp;gt; 
 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -2866,7 +2580,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="TrapIdentifier"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Long0"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -2875,7 +2589,25 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="GroupIdLabel"/&amp;gt; 
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+    &lt;/Row&gt;
+    &lt;Row Type="Repeater"&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="CommentsLabel"/&amp;gt; 
 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -2885,11 +2617,15 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="GroupId"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Comments"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;colspan&lt;/Name&gt;
+            &lt;AttributeValue&gt;5&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -2935,12 +2671,9 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:TABCONTAINER NAME="TrapsTabContainer"&amp;gt;
- &amp;lt;GEN:TABPANEL NAME="TrapNotesTabPanel"&amp;gt;
-  &amp;lt;GEN:TABLE NAME="TrapNotesTableControl"/&amp;gt;
- &amp;lt;/GEN:TABPANEL&amp;gt;
- &amp;lt;GEN:TABPANEL NAME="TrapRecordsTabPanel"&amp;gt;
-  &amp;lt;GEN:TABLE NAME="TrapRecordsTableControl"/&amp;gt;
+        &lt;Value&gt;&amp;lt;GEN:TABCONTAINER NAME="LocationsTabContainer"&amp;gt;
+ &amp;lt;GEN:TABPANEL NAME="TrapsTabPanel"&amp;gt;
+  &amp;lt;GEN:TABLE NAME="TrapsTableControl"/&amp;gt;
  &amp;lt;/GEN:TABPANEL&amp;gt;
 &amp;lt;/GEN:TABCONTAINER&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
@@ -2957,7 +2690,7 @@
       &lt;RowAttributes&gt;
         &lt;Attribute&gt;
           &lt;Name&gt;id&lt;/Name&gt;
-          &lt;AttributeValue&gt;TrapsTableControlAltRow&lt;/AttributeValue&gt;
+          &lt;AttributeValue&gt;LocationsTableControlAltRow&lt;/AttributeValue&gt;
         &lt;/Attribute&gt;
         &lt;Attribute&gt;
           &lt;Name&gt;runat&lt;/Name&gt;
@@ -3002,7 +2735,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="TrapNotesTableControl" Type="TablePanel" PanelControlName="TrapNotesTableControl"&gt;
+  &lt;Layout Name="TrapsTableControl" Type="TablePanel" PanelControlName="TrapsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;CellAttributes /&gt;
@@ -3106,7 +2839,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Header1" Type="PanelHeader" PanelControlName="TrapNotesTableControl"&gt;
+  &lt;Layout Name="Header1" Type="PanelHeader" PanelControlName="TrapsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
@@ -3170,7 +2903,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="TitleRegion1" PanelControlName="TrapNotesTableControl"&gt;
+  &lt;Layout Name="TitleRegion1" PanelControlName="TrapsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
@@ -3203,7 +2936,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="TitleRegion1Panel" Type="BlankPanel" PanelControlName="TrapNotesTableControl"&gt;
+  &lt;Layout Name="TitleRegion1Panel" Type="BlankPanel" PanelControlName="TrapsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:HTML NAME="Title1"/&amp;gt;&lt;/Value&gt;
@@ -3224,7 +2957,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Panel1" PanelControlName="TrapNotesTableControl"&gt;
+  &lt;Layout Name="Panel1" PanelControlName="TrapsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;Value&gt;
@@ -3261,7 +2994,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Filters1" Type="SearchAndFilter" PanelControlName="TrapNotesTableControl"&gt;
+  &lt;Layout Name="Filters1" Type="SearchAndFilter" PanelControlName="TrapsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
         &lt;CellAttributes&gt;
@@ -3411,7 +3144,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Actions1" Type="PanelButton" PanelControlName="TrapNotesTableControl"&gt;
+  &lt;Layout Name="Actions1" Type="PanelButton" PanelControlName="TrapsTableControl"&gt;
     &lt;Row&gt;
       &lt;Cell /&gt;
       &lt;Cell&gt;
@@ -3468,7 +3201,7 @@
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;
-  &lt;Layout Name="Fields1" Type="TableGridRegular" PanelControlName="TrapNotesTableControl"&gt;
+  &lt;Layout Name="Fields1" Type="TableGridRegular" PanelControlName="TrapsTableControl"&gt;
     &lt;Row Type="Header"&gt;
       &lt;Cell&gt;
         &lt;CellAttributes&gt;
@@ -3551,7 +3284,7 @@
     &lt;/Row&gt;
     &lt;Row Type="Repeater"&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="NoteLabel"/&amp;gt; 
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapTypeIdLabel"/&amp;gt; 
 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -3561,616 +3294,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Note"/&amp;gt; &lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;colspan&lt;/Name&gt;
-            &lt;AttributeValue&gt;5&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;Row Type="Repeater"&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableRowDivider&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;colspan&lt;/Name&gt;
-            &lt;AttributeValue&gt;6&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;width&lt;/Name&gt;
-        &lt;AttributeValue&gt;100%&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;onkeydown&lt;/Name&gt;
-        &lt;AttributeValue&gt;captureUpDownKey(this, event)&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="TrapRecordsTableControl" Type="TablePanel" PanelControlName="TrapRecordsTableControl"&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;panelHeaderL&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                  &amp;lt;GEN:PANEL NAME="Header2"/&amp;gt;
-                &lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;dh&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;panelHeaderR&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                  &amp;lt;asp:panel id="CollapsibleRegion2" runat="server"&amp;gt;&amp;lt;GEN:PANEL NAME="Panel2"/&amp;gt;&amp;lt;/asp:panel&amp;gt;
-                &lt;/Value&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                    &amp;lt;GEN:PAGINATION NAME="Pagination2"&amp;gt;&amp;lt;/GEN:PAGINATION&amp;gt;
-                    &amp;lt;!--To change the position of the pagination control, please search for "prspace" on the Online Help for instruction. --&amp;gt;
-                  &lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;panelPaginationC&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;class&lt;/Name&gt;
-        &lt;AttributeValue&gt;dv&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="Header2" Type="PanelHeader" PanelControlName="TrapRecordsTableControl"&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;dhel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;dhb&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:PANEL NAME="Actions2"/&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;dhb&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                          &amp;lt;div id="Filters2Div" runat="server" class="popupWrapper" &amp;gt;
-                          &amp;lt;GEN:PANEL NAME="Filters2"/&amp;gt;
-                          &amp;lt;/div&amp;gt;
-                        &lt;/Value&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;dher&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;width&lt;/Name&gt;
-        &lt;AttributeValue&gt;100%&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="TitleRegion2" PanelControlName="TrapRecordsTableControl"&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                        &amp;lt;GEN:HTML NAME="Title2"/&amp;gt;
-                      &lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;dht&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;valign&lt;/Name&gt;
-            &lt;AttributeValue&gt;middle&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="TitleRegion2Panel" Type="BlankPanel" PanelControlName="TrapRecordsTableControl"&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:HTML NAME="Title2"/&amp;gt;&lt;/Value&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="Panel2" PanelControlName="TrapRecordsTableControl"&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-                    &amp;lt;GEN:PANEL NAME="Fields2"/&amp;gt;
-                  &lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tre&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;class&lt;/Name&gt;
-        &lt;AttributeValue&gt;dBody&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;width&lt;/Name&gt;
-        &lt;AttributeValue&gt;100%&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="Filters2" Type="SearchAndFilter" PanelControlName="TrapRecordsTableControl"&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;input type="image" src="../Images/closeButton.gif" onmouseover="this.src='../Images/closeButtonOver.gif'" onmouseout="this.src='../Images/closeButton.gif'" alt="" onclick="ISD_HidePopupPanel();return false;" align="top" /&amp;gt;&amp;lt;br/&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;text-align: right;&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes /&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;Row&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:LABEL NAME="SortByLabel2"/&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:ORDERSORT NAME="SortControl2"/&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;popupTableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="Actions2" Type="PanelButton" PanelControlName="TrapRecordsTableControl"&gt;
-    &lt;Row&gt;
-      &lt;Cell /&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;
-            &amp;lt;GEN:Button NAME="Filters2Button"  /&amp;gt;
-          &lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;text-align:right&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt="" style="width: 10px" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prbbc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;prspaceEnd&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell /&gt;
-    &lt;/Row&gt;
-    &lt;TableAttributes&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellpadding&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;cellspacing&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;border&lt;/Name&gt;
-        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-      &lt;Attribute&gt;
-        &lt;Name&gt;style&lt;/Name&gt;
-        &lt;AttributeValue&gt;width: 100%;&lt;/AttributeValue&gt;
-      &lt;/Attribute&gt;
-    &lt;/TableAttributes&gt;
-  &lt;/Layout&gt;
-  &lt;Layout Name="Fields2" Type="TableGridRegular" PanelControlName="TrapRecordsTableControl"&gt;
-    &lt;Row Type="Header"&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;style&lt;/Name&gt;
-            &lt;AttributeValue&gt;display: none&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;RowAttributes&gt;
-        &lt;Attribute&gt;
-          &lt;Name&gt;class&lt;/Name&gt;
-          &lt;AttributeValue&gt;tch&lt;/AttributeValue&gt;
-        &lt;/Attribute&gt;
-      &lt;/RowAttributes&gt;
-    &lt;/Row&gt;
-    &lt;Row Type="Repeater"&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="BaitTypeLabel"/&amp;gt; 
-&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="BaitType"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="TrapTypeId"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -4179,7 +3303,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="DateOfCheckLabel"/&amp;gt; 
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapIdentifierLabel"/&amp;gt; 
 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -4189,7 +3313,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="DateOfCheck"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="TrapIdentifier"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -4198,7 +3322,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="SexLabel"/&amp;gt; 
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="ActiveLabel"/&amp;gt; 
 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -4208,7 +3332,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Sex"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Active"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -4219,7 +3343,7 @@
     &lt;/Row&gt;
     &lt;Row Type="Repeater"&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="SpeciesLabel"/&amp;gt; 
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="GroupIdLabel"/&amp;gt; 
 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -4229,7 +3353,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Species"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="GroupId"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -4238,41 +3362,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-    &lt;/Row&gt;
-    &lt;Row Type="Repeater"&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="NotesLabel"/&amp;gt; 
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="ProjectIdLabel"/&amp;gt; 
 &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -4282,15 +3372,27 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Notes"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="ProjectId"/&amp;gt; &lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
             &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
           &lt;Attribute&gt;
-            &lt;Name&gt;colspan&lt;/Name&gt;
-            &lt;AttributeValue&gt;5&lt;/AttributeValue&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;

@@ -419,36 +419,36 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 		this.SetValue(cv, TableUtils.SexColumn);
 	}
 	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.Comments field.
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.Comment field.
 	/// </summary>
-	public ColumnValue GetCommentsValue()
+	public ColumnValue GetCommentValue()
 	{
-		return this.GetValue(TableUtils.CommentsColumn);
+		return this.GetValue(TableUtils.CommentColumn);
 	}
 
 	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.Comments field.
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.Comment field.
 	/// </summary>
-	public string GetCommentsFieldValue()
+	public string GetCommentFieldValue()
 	{
-		return this.GetValue(TableUtils.CommentsColumn).ToString();
+		return this.GetValue(TableUtils.CommentColumn).ToString();
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comments field.
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comment field.
 	/// </summary>
-	public void SetCommentsFieldValue(ColumnValue val)
+	public void SetCommentFieldValue(ColumnValue val)
 	{
-		this.SetValue(val, TableUtils.CommentsColumn);
+		this.SetValue(val, TableUtils.CommentColumn);
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comments field.
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comment field.
 	/// </summary>
-	public void SetCommentsFieldValue(string val)
+	public void SetCommentFieldValue(string val)
 	{
 		ColumnValue cv = new ColumnValue(val);
-		this.SetValue(cv, TableUtils.CommentsColumn);
+		this.SetValue(cv, TableUtils.CommentColumn);
 	}
 	/// <summary>
 	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.LocationId field.
@@ -948,18 +948,18 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 		}
 	}
 	/// <summary>
-	/// This is a property that provides direct access to the value of the record's TrapRecords_.Comments field.
+	/// This is a property that provides direct access to the value of the record's TrapRecords_.Comment field.
 	/// </summary>
-	public string Comments
+	public string Comment
 	{
 		get
 		{
-			return this.GetValue(TableUtils.CommentsColumn).ToString();
+			return this.GetValue(TableUtils.CommentColumn).ToString();
 		}
 		set
 		{
 			ColumnValue cv = new ColumnValue(value);
-			this.SetValue(cv, TableUtils.CommentsColumn);
+			this.SetValue(cv, TableUtils.CommentColumn);
 		}
 	}
 
@@ -967,11 +967,11 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 	/// <summary>
 	/// This is a convenience method that can be used to determine that the column is set.
 	/// </summary>
-	public bool CommentsSpecified
+	public bool CommentSpecified
 	{
 		get
 		{
-			ColumnValue val = this.GetValue(TableUtils.CommentsColumn);
+			ColumnValue val = this.GetValue(TableUtils.CommentColumn);
             if (val == null || val.IsNull)
             {
                 return false;
@@ -981,13 +981,13 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comments field.
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.Comment field.
 	/// </summary>
-	public string CommentsDefault
+	public string CommentDefault
 	{
 		get
 		{
-			return TableUtils.CommentsColumn.DefaultValue;
+			return TableUtils.CommentColumn.DefaultValue;
 		}
 	}
 	/// <summary>

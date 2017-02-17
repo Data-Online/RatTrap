@@ -65,7 +65,7 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         DateOfCheckColumn.Name = EvaluateFormula("\"Date Checked\"");
         SpeciesColumn.CodeName = "Species";
         SexColumn.CodeName = "Sex";
-        CommentsColumn.CodeName = "Comments";
+        CommentColumn.CodeName = "Comment";
         LocationIdColumn.CodeName = "LocationId";
         ProjectIdColumn.CodeName = "ProjectId";
         GroupIdColumn.CodeName = "GroupId";
@@ -231,9 +231,9 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
     
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's TrapRecords_.Comments column object.
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.Comment column object.
     /// </summary>
-    public BaseClasses.Data.StringColumn CommentsColumn
+    public BaseClasses.Data.StringColumn CommentColumn
     {
         get
         {
@@ -244,13 +244,13 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
 
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's TrapRecords_.Comments column object.
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.Comment column object.
     /// </summary>
-    public static BaseClasses.Data.StringColumn Comments
+    public static BaseClasses.Data.StringColumn Comment
     {
         get
         {
-            return TrapRecordsTable.Instance.CommentsColumn;
+            return TrapRecordsTable.Instance.CommentColumn;
         }
     }
     
@@ -885,7 +885,7 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         string DateOfCheckValue, 
         string SpeciesValue, 
         string SexValue, 
-        string CommentsValue, 
+        string CommentValue, 
         string LocationIdValue, 
         string ProjectIdValue, 
         string GroupIdValue, 
@@ -898,7 +898,7 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         rec.SetString(DateOfCheckValue, DateOfCheckColumn);
         rec.SetString(SpeciesValue, SpeciesColumn);
         rec.SetString(SexValue, SexColumn);
-        rec.SetString(CommentsValue, CommentsColumn);
+        rec.SetString(CommentValue, CommentColumn);
         rec.SetString(LocationIdValue, LocationIdColumn);
         rec.SetString(ProjectIdValue, ProjectIdColumn);
         rec.SetString(GroupIdValue, GroupIdColumn);

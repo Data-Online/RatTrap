@@ -1,6 +1,6 @@
 ﻿
-// This file implements the code-behind class for Edit_Traps.aspx.
-// Edit_Traps.Controls.vb contains the Table, Row and Record control classes
+// This file implements the code-behind class for Add_Locations.aspx.
+// Add_Locations.Controls.vb contains the Table, Row and Record control classes
 // for the page.  Best practices calls for overriding methods in the Row or Record control classes.
 
 #region "Using statements"    
@@ -29,15 +29,15 @@ using RatTrap.Data;
 namespace RatTrap.UI
 {
   
-public partial class Edit_Traps
+public partial class Add_Locations
         : BaseApplicationPage
-// Code-behind class for the Edit_Traps page.
+// Code-behind class for the Add_Locations page.
 // Place your customizations in Section 1. Do not modify Section 2.
 {
         
       #region "Section 1: Place your customizations here."
 
-      public Edit_Traps()
+      public Add_Locations()
         {
             this.Initialize();
     
@@ -198,6 +198,15 @@ public partial class Edit_Traps
           // NOTE: If the Base function redirects to another page, any code here will not be executed.
         }
             
+        public void SaveAndNewButton_Click(object sender, EventArgs args)
+        {
+
+          // Click handler for SaveAndNewButton.
+          // Customize by adding code before the call or replace the call to the Base function with your own code.
+          SaveAndNewButton_Click_Base(sender, args);
+          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+        }
+            
         public void SaveButton_Click(object sender, EventArgs args)
         {
 
@@ -210,29 +219,19 @@ public partial class Edit_Traps
     
         // Write out the Set methods
         
-        public void SetTrapsTabContainer()
+        public void SetLocationsRecordControl()
         {
-            SetTrapsTabContainer_Base(); 
-        }
-        
-        public void SetTrapNotesTableControl()
-        {
-            SetTrapNotesTableControl_Base(); 
-        }
-        
-        public void SetTrapRecordsTableControl()
-        {
-            SetTrapRecordsTableControl_Base(); 
-        }
-        
-        public void SetTrapsRecordControl()
-        {
-            SetTrapsRecordControl_Base(); 
+            SetLocationsRecordControl_Base(); 
         }
         
         public void SetCancelButton()
         {
             SetCancelButton_Base(); 
+        }              
+            
+        public void SetSaveAndNewButton()
+        {
+            SetSaveAndNewButton_Base(); 
         }              
             
         public void SetSaveButton()
@@ -262,90 +261,24 @@ public partial class Edit_Traps
         }
         
     
-        public ThemeButtonWithArrow Actions1Button;
-                
-        public ThemeButtonWithArrow Actions2Button;
-                
-        public System.Web.UI.WebControls.CheckBox Active;
-            
-        public System.Web.UI.WebControls.Literal ActiveLabel;
-        
-        public System.Web.UI.WebControls.ImageButton AddButton;
-        
-        public System.Web.UI.WebControls.ImageButton AddButton1;
-        
-        public System.Web.UI.WebControls.ImageButton AddButton2;
-        
-        public System.Web.UI.WebControls.LinkButton BaitTypeLabel;
-        
-        public System.Web.UI.WebControls.Literal BaitTypeLabel1;
-        
         public ThemeButton CancelButton;
                 
-        public System.Web.UI.WebControls.LinkButton DateOfCheckLabel;
+        public System.Web.UI.WebControls.Literal CommentsLabel;
         
-        public System.Web.UI.WebControls.ImageButton DeleteButton;
+        public System.Web.UI.WebControls.Literal LatLabel;
         
-        public System.Web.UI.WebControls.ImageButton DeleteButton1;
-        
-        public ThemeButtonWithArrow Filters1Button;
-                
-        public ThemeButtonWithArrow Filters2Button;
-                
-        public ThemeButton GoButton;
-                
-        public System.Web.UI.WebControls.Literal GroupId1;
-            
-        public System.Web.UI.WebControls.ImageButton ImageButton;
-        
-        public BaseClasses.Web.UI.WebControls.QuickSelector LocationId;
-            
-        public System.Web.UI.WebControls.Literal LocationIdLabel;
+        public RatTrap.UI.Controls.Add_Locations.LocationsRecordControl LocationsRecordControl;
+          
+        public System.Web.UI.WebControls.Literal LongLabel;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
-        public PaginationModern Pagination;
+        public ThemeButton SaveAndNewButton;
                 
-        public PaginationModern Pagination1;
-                
-        public System.Web.UI.WebControls.DropDownList ProjectId;
-            
-        public System.Web.UI.WebControls.Literal ProjectIdLabel;
-        
-        public System.Web.UI.WebControls.ImageButton ResetButton;
-        
         public ThemeButton SaveButton;
                 
-        public System.Web.UI.WebControls.LinkButton SexLabel;
-        
-        public System.Web.UI.WebControls.Label SortByLabel1;
-        
-        public System.Web.UI.WebControls.Label SortByLabel2;
-        
-        public System.Web.UI.WebControls.LinkButton SpeciesLabel;
-        
-        public System.Web.UI.WebControls.Literal SpeciesLabel1;
-        
         public System.Web.UI.WebControls.Literal Title0;
             
-        public System.Web.UI.WebControls.CheckBox ToggleAll1;
-        
-        public System.Web.UI.WebControls.CheckBox ToggleAll2;
-        
-        public System.Web.UI.WebControls.Literal TrapIdentifierLabel;
-        
-        public RatTrap.UI.Controls.Edit_Traps.TrapNotesTableControl TrapNotesTableControl;
-          
-        public RatTrap.UI.Controls.Edit_Traps.TrapRecordsTableControl TrapRecordsTableControl;
-          
-        public RatTrap.UI.Controls.Edit_Traps.TrapsRecordControl TrapsRecordControl;
-          
-        public AjaxControlToolkit.TabContainer TrapsTabContainer;
-        
-        public System.Web.UI.WebControls.DropDownList TrapTypeId;
-            
-        public System.Web.UI.WebControls.Literal TrapTypeIdLabel;
-        
         public ValidationSummary ValidationSummary1;
 
   
@@ -369,6 +302,8 @@ public partial class Edit_Traps
         
                     this.CancelButton.Button.Click += CancelButton_Click;
                         
+                    this.SaveAndNewButton.Button.Click += SaveAndNewButton_Click;
+                        
                     this.SaveButton.Button.Click += SaveButton_Click;
                         
           this.ClearControlsFromSession();    
@@ -386,6 +321,8 @@ public partial class Edit_Traps
         private void Base_RegisterPostback()
         {
         
+              this.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"SaveAndNewButton"));
+                        
               this.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"SaveButton"));
                                 
         }
@@ -413,7 +350,7 @@ public partial class Edit_Traps
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("NOT_ANONYMOUS");
+            this.Authorize("");
              if (!this.IsPostBack)
              {
             
@@ -432,7 +369,7 @@ public partial class Edit_Traps
     }
 
     
-            Page.Title = ExpandResourceValue("{Title:Edit} Trap");
+            Page.Title = ExpandResourceValue("{Title:Add} Locations");
         
         if (!IsPostBack)
             AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
@@ -525,16 +462,8 @@ public partial class Edit_Traps
           switch (control)
           {
           
-              case "TrapNotesTableControl":
-                 SetTrapNotesTableControl();
-                 break;
-          
-              case "TrapRecordsTableControl":
-                 SetTrapRecordsTableControl();
-                 break;
-          
-              case "TrapsRecordControl":
-                 SetTrapsRecordControl();
+              case "LocationsRecordControl":
+                 SetLocationsRecordControl();
                  break;
                
           }
@@ -546,7 +475,7 @@ public partial class Edit_Traps
       public void SaveData_Base()
       {
       
-        this.TrapsRecordControl.SaveData();
+        this.LocationsRecordControl.SaveData();
         
       }
       
@@ -638,13 +567,11 @@ public partial class Edit_Traps
                 this.DataBind();
                 
                 
-                
-            SetTrapsTabContainer(); 
-          
+                    
     
                 // Load and bind data for each record and table UI control.
                 
-        SetTrapsRecordControl();
+        SetLocationsRecordControl();
         
     
                 // Load data for chart.
@@ -653,6 +580,8 @@ public partial class Edit_Traps
                 // initialize aspx controls
                 
                 SetCancelButton();
+              
+                SetSaveAndNewButton();
               
                 SetSaveButton();
               
@@ -737,46 +666,13 @@ public partial class Edit_Traps
                 
         // Write out the Set methods
         
-        public void SetTrapsTabContainer_Base()           
-        
-        {
-                            
-                   
-            if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "true") 
-                MiscUtils.FindControlRecursively(this, "TrapsTabContainer").Visible = true;
-            else if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "false") 
-                MiscUtils.FindControlRecursively(this, "TrapsTabContainer").Visible = false;
-         
-  
-        }      
-      
-        public void SetTrapNotesTableControl_Base()           
+        public void SetLocationsRecordControl_Base()           
         
         {        
-            if (TrapNotesTableControl.Visible)
+            if (LocationsRecordControl.Visible)
             {
-                TrapNotesTableControl.LoadData();
-                TrapNotesTableControl.DataBind();
-            }
-        }
-      
-        public void SetTrapRecordsTableControl_Base()           
-        
-        {        
-            if (TrapRecordsTableControl.Visible)
-            {
-                TrapRecordsTableControl.LoadData();
-                TrapRecordsTableControl.DataBind();
-            }
-        }
-      
-        public void SetTrapsRecordControl_Base()           
-        
-        {        
-            if (TrapsRecordControl.Visible)
-            {
-                TrapsRecordControl.LoadData();
-                TrapsRecordControl.DataBind();
+                LocationsRecordControl.LoadData();
+                LocationsRecordControl.DataBind();
             }
         }
       
@@ -784,6 +680,21 @@ public partial class Edit_Traps
               
         {
         
+   
+        }
+            
+        public void SetSaveAndNewButton_Base()                
+              
+        {
+                        
+                   
+            if (EvaluateFormula("URL(\"SaveAndNewVisible\")").ToLower() == "true") 
+                MiscUtils.FindControlRecursively(this, "SaveAndNewButton").Visible = true;
+            else if (EvaluateFormula("URL(\"SaveAndNewVisible\")").ToLower() == "false") 
+                MiscUtils.FindControlRecursively(this, "SaveAndNewButton").Visible = false;
+         
+                    this.SaveAndNewButton.Button.Attributes.Add("onclick", "SubmitHRefOnce(this, \"" + this.GetResourceValue("Txt:SaveRecord", "RatTrap") + "\");");
+                  
    
         }
             
@@ -841,6 +752,37 @@ public partial class Edit_Traps
             
         
         // event handler for Button
+        public void SaveAndNewButton_Click_Base(object sender, EventArgs args)
+        {
+              
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+        
+              if (!this.IsPageRefresh)
+              {
+                  this.SaveData();
+              }
+
+          this.CommitTransaction(sender);
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.RollBackTransaction(sender);
+                  this.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+    
+        }
+            
+            
+        
+        // event handler for Button
         public void SaveButton_Click_Base(object sender, EventArgs args)
         {
               
@@ -881,14 +823,14 @@ public partial class Edit_Traps
             {
           
 
-                  if (this.TrapsRecordControl != null && this.TrapsRecordControl.DataSource != null)
+                  if (this.LocationsRecordControl != null && this.LocationsRecordControl.DataSource != null)
                   {
-                        id = this.TrapsRecordControl.DataSource.GetValue(this.TrapsRecordControl.DataSource.TableAccess.TableDefinition.ColumnList.GetByAnyName(field)).ToString();
+                        id = this.LocationsRecordControl.DataSource.GetValue(this.LocationsRecordControl.DataSource.TableAccess.TableDefinition.ColumnList.GetByAnyName(field)).ToString();
                         if (!string.IsNullOrEmpty(formula))
                         {
                             System.Collections.Generic.IDictionary<String, Object> variables = new System.Collections.Generic.Dictionary<String, Object>();
-                            variables.Add(this.TrapsRecordControl.DataSource.TableAccess.TableDefinition.TableCodeName, this.TrapsRecordControl.DataSource);
-                            value = EvaluateFormula(formula, this.TrapsRecordControl.DataSource, null,variables);
+                            variables.Add(this.LocationsRecordControl.DataSource.TableAccess.TableDefinition.TableCodeName, this.LocationsRecordControl.DataSource);
+                            value = EvaluateFormula(formula, this.LocationsRecordControl.DataSource, null,variables);
                         }
                         else if (displayFieldName == "") 
                         {
@@ -896,7 +838,7 @@ public partial class Edit_Traps
                         }
                         else
                         {
-                            value = this.TrapsRecordControl.DataSource.GetValue(this.TrapsRecordControl.DataSource.TableAccess.TableDefinition.ColumnList.GetByAnyName(displayFieldName)).ToString();
+                            value = this.LocationsRecordControl.DataSource.GetValue(this.LocationsRecordControl.DataSource.TableAccess.TableDefinition.ColumnList.GetByAnyName(displayFieldName)).ToString();
                         }
                   }
                   if (value == null)

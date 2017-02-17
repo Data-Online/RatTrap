@@ -649,6 +649,41 @@
     <Compile Include="Locations\Locations-QuickSelector.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Locations\Add-Locations.aspx.cs">
+      <DependentUpon>Add-Locations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Locations\Add-Locations.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Locations\Edit-Locations-Table.aspx.cs">
+      <DependentUpon>Edit-Locations-Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Locations\Edit-Locations-Table.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Locations\Edit-Locations-Table1.aspx.cs">
+      <DependentUpon>Edit-Locations-Table1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Locations\Edit-Locations-Table1.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Locations\Edit-Locations.aspx.cs">
+      <DependentUpon>Edit-Locations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Locations\Edit-Locations.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Locations\Show-Locations-Table.aspx.cs" >
+      <DependentUpon>Show-Locations-Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Locations\Show-Locations-Table.Controls.cs" >
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BaseClasses\Readme.txt" />
@@ -973,6 +1008,11 @@
     <Content Include="ProjectNotes\ProjectNotes-QuickSelector.aspx" />
     <Content Include="AreaNotes\AreaNotes-QuickSelector.aspx" />
     <Content Include="Locations\Locations-QuickSelector.aspx" />
+    <Content Include="Locations\Add-Locations.aspx" />
+    <Content Include="Locations\Edit-Locations-Table.aspx" />
+    <Content Include="Locations\Edit-Locations-Table1.aspx" />
+    <Content Include="Locations\Edit-Locations.aspx" />
+    <Content Include="Locations\Show-Locations-Table.aspx"  />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

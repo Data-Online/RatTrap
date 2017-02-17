@@ -34,7 +34,8 @@
                         <RatTrap:TrapsRecordControl runat="server" id="TrapsRecordControl">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td class="panelTL"><img src="../Images/space.gif" class="panelTLSpace" alt="" /></td><td class="panelT"></td><td class="panelTR"><img src="../Images/space.gif" class="panelTRSpace" alt="" /></td></tr><tr><td class="panelHeaderL"></td><td class="dh">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="dhel"><img src="../Images/space.gif" alt="" /></td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="dht" valign="middle">
                         <asp:Literal runat="server" id="Title0" Text="&lt;%#String.Concat(GetResourceValue(&quot;Title:Edit&quot;),&quot;&quot;,&quot; Trap&quot;) %>">	</asp:Literal>
-                      </td><td class="dht" valign="middle"></td><td class="tableCellValue" style="text-align:right;"><asp:Literal runat="server" id="GroupId1"></asp:Literal> </td></tr></table>
+                      </td><td class="dht" valign="middle"></td><td class="tableCellValue" style="text-align:right;"><asp:Literal runat="server" id="GroupId1"></asp:Literal> </td><td class="tableCellValue" style="text-align:right;"></td><td class="tableCellValue" style="text-align:right;">&nbsp;</td><td class="tableCellValue" style="text-align:right;">&nbsp;</td><td class="tableCellValue" style="text-align:right;"><asp:ImageButton runat="server" id="ImageButton" causesvalidation="False" commandname="UpdateData" imageurl="../Images/ButtonBarSave.gif" onmouseout="this.src=&#39;../Images/ButtonBarSave.gif&#39;" onmouseover="this.src=&#39;../Images/ButtonBarSaveOver.gif&#39;" tooltip="Save data">		
+	</asp:ImageButton></td></tr></table>
 </td><td class="dher"><img src="../Images/space.gif" alt="" /></td></tr></table>
 
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
@@ -42,7 +43,9 @@
                     <asp:panel id="TrapsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapIdentifierLabel" Text="Trap Identifier">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
 <asp:TextBox runat="server" id="TrapIdentifier" Columns="40" MaxLength="50" cssclass="field_input"></asp:TextBox>&nbsp;
 <BaseClasses:TextBoxMaxLengthValidator runat="server" id="TrapIdentifierTextBoxMaxLengthValidator" ControlToValidate="TrapIdentifier" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Trap Identifier&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></span>
- </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellValue"></td><td class="tableCellValue"></td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeIdLabel" Text="Trap Type">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="TrapTypeId" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"></td><td class="tableCellLabel"></td><td class="tableCellLabel"><asp:Literal runat="server" id="ProjectIdLabel" Text="Assigned to Project">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+ </td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellValue"></td><td class="tableCellValue"></td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeIdLabel" Text="Trap Type">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+<asp:DropDownList runat="server" id="TrapTypeId" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
+ </td><td class="tableCellLabel"></td><td class="tableCellLabel"></td><td class="tableCellLabel"><asp:Literal runat="server" id="ProjectIdLabel" Text="Assigned to Project">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
 <asp:DropDownList runat="server" id="ProjectId" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
 </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="ActiveLabel" Text="Active">	</asp:Literal></td><td class="tableCellValue"><asp:CheckBox runat="server" id="Active"></asp:CheckBox></td><td class="tableCellLabel"></td><td class="tableCellLabel"></td><td class="tableCellLabel"><asp:Literal runat="server" id="LocationIdLabel" Text="Current Location">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="LocationId" redirecturl=""></BaseClasses:QuickSelector></td></tr></table></asp:panel>
 
@@ -113,11 +116,9 @@
 </td><td class="tableCellValue"><span style="white-space:nowrap;">
 <asp:DropDownList runat="server" id="BaitType" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
 </td><td class="tableCellValue"><span style="white-space:nowrap;">
-<asp:DropDownList runat="server" id="Sex" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
-</td><td class="tableCellValue"><span style="white-space:nowrap;">
 <asp:DropDownList runat="server" id="Species" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
-</td><td class="tableCellLabel"></td></tr><tr><td class="tableCellLabel"> 
-</td><td class="tableCellValue" colspan="3"> </td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td><td class="tableRowDivider"></td></tr></RatTrap:TrapRecordsTableControlRow>
+</td><td class="tableCellValue" rowspan="2"><asp:RadioButtonList runat="server" id="Sex" RepeatLayout="Flow"></asp:RadioButtonList></td><td class="tableCellValue"></td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="CommentLabel" Text="Comment">	</asp:Literal></td><td class="tableCellValue" colspan="2"><asp:TextBox runat="server" id="Comment" MaxLength="200" columns="85" cssclass="field_input" rows="1" textmode="MultiLine"></asp:TextBox>&nbsp;
+<BaseClasses:TextBoxMaxLengthValidator runat="server" id="CommentTextBoxMaxLengthValidator" ControlToValidate="Comment" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Comment&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td><td class="tableRowDivider"></td></tr></RatTrap:TrapRecordsTableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>
@@ -166,7 +167,7 @@
                           <asp:ImageButton runat="server" id="DeleteRowButton" causesvalidation="False" commandargument="DeleteOnUpdate" commandname="DeleteRecord" cssclass="button_link" imageurl="../Images/icon_delete.gif" onmouseout="this.src=&#39;../Images/icon_delete.gif&#39;" onmouseover="this.src=&#39;../Images/icon_delete_over.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Txt:DeleteRecord&quot;, &quot;RatTrap&quot;) %>">		
 	</asp:ImageButton>
                         </td><td class="tableCellLabel"><asp:Literal runat="server" id="NoteLabel" Text="Note">	</asp:Literal> 
-</td><td class="tableCellValue" colspan="3"><asp:TextBox runat="server" id="Note" MaxLength="200" columns="60" cssclass="field_input" rows="4" textmode="MultiLine"></asp:TextBox>&nbsp;
+</td><td class="tableCellValue" colspan="3"><asp:TextBox runat="server" id="Note" MaxLength="200" columns="60" cssclass="field_input" enableviewstate="True" rows="4" textmode="MultiLine"></asp:TextBox>&nbsp;
 <BaseClasses:TextBoxMaxLengthValidator runat="server" id="NoteTextBoxMaxLengthValidator" ControlToValidate="Note" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Note&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator> </td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:TrapNotesTableControlRow>
 </ITEMTEMPLATE>
 

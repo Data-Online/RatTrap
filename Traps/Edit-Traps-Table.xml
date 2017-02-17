@@ -1434,14 +1434,6 @@
           <Value>Trap Type {Txt:Descending}</Value>
         </Item>
         <Item>
-          <Name>Comments Asc</Name>
-          <Value>Comments {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>Comments Desc</Name>
-          <Value>Comments {Txt:Descending}</Value>
-        </Item>
-        <Item>
           <Name>LocationId Asc</Name>
           <Value>Location {Txt:Ascending}</Value>
         </Item>
@@ -1464,6 +1456,14 @@
         <Item>
           <Name>ProjectId Desc</Name>
           <Value>Project {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>Comment Asc</Name>
+          <Value>Comment {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Comment Desc</Name>
+          <Value>Comment {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>
       <PassthroughAttributes>

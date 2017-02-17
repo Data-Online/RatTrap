@@ -35,7 +35,7 @@
         </Attribute>
         <Attribute>
           <Name>Button-RedirectURL</Name>
-          <Value>../Shared/ConfigureAddRecord.aspx</Value>
+          <Value>../Locations/Add-Locations.aspx?SaveAndNewVisible=False</Value>
         </Attribute>
         <Attribute>
           <Name>Button-Text</Name>
@@ -48,12 +48,21 @@
           <Type>ResourceReference</Type>
         </Attribute>
         <Attribute>
+          <Name>ControlToUpdate</Name>
+          <Value>SelectorTableControl</Value>
+        </Attribute>
+        <Attribute>
           <Name>IsQuickSelectorAddButton</Name>
           <Value>True</Value>
         </Attribute>
         <Attribute>
           <Name>ParametersToForward</Name>
           <Value>Target,IndexField,Formula,DFKA</Value>
+        </Attribute>
+        <Attribute>
+          <Name>RedirectStyle</Name>
+          <Value>NewWindow</Value>
+          <Type>InlineUnencoded</Type>
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>SelectorTableControl</InsideControl>
@@ -298,6 +307,28 @@
       <Type>Table</Type>
       <PanelStyle>ShowQuickSelectorTable</PanelStyle>
       <Table>DatabaseTheRatTrap%dbo.Locations</Table>
+      <QueryDefinition>
+        <WhereClause>
+          <Position>1</Position>
+          <TableAlias>DatabaseTheRatTrap%dbo.Locations_</TableAlias>
+          <Field>[DatabaseTheRatTrap%dbo.Locations_].[GroupId]</Field>
+          <Operator>=</Operator>
+          <Operand>
+            <Type>Formula</Type>
+            <Value>URL("GroupId")</Value>
+          </Operand>
+          <IgnoreBlankString>Yes</IgnoreBlankString>
+        </WhereClause>
+        <Operators>
+          <Operator xsi:nil="true" />
+        </Operators>
+        <TableAliases>
+          <Alias>
+            <AliasName>DatabaseTheRatTrap%dbo.Locations_</AliasName>
+            <TableName>DatabaseTheRatTrap%dbo.Locations</TableName>
+          </Alias>
+        </TableAliases>
+      </QueryDefinition>
       <PassthroughAttributes>
         <Attribute>
           <Name>HasSelectorRowClick</Name>
@@ -314,6 +345,10 @@
         <Attribute>
           <Name>InternalUse:DataSource</Name>
           <Value>TableOrQuery</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSourceArg</Name>
+          <Value />
         </Attribute>
         <Attribute>
           <Name>NumberOfColumns</Name>
@@ -340,6 +375,7 @@
           <Value>Pagination-TotalPages</Value>
         </Attribute>
       </PassthroughAttributes>
+      <OrderBys />
     </ContainedComponent>
     <ContainedComponent>
       <Name>UpdatePanel1</Name>

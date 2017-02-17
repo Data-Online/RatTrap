@@ -60,6 +60,7 @@ public class BaseSexTable : PrimaryKeyTable
         this.TableDefinition.AdapterMetaData = this.DataAdapter.AdapterMetaData;
         SexIdColumn.CodeName = "SexId";
         SexColumn.CodeName = "Sex";
+        SexColumn.DefaultValue = EvaluateFormula("\"Unknown\"");
 
         
     }
