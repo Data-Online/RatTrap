@@ -263,36 +263,242 @@ public class BaseLocationsRecord : PrimaryKeyRecord
 		this.SetValue(cv, TableUtils.Long0Column);
 	}
 	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's Locations_.Comments field.
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.Description field.
 	/// </summary>
-	public ColumnValue GetCommentsValue()
+	public ColumnValue GetDescriptionValue()
 	{
-		return this.GetValue(TableUtils.CommentsColumn);
+		return this.GetValue(TableUtils.DescriptionColumn);
 	}
 
 	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's Locations_.Comments field.
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.Description field.
 	/// </summary>
-	public string GetCommentsFieldValue()
+	public string GetDescriptionFieldValue()
 	{
-		return this.GetValue(TableUtils.CommentsColumn).ToString();
+		return this.GetValue(TableUtils.DescriptionColumn).ToString();
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Comments field.
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Description field.
 	/// </summary>
-	public void SetCommentsFieldValue(ColumnValue val)
+	public void SetDescriptionFieldValue(ColumnValue val)
 	{
-		this.SetValue(val, TableUtils.CommentsColumn);
+		this.SetValue(val, TableUtils.DescriptionColumn);
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Comments field.
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Description field.
 	/// </summary>
-	public void SetCommentsFieldValue(string val)
+	public void SetDescriptionFieldValue(string val)
 	{
 		ColumnValue cv = new ColumnValue(val);
-		this.SetValue(cv, TableUtils.CommentsColumn);
+		this.SetValue(cv, TableUtils.DescriptionColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public ColumnValue GetGroupIdValue()
+	{
+		return this.GetValue(TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public Int32 GetGroupIdFieldValue()
+	{
+		return this.GetValue(TableUtils.GroupIdColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.GroupIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public void SetGroupIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.GroupIdColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public ColumnValue GetLatitudeValue()
+	{
+		return this.GetValue(TableUtils.LatitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public Decimal GetLatitudeFieldValue()
+	{
+		return this.GetValue(TableUtils.LatitudeColumn).ToDecimal();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public void SetLatitudeFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.LatitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public void SetLatitudeFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.LatitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public void SetLatitudeFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LatitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public void SetLatitudeFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LatitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public void SetLatitudeFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LatitudeColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public ColumnValue GetLongitudeValue()
+	{
+		return this.GetValue(TableUtils.LongitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public Decimal GetLongitudeFieldValue()
+	{
+		return this.GetValue(TableUtils.LongitudeColumn).ToDecimal();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public void SetLongitudeFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.LongitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public void SetLongitudeFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.LongitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public void SetLongitudeFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LongitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public void SetLongitudeFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LongitudeColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public void SetLongitudeFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.LongitudeColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.Address field.
+	/// </summary>
+	public ColumnValue GetAddressValue()
+	{
+		return this.GetValue(TableUtils.AddressColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Locations_.Address field.
+	/// </summary>
+	public string GetAddressFieldValue()
+	{
+		return this.GetValue(TableUtils.AddressColumn).ToString();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Address field.
+	/// </summary>
+	public void SetAddressFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.AddressColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Address field.
+	/// </summary>
+	public void SetAddressFieldValue(string val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.AddressColumn);
 	}
 
 
@@ -430,18 +636,18 @@ public class BaseLocationsRecord : PrimaryKeyRecord
 		}
 	}
 	/// <summary>
-	/// This is a property that provides direct access to the value of the record's Locations_.Comments field.
+	/// This is a property that provides direct access to the value of the record's Locations_.Description field.
 	/// </summary>
-	public string Comments
+	public string Description
 	{
 		get
 		{
-			return this.GetValue(TableUtils.CommentsColumn).ToString();
+			return this.GetValue(TableUtils.DescriptionColumn).ToString();
 		}
 		set
 		{
 			ColumnValue cv = new ColumnValue(value);
-			this.SetValue(cv, TableUtils.CommentsColumn);
+			this.SetValue(cv, TableUtils.DescriptionColumn);
 		}
 	}
 
@@ -449,11 +655,11 @@ public class BaseLocationsRecord : PrimaryKeyRecord
 	/// <summary>
 	/// This is a convenience method that can be used to determine that the column is set.
 	/// </summary>
-	public bool CommentsSpecified
+	public bool DescriptionSpecified
 	{
 		get
 		{
-			ColumnValue val = this.GetValue(TableUtils.CommentsColumn);
+			ColumnValue val = this.GetValue(TableUtils.DescriptionColumn);
             if (val == null || val.IsNull)
             {
                 return false;
@@ -463,13 +669,185 @@ public class BaseLocationsRecord : PrimaryKeyRecord
 	}
 
 	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Comments field.
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Description field.
 	/// </summary>
-	public string CommentsDefault
+	public string DescriptionDefault
 	{
 		get
 		{
-			return TableUtils.CommentsColumn.DefaultValue;
+			return TableUtils.DescriptionColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public Int32 GroupId
+	{
+		get
+		{
+			return this.GetValue(TableUtils.GroupIdColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.GroupIdColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool GroupIdSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.GroupIdColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.GroupId field.
+	/// </summary>
+	public string GroupIdDefault
+	{
+		get
+		{
+			return TableUtils.GroupIdColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public Decimal Latitude
+	{
+		get
+		{
+			return this.GetValue(TableUtils.LatitudeColumn).ToDecimal();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.LatitudeColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool LatitudeSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.LatitudeColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Latitude field.
+	/// </summary>
+	public string LatitudeDefault
+	{
+		get
+		{
+			return TableUtils.LatitudeColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public Decimal Longitude
+	{
+		get
+		{
+			return this.GetValue(TableUtils.LongitudeColumn).ToDecimal();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.LongitudeColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool LongitudeSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.LongitudeColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Longitude field.
+	/// </summary>
+	public string LongitudeDefault
+	{
+		get
+		{
+			return TableUtils.LongitudeColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Locations_.Address field.
+	/// </summary>
+	public string Address
+	{
+		get
+		{
+			return this.GetValue(TableUtils.AddressColumn).ToString();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.AddressColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool AddressSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.AddressColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Locations_.Address field.
+	/// </summary>
+	public string AddressDefault
+	{
+		get
+		{
+			return TableUtils.AddressColumn.DefaultValue;
 		}
 	}
 

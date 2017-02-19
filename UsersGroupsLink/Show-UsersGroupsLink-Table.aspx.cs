@@ -221,12 +221,18 @@ public partial class Show_UsersGroupsLink_Table
     
         public ThemeButtonWithArrow Actions2Button;
                 
+        public ThemeButtonWithArrow Actions3Button;
+                
         public ThemeButtonWithArrow ActionsButton;
                 
+        public System.Web.UI.WebControls.LinkButton ActiveLabel;
+        
         public System.Web.UI.WebControls.ImageButton DeleteButton1;
         
         public System.Web.UI.WebControls.Literal Description;
             
+        public System.Web.UI.WebControls.LinkButton DescriptionLabel;
+        
         public System.Web.UI.WebControls.ImageButton EditButton1;
         
         public System.Web.UI.WebControls.ImageButton ExcelButton;
@@ -235,11 +241,17 @@ public partial class Show_UsersGroupsLink_Table
         
         public System.Web.UI.WebControls.ImageButton ExcelButton2;
         
+        public System.Web.UI.WebControls.ImageButton ExcelButton3;
+        
         public ThemeButton FilterButton;
                 
         public ThemeButton FilterButton1;
                 
+        public ThemeButton FilterButton2;
+                
         public ThemeButtonWithArrow Filters1Button;
+                
+        public ThemeButtonWithArrow Filters2Button;
                 
         public ThemeButtonWithArrow FiltersButton;
                 
@@ -253,17 +265,27 @@ public partial class Show_UsersGroupsLink_Table
         
         public System.Web.UI.WebControls.ImageButton ImportButton2;
         
+        public System.Web.UI.WebControls.ImageButton ImportButton3;
+        
         public System.Web.UI.WebControls.Label Label;
         
         public System.Web.UI.WebControls.Label Label1;
         
+        public System.Web.UI.WebControls.Label Label2;
+        
+        public System.Web.UI.WebControls.Label Label3;
+        
         public System.Web.UI.WebControls.LinkButton LocationIdLabel;
         
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Table.LocationsTableControl LocationsTableControl;
+          
         public System.Web.UI.WebControls.ImageButton NewButton;
         
         public System.Web.UI.WebControls.ImageButton NewButton1;
         
         public System.Web.UI.WebControls.ImageButton NewButton2;
+        
+        public System.Web.UI.WebControls.ImageButton NewButton3;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
@@ -275,11 +297,15 @@ public partial class Show_UsersGroupsLink_Table
                 
         public PaginationModern Pagination3;
                 
+        public PaginationModern Pagination4;
+                
         public System.Web.UI.WebControls.ImageButton PDFButton;
         
         public System.Web.UI.WebControls.ImageButton PDFButton1;
         
         public System.Web.UI.WebControls.ImageButton PDFButton2;
+        
+        public System.Web.UI.WebControls.ImageButton PDFButton3;
         
         public System.Web.UI.WebControls.LinkButton ProjectIdLabel;
         
@@ -293,9 +319,13 @@ public partial class Show_UsersGroupsLink_Table
         
         public System.Web.UI.WebControls.ImageButton ResetButton1;
         
+        public System.Web.UI.WebControls.ImageButton ResetButton2;
+        
         public System.Web.UI.WebControls.Label SortByLabel;
         
         public System.Web.UI.WebControls.Label SortByLabel1;
+        
+        public System.Web.UI.WebControls.Label SortByLabel2;
         
         public System.Web.UI.WebControls.Literal Title0;
             
@@ -304,6 +334,8 @@ public partial class Show_UsersGroupsLink_Table
         public System.Web.UI.WebControls.Literal Title2;
             
         public System.Web.UI.WebControls.Literal Title3;
+            
+        public System.Web.UI.WebControls.Literal Title4;
             
         public System.Web.UI.WebControls.LinkButton TrapIdentifierLabel;
         
@@ -324,6 +356,8 @@ public partial class Show_UsersGroupsLink_Table
         public System.Web.UI.WebControls.ImageButton WordButton1;
         
         public System.Web.UI.WebControls.ImageButton WordButton2;
+        
+        public System.Web.UI.WebControls.ImageButton WordButton3;
         
         public ValidationSummary ValidationSummary1;
 

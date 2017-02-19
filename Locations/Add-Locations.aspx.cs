@@ -261,15 +261,17 @@ public partial class Add_Locations
         }
         
     
+        public System.Web.UI.WebControls.Literal AddressLabel;
+        
         public ThemeButton CancelButton;
                 
-        public System.Web.UI.WebControls.Literal CommentsLabel;
+        public System.Web.UI.WebControls.Literal DescriptionLabel;
         
-        public System.Web.UI.WebControls.Literal LatLabel;
+        public System.Web.UI.WebControls.Literal LatitudeLabel;
         
         public RatTrap.UI.Controls.Add_Locations.LocationsRecordControl LocationsRecordControl;
           
-        public System.Web.UI.WebControls.Literal LongLabel;
+        public System.Web.UI.WebControls.Literal LongitudeLabel;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         

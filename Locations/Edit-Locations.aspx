@@ -35,30 +35,31 @@
 
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
                   <asp:panel id="CollapsibleRegion" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
-                    <asp:panel id="LocationsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="LatLabel" Text="Lat">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+                    <asp:panel id="LocationsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellValue" colspan="3" rowspan="2"><asp:TextBox runat="server" id="Description" MaxLength="200" columns="60" cssclass="field_input" rows="2" textmode="MultiLine"></asp:TextBox>&nbsp;
+<BaseClasses:TextBoxMaxLengthValidator runat="server" id="DescriptionTextBoxMaxLengthValidator" ControlToValidate="Description" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Description&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></td><td class="tableCellLabel"><asp:Literal runat="server" id="LatitudeLabel" Text="Latitude">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td style="padding-right: 5px; vertical-align:top">
-<asp:TextBox runat="server" id="Lat" Columns="14" MaxLength="14" cssclass="field_input"></asp:TextBox></td>
+<asp:TextBox runat="server" id="Latitude" Columns="14" MaxLength="20" cssclass="field_input"></asp:TextBox></td>
 <td>
 &nbsp;
-<BaseClasses:TextBoxMaxLengthValidator runat="server" id="LatTextBoxMaxLengthValidator" ControlToValidate="Lat" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Lat&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></td>
+<BaseClasses:TextBoxMaxLengthValidator runat="server" id="LatitudeTextBoxMaxLengthValidator" ControlToValidate="Latitude" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Latitude&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></td>
 </tr>
 </table>
 </span>
- </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="LongLabel" Text="Long">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+</td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="LongitudeLabel" Text="Longitude">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td style="padding-right: 5px; vertical-align:top">
-<asp:TextBox runat="server" id="Long0" Columns="14" MaxLength="14" cssclass="field_input"></asp:TextBox></td>
+<asp:TextBox runat="server" id="Longitude" Columns="15" MaxLength="20" cssclass="field_input"></asp:TextBox></td>
 <td>
 &nbsp;
-<BaseClasses:TextBoxMaxLengthValidator runat="server" id="Long0TextBoxMaxLengthValidator" ControlToValidate="Long0" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Long&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></td>
+<BaseClasses:TextBoxMaxLengthValidator runat="server" id="LongitudeTextBoxMaxLengthValidator" ControlToValidate="Longitude" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Longitude&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></td>
 </tr>
 </table>
 </span>
- </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="CommentsLabel" Text="Comments">	</asp:Literal></td><td class="tableCellValue"><asp:TextBox runat="server" id="Comments" MaxLength="200" columns="120" cssclass="field_input" rows="4" textmode="MultiLine"></asp:TextBox>&nbsp;
-<BaseClasses:TextBoxMaxLengthValidator runat="server" id="CommentsTextBoxMaxLengthValidator" ControlToValidate="Comments" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Comments&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator> </td></tr></table></asp:panel>
+</td></tr><tr><td class="tableCellValue"></td><td class="tableCellValue"></td><td class="tableCellValue"></td><td class="tableCellLabel"><asp:Literal runat="server" id="AddressLabel" Text="Address">	</asp:Literal></td><td class="tableCellValue"><asp:TextBox runat="server" id="Address" MaxLength="100" columns="50" cssclass="field_input" rows="2" textmode="MultiLine"></asp:TextBox>&nbsp;
+<BaseClasses:TextBoxMaxLengthValidator runat="server" id="AddressTextBoxMaxLengthValidator" ControlToValidate="Address" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Address&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></td></tr></table></asp:panel>
 
                   </td></tr></table>
 </asp:panel>

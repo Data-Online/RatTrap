@@ -7227,8 +7227,12 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
           
                     this.ImageButton.Click += ImageButton_Click;
                         
-              this.LocationId.SelectedIndexChanged += LocationId_SelectedIndexChanged;                  
+                    this.ImageButton1.Click += ImageButton1_Click;
+                        
+              this.GroupId.SelectedIndexChanged += GroupId_SelectedIndexChanged;                  
                 
+              this.LocationId1.SelectedIndexChanged += LocationId1_SelectedIndexChanged;
+            
               this.ProjectId.SelectedIndexChanged += ProjectId_SelectedIndexChanged;
             
               this.TrapTypeId.SelectedIndexChanged += TrapTypeId_SelectedIndexChanged;
@@ -7328,9 +7332,11 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
         
                 SetActive();
                 SetActiveLabel();
+                SetGroupId();
                 SetGroupId1();
                 
-                SetLocationId();
+                
+                SetLocationId1();
                 SetLocationIdLabel();
                 SetProjectId();
                 SetProjectIdLabel();
@@ -7340,6 +7346,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 SetTrapTypeId();
                 SetTrapTypeIdLabel();
                 SetImageButton();
+              
+                SetImageButton1();
               
 
       
@@ -7407,6 +7415,118 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             
         }
                 
+        public virtual void SetGroupId()
+        {
+            
+            // Set AutoPostBack to true so that when the control value is changed, to refresh LocationId1,ProjectId controls
+            this.GroupId.AutoPostBack = true;
+            				
+        
+        
+            string selectedValue = null;
+            
+            // figure out the selectedValue
+                  
+            
+            
+            // Set the GroupId QuickSelector on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
+            
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.GroupId is the ASP:QuickSelector on the webpage.
+            
+            // You can modify this method directly, or replace it with a call to
+            //     base.SetGroupId();
+            // and add your own custom code before or after the call to the base function.
+
+            
+            if (this.DataSource != null && this.DataSource.GroupIdSpecified)
+            {
+                            
+                // If the GroupId is non-NULL, then format the value.
+                // The Format method will return the Display Foreign Key As (DFKA) value
+                selectedValue = this.DataSource.GroupId.ToString();
+                
+            }
+            else
+            {
+                
+                // GroupId is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+                if (this.DataSource != null && this.DataSource.IsCreated)
+                    selectedValue = null;
+                else
+                    selectedValue = TrapsTable.GroupId.DefaultValue;
+                				
+            }			
+                
+            // Add the Please Select item.
+            if (selectedValue == null || selectedValue == "")
+                  MiscUtils.ResetSelectedItem(this.GroupId, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+                        
+                  
+            // Populate the item(s) to the control
+            
+            this.GroupId.SetFieldMaxLength(50);
+            
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.GroupId, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.GroupId, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Groups.GroupId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(GroupsTable.GroupId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    GroupsRecord[] rc = GroupsTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        GroupsRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.GroupIdSpecified)
+                            cvalue = itemValue.GroupId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.GroupId);
+                        if(_isExpandableNonCompositeForeignKey && TrapsTable.GroupId.IsApplyDisplayAs)
+                            fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.GroupId);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(GroupsTable.GroupName);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.GroupId, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+              string url = this.ModifyRedirectUrl("../Groups/Groups-QuickSelector.aspx", "", true);
+              
+              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+              
+              url += "?Target=" + this.GroupId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("GroupName")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("GroupId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              
+              this.GroupId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(GroupId.AutoPostBack).ToLower() + ", event); return false;";
+                  
+                
+                  
+        }
+                
         public virtual void SetGroupId1()
         {
             
@@ -7447,7 +7567,7 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                                
         }
                 
-        public virtual void SetLocationId()
+        public virtual void SetLocationId1()
         {
             				
         
@@ -7458,14 +7578,14 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                   
             
             
-            // Set the LocationId QuickSelector on the webpage with value from the
+            // Set the LocationId DropDownList on the webpage with value from the
             // DatabaseTheRatTrap%dbo.Traps database record.
             
             // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
-            // this.LocationId is the ASP:QuickSelector on the webpage.
+            // this.LocationId1 is the ASP:DropDownList on the webpage.
             
             // You can modify this method directly, or replace it with a call to
-            //     base.SetLocationId();
+            //     base.SetLocationId1();
             // and add your own custom code before or after the call to the base function.
 
             
@@ -7488,70 +7608,11 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                     selectedValue = TrapsTable.LocationId.DefaultValue;
                 				
             }			
-                
-            // Add the Please Select item.
-            if (selectedValue == null || selectedValue == "")
-                  MiscUtils.ResetSelectedItem(this.LocationId, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-                        
+                            
                   
             // Populate the item(s) to the control
             
-            this.LocationId.SetFieldMaxLength(50);
-            
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
-            FormulaEvaluator evaluator = new FormulaEvaluator();
-              
-            if (selectedValue != null &&
-                selectedValue.Trim() != "" &&
-                !MiscUtils.SetSelectedValue(this.LocationId, selectedValue) &&
-                !MiscUtils.SetSelectedDisplayText(this.LocationId, selectedValue))
-            {
-
-                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Locations.LocationId = selectedValue
-                    
-                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
-                WhereClause whereClause2 = new WhereClause();
-                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(LocationsTable.LocationId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
-                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
-
-                // Execute the query
-                try
-                {
-                    LocationsRecord[] rc = LocationsTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
-                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
-                    // if find a record, add it to the dropdown and set it as selected item
-                    if (rc != null && rc.Length == 1)
-                    {
-                        LocationsRecord itemValue = rc[0];
-                        string cvalue = null;
-                        string fvalue = null;                        
-                        if (itemValue.LocationIdSpecified)
-                            cvalue = itemValue.LocationId.ToString(); 
-                        Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.LocationId);
-                        if(_isExpandableNonCompositeForeignKey && TrapsTable.LocationId.IsApplyDisplayAs)
-                            fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.LocationId);
-                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(LocationsTable.Comments);
-                            					
-                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-                        MiscUtils.ResetSelectedItem(this.LocationId, new ListItem(fvalue, cvalue));                      
-                    }
-                }
-                catch
-                {
-                }
-
-                    					
-            }					
-                        
-              string url = this.ModifyRedirectUrl("../Locations/Locations-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.LocationId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("Comments")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("LocationId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.LocationId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(LocationId.AutoPostBack).ToLower() + ", event); return false;";
-                  
+            this.PopulateLocationId1DropDownList(selectedValue, 100);              
                 
                   
         }
@@ -7692,6 +7753,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
         public virtual void SetActiveLabel()
                   {
                   
+                        this.ActiveLabel.Text = EvaluateFormula("\"Active?\"");
+                      
                     
         }
                 
@@ -7893,8 +7956,9 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             // Call the Get methods for each of the user interface controls.
         
             GetActive();
+            GetGroupId();
             GetGroupId1();
-            GetLocationId();
+            GetLocationId1();
             GetProjectId();
             GetTrapIdentifier();
             GetTrapTypeId();
@@ -7912,19 +7976,30 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                     
         }
                 
+        public virtual void GetGroupId()
+        {
+         // Retrieve the value entered by the user on the GroupId ASP:QuickSelector, and
+            // save it into the GroupId field in DataSource DatabaseTheRatTrap%dbo.Traps record.
+            
+            // Custom validation should be performed in Validate, not here.
+            
+            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.GroupId), TrapsTable.GroupId);			
+                			 
+        }
+                
         public virtual void GetGroupId1()
         {
             
         }
                 
-        public virtual void GetLocationId()
+        public virtual void GetLocationId1()
         {
-         // Retrieve the value entered by the user on the LocationId ASP:QuickSelector, and
+         // Retrieve the value entered by the user on the LocationId ASP:DropDownList, and
             // save it into the LocationId field in DataSource DatabaseTheRatTrap%dbo.Traps record.
             
             // Custom validation should be performed in Validate, not here.
             
-            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.LocationId), TrapsTable.LocationId);			
+            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.LocationId1), TrapsTable.LocationId);			
                 			 
         }
                 
@@ -8305,6 +8380,55 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
    
         }
             
+        public virtual void SetImageButton1()                
+              
+        {
+        
+              try
+              {
+                    string url = "../Locations/Add-Locations.aspx?GroupId={TrapsRecordControl:FK:FK_Traps_Groups1}&SaveAndNewVisible=False&TabVisible=False";
+              
+                      
+                    url = this.ModifyRedirectUrl(url, "", true);
+                    
+                    url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+                    
+                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(this.LocationId1.ClientID) + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= Locations.Description")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("LocationId");                      
+                              
+                string javascriptCall = "";
+                
+                    javascriptCall = "initializePopupPage(this, '" + url + "', false, event);";                                      
+                       
+                    this.ImageButton1.Attributes["onClick"] = javascriptCall + "return false;";            
+                }
+                catch
+                {
+                    // do nothing.  If the code above fails, server side click event, ImageButton1_ClickImageButton1_Click will be trigger when user click the button.
+                }
+                  
+   
+        }
+            
+        public virtual WhereClause CreateWhereClause_LocationId1DropDownList() 
+        {
+            // By default, we simply return a new WhereClause.
+            // Add additional where clauses to restrict the items shown in the dropdown list.
+            						
+            // This WhereClause is for the DatabaseTheRatTrap%dbo.Locations table.
+            // Examples:
+            // wc.iAND(LocationsTable.LocationId, BaseFilter.ComparisonOperator.EqualsTo, "XYZ");
+            // wc.iAND(LocationsTable.Active, BaseFilter.ComparisonOperator.EqualsTo, "1");
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("TrapsRecordControl.GroupId.SelectedValue", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.LocationsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Locations_.GroupId"), EvaluateFormula("TrapsRecordControl.GroupId.SelectedValue", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("TrapsRecordControl.GroupId.SelectedValue", false) == "--PLEASE_SELECT--" || EvaluateFormula("TrapsRecordControl.GroupId.SelectedValue", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;				
+        }
+        
         public virtual WhereClause CreateWhereClause_ProjectIdDropDownList() 
         {
             // By default, we simply return a new WhereClause.
@@ -8318,6 +8442,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             WhereClause whereClause = new WhereClause();
             
             filter.AddFilter(new BaseClasses.Data.ColumnJoinFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.ProjectsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Projects_.ProjectId"), new BaseClasses.Data.IdentifierAliasInfo(@"Projects_", null), BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.ProjectsGroupsLinkTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"ProjectsGroupsLink_.ProjectId"), new BaseClasses.Data.IdentifierAliasInfo(@"ProjectsGroupsLink_", null),  BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+            if (EvaluateFormula("TrapsRecordControl.GroupId.SelectedValue", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.ProjectsGroupsLinkTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"ProjectsGroupsLink_.GroupId"), EvaluateFormula("TrapsRecordControl.GroupId.SelectedValue", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("TrapsRecordControl.GroupId.SelectedValue", false) == "--PLEASE_SELECT--" || EvaluateFormula("TrapsRecordControl.GroupId.SelectedValue", false) == "--ANY--") whereClause.RunQuery = false;
 
             whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
     
@@ -8339,6 +8465,148 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             				
         }
         
+        // Fill the LocationId1 list.
+        protected virtual void PopulateLocationId1DropDownList(string selectedValue, int maxItems) 
+        {
+            		  					                
+            this.LocationId1.Items.Clear();
+            
+            // 1. Setup the static list items        
+            
+              // Add the Please Select item.
+              this.LocationId1.Items.Insert(0, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+            		  			
+            // 2. Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_LocationId1DropDownList function.
+            // It is better to customize the where clause there.
+            
+                      
+            WhereClause wc = CreateWhereClause_LocationId1DropDownList();
+                        
+                
+            // Create the ORDER BY clause to sort based on the displayed value.							
+                
+            OrderBy orderBy = new OrderBy(false, false);
+                          orderBy.Add(LocationsTable.LocationId, OrderByItem.OrderDir.Asc);
+
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object> ();
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+
+            // 3. Read a total of maxItems from the database and insert them into the LocationId1DropDownList.
+            LocationsRecord[] itemValues  = null;
+            if (wc.RunQuery)
+            {
+                int counter = 0;
+                int pageNum = 0;	
+                ArrayList listDuplicates = new ArrayList();
+
+                do
+                {
+                    itemValues = LocationsTable.GetRecords(wc, orderBy, pageNum, maxItems);
+                    foreach (LocationsRecord itemValue in itemValues) 
+                    {
+                        // Create the item and add to the list.
+                        string cvalue = null;
+                        string fvalue = null;
+                        if (itemValue.LocationIdSpecified) 
+                        {
+                            cvalue = itemValue.LocationId.ToString().ToString();
+                            if (counter < maxItems && this.LocationId1.Items.FindByValue(cvalue) == null)
+                            {
+                                     
+                                Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.LocationId);
+                                if(_isExpandableNonCompositeForeignKey && TrapsTable.LocationId.IsApplyDisplayAs)
+                                    fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.LocationId);
+                                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                                    fvalue = itemValue.Format(LocationsTable.LocationId);
+                                    		
+
+                                if (fvalue == null || fvalue.Trim() == "") 
+                                    fvalue = cvalue;
+
+                                if (fvalue == null) {
+                                    fvalue = "";
+                                }
+
+                                fvalue = fvalue.Trim();
+
+                                if ( fvalue.Length > 50 ) {
+                                    fvalue = fvalue.Substring(0, 50) + "...";
+                                }
+
+                                ListItem dupItem = this.LocationId1.Items.FindByText(fvalue);
+								
+                                if (dupItem != null) {
+                                    listDuplicates.Add(fvalue);
+                                    if (!string.IsNullOrEmpty(dupItem.Value))
+                                    {
+                                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
+                                    }
+                                }
+
+                                ListItem newItem = new ListItem(fvalue, cvalue);
+                                this.LocationId1.Items.Add(newItem);
+
+                                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
+                                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
+                                }
+
+                                counter += 1;
+                            }
+                        }
+                    }
+                    pageNum++;
+                }
+                while (itemValues.Length == maxItems && counter < maxItems);
+            }
+                        
+                                        
+            // 4. Set the selected value (insert if not already present).
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.LocationId1, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.LocationId1, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Locations.LocationId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(LocationsTable.LocationId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    LocationsRecord[] rc = LocationsTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        LocationsRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.LocationIdSpecified)
+                            cvalue = itemValue.LocationId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.LocationId);
+                        if(_isExpandableNonCompositeForeignKey && TrapsTable.LocationId.IsApplyDisplayAs)
+                            fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.LocationId);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(LocationsTable.LocationId);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.LocationId1, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+        }
+                  
         // Fill the ProjectId list.
         protected virtual void PopulateProjectIdDropDownList(string selectedValue, int maxItems) 
         {
@@ -8657,13 +8925,104 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             
             
         
-        protected virtual void LocationId_SelectedIndexChanged(object sender, EventArgs args)
+        // event handler for ImageButton
+        public virtual void ImageButton1_Click(object sender, ImageClickEventArgs args)
         {
-          									
+              
+            // The redirect URL is set on the Properties, Custom Properties or Actions.
+            // The ModifyRedirectURL call resolves the parameters before the
+            // Response.Redirect redirects the page to the URL.  
+            // Any code after the Response.Redirect call will not be executed, since the page is
+            // redirected to the URL.
+            
+            string url = @"../Locations/Add-Locations.aspx?GroupId={TrapsRecordControl:FK:FK_Traps_Groups1}&SaveAndNewVisible=False&TabVisible=False";
+            
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+                url = this.ModifyRedirectUrl(url, "",true);
+                url = this.Page.ModifyRedirectUrl(url, "",true);
+              
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  shouldRedirect = false;
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+            if (shouldRedirect) {
+                this.Page.ShouldSaveControlsToSession = true;
+      
+                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(this.LocationId1.ClientID) + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= Locations.Description")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("LocationId");                      
+                              
+                string javascriptCall = "";
+                
+                    javascriptCall = "initializePopupPage(this, '" + url + "', false, event);";                                      
+                AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "ImageButton1_Click", javascriptCall, true);
+        
+            }
+        
+        }
+            
+            
+        
+        protected virtual void GroupId_SelectedIndexChanged(object sender, EventArgs args)
+        {
+          
+                try
+                {
+                    // Enclose all database retrieval/update code within a Transaction boundary
+                    DbUtils.StartTransaction();
+                    // Because Set methods will be called, it is important to initialize the data source ahead of time
+                    
+                    if (this.RecordUniqueId != null)
+                        this.DataSource = this.GetRecord();                        
+                      
+                SetLocationId1();
+                SetProjectId();
+                            
+                    this.Page.CommitTransaction(sender);
+                }
+                catch
+                {
+                    // Upon error, rollback the transaction
+                    this.Page.RollBackTransaction(sender);
+                }
+                finally
+                {
+                    DbUtils.EndTransaction();
+                }
+    
+                        									
 
         }
                       
                     
+        protected virtual void LocationId1_SelectedIndexChanged(object sender, EventArgs args)
+        {
+            // for the value inserted by quick add button or large list selector, 
+            // the value is necessary to be inserted by this event during postback 
+            string val = (string)(this.Page.Session[LocationId1.ClientID + "_SelectedValue"]);
+            string displayText = (string)(this.Page.Session[LocationId1.ClientID + "_SelectedDisplayText"]);
+            if (!string.IsNullOrEmpty(displayText) && !string.IsNullOrEmpty(val)) {
+	            this.LocationId1.Items.Add(new ListItem(displayText, val));
+	            this.LocationId1.SelectedIndex = this.LocationId1.Items.Count - 1;
+	            this.Page.Session.Remove(LocationId1.ClientID + "_SelectedValue");
+	            this.Page.Session.Remove(LocationId1.ClientID + "_SelectedDisplayText");
+            }
+           						
+        }
+            
         protected virtual void ProjectId_SelectedIndexChanged(object sender, EventArgs args)
         {
             // for the value inserted by quick add button or large list selector, 
@@ -8828,6 +9187,12 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             }
         }
         
+        public BaseClasses.Web.UI.WebControls.QuickSelector GroupId {
+            get {
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupId");
+            }
+        }              
+            
         public System.Web.UI.WebControls.Literal GroupId1 {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupId1");
@@ -8840,11 +9205,17 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             }
         }
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector LocationId {
+        public System.Web.UI.WebControls.ImageButton ImageButton1 {
             get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationId");
+                return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ImageButton1");
             }
-        }              
+        }
+        
+        public System.Web.UI.WebControls.DropDownList LocationId1 {
+            get {
+                return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationId1");
+            }
+        }
             
         public System.Web.UI.WebControls.Literal LocationIdLabel {
             get {

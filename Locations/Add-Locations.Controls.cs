@@ -91,11 +91,15 @@ public class BaseLocationsRecordControl : RatTrap.UI.BaseApplicationRecordContro
               // Register the event handlers.
 
           
-              this.Comments.TextChanged += Comments_TextChanged;
+              this.Address.TextChanged += Address_TextChanged;
             
-              this.Lat.TextChanged += Lat_TextChanged;
+              this.Description.TextChanged += Description_TextChanged;
             
-              this.Long0.TextChanged += Long0_TextChanged;
+              this.GroupId.TextChanged += GroupId_TextChanged;
+            
+              this.Latitude.TextChanged += Latitude_TextChanged;
+            
+              this.Longitude.TextChanged += Longitude_TextChanged;
             
         }
 
@@ -173,12 +177,15 @@ public class BaseLocationsRecordControl : RatTrap.UI.BaseApplicationRecordContro
 
             // Call the Set methods for each controls on the panel
         
-                SetComments();
-                SetCommentsLabel();
-                SetLat();
-                SetLatLabel();
-                SetLong0();
-                SetLongLabel();
+                SetAddress();
+                SetAddressLabel();
+                SetDescription();
+                SetDescriptionLabel();
+                SetGroupId();
+                SetLatitude();
+                SetLatitudeLabel();
+                SetLongitude();
+                SetLongitudeLabel();
                 
 
       
@@ -203,118 +210,190 @@ public class BaseLocationsRecordControl : RatTrap.UI.BaseApplicationRecordContro
         }
         
         
-        public virtual void SetComments()
+        public virtual void SetAddress()
         {
             
                     
-            // Set the Comments TextBox on the webpage with value from the
+            // Set the Address TextBox on the webpage with value from the
             // DatabaseTheRatTrap%dbo.Locations database record.
 
             // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
-            // this.Comments is the ASP:TextBox on the webpage.
+            // this.Address is the ASP:TextBox on the webpage.
                   
-            if (this.DataSource != null && this.DataSource.CommentsSpecified) {
+            if (this.DataSource != null && this.DataSource.AddressSpecified) {
                 								
-                // If the Comments is non-NULL, then format the value.
+                // If the Address is non-NULL, then format the value.
                 // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(LocationsTable.Comments);
+               string formattedValue = this.DataSource.Format(LocationsTable.Address);
                                 
-                this.Comments.Text = formattedValue;
+                this.Address.Text = formattedValue;
                    
             } 
             
             else {
             
-                // Comments is NULL in the database, so use the Default Value.  
+                // Address is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.Comments.Text = LocationsTable.Comments.Format(LocationsTable.Comments.DefaultValue);
+              this.Address.Text = LocationsTable.Address.Format(LocationsTable.Address.DefaultValue);
             		
             }
             
-              this.Comments.TextChanged += Comments_TextChanged;
+              this.Address.TextChanged += Address_TextChanged;
                                
         }
                 
-        public virtual void SetLat()
+        public virtual void SetDescription()
         {
             
                     
-            // Set the Lat TextBox on the webpage with value from the
+            // Set the Description TextBox on the webpage with value from the
             // DatabaseTheRatTrap%dbo.Locations database record.
 
             // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
-            // this.Lat is the ASP:TextBox on the webpage.
+            // this.Description is the ASP:TextBox on the webpage.
                   
-            if (this.DataSource != null && this.DataSource.LatSpecified) {
+            if (this.DataSource != null && this.DataSource.DescriptionSpecified) {
                 								
-                // If the Lat is non-NULL, then format the value.
+                // If the Description is non-NULL, then format the value.
                 // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(LocationsTable.Lat);
+               string formattedValue = this.DataSource.Format(LocationsTable.Description);
                                 
-                this.Lat.Text = formattedValue;
+                this.Description.Text = formattedValue;
                    
             } 
             
             else {
             
-                // Lat is NULL in the database, so use the Default Value.  
+                // Description is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.Lat.Text = LocationsTable.Lat.Format(LocationsTable.Lat.DefaultValue);
+              this.Description.Text = LocationsTable.Description.Format(LocationsTable.Description.DefaultValue);
             		
             }
             
-              this.Lat.TextChanged += Lat_TextChanged;
+              this.Description.TextChanged += Description_TextChanged;
                                
         }
                 
-        public virtual void SetLong0()
+        public virtual void SetGroupId()
         {
             
                     
-            // Set the Long TextBox on the webpage with value from the
+            // Set the GroupId TextBox on the webpage with value from the
             // DatabaseTheRatTrap%dbo.Locations database record.
 
             // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
-            // this.Long0 is the ASP:TextBox on the webpage.
+            // this.GroupId is the ASP:TextBox on the webpage.
                   
-            if (this.DataSource != null && this.DataSource.Long0Specified) {
+            if (this.DataSource != null && this.DataSource.IsCreated) {
                 								
-                // If the Long is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(LocationsTable.Long0);
-                                
-                this.Long0.Text = formattedValue;
+                // If the GroupId is non-NULL, then format the value.
+                // The Format method will return the Display Foreign Key As (DFKA) value
+               string formattedValue = this.DataSource.GroupId.ToString();
+                            
+                this.GroupId.Text = formattedValue;
                    
             } 
             
             else {
             
-                // Long is NULL in the database, so use the Default Value.  
+                // GroupId is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.Long0.Text = LocationsTable.Long0.Format(LocationsTable.Long0.DefaultValue);
+              this.GroupId.Text = EvaluateFormula("URL(\"GroupId\")", this.DataSource);
             		
             }
             
-              this.Long0.TextChanged += Long0_TextChanged;
+              this.GroupId.TextChanged += GroupId_TextChanged;
                                
         }
                 
-        public virtual void SetCommentsLabel()
+        public virtual void SetLatitude()
+        {
+            
+                    
+            // Set the Latitude TextBox on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Locations database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
+            // this.Latitude is the ASP:TextBox on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.LatitudeSpecified) {
+                								
+                // If the Latitude is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(LocationsTable.Latitude);
+                                
+                this.Latitude.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Latitude is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Latitude.Text = LocationsTable.Latitude.Format(LocationsTable.Latitude.DefaultValue);
+            		
+            }
+            
+              this.Latitude.TextChanged += Latitude_TextChanged;
+                               
+        }
+                
+        public virtual void SetLongitude()
+        {
+            
+                    
+            // Set the Longitude TextBox on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Locations database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
+            // this.Longitude is the ASP:TextBox on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.LongitudeSpecified) {
+                								
+                // If the Longitude is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(LocationsTable.Longitude);
+                                
+                this.Longitude.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Longitude is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Longitude.Text = LocationsTable.Longitude.Format(LocationsTable.Longitude.DefaultValue);
+            		
+            }
+            
+              this.Longitude.TextChanged += Longitude_TextChanged;
+                               
+        }
+                
+        public virtual void SetAddressLabel()
                   {
                   
                     
         }
                 
-        public virtual void SetLatLabel()
+        public virtual void SetDescriptionLabel()
                   {
                   
                     
         }
                 
-        public virtual void SetLongLabel()
+        public virtual void SetLatitudeLabel()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetLongitudeLabel()
                   {
                   
                     
@@ -476,50 +555,80 @@ public class BaseLocationsRecordControl : RatTrap.UI.BaseApplicationRecordContro
       
             // Call the Get methods for each of the user interface controls.
         
-            GetComments();
-            GetLat();
-            GetLong0();
+            GetAddress();
+            GetDescription();
+            GetGroupId();
+            GetLatitude();
+            GetLongitude();
         }
         
         
-        public virtual void GetComments()
+        public virtual void GetAddress()
         {
             
-            // Retrieve the value entered by the user on the Comments ASP:TextBox, and
-            // save it into the Comments field in DataSource DatabaseTheRatTrap%dbo.Locations record.
+            // Retrieve the value entered by the user on the Address ASP:TextBox, and
+            // save it into the Address field in DataSource DatabaseTheRatTrap%dbo.Locations record.
             
             // Custom validation should be performed in Validate, not here.
                     
             // Save the value to data source
-            this.DataSource.Parse(this.Comments.Text, LocationsTable.Comments);							
+            this.DataSource.Parse(this.Address.Text, LocationsTable.Address);							
                           
                       
         }
                 
-        public virtual void GetLat()
+        public virtual void GetDescription()
         {
             
-            // Retrieve the value entered by the user on the Lat ASP:TextBox, and
-            // save it into the Lat field in DataSource DatabaseTheRatTrap%dbo.Locations record.
+            // Retrieve the value entered by the user on the Description ASP:TextBox, and
+            // save it into the Description field in DataSource DatabaseTheRatTrap%dbo.Locations record.
             
             // Custom validation should be performed in Validate, not here.
                     
             // Save the value to data source
-            this.DataSource.Parse(this.Lat.Text, LocationsTable.Lat);							
+            this.DataSource.Parse(this.Description.Text, LocationsTable.Description);							
                           
                       
         }
                 
-        public virtual void GetLong0()
+        public virtual void GetGroupId()
         {
             
-            // Retrieve the value entered by the user on the Long ASP:TextBox, and
-            // save it into the Long field in DataSource DatabaseTheRatTrap%dbo.Locations record.
+            // Retrieve the value entered by the user on the GroupId ASP:TextBox, and
+            // save it into the GroupId field in DataSource DatabaseTheRatTrap%dbo.Locations record.
             
             // Custom validation should be performed in Validate, not here.
                     
             // Save the value to data source
-            this.DataSource.Parse(this.Long0.Text, LocationsTable.Long0);							
+            this.DataSource.Parse(this.GroupId.Text, LocationsTable.GroupId);							
+                          
+                      
+        }
+                
+        public virtual void GetLatitude()
+        {
+            
+            // Retrieve the value entered by the user on the Latitude ASP:TextBox, and
+            // save it into the Latitude field in DataSource DatabaseTheRatTrap%dbo.Locations record.
+            
+            // Custom validation should be performed in Validate, not here.
+                    
+            // Save the value to data source
+            this.DataSource.Parse(this.Latitude.Text, LocationsTable.Latitude);							
+                          
+                      
+        }
+                
+        public virtual void GetLongitude()
+        {
+            
+            // Retrieve the value entered by the user on the Longitude ASP:TextBox, and
+            // save it into the Longitude field in DataSource DatabaseTheRatTrap%dbo.Locations record.
+            
+            // Custom validation should be performed in Validate, not here.
+                    
+            // Save the value to data source
+            this.DataSource.Parse(this.Longitude.Text, LocationsTable.Longitude);							
                           
                       
         }
@@ -851,17 +960,27 @@ public class BaseLocationsRecordControl : RatTrap.UI.BaseApplicationRecordContro
     
         // Generate set method for buttons
         
-        protected virtual void Comments_TextChanged(object sender, EventArgs args)
+        protected virtual void Address_TextChanged(object sender, EventArgs args)
         {
                     
               }
             
-        protected virtual void Lat_TextChanged(object sender, EventArgs args)
+        protected virtual void Description_TextChanged(object sender, EventArgs args)
         {
                     
               }
             
-        protected virtual void Long0_TextChanged(object sender, EventArgs args)
+        protected virtual void GroupId_TextChanged(object sender, EventArgs args)
+        {
+                    
+              }
+            
+        protected virtual void Latitude_TextChanged(object sender, EventArgs args)
+        {
+                    
+              }
+            
+        protected virtual void Longitude_TextChanged(object sender, EventArgs args)
         {
                     
               }
@@ -978,39 +1097,57 @@ public class BaseLocationsRecordControl : RatTrap.UI.BaseApplicationRecordContro
        
 #region "Helper Properties"
         
-        public System.Web.UI.WebControls.TextBox Comments {
+        public System.Web.UI.WebControls.TextBox Address {
             get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Comments");
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Address");
             }
         }
             
-        public System.Web.UI.WebControls.Literal CommentsLabel {
+        public System.Web.UI.WebControls.Literal AddressLabel {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentsLabel");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "AddressLabel");
             }
         }
         
-        public System.Web.UI.WebControls.TextBox Lat {
+        public System.Web.UI.WebControls.TextBox Description {
             get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Lat");
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Description");
             }
         }
             
-        public System.Web.UI.WebControls.Literal LatLabel {
+        public System.Web.UI.WebControls.Literal DescriptionLabel {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LatLabel");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DescriptionLabel");
             }
         }
         
-        public System.Web.UI.WebControls.TextBox Long0 {
+        public System.Web.UI.WebControls.TextBox GroupId {
             get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Long0");
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupId");
             }
         }
             
-        public System.Web.UI.WebControls.Literal LongLabel {
+        public System.Web.UI.WebControls.TextBox Latitude {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LongLabel");
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Latitude");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal LatitudeLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LatitudeLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.TextBox Longitude {
+            get {
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Longitude");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal LongitudeLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LongitudeLabel");
             }
         }
         

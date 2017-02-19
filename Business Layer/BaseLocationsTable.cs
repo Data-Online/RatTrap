@@ -61,7 +61,11 @@ public class BaseLocationsTable : PrimaryKeyTable
         LocationIdColumn.CodeName = "LocationId";
         LatColumn.CodeName = "Lat";
         Long0Column.CodeName = "Long0";
-        CommentsColumn.CodeName = "Comments";
+        DescriptionColumn.CodeName = "Description";
+        GroupIdColumn.CodeName = "GroupId";
+        LatitudeColumn.CodeName = "Latitude";
+        LongitudeColumn.CodeName = "Longitude";
+        AddressColumn.CodeName = "Address";
 
         
     }
@@ -148,9 +152,9 @@ public class BaseLocationsTable : PrimaryKeyTable
     
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's Locations_.Comments column object.
+    /// This is a convenience property that provides direct access to the table's Locations_.Description column object.
     /// </summary>
-    public BaseClasses.Data.StringColumn CommentsColumn
+    public BaseClasses.Data.StringColumn DescriptionColumn
     {
         get
         {
@@ -161,13 +165,113 @@ public class BaseLocationsTable : PrimaryKeyTable
 
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's Locations_.Comments column object.
+    /// This is a convenience property that provides direct access to the table's Locations_.Description column object.
     /// </summary>
-    public static BaseClasses.Data.StringColumn Comments
+    public static BaseClasses.Data.StringColumn Description
     {
         get
         {
-            return LocationsTable.Instance.CommentsColumn;
+            return LocationsTable.Instance.DescriptionColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Locations_.GroupId column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn GroupIdColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[4];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Locations_.GroupId column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn GroupId
+    {
+        get
+        {
+            return LocationsTable.Instance.GroupIdColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Locations_.Latitude column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn LatitudeColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[5];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Locations_.Latitude column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn Latitude
+    {
+        get
+        {
+            return LocationsTable.Instance.LatitudeColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Locations_.Longitude column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn LongitudeColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[6];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Locations_.Longitude column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn Longitude
+    {
+        get
+        {
+            return LocationsTable.Instance.LongitudeColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Locations_.Address column object.
+    /// </summary>
+    public BaseClasses.Data.StringColumn AddressColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.StringColumn)this.TableDefinition.ColumnList[7];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Locations_.Address column object.
+    /// </summary>
+    public static BaseClasses.Data.StringColumn Address
+    {
+        get
+        {
+            return LocationsTable.Instance.AddressColumn;
         }
     }
     
@@ -699,13 +803,21 @@ public class BaseLocationsTable : PrimaryKeyTable
         public KeyValue NewRecord(
         string LatValue, 
         string Long0Value, 
-        string CommentsValue
+        string DescriptionValue, 
+        string GroupIdValue, 
+        string LatitudeValue, 
+        string LongitudeValue, 
+        string AddressValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
                     rec.SetString(LatValue, LatColumn);
         rec.SetString(Long0Value, Long0Column);
-        rec.SetString(CommentsValue, CommentsColumn);
+        rec.SetString(DescriptionValue, DescriptionColumn);
+        rec.SetString(GroupIdValue, GroupIdColumn);
+        rec.SetString(LatitudeValue, LatitudeColumn);
+        rec.SetString(LongitudeValue, LongitudeColumn);
+        rec.SetString(AddressValue, AddressColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

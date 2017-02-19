@@ -221,8 +221,6 @@ public partial class Show_Locations_Table
     
         public ThemeButtonWithArrow ActionsButton;
                 
-        public System.Web.UI.WebControls.Literal CommentsLabel1;
-        
         public System.Web.UI.WebControls.ImageButton ExcelButton;
         
         public ThemeButton FilterButton;

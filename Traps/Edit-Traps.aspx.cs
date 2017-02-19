@@ -294,11 +294,15 @@ public partial class Edit_Traps
                 
         public ThemeButton GoButton;
                 
+        public BaseClasses.Web.UI.WebControls.QuickSelector GroupId;
+            
         public System.Web.UI.WebControls.Literal GroupId1;
             
         public System.Web.UI.WebControls.ImageButton ImageButton;
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector LocationId;
+        public System.Web.UI.WebControls.ImageButton ImageButton1;
+        
+        public System.Web.UI.WebControls.DropDownList LocationId1;
             
         public System.Web.UI.WebControls.Literal LocationIdLabel;
         
@@ -432,7 +436,7 @@ public partial class Edit_Traps
     }
 
     
-            Page.Title = ExpandResourceValue("{Title:Edit} Trap");
+            Page.Title = "Add location";
         
         if (!IsPostBack)
             AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);

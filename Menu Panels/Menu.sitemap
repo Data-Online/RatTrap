@@ -32,13 +32,6 @@ The tags are case-sensitive and should contain the following case-sensitive attr
 <siteMap>
   <siteMapNode>
     <siteMapNode title="" description="" url="~/Dashboard/LandingPage.aspx" imageUrl="../Images/Home.png" roles="" order="1" />
-    <siteMapNode title="Locations" description="Locations" url="~/Locations/Edit-Locations-Table.aspx?" imageUrl="" roles="" order="0">
-      <siteMapNode title="{Menu:Add} Locations" description="{Menu:Add} Locations" url="~/Locations/Add-Locations.aspx" imageUrl="" roles="" order="10" />
-      <siteMapNode title="{Menu:Edit} Locations" description="{Menu:Edit} Locations" url="~/Locations/Edit-Locations-Table.aspx" imageUrl="" roles="" order="9" />
-      <siteMapNode title="{Menu:Edit} Locations 1" description="{Menu:Edit} Locations 1" url="~/Locations/Edit-Locations-Table1.aspx" imageUrl="" roles="" order="9" />
-      <siteMapNode title="{Menu:Show} Locations" description="{Menu:Show} Locations" url="~/Locations/Show-Locations-Table.aspx" imageUrl="" roles="" order="4" />
-      <siteMapNode title="{Menu:Show} Locations 1" description="{Menu:Show} Locations 1" url="~/Locations/Show-Locations-Table1.aspx" imageUrl="" roles="" order="4" />
-    </siteMapNode>
     <siteMapNode title="My Groups" description="My Groups" url="~/UsersGroupsLink/Show-UsersGroupsLink-Table.aspx" imageUrl="" roles="" order="2" />
     <siteMapNode title="Admin" description="Admin" url="" imageUrl="" roles="" order="3">
       <siteMapNode title="Users" description="Users" url="~/Users/Show-Users-Table.aspx" imageUrl="" roles="" order="1" />

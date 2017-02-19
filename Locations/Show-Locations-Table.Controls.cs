@@ -187,9 +187,9 @@ public class BaseLocationsTableControlRow : RatTrap.UI.BaseApplicationRecordCont
 
             // Call the Set methods for each controls on the panel
         
-                SetComments();
-                SetCommentsLabel();
                 
+                SetDescription();
+                SetDescriptionLabel();
                 
                 
                 SetLat();
@@ -231,42 +231,42 @@ public class BaseLocationsTableControlRow : RatTrap.UI.BaseApplicationRecordCont
         }
         
         
-        public virtual void SetComments()
+        public virtual void SetDescription()
         {
             
                     
-            // Set the Comments Literal on the webpage with value from the
+            // Set the Description Literal on the webpage with value from the
             // DatabaseTheRatTrap%dbo.Locations database record.
 
             // this.DataSource is the DatabaseTheRatTrap%dbo.Locations record retrieved from the database.
-            // this.Comments is the ASP:Literal on the webpage.
+            // this.Description is the ASP:Literal on the webpage.
                   
-            if (this.DataSource != null && this.DataSource.CommentsSpecified) {
+            if (this.DataSource != null && this.DataSource.DescriptionSpecified) {
                 								
-                // If the Comments is non-NULL, then format the value.
+                // If the Description is non-NULL, then format the value.
                 // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(LocationsTable.Comments);
+               string formattedValue = this.DataSource.Format(LocationsTable.Description);
                                 
                 formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.Comments.Text = formattedValue;
+                this.Description.Text = formattedValue;
                    
             } 
             
             else {
             
-                // Comments is NULL in the database, so use the Default Value.  
+                // Description is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.Comments.Text = LocationsTable.Comments.Format(LocationsTable.Comments.DefaultValue);
+              this.Description.Text = LocationsTable.Description.Format(LocationsTable.Description.DefaultValue);
             		
             }
             
-            // If the Comments is NULL or blank, then use the value specified  
+            // If the Description is NULL or blank, then use the value specified  
             // on Properties.
-            if (this.Comments.Text == null ||
-                this.Comments.Text.Trim().Length == 0) {
+            if (this.Description.Text == null ||
+                this.Description.Text.Trim().Length == 0) {
                 // Set the value specified on the Properties.
-                this.Comments.Text = "&nbsp;";
+                this.Description.Text = "&nbsp;";
             }
                                      
         }
@@ -351,7 +351,7 @@ public class BaseLocationsTableControlRow : RatTrap.UI.BaseApplicationRecordCont
                                      
         }
                 
-        public virtual void SetCommentsLabel()
+        public virtual void SetDescriptionLabel()
                   {
                   
                     
@@ -548,13 +548,13 @@ public class BaseLocationsTableControlRow : RatTrap.UI.BaseApplicationRecordCont
       
             // Call the Get methods for each of the user interface controls.
         
-            GetComments();
+            GetDescription();
             GetLat();
             GetLong0();
         }
         
         
-        public virtual void GetComments()
+        public virtual void GetDescription()
         {
             
         }
@@ -940,21 +940,21 @@ public class BaseLocationsTableControlRow : RatTrap.UI.BaseApplicationRecordCont
        
 #region "Helper Properties"
         
-        public System.Web.UI.WebControls.Literal Comments {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Comments");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal CommentsLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentsLabel");
-            }
-        }
-        
         public System.Web.UI.WebControls.ImageButton DeleteRowButton {
             get {
                 return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DeleteRowButton");
+            }
+        }
+        
+        public System.Web.UI.WebControls.Literal Description {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Description");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal DescriptionLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DescriptionLabel");
             }
         }
         
@@ -1144,46 +1144,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
                             
                     }
             }
-            if (!this.Page.IsPostBack)
-            {
-                string initialVal = "";
-                if  (this.InSession(this.CommentsFilter)) 				
-                    initialVal = this.GetFromSession(this.CommentsFilter);
-                
-                else
-                    
-                    initialVal = EvaluateFormula("URL(\"Comments\")");
-                
-                if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
-                {
-                initialVal = "";
-                }
-              
-                if (initialVal != null && initialVal != "")		
-                {
-                        
-                    string[] CommentsFilteritemListFromSession = initialVal.Split(',');
-                    int index = 0;
-                    foreach (string item in CommentsFilteritemListFromSession)
-                    {
-                        if (index == 0 && item.ToString().Equals(""))
-                        {
-                            // do nothing
-                        }
-                        else
-                        {
-                            this.CommentsFilter.Items.Add(item);
-                            this.CommentsFilter.Items[index].Selected = true;
-                            index += 1;
-                        }
-                    }
-                    foreach (ListItem listItem in this.CommentsFilter.Items)
-                    {
-                        listItem.Selected = true;
-                    }
-                        
-                    }
-            }
 
 
       
@@ -1253,9 +1213,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
                     this.FiltersButton.Button.Click += FiltersButton_Click;
                         
             this.SortControl.SelectedIndexChanged += new EventHandler(SortControl_SelectedIndexChanged);
-            
-              this.CommentsFilter.SelectedIndexChanged += CommentsFilter_SelectedIndexChanged;                  
-                        
+                    
         
          //' Setup events for others
                
@@ -1490,8 +1448,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
             // Call the Set methods for each controls on the panel
         
                 
-                SetCommentsFilter();
-                SetCommentsLabel1();
                 
                 
                 
@@ -1676,8 +1632,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
 
 
             
-            this.CommentsFilter.ClearSelection();
-            
             this.SortControl.ClearSelection();
             
             this.CurrentSortOrder.Reset();
@@ -1817,30 +1771,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
             // 2. User selected search criteria.
             // 3. User selected filter criteria.
             
-        
-            if (MiscUtils.IsValueSelected(this.CommentsFilter)) {
-                        
-                int selectedItemCount = 0;
-                foreach (ListItem item in this.CommentsFilter.Items){
-                    if (item.Selected) {
-                        selectedItemCount += 1;
-                        
-                          
-                    }
-                }
-                WhereClause filter = new WhereClause();
-                foreach (ListItem item in this.CommentsFilter.Items){
-                    if ((item.Selected) && ((item.Value == "--ANY--") || (item.Value == "--PLEASE_SELECT--")) && (selectedItemCount > 1)){
-                        item.Selected = false;
-                    }
-                    if (item.Selected){
-                        filter.iOR(LocationsTable.Comments, BaseFilter.ComparisonOperator.EqualsTo, item.Value, false, false);
-                    }
-                }
-                wc.iAND(filter);
-                    
-            }
-                           
+             
             return wc;
         }
         
@@ -1860,30 +1791,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
             
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
-      String CommentsFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "CommentsFilter_Ajax"];
-            if (MiscUtils.IsValueSelected(CommentsFilterSelectedValue)) {
-
-              
-        if (CommentsFilterSelectedValue != null){
-                        string[] CommentsFilteritemListFromSession = CommentsFilterSelectedValue.Split(',');
-                        int index = 0;
-                        WhereClause filter = new WhereClause();
-                        foreach (string item in CommentsFilteritemListFromSession)
-                        {
-                            if (index == 0 && item.ToString().Equals(""))
-                            {
-                            }
-                            else
-                            {
-                                filter.iOR(LocationsTable.Comments, BaseFilter.ComparisonOperator.EqualsTo, item, false, false);
-                                index += 1;
-                            }
-                        }
-                        wc.iAND(filter);
-        }
-                
-      }
-                      
 
             return wc;
         }
@@ -2065,8 +1972,8 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
             if (recControl.Visible && recControl.IsNewRecord) {
       LocationsRecord rec = new LocationsRecord();
         
-                        if (recControl.Comments.Text != "") {
-                            rec.Parse(recControl.Comments.Text, LocationsTable.Comments);
+                        if (recControl.Description.Text != "") {
+                            rec.Parse(recControl.Description.Text, LocationsTable.Description);
                   }
                 
                         if (recControl.Lat.Text != "") {
@@ -2144,12 +2051,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
       
         // Create Set, WhereClause, and Populate Methods
         
-        public virtual void SetCommentsLabel1()
-                  {
-                  
-                    
-        }
-                
         public virtual void SetSortByLabel()
                   {
                   
@@ -2168,37 +2069,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
 
         }
             
-        public virtual void SetCommentsFilter()
-        {
-            
-            ArrayList CommentsFilterselectedFilterItemList = new ArrayList();
-            string CommentsFilteritemsString = null;
-            if (this.InSession(this.CommentsFilter))
-                CommentsFilteritemsString = this.GetFromSession(this.CommentsFilter);
-            
-            if (CommentsFilteritemsString != null)
-            {
-                string[] CommentsFilteritemListFromSession = CommentsFilteritemsString.Split(',');
-                foreach (string item in CommentsFilteritemListFromSession)
-                {
-                    CommentsFilterselectedFilterItemList.Add(item);
-                }
-            }
-              
-            			
-            this.PopulateCommentsFilter(MiscUtils.GetSelectedValueList(this.CommentsFilter, CommentsFilterselectedFilterItemList), 500);
-                    
-              string url = this.ModifyRedirectUrl("../Locations/Locations-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.CommentsFilter.ClientID + "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("Comments")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--ANY--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:All")) + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.CommentsFilter.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(CommentsFilter.AutoPostBack).ToLower() + ", event); return false;";
-                  
-                             
-        }
-            
         // Get the filters' data for SortControl.
                 
         protected virtual void PopulateSortControl(string selectedValue, int maxItems)
@@ -2212,10 +2082,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("{Txt:PleaseSelect}"), "--PLEASE_SELECT--"));
               
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Ascending}"), "Comments Asc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comments {Txt:Descending}"), "Comments Desc"));
-              
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Lat {Txt:Ascending}"), "Lat Asc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Lat {Txt:Descending}"), "Lat Desc"));
@@ -2223,6 +2089,26 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Long {Txt:Ascending}"), "Long Asc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Long {Txt:Descending}"), "Long Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Ascending}"), "GroupId Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Descending}"), "GroupId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Description {Txt:Ascending}"), "Description Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Description {Txt:Descending}"), "Description Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Latitude {Txt:Ascending}"), "Latitude Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Latitude {Txt:Descending}"), "Latitude Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Longitude {Txt:Ascending}"), "Longitude Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Longitude {Txt:Descending}"), "Longitude Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Address {Txt:Ascending}"), "Address Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Address {Txt:Descending}"), "Address Desc"));
               
             try
             {          
@@ -2240,139 +2126,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
               
         }
             
-        // Get the filters' data for CommentsFilter.
-                
-        protected virtual void PopulateCommentsFilter(ArrayList selectedValue, int maxItems)
-                    
-        {
-        
-            
-            //Setup the WHERE clause.
-                        
-            WhereClause wc = this.CreateWhereClause_CommentsFilter();            
-            this.CommentsFilter.Items.Clear();
-            			  			
-            // Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_CommentsFilter function.
-            // It is better to customize the where clause there.
-             
-            
-            
-            OrderBy orderBy = new OrderBy(false, false);
-            orderBy.Add(LocationsTable.Comments, OrderByItem.OrderDir.Asc);                
-            
-            
-            string[] values = new string[0];
-            if (wc.RunQuery)
-            {
-            
-                values = LocationsTable.GetValues(LocationsTable.Comments, wc, orderBy, maxItems);
-            
-            }
-            
-            ArrayList listDuplicates = new ArrayList();
-            foreach (string cvalue in values)
-            {
-            // Create the item and add to the list.
-            string fvalue;
-            if ( LocationsTable.Comments.IsColumnValueTypeBoolean()) {
-                    fvalue = cvalue;
-                }else {
-                    fvalue = LocationsTable.Comments.Format(cvalue);
-                }
-                if (fvalue == null) {
-                    fvalue = "";
-                }
-
-                fvalue = fvalue.Trim();
-
-                if ( fvalue.Length > 50 ) {
-                    fvalue = fvalue.Substring(0, 50) + "...";
-                }
-
-                ListItem dupItem = this.CommentsFilter.Items.FindByText(fvalue);
-								
-                if (dupItem != null) {
-                    listDuplicates.Add(fvalue);
-                    if (!string.IsNullOrEmpty(dupItem.Value))
-                    {
-                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
-                    }
-                }
-
-                ListItem newItem = new ListItem(fvalue, cvalue);
-                this.CommentsFilter.Items.Add(newItem);
-
-                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
-                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
-                }
-            }
-
-                          
-            try
-            {
-      
-                
-            }
-            catch
-            {
-            }
-            
-            
-            this.CommentsFilter.SetFieldMaxLength(50);
-                                 
-                  
-            // Add the selected value.
-            if (this.CommentsFilter.Items.Count == 0)
-                this.CommentsFilter.Items.Add(new ListItem(Page.GetResourceValue("Txt:All", "RatTrap"), "--ANY--"));
-            
-            // Mark all items to be selected.
-            foreach (ListItem item in this.CommentsFilter.Items)
-            {
-                item.Selected = true;
-            }
-                               
-        }
-            
-        public virtual WhereClause CreateWhereClause_CommentsFilter()
-        {
-            // Create a where clause for the filter CommentsFilter.
-            // This function is called by the Populate method to load the items 
-            // in the CommentsFilterQuickSelector
-        
-            ArrayList CommentsFilterselectedFilterItemList = new ArrayList();
-            string CommentsFilteritemsString = null;
-            if (this.InSession(this.CommentsFilter))
-                CommentsFilteritemsString = this.GetFromSession(this.CommentsFilter);
-            
-            if (CommentsFilteritemsString != null)
-            {
-                string[] CommentsFilteritemListFromSession = CommentsFilteritemsString.Split(',');
-                foreach (string item in CommentsFilteritemListFromSession)
-                {
-                    CommentsFilterselectedFilterItemList.Add(item);
-                }
-            }
-              
-            CommentsFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.CommentsFilter, CommentsFilterselectedFilterItemList); 
-            WhereClause wc = new WhereClause();
-            if (CommentsFilterselectedFilterItemList == null || CommentsFilterselectedFilterItemList.Count == 0)
-                wc.RunQuery = false;
-            else            
-            {
-                foreach (string item in CommentsFilterselectedFilterItemList)
-                {
-            
-      
-   
-                    wc.iOR(LocationsTable.Comments, BaseFilter.ComparisonOperator.EqualsTo, item);
-
-                                
-                }
-            }
-            return wc;
-        
-        }
-      
 
     
         protected virtual void Control_PreRender(object sender, System.EventArgs e)
@@ -2408,15 +2161,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
         
             this.SaveToSession(this.SortControl, this.SortControl.SelectedValue);
                   
-            ArrayList CommentsFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.CommentsFilter, null);
-            string CommentsFilterSessionString = "";
-            if (CommentsFilterselectedFilterItemList != null){
-                foreach (string item in CommentsFilterselectedFilterItemList){
-                    CommentsFilterSessionString = String.Concat(CommentsFilterSessionString ,"," , item);
-                }
-            }
-            this.SaveToSession(this.CommentsFilter, CommentsFilterSessionString);
-                  
             
                     
             // Save pagination state to session.
@@ -2446,15 +2190,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
           
             this.SaveToSession(this.SortControl, this.SortControl.SelectedValue);
                   
-            ArrayList CommentsFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.CommentsFilter, null);
-            string CommentsFilterSessionString = "";
-            if (CommentsFilterselectedFilterItemList != null){
-                foreach (string item in CommentsFilterselectedFilterItemList){
-                    CommentsFilterSessionString = String.Concat(CommentsFilterSessionString ,"," , item);
-                }
-            }
-            this.SaveToSession("CommentsFilter_Ajax", CommentsFilterSessionString);
-          
            HttpContext.Current.Session["AppRelativeVirtualPath"] = this.Page.AppRelativeVirtualPath;
          
         }
@@ -2466,7 +2201,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
             // Clear filter controls values from the session.
         
             this.RemoveFromSession(this.SortControl);
-            this.RemoveFromSession(this.CommentsFilter);
             
             // Clear pagination state from session.
          
@@ -2641,9 +2375,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
          themeButtonFiltersButton.ArrowImage.ImageUrl = "../Images/ButtonExpandArrow.png";
     
       
-            if (MiscUtils.IsValueSelected(CommentsFilter))
-                themeButtonFiltersButton.ArrowImage.ImageUrl = "../Images/ButtonCheckmark.png";
-        
    
         }
                
@@ -2812,7 +2543,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
                 BaseColumn[] columns = new BaseColumn[] {
                              LocationsTable.Lat,
              LocationsTable.Long0,
-             LocationsTable.Comments,
+             LocationsTable.Description,
              null};
                 ExportDataToCSV exportData = new ExportDataToCSV(LocationsTable.Instance,wc,orderBy,columns);
                 exportData.StartExport(this.Page.Response, true);
@@ -2870,7 +2601,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
               DataForExport data = new DataForExport(LocationsTable.Instance, wc, orderBy, null,join);
                            data.ColumnList.Add(new ExcelColumn(LocationsTable.Lat, "Default"));
              data.ColumnList.Add(new ExcelColumn(LocationsTable.Long0, "Default"));
-             data.ColumnList.Add(new ExcelColumn(LocationsTable.Comments, "Default"));
+             data.ColumnList.Add(new ExcelColumn(LocationsTable.Description, "Default"));
 
 
               //  First write out the Column Headers
@@ -3045,7 +2776,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // The 5th parameter represents the relative width of the column
                  report.AddColumn(LocationsTable.Lat.Name, ReportEnum.Align.Right, "${Lat}", ReportEnum.Align.Right, 15);
                  report.AddColumn(LocationsTable.Long0.Name, ReportEnum.Align.Right, "${Long0}", ReportEnum.Align.Right, 15);
-                 report.AddColumn(LocationsTable.Comments.Name, ReportEnum.Align.Left, "${Comments}", ReportEnum.Align.Left, 28);
+                 report.AddColumn(LocationsTable.Description.Name, ReportEnum.Align.Left, "${Description}", ReportEnum.Align.Left, 28);
 
   
                 int rowsPerQuery = 5000;
@@ -3082,7 +2813,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
                             // The 4th parameter represent the maximum length of the data value being shown
                                                  report.AddData("${Lat}", record.Format(LocationsTable.Lat), ReportEnum.Align.Right, 300);
                              report.AddData("${Long0}", record.Format(LocationsTable.Long0), ReportEnum.Align.Right, 300);
-                             report.AddData("${Comments}", record.Format(LocationsTable.Comments), ReportEnum.Align.Left, 300);
+                             report.AddData("${Description}", record.Format(LocationsTable.Description), ReportEnum.Align.Left, 300);
 
                             report.WriteRow();
                         }
@@ -3118,8 +2849,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
               
             try {
                 
-              this.CommentsFilter.ClearSelection();
-            
            
             this.SortControl.ClearSelection();
           
@@ -3176,7 +2905,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // The 5th parameter represents the relative width of the column
                  report.AddColumn(LocationsTable.Lat.Name, ReportEnum.Align.Right, "${Lat}", ReportEnum.Align.Right, 15);
                  report.AddColumn(LocationsTable.Long0.Name, ReportEnum.Align.Right, "${Long0}", ReportEnum.Align.Right, 15);
-                 report.AddColumn(LocationsTable.Comments.Name, ReportEnum.Align.Left, "${Comments}", ReportEnum.Align.Left, 28);
+                 report.AddColumn(LocationsTable.Description.Name, ReportEnum.Align.Left, "${Description}", ReportEnum.Align.Left, 28);
 
                 WhereClause whereClause = null;
                 whereClause = CreateWhereClause();
@@ -3209,7 +2938,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
                             // The 4th parameter represents the maximum length of the data value being shown
                              report.AddData("${Lat}", record.Format(LocationsTable.Lat), ReportEnum.Align.Right, 300);
                              report.AddData("${Long0}", record.Format(LocationsTable.Long0), ReportEnum.Align.Right, 300);
-                             report.AddData("${Comments}", record.Format(LocationsTable.Comments), ReportEnum.Align.Left, 300);
+                             report.AddData("${Description}", record.Format(LocationsTable.Description), ReportEnum.Align.Left, 300);
 
                             report.WriteRow();
                         }
@@ -3359,17 +3088,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
               				
         }
             
-        // event handler for FieldFilter
-        protected virtual void CommentsFilter_SelectedIndexChanged(object sender, EventArgs args)
-        {
-            // Setting the DataChanged to True results in the page being refreshed with
-            // the most recent data from the database.  This happens in PreRender event
-            // based on the current sort, search and filter criteria.
-            this.DataChanged = true;
-            
-           				
-        }
-            
     
         // Generate the event handling functions for others
         	  
@@ -3447,18 +3165,6 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
         public RatTrap.UI.IThemeButtonWithArrow ActionsButton {
             get {
                 return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ActionsButton");
-            }
-        }
-        
-        public BaseClasses.Web.UI.WebControls.QuickSelector CommentsFilter {
-            get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentsFilter");
-            }
-        }              
-        
-        public System.Web.UI.WebControls.Literal CommentsLabel1 {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentsLabel1");
             }
         }
         
@@ -3994,6 +3700,8 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         public virtual void SetActiveLabel()
                   {
                   
+                        this.ActiveLabel.Text = EvaluateFormula("\"Active?\"");
+                      
                     
         }
                 

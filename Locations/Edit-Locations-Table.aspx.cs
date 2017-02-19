@@ -227,8 +227,6 @@ public partial class Edit_Locations_Table
         
         public System.Web.UI.WebControls.ImageButton AddButton;
         
-        public System.Web.UI.WebControls.Literal CommentsLabel1;
-        
         public System.Web.UI.WebControls.ImageButton DeleteButton;
         
         public System.Web.UI.WebControls.ImageButton ExcelButton;
