@@ -14,7 +14,7 @@
     <Layout>TrapRecords\Add-TrapRecords.html</Layout>
     <DisplayName>Add-TrapRecords</DisplayName>
     <Description>Standard record panel.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>1479282854-12018</CheckSum>
   </Self>
   <ComposedOf>

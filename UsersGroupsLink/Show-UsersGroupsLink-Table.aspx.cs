@@ -337,7 +337,7 @@ public partial class Show_UsersGroupsLink_Table
             
         public System.Web.UI.WebControls.Literal Title4;
             
-        public System.Web.UI.WebControls.LinkButton TrapIdentifierLabel;
+        public System.Web.UI.WebControls.LinkButton TrapIdentifierIdLabel;
         
         public RatTrap.UI.Controls.Show_UsersGroupsLink_Table.TrapsTableControl TrapsTableControl;
           
@@ -420,7 +420,7 @@ public partial class Show_UsersGroupsLink_Table
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("NOT_ANONYMOUS");
+            this.Authorize("1;2;3;4;5");
              if (!this.IsPostBack)
              {
             

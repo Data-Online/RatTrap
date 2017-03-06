@@ -14,7 +14,7 @@
     <Layout>Projects\Add-Projects.html</Layout>
     <DisplayName>Add-Projects</DisplayName>
     <Description>Standard record panel.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>-248287140-18603</CheckSum>
   </Self>
   <ComposedOf>

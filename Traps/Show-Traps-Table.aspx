@@ -78,8 +78,8 @@
                                   
                                     <br /><br />
                                   </td><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeIdLabel" Text="Trap Type">	</asp:Literal> 
-</td><td class="tableCellValue"><asp:LinkButton runat="server" id="TrapTypeId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> </td><td class="tableCellLabel"><asp:Literal runat="server" id="TrapIdentifierLabel" Text="Trap Identifier">	</asp:Literal> 
-</td><td class="tableCellValue"><asp:Literal runat="server" id="TrapIdentifier"></asp:Literal> </td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="Group">	</asp:Literal> 
+</td><td class="tableCellValue"><asp:LinkButton runat="server" id="TrapTypeId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> </td><td class="tableCellLabel"> 
+</td><td class="tableCellValue"> </td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="Group">	</asp:Literal> 
 </td><td class="tableCellValue"><asp:LinkButton runat="server" id="GroupId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> </td></tr><tr id="TrapsTableControlAltRow" runat="server"><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableRowButton" scope="row">&nbsp;</td><td class="tableCellValue" colspan="6"><BaseClasses:TabContainer runat="server" id="TrapsTabContainer" panellayout="Tabbed">
  <BaseClasses:TabPanel runat="server" id="TrapNotesTabPanel" HeaderText="Trap Notes">	<ContentTemplate>
   <RatTrap:TrapNotesTableControl runat="server" id="TrapNotesTableControl">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td></td><td></td><td></td></tr><tr><td class="panelHeaderL"></td><td class="dh">

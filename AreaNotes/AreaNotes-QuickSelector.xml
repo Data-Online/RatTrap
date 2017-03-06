@@ -14,6 +14,7 @@
     <Layout>AreaNotes\AreaNotes-QuickSelector.html</Layout>
     <DisplayName>AreaNotes-QuickSelector</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
   </Self>
   <ComposedOf>
     <ContainedComponent>

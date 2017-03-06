@@ -14,7 +14,7 @@
     <Layout>Users\Show-Users.html</Layout>
     <DisplayName>Show-Users</DisplayName>
     <Description>Standard record panel.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>67439652-10058</CheckSum>
   </Self>
   <ComposedOf>

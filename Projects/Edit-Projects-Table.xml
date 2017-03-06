@@ -14,7 +14,7 @@
     <Layout>Projects\Edit-Projects-Table.html</Layout>
     <DisplayName>Edit-Projects-Table</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>14345054-21236</CheckSum>
   </Self>
   <ComposedOf>

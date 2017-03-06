@@ -60,6 +60,7 @@ public class BaseRoles1Table : PrimaryKeyTable
         this.TableDefinition.AdapterMetaData = this.DataAdapter.AdapterMetaData;
         RoleIdColumn.CodeName = "RoleId";
         RoleNameColumn.CodeName = "RoleName";
+        DescriptionColumn.CodeName = "Description";
 
         
     }
@@ -116,6 +117,31 @@ public class BaseRoles1Table : PrimaryKeyTable
         get
         {
             return Roles1Table.Instance.RoleNameColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Roles_.Description column object.
+    /// </summary>
+    public BaseClasses.Data.StringColumn DescriptionColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.StringColumn)this.TableDefinition.ColumnList[2];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Roles_.Description column object.
+    /// </summary>
+    public static BaseClasses.Data.StringColumn Description
+    {
+        get
+        {
+            return Roles1Table.Instance.DescriptionColumn;
         }
     }
     
@@ -645,11 +671,13 @@ public class BaseRoles1Table : PrimaryKeyTable
 
         //Convenience method for creating a record
         public KeyValue NewRecord(
-        string RoleNameValue
+        string RoleNameValue, 
+        string DescriptionValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
                     rec.SetString(RoleNameValue, RoleNameColumn);
+        rec.SetString(DescriptionValue, DescriptionColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

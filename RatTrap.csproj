@@ -677,11 +677,18 @@
     <Compile Include="Locations\Edit-Locations.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Locations\Show-Locations-Table.aspx.cs" >
+    <Compile Include="Locations\Show-Locations-Table.aspx.cs">
       <DependentUpon>Show-Locations-Table.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Locations\Show-Locations-Table.Controls.cs" >
+    <Compile Include="Locations\Show-Locations-Table.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Traps\Edit-Traps-Table-Admin.aspx.cs" >
+      <DependentUpon>Edit-Traps-Table-Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traps\Edit-Traps-Table-Admin.Controls.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -1012,7 +1019,8 @@
     <Content Include="Locations\Edit-Locations-Table.aspx" />
     <Content Include="Locations\Edit-Locations-Table1.aspx" />
     <Content Include="Locations\Edit-Locations.aspx" />
-    <Content Include="Locations\Show-Locations-Table.aspx"  />
+    <Content Include="Locations\Show-Locations-Table.aspx" />
+    <Content Include="Traps\Edit-Traps-Table-Admin.aspx"  />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

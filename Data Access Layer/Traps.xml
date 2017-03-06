@@ -165,11 +165,12 @@
       </updatingFormula>
     </Column>
     <Column InternalName="3" Priority="4" ColumnNum="3">
-      <columnName>TrapIdentifier</columnName>
-      <columnUIName>%ISD_DEFAULT%</columnUIName>
-      <columnType>String</columnType>
-      <columnDBType>nvarchar</columnDBType>
-      <columnLengthSet>50</columnLengthSet>
+      <columnName>Active</columnName>
+      <columnUIName Source="User">= "Active?"</columnUIName>
+      <columnType>Boolean</columnType>
+      <columnDBType>bit</columnDBType>
+      <columnLengthSet>
+      </columnLengthSet>
       <columnDefault>
       </columnDefault>
       <columnDBDefault>
@@ -187,8 +188,9 @@
       <columnReadOnly>N</columnReadOnly>
       <columnRequired>N</columnRequired>
       <columnNotNull>N</columnNotNull>
-      <columnCaseSensitive Source="Database">N</columnCaseSensitive>
-      <columnCollation>Latin1_General_CI_AS</columnCollation>
+      <columnCaseSensitive>N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
       <columnFullText>N</columnFullText>
       <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
       <columnTableAliasName>
@@ -213,59 +215,6 @@
       </updatingFormula>
     </Column>
     <Column InternalName="4" Priority="5" ColumnNum="4">
-      <columnName>Active</columnName>
-      <columnUIName Source="User">= "Active?"</columnUIName>
-      <columnType>Boolean</columnType>
-      <columnDBType>bit</columnDBType>
-      <columnLengthSet>
-      </columnLengthSet>
-      <columnDefault>
-      </columnDefault>
-      <columnDBDefault Source="User">
-      </columnDBDefault>
-      <columnIndex>N</columnIndex>
-      <columnUnique>N</columnUnique>
-      <columnFunction>
-      </columnFunction>
-      <columnDBFormat>
-      </columnDBFormat>
-      <columnPK>N</columnPK>
-      <columnPermanent>N</columnPermanent>
-      <columnComputed Source="User">N</columnComputed>
-      <columnIdentity Source="User">N</columnIdentity>
-      <columnReadOnly Source="User">N</columnReadOnly>
-      <columnRequired>N</columnRequired>
-      <columnNotNull>N</columnNotNull>
-      <columnCaseSensitive Source="User">N</columnCaseSensitive>
-      <columnCollation>
-      </columnCollation>
-      <columnFullText Source="User">N</columnFullText>
-      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
-      <columnTableAliasName>
-      </columnTableAliasName>
-      <applyLabelText>Y</applyLabelText>
-      <applyDFKA>N</applyDFKA>
-      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
-      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
-      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
-      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
-      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
-      <applyDefaultValue>N</applyDefaultValue>
-      <insertingRecordFormula>
-      </insertingRecordFormula>
-      <readingRecordFormula>
-      </readingRecordFormula>
-      <updatingRecordFormula>
-      </updatingRecordFormula>
-      <insertingFormula>
-      </insertingFormula>
-      <updatingFormula>
-      </updatingFormula>
-      <InternalName>4</InternalName>
-      <columnTableClassName>
-      </columnTableClassName>
-    </Column>
-    <Column InternalName="5" Priority="6" ColumnNum="5">
       <columnName>LocationId</columnName>
       <columnUIName>%ISD_DEFAULT%</columnUIName>
       <columnType>Number</columnType>
@@ -273,7 +222,7 @@
       <columnLengthSet>10.0</columnLengthSet>
       <columnDefault>
       </columnDefault>
-      <columnDBDefault Source="User">
+      <columnDBDefault>
       </columnDBDefault>
       <columnIndex>N</columnIndex>
       <columnUnique>N</columnUnique>
@@ -283,15 +232,15 @@
       </columnDBFormat>
       <columnPK>N</columnPK>
       <columnPermanent>N</columnPermanent>
-      <columnComputed Source="User">N</columnComputed>
-      <columnIdentity Source="User">N</columnIdentity>
-      <columnReadOnly Source="User">N</columnReadOnly>
+      <columnComputed>N</columnComputed>
+      <columnIdentity>N</columnIdentity>
+      <columnReadOnly>N</columnReadOnly>
       <columnRequired>N</columnRequired>
       <columnNotNull>N</columnNotNull>
-      <columnCaseSensitive Source="User">N</columnCaseSensitive>
+      <columnCaseSensitive>N</columnCaseSensitive>
       <columnCollation>
       </columnCollation>
-      <columnFullText Source="User">N</columnFullText>
+      <columnFullText>N</columnFullText>
       <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
       <columnTableAliasName>
       </columnTableAliasName>
@@ -321,11 +270,8 @@
       </insertingFormula>
       <updatingFormula>
       </updatingFormula>
-      <InternalName>5</InternalName>
-      <columnTableClassName>
-      </columnTableClassName>
     </Column>
-    <Column InternalName="6" Priority="7" ColumnNum="6">
+    <Column InternalName="5" Priority="6" ColumnNum="5">
       <columnName>ProjectId</columnName>
       <columnUIName>%ISD_DEFAULT%</columnUIName>
       <columnType>Number</columnType>
@@ -382,9 +328,117 @@
       <updatingFormula>
       </updatingFormula>
     </Column>
+    <Column InternalName="6" Priority="7" ColumnNum="6">
+      <columnName>TrapIdentifierId</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>Number</columnType>
+      <columnDBType>int</columnDBType>
+      <columnLengthSet>10.0</columnLengthSet>
+      <columnDefault>
+      </columnDefault>
+      <columnDBDefault>
+      </columnDBDefault>
+      <columnIndex>N</columnIndex>
+      <columnUnique>N</columnUnique>
+      <columnFunction>
+      </columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>N</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed>N</columnComputed>
+      <columnIdentity>N</columnIdentity>
+      <columnReadOnly>N</columnReadOnly>
+      <columnRequired>N</columnRequired>
+      <columnNotNull>N</columnNotNull>
+      <columnCaseSensitive>N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
+      <columnFullText>N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+      <foreignKey>
+        <columnFKName>FK_Traps_TrapIdentifiers</columnFKName>
+        <columnFKTable>TrapIdentifiers</columnFKTable>
+        <columnFKOwner>dbo</columnFKOwner>
+        <columnFKColumn>TrapIdentifierId</columnFKColumn>
+        <columnFKColumnDisplay>Description</columnFKColumnDisplay>
+        <foreignKeyType>Explicit</foreignKeyType>
+      </foreignKey>
+      <applyDFKA>Y</applyDFKA>
+      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
+      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
+      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
+      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
+      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
+      <applyDefaultValue>N</applyDefaultValue>
+      <insertingRecordFormula>
+      </insertingRecordFormula>
+      <readingRecordFormula>
+      </readingRecordFormula>
+      <updatingRecordFormula>
+      </updatingRecordFormula>
+      <insertingFormula>
+      </insertingFormula>
+      <updatingFormula>
+      </updatingFormula>
+    </Column>
+    <Column InternalName="7" Priority="8" ColumnNum="7">
+      <columnName>Deleted</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>Number</columnType>
+      <columnDBType>int</columnDBType>
+      <columnLengthSet>10.0</columnLengthSet>
+      <columnDefault>= "0"</columnDefault>
+      <columnDBDefault Source="User">
+      </columnDBDefault>
+      <columnIndex>N</columnIndex>
+      <columnUnique>N</columnUnique>
+      <columnFunction>
+      </columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>N</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed Source="User">N</columnComputed>
+      <columnIdentity Source="User">N</columnIdentity>
+      <columnReadOnly Source="User">N</columnReadOnly>
+      <columnRequired>N</columnRequired>
+      <columnNotNull>N</columnNotNull>
+      <columnCaseSensitive Source="User">N</columnCaseSensitive>
+      <columnCollation>
+      </columnCollation>
+      <columnFullText Source="User">N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+      <applyDefaultValue>Y</applyDefaultValue>
+      <InternalName>7</InternalName>
+      <columnTableClassName>
+      </columnTableClassName>
+      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
+      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
+      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
+      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
+      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
+      <applyDFKA>N</applyDFKA>
+      <readingRecordFormula>
+      </readingRecordFormula>
+      <insertingRecordFormula>
+      </insertingRecordFormula>
+      <updatingRecordFormula>
+      </updatingRecordFormula>
+      <insertingFormula>
+      </insertingFormula>
+      <updatingFormula>
+      </updatingFormula>
+    </Column>
   </ColumnDefinition>
   <TableName>Traps</TableName>
-  <Version>9</Version>
+  <Version>14</Version>
   <Owner>dbo</Owner>
   <TableAliasName>Traps_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>

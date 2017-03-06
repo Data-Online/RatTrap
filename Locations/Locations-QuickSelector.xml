@@ -14,6 +14,7 @@
     <Layout>Locations\Locations-QuickSelector.html</Layout>
     <DisplayName>Locations-QuickSelector</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
   </Self>
   <ComposedOf>
     <ContainedComponent>

@@ -13,7 +13,8 @@
       </columnDBDefault>
       <columnIndex>Y</columnIndex>
       <columnUnique>Y</columnUnique>
-      <columnFunction>notrim</columnFunction>
+      <columnFunction>
+      </columnFunction>
       <columnDBFormat>
       </columnDBFormat>
       <columnPK>Y</columnPK>
@@ -31,13 +32,78 @@
       <columnTableAliasName>
       </columnTableAliasName>
       <applyLabelText>Y</applyLabelText>
+      <applyDFKA>N</applyDFKA>
+      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
+      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
+      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
+      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
+      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
+      <applyDefaultValue>N</applyDefaultValue>
+      <insertingRecordFormula>
+      </insertingRecordFormula>
+      <readingRecordFormula>
+      </readingRecordFormula>
+      <updatingRecordFormula>
+      </updatingRecordFormula>
+      <insertingFormula>
+      </insertingFormula>
+      <updatingFormula>
+      </updatingFormula>
     </Column>
     <Column InternalName="1" Priority="2" ColumnNum="1">
       <columnName>RoleName</columnName>
       <columnUIName>%ISD_DEFAULT%</columnUIName>
       <columnType>String</columnType>
       <columnDBType>nvarchar</columnDBType>
-      <columnLengthSet>50</columnLengthSet>
+      <columnLengthSet>20</columnLengthSet>
+      <columnDefault>
+      </columnDefault>
+      <columnDBDefault>
+      </columnDBDefault>
+      <columnIndex>N</columnIndex>
+      <columnUnique>N</columnUnique>
+      <columnFunction>
+      </columnFunction>
+      <columnDBFormat>
+      </columnDBFormat>
+      <columnPK>N</columnPK>
+      <columnPermanent>N</columnPermanent>
+      <columnComputed>N</columnComputed>
+      <columnIdentity>N</columnIdentity>
+      <columnReadOnly>N</columnReadOnly>
+      <columnRequired>N</columnRequired>
+      <columnNotNull>N</columnNotNull>
+      <columnCaseSensitive Source="Database">N</columnCaseSensitive>
+      <columnCollation>Latin1_General_CI_AS</columnCollation>
+      <columnFullText>N</columnFullText>
+      <columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>
+      <columnTableAliasName>
+      </columnTableAliasName>
+      <applyLabelText>Y</applyLabelText>
+      <applyDFKA>N</applyDFKA>
+      <applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>
+      <applyInitializeReadingRecord>N</applyInitializeReadingRecord>
+      <applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>
+      <applyValidateInsertingRecord>N</applyValidateInsertingRecord>
+      <applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>
+      <applyDefaultValue>N</applyDefaultValue>
+      <insertingRecordFormula>
+      </insertingRecordFormula>
+      <readingRecordFormula>
+      </readingRecordFormula>
+      <updatingRecordFormula>
+      </updatingRecordFormula>
+      <insertingFormula>
+      </insertingFormula>
+      <updatingFormula>
+      </updatingFormula>
+    </Column>
+    <Column InternalName="2" Priority="3" ColumnNum="2">
+      <columnName>Description</columnName>
+      <columnUIName>%ISD_DEFAULT%</columnUIName>
+      <columnType>String</columnType>
+      <columnDBType>nvarchar</columnDBType>
+      <columnLengthSet>200</columnLengthSet>
       <columnDefault>
       </columnDefault>
       <columnDBDefault>
@@ -65,8 +131,7 @@
     </Column>
   </ColumnDefinition>
   <TableName>Roles</TableName>
-  <Version>
-  </Version>
+  <Version>1</Version>
   <Owner>dbo</Owner>
   <TableAliasName>Roles_</TableAliasName>
   <ConnectionName>DatabaseTheRatTrap</ConnectionName>
@@ -77,9 +142,9 @@
   <canViewRecords Source="Database">Y</canViewRecords>
   <ConcurrencyMethod>BinaryChecksum</ConcurrencyMethod>
   <AppShortName>RatTrap</AppShortName>
+  <TableCodeName>Roles1</TableCodeName>
   <FolderName>Roles</FolderName>
   <MenuName>Roles</MenuName>
   <QSPath>../Roles/Roles-QuickSelector.aspx</QSPath>
-  <TableCodeName>Roles1</TableCodeName>
   <TableStoredProcPrefix>pRatTrapRoles1</TableStoredProcPrefix>
 </XMLDefinition>

@@ -682,6 +682,64 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 		ColumnValue cv = new ColumnValue(val);
 		this.SetValue(cv, TableUtils.TrapTypeIdColumn);
 	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public ColumnValue GetUserId0Value()
+	{
+		return this.GetValue(TableUtils.UserId0Column);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public Int32 GetUserId0FieldValue()
+	{
+		return this.GetValue(TableUtils.UserId0Column).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public void SetUserId0FieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.UserId0Column);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public void SetUserId0FieldValue(string val)
+	{
+		this.SetString(val, TableUtils.UserId0Column);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public void SetUserId0FieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.UserId0Column);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public void SetUserId0FieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.UserId0Column);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public void SetUserId0FieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.UserId0Column);
+	}
 
 
 #endregion
@@ -1160,6 +1218,49 @@ public class BaseTrapRecordsRecord : PrimaryKeyRecord
 		get
 		{
 			return TableUtils.TrapTypeIdColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public Int32 UserId0
+	{
+		get
+		{
+			return this.GetValue(TableUtils.UserId0Column).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.UserId0Column);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool UserId0Specified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.UserId0Column);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's TrapRecords_.UserId field.
+	/// </summary>
+	public string UserId0Default
+	{
+		get
+		{
+			return TableUtils.UserId0Column.DefaultValue;
 		}
 	}
 

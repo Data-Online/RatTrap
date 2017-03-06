@@ -2852,6 +2852,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comment {Txt:Descending}"), "Comment Desc"));
               
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("User {Txt:Ascending}"), "UserId Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("User {Txt:Descending}"), "UserId Desc"));
+              
             try
             {          
                 // Set the selected value.
@@ -4542,8 +4546,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 
               this.TrapTypeId.SelectedIndexChanged += TrapTypeId_SelectedIndexChanged;                  
                 
-              this.TrapIdentifier.TextChanged += TrapIdentifier_TextChanged;
-            
         }
 
         public virtual void LoadData()  
@@ -4604,8 +4606,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 SetGroupId();
                 SetGroupIdLabel();
                 
-                SetTrapIdentifier();
-                SetTrapIdentifierLabel();
                 
                 SetTrapTypeId();
                 SetTrapTypeIdLabel();
@@ -4760,48 +4760,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                   
         }
                 
-        public virtual void SetTrapIdentifier()
-        {
-            
-            // If data was retrieved from UI previously, restore it
-            if (this.PreviousUIData.ContainsKey(this.TrapIdentifier.ID))
-            {
-            
-                this.TrapIdentifier.Text = this.PreviousUIData[this.TrapIdentifier.ID].ToString();
-              
-                return;
-            }
-            
-                    
-            // Set the TrapIdentifier TextBox on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.Traps database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
-            // this.TrapIdentifier is the ASP:TextBox on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.TrapIdentifierSpecified) {
-                								
-                // If the TrapIdentifier is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapsTable.TrapIdentifier);
-                                
-                this.TrapIdentifier.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // TrapIdentifier is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.TrapIdentifier.Text = TrapsTable.TrapIdentifier.Format(TrapsTable.TrapIdentifier.DefaultValue);
-            		
-            }
-            
-              this.TrapIdentifier.TextChanged += TrapIdentifier_TextChanged;
-                               
-        }
-                
         public virtual void SetTrapTypeId()
         {
             				
@@ -4921,12 +4879,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         }
                 
         public virtual void SetGroupIdLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetTrapIdentifierLabel()
                   {
                   
                     
@@ -5105,7 +5057,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             // Call the Get methods for each of the user interface controls.
         
             GetGroupId();
-            GetTrapIdentifier();
             GetTrapTypeId();
         }
         
@@ -5119,20 +5070,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             
             this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.GroupId), TrapsTable.GroupId);			
                 			 
-        }
-                
-        public virtual void GetTrapIdentifier()
-        {
-            
-            // Retrieve the value entered by the user on the TrapIdentifier ASP:TextBox, and
-            // save it into the TrapIdentifier field in DataSource DatabaseTheRatTrap%dbo.Traps record.
-            
-            // Custom validation should be performed in Validate, not here.
-                    
-            // Save the value to data source
-            this.DataSource.Parse(this.TrapIdentifier.Text, TrapsTable.TrapIdentifier);							
-                          
-                      
         }
                 
         public virtual void GetTrapTypeId()
@@ -5442,11 +5379,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         }
                       
                     
-        protected virtual void TrapIdentifier_TextChanged(object sender, EventArgs args)
-        {
-                    
-              }
-            
   
         private Hashtable _PreviousUIData = new Hashtable();
         public virtual Hashtable PreviousUIData {
@@ -5566,18 +5498,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             }
         }              
             
-        public System.Web.UI.WebControls.TextBox TrapIdentifier {
-            get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifier");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal TrapIdentifierLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierLabel");
-            }
-        }
-        
         public TrapRecordsTableControl TrapRecordsTableControl {
             get {
                 return (TrapRecordsTableControl)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapRecordsTableControl");
@@ -6656,10 +6576,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                         if (MiscUtils.IsValueSelected(recControl.GroupId)) {
                             rec.Parse(recControl.GroupId.SelectedItem.Value, TrapsTable.GroupId);
                         }
-                        if (recControl.TrapIdentifier.Text != "") {
-                            rec.Parse(recControl.TrapIdentifier.Text, TrapsTable.TrapIdentifier);
-                  }
-                
                         if (MiscUtils.IsValueSelected(recControl.TrapTypeId)) {
                             rec.Parse(recControl.TrapTypeId.SelectedItem.Value, TrapsTable.TrapTypeId);
                         }
@@ -6806,10 +6722,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
               
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifier Asc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifier Desc"));
-              
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Ascending}"), "Active Asc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Descending}"), "Active Desc"));
@@ -6821,6 +6733,14 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Ascending}"), "ProjectId Asc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifierId Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifierId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Ascending}"), "Deleted Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Descending}"), "Deleted Desc"));
               
             try
             {          

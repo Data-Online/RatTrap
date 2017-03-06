@@ -3695,6 +3695,7 @@ public class BaseRoles1TableControlRow : RatTrap.UI.BaseApplicationRecordControl
 
             // Call the Set methods for each controls on the panel
         
+                SetDescription();
                 SetRoleName();
                 
 
@@ -3737,6 +3738,46 @@ public class BaseRoles1TableControlRow : RatTrap.UI.BaseApplicationRecordControl
             
           }
         
+        public virtual void SetDescription()
+        {
+            
+                    
+            // Set the Description Literal on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Roles database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Roles record retrieved from the database.
+            // this.Description is the ASP:Literal on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.DescriptionSpecified) {
+                								
+                // If the Description is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(Roles1Table.Description);
+                                
+                formattedValue = HttpUtility.HtmlEncode(formattedValue);
+                this.Description.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Description is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Description.Text = Roles1Table.Description.Format(Roles1Table.Description.DefaultValue);
+            		
+            }
+            
+            // If the Description is NULL or blank, then use the value specified  
+            // on Properties.
+            if (this.Description.Text == null ||
+                this.Description.Text.Trim().Length == 0) {
+                // Set the value specified on the Properties.
+                this.Description.Text = "&nbsp;";
+            }
+                                     
+        }
+                
         public virtual void SetRoleName()
         {
             
@@ -3931,10 +3972,16 @@ public class BaseRoles1TableControlRow : RatTrap.UI.BaseApplicationRecordControl
       
             // Call the Get methods for each of the user interface controls.
         
+            GetDescription();
             GetRoleName();
         }
         
         
+        public virtual void GetDescription()
+        {
+            
+        }
+                
         public virtual void GetRoleName()
         {
             
@@ -4166,6 +4213,12 @@ public class BaseRoles1TableControlRow : RatTrap.UI.BaseApplicationRecordControl
        
 #region "Helper Properties"
         
+        public System.Web.UI.WebControls.Literal Description {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Description");
+            }
+        }
+            
         public System.Web.UI.WebControls.Literal RoleName {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "RoleName");
@@ -4437,6 +4490,8 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
         
        // Setup the sorting events.
         
+              this.DescriptionLabel.Click += DescriptionLabel_Click;
+            
               this.RoleNameLabel.Click += RoleNameLabel_Click;
             
             // Setup the button events.
@@ -4750,6 +4805,8 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
           {
           Roles1TableControlRow recControl = (Roles1TableControlRow)(repItem.FindControl("Roles1TableControlRow"));
             
+            list.Add(recControl.Description.ID);
+             
             list.Add(recControl.RoleName.ID);
                          
             break;
@@ -4760,6 +4817,7 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
             // Call the Set methods for each controls on the panel
         
                 
+                SetDescriptionLabel();
                 
                 
                 
@@ -5628,6 +5686,10 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
             if (recControl.Visible && recControl.IsNewRecord) {
       Roles1Record rec = new Roles1Record();
         
+                        if (recControl.Description.Text != "") {
+                            rec.Parse(recControl.Description.Text, Roles1Table.Description);
+                  }
+                
                         if (recControl.RoleName.Text != "") {
                             rec.Parse(recControl.RoleName.Text, Roles1Table.RoleName);
                   }
@@ -5699,6 +5761,12 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
       
         // Create Set, WhereClause, and Populate Methods
         
+        public virtual void SetDescriptionLabel()
+                  {
+                  
+                    
+        }
+                
         public virtual void SetRoleNameLabel()
                   {
                   
@@ -5799,6 +5867,10 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Role Name {Txt:Ascending}"), "RoleName Asc"));
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Role Name {Txt:Descending}"), "RoleName Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Description {Txt:Ascending}"), "Description Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Description {Txt:Descending}"), "Description Desc"));
               
             try
             {          
@@ -6367,6 +6439,36 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
 
         // Generate the event handling functions for sorting events.
         
+        public virtual void DescriptionLabel_Click(object sender, EventArgs args)
+        {
+            //Sorts by Description when clicked.
+              
+            // Get previous sorting state for Description.
+        
+            OrderByItem sd = this.CurrentSortOrder.Find(Roles1Table.Description);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for Description.
+                this.CurrentSortOrder.Reset();
+
+    
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+              this.CurrentSortOrder.Add(Roles1Table.Description, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by Description, so just reverse.
+                sd.Reverse();
+            }
+        
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+              
+        }
+            
         public virtual void RoleNameLabel_Click(object sender, EventArgs args)
         {
             //Sorts by RoleName when clicked.
@@ -6842,6 +6944,12 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
         public RatTrap.UI.IThemeButtonWithArrow Actions1Button {
             get {
                 return (RatTrap.UI.IThemeButtonWithArrow)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Actions1Button");
+            }
+        }
+        
+        public System.Web.UI.WebControls.LinkButton DescriptionLabel {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DescriptionLabel");
             }
         }
         

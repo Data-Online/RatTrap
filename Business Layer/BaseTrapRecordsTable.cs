@@ -70,6 +70,7 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         ProjectIdColumn.CodeName = "ProjectId";
         GroupIdColumn.CodeName = "GroupId";
         TrapTypeIdColumn.CodeName = "TrapTypeId";
+        UserId0Column.CodeName = "UserId0";
 
         
     }
@@ -351,6 +352,31 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         get
         {
             return TrapRecordsTable.Instance.TrapTypeIdColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.UserId column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn UserId0Column
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[11];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's TrapRecords_.UserId column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn UserId0
+    {
+        get
+        {
+            return TrapRecordsTable.Instance.UserId0Column;
         }
     }
     
@@ -889,7 +915,8 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         string LocationIdValue, 
         string ProjectIdValue, 
         string GroupIdValue, 
-        string TrapTypeIdValue
+        string TrapTypeIdValue, 
+        string UserId0Value
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
@@ -903,6 +930,7 @@ public class BaseTrapRecordsTable : PrimaryKeyTable
         rec.SetString(ProjectIdValue, ProjectIdColumn);
         rec.SetString(GroupIdValue, GroupIdColumn);
         rec.SetString(TrapTypeIdValue, TrapTypeIdColumn);
+        rec.SetString(UserId0Value, UserId0Column);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

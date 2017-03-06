@@ -14,7 +14,7 @@
     <Layout>Areas\Areas-QuickSelector.html</Layout>
     <DisplayName>Areas-QuickSelector</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
   </Self>
   <ComposedOf>
     <ContainedComponent>

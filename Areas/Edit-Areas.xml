@@ -14,7 +14,7 @@
     <Layout>Areas\Edit-Areas.html</Layout>
     <DisplayName>Edit-Areas</DisplayName>
     <Description>Standard record panel.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>1348814221-19608</CheckSum>
   </Self>
   <ComposedOf>

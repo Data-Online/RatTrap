@@ -263,38 +263,6 @@ public class BaseTrapsRecord : PrimaryKeyRecord
 		this.SetValue(cv, TableUtils.GroupIdColumn);
 	}
 	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's Traps_.TrapIdentifier field.
-	/// </summary>
-	public ColumnValue GetTrapIdentifierValue()
-	{
-		return this.GetValue(TableUtils.TrapIdentifierColumn);
-	}
-
-	/// <summary>
-	/// This is a convenience method that provides direct access to the value of the record's Traps_.TrapIdentifier field.
-	/// </summary>
-	public string GetTrapIdentifierFieldValue()
-	{
-		return this.GetValue(TableUtils.TrapIdentifierColumn).ToString();
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifier field.
-	/// </summary>
-	public void SetTrapIdentifierFieldValue(ColumnValue val)
-	{
-		this.SetValue(val, TableUtils.TrapIdentifierColumn);
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifier field.
-	/// </summary>
-	public void SetTrapIdentifierFieldValue(string val)
-	{
-		ColumnValue cv = new ColumnValue(val);
-		this.SetValue(cv, TableUtils.TrapIdentifierColumn);
-	}
-	/// <summary>
 	/// This is a convenience method that provides direct access to the value of the record's Traps_.Active field.
 	/// </summary>
 	public ColumnValue GetActiveValue()
@@ -450,6 +418,122 @@ public class BaseTrapsRecord : PrimaryKeyRecord
 		ColumnValue cv = new ColumnValue(val);
 		this.SetValue(cv, TableUtils.ProjectIdColumn);
 	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public ColumnValue GetTrapIdentifierIdValue()
+	{
+		return this.GetValue(TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public Int32 GetTrapIdentifierIdFieldValue()
+	{
+		return this.GetValue(TableUtils.TrapIdentifierIdColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapIdentifierIdColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public void SetTrapIdentifierIdFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.TrapIdentifierIdColumn);
+	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public ColumnValue GetDeletedValue()
+	{
+		return this.GetValue(TableUtils.DeletedColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public Int32 GetDeletedFieldValue()
+	{
+		return this.GetValue(TableUtils.DeletedColumn).ToInt32();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public void SetDeletedFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.DeletedColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public void SetDeletedFieldValue(string val)
+	{
+		this.SetString(val, TableUtils.DeletedColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public void SetDeletedFieldValue(double val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.DeletedColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public void SetDeletedFieldValue(decimal val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.DeletedColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public void SetDeletedFieldValue(long val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.DeletedColumn);
+	}
 
 
 #endregion
@@ -586,49 +670,6 @@ public class BaseTrapsRecord : PrimaryKeyRecord
 		}
 	}
 	/// <summary>
-	/// This is a property that provides direct access to the value of the record's Traps_.TrapIdentifier field.
-	/// </summary>
-	public string TrapIdentifier
-	{
-		get
-		{
-			return this.GetValue(TableUtils.TrapIdentifierColumn).ToString();
-		}
-		set
-		{
-			ColumnValue cv = new ColumnValue(value);
-			this.SetValue(cv, TableUtils.TrapIdentifierColumn);
-		}
-	}
-
-
-	/// <summary>
-	/// This is a convenience method that can be used to determine that the column is set.
-	/// </summary>
-	public bool TrapIdentifierSpecified
-	{
-		get
-		{
-			ColumnValue val = this.GetValue(TableUtils.TrapIdentifierColumn);
-            if (val == null || val.IsNull)
-            {
-                return false;
-            }
-            return true;
-		}
-	}
-
-	/// <summary>
-	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifier field.
-	/// </summary>
-	public string TrapIdentifierDefault
-	{
-		get
-		{
-			return TableUtils.TrapIdentifierColumn.DefaultValue;
-		}
-	}
-	/// <summary>
 	/// This is a property that provides direct access to the value of the record's Traps_.Active field.
 	/// </summary>
 	public bool Active
@@ -756,6 +797,92 @@ public class BaseTrapsRecord : PrimaryKeyRecord
 		get
 		{
 			return TableUtils.ProjectIdColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public Int32 TrapIdentifierId
+	{
+		get
+		{
+			return this.GetValue(TableUtils.TrapIdentifierIdColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.TrapIdentifierIdColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool TrapIdentifierIdSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.TrapIdentifierIdColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.TrapIdentifierId field.
+	/// </summary>
+	public string TrapIdentifierIdDefault
+	{
+		get
+		{
+			return TableUtils.TrapIdentifierIdColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public Int32 Deleted
+	{
+		get
+		{
+			return this.GetValue(TableUtils.DeletedColumn).ToInt32();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.DeletedColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool DeletedSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.DeletedColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Traps_.Deleted field.
+	/// </summary>
+	public string DeletedDefault
+	{
+		get
+		{
+			return TableUtils.DeletedColumn.DefaultValue;
 		}
 	}
 

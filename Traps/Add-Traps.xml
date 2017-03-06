@@ -16,7 +16,7 @@
     <Description>Standard record panel.</Description>
     <MenuFileToHilite>Menu</MenuFileToHilite>
     <MenuHiliteItem>TrapsMenuItem</MenuHiliteItem>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>-1461979977-8000</CheckSum>
   </Self>
   <ComposedOf>
@@ -206,37 +206,29 @@
       <InsideControl>TrapsRecordControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>TrapIdentifier</Name>
+      <Name>TrapIdentifierId</Name>
       <Type>FieldValue</Type>
-      <Field>TrapIdentifier</Field>
-      <FieldValueStyle>TextBox</FieldValueStyle>
+      <Field>TrapIdentifierId</Field>
+      <FieldValueStyle>QuickSelector</FieldValueStyle>
       <Table>DatabaseTheRatTrap%dbo.Traps</Table>
       <PassthroughAttributes>
-        <Attribute>
-          <Name>CssClass</Name>
-          <Value>field_input</Value>
-        </Attribute>
-        <Attribute>
-          <Name>EnableIncrementDecrementButtons</Name>
-          <Value>False</Value>
-        </Attribute>
         <Attribute>
           <Name>InternalUse:DataSource</Name>
           <Value>Parent</Value>
         </Attribute>
         <Attribute>
-          <Name>TrapIdentifierRequiredFieldValidator:Enabled</Name>
-          <Value>False</Value>
+          <Name>InternalUse:NewRecordFormula</Name>
+          <Value>URL("TrapIdentifierId")</Value>
         </Attribute>
         <Attribute>
-          <Name>TrapIdentifierRequiredFieldValidator:Text</Name>
-          <Value>*</Value>
+          <Name>RedirectURL</Name>
+          <Value />
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsRecordControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>TrapIdentifierLabel</Name>
+      <Name>TrapIdentifierIdLabel</Name>
       <Type>Literal</Type>
       <PassthroughAttributes>
         <Attribute>
@@ -245,7 +237,7 @@
         </Attribute>
         <Attribute>
           <Name>InternalUse:Field</Name>
-          <Value>TrapIdentifier</Value>
+          <Value>TrapIdentifierId</Value>
         </Attribute>
         <Attribute>
           <Name>InternalUse:Table</Name>
@@ -253,7 +245,7 @@
         </Attribute>
         <Attribute>
           <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Traps%TrapIdentifier</Value>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Traps%TrapIdentifierId</Value>
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsRecordControl</InsideControl>
@@ -717,7 +709,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapIdentifierLabel" /&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapIdentifierIdLabel" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -726,7 +718,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="TrapIdentifier" /&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="TrapIdentifierId" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;

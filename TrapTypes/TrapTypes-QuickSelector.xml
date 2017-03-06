@@ -14,7 +14,7 @@
     <Layout>TrapTypes\TrapTypes-QuickSelector.html</Layout>
     <DisplayName>TrapTypes-QuickSelector</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
   </Self>
   <ComposedOf>
     <ContainedComponent>

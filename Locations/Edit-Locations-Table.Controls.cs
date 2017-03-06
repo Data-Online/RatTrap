@@ -3148,8 +3148,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 SetGroupIdLabel();
                 SetProjectId();
                 SetProjectIdLabel();
-                SetTrapIdentifier();
-                SetTrapIdentifierLabel();
                 SetTrapTypeId();
                 SetTrapTypeIdLabel();
                 SetDeleteRowButton1();
@@ -3301,46 +3299,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                                
         }
                 
-        public virtual void SetTrapIdentifier()
-        {
-            
-                    
-            // Set the TrapIdentifier Literal on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.Traps database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
-            // this.TrapIdentifier is the ASP:Literal on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.TrapIdentifierSpecified) {
-                								
-                // If the TrapIdentifier is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapsTable.TrapIdentifier);
-                                
-                formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.TrapIdentifier.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // TrapIdentifier is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.TrapIdentifier.Text = TrapsTable.TrapIdentifier.Format(TrapsTable.TrapIdentifier.DefaultValue);
-            		
-            }
-            
-            // If the TrapIdentifier is NULL or blank, then use the value specified  
-            // on Properties.
-            if (this.TrapIdentifier.Text == null ||
-                this.TrapIdentifier.Text.Trim().Length == 0) {
-                // Set the value specified on the Properties.
-                this.TrapIdentifier.Text = "&nbsp;";
-            }
-                                     
-        }
-                
         public virtual void SetTrapTypeId()
         {
             
@@ -3397,12 +3355,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         }
                 
         public virtual void SetProjectIdLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetTrapIdentifierLabel()
                   {
                   
                     
@@ -3585,7 +3537,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             GetActive();
             GetGroupId();
             GetProjectId();
-            GetTrapIdentifier();
             GetTrapTypeId();
         }
         
@@ -3601,11 +3552,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         }
                 
         public virtual void GetProjectId()
-        {
-            
-        }
-                
-        public virtual void GetTrapIdentifier()
         {
             
         }
@@ -4114,18 +4060,6 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         public System.Web.UI.WebControls.Literal ProjectIdLabel {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectIdLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.Literal TrapIdentifier {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifier");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal TrapIdentifierLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierLabel");
             }
         }
         
@@ -5179,10 +5113,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                             rec.Parse(recControl.ProjectId.Text, TrapsTable.ProjectId);
                   }
                 
-                        if (recControl.TrapIdentifier.Text != "") {
-                            rec.Parse(recControl.TrapIdentifier.Text, TrapsTable.TrapIdentifier);
-                  }
-                
                         if (recControl.TrapTypeId.Text != "") {
                             rec.Parse(recControl.TrapTypeId.Text, TrapsTable.TrapTypeId);
                   }
@@ -5312,13 +5242,17 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
               
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifier Asc"));
-              
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifier Desc"));
-              
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Ascending}"), "TrapTypeId Asc"));
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifierId Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifierId Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Ascending}"), "Deleted Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Descending}"), "Deleted Desc"));
               
             try
             {          
@@ -5863,7 +5797,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 BaseColumn[] columns = new BaseColumn[] {
                              TrapsTable.TrapTypeId,
              TrapsTable.GroupId,
-             TrapsTable.TrapIdentifier,
              TrapsTable.Active,
              TrapsTable.ProjectId,
              null};
@@ -5923,7 +5856,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
               DataForExport data = new DataForExport(TrapsTable.Instance, wc, orderBy, null,join);
                            data.ColumnList.Add(new ExcelColumn(TrapsTable.TrapTypeId, "Default"));
              data.ColumnList.Add(new ExcelColumn(TrapsTable.GroupId, "Default"));
-             data.ColumnList.Add(new ExcelColumn(TrapsTable.TrapIdentifier, "Default"));
              data.ColumnList.Add(new ExcelColumn(TrapsTable.Active, "Default"));
              data.ColumnList.Add(new ExcelColumn(TrapsTable.ProjectId, "Default"));
 
@@ -6100,7 +6032,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // The 5th parameter represents the relative width of the column
                  report.AddColumn(TrapsTable.TrapTypeId.Name, ReportEnum.Align.Left, "${TrapTypeId}", ReportEnum.Align.Left, 28);
                  report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapsTable.TrapIdentifier.Name, ReportEnum.Align.Left, "${TrapIdentifier}", ReportEnum.Align.Left, 28);
                  report.AddColumn(TrapsTable.Active.Name, ReportEnum.Align.Left, "${Active}", ReportEnum.Align.Left, 15);
                  report.AddColumn(TrapsTable.ProjectId.Name, ReportEnum.Align.Left, "${ProjectId}", ReportEnum.Align.Left, 28);
 
@@ -6163,7 +6094,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                                      report.AddData("${GroupId}", record.Format(TrapsTable.GroupId), ReportEnum.Align.Left);
                                  }
                              }
-                             report.AddData("${TrapIdentifier}", record.Format(TrapsTable.TrapIdentifier), ReportEnum.Align.Left, 300);
                              report.AddData("${Active}", record.Format(TrapsTable.Active), ReportEnum.Align.Left, 300);
                              if (BaseClasses.Utils.MiscUtils.IsNull(record.ProjectId)){
                                  report.AddData("${ProjectId}", "",ReportEnum.Align.Left);
@@ -6271,7 +6201,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // The 5th parameter represents the relative width of the column
                  report.AddColumn(TrapsTable.TrapTypeId.Name, ReportEnum.Align.Left, "${TrapTypeId}", ReportEnum.Align.Left, 28);
                  report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapsTable.TrapIdentifier.Name, ReportEnum.Align.Left, "${TrapIdentifier}", ReportEnum.Align.Left, 28);
                  report.AddColumn(TrapsTable.Active.Name, ReportEnum.Align.Left, "${Active}", ReportEnum.Align.Left, 15);
                  report.AddColumn(TrapsTable.ProjectId.Name, ReportEnum.Align.Left, "${ProjectId}", ReportEnum.Align.Left, 28);
 
@@ -6330,7 +6259,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                                      report.AddData("${GroupId}", record.Format(TrapsTable.GroupId), ReportEnum.Align.Left);
                                  }
                              }
-                             report.AddData("${TrapIdentifier}", record.Format(TrapsTable.TrapIdentifier), ReportEnum.Align.Left, 300);
                              report.AddData("${Active}", record.Format(TrapsTable.Active), ReportEnum.Align.Left, 300);
                              if (BaseClasses.Utils.MiscUtils.IsNull(record.ProjectId)){
                                  report.AddData("${ProjectId}", "",ReportEnum.Align.Left);

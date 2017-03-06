@@ -61,17 +61,32 @@ public class BaseTrapsTable : PrimaryKeyTable
         TrapIdColumn.CodeName = "TrapId";
         TrapTypeIdColumn.CodeName = "TrapTypeId";
         GroupIdColumn.CodeName = "GroupId";
-        TrapIdentifierColumn.CodeName = "TrapIdentifier";
         ActiveColumn.CodeName = "Active";
         ActiveColumn.Name = EvaluateFormula("\"Active?\"");
         LocationIdColumn.CodeName = "LocationId";
         ProjectIdColumn.CodeName = "ProjectId";
+        TrapIdentifierIdColumn.CodeName = "TrapIdentifierId";
+        DeletedColumn.CodeName = "Deleted";
+        DeletedColumn.DefaultValue = EvaluateFormula("\"0\"");
 
         
     }
     
 #region "Overriden methods"
-	
+	public override WhereClause AddGlobalWhereClause()
+    {
+        CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+        WhereClause wc = new WhereClause();
+        String formula;
+
+        if(BaseFormulaEvaluator.ShouldApplyGlobalWhereClause("0")){
+            formula = EvaluateFormula("0");
+            filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(TrapsTable.Deleted, formula, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+            wc.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+        }
+
+        return wc;
+    }
 #endregion    
 
 #region "Properties for columns"
@@ -152,38 +167,13 @@ public class BaseTrapsTable : PrimaryKeyTable
     
     
     /// <summary>
-    /// This is a convenience property that provides direct access to the table's Traps_.TrapIdentifier column object.
-    /// </summary>
-    public BaseClasses.Data.StringColumn TrapIdentifierColumn
-    {
-        get
-        {
-            return (BaseClasses.Data.StringColumn)this.TableDefinition.ColumnList[3];
-        }
-    }
-    
-
-    
-    /// <summary>
-    /// This is a convenience property that provides direct access to the table's Traps_.TrapIdentifier column object.
-    /// </summary>
-    public static BaseClasses.Data.StringColumn TrapIdentifier
-    {
-        get
-        {
-            return TrapsTable.Instance.TrapIdentifierColumn;
-        }
-    }
-    
-    
-    /// <summary>
     /// This is a convenience property that provides direct access to the table's Traps_.Active column object.
     /// </summary>
     public BaseClasses.Data.BooleanColumn ActiveColumn
     {
         get
         {
-            return (BaseClasses.Data.BooleanColumn)this.TableDefinition.ColumnList[4];
+            return (BaseClasses.Data.BooleanColumn)this.TableDefinition.ColumnList[3];
         }
     }
     
@@ -208,7 +198,7 @@ public class BaseTrapsTable : PrimaryKeyTable
     {
         get
         {
-            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[5];
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[4];
         }
     }
     
@@ -233,7 +223,7 @@ public class BaseTrapsTable : PrimaryKeyTable
     {
         get
         {
-            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[6];
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[5];
         }
     }
     
@@ -247,6 +237,56 @@ public class BaseTrapsTable : PrimaryKeyTable
         get
         {
             return TrapsTable.Instance.ProjectIdColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.TrapIdentifierId column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn TrapIdentifierIdColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[6];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.TrapIdentifierId column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn TrapIdentifierId
+    {
+        get
+        {
+            return TrapsTable.Instance.TrapIdentifierIdColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.Deleted column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn DeletedColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[7];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.Deleted column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn Deleted
+    {
+        get
+        {
+            return TrapsTable.Instance.DeletedColumn;
         }
     }
     
@@ -778,19 +818,21 @@ public class BaseTrapsTable : PrimaryKeyTable
         public KeyValue NewRecord(
         string TrapTypeIdValue, 
         string GroupIdValue, 
-        string TrapIdentifierValue, 
         string ActiveValue, 
         string LocationIdValue, 
-        string ProjectIdValue
+        string ProjectIdValue, 
+        string TrapIdentifierIdValue, 
+        string DeletedValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
                     rec.SetString(TrapTypeIdValue, TrapTypeIdColumn);
         rec.SetString(GroupIdValue, GroupIdColumn);
-        rec.SetString(TrapIdentifierValue, TrapIdentifierColumn);
         rec.SetString(ActiveValue, ActiveColumn);
         rec.SetString(LocationIdValue, LocationIdColumn);
         rec.SetString(ProjectIdValue, ProjectIdColumn);
+        rec.SetString(TrapIdentifierIdValue, TrapIdentifierIdColumn);
+        rec.SetString(DeletedValue, DeletedColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

@@ -1,6 +1,6 @@
 ﻿
-// This file implements the code-behind class for Locations_QuickSelector.aspx.
-// Locations_QuickSelector.Controls.vb contains the Table, Row and Record control classes
+// This file implements the code-behind class for Edit_Traps_Table_Admin.aspx.
+// Edit_Traps_Table_Admin.Controls.vb contains the Table, Row and Record control classes
 // for the page.  Best practices calls for overriding methods in the Row or Record control classes.
 
 #region "Using statements"    
@@ -29,15 +29,15 @@ using RatTrap.Data;
 namespace RatTrap.UI
 {
   
-public partial class Locations_QuickSelector
+public partial class Edit_Traps_Table_Admin
         : BaseApplicationPage
-// Code-behind class for the Locations_QuickSelector page.
+// Code-behind class for the Edit_Traps_Table_Admin page.
 // Place your customizations in Section 1. Do not modify Section 2.
 {
         
       #region "Section 1: Place your customizations here."
 
-      public Locations_QuickSelector()
+      public Edit_Traps_Table_Admin()
         {
             this.Initialize();
     
@@ -173,17 +173,6 @@ public partial class Locations_QuickSelector
         }
         
     
-        [System.Web.Services.WebMethod]
-        public static string[] GetAutoCompletionList_Search(string prefixText, int count)
-        {
-            // GetSearchCompletionList gets the list of suggestions from the database.
-            // prefixText is the search text typed by the user .
-            // count specifies the number of suggestions to be returned.
-            // Customize by adding code before or after the call to  GetAutoCompletionList_Search_Base()
-            // or replace the call to GetAutoCompletionList_Search_Base().
-            return GetAutoCompletionList_Search_Base(prefixText, count);
-        }
-      
       protected override void BasePage_PreRender(object sender, EventArgs e)
       {
           base.BasePage_PreRender(sender, e);
@@ -203,9 +192,9 @@ public partial class Locations_QuickSelector
     
         // Write out the Set methods
         
-        public void SetSelectorTableControl()
+        public void SetTrapsTableControl()
         {
-            SetSelectorTableControl_Base(); 
+            SetTrapsTableControl_Base(); 
         }
                      
         
@@ -230,22 +219,44 @@ public partial class Locations_QuickSelector
         }
         
     
-        public ThemeButton AddButton;
+        public ThemeButtonWithArrow ActionsButton;
                 
-        public ThemeButton ClearButton;
+        public System.Web.UI.WebControls.LinkButton ActiveLabel;
+        
+        public System.Web.UI.WebControls.ImageButton AddButton;
+        
+        public System.Web.UI.WebControls.ImageButton DeleteButton;
+        
+        public ThemeButton FilterButton;
                 
-        public ThemeButton CommitButton;
+        public ThemeButtonWithArrow FiltersButton;
                 
+        public System.Web.UI.WebControls.LinkButton GroupIdLabel;
+        
         public System.Web.UI.WebControls.Literal PageTitle;
         
         public PaginationModern Pagination;
                 
-        public System.Web.UI.WebControls.TextBox Search;
+        public System.Web.UI.WebControls.LinkButton ProjectIdLabel1;
         
-        public System.Web.UI.WebControls.ImageButton SearchButton;
+        public System.Web.UI.WebControls.ImageButton ResetButton;
         
-        public RatTrap.UI.Controls.Locations_QuickSelector.SelectorTableControl SelectorTableControl;
+        public System.Web.UI.WebControls.ImageButton SaveButton;
+        
+        public System.Web.UI.WebControls.Label SortByLabel;
+        
+        public System.Web.UI.WebControls.Literal Title0;
+            
+        public System.Web.UI.WebControls.CheckBox ToggleAll;
+        
+        public System.Web.UI.WebControls.LinkButton TrapIdentifierIdLabel;
+        
+        public RatTrap.UI.Controls.Edit_Traps_Table_Admin.TrapsTableControl TrapsTableControl;
           
+        public System.Web.UI.WebControls.LinkButton TrapTypeIdLabel;
+        
+        public System.Web.UI.WebControls.Literal TrapTypeIdLabel1;
+        
         public ValidationSummary ValidationSummary1;
 
   
@@ -307,7 +318,7 @@ public partial class Locations_QuickSelector
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("1;2;3;4;5");
+            this.Authorize("");
              if (!this.IsPostBack)
              {
             
@@ -326,10 +337,10 @@ public partial class Locations_QuickSelector
     }
 
     
-            Page.Title = "Page";
+            Page.Title = ExpandResourceValue("{Title:Edit} Traps");
         
         if (!IsPostBack)
-            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QSSize');", true);
+            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
         
             }
 
@@ -419,8 +430,8 @@ public partial class Locations_QuickSelector
           switch (control)
           {
           
-              case "SelectorTableControl":
-                 SetSelectorTableControl();
+              case "TrapsTableControl":
+                 SetTrapsTableControl();
                  break;
                
           }
@@ -432,7 +443,7 @@ public partial class Locations_QuickSelector
       public void SaveData_Base()
       {
       
-        this.SelectorTableControl.SaveData();
+        this.TrapsTableControl.SaveData();
         
       }
       
@@ -505,17 +516,6 @@ public partial class Locations_QuickSelector
       }  
       
         
-    public static string[] GetAutoCompletionList_Search_Base(string prefixText, int count)
-    {
-        // Since this method is a shared/static method it does not maintain information about page or controls within the page.
-        // Hence we can not invoke any method associated with any controls.
-        // So, if we need to use any control in the page we need to instantiate it.
-        RatTrap.UI.Controls.Locations_QuickSelector.SelectorTableControl control = new RatTrap.UI.Controls.Locations_QuickSelector.SelectorTableControl();
-        
-        return control.GetAutoCompletionList_Search(prefixText, count);
-            
-    }
-      
 
     // Load data from database into UI controls.
     // Modify LoadData in Section 1 above to customize.  Or override DataBind() in
@@ -539,7 +539,7 @@ public partial class Locations_QuickSelector
     
                 // Load and bind data for each record and table UI control.
                 
-        SetSelectorTableControl();
+        SetTrapsTableControl();
         
     
                 // Load data for chart.
@@ -628,13 +628,13 @@ public partial class Locations_QuickSelector
                 
         // Write out the Set methods
         
-        public void SetSelectorTableControl_Base()           
+        public void SetTrapsTableControl_Base()           
         
         {        
-            if (SelectorTableControl.Visible)
+            if (TrapsTableControl.Visible)
             {
-                SelectorTableControl.LoadData();
-                SelectorTableControl.DataBind();
+                TrapsTableControl.LoadData();
+                TrapsTableControl.DataBind();
             }
         }
           

@@ -14,7 +14,7 @@
     <Layout>Users\Show-Users-Table.html</Layout>
     <DisplayName>Show-Users-Table</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>-2050569659-70868</CheckSum>
   </Self>
   <ComposedOf>
@@ -169,6 +169,96 @@
       </PassthroughAttributes>
       <InsideControl>UsersTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Description</Name>
+      <Type>FieldValue</Type>
+      <Field>Description</Field>
+      <FieldValueStyle>Literal</FieldValueStyle>
+      <Table>DatabaseTheRatTrap%dbo.Roles</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FieldMaxLength</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>HTMLEncodeValue</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplySaveToField</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NullValueText</Name>
+          <Value>&amp;nbsp;</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupDisplay</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupThreshold</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowHeight</Name>
+          <Value>200</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowPersist</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowScrollBar</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowTitle</Name>
+          <Value>%ISD_DEFAULT%</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowWidth</Name>
+          <Value>300</Value>
+        </Attribute>
+        <Attribute>
+          <Name>TextFormat</Name>
+          <Value>{0}</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>Roles1TableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>DescriptionLabel</Name>
+      <Type>FieldSort</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>Roles1TableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Field</Name>
+          <Value>Description</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.Roles</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Roles%Description</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Sort by Description</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>Roles1TableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>EditRowButton</Name>
@@ -2456,6 +2546,14 @@
         <Item>
           <Name>RoleName Desc</Name>
           <Value>Role Name {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>Description Asc</Name>
+          <Value>Description {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Description Desc</Name>
+          <Value>Description {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
@@ -5511,7 +5609,8 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
+        &lt;Value&gt;&amp;amp;nbsp; 
+&amp;lt;GEN:FIELDLABEL NAME="DescriptionLabel" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -5583,6 +5682,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="Description" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;

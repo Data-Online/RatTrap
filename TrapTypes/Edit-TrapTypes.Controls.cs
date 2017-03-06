@@ -1873,10 +1873,6 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
               
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifier Asc"));
-              
-                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifier Desc"));
-              
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Ascending}"), "Active Asc"));
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Descending}"), "Active Desc"));
@@ -1888,6 +1884,14 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Ascending}"), "ProjectId Asc"));
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifierId Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifierId Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Ascending}"), "Deleted Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Descending}"), "Deleted Desc"));
               
             try
             {          

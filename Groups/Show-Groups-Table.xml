@@ -14,7 +14,7 @@
     <Layout>Groups\Show-Groups-Table.html</Layout>
     <DisplayName>Show-Groups-Table</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>860087621-65864</CheckSum>
   </Self>
   <ComposedOf>

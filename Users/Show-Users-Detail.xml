@@ -16,7 +16,7 @@
     <Description>Standard record panel.</Description>
     <MenuFileToHilite>Menu</MenuFileToHilite>
     <MenuHiliteItem>UsersMenuItem</MenuHiliteItem>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>1939153503-56687</CheckSum>
   </Self>
   <ComposedOf>
@@ -1822,6 +1822,14 @@
         <Item>
           <Name>RoleName Desc</Name>
           <Value>Role Name {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>Description Asc</Name>
+          <Value>Description {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Description Desc</Name>
+          <Value>Description {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>
       <PassthroughAttributes>

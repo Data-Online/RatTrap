@@ -5780,6 +5780,10 @@ public class BaseRoles1TableControl : RatTrap.UI.BaseApplicationTableControl
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Role Name {Txt:Descending}"), "RoleName Desc"));
               
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Description {Txt:Ascending}"), "Description Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Description {Txt:Descending}"), "Description Desc"));
+              
             try
             {          
                 // Set the selected value.

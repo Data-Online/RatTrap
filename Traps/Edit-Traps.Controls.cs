@@ -21,51 +21,51 @@ using BaseClasses.Utils;
 using ReportTools.ReportCreator;
 using ReportTools.Shared;
 
-        
+
 using RatTrap.Business;
 using RatTrap.Data;
 using RatTrap.UI;
 using RatTrap;
-		
+
 
 #endregion
 
-  
+
 namespace RatTrap.UI.Controls.Edit_Traps
 {
-  
 
-#region "Section 1: Place your customizations here."
 
-    
-public class TrapNotesTableControlRow : BaseTrapNotesTableControlRow
-{
-      
+    #region "Section 1: Place your customizations here."
+
+
+    public class TrapNotesTableControlRow : BaseTrapNotesTableControlRow
+    {
+
         // The BaseTrapNotesTableControlRow implements code for a ROW within the
         // the TrapNotesTableControl table.  The BaseTrapNotesTableControlRow implements the DataBind and SaveData methods.
         // The loading of data is actually performed by the LoadData method in the base class of TrapNotesTableControl.
 
         // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
         // SaveData, GetUIData, and Validate methods.
-        
-}
 
-  
+    }
 
-public class TrapNotesTableControl : BaseTrapNotesTableControl
-{
-    // The BaseTrapNotesTableControl class implements the LoadData, DataBind, CreateWhereClause
-    // and other methods to load and display the data in a table control.
 
-    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
-    // The TrapNotesTableControlRow class offers another place where you can customize
-    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
-    
-}
 
-  
-public class TrapRecordsTableControlRow : BaseTrapRecordsTableControlRow
-{
+    public class TrapNotesTableControl : BaseTrapNotesTableControl
+    {
+        // The BaseTrapNotesTableControl class implements the LoadData, DataBind, CreateWhereClause
+        // and other methods to load and display the data in a table control.
+
+        // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+        // The TrapNotesTableControlRow class offers another place where you can customize
+        // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+
+    }
+
+
+    public class TrapRecordsTableControlRow : BaseTrapRecordsTableControlRow
+    {
 
         // The BaseTrapRecordsTableControlRow implements code for a ROW within the
         // the TrapRecordsTableControl table.  The BaseTrapRecordsTableControlRow implements the DataBind and SaveData methods.
@@ -152,82 +152,104 @@ public class TrapRecordsTableControlRow : BaseTrapRecordsTableControlRow
         }
     }
 
-  
 
-public class TrapRecordsTableControl : BaseTrapRecordsTableControl
-{
-    // The BaseTrapRecordsTableControl class implements the LoadData, DataBind, CreateWhereClause
-    // and other methods to load and display the data in a table control.
 
-    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
-    // The TrapRecordsTableControlRow class offers another place where you can customize
-    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
-    
-}
+    public class TrapRecordsTableControl : BaseTrapRecordsTableControl
+    {
+        // The BaseTrapRecordsTableControl class implements the LoadData, DataBind, CreateWhereClause
+        // and other methods to load and display the data in a table control.
 
-  
-public class TrapsRecordControl : BaseTrapsRecordControl
-{
-      
+        // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+        // The TrapRecordsTableControlRow class offers another place where you can customize
+        // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+
+        // Control access to trap records
+        // User == Only records that have been entered by logging user
+        //
+        protected override WhereClause CreateQueryClause()
+        {
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+
+            //string usrRoleStr = BaseClasses.Utils.SecurityControls.GetCurrentUserRoles();
+            IList rolesToCheck = new List<string>();
+            rolesToCheck.Add("3");  // User Access role 
+
+            if (BaseClasses.Utils.SecurityControls.IsUserInRole(System.Web.HttpContext.Current, rolesToCheck))
+            {
+                if (EvaluateFormula("USERID()", false) != "") filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapRecordsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"TrapRecords_.UserId"), EvaluateFormula("USERID()", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                if (EvaluateFormula("USERID()", false) == "--PLEASE_SELECT--" || EvaluateFormula("USERID()", false) == "--ANY--") whereClause.RunQuery = false;
+
+                whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+            }
+            return whereClause;
+        }
+    }
+
+
+    public class TrapsRecordControl : BaseTrapsRecordControl
+    {
+
         // The BaseTrapsRecordControl implements the LoadData, DataBind and other
         // methods to load and display the data in a table control.
 
         // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
         // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
-        
-}
 
-  
+    }
 
-//public class ProjectsGroupsLinkRecordControl : BaseProjectsGroupsLinkRecordControl
-//{
-//      
-//        // The BaseProjectsGroupsLinkRecordControl implements the LoadData, DataBind and other
-//        // methods to load and display the data in a table control.
-//
-//        // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
-//        // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
-//        
-//}
-//
-//public class GroupsRecordControl : BaseGroupsRecordControl
-//{
-//      
-//        // The BaseGroupsRecordControl implements the LoadData, DataBind and other
-//        // methods to load and display the data in a table control.
-//
-//        // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
-//        // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
-//        
-//}
-//
-//public class TrapCurrentAssignmentsRecordControl : BaseTrapCurrentAssignmentsRecordControl
-//{
-//      
-//        // The BaseTrapCurrentAssignmentsRecordControl implements the LoadData, DataBind and other
-//        // methods to load and display the data in a table control.
-//
-//        // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
-//        // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
-//        
-//}
-//
-//public class TrapsRecordControl1 : BaseTrapsRecordControl1
-//{
-//      
-//        // The BaseTrapsRecordControl1 implements the LoadData, DataBind and other
-//        // methods to load and display the data in a table control.
-//
-//        // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
-//        // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
-//        
-//}
-//
-#endregion
 
-  
 
-#region "Section 2: Do not modify this section."
+    //public class ProjectsGroupsLinkRecordControl : BaseProjectsGroupsLinkRecordControl
+    //{
+    //      
+    //        // The BaseProjectsGroupsLinkRecordControl implements the LoadData, DataBind and other
+    //        // methods to load and display the data in a table control.
+    //
+    //        // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
+    //        // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
+    //        
+    //}
+    //
+    //public class GroupsRecordControl : BaseGroupsRecordControl
+    //{
+    //      
+    //        // The BaseGroupsRecordControl implements the LoadData, DataBind and other
+    //        // methods to load and display the data in a table control.
+    //
+    //        // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
+    //        // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
+    //        
+    //}
+    //
+    //public class TrapCurrentAssignmentsRecordControl : BaseTrapCurrentAssignmentsRecordControl
+    //{
+    //      
+    //        // The BaseTrapCurrentAssignmentsRecordControl implements the LoadData, DataBind and other
+    //        // methods to load and display the data in a table control.
+    //
+    //        // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
+    //        // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
+    //        
+    //}
+    //
+    //public class TrapsRecordControl1 : BaseTrapsRecordControl1
+    //{
+    //      
+    //        // The BaseTrapsRecordControl1 implements the LoadData, DataBind and other
+    //        // methods to load and display the data in a table control.
+    //
+    //        // This is the ideal place to add your code customizations. For example, you can override the LoadData, 
+    //        // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
+    //        
+    //}
+    //
+    #endregion
+
+
+
+    #region "Section 2: Do not modify this section."
     
     
 // Base class for the TrapNotesTableControlRow control on the Edit_Traps page.
@@ -2807,6 +2829,8 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                         
                     this.EditRowButton1.Click += EditRowButton1_Click;
                         
+              this.UserId0.SelectedIndexChanged += UserId0_SelectedIndexChanged;                  
+                
               this.BaitType.SelectedIndexChanged += BaitType_SelectedIndexChanged;
             
               this.Species.SelectedIndexChanged += Species_SelectedIndexChanged;
@@ -2881,6 +2905,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 
                 SetSex();
                 SetSpecies();
+                SetUserId0();
                 SetDeleteRowButton1();
               
                 SetEditRowButton1();
@@ -3169,6 +3194,120 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                   
         }
                 
+        public virtual void SetUserId0()
+        {
+            				
+        
+        
+            string selectedValue = null;
+            
+            // figure out the selectedValue
+                  
+            							
+            // If selection was retrieved from UI previously, restore it
+            if (this.PreviousUIData.ContainsKey(this.UserId0.ID))
+            {
+                if (this.PreviousUIData[this.UserId0.ID] == null)
+                    selectedValue = null;
+                else
+                    selectedValue = this.PreviousUIData[this.UserId0.ID].ToString();
+            }
+            
+            
+            // Set the UserId QuickSelector on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+            
+            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
+            // this.UserId0 is the ASP:QuickSelector on the webpage.
+            
+            // You can modify this method directly, or replace it with a call to
+            //     base.SetUserId0();
+            // and add your own custom code before or after the call to the base function.
+
+            
+            // Default Value could also be NULL.
+            if (this.DataSource != null && this.DataSource.IsCreated)
+            {
+                
+                selectedValue = this.DataSource.UserId0.ToString();
+                
+            }
+            else
+            {
+                
+            
+                selectedValue = EvaluateFormula("UserId()");
+                
+            }
+
+            
+            // Add the Please Select item.
+            if (selectedValue == null || selectedValue == "")
+                  MiscUtils.ResetSelectedItem(this.UserId0, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+                        
+                  
+            // Populate the item(s) to the control
+            
+            this.UserId0.SetFieldMaxLength(50);
+            
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.UserId0, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.UserId0, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Users.UserId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(UsersTable.UserId0, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    UsersRecord[] rc = UsersTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        UsersRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.UserId0Specified)
+                            cvalue = itemValue.UserId0.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.UserId0);
+                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.UserId0.IsApplyDisplayAs)
+                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.UserId0);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(UsersTable.UserId0);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.UserId0, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+              string url = this.ModifyRedirectUrl("../Users/Users-QuickSelector.aspx", "", true);
+              
+              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+              
+              url += "?Target=" + this.UserId0.ClientID + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= LastName + \", \" + FirstName")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("UserId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              
+              this.UserId0.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(UserId0.AutoPostBack).ToLower() + ", event); return false;";
+                  
+                
+                  
+        }
+                
         public virtual void SetCommentLabel()
                   {
                   
@@ -3348,6 +3487,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             GetDateOfCheck();
             GetSex();
             GetSpecies();
+            GetUserId0();
         }
         
         
@@ -3412,6 +3552,17 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             // Custom validation should be performed in Validate, not here.
             
             this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.Species), TrapRecordsTable.Species);			
+                			 
+        }
+                
+        public virtual void GetUserId0()
+        {
+         // Retrieve the value entered by the user on the UserId ASP:QuickSelector, and
+            // save it into the UserId field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
+            
+            // Custom validation should be performed in Validate, not here.
+            
+            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.UserId0), TrapRecordsTable.UserId0);			
                 			 
         }
                 
@@ -4112,6 +4263,13 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             
             
         
+        protected virtual void UserId0_SelectedIndexChanged(object sender, EventArgs args)
+        {
+          									
+
+        }
+                      
+                    
         protected virtual void BaitType_SelectedIndexChanged(object sender, EventArgs args)
         {
             // for the value inserted by quick add button or large list selector, 
@@ -4309,6 +4467,12 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Species");
             }
         }
+            
+        public BaseClasses.Web.UI.WebControls.QuickSelector UserId0 {
+            get {
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserId0");
+            }
+        }              
             
     #endregion
 
@@ -4586,6 +4750,8 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             
               this.SpeciesLabel.Click += SpeciesLabel_Click;
             
+              this.UserIdLabel.Click += UserIdLabel_Click;
+            
             // Setup the button events.
           
                     this.AddButton1.Click += AddButton1_Click;
@@ -4862,6 +5028,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 SetSpeciesLabel();
                 SetSpeciesLabel1();
                 
+                SetUserIdLabel();
                 SetAddButton1();
               
                 SetAddButton2();
@@ -4908,6 +5075,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             this.Page.PregetDfkaRecords(TrapRecordsTable.BaitType, this.DataSource);
             this.Page.PregetDfkaRecords(TrapRecordsTable.Sex, this.DataSource);
             this.Page.PregetDfkaRecords(TrapRecordsTable.Species, this.DataSource);
+            this.Page.PregetDfkaRecords(TrapRecordsTable.UserId0, this.DataSource);
         }
         
 
@@ -5160,6 +5328,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             
       HttpContext.Current.Session["TrapRecordsTableControlWhereClause"] = selectedRecordKeyValue.ToXmlString();
     
+            // Get the static clause defined at design time on the Table Panel Wizard
+            WhereClause qc = this.CreateQueryClause();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+          
             if (MiscUtils.IsValueSelected(this.BaitTypeFilter)) {
                         
                 int selectedItemCount = 0;
@@ -5236,6 +5410,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
     
       }
     
+            // Get the static clause defined at design time on the Table Panel Wizard
+            WhereClause qc = this.CreateQueryClause();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+            
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
       String BaitTypeFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "BaitTypeFilter_Ajax"];
@@ -5291,6 +5471,20 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         }
 
         
+        protected virtual WhereClause CreateQueryClause()
+        {
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("USERID()", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapRecordsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"TrapRecords_.UserId"), EvaluateFormula("USERID()", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("USERID()", false) == "--PLEASE_SELECT--" || EvaluateFormula("USERID()", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
           
          public virtual bool FormatSuggestions(String prefixText, String resultItem,
                                               int columnLength, String AutoTypeAheadDisplayFoundText,
@@ -5484,6 +5678,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                         if (MiscUtils.IsValueSelected(recControl.Species)) {
                             rec.Parse(recControl.Species.SelectedItem.Value, TrapRecordsTable.Species);
                         }
+                        if (MiscUtils.IsValueSelected(recControl.UserId0)) {
+                            rec.Parse(recControl.UserId0.SelectedItem.Value, TrapRecordsTable.UserId0);
+                        }
               newUIDataList.Add(recControl.PreservedUIData());
               newRecordList.Add(rec);
             }
@@ -5596,6 +5793,16 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         public virtual void SetSpeciesLabel1()
                   {
                   
+                    
+        }
+                
+        public virtual void SetUserIdLabel()
+                  {
+                  
+                      //Code for the text property is generated inside the .aspx file. 
+                      //To override this property you can uncomment the following property and add you own value.
+                      //this.UserIdLabel.Text = "Some value";
+                    
                     
         }
                 
@@ -5717,6 +5924,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comment {Txt:Ascending}"), "Comment Asc"));
               
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comment {Txt:Descending}"), "Comment Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("User {Txt:Ascending}"), "UserId Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("User {Txt:Descending}"), "UserId Desc"));
               
             try
             {          
@@ -6571,6 +6782,36 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               
         }
             
+        public virtual void UserIdLabel_Click(object sender, EventArgs args)
+        {
+            //Sorts by UserId when clicked.
+              
+            // Get previous sorting state for UserId.
+        
+            OrderByItem sd = this.CurrentSortOrder.Find(TrapRecordsTable.UserId0);
+            if (sd == null || (this.CurrentSortOrder.Items != null && this.CurrentSortOrder.Items.Length > 1)) {
+                // First time sort, so add sort order for UserId.
+                this.CurrentSortOrder.Reset();
+
+    
+              //If default sort order was GeoProximity, create new CurrentSortOrder of OrderBy type
+              if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
+
+              this.CurrentSortOrder.Add(TrapRecordsTable.UserId0, OrderByItem.OrderDir.Asc);
+            
+            } else {
+                // Previously sorted by UserId, so just reverse.
+                sd.Reverse();
+            }
+        
+
+            // Setting the DataChanged to true results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+              
+        }
+            
 
         // Generate the event handling functions for button events.
         
@@ -7033,6 +7274,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }              
             
+        public System.Web.UI.WebControls.LinkButton UserIdLabel {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "UserIdLabel");
+            }
+        }
+        
 #endregion
 
 #region "Helper Functions"
@@ -7231,6 +7478,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                         
               this.GroupId.SelectedIndexChanged += GroupId_SelectedIndexChanged;                  
                 
+              this.TrapIdentifierId.SelectedIndexChanged += TrapIdentifierId_SelectedIndexChanged;                  
+                
               this.LocationId1.SelectedIndexChanged += LocationId1_SelectedIndexChanged;
             
               this.ProjectId.SelectedIndexChanged += ProjectId_SelectedIndexChanged;
@@ -7238,8 +7487,6 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
               this.TrapTypeId.SelectedIndexChanged += TrapTypeId_SelectedIndexChanged;
             
               this.Active.CheckedChanged += Active_CheckedChanged;
-            
-              this.TrapIdentifier.TextChanged += TrapIdentifier_TextChanged;
             
         }
 
@@ -7341,8 +7588,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 SetProjectId();
                 SetProjectIdLabel();
                 
-                SetTrapIdentifier();
-                SetTrapIdentifierLabel();
+                SetTrapIdentifierId();
+                SetTrapIdentifierIdLabel();
                 SetTrapTypeId();
                 SetTrapTypeIdLabel();
                 SetImageButton();
@@ -7667,37 +7914,113 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                   
         }
                 
-        public virtual void SetTrapIdentifier()
+        public virtual void SetTrapIdentifierId()
         {
-            
-                    
-            // Set the TrapIdentifier TextBox on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.Traps database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
-            // this.TrapIdentifier is the ASP:TextBox on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.TrapIdentifierSpecified) {
-                								
-                // If the TrapIdentifier is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapsTable.TrapIdentifier);
-                                
-                this.TrapIdentifier.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // TrapIdentifier is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
+            				
         
-              this.TrapIdentifier.Text = TrapsTable.TrapIdentifier.Format(TrapsTable.TrapIdentifier.DefaultValue);
-            		
-            }
+        
+            string selectedValue = null;
             
-              this.TrapIdentifier.TextChanged += TrapIdentifier_TextChanged;
-                               
+            // figure out the selectedValue
+                  
+            
+            
+            // Set the TrapIdentifierId QuickSelector on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
+            
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.TrapIdentifierId is the ASP:QuickSelector on the webpage.
+            
+            // You can modify this method directly, or replace it with a call to
+            //     base.SetTrapIdentifierId();
+            // and add your own custom code before or after the call to the base function.
+
+            
+            if (this.DataSource != null && this.DataSource.TrapIdentifierIdSpecified)
+            {
+                            
+                // If the TrapIdentifierId is non-NULL, then format the value.
+                // The Format method will return the Display Foreign Key As (DFKA) value
+                selectedValue = this.DataSource.TrapIdentifierId.ToString();
+                
+            }
+            else
+            {
+                
+                // TrapIdentifierId is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+                if (this.DataSource != null && this.DataSource.IsCreated)
+                    selectedValue = null;
+                else
+                    selectedValue = TrapsTable.TrapIdentifierId.DefaultValue;
+                				
+            }			
+                
+            // Add the Please Select item.
+            if (selectedValue == null || selectedValue == "")
+                  MiscUtils.ResetSelectedItem(this.TrapIdentifierId, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+                        
+                  
+            // Populate the item(s) to the control
+            
+            this.TrapIdentifierId.SetFieldMaxLength(50);
+            
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.TrapIdentifierId, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.TrapIdentifierId, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.TrapIdentifiers.TrapIdentifierId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(TrapIdentifiersTable.TrapIdentifierId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    TrapIdentifiersRecord[] rc = TrapIdentifiersTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        TrapIdentifiersRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.TrapIdentifierIdSpecified)
+                            cvalue = itemValue.TrapIdentifierId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapIdentifierId);
+                        if(_isExpandableNonCompositeForeignKey && TrapsTable.TrapIdentifierId.IsApplyDisplayAs)
+                            fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.TrapIdentifierId);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(TrapIdentifiersTable.Description);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.TrapIdentifierId, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+              string url = this.ModifyRedirectUrl("../TrapIdentifiers/TrapIdentifiers-QuickSelector.aspx", "", true);
+              
+              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+              
+              url += "?Target=" + this.TrapIdentifierId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("Description")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapIdentifierId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              
+              this.TrapIdentifierId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(TrapIdentifierId.AutoPostBack).ToLower() + ", event); return false;";
+                  
+                
+                  
         }
                 
         public virtual void SetTrapTypeId()
@@ -7778,7 +8101,7 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                     
         }
                 
-        public virtual void SetTrapIdentifierLabel()
+        public virtual void SetTrapIdentifierIdLabel()
                   {
                   
                     
@@ -7960,7 +8283,7 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             GetGroupId1();
             GetLocationId1();
             GetProjectId();
-            GetTrapIdentifier();
+            GetTrapIdentifierId();
             GetTrapTypeId();
         }
         
@@ -8014,18 +8337,15 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 			 
         }
                 
-        public virtual void GetTrapIdentifier()
+        public virtual void GetTrapIdentifierId()
         {
-            
-            // Retrieve the value entered by the user on the TrapIdentifier ASP:TextBox, and
-            // save it into the TrapIdentifier field in DataSource DatabaseTheRatTrap%dbo.Traps record.
+         // Retrieve the value entered by the user on the TrapIdentifierId ASP:QuickSelector, and
+            // save it into the TrapIdentifierId field in DataSource DatabaseTheRatTrap%dbo.Traps record.
             
             // Custom validation should be performed in Validate, not here.
-                    
-            // Save the value to data source
-            this.DataSource.Parse(this.TrapIdentifier.Text, TrapsTable.TrapIdentifier);							
-                          
-                      
+            
+            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.TrapIdentifierId), TrapsTable.TrapIdentifierId);			
+                			 
         }
                 
         public virtual void GetTrapTypeId()
@@ -9008,6 +9328,13 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
         }
                       
                     
+        protected virtual void TrapIdentifierId_SelectedIndexChanged(object sender, EventArgs args)
+        {
+          									
+
+        }
+                      
+                    
         protected virtual void LocationId1_SelectedIndexChanged(object sender, EventArgs args)
         {
             // for the value inserted by quick add button or large list selector, 
@@ -9057,11 +9384,6 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
         {
            						
         }
-            
-        protected virtual void TrapIdentifier_TextChanged(object sender, EventArgs args)
-        {
-                    
-              }
             
   
         private Hashtable _PreviousUIData = new Hashtable();
@@ -9241,15 +9563,15 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             }
         }
         
-        public System.Web.UI.WebControls.TextBox TrapIdentifier {
+        public BaseClasses.Web.UI.WebControls.QuickSelector TrapIdentifierId {
             get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifier");
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierId");
             }
-        }
+        }              
             
-        public System.Web.UI.WebControls.Literal TrapIdentifierLabel {
+        public System.Web.UI.WebControls.Literal TrapIdentifierIdLabel {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierLabel");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierIdLabel");
             }
         }
         
@@ -9365,8 +9687,7 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
   
 
 #endregion
-    
-  
+
+
 }
 
-  

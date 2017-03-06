@@ -16,7 +16,7 @@
     <Description>Standard record panel.</Description>
     <MenuFileToHilite>Menu</MenuFileToHilite>
     <MenuHiliteItem>TrapNotesMenuItem</MenuHiliteItem>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>-1312763593-11149</CheckSum>
   </Self>
   <ComposedOf>

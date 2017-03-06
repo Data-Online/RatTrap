@@ -14,7 +14,7 @@
     <Layout>Traps\Edit-Traps.xml</Layout>
     <DisplayName>Edit-Traps</DisplayName>
     <Description>Standard record panel.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>742744335-36392</CheckSum>
   </Self>
   <ComposedOf>
@@ -1740,6 +1740,14 @@
           <Name>Comment Desc</Name>
           <Value>Comment {Txt:Descending}</Value>
         </Item>
+        <Item>
+          <Name>UserId Asc</Name>
+          <Value>User {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UserId Desc</Name>
+          <Value>User {Txt:Descending}</Value>
+        </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
         <Attribute>
@@ -1944,37 +1952,25 @@
       <InsideControl>TrapRecordsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>TrapIdentifier</Name>
+      <Name>TrapIdentifierId</Name>
       <Type>FieldValue</Type>
-      <Field>TrapIdentifier</Field>
-      <FieldValueStyle>TextBox</FieldValueStyle>
+      <Field>TrapIdentifierId</Field>
+      <FieldValueStyle>QuickSelector</FieldValueStyle>
       <Table>DatabaseTheRatTrap%dbo.Traps</Table>
       <PassthroughAttributes>
-        <Attribute>
-          <Name>CssClass</Name>
-          <Value>field_input</Value>
-        </Attribute>
-        <Attribute>
-          <Name>EnableIncrementDecrementButtons</Name>
-          <Value>False</Value>
-        </Attribute>
         <Attribute>
           <Name>InternalUse:DataSource</Name>
           <Value>Parent</Value>
         </Attribute>
         <Attribute>
-          <Name>TrapIdentifierRequiredFieldValidator:Enabled</Name>
-          <Value>False</Value>
-        </Attribute>
-        <Attribute>
-          <Name>TrapIdentifierRequiredFieldValidator:Text</Name>
-          <Value>*</Value>
+          <Name>RedirectURL</Name>
+          <Value />
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsRecordControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
-      <Name>TrapIdentifierLabel</Name>
+      <Name>TrapIdentifierIdLabel</Name>
       <Type>Literal</Type>
       <PassthroughAttributes>
         <Attribute>
@@ -1983,7 +1979,7 @@
         </Attribute>
         <Attribute>
           <Name>InternalUse:Field</Name>
-          <Value>TrapIdentifier</Value>
+          <Value>TrapIdentifierId</Value>
         </Attribute>
         <Attribute>
           <Name>InternalUse:Table</Name>
@@ -1991,7 +1987,7 @@
         </Attribute>
         <Attribute>
           <Name>Text</Name>
-          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Traps%TrapIdentifier</Value>
+          <Value>%ISD_DEFAULT%DatabaseTheRatTrap%dbo.Traps%TrapIdentifierId</Value>
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsRecordControl</InsideControl>
@@ -2078,6 +2074,29 @@
       <Type>Table</Type>
       <PanelStyle>EditRec_DTB_Child</PanelStyle>
       <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
+      <QueryDefinition>
+        <WhereClause>
+          <Position>1</Position>
+          <TableAlias>DatabaseTheRatTrap%dbo.TrapRecords_</TableAlias>
+          <Field>[DatabaseTheRatTrap%dbo.TrapRecords_].[UserId]</Field>
+          <Operator>=</Operator>
+          <Operand>
+            <Type>Formula</Type>
+            <Value>USERID()</Value>
+          </Operand>
+          <CompareDFKA>No</CompareDFKA>
+          <IgnoreBlankString>Yes</IgnoreBlankString>
+        </WhereClause>
+        <Operators>
+          <Operator xsi:nil="true" />
+        </Operators>
+        <TableAliases>
+          <Alias>
+            <AliasName>DatabaseTheRatTrap%dbo.TrapRecords_</AliasName>
+            <TableName>DatabaseTheRatTrap%dbo.TrapRecords</TableName>
+          </Alias>
+        </TableAliases>
+      </QueryDefinition>
       <PassthroughAttributes>
         <Attribute>
           <Name>HasScrolling</Name>
@@ -2094,6 +2113,10 @@
         <Attribute>
           <Name>InternalUse:DataSource</Name>
           <Value>TableOrQuery</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSourceArg</Name>
+          <Value />
         </Attribute>
         <Attribute>
           <Name>NumberOfColumns</Name>
@@ -2135,6 +2158,7 @@
           <ForeignKeyName>FK_TrapRecords_Traps</ForeignKeyName>
         </Query>
       </Querys>
+      <OrderBys />
     </ContainedComponent>
     <ContainedComponent>
       <Name>TrapRecordsTabPanel</Name>
@@ -2250,6 +2274,60 @@
           <Value>True</Value>
         </Attribute>
       </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>UserId0</Name>
+      <Type>FieldValue</Type>
+      <Field>UserId</Field>
+      <FieldValueStyle>QuickSelector</FieldValueStyle>
+      <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>InternalUse:ApplyNewRecordFormula</Name>
+          <Value>true</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:NewRecordFormula</Name>
+          <Value>UserId()</Value>
+        </Attribute>
+        <Attribute>
+          <Name>RedirectURL</Name>
+          <Value />
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>TrapRecordsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>UserIdLabel</Name>
+      <Type>FieldSort</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Consumers</Name>
+          <Value>TrapRecordsTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Field</Name>
+          <Value>UserId</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Table</Name>
+          <Value>DatabaseTheRatTrap%dbo.TrapRecords</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>Entered By</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Sort by User</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>TrapRecordsTableControl</InsideControl>
     </ContainedComponent>
   </ComposedOf>
   <LayoutDefinition>&lt;![CDATA[&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -2666,7 +2744,7 @@
     &lt;Prolog /&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapIdentifierLabel"/&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="TrapIdentifierIdLabel" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -2675,7 +2753,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="TrapIdentifier"/&amp;gt; &lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="TrapIdentifierId" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -3645,16 +3723,6 @@
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;amp;nbsp; 
-&amp;lt;GEN:FIELDLABEL NAME="SexLabel" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes&gt;
-          &lt;Attribute&gt;
-            &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
-          &lt;/Attribute&gt;
-        &lt;/CellAttributes&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;Value&gt;&amp;amp;nbsp; 
 &amp;lt;GEN:FIELDLABEL NAME="SpeciesLabel" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
@@ -3665,7 +3733,16 @@
       &lt;/Cell&gt;
       &lt;Cell&gt;
         &lt;Value&gt;&amp;amp;nbsp; 
-&lt;/Value&gt;
+&amp;lt;GEN:FIELDLABEL NAME="SexLabel" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDLABEL NAME="UserIdLabel" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -3766,6 +3843,7 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="UserId0" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;

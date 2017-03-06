@@ -14,7 +14,7 @@
     <Layout>Groups\Show-Groups-Gallery.xml</Layout>
     <DisplayName>Show-Groups-Gallery</DisplayName>
     <Description>Gallery to show multiple records.</Description>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>-1460070607-17333</CheckSum>
   </Self>
   <ComposedOf>

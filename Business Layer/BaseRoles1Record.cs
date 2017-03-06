@@ -178,6 +178,38 @@ public class BaseRoles1Record : PrimaryKeyRecord
 		ColumnValue cv = new ColumnValue(val);
 		this.SetValue(cv, TableUtils.RoleNameColumn);
 	}
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Roles_.Description field.
+	/// </summary>
+	public ColumnValue GetDescriptionValue()
+	{
+		return this.GetValue(TableUtils.DescriptionColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that provides direct access to the value of the record's Roles_.Description field.
+	/// </summary>
+	public string GetDescriptionFieldValue()
+	{
+		return this.GetValue(TableUtils.DescriptionColumn).ToString();
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Roles_.Description field.
+	/// </summary>
+	public void SetDescriptionFieldValue(ColumnValue val)
+	{
+		this.SetValue(val, TableUtils.DescriptionColumn);
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Roles_.Description field.
+	/// </summary>
+	public void SetDescriptionFieldValue(string val)
+	{
+		ColumnValue cv = new ColumnValue(val);
+		this.SetValue(cv, TableUtils.DescriptionColumn);
+	}
 
 
 #endregion
@@ -268,6 +300,49 @@ public class BaseRoles1Record : PrimaryKeyRecord
 		get
 		{
 			return TableUtils.RoleNameColumn.DefaultValue;
+		}
+	}
+	/// <summary>
+	/// This is a property that provides direct access to the value of the record's Roles_.Description field.
+	/// </summary>
+	public string Description
+	{
+		get
+		{
+			return this.GetValue(TableUtils.DescriptionColumn).ToString();
+		}
+		set
+		{
+			ColumnValue cv = new ColumnValue(value);
+			this.SetValue(cv, TableUtils.DescriptionColumn);
+		}
+	}
+
+
+	/// <summary>
+	/// This is a convenience method that can be used to determine that the column is set.
+	/// </summary>
+	public bool DescriptionSpecified
+	{
+		get
+		{
+			ColumnValue val = this.GetValue(TableUtils.DescriptionColumn);
+            if (val == null || val.IsNull)
+            {
+                return false;
+            }
+            return true;
+		}
+	}
+
+	/// <summary>
+	/// This is a convenience method that allows direct modification of the value of the record's Roles_.Description field.
+	/// </summary>
+	public string DescriptionDefault
+	{
+		get
+		{
+			return TableUtils.DescriptionColumn.DefaultValue;
 		}
 	}
 

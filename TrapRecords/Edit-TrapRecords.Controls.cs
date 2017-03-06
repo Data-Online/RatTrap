@@ -668,7 +668,7 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                         if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.TrapId.IsApplyDisplayAs)
                             fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.TrapId);
                         if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(TrapsTable.TrapIdentifier);
+                            fvalue = itemValue.Format(TrapsTable.TrapId);
                             					
                         if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
                         MiscUtils.ResetSelectedItem(this.TrapId, new ListItem(fvalue, cvalue));                      
@@ -685,7 +685,7 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
               
               url = this.Page.ModifyRedirectUrl(url, "", true);                                  
               
-              url += "?Target=" + this.TrapId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("TrapIdentifier")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              url += "?Target=" + this.TrapId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("TrapId")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
               
               this.TrapId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(TrapId.AutoPostBack).ToLower() + ", event); return false;";
                   

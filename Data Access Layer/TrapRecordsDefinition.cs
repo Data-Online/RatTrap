@@ -12,7 +12,7 @@ namespace RatTrap.Business
 public class TrapRecordsDefinition
 {
 #region "Definition (XML) for TrapRecordsDefinition table"
-	//Next 460 lines contain Table Definition (XML) for table "TrapRecordsDefinition"
+	//Next 518 lines contain Table Definition (XML) for table "TrapRecordsDefinition"
 	private static string _DefinitionString = "";
 	
 #endregion
@@ -99,7 +99,7 @@ public class TrapRecordsDefinition
          tbf.Append(        @"<columnFKTable>RatTrap.Business.TrapsTable, RatTrap.Business</columnFKTable>");
          tbf.Append(        @"<columnFKOwner>dbo</columnFKOwner>");
          tbf.Append(        @"<columnFKColumn>TrapId</columnFKColumn>");
-         tbf.Append(        @"<columnFKColumnDisplay>TrapIdentifier</columnFKColumnDisplay>");
+         tbf.Append(        @"<columnFKColumnDisplay></columnFKColumnDisplay>");
          tbf.Append(        @"<foreignKeyType>Explicit</foreignKeyType>");
          tbf.Append(      "</foreignKey>");
          tbf.Append(      @"<applyDFKA>Y</applyDFKA>");
@@ -317,6 +317,18 @@ public class TrapRecordsDefinition
          tbf.Append(      @"<columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>");
          tbf.Append(      @"<columnTableAliasName></columnTableAliasName>");
          tbf.Append(      @"<applyLabelText>Y</applyLabelText>");
+         tbf.Append(      @"<applyDFKA>N</applyDFKA>");
+         tbf.Append(      @"<applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>");
+         tbf.Append(      @"<applyInitializeReadingRecord>N</applyInitializeReadingRecord>");
+         tbf.Append(      @"<applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>");
+         tbf.Append(      @"<applyValidateInsertingRecord>N</applyValidateInsertingRecord>");
+         tbf.Append(      @"<applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>");
+         tbf.Append(      @"<applyDefaultValue>N</applyDefaultValue>");
+         tbf.Append(      @"<insertingRecordFormula></insertingRecordFormula>");
+         tbf.Append(      @"<readingRecordFormula></readingRecordFormula>");
+         tbf.Append(      @"<updatingRecordFormula></updatingRecordFormula>");
+         tbf.Append(      @"<insertingFormula></insertingFormula>");
+         tbf.Append(      @"<updatingFormula></updatingFormula>");
          tbf.Append(    "</Column>");
          tbf.Append(    @"<Column InternalName=""7"" Priority=""8"" ColumnNum=""7"">");
          tbf.Append(      @"<columnName>LocationId</columnName>");
@@ -470,9 +482,55 @@ public class TrapRecordsDefinition
          tbf.Append(      @"<insertingFormula></insertingFormula>");
          tbf.Append(      @"<updatingFormula></updatingFormula>");
          tbf.Append(    "</Column>");
+         tbf.Append(    @"<Column InternalName=""11"" Priority=""12"" ColumnNum=""11"">");
+         tbf.Append(      @"<columnName>UserId</columnName>");
+         tbf.Append(      @"<columnUIName>User</columnUIName>");
+         tbf.Append(      @"<columnType>Number</columnType>");
+         tbf.Append(      @"<columnDBType>int</columnDBType>");
+         tbf.Append(      @"<columnLengthSet>10.0</columnLengthSet>");
+         tbf.Append(      @"<columnDefault></columnDefault>");
+         tbf.Append(      @"<columnDBDefault></columnDBDefault>");
+         tbf.Append(      @"<columnIndex>N</columnIndex>");
+         tbf.Append(      @"<columnUnique>N</columnUnique>");
+         tbf.Append(      @"<columnFunction></columnFunction>");
+         tbf.Append(      @"<columnDBFormat></columnDBFormat>");
+         tbf.Append(      @"<columnPK>N</columnPK>");
+         tbf.Append(      @"<columnPermanent>N</columnPermanent>");
+         tbf.Append(      @"<columnComputed>N</columnComputed>");
+         tbf.Append(      @"<columnIdentity>N</columnIdentity>");
+         tbf.Append(      @"<columnReadOnly>N</columnReadOnly>");
+         tbf.Append(      @"<columnRequired>N</columnRequired>");
+         tbf.Append(      @"<columnNotNull>N</columnNotNull>");
+         tbf.Append(      @"<columnCaseSensitive>N</columnCaseSensitive>");
+         tbf.Append(      @"<columnCollation></columnCollation>");
+         tbf.Append(      @"<columnFullText>N</columnFullText>");
+         tbf.Append(      @"<columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>");
+         tbf.Append(      @"<columnTableAliasName></columnTableAliasName>");
+         tbf.Append(      @"<applyLabelText>Y</applyLabelText>");
+         tbf.Append(      @"<foreignKey>");
+         tbf.Append(        @"<columnFKName>FK_TrapRecords_Users</columnFKName>");
+         tbf.Append(        @"<columnFKTable>RatTrap.Business.UsersTable, RatTrap.Business</columnFKTable>");
+         tbf.Append(        @"<columnFKOwner>dbo</columnFKOwner>");
+         tbf.Append(        @"<columnFKColumn>UserId</columnFKColumn>");
+         tbf.Append(        @"<columnFKColumnDisplay>= LastName + &quot;, &quot; + FirstName</columnFKColumnDisplay>");
+         tbf.Append(        @"<foreignKeyType>Explicit</foreignKeyType>");
+         tbf.Append(      "</foreignKey>");
+         tbf.Append(      @"<applyDFKA>Y</applyDFKA>");
+         tbf.Append(      @"<applyInitializeInsertingRecord>N</applyInitializeInsertingRecord>");
+         tbf.Append(      @"<applyInitializeReadingRecord>N</applyInitializeReadingRecord>");
+         tbf.Append(      @"<applyInitializeUpdatingRecord>N</applyInitializeUpdatingRecord>");
+         tbf.Append(      @"<applyValidateInsertingRecord>N</applyValidateInsertingRecord>");
+         tbf.Append(      @"<applyValidateUpdatingRecord>N</applyValidateUpdatingRecord>");
+         tbf.Append(      @"<applyDefaultValue>N</applyDefaultValue>");
+         tbf.Append(      @"<insertingRecordFormula></insertingRecordFormula>");
+         tbf.Append(      @"<readingRecordFormula></readingRecordFormula>");
+         tbf.Append(      @"<updatingRecordFormula></updatingRecordFormula>");
+         tbf.Append(      @"<insertingFormula></insertingFormula>");
+         tbf.Append(      @"<updatingFormula></updatingFormula>");
+         tbf.Append(    "</Column>");
          tbf.Append(  "</ColumnDefinition>");
          tbf.Append(  @"<TableName>TrapRecords</TableName>");
-         tbf.Append(  @"<Version>2</Version>");
+         tbf.Append(  @"<Version>4</Version>");
          tbf.Append(  @"<Owner>dbo</Owner>");
          tbf.Append(  @"<TableAliasName>TrapRecords_</TableAliasName>");
          tbf.Append(  @"<ConnectionName>DatabaseTheRatTrap</ConnectionName>");

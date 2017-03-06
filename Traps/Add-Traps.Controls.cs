@@ -93,9 +93,9 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
           
               this.GroupId1.SelectedIndexChanged += GroupId1_SelectedIndexChanged;                  
                 
+              this.TrapIdentifierId.SelectedIndexChanged += TrapIdentifierId_SelectedIndexChanged;                  
+                
               this.TrapTypeId.SelectedIndexChanged += TrapTypeId_SelectedIndexChanged;
-            
-              this.TrapIdentifier.TextChanged += TrapIdentifier_TextChanged;
             
         }
 
@@ -176,8 +176,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 SetGroupId1();
                 SetGroupIdLabel();
                 
-                SetTrapIdentifier();
-                SetTrapIdentifierLabel();
+                SetTrapIdentifierId();
+                SetTrapIdentifierIdLabel();
                 SetTrapTypeId();
                 SetTrapTypeIdLabel();
 
@@ -308,37 +308,109 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                   
         }
                 
-        public virtual void SetTrapIdentifier()
+        public virtual void SetTrapIdentifierId()
         {
-            
-                    
-            // Set the TrapIdentifier TextBox on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.Traps database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
-            // this.TrapIdentifier is the ASP:TextBox on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.TrapIdentifierSpecified) {
-                								
-                // If the TrapIdentifier is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapsTable.TrapIdentifier);
-                                
-                this.TrapIdentifier.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // TrapIdentifier is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
+            				
         
-              this.TrapIdentifier.Text = TrapsTable.TrapIdentifier.Format(TrapsTable.TrapIdentifier.DefaultValue);
-            		
-            }
+        
+            string selectedValue = null;
             
-              this.TrapIdentifier.TextChanged += TrapIdentifier_TextChanged;
-                               
+            // figure out the selectedValue
+                  
+            
+            
+            // Set the TrapIdentifierId QuickSelector on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
+            
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.TrapIdentifierId is the ASP:QuickSelector on the webpage.
+            
+            // You can modify this method directly, or replace it with a call to
+            //     base.SetTrapIdentifierId();
+            // and add your own custom code before or after the call to the base function.
+
+            
+            // Default Value could also be NULL.
+            if (this.DataSource != null && this.DataSource.IsCreated)
+            {
+                
+                selectedValue = this.DataSource.TrapIdentifierId.ToString();
+                
+            }
+            else
+            {
+                
+            
+                selectedValue = EvaluateFormula("URL(\"TrapIdentifierId\")");
+                
+            }
+
+            
+            // Add the Please Select item.
+            if (selectedValue == null || selectedValue == "")
+                  MiscUtils.ResetSelectedItem(this.TrapIdentifierId, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+                        
+                  
+            // Populate the item(s) to the control
+            
+            this.TrapIdentifierId.SetFieldMaxLength(50);
+            
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.TrapIdentifierId, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.TrapIdentifierId, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.TrapIdentifiers.TrapIdentifierId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(TrapIdentifiersTable.TrapIdentifierId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    TrapIdentifiersRecord[] rc = TrapIdentifiersTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        TrapIdentifiersRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.TrapIdentifierIdSpecified)
+                            cvalue = itemValue.TrapIdentifierId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapIdentifierId);
+                        if(_isExpandableNonCompositeForeignKey && TrapsTable.TrapIdentifierId.IsApplyDisplayAs)
+                            fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.TrapIdentifierId);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(TrapIdentifiersTable.Description);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.TrapIdentifierId, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+              string url = this.ModifyRedirectUrl("../TrapIdentifiers/TrapIdentifiers-QuickSelector.aspx", "", true);
+              
+              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+              
+              url += "?Target=" + this.TrapIdentifierId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("Description")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapIdentifierId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              
+              this.TrapIdentifierId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(TrapIdentifierId.AutoPostBack).ToLower() + ", event); return false;";
+                  
+                
+                  
         }
                 
         public virtual void SetTrapTypeId()
@@ -393,7 +465,7 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                     
         }
                 
-        public virtual void SetTrapIdentifierLabel()
+        public virtual void SetTrapIdentifierIdLabel()
                   {
                   
                     
@@ -562,7 +634,7 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             // Call the Get methods for each of the user interface controls.
         
             GetGroupId1();
-            GetTrapIdentifier();
+            GetTrapIdentifierId();
             GetTrapTypeId();
         }
         
@@ -578,18 +650,15 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 			 
         }
                 
-        public virtual void GetTrapIdentifier()
+        public virtual void GetTrapIdentifierId()
         {
-            
-            // Retrieve the value entered by the user on the TrapIdentifier ASP:TextBox, and
-            // save it into the TrapIdentifier field in DataSource DatabaseTheRatTrap%dbo.Traps record.
+         // Retrieve the value entered by the user on the TrapIdentifierId ASP:QuickSelector, and
+            // save it into the TrapIdentifierId field in DataSource DatabaseTheRatTrap%dbo.Traps record.
             
             // Custom validation should be performed in Validate, not here.
-                    
-            // Save the value to data source
-            this.DataSource.Parse(this.TrapIdentifier.Text, TrapsTable.TrapIdentifier);							
-                          
-                      
+            
+            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.TrapIdentifierId), TrapsTable.TrapIdentifierId);			
+                			 
         }
                 
         public virtual void GetTrapTypeId()
@@ -1094,6 +1163,13 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
         }
                       
                     
+        protected virtual void TrapIdentifierId_SelectedIndexChanged(object sender, EventArgs args)
+        {
+          									
+
+        }
+                      
+                    
         protected virtual void TrapTypeId_SelectedIndexChanged(object sender, EventArgs args)
         {
             // for the value inserted by quick add button or large list selector, 
@@ -1108,11 +1184,6 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             }
            						
         }
-            
-        protected virtual void TrapIdentifier_TextChanged(object sender, EventArgs args)
-        {
-                    
-              }
             
   
         private Hashtable _PreviousUIData = new Hashtable();
@@ -1244,15 +1315,15 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             }
         }
         
-        public System.Web.UI.WebControls.TextBox TrapIdentifier {
+        public BaseClasses.Web.UI.WebControls.QuickSelector TrapIdentifierId {
             get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifier");
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierId");
             }
-        }
+        }              
             
-        public System.Web.UI.WebControls.Literal TrapIdentifierLabel {
+        public System.Web.UI.WebControls.Literal TrapIdentifierIdLabel {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierLabel");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierIdLabel");
             }
         }
         

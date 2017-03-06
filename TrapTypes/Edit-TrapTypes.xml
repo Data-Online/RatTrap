@@ -16,7 +16,7 @@
     <Description>Standard record panel.</Description>
     <MenuFileToHilite>Menu</MenuFileToHilite>
     <MenuHiliteItem>TrapTypesMenuItem</MenuHiliteItem>
-    <LoginRequired>&lt;PRoles&gt;NOT_ANONYMOUS&lt;/PRoles&gt;</LoginRequired>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>-1197065452-18021</CheckSum>
   </Self>
   <ComposedOf>
@@ -485,14 +485,6 @@
           <Value>Trap Type {Txt:Descending}</Value>
         </Item>
         <Item>
-          <Name>TrapIdentifier Asc</Name>
-          <Value>Trap Identifier {Txt:Ascending}</Value>
-        </Item>
-        <Item>
-          <Name>TrapIdentifier Desc</Name>
-          <Value>Trap Identifier {Txt:Descending}</Value>
-        </Item>
-        <Item>
           <Name>Active Asc</Name>
           <Value>Active {Txt:Ascending}</Value>
         </Item>
@@ -515,6 +507,22 @@
         <Item>
           <Name>ProjectId Desc</Name>
           <Value>Project {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>TrapIdentifierId Asc</Name>
+          <Value>Trap Identifier {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>TrapIdentifierId Desc</Name>
+          <Value>Trap Identifier {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>Deleted Asc</Name>
+          <Value>Deleted {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>Deleted Desc</Name>
+          <Value>Deleted {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>
       <PassthroughAttributes>

@@ -40,7 +40,7 @@
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
                   <asp:panel id="CollapsibleRegion" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
                     <asp:panel id="Roles1RecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="RoleNameLabel" Text="Role Name">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
-<asp:TextBox runat="server" id="RoleName" Columns="40" MaxLength="50" cssclass="field_input"></asp:TextBox>&nbsp;
+<asp:TextBox runat="server" id="RoleName" Columns="20" MaxLength="20" cssclass="field_input"></asp:TextBox>&nbsp;
 <BaseClasses:TextBoxMaxLengthValidator runat="server" id="RoleNameTextBoxMaxLengthValidator" ControlToValidate="RoleName" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Role Name&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></span>
  </td></tr></table></asp:panel>
 

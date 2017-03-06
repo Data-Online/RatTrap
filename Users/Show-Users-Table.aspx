@@ -201,10 +201,11 @@
                 </td><td class="panelHeaderR"></td></tr><tr><td></td><td>
                   <asp:panel id="CollapsibleRegion1" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tre">
                     <table id="Roles1TableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thcnb"></th><th class="thc">&nbsp;</th><th class="thc">&nbsp; 
-<asp:LinkButton runat="server" id="RoleNameLabel" tooltip="Sort by RoleName" Text="Role Name" CausesValidation="False">	</asp:LinkButton></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th></tr><asp:Repeater runat="server" id="Roles1TableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:Roles1TableControlRow runat="server" id="Roles1TableControlRow">
+<asp:LinkButton runat="server" id="RoleNameLabel" tooltip="Sort by RoleName" Text="Role Name" CausesValidation="False">	</asp:LinkButton></th><th class="thc">&nbsp; 
+<asp:LinkButton runat="server" id="DescriptionLabel" tooltip="Sort by Description" Text="Description" CausesValidation="False">	</asp:LinkButton></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th></tr><asp:Repeater runat="server" id="Roles1TableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:Roles1TableControlRow runat="server" id="Roles1TableControlRow">
 <tr><td class="tableCellSelectCheckbox">
                       <asp:CheckBox runat="server" id="SelectRow1" onclick="moveToThisTableRow(this);">	</asp:CheckBox>
-                    </td><td class="tableCellLabel"></td><td class="tableCellValue"><asp:Literal runat="server" id="RoleName"></asp:Literal></td><td class="tableCellLabel"></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:Roles1TableControlRow>
+                    </td><td class="tableCellLabel"></td><td class="tableCellValue"><asp:Literal runat="server" id="RoleName"></asp:Literal></td><td class="tableCellLabel"><asp:Literal runat="server" id="Description"></asp:Literal></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:Roles1TableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>

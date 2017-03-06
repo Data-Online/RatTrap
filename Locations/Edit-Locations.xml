@@ -14,6 +14,7 @@
     <Layout>Locations\Edit-Locations.html</Layout>
     <DisplayName>Edit-Locations</DisplayName>
     <Description>Standard record panel.</Description>
+    <LoginRequired>&lt;PRoles&gt;1;2;3;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>1521983577-7868</CheckSum>
   </Self>
   <ComposedOf>
