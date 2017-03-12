@@ -1,58 +1,37 @@
 ﻿
-// This file implements the code-behind class for LandingPage.aspx.
-// LandingPage.Controls.vb contains the Table, Row and Record control classes
-// for the page.  Best practices calls for overriding methods in the Row or Record control classes.
-
-#region "Using statements"    
-
+#region "Using statements"   	  
 using System;
-using System.Data;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.ComponentModel;
 using BaseClasses;
-using BaseClasses.Utils;
 using BaseClasses.Data;
-using BaseClasses.Data.SqlProvider;
+using BaseClasses.Utils;
+using BaseClasses.Web.UI;
 using BaseClasses.Web.UI.WebControls;
         
 using RatTrap.Business;
 using RatTrap.Data;
         
-
-#endregion
-
+#endregion	  
   
 namespace RatTrap.UI
 {
-  
-public partial class LandingPage
-        : BaseApplicationPage
-// Code-behind class for the LandingPage page.
-// Place your customizations in Section 1. Do not modify Section 2.
+
+  // Code-behind class for the MenuFull user control.
+public partial class MenuFull : BaseApplicationMenuControl , IMenuFull
 {
         
       #region "Section 1: Place your customizations here."
 
-      public LandingPage()
+      public MenuFull()
         {
             this.Initialize();
     
 
         }
-        
-    public void SetPageFocus()
-    {
-      //To set focus on page load to a specific control pass this control to the SetStartupFocus method. To get a hold of a control
-      //use FindControlRecursively method. For example:
-      //System.Web.UI.WebControls.TextBox controlToFocus = (System.Web.UI.WebControls.TextBox)(this.FindControlRecursively("ProductsSearch"));
-      //this.SetFocusOnLoad(controlToFocus);
-      //If no control is passed or control does not exist this method will set focus on the first focusable control on the page.
-      this.SetFocusOnLoad();	
-    }
          
         public void LoadData()
         {
@@ -102,12 +81,7 @@ public partial class LandingPage
             this.Page_PreRender_Base(sender, e);
         }
         
-      
-      public override void SaveData()
-      {
-          this.SaveData_Base();
-      }          
-              
+                
     
       public override void SetControl(string control)
       {
@@ -115,22 +89,11 @@ public partial class LandingPage
       }
     
     
-      public void Page_PreInit(object sender, System.EventArgs e)
-      {
-          //override call to PreInit_Base() here to change top level master page used by this page.
-          //For example for Microsoft SharePoint applications uncomment next line to use Microsoft SharePoint default master page
-          //if(this.Master != null) this.Master.MasterPageFile = Microsoft.SharePoint.SPContext.Current.Web.MasterUrl;	
-          //You may change here assignment of application theme
-          try
-          {
-              this.PreInit_Base();
-          }
-          catch
-          {
-          
-          } 
-      }
-      
+        public void ModifyMenuItem(object sender, MenuEventArgs e)
+        {
+            ModifyMenuItem_Base(sender, e);
+        }
+    
 #region "Ajax Functions"
 
         [System.Web.Services.WebMethod()]
@@ -173,17 +136,6 @@ public partial class LandingPage
         }
         
     
-      protected override void BasePage_PreRender(object sender, EventArgs e)
-      {
-          base.BasePage_PreRender(sender, e);
-          RegisterPostback();
-      }
-      
-      protected void RegisterPostback()
-      {
-          Base_RegisterPostback();	  
-      }
-    
       
       #endregion
 
@@ -197,72 +149,6 @@ public partial class LandingPage
         
 
 
-//public void SetUsersButton()
-//        {
-//            SetUsersButton_Base(); 
-//        }              
-//public void UsersButton_Click(object sender, ImageClickEventArgs args)
-//        {
-//          // Click handler for UsersButton.
-//          // Customize by adding code before the call or replace the call to the Base function with your own code.
-//          UsersButton_Click_Base(sender, args);
-//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-//        }
-//public void SetGroupsButton()
-//        {
-//            SetGroupsButton_Base(); 
-//        }              
-//public void GroupsButton_Click(object sender, ImageClickEventArgs args)
-//        {
-//          // Click handler for GroupsButton.
-//          // Customize by adding code before the call or replace the call to the Base function with your own code.
-//          GroupsButton_Click_Base(sender, args);
-//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-//        }
-//public void SetGroupsButton1()
-//        {
-//            SetGroupsButton1_Base(); 
-//        }              
-//public void GroupsButton1_Click(object sender, ImageClickEventArgs args)
-//        {
-//          // Click handler for GroupsButton1.
-//          // Customize by adding code before the call or replace the call to the Base function with your own code.
-//          GroupsButton1_Click_Base(sender, args);
-//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-//        }
-public void SetMyGroupsButton()
-        {
-            SetMyGroupsButton_Base(); 
-        }              
-public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
-        {
-          // Click handler for MyGroupsButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          MyGroupsButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
-//public void SetProjectsButton()
-//        {
-//            SetProjectsButton_Base(); 
-//        }              
-//public void ProjectsButton_Click(object sender, ImageClickEventArgs args)
-//        {
-//          // Click handler for ProjectsButton.
-//          // Customize by adding code before the call or replace the call to the Base function with your own code.
-//          ProjectsButton_Click_Base(sender, args);
-//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-//        }
-//public void SetTrapsButton()
-//        {
-//            SetTrapsButton_Base(); 
-//        }              
-//public void TrapsButton_Click(object sender, ImageClickEventArgs args)
-//        {
-//          // Click handler for TrapsButton.
-//          // Customize by adding code before the call or replace the call to the Base function with your own code.
-//          TrapsButton_Click_Base(sender, args);
-//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-//        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -273,51 +159,33 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
             // Called by the class constructor to initialize event handlers for Init and Load
             // You can customize by modifying the constructor in Section 1.
             this.Init += new EventHandler(Page_InitializeEventHandlers);
-            this.PreInit += new EventHandler(Page_PreInit);
+            
             this.Load += new EventHandler(Page_Load);
 
             EvaluateFormulaDelegate = new BaseClasses.Data.DataSource.EvaluateFormulaDelegate(EvaluateFormula);        
         }
         
     
-        public System.Web.UI.WebControls.Label Label2;
-        
-        public System.Web.UI.WebControls.ImageButton MyGroupsButton;
-        
-        public System.Web.UI.WebControls.Literal PageTitle;
-        
-        public ValidationSummary ValidationSummary1;
-
-  
       // Handles base.Init. Registers event handler for any button, sort or links.
       // You can add additional Init handlers in Section 1.
       public void Page_InitializeEventHandlers_Base(object sender, System.EventArgs e)
       {
-    
-        // This page does not have FileInput  control inside repeater which requires "multipart/form-data" form encoding, but it might
-        // include ascx controls which in turn do have FileInput controls inside repeater. So check if they set Enctype property.
-        if(!string.IsNullOrEmpty(this.Enctype)) this.Page.Form.Enctype = this.Enctype;
-        	  
+    	  
           this.PreRender += new EventHandler(Page_PreRender);    
           
           // Register the Event handler for any Events.
       
+            // Add handler for Menu item data bound event
+            MultiLevelMenu.MenuItemDataBound += new MenuEventHandler(ModifyMenuItem);
+        
             
 
 
           // Setup the pagination events.
         
-                    this.MyGroupsButton.Click += MyGroupsButton_Click;
-                        
           this.ClearControlsFromSession();    
     
           System.Web.HttpContext.Current.Session["isd_geo_location"] = "<location><error>LOCATION_ERROR_DISABLED</error></location>";
-    
-          System.Web.UI.HtmlControls.HtmlGenericControl Include = new System.Web.UI.HtmlControls.HtmlGenericControl("script");
-          Include.Attributes.Add("type", "text/javascript");
-          Include.InnerHtml = "var IsInfinitePage = true; var sessvar = \"is_loaded\";if (window.frameElement != null) {sessvar = \"is_loaded\" +window.frameElement.id;}var iframeName = \"\";var bolea = \"False\";if(window.frameElement != null){iframeName =window.frameElement.id;}if(iframeName.indexOf(\"Infiniteframe\") == -1){bolea = \"True\";}if (bolea == \"True\") {if(!sessionStorage.getItem(sessvar) || sessionStorage.getItem(sessvar) == \"False\") {sessionStorage.setItem(sessvar, \"True\");}else {var htmlurl = window.location.href; if(htmlurl.indexOf(\"?InfiIframe\") != -1){htmlurl = htmlurl.replace(\"?InfiIframe\",\"\");}else{if(htmlurl.indexOf(\"&InfiIframe\") != -1){htmlurl = htmlurl.replace(\"&InfiIframe\", \"\");}} window.location.href =htmlurl;if (navigator.appName == 'Microsoft Internet Explorer'){window.location.href = htmlurl;}sessionStorage.setItem(sessvar, \"False\");}}else{if (bolea == \"False\") {window.alert = function() {};}}";
-          Include.ID = "InfiScript";
-          this.Page.Header.Controls.Add(Include);
     
         }
 
@@ -339,23 +207,9 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
         protected virtual void Page_Load(object sender, EventArgs e)
         {
     
-               if (this.FindControlRecursively("Infiniteframe") == null){
-                  Control RmvControl = this.FindControlRecursively("InfiScript");
-                  this.Page.Header.Controls.Remove(RmvControl);
-                }
-            
-                this.SetPageFocus();
-            
-            // Check if user has access to this page.  Redirects to either sign-in page
-            // or 'no access' page if not. Does not do anything if role-based security
-            // is not turned on, but you can override to add your own security.
-            this.Authorize("1;2;3;4;5");
              if (!this.IsPostBack)
              {
             
-                    // Setup the header text for the validation summary control.
-                    this.ValidationSummary1.HeaderText = GetResourceValue("ValidationSummaryHeaderText", "RatTrap");
-                 
              }
             
     // Load data only when displaying the page for the first time or if postback from child window
@@ -367,11 +221,6 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
     this.LoadData();
     }
 
-    
-            Page.Title = "Users";
-        
-        if (!IsPostBack)
-            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
         
             }
 
@@ -461,13 +310,6 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
       }
       
     
-      
-      public void SaveData_Base()
-      {
-      
-      }
-      
-     
     
         protected void SaveControlsToSession_Base()
         {
@@ -497,38 +339,40 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
         
     
      
-      public void PreInit_Base()
-      {
-      //If it is SharePoint application this function performs dynamic Master Page assignment.
-      
-            if ((this.Page as BaseApplicationPage).GetDecryptedURLParameter("RedirectStyle") == "Popup")
+    public void ModifyMenuItem_Base(object sender, MenuEventArgs e)
+    {
+        // Retrieve menu item's text and tool tip value from RESX file.
+        e.Item.Text=ReplaceTextWithResourceValue(e.Item.Text);
+        e.Item.ToolTip = ReplaceTextWithResourceValue(e.Item.ToolTip);
+        // If imageUrl is specified in the sitemap node then, display image next to menu item.
+        string imageUrl=((System.Web.SiteMapNode)e.Item.DataItem)["imageUrl"];
+        if (imageUrl !=null && !imageUrl.Trim().Equals("")){
+                  e.Item.ImageUrl = imageUrl;
+        }
+    }
+    
+     private string ReplaceTextWithResourceValue(string value)
+    {
+        System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("{");        
+        // Check if a part of value is surrounded with {} eg: {Menu:Add}
+        while (regex.IsMatch(value))
+        {
+            int startIndex = regex.Match(value).Index + regex.Match(value).Length;
+            if (System.Text.RegularExpressions.Regex.IsMatch(value, "}"))
             {
-                string masterPage = "../Master Pages/Popup.master";      
-                this.Page.MasterPageFile = masterPage;
-            }      
-            
-            if ((this.Page as BaseApplicationPage).GetDecryptedURLParameter("RedirectStyle") == "NewWindow")
-            {
-                string masterPage = "../Master Pages/Blank.master";      
-                this.Page.MasterPageFile = masterPage;
-            }         
-            
-            // if url parameter specified a master apge, load it here
-            if (!string.IsNullOrEmpty(this.Page.Request["MasterPage"]))
-            {
-                string masterPage = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("MasterPage");
-                this.Page.MasterPageFile = masterPage;
+                int endIndex = System.Text.RegularExpressions.Regex.Match(value, "}").Index;
+                string textToLookUp = value.Substring(startIndex, endIndex - startIndex);
+                // Replace text including {} with value retreived from resex file
+                value = value.Replace(value.Substring(startIndex - 1, endIndex - startIndex + 2), GetResourceValue(textToLookUp, "RatTrap"));
             }
-                   
-       
-      }
-      
+        }
+        return value;
+    }
+
+  
       public void Page_PreRender_Base(object sender, System.EventArgs e)
       {
-     
-          if ((this.Page as BaseApplicationPage).GetDecryptedURLParameter("RedirectStyle")  == "Popup")
-              AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "QPopupCreateHeader", "QPopupCreateHeader();", true);          
-                 
+            
             // Load data for each record and table UI control.
                   
             // Data bind for each chart UI control.
@@ -565,8 +409,6 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
             
                 // initialize aspx controls
                 
-                SetMyGroupsButton();
-              
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -647,67 +489,51 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
         
                 
         // Write out the Set methods
-        
-        public void SetMyGroupsButton_Base()                
-              
-        {
-        
-   
-        }
-                
+            
 
         // Write out the DataSource properties and methods
                 
 
         // Write out event methods for the page events
         
-        // event handler for ImageButton
-        public void MyGroupsButton_Click_Base(object sender, ImageClickEventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../UsersGroupsLink/Show-UsersGroupsLink-Table.aspx";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
-                url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-            //This method is initially empty to implement custom click handler.
-      
-                url = this.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
+#region Interface Properties
+          
+        [Bindable(true),
+        Category("Behavior"),
+        DefaultValue(""),
+        NotifyParentProperty(true),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public System.Web.UI.WebControls.Menu MultiLevelMenu {
+                  get {
+                  return (System.Web.UI.WebControls.Menu)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "MultiLevelMenu"); 
             }
-            if (shouldRedirect) {
-      this.Response.Redirect(url);
-        
-            }
-        
         }
+                
+      public override bool Visible {
+          get {
+              return base.Visible;
+          }
+          set {
+              base.Visible = value;
+          }
+      }
+      
+      public override string ID {
+          get {
+              return base.ID;
+          }
+          set {
+              base.ID = value;
+          }
+      }      
             
-            
+#endregion
+    
+            public new BaseApplicationPage Page {
+            get {
+                return ((BaseApplicationPage)base.Page);
+            }
+        }
         
       
 
@@ -715,7 +541,9 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
 #endregion
 
   
+
 }
   
 }
+
   

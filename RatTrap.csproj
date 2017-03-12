@@ -684,11 +684,29 @@
     <Compile Include="Locations\Show-Locations-Table.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Traps\Edit-Traps-Table-Admin.aspx.cs" >
+    <Compile Include="Traps\Edit-Traps-Table-Admin.aspx.cs">
       <DependentUpon>Edit-Traps-Table-Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Traps\Edit-Traps-Table-Admin.Controls.cs" >
+    <Compile Include="Traps\Edit-Traps-Table-Admin.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboard\LandingPageAdmin.aspx.cs">
+      <DependentUpon>LandingPageAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu Panels\MenuFull.ascx.cs">
+      <DependentUpon>MenuFull.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu Panels\IMenuFull.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.aspx.cs" >
+      <DependentUpon>Show-UsersGroupsLink-TableAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.Controls.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -1020,7 +1038,12 @@
     <Content Include="Locations\Edit-Locations-Table1.aspx" />
     <Content Include="Locations\Edit-Locations.aspx" />
     <Content Include="Locations\Show-Locations-Table.aspx" />
-    <Content Include="Traps\Edit-Traps-Table-Admin.aspx"  />
+    <Content Include="Traps\Edit-Traps-Table-Admin.aspx" />
+    <Content Include="Dashboard\LandingPageAdmin.aspx" />
+    <Content Include="Menu Panels\MenuFull.sitemap" />
+    <Content Include="Menu Panels\MenuFull.ascx" />
+    <Content Include="Master Pages\HorizontalMenuFull.master" />
+    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.aspx"  />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

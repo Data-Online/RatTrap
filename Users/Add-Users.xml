@@ -6,12 +6,12 @@
     <Name>Add-Users</Name>
     <Type>Page</Type>
     <SubType>DotNet</SubType>
-    <MasterLayout>../Master Pages/HorizontalMenu.master</MasterLayout>
+    <MasterLayout>../Master Pages/HorizontalMenuFull.master</MasterLayout>
     <NewWindowMasterLayout>../Master Pages/Blank.master</NewWindowMasterLayout>
     <PopupMasterLayout>../Master Pages/Popup.master</PopupMasterLayout>
     <PopupCssClass>QPageSize</PopupCssClass>
     <GenerateDirectory>Users</GenerateDirectory>
-    <Layout>Users\Add-Users.html</Layout>
+    <Layout>Users\Add-Users.xml</Layout>
     <DisplayName>Add-Users</DisplayName>
     <Description>Standard record panel.</Description>
     <MenuFileToHilite>Menu</MenuFileToHilite>

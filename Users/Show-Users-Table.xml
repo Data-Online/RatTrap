@@ -6,12 +6,12 @@
     <Name>Show-Users-Table</Name>
     <Type>Page</Type>
     <SubType>DotNet</SubType>
-    <MasterLayout>../Master Pages/HorizontalMenu.master</MasterLayout>
+    <MasterLayout>../Master Pages/HorizontalMenuFull.master</MasterLayout>
     <NewWindowMasterLayout>../Master Pages/Blank.master</NewWindowMasterLayout>
     <PopupMasterLayout>../Master Pages/Popup.master</PopupMasterLayout>
     <PopupCssClass>QPageSize</PopupCssClass>
     <GenerateDirectory>Users</GenerateDirectory>
-    <Layout>Users\Show-Users-Table.html</Layout>
+    <Layout>Users\Show-Users-Table.xml</Layout>
     <DisplayName>Show-Users-Table</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
     <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>

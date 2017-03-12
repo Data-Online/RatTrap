@@ -17,10 +17,8 @@
 		<asp:UpdatePanel runat="server" id="UpdatePanel1" UpdateMode="Conditional">
 			<ContentTemplate>
 
-                <table cellpadding="0" cellspacing="0" border="0" class="updatePanelContent"><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td><asp:ImageButton runat="server" id="UsersButton" causesvalidation="False" commandname="Custom" imageurl="../Images/Users.png">		
-	</asp:ImageButton></td><td>&nbsp;</td><td><asp:ImageButton runat="server" id="GroupsButton" causesvalidation="False" commandname="Custom" imageurl="../Images/Groups.png">		
-	</asp:ImageButton></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td></td><td><asp:Label runat="server" id="Label" Text="Users">	</asp:Label></td><td>&nbsp;</td><td><asp:Label runat="server" id="Label1" Text="Groups">	</asp:Label></td><td></td><td></td></tr><tr><td></td><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td><asp:ImageButton runat="server" id="MyGroupsButton" causesvalidation="False" commandname="Custom" imageurl="../Images/MyGroups.png">		
-	</asp:ImageButton></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td><asp:Label runat="server" id="Label2" Text="My Groups">	</asp:Label></td><td></td><td></td><td></td><td></td></tr></table>
+                <table cellpadding="0" cellspacing="0" border="0" class="updatePanelContent"><tr><td>&nbsp;</td><td></td></tr><tr><td>&nbsp;</td><td></td></tr><tr><td></td><td><asp:ImageButton runat="server" id="MyGroupsButton" causesvalidation="False" commandname="Custom" imageurl="../Images/MyGroups.png">		
+	</asp:ImageButton></td></tr><tr><td></td><td><asp:Label runat="server" id="Label2" Text="My Groups">	</asp:Label></td></tr></table>
       </ContentTemplate>
 </asp:UpdatePanel>
 

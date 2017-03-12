@@ -1,6 +1,6 @@
-﻿<%@ Register Tagprefix="RatTrap" Namespace="RatTrap.UI.Controls.Add_Users" Assembly="RatTrap" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Add-Users.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenuFull.master" Inherits="RatTrap.UI.Add_Users" %>
+<%@ Register Tagprefix="RatTrap" Namespace="RatTrap.UI.Controls.Add_Users" Assembly="RatTrap" %>
 
-<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Add-Users.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenu.master" Inherits="RatTrap.UI.Add_Users" %>
 <%@ Register Tagprefix="Selectors" Namespace="RatTrap" Assembly="RatTrap" %>
 
 <%@ Register Tagprefix="RatTrap" TagName="ThemeButton" Src="../Shared/ThemeButton.ascx" %>

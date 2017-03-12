@@ -205,7 +205,38 @@ public partial class SignIn
       // This method is called when login is succeeded. 
       protected void RedirectOnSuccess()
       {
-          this.RedirectOnSuccess_Base();
+			if (!string.IsNullOrEmpty(this.SuccessURL))
+			{
+				this.Page.Response.Redirect(this.SuccessURL);
+			}
+			else
+			{
+				string role = BaseClasses.Utils.SecurityControls.GetCurrentUserRoles();
+
+				// GetCurrentUserRoles() will return semi-colon-delimited list of RoleIDsvalues such as {RoleID1;RoleID2}.
+				//  Note, that for ActiveDirectory Security roles names are effectively roles IDs. Also note, that 
+				// Active Directory and Azman roles can include domain name such as "MyDomain\RoleName"
+				if (role == "") ((BaseApplicationPage)this.Page).RedirectBack(false);
+				char [] separator = {';'};
+				string[] roles = role.Split(separator, System.StringSplitOptions.RemoveEmptyEntries);
+				bool includes = false;
+				foreach(string r in roles)
+				{
+					if(r == "1")  includes =  true;
+				}
+				if (includes)
+				{
+					this.Page.Response.Redirect("../Dashboard/LandingPageAdmin.aspx");
+				}
+				else
+				{
+					((BaseApplicationPage)this.Page).RedirectBack(false);
+				}
+			}
+
+// Original code is commented out:
+//
+//          this.RedirectOnSuccess_Base();
       }
       
 #region "Ajax Functions"

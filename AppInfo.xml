@@ -23848,7 +23848,7 @@
     <converter />
   </option>
   <option name="Directory" readonly="False" feature="" displayorder="-1">
-    <value>C:\Users\atkin\Documents\GitHub\RatTrap</value>
+    <value>C:\Users\atkin\Source\Repos\RatTrap</value>
     <datatype>System.String</datatype>
     <defaultvalue />
     <displayname />
@@ -23992,7 +23992,7 @@
     <converter />
   </option>
   <option name="DefaultMasterPage" readonly="False" feature="" displayorder="-1">
-    <value>../Master Pages/HorizontalMenu.master</value>
+    <value>~/Master Pages/HorizontalMenu.master</value>
     <datatype>System.String</datatype>
     <defaultvalue />
     <displayname />
