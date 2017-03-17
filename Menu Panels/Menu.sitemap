@@ -33,5 +33,17 @@ The tags are case-sensitive and should contain the following case-sensitive attr
   <siteMapNode>
     <siteMapNode title="" description="" url="~/Dashboard/LandingPage.aspx" imageUrl="../Images/Home.png" roles="" order="1" />
     <siteMapNode title="My Groups" description="My Groups" url="~/UsersGroupsLink/Show-UsersGroupsLink-Table.aspx" imageUrl="" roles="" order="2" />
+    <siteMapNode title="Admin" description="Admin" url="" imageUrl="" roles="" order="3">
+      <siteMapNode title="Users" description="Users" url="~/Users/Show-Users-Table.aspx" imageUrl="" roles="" order="1" />
+      <siteMapNode title="Groups" description="Groups" url="~/Groups/Show-Groups-Table.aspx" imageUrl="" roles="" order="2" />
+      <siteMapNode title="Projects" description="Projects" url="~/Projects/Show-Projects-Table.aspx" imageUrl="" roles="" order="3" />
+      <siteMapNode title="Traps" description="Traps" url="~/Traps/Edit-Traps-Table-Admin.aspx" imageUrl="" roles="" order="4" />
+    </siteMapNode>
+    <siteMapNode title="Trap Identifiers" description="Trap Identifiers" url="~/TrapIdentifiers/Add-TrapIdentifiers.aspx?" imageUrl="" roles="" order="0">
+      <siteMapNode title="{Menu:Add} Trap Identifiers" description="{Menu:Add} Trap Identifiers" url="~/TrapIdentifiers/Add-TrapIdentifiers.aspx" imageUrl="" roles="" order="10" />
+    </siteMapNode>
+    <siteMapNode title="Trap Records" description="Trap Records" url="~/TrapRecords/Show-TrapRecords-Table.aspx?" imageUrl="" roles="" order="0">
+      <siteMapNode title="{Menu:Show} Trap Records" description="{Menu:Show} Trap Records" url="~/TrapRecords/Show-TrapRecords-Table.aspx" imageUrl="" roles="" order="4" />
+    </siteMapNode>
   </siteMapNode>
 </siteMap>

@@ -61,6 +61,7 @@ public class BaseTrapsTable : PrimaryKeyTable
         TrapIdColumn.CodeName = "TrapId";
         TrapTypeIdColumn.CodeName = "TrapTypeId";
         GroupIdColumn.CodeName = "GroupId";
+        GroupIdColumn.Name = EvaluateFormula("\"Allocated to Group\"");
         ActiveColumn.CodeName = "Active";
         ActiveColumn.Name = EvaluateFormula("\"Active?\"");
         LocationIdColumn.CodeName = "LocationId";

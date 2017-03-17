@@ -3666,6 +3666,8 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         public virtual void SetGroupIdLabel()
                   {
                   
+                        this.GroupIdLabel.Text = EvaluateFormula("\"Allocated to Group\"");
+                      
                     
         }
                 

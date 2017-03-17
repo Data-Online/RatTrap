@@ -61,7 +61,9 @@ public class BaseUsersRecord : PrimaryKeyRecord, IUserIdentityRecord
                 UsersRecord UsersRec = (UsersRecord)sender;
         Validate_Inserting();
         if(UsersRec != null && !UsersRec.IsReadOnly ){
-                }
+               UsersRec.Parse(EvaluateFormula("UserID()",this,null),UsersTable.CreatedBy);
+       UsersRec.Parse(EvaluateFormula("Today()",this,null),UsersTable.CreatedOn);
+        }
     
     }
     
@@ -72,7 +74,9 @@ public class BaseUsersRecord : PrimaryKeyRecord, IUserIdentityRecord
                 UsersRecord UsersRec = (UsersRecord)sender;
         Validate_Updating();
         if(UsersRec != null && !UsersRec.IsReadOnly ){
-                }
+               UsersRec.Parse(EvaluateFormula("UserID()",this,null),UsersTable.UpdatedBy);
+       UsersRec.Parse(EvaluateFormula("Today()",this,null),UsersTable.UpdatedOn);
+        }
     
     }
 

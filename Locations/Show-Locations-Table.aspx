@@ -100,8 +100,10 @@
 <tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeIdLabel" Text="Trap Type">	</asp:Literal> 
 </td><td class="tableCellValue"><asp:LinkButton runat="server" id="TrapTypeId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> </td><td class="tableCellLabel"> 
 </td><td class="tableCellValue"> </td><td class="tableCellLabel"><asp:Literal runat="server" id="ActiveLabel" Text="EvaluateFormula(&quot;= \&quot;Active?\&quot;&quot;, true)">	</asp:Literal> 
-</td><td class="tableCellValue"><asp:Literal runat="server" id="Active"></asp:Literal> </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="Group">	</asp:Literal> 
-</td><td class="tableCellValue"><asp:LinkButton runat="server" id="GroupId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> </td><td class="tableCellLabel"><asp:Literal runat="server" id="ProjectIdLabel" Text="Project">	</asp:Literal> 
+</td><td class="tableCellValue"><asp:Literal runat="server" id="Active"></asp:Literal> </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="EvaluateFormula(&quot;= \&quot;Allocated to Group\&quot;&quot;, true)">	</asp:Literal> 
+</td><td class="tableCellValue"><span style="white-space:nowrap;">
+<asp:LinkButton runat="server" id="GroupId" causesvalidation="False" commandname="Redirect"></asp:LinkButton></span>
+ </td><td class="tableCellLabel"><asp:Literal runat="server" id="ProjectIdLabel" Text="Project">	</asp:Literal> 
 </td><td class="tableCellValue"><asp:LinkButton runat="server" id="ProjectId" causesvalidation="False" commandname="Redirect"></asp:LinkButton> </td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="6"></td></tr></RatTrap:TrapsTableControlRow>
 </ITEMTEMPLATE>
 

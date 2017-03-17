@@ -281,7 +281,7 @@ public partial class Add_Traps
         
         public RatTrap.UI.Controls.Add_Traps.TrapsRecordControl TrapsRecordControl;
           
-        public System.Web.UI.WebControls.RadioButtonList TrapTypeId;
+        public System.Web.UI.WebControls.DropDownList TrapTypeId;
             
         public System.Web.UI.WebControls.Literal TrapTypeIdLabel;
         

@@ -36,7 +36,7 @@
         </Attribute>
         <Attribute>
           <Name>Button-RedirectURL</Name>
-          <Value>../Shared/ConfigureAddRecord.aspx</Value>
+          <Value>../TrapIdentifiers/Add-TrapIdentifiers.aspx</Value>
         </Attribute>
         <Attribute>
           <Name>Button-Text</Name>

@@ -702,11 +702,32 @@
     <Compile Include="Menu Panels\IMenuFull.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.aspx.cs" >
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.aspx.cs">
       <DependentUpon>Show-UsersGroupsLink-TableAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.Controls.cs" >
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapRecords\Show-TrapRecords-Table.aspx.cs">
+      <DependentUpon>Show-TrapRecords-Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrapRecords\Show-TrapRecords-Table.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapIdentifiers\Add-TrapIdentifiers.aspx.cs" >
+      <DependentUpon>Add-TrapIdentifiers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrapIdentifiers\Add-TrapIdentifiers.Controls.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapIdentifiers\Edit-TrapIdentifiers.aspx.cs" >
+      <DependentUpon>Edit-TrapIdentifiers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrapIdentifiers\Edit-TrapIdentifiers.Controls.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -1043,7 +1064,10 @@
     <Content Include="Menu Panels\MenuFull.sitemap" />
     <Content Include="Menu Panels\MenuFull.ascx" />
     <Content Include="Master Pages\HorizontalMenuFull.master" />
-    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.aspx"  />
+    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.aspx" />
+    <Content Include="TrapRecords\Show-TrapRecords-Table.aspx" />
+    <Content Include="TrapIdentifiers\Add-TrapIdentifiers.aspx"  />
+    <Content Include="TrapIdentifiers\Edit-TrapIdentifiers.aspx"  />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

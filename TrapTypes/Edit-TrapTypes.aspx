@@ -88,7 +88,7 @@
                         
                           <asp:ImageButton runat="server" id="DeleteRowButton" causesvalidation="False" commandargument="DeleteOnUpdate" commandname="DeleteRecord" cssclass="button_link" imageurl="../Images/icon_delete.gif" onmouseout="this.src=&#39;../Images/icon_delete.gif&#39;" onmouseover="this.src=&#39;../Images/icon_delete_over.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Txt:DeleteRecord&quot;, &quot;RatTrap&quot;) %>">		
 	</asp:ImageButton>
-                        </td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="Group">	</asp:Literal> 
+                        </td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="EvaluateFormula(&quot;= \&quot;Allocated to Group\&quot;&quot;, true)">	</asp:Literal> 
 </td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="GroupId" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"> 
 </td><td class="tableCellValue"> </td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:TrapsTableControlRow>
 </ITEMTEMPLATE>

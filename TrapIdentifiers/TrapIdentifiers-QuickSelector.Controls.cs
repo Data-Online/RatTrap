@@ -2166,7 +2166,7 @@ public class BaseSelectorTableControl : RatTrap.UI.BaseApplicationTableControl
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../Shared/ConfigureAddRecord.aspx";
+            string url = @"../TrapIdentifiers/Add-TrapIdentifiers.aspx";
             
             if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
                 url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];

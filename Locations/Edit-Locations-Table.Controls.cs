@@ -3351,6 +3351,8 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         public virtual void SetGroupIdLabel()
                   {
                   
+                        this.GroupIdLabel.Text = EvaluateFormula("\"Allocated to Group\"");
+                      
                     
         }
                 
@@ -6031,7 +6033,7 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // The 4th parameter represents the horizontal alignment of the column detail
                 // The 5th parameter represents the relative width of the column
                  report.AddColumn(TrapsTable.TrapTypeId.Name, ReportEnum.Align.Left, "${TrapTypeId}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 28);
+                 report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 16);
                  report.AddColumn(TrapsTable.Active.Name, ReportEnum.Align.Left, "${Active}", ReportEnum.Align.Left, 15);
                  report.AddColumn(TrapsTable.ProjectId.Name, ReportEnum.Align.Left, "${ProjectId}", ReportEnum.Align.Left, 28);
 
@@ -6200,7 +6202,7 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // The 4th parameter represents the horizontal alignment of the column detail
                 // The 5th parameter represents the relative width of the column
                  report.AddColumn(TrapsTable.TrapTypeId.Name, ReportEnum.Align.Left, "${TrapTypeId}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 28);
+                 report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 16);
                  report.AddColumn(TrapsTable.Active.Name, ReportEnum.Align.Left, "${Active}", ReportEnum.Align.Left, 15);
                  report.AddColumn(TrapsTable.ProjectId.Name, ReportEnum.Align.Left, "${ProjectId}", ReportEnum.Align.Left, 28);
 

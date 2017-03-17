@@ -61,7 +61,9 @@ public class BaseTrapNotesRecord : PrimaryKeyRecord
                 TrapNotesRecord TrapNotesRec = (TrapNotesRecord)sender;
         Validate_Inserting();
         if(TrapNotesRec != null && !TrapNotesRec.IsReadOnly ){
-                }
+               TrapNotesRec.Parse(EvaluateFormula("UserID()",this,null),TrapNotesTable.CreatedBy);
+       TrapNotesRec.Parse(EvaluateFormula("Today()",this,null),TrapNotesTable.CreatedOn);
+        }
     
     }
     
@@ -72,7 +74,9 @@ public class BaseTrapNotesRecord : PrimaryKeyRecord
                 TrapNotesRecord TrapNotesRec = (TrapNotesRecord)sender;
         Validate_Updating();
         if(TrapNotesRec != null && !TrapNotesRec.IsReadOnly ){
-                }
+               TrapNotesRec.Parse(EvaluateFormula("UserID()",this,null),TrapNotesTable.UpdatedBy);
+       TrapNotesRec.Parse(EvaluateFormula("Today()",this,null),TrapNotesTable.UpdatedOn);
+        }
     
     }
 

@@ -1,6 +1,6 @@
 ﻿
-// This file implements the code-behind class for Show_Traps_Table.aspx.
-// Show_Traps_Table.Controls.vb contains the Table, Row and Record control classes
+// This file implements the code-behind class for Show_TrapRecords_Table.aspx.
+// Show_TrapRecords_Table.Controls.vb contains the Table, Row and Record control classes
 // for the page.  Best practices calls for overriding methods in the Row or Record control classes.
 
 #region "Using statements"    
@@ -29,15 +29,15 @@ using RatTrap.Data;
 namespace RatTrap.UI
 {
   
-public partial class Show_Traps_Table
+public partial class Show_TrapRecords_Table
         : BaseApplicationPage
-// Code-behind class for the Show_Traps_Table page.
+// Code-behind class for the Show_TrapRecords_Table page.
 // Place your customizations in Section 1. Do not modify Section 2.
 {
         
       #region "Section 1: Place your customizations here."
 
-      public Show_Traps_Table()
+      public Show_TrapRecords_Table()
         {
             this.Initialize();
     
@@ -192,9 +192,9 @@ public partial class Show_Traps_Table
     
         // Write out the Set methods
         
-        public void SetTrapsTableControl()
+        public void SetTrapRecordsTableControl()
         {
-            SetTrapsTableControl_Base(); 
+            SetTrapRecordsTableControl_Base(); 
         }
                      
         
@@ -202,14 +202,6 @@ public partial class Show_Traps_Table
         
 
 
-//public void SetTrapRecordsTableControl1()
-//        {
-//            SetTrapRecordsTableControl1_Base(); 
-//        }
-//public void SetTrapRecordsTableControl1()
-//        {
-//            SetTrapRecordsTableControl1_Base(); 
-//        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -229,15 +221,11 @@ public partial class Show_Traps_Table
     
         public ThemeButtonWithArrow ActionsButton;
                 
-        public System.Web.UI.WebControls.Literal ActiveLabel1;
+        public System.Web.UI.WebControls.Literal DateOfCheckLabel1;
         
         public System.Web.UI.WebControls.ImageButton ExcelButton;
         
         public ThemeButton FilterButton;
-                
-        public ThemeButtonWithArrow Filters1Button;
-                
-        public ThemeButtonWithArrow Filters2Button;
                 
         public ThemeButtonWithArrow FiltersButton;
                 
@@ -245,7 +233,7 @@ public partial class Show_Traps_Table
         
         public System.Web.UI.WebControls.ImageButton ImportButton;
         
-        public System.Web.UI.WebControls.Label Label1;
+        public System.Web.UI.WebControls.Label Label;
         
         public System.Web.UI.WebControls.ImageButton NewButton;
         
@@ -253,28 +241,20 @@ public partial class Show_Traps_Table
         
         public PaginationMedium Pagination;
                 
-        public PaginationModern Pagination1;
-                
-        public PaginationModern Pagination2;
-                
         public System.Web.UI.WebControls.ImageButton PDFButton;
+        
+        public System.Web.UI.WebControls.Literal ProjectIdLabel1;
         
         public System.Web.UI.WebControls.ImageButton ResetButton;
         
         public System.Web.UI.WebControls.Label SortByLabel;
         
-        public System.Web.UI.WebControls.Label SortByLabel1;
-        
-        public System.Web.UI.WebControls.Label SortByLabel2;
-        
         public System.Web.UI.WebControls.Literal Title0;
             
-        public System.Web.UI.WebControls.Literal TrapsCountControl;
+        public System.Web.UI.WebControls.Literal TrapRecordsCountControl;
         
-        public RatTrap.UI.Controls.Show_Traps_Table.TrapsTableControl TrapsTableControl;
+        public RatTrap.UI.Controls.Show_TrapRecords_Table.TrapRecordsTableControl TrapRecordsTableControl;
           
-        public System.Web.UI.WebControls.Literal TrapTypeIdLabel1;
-        
         public System.Web.UI.WebControls.ImageButton WordButton;
         
         public ValidationSummary ValidationSummary1;
@@ -338,7 +318,7 @@ public partial class Show_Traps_Table
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("1;2;3;4;5");
+            this.Authorize("");
              if (!this.IsPostBack)
              {
             
@@ -357,7 +337,7 @@ public partial class Show_Traps_Table
     }
 
     
-            Page.Title = "Traps";
+            Page.Title = "Trap Records";
         
         if (!IsPostBack)
             AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
@@ -450,8 +430,8 @@ public partial class Show_Traps_Table
           switch (control)
           {
           
-              case "TrapsTableControl":
-                 SetTrapsTableControl();
+              case "TrapRecordsTableControl":
+                 SetTrapRecordsTableControl();
                  break;
                
           }
@@ -463,7 +443,7 @@ public partial class Show_Traps_Table
       public void SaveData_Base()
       {
       
-        this.TrapsTableControl.SaveData();
+        this.TrapRecordsTableControl.SaveData();
         
       }
       
@@ -559,7 +539,7 @@ public partial class Show_Traps_Table
     
                 // Load and bind data for each record and table UI control.
                 
-        SetTrapsTableControl();
+        SetTrapRecordsTableControl();
         
     
                 // Load data for chart.
@@ -648,13 +628,13 @@ public partial class Show_Traps_Table
                 
         // Write out the Set methods
         
-        public void SetTrapsTableControl_Base()           
+        public void SetTrapRecordsTableControl_Base()           
         
         {        
-            if (TrapsTableControl.Visible)
+            if (TrapRecordsTableControl.Visible)
             {
-                TrapsTableControl.LoadData();
-                TrapsTableControl.DataBind();
+                TrapRecordsTableControl.LoadData();
+                TrapRecordsTableControl.DataBind();
             }
         }
           

@@ -12,7 +12,7 @@ namespace RatTrap.Business
 public class TrapsDefinition
 {
 #region "Definition (XML) for TrapsDefinition table"
-	//Next 367 lines contain Table Definition (XML) for table "TrapsDefinition"
+	//Next 369 lines contain Table Definition (XML) for table "TrapsDefinition"
 	private static string _DefinitionString = "";
 	
 #endregion
@@ -117,26 +117,26 @@ public class TrapsDefinition
          tbf.Append(    "</Column>");
          tbf.Append(    @"<Column InternalName=""2"" Priority=""3"" ColumnNum=""2"">");
          tbf.Append(      @"<columnName>GroupId</columnName>");
-         tbf.Append(      @"<columnUIName>Group</columnUIName>");
+         tbf.Append(      @"<columnUIName Source=""User"">= &quot;Allocated to Group&quot;</columnUIName>");
          tbf.Append(      @"<columnType>Number</columnType>");
          tbf.Append(      @"<columnDBType>int</columnDBType>");
          tbf.Append(      @"<columnLengthSet>10.0</columnLengthSet>");
          tbf.Append(      @"<columnDefault></columnDefault>");
-         tbf.Append(      @"<columnDBDefault></columnDBDefault>");
+         tbf.Append(      @"<columnDBDefault Source=""User""></columnDBDefault>");
          tbf.Append(      @"<columnIndex>N</columnIndex>");
          tbf.Append(      @"<columnUnique>N</columnUnique>");
          tbf.Append(      @"<columnFunction></columnFunction>");
          tbf.Append(      @"<columnDBFormat></columnDBFormat>");
          tbf.Append(      @"<columnPK>N</columnPK>");
          tbf.Append(      @"<columnPermanent>N</columnPermanent>");
-         tbf.Append(      @"<columnComputed>N</columnComputed>");
-         tbf.Append(      @"<columnIdentity>N</columnIdentity>");
-         tbf.Append(      @"<columnReadOnly>N</columnReadOnly>");
+         tbf.Append(      @"<columnComputed Source=""User"">N</columnComputed>");
+         tbf.Append(      @"<columnIdentity Source=""User"">N</columnIdentity>");
+         tbf.Append(      @"<columnReadOnly Source=""User"">N</columnReadOnly>");
          tbf.Append(      @"<columnRequired>N</columnRequired>");
          tbf.Append(      @"<columnNotNull>N</columnNotNull>");
-         tbf.Append(      @"<columnCaseSensitive>N</columnCaseSensitive>");
+         tbf.Append(      @"<columnCaseSensitive Source=""User"">N</columnCaseSensitive>");
          tbf.Append(      @"<columnCollation></columnCollation>");
-         tbf.Append(      @"<columnFullText>N</columnFullText>");
+         tbf.Append(      @"<columnFullText Source=""User"">N</columnFullText>");
          tbf.Append(      @"<columnVisibleWidth>%ISD_DEFAULT%</columnVisibleWidth>");
          tbf.Append(      @"<columnTableAliasName></columnTableAliasName>");
          tbf.Append(      @"<applyLabelText>Y</applyLabelText>");
@@ -145,7 +145,7 @@ public class TrapsDefinition
          tbf.Append(        @"<columnFKTable>RatTrap.Business.GroupsTable, RatTrap.Business</columnFKTable>");
          tbf.Append(        @"<columnFKOwner>dbo</columnFKOwner>");
          tbf.Append(        @"<columnFKColumn>GroupId</columnFKColumn>");
-         tbf.Append(        @"<columnFKColumnDisplay>GroupName</columnFKColumnDisplay>");
+         tbf.Append(        @"<columnFKColumnDisplay>= Groups.GroupName</columnFKColumnDisplay>");
          tbf.Append(        @"<foreignKeyType>Explicit</foreignKeyType>");
          tbf.Append(      "</foreignKey>");
          tbf.Append(      @"<applyDFKA>Y</applyDFKA>");
@@ -160,6 +160,8 @@ public class TrapsDefinition
          tbf.Append(      @"<updatingRecordFormula></updatingRecordFormula>");
          tbf.Append(      @"<insertingFormula></insertingFormula>");
          tbf.Append(      @"<updatingFormula></updatingFormula>");
+         tbf.Append(      @"<InternalName>2</InternalName>");
+         tbf.Append(      @"<columnTableClassName></columnTableClassName>");
          tbf.Append(    "</Column>");
          tbf.Append(    @"<Column InternalName=""3"" Priority=""4"" ColumnNum=""3"">");
          tbf.Append(      @"<columnName>Active</columnName>");
