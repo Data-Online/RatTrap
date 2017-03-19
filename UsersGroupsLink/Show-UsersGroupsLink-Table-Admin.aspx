@@ -1,16 +1,16 @@
 ﻿<%@ Register Tagprefix="RatTrap" TagName="ThemeButton" Src="../Shared/ThemeButton.ascx" %>
 
-<%@ Register Tagprefix="RatTrap" TagName="PaginationModern" Src="../Shared/PaginationModern.ascx" %>
+<%@ Register Tagprefix="RatTrap" Namespace="RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin" Assembly="RatTrap" %>
 
-<%@ Register Tagprefix="RatTrap" Namespace="RatTrap.UI.Controls.Show_UsersGroupsLink_TableAdmin" Assembly="RatTrap" %>
+<%@ Register Tagprefix="RatTrap" TagName="PaginationModern" Src="../Shared/PaginationModern.ascx" %>
 
 <%@ Register Tagprefix="RatTrap" TagName="ThemeButtonWithArrow" Src="../Shared/ThemeButtonWithArrow.ascx" %>
 
 <%@ Register Tagprefix="Selectors" Namespace="RatTrap" Assembly="RatTrap" %>
 
+<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Show-UsersGroupsLink-Table-Admin.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenuFull.master" Inherits="RatTrap.UI.Show_UsersGroupsLink_Table_Admin" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<%@ Register Tagprefix="BaseClasses" Namespace="BaseClasses.Web.UI.WebControls" Assembly="BaseClasses" %>
-<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Show-UsersGroupsLink-TableAdmin.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenuFull.master" Inherits="RatTrap.UI.Show_UsersGroupsLink_TableAdmin" %><asp:Content id="PageSection" ContentPlaceHolderID="PageContent" Runat="server">
+<%@ Register Tagprefix="BaseClasses" Namespace="BaseClasses.Web.UI.WebControls" Assembly="BaseClasses" %><asp:Content id="PageSection" ContentPlaceHolderID="PageContent" Runat="server">
     <a id="StartOfPageContent"></a>
     <div id="scrollRegion" class="scrollRegion">              
       <asp:UpdateProgress runat="server" id="UpdatePanel1_UpdateProgress1" AssociatedUpdatePanelID="UpdatePanel1">
@@ -348,7 +348,7 @@
 	<asp:hiddenfield id="UsersGroupsLinkTableControl_PostbackTracker" runat="server" />
 </RatTrap:UsersGroupsLinkTableControl>
 
-            </td></tr></table>
+            </td></tr><tr><td><RatTrap:ThemeButton runat="server" id="CancelButton" button-causesvalidation="false" button-commandname="Redirect" button-text="&lt;%# GetResourceValue(&quot;Btn:Cancel&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:Cancel&quot;, &quot;RatTrap&quot;) %>"></RatTrap:ThemeButton></td></tr></table>
       </ContentTemplate>
 </asp:UpdatePanel>
 

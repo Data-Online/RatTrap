@@ -4,9 +4,9 @@
 
 <%@ Register Tagprefix="RatTrap" TagName="ThemeButtonWithArrow" Src="../Shared/ThemeButtonWithArrow.ascx" %>
 
-<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Show-TrapTypes.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenu.master" Inherits="RatTrap.UI.Show_TrapTypes" %>
 <%@ Register Tagprefix="Selectors" Namespace="RatTrap" Assembly="RatTrap" %>
 
+<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Show-TrapTypes.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenuFull.master" Inherits="RatTrap.UI.Show_TrapTypes" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Tagprefix="BaseClasses" Namespace="BaseClasses.Web.UI.WebControls" Assembly="BaseClasses" %>
 <%@ Register Tagprefix="RatTrap" Namespace="RatTrap.UI.Controls.Show_TrapTypes" Assembly="RatTrap" %>
@@ -42,7 +42,9 @@
 
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
                   <asp:panel id="CollapsibleRegion" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
-                    <asp:panel id="TrapTypesRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapTypeLabel" Text="Trap Type">	</asp:Literal></td><td class="tableCellValue"><asp:Literal runat="server" id="TrapType"></asp:Literal> </td></tr></table></asp:panel>
+                    <asp:panel id="TrapTypesRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="largeText"><asp:Literal runat="server" id="TrapType"></asp:Literal></td><td class="largeText"></td><td class="mediumText"><asp:Label runat="server" id="Label" Text="Total traps / active:">	</asp:Label> 
+<asp:Literal runat="server" id="TrapsCountControl">	</asp:Literal> / 
+<asp:Literal runat="server" id="TrapsCountControl1">	</asp:Literal></td></tr></table></asp:panel>
 
                   </td></tr></table>
 </asp:panel>
@@ -58,7 +60,7 @@
 </td></tr><tr><td><BaseClasses:TabContainer runat="server" id="TrapTypesTabContainer" panellayout="Tabbed">
  <BaseClasses:TabPanel runat="server" id="TrapsTabPanel" HeaderText="Traps">	<ContentTemplate>
   <RatTrap:TrapsTableControl runat="server" id="TrapsTableControl">	<table class="dv" cellpadding="0" cellspacing="0" border="0"><tr><td class="panelTL"><img src="../Images/space.gif" class="panelTLSpace" alt="" /></td><td class="panelT"></td><td class="panelTR"><img src="../Images/space.gif" class="panelTRSpace" alt="" /></td></tr><tr><td class="panelHeaderL"></td><td class="dh">
-                  <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="dhel"><img src="../Images/space.gif" alt="" /></td><td class="dhb"></td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0" style="width: 100%;"><tr><td></td><td class="prbbc"></td><td class="prbbc"></td><td><div id="Actions1Div" runat="server" class="popupWrapper">
+                  <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="dhel"></td><td class="dhb"></td><td class="dhb"><table cellpadding="0" cellspacing="0" border="0" style="width: 100%;"><tr><td></td><td class="prbbc"></td><td class="prbbc"></td><td><div id="Actions1Div" runat="server" class="popupWrapper">
                 <table border="0" cellpadding="0" cellspacing="0"><tr><td></td><td></td><td></td><td></td><td></td><td></td><td style="text-align: right;" class="popupTableCellValue"><input type="image" src="../Images/closeButton.gif" onmouseover="this.src='../Images/closeButtonOver.gif'" onmouseout="this.src='../Images/closeButton.gif'" alt="" onclick="ISD_HidePopupPanel();return false;" align="top" /><br /></td></tr><tr><td></td><td>
                     <asp:ImageButton runat="server" id="NewButton" causesvalidation="False" commandname="Redirect" imageurl="../Images/ButtonBarNew.gif" onmouseout="this.src=&#39;../Images/ButtonBarNew.gif&#39;" onmouseover="this.src=&#39;../Images/ButtonBarNewOver.gif&#39;" redirectstyle="Popup" tooltip="&lt;%# GetResourceValue(&quot;Btn:Add&quot;, &quot;RatTrap&quot;) %>">		
 	</asp:ImageButton>
@@ -95,11 +97,12 @@
                                 
                                   <asp:ImageButton runat="server" id="DeleteRowButton" causesvalidation="False" commandname="DeleteRecord" cssclass="button_link" imageurl="../Images/icon_delete.gif" onmouseout="this.src=&#39;../Images/icon_delete.gif&#39;" onmouseover="this.src=&#39;../Images/icon_delete_over.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Txt:DeleteRecord&quot;, &quot;RatTrap&quot;) %>">		
 	</asp:ImageButton>                                 
-                                </td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="EvaluateFormula(&quot;= \&quot;Allocated to Group\&quot;&quot;, true)">	</asp:Literal> 
+                                </td><td class="tableCellLabel"><asp:Literal runat="server" id="TrapIdentifierIdLabel" Text="Trap Identifier">	</asp:Literal></td><td class="tableCellValue"><asp:Literal runat="server" id="TrapIdentifierId"></asp:Literal></td><td class="tableCellLabel"><asp:Literal runat="server" id="LocationIdLabel" Text="Location">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+<asp:LinkButton runat="server" id="LocationId" CommandName="Redirect"></asp:LinkButton></span>
+</td><td class="tableCellLabel"><asp:Literal runat="server" id="ActiveLabel" Text="EvaluateFormula(&quot;= \&quot;Active?\&quot;&quot;, true)">	</asp:Literal></td><td class="tableCellValue"><asp:Literal runat="server" id="Active"></asp:Literal></td></tr><tr><td class="tableRowButtonsCellVertical" scope="row" style="font-size: 5px;"></td><td class="tableRowButtonsCellVertical" scope="row" style="font-size: 5px;"></td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="EvaluateFormula(&quot;= \&quot;Allocated to Group\&quot;&quot;, true)">	</asp:Literal> 
 </td><td class="tableCellValue"><span style="white-space:nowrap;">
 <asp:LinkButton runat="server" id="GroupId" causesvalidation="False" commandname="Redirect"></asp:LinkButton></span>
- </td><td class="tableCellLabel"> 
-</td><td class="tableCellValue"> </td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="8"></td></tr></RatTrap:TrapsTableControlRow>
+ </td><td class="tableCellLabel"><asp:Literal runat="server" id="ProjectIdLabel" Text="Project">	</asp:Literal></td><td class="tableCellValue"><asp:LinkButton runat="server" id="ProjectId" causesvalidation="False" commandname="Redirect"></asp:LinkButton></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="8"></td></tr></RatTrap:TrapsTableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>

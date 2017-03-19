@@ -86,7 +86,7 @@
       <PassthroughAttributes>
         <Attribute>
           <Name>Text</Name>
-          <Value>Traps</Value>
+          <Value>Manage Traps</Value>
         </Attribute>
       </PassthroughAttributes>
     </ContainedComponent>
@@ -97,6 +97,16 @@
         <Attribute>
           <Name>Text</Name>
           <Value>Trap Records</Value>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Label6</Name>
+      <Type>Label</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>Upload Trap Data</Value>
         </Attribute>
       </PassthroughAttributes>
     </ContainedComponent>
@@ -118,7 +128,7 @@
         </Attribute>
         <Attribute>
           <Name>RedirectURL</Name>
-          <Value>../UsersGroupsLink/Show-UsersGroupsLink-TableAdmin.aspx</Value>
+          <Value>../UsersGroupsLink/Show-UsersGroupsLink-Table-Admin.aspx</Value>
         </Attribute>
       </PassthroughAttributes>
     </ContainedComponent>
@@ -194,7 +204,29 @@
         </Attribute>
         <Attribute>
           <Name>RedirectURL</Name>
-          <Value>../Traps/Show-Traps-Table.aspx</Value>
+          <Value>../Traps/Edit-Traps-Table-Admin.aspx</Value>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>TrapsButton1</Name>
+      <Type>ImageButton</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>CausesValidation</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CommandName</Name>
+          <Value>Custom</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ImageUrl</Name>
+          <Value>../Images/UploadTrapData.png</Value>
+        </Attribute>
+        <Attribute>
+          <Name>RedirectURL</Name>
+          <Value>../Traps/Show-Traps-Table-Upload.aspx</Value>
         </Attribute>
       </PassthroughAttributes>
     </ContainedComponent>
@@ -387,13 +419,14 @@
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:IMAGEBUTTON NAME="TrapsButton1" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:IMAGEBUTTON NAME="TrapRecordsButton" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
@@ -413,13 +446,14 @@
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:LABEL NAME="Label6" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
         &lt;Value&gt;&amp;lt;GEN:LABEL NAME="Label5" /&amp;gt;&lt;/Value&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
-        &lt;CellAttributes /&gt;
-      &lt;/Cell&gt;
-      &lt;Cell&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;

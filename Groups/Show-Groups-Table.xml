@@ -6,12 +6,12 @@
     <Name>Show-Groups-Table</Name>
     <Type>Page</Type>
     <SubType>DotNet</SubType>
-    <MasterLayout>../Master Pages/HorizontalMenu.master</MasterLayout>
+    <MasterLayout>../Master Pages/HorizontalMenuFull.master</MasterLayout>
     <NewWindowMasterLayout>../Master Pages/Blank.master</NewWindowMasterLayout>
     <PopupMasterLayout>../Master Pages/Popup.master</PopupMasterLayout>
     <PopupCssClass>QPageSize</PopupCssClass>
     <GenerateDirectory>Groups</GenerateDirectory>
-    <Layout>Groups\Show-Groups-Table.html</Layout>
+    <Layout>Groups\Show-Groups-Table.xml</Layout>
     <DisplayName>Show-Groups-Table</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
     <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
@@ -119,6 +119,39 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>GroupsTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>CancelButton</Name>
+      <Type>Button</Type>
+      <Layout>..\Shared\ThemeButton.ascx</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Button-CausesValidation</Name>
+          <Value>false</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-CommandName</Name>
+          <Value>Redirect</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Consumers</Name>
+          <Value>page</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-RedirectURL</Name>
+          <Value>Back</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Text</Name>
+          <Value>Btn:Cancel</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Button-ToolTip</Name>
+          <Value>Btn:Cancel</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
     </ContainedComponent>
     <ContainedComponent>
       <Name>DeleteRowButton</Name>
@@ -918,6 +951,28 @@
       <Type>Table</Type>
       <PanelStyle>RecInTable_RISepC_Parent</PanelStyle>
       <Table>DatabaseTheRatTrap%dbo.Groups</Table>
+      <QueryDefinition>
+        <WhereClause>
+          <Position>1</Position>
+          <TableAlias>DatabaseTheRatTrap%dbo.Groups_</TableAlias>
+          <Field>[DatabaseTheRatTrap%dbo.Groups_].[GroupId]</Field>
+          <Operator>=</Operator>
+          <Operand>
+            <Type>Formula</Type>
+            <Value>URL("Groups")</Value>
+          </Operand>
+          <IgnoreBlankString>Yes</IgnoreBlankString>
+        </WhereClause>
+        <Operators>
+          <Operator xsi:nil="true" />
+        </Operators>
+        <TableAliases>
+          <Alias>
+            <AliasName>DatabaseTheRatTrap%dbo.Groups_</AliasName>
+            <TableName>DatabaseTheRatTrap%dbo.Groups</TableName>
+          </Alias>
+        </TableAliases>
+      </QueryDefinition>
       <PassthroughAttributes>
         <Attribute>
           <Name>HasScrolling</Name>
@@ -934,6 +989,10 @@
         <Attribute>
           <Name>InternalUse:DataSource</Name>
           <Value>TableOrQuery</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSourceArg</Name>
+          <Value />
         </Attribute>
         <Attribute>
           <Name>NumberOfColumns</Name>
@@ -960,6 +1019,7 @@
           <Value>Pagination-TotalPages</Value>
         </Attribute>
       </PassthroughAttributes>
+      <OrderBys />
     </ContainedComponent>
     <ContainedComponent>
       <Name>ImportButton</Name>
@@ -2709,6 +2769,13 @@
         &lt;Value&gt;
                         &amp;lt;GEN:TABLE NAME="GroupsTableControl"&amp;gt;&amp;lt;/GEN:TABLE&amp;gt;
             &lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:Button Name="CancelButton" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;RowAttributes /&gt;

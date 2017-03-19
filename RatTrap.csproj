@@ -544,13 +544,6 @@
     <Compile Include="Species\Species-QuickSelector.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Traps\Show-Traps-Table.aspx.cs">
-      <DependentUpon>Show-Traps-Table.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Traps\Show-Traps-Table.Controls.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Traps\Edit-Traps.aspx.cs">
       <DependentUpon>Edit-Traps.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -702,13 +695,6 @@
     <Compile Include="Menu Panels\IMenuFull.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.aspx.cs">
-      <DependentUpon>Show-UsersGroupsLink-TableAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.Controls.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="TrapRecords\Show-TrapRecords-Table.aspx.cs">
       <DependentUpon>Show-TrapRecords-Table.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -716,18 +702,46 @@
     <Compile Include="TrapRecords\Show-TrapRecords-Table.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapIdentifiers\Add-TrapIdentifiers.aspx.cs" >
+    <Compile Include="TrapIdentifiers\Add-TrapIdentifiers.aspx.cs">
       <DependentUpon>Add-TrapIdentifiers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TrapIdentifiers\Add-TrapIdentifiers.Controls.cs" >
+    <Compile Include="TrapIdentifiers\Add-TrapIdentifiers.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TrapIdentifiers\Edit-TrapIdentifiers.aspx.cs" >
+    <Compile Include="TrapIdentifiers\Edit-TrapIdentifiers.aspx.cs">
       <DependentUpon>Edit-TrapIdentifiers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TrapIdentifiers\Edit-TrapIdentifiers.Controls.cs" >
+    <Compile Include="TrapIdentifiers\Edit-TrapIdentifiers.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrapNotes\TrapNotes-QuickSelector.aspx.cs">
+      <DependentUpon>TrapNotes-QuickSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrapNotes\TrapNotes-QuickSelector.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Traps\Edit-Traps-Admin.aspx.cs">
+      <DependentUpon>Edit-Traps-Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traps\Edit-Traps-Admin.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Traps\Show-Traps-Table-Upload.aspx.cs">
+      <DependentUpon>Show-Traps-Table-Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traps\Show-Traps-Table-Upload.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.aspx.cs" >
+      <DependentUpon>Show-UsersGroupsLink-Table-Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.Controls.cs" >
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -1039,7 +1053,6 @@
     <Content Include="BaitTypes\BaitTypes-QuickSelector.aspx" />
     <Content Include="Sex\Sex-QuickSelector.aspx" />
     <Content Include="Species\Species-QuickSelector.aspx" />
-    <Content Include="Traps\Show-Traps-Table.aspx" />
     <Content Include="Traps\Edit-Traps.aspx" />
     <Content Include="TrapRecords\Add-TrapRecords.aspx" />
     <Content Include="TrapRecords\Edit-TrapRecords.aspx" />
@@ -1064,10 +1077,13 @@
     <Content Include="Menu Panels\MenuFull.sitemap" />
     <Content Include="Menu Panels\MenuFull.ascx" />
     <Content Include="Master Pages\HorizontalMenuFull.master" />
-    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.aspx" />
     <Content Include="TrapRecords\Show-TrapRecords-Table.aspx" />
-    <Content Include="TrapIdentifiers\Add-TrapIdentifiers.aspx"  />
-    <Content Include="TrapIdentifiers\Edit-TrapIdentifiers.aspx"  />
+    <Content Include="TrapIdentifiers\Add-TrapIdentifiers.aspx" />
+    <Content Include="TrapIdentifiers\Edit-TrapIdentifiers.aspx" />
+    <Content Include="TrapNotes\TrapNotes-QuickSelector.aspx" />
+    <Content Include="Traps\Edit-Traps-Admin.aspx" />
+    <Content Include="Traps\Show-Traps-Table-Upload.aspx" />
+    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.aspx"  />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

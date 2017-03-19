@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Show-Groups-Table.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenu.master" Inherits="RatTrap.UI.Show_Groups_Table" %>
+﻿<%@ Register Tagprefix="RatTrap" TagName="PaginationModern" Src="../Shared/PaginationModern.ascx" %>
+
 <%@ Register Tagprefix="RatTrap" TagName="ThemeButton" Src="../Shared/ThemeButton.ascx" %>
 
-<%@ Register Tagprefix="RatTrap" TagName="PaginationModern" Src="../Shared/PaginationModern.ascx" %>
-
+<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Show-Groups-Table.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenuFull.master" Inherits="RatTrap.UI.Show_Groups_Table" %>
 <%@ Register Tagprefix="RatTrap" TagName="ThemeButtonWithArrow" Src="../Shared/ThemeButtonWithArrow.ascx" %>
 
 <%@ Register Tagprefix="Selectors" Namespace="RatTrap" Assembly="RatTrap" %>
@@ -237,7 +237,7 @@
 	<asp:hiddenfield id="GroupsTableControl_PostbackTracker" runat="server" />
 </RatTrap:GroupsTableControl>
 
-            </td></tr></table>
+            </td></tr><tr><td><RatTrap:ThemeButton runat="server" id="CancelButton" button-causesvalidation="false" button-commandname="Redirect" button-text="&lt;%# GetResourceValue(&quot;Btn:Cancel&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:Cancel&quot;, &quot;RatTrap&quot;) %>"></RatTrap:ThemeButton></td></tr></table>
       </ContentTemplate>
 </asp:UpdatePanel>
 

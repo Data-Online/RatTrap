@@ -235,6 +235,18 @@ public partial class Show_Groups_Table
         
 
 
+public void SetCancelButton()
+        {
+            SetCancelButton_Base(); 
+        }              
+public void CancelButton_Click(object sender, EventArgs args)
+        {
+
+          // Click handler for CancelButton.
+          // Customize by adding code before the call or replace the call to the Base function with your own code.
+          CancelButton_Click_Base(sender, args);
+          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -257,6 +269,8 @@ public partial class Show_Groups_Table
         public ThemeButtonWithArrow Actions2Button;
                 
         public ThemeButtonWithArrow ActionsButton;
+                
+        public ThemeButton CancelButton;
                 
         public System.Web.UI.WebControls.LinkButton DescriptionLabel;
         
@@ -369,6 +383,8 @@ public partial class Show_Groups_Table
 
           // Setup the pagination events.
         
+                    this.CancelButton.Button.Click += CancelButton_Click;
+                        
           this.ClearControlsFromSession();    
     
           System.Web.HttpContext.Current.Session["isd_geo_location"] = "<location><error>LOCATION_ERROR_DISABLED</error></location>";
@@ -671,6 +687,8 @@ public partial class Show_Groups_Table
             
                 // initialize aspx controls
                 
+                SetCancelButton();
+              
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -761,12 +779,57 @@ public partial class Show_Groups_Table
                 GroupsTableControl.DataBind();
             }
         }
-          
+      
+        public void SetCancelButton_Base()                
+              
+        {
+        
+   
+        }
+                
 
         // Write out the DataSource properties and methods
                 
 
         // Write out event methods for the page events
+        
+        // event handler for Button
+        public void CancelButton_Click_Base(object sender, EventArgs args)
+        {
+              
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                
+          
+                // if target is specified meaning that is opened on popup or new window
+                if (!string.IsNullOrEmpty(Page.Request["target"]))
+                {
+                    shouldRedirect = false;
+                    AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "ClosePopup", "closePopupPage();", true);                   
+                }
+      
+            } catch (Exception ex) {
+                  shouldRedirect = false;
+                  this.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+            if (shouldRedirect) {
+                this.ShouldSaveControlsToSession = true;
+      this.RedirectBack();
+        
+            }
+        
+        }
+            
+            
         
       
 

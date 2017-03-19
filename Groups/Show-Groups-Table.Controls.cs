@@ -1754,6 +1754,12 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
             // 3. User selected filter criteria.
             
         
+            // Get the static clause defined at design time on the Table Panel Wizard
+            WhereClause qc = this.CreateQueryClause();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+          
             if (MiscUtils.IsValueSelected(this.GroupNameFilter)) {
                         
                 int selectedItemCount = 0;
@@ -1838,6 +1844,12 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
             
             String appRelativeVirtualPath = (String)HttpContext.Current.Session["AppRelativeVirtualPath"];
             
+            // Get the static clause defined at design time on the Table Panel Wizard
+            WhereClause qc = this.CreateQueryClause();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+            
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
       String GroupNameFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "GroupNameFilter_Ajax"];
@@ -1919,6 +1931,20 @@ public class BaseGroupsTableControl : RatTrap.UI.BaseApplicationTableControl
         }
 
         
+        protected virtual WhereClause CreateQueryClause()
+        {
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("URL(\"Groups\")", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.GroupsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Groups_.GroupId"), EvaluateFormula("URL(\"Groups\")", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("URL(\"Groups\")", false) == "--PLEASE_SELECT--" || EvaluateFormula("URL(\"Groups\")", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
         public virtual string[] GetAutoCompletionList_SearchText(String prefixText,int count)
         {
             ArrayList resultList = new ArrayList();

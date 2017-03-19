@@ -219,35 +219,89 @@ public partial class Edit_Traps_Table_Admin
         }
         
     
+        public ThemeButtonWithArrow Actions1Button1;
+                
+        public ThemeButtonWithArrow Actions2Button1;
+                
         public ThemeButtonWithArrow ActionsButton;
                 
         public System.Web.UI.WebControls.LinkButton ActiveLabel;
         
         public System.Web.UI.WebControls.ImageButton AddButton;
         
+        public System.Web.UI.WebControls.ImageButton AddButton3;
+        
+        public System.Web.UI.WebControls.ImageButton AddButton4;
+        
+        public System.Web.UI.WebControls.LinkButton BaitTypeLabel1;
+        
+        public System.Web.UI.WebControls.LinkButton DateOfCheckLabel1;
+        
         public System.Web.UI.WebControls.ImageButton DeleteButton;
         
+        public System.Web.UI.WebControls.ImageButton DeleteButton3;
+        
+        public System.Web.UI.WebControls.ImageButton DeleteButton4;
+        
         public ThemeButton FilterButton;
+                
+        public ThemeButton FilterButton3;
+                
+        public ThemeButton FilterButton4;
+                
+        public ThemeButtonWithArrow Filters1Button1;
+                
+        public ThemeButtonWithArrow Filters2Button1;
                 
         public ThemeButtonWithArrow FiltersButton;
                 
         public System.Web.UI.WebControls.LinkButton GroupIdLabel;
         
+        public System.Web.UI.WebControls.Literal NoteLabel1;
+        
         public System.Web.UI.WebControls.Literal PageTitle;
         
         public PaginationModern Pagination;
+                
+        public PaginationModern Pagination3;
+                
+        public PaginationModern Pagination4;
                 
         public System.Web.UI.WebControls.LinkButton ProjectIdLabel1;
         
         public System.Web.UI.WebControls.ImageButton ResetButton;
         
+        public System.Web.UI.WebControls.ImageButton ResetButton3;
+        
+        public System.Web.UI.WebControls.ImageButton ResetButton4;
+        
         public System.Web.UI.WebControls.ImageButton SaveButton;
+        
+        public System.Web.UI.WebControls.ImageButton SaveButton3;
+        
+        public System.Web.UI.WebControls.ImageButton SaveButton4;
+        
+        public System.Web.UI.WebControls.LinkButton SexLabel1;
         
         public System.Web.UI.WebControls.Label SortByLabel;
         
+        public System.Web.UI.WebControls.Label SortByLabel3;
+        
+        public System.Web.UI.WebControls.Label SortByLabel4;
+        
+        public System.Web.UI.WebControls.LinkButton SpeciesLabel1;
+        
         public System.Web.UI.WebControls.Literal Title0;
             
+        public System.Web.UI.WebControls.Literal Title3;
+            
+        public System.Web.UI.WebControls.Literal Title4;
+            
         public System.Web.UI.WebControls.CheckBox ToggleAll;
+        
+        public System.Web.UI.WebControls.CheckBox ToggleAll3;
+        
+        public System.Web.UI.WebControls.CheckBox ToggleAll4;
         
         public System.Web.UI.WebControls.LinkButton TrapIdentifierIdLabel;
         
@@ -256,6 +310,8 @@ public partial class Edit_Traps_Table_Admin
         public System.Web.UI.WebControls.LinkButton TrapTypeIdLabel;
         
         public System.Web.UI.WebControls.Literal TrapTypeIdLabel1;
+        
+        public System.Web.UI.WebControls.Literal UserIdLabel1;
         
         public ValidationSummary ValidationSummary1;
 

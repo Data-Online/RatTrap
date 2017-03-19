@@ -3,7 +3,7 @@
   <Generator>Iron Speed Designer</Generator>
   <Version>12.2.0</Version>
   <Self>
-    <Name>Show-UsersGroupsLink-TableAdmin</Name>
+    <Name>Show-UsersGroupsLink-Table-Admin</Name>
     <Type>Page</Type>
     <SubType>DotNet</SubType>
     <MasterLayout>../Master Pages/HorizontalMenuFull.master</MasterLayout>
@@ -11,8 +11,8 @@
     <PopupMasterLayout>../Master Pages/Popup.master</PopupMasterLayout>
     <PopupCssClass>QPageSize</PopupCssClass>
     <GenerateDirectory>UsersGroupsLink</GenerateDirectory>
-    <Layout>UsersGroupsLink\Show-UsersGroupsLink-TableAdmin.xml</Layout>
-    <DisplayName>Show-UsersGroupsLink-TableAdmin</DisplayName>
+    <Layout>UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.xml</Layout>
+    <DisplayName>Show-UsersGroupsLink-Table-Admin</DisplayName>
     <Description>Table view to show or edit multiple records.</Description>
     <LoginRequired>&lt;PRoles&gt;1;2;3;4;5&lt;/PRoles&gt;</LoginRequired>
     <CheckSum>1346454726-18521</CheckSum>
@@ -303,6 +303,39 @@
       </PassthroughAttributes>
       <InsideControl>LocationsTableControl</InsideControl>
       <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>CancelButton</Name>
+      <Type>Button</Type>
+      <Layout>..\Shared\ThemeButton.ascx</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Button-CausesValidation</Name>
+          <Value>false</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-CommandName</Name>
+          <Value>Redirect</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Consumers</Name>
+          <Value>page</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-RedirectURL</Name>
+          <Value>Back</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Text</Name>
+          <Value>Btn:Cancel</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Button-ToolTip</Name>
+          <Value>Btn:Cancel</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
     </ContainedComponent>
     <ContainedComponent>
       <Name>DeleteButton1</Name>
@@ -4215,6 +4248,13 @@
         &lt;Value&gt;
                         &amp;lt;GEN:TABLE NAME="UsersGroupsLinkTableControl"&amp;gt;&amp;lt;/GEN:TABLE&amp;gt;
             &lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:Button Name="CancelButton" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes /&gt;
       &lt;/Cell&gt;
       &lt;RowAttributes /&gt;

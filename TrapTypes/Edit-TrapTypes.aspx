@@ -1,7 +1,8 @@
-﻿<%@ Register Tagprefix="RatTrap" TagName="ThemeButton" Src="../Shared/ThemeButton.ascx" %>
+﻿<%@ Register Tagprefix="RatTrap" TagName="PaginationModern" Src="../Shared/PaginationModern.ascx" %>
 
-<%@ Register Tagprefix="RatTrap" TagName="PaginationModern" Src="../Shared/PaginationModern.ascx" %>
+<%@ Register Tagprefix="RatTrap" TagName="ThemeButton" Src="../Shared/ThemeButton.ascx" %>
 
+<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Edit-TrapTypes.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenuFull.master" Inherits="RatTrap.UI.Edit_TrapTypes" %>
 <%@ Register Tagprefix="RatTrap" TagName="ThemeButtonWithArrow" Src="../Shared/ThemeButtonWithArrow.ascx" %>
 
 <%@ Register Tagprefix="RatTrap" Namespace="RatTrap.UI.Controls.Edit_TrapTypes" Assembly="RatTrap" %>
@@ -9,7 +10,6 @@
 <%@ Register Tagprefix="Selectors" Namespace="RatTrap" Assembly="RatTrap" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Edit-TrapTypes.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenu.master" Inherits="RatTrap.UI.Edit_TrapTypes" %>
 <%@ Register Tagprefix="BaseClasses" Namespace="BaseClasses.Web.UI.WebControls" Assembly="BaseClasses" %><asp:Content id="PageSection" ContentPlaceHolderID="PageContent" Runat="server">
     <a id="StartOfPageContent"></a>
     <div id="scrollRegion" class="scrollRegion">              
@@ -79,7 +79,7 @@
 
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
                   <asp:panel id="CollapsibleRegion1" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tre">
-                    <table id="TrapsTableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thcnb" colspan="2"><asp:CheckBox runat="server" id="ToggleAll1" onclick="toggleAllCheckboxes(this);">	</asp:CheckBox></th><th class="thcnb"></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th></tr><asp:Repeater runat="server" id="TrapsTableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:TrapsTableControlRow runat="server" id="TrapsTableControlRow">
+                    <table id="TrapsTableControlGrid" cellpadding="0" cellspacing="0" border="0" width="100%" onkeydown="captureUpDownKey(this, event)"><tr class="tch"><th class="thcnb" colspan="2"><asp:CheckBox runat="server" id="ToggleAll1" onclick="toggleAllCheckboxes(this);">	</asp:CheckBox></th><th class="thcnb"></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc"></th><th class="thc"></th></tr><asp:Repeater runat="server" id="TrapsTableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:TrapsTableControlRow runat="server" id="TrapsTableControlRow">
 <tr><td class="tableCellSelectCheckbox" scope="row" style="font-size: 5px;" colspan="2">
                               <asp:CheckBox runat="server" id="SelectRow1" onclick="moveToThisTableRow(this);">	</asp:CheckBox>                              
                             </td><td class="tableRowButtonsCellVertical">
@@ -88,9 +88,8 @@
                         
                           <asp:ImageButton runat="server" id="DeleteRowButton" causesvalidation="False" commandargument="DeleteOnUpdate" commandname="DeleteRecord" cssclass="button_link" imageurl="../Images/icon_delete.gif" onmouseout="this.src=&#39;../Images/icon_delete.gif&#39;" onmouseover="this.src=&#39;../Images/icon_delete_over.gif&#39;" tooltip="&lt;%# GetResourceValue(&quot;Txt:DeleteRecord&quot;, &quot;RatTrap&quot;) %>">		
 	</asp:ImageButton>
-                        </td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="EvaluateFormula(&quot;= \&quot;Allocated to Group\&quot;&quot;, true)">	</asp:Literal> 
-</td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="GroupId" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"> 
-</td><td class="tableCellValue"> </td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:TrapsTableControlRow>
+                        </td><td class="tableCellLabel"><asp:Literal runat="server" id="TrapIdentifierIdLabel" Text="Trap Identifier">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="TrapIdentifierId" redirecturl=""></BaseClasses:QuickSelector></td><td class="tableCellLabel"><asp:Literal runat="server" id="LocationIdLabel" Text="Location">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="LocationId" redirecturl=""></BaseClasses:QuickSelector></td><td class="tableCellValue"><asp:Literal runat="server" id="ActiveLabel" Text="EvaluateFormula(&quot;= \&quot;Active?\&quot;&quot;, true)">	</asp:Literal></td><td class="tableCellValue"><asp:CheckBox runat="server" id="Active"></asp:CheckBox></td></tr><tr><td class="tableCellSelectCheckbox" scope="row" style="font-size: 5px;"></td><td class="tableCellSelectCheckbox" scope="row" style="font-size: 5px;"></td><td class="tableRowButtonsCellVertical"></td><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="EvaluateFormula(&quot;= \&quot;Allocated to Group\&quot;&quot;, true)">	</asp:Literal> 
+</td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="GroupId" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"><asp:Literal runat="server" id="ProjectIdLabel" Text="Project">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="ProjectId" redirecturl=""></BaseClasses:QuickSelector></td><td class="tableCellValue"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td><td class="tableRowDivider"></td><td class="tableRowDivider"></td></tr></RatTrap:TrapsTableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>

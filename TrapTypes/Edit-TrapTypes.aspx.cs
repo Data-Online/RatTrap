@@ -483,8 +483,6 @@ public partial class Edit_TrapTypes
       public void SaveData_Base()
       {
       
-        this.TrapsTableControl.SaveData();
-        
         this.TrapTypesRecordControl.SaveData();
         
       }
@@ -583,8 +581,6 @@ public partial class Edit_TrapTypes
     
                 // Load and bind data for each record and table UI control.
                 
-        SetTrapsTableControl();
-        
         SetTrapTypesRecordControl();
         
     

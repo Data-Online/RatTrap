@@ -8295,6 +8295,12 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
             // 3. User selected filter criteria.
             
         
+            // Get the static clause defined at design time on the Table Panel Wizard
+            WhereClause qc = this.CreateQueryClause();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+          
             if (MiscUtils.IsValueSelected(this.AreaIdFilter)) {
                         
                 int selectedItemCount = 0;
@@ -8379,6 +8385,12 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
             
             String appRelativeVirtualPath = (String)HttpContext.Current.Session["AppRelativeVirtualPath"];
             
+            // Get the static clause defined at design time on the Table Panel Wizard
+            WhereClause qc = this.CreateQueryClause();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+            
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
       String AreaIdFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "AreaIdFilter_Ajax"];
@@ -8460,6 +8472,20 @@ public class BaseProjectsTableControl : RatTrap.UI.BaseApplicationTableControl
         }
 
         
+        protected virtual WhereClause CreateQueryClause()
+        {
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("URL(\"Projects\")", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.ProjectsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Projects_.ProjectId"), EvaluateFormula("URL(\"Projects\")", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("URL(\"Projects\")", false) == "--PLEASE_SELECT--" || EvaluateFormula("URL(\"Projects\")", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
         public virtual string[] GetAutoCompletionList_SearchText(String prefixText,int count)
         {
             ArrayList resultList = new ArrayList();

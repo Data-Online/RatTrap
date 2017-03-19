@@ -91,14 +91,18 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
               // Register the event handlers.
 
           
-              this.BaitType.SelectedIndexChanged += BaitType_SelectedIndexChanged;                  
+              this.GroupId.SelectedIndexChanged += GroupId_SelectedIndexChanged;                  
                 
-              this.Sex.SelectedIndexChanged += Sex_SelectedIndexChanged;                  
+              this.ProjectId.SelectedIndexChanged += ProjectId_SelectedIndexChanged;                  
                 
-              this.Species.SelectedIndexChanged += Species_SelectedIndexChanged;                  
-                
-              this.TrapId.SelectedIndexChanged += TrapId_SelectedIndexChanged;                  
-                
+              this.BaitType.SelectedIndexChanged += BaitType_SelectedIndexChanged;
+            
+              this.Species.SelectedIndexChanged += Species_SelectedIndexChanged;
+            
+              this.Sex.SelectedIndexChanged += Sex_SelectedIndexChanged;
+            
+              this.Comment.TextChanged += Comment_TextChanged;
+            
               this.DateOfCheck.TextChanged += DateOfCheck_TextChanged;
             
         }
@@ -192,15 +196,19 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
         
                 SetBaitType();
                 SetBaitTypeLabel();
+                SetComment();
+                SetCommentLabel();
                 SetDateOfCheck();
                 SetDateOfCheckLabel();
+                SetGroupId();
+                SetGroupIdLabel();
+                SetProjectId();
+                SetProjectIdLabel();
                 SetSex();
                 SetSexLabel();
                 SetSpecies();
                 SetSpeciesLabel();
                 
-                SetTrapId();
-                SetTrapIdLabel();
 
       
 
@@ -235,11 +243,11 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                   
             
             
-            // Set the BaitType QuickSelector on the webpage with value from the
+            // Set the BaitType DropDownList on the webpage with value from the
             // DatabaseTheRatTrap%dbo.TrapRecords database record.
             
             // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.BaitType is the ASP:QuickSelector on the webpage.
+            // this.BaitType is the ASP:DropDownList on the webpage.
             
             // You can modify this method directly, or replace it with a call to
             //     base.SetBaitType();
@@ -265,72 +273,46 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                     selectedValue = TrapRecordsTable.BaitType.DefaultValue;
                 				
             }			
-                
-            // Add the Please Select item.
-            if (selectedValue == null || selectedValue == "")
-                  MiscUtils.ResetSelectedItem(this.BaitType, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-                        
+                            
                   
             // Populate the item(s) to the control
             
-            this.BaitType.SetFieldMaxLength(50);
-            
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
-            FormulaEvaluator evaluator = new FormulaEvaluator();
-              
-            if (selectedValue != null &&
-                selectedValue.Trim() != "" &&
-                !MiscUtils.SetSelectedValue(this.BaitType, selectedValue) &&
-                !MiscUtils.SetSelectedDisplayText(this.BaitType, selectedValue))
-            {
-
-                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.BaitTypes.BaitTypeId = selectedValue
-                    
-                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
-                WhereClause whereClause2 = new WhereClause();
-                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaitTypesTable.BaitTypeId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
-                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
-
-                // Execute the query
-                try
-                {
-                    BaitTypesRecord[] rc = BaitTypesTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
-                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
-                    // if find a record, add it to the dropdown and set it as selected item
-                    if (rc != null && rc.Length == 1)
-                    {
-                        BaitTypesRecord itemValue = rc[0];
-                        string cvalue = null;
-                        string fvalue = null;                        
-                        if (itemValue.BaitTypeIdSpecified)
-                            cvalue = itemValue.BaitTypeId.ToString(); 
-                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.BaitType);
-                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.BaitType.IsApplyDisplayAs)
-                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.BaitType);
-                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(BaitTypesTable.BaitType);
-                            					
-                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-                        MiscUtils.ResetSelectedItem(this.BaitType, new ListItem(fvalue, cvalue));                      
-                    }
-                }
-                catch
-                {
-                }
-
-                    					
-            }					
-                        
-              string url = this.ModifyRedirectUrl("../BaitTypes/BaitTypes-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.BaitType.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("BaitType")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("BaitTypeId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.BaitType.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(BaitType.AutoPostBack).ToLower() + ", event); return false;";
-                  
+            this.PopulateBaitTypeDropDownList(selectedValue, 100);              
                 
                   
+        }
+                
+        public virtual void SetComment()
+        {
+            
+                    
+            // Set the Comment TextBox on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
+            // this.Comment is the ASP:TextBox on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.CommentSpecified) {
+                								
+                // If the Comment is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(TrapRecordsTable.Comment);
+                                
+                this.Comment.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Comment is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Comment.Text = TrapRecordsTable.Comment.Format(TrapRecordsTable.Comment.DefaultValue);
+            		
+            }
+            
+              this.Comment.TextChanged += Comment_TextChanged;
+                               
         }
                 
         public virtual void SetDateOfCheck()
@@ -366,6 +348,224 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                                
         }
                 
+        public virtual void SetGroupId()
+        {
+            				
+        
+        
+            string selectedValue = null;
+            
+            // figure out the selectedValue
+                  
+            
+            
+            // Set the GroupId QuickSelector on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+            
+            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
+            // this.GroupId is the ASP:QuickSelector on the webpage.
+            
+            // You can modify this method directly, or replace it with a call to
+            //     base.SetGroupId();
+            // and add your own custom code before or after the call to the base function.
+
+            
+            if (this.DataSource != null && this.DataSource.GroupIdSpecified)
+            {
+                            
+                // If the GroupId is non-NULL, then format the value.
+                // The Format method will return the Display Foreign Key As (DFKA) value
+                selectedValue = this.DataSource.GroupId.ToString();
+                
+            }
+            else
+            {
+                
+                // GroupId is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+                if (this.DataSource != null && this.DataSource.IsCreated)
+                    selectedValue = null;
+                else
+                    selectedValue = TrapRecordsTable.GroupId.DefaultValue;
+                				
+            }			
+                
+            // Add the Please Select item.
+            if (selectedValue == null || selectedValue == "")
+                  MiscUtils.ResetSelectedItem(this.GroupId, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+                        
+                  
+            // Populate the item(s) to the control
+            
+            this.GroupId.SetFieldMaxLength(50);
+            
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.GroupId, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.GroupId, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Groups.GroupId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(GroupsTable.GroupId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    GroupsRecord[] rc = GroupsTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        GroupsRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.GroupIdSpecified)
+                            cvalue = itemValue.GroupId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.GroupId);
+                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.GroupId.IsApplyDisplayAs)
+                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.GroupId);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(GroupsTable.GroupId);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.GroupId, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+              string url = this.ModifyRedirectUrl("../Groups/Groups-QuickSelector.aspx", "", true);
+              
+              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+              
+              url += "?Target=" + this.GroupId.ClientID + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= Groups.GroupName")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("GroupId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              
+              this.GroupId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(GroupId.AutoPostBack).ToLower() + ", event); return false;";
+                  
+                
+                  
+        }
+                
+        public virtual void SetProjectId()
+        {
+            				
+        
+        
+            string selectedValue = null;
+            
+            // figure out the selectedValue
+                  
+            
+            
+            // Set the ProjectId QuickSelector on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+            
+            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
+            // this.ProjectId is the ASP:QuickSelector on the webpage.
+            
+            // You can modify this method directly, or replace it with a call to
+            //     base.SetProjectId();
+            // and add your own custom code before or after the call to the base function.
+
+            
+            if (this.DataSource != null && this.DataSource.ProjectIdSpecified)
+            {
+                            
+                // If the ProjectId is non-NULL, then format the value.
+                // The Format method will return the Display Foreign Key As (DFKA) value
+                selectedValue = this.DataSource.ProjectId.ToString();
+                
+            }
+            else
+            {
+                
+                // ProjectId is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+                if (this.DataSource != null && this.DataSource.IsCreated)
+                    selectedValue = null;
+                else
+                    selectedValue = TrapRecordsTable.ProjectId.DefaultValue;
+                				
+            }			
+                
+            // Add the Please Select item.
+            if (selectedValue == null || selectedValue == "")
+                  MiscUtils.ResetSelectedItem(this.ProjectId, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+                        
+                  
+            // Populate the item(s) to the control
+            
+            this.ProjectId.SetFieldMaxLength(50);
+            
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.ProjectId, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.ProjectId, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Projects.ProjectId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(ProjectsTable.ProjectId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    ProjectsRecord[] rc = ProjectsTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        ProjectsRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.ProjectIdSpecified)
+                            cvalue = itemValue.ProjectId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.ProjectId);
+                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.ProjectId.IsApplyDisplayAs)
+                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.ProjectId);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(ProjectsTable.ProjectId);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.ProjectId, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+              string url = this.ModifyRedirectUrl("../Projects/Projects-QuickSelector.aspx", "", true);
+              
+              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
+              
+              url += "?Target=" + this.ProjectId.ClientID + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= Projects.Description")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("ProjectId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              
+              this.ProjectId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(ProjectId.AutoPostBack).ToLower() + ", event); return false;";
+                  
+                
+                  
+        }
+                
         public virtual void SetSex()
         {
             				
@@ -377,11 +577,11 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                   
             
             
-            // Set the Sex QuickSelector on the webpage with value from the
+            // Set the Sex RadioButtonList on the webpage with value from the
             // DatabaseTheRatTrap%dbo.TrapRecords database record.
             
             // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Sex is the ASP:QuickSelector on the webpage.
+            // this.Sex is the ASP:RadioButtonList on the webpage.
             
             // You can modify this method directly, or replace it with a call to
             //     base.SetSex();
@@ -407,70 +607,11 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                     selectedValue = TrapRecordsTable.Sex.DefaultValue;
                 				
             }			
-                
-            // Add the Please Select item.
-            if (selectedValue == null || selectedValue == "")
-                  MiscUtils.ResetSelectedItem(this.Sex, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-                        
+                            
                   
             // Populate the item(s) to the control
             
-            this.Sex.SetFieldMaxLength(50);
-            
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
-            FormulaEvaluator evaluator = new FormulaEvaluator();
-              
-            if (selectedValue != null &&
-                selectedValue.Trim() != "" &&
-                !MiscUtils.SetSelectedValue(this.Sex, selectedValue) &&
-                !MiscUtils.SetSelectedDisplayText(this.Sex, selectedValue))
-            {
-
-                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Sex.SexId = selectedValue
-                    
-                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
-                WhereClause whereClause2 = new WhereClause();
-                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(SexTable.SexId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
-                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
-
-                // Execute the query
-                try
-                {
-                    SexRecord[] rc = SexTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
-                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
-                    // if find a record, add it to the dropdown and set it as selected item
-                    if (rc != null && rc.Length == 1)
-                    {
-                        SexRecord itemValue = rc[0];
-                        string cvalue = null;
-                        string fvalue = null;                        
-                        if (itemValue.SexIdSpecified)
-                            cvalue = itemValue.SexId.ToString(); 
-                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Sex);
-                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.Sex.IsApplyDisplayAs)
-                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.Sex);
-                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(SexTable.Sex);
-                            					
-                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-                        MiscUtils.ResetSelectedItem(this.Sex, new ListItem(fvalue, cvalue));                      
-                    }
-                }
-                catch
-                {
-                }
-
-                    					
-            }					
-                        
-              string url = this.ModifyRedirectUrl("../Sex/Sex-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.Sex.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("Sex")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("SexId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.Sex.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(Sex.AutoPostBack).ToLower() + ", event); return false;";
-                  
+            this.PopulateSexRadioButtonList(selectedValue, 100);              
                 
                   
         }
@@ -486,11 +627,11 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                   
             
             
-            // Set the Species QuickSelector on the webpage with value from the
+            // Set the Species DropDownList on the webpage with value from the
             // DatabaseTheRatTrap%dbo.TrapRecords database record.
             
             // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Species is the ASP:QuickSelector on the webpage.
+            // this.Species is the ASP:DropDownList on the webpage.
             
             // You can modify this method directly, or replace it with a call to
             //     base.SetSpecies();
@@ -516,184 +657,22 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                     selectedValue = TrapRecordsTable.Species.DefaultValue;
                 				
             }			
-                
-            // Add the Please Select item.
-            if (selectedValue == null || selectedValue == "")
-                  MiscUtils.ResetSelectedItem(this.Species, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-                        
-                  
-            // Populate the item(s) to the control
-            
-            this.Species.SetFieldMaxLength(50);
-            
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
-            FormulaEvaluator evaluator = new FormulaEvaluator();
-              
-            if (selectedValue != null &&
-                selectedValue.Trim() != "" &&
-                !MiscUtils.SetSelectedValue(this.Species, selectedValue) &&
-                !MiscUtils.SetSelectedDisplayText(this.Species, selectedValue))
-            {
-
-                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Species.SpeciesId = selectedValue
-                    
-                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
-                WhereClause whereClause2 = new WhereClause();
-                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(SpeciesTable.SpeciesId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
-                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
-
-                // Execute the query
-                try
-                {
-                    SpeciesRecord[] rc = SpeciesTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
-                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
-                    // if find a record, add it to the dropdown and set it as selected item
-                    if (rc != null && rc.Length == 1)
-                    {
-                        SpeciesRecord itemValue = rc[0];
-                        string cvalue = null;
-                        string fvalue = null;                        
-                        if (itemValue.SpeciesIdSpecified)
-                            cvalue = itemValue.SpeciesId.ToString(); 
-                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Species);
-                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.Species.IsApplyDisplayAs)
-                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.Species);
-                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(SpeciesTable.Species);
-                            					
-                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-                        MiscUtils.ResetSelectedItem(this.Species, new ListItem(fvalue, cvalue));                      
-                    }
-                }
-                catch
-                {
-                }
-
-                    					
-            }					
-                        
-              string url = this.ModifyRedirectUrl("../Species/Species-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.Species.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("Species")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("SpeciesId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.Species.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(Species.AutoPostBack).ToLower() + ", event); return false;";
-                  
-                
-                  
-        }
-                
-        public virtual void SetTrapId()
-        {
-            				
-        
-        
-            string selectedValue = null;
-            
-            // figure out the selectedValue
-                  
-            
-            
-            // Set the TrapId QuickSelector on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-            
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.TrapId is the ASP:QuickSelector on the webpage.
-            
-            // You can modify this method directly, or replace it with a call to
-            //     base.SetTrapId();
-            // and add your own custom code before or after the call to the base function.
-
-            
-            if (this.DataSource != null && this.DataSource.TrapIdSpecified)
-            {
                             
-                // If the TrapId is non-NULL, then format the value.
-                // The Format method will return the Display Foreign Key As (DFKA) value
-                selectedValue = this.DataSource.TrapId.ToString();
-                
-            }
-            else
-            {
-                
-                // TrapId is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-                if (this.DataSource != null && this.DataSource.IsCreated)
-                    selectedValue = null;
-                else
-                    selectedValue = TrapRecordsTable.TrapId.DefaultValue;
-                				
-            }			
-                
-            // Add the Please Select item.
-            if (selectedValue == null || selectedValue == "")
-                  MiscUtils.ResetSelectedItem(this.TrapId, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
-                        
                   
             // Populate the item(s) to the control
             
-            this.TrapId.SetFieldMaxLength(50);
-            
-            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object>();              
-            FormulaEvaluator evaluator = new FormulaEvaluator();
-              
-            if (selectedValue != null &&
-                selectedValue.Trim() != "" &&
-                !MiscUtils.SetSelectedValue(this.TrapId, selectedValue) &&
-                !MiscUtils.SetSelectedDisplayText(this.TrapId, selectedValue))
-            {
-
-                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Traps.TrapId = selectedValue
-                    
-                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
-                WhereClause whereClause2 = new WhereClause();
-                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(TrapsTable.TrapId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
-                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
-
-                // Execute the query
-                try
-                {
-                    TrapsRecord[] rc = TrapsTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
-                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
-                    // if find a record, add it to the dropdown and set it as selected item
-                    if (rc != null && rc.Length == 1)
-                    {
-                        TrapsRecord itemValue = rc[0];
-                        string cvalue = null;
-                        string fvalue = null;                        
-                        if (itemValue.TrapIdSpecified)
-                            cvalue = itemValue.TrapId.ToString(); 
-                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.TrapId);
-                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.TrapId.IsApplyDisplayAs)
-                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.TrapId);
-                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                            fvalue = itemValue.Format(TrapsTable.TrapId);
-                            					
-                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
-                        MiscUtils.ResetSelectedItem(this.TrapId, new ListItem(fvalue, cvalue));                      
-                    }
-                }
-                catch
-                {
-                }
-
-                    					
-            }					
-                        
-              string url = this.ModifyRedirectUrl("../Traps/Traps-QuickSelector.aspx", "", true);
-              
-              url = this.Page.ModifyRedirectUrl(url, "", true);                                  
-              
-              url += "?Target=" + this.TrapId.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("TrapId")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--PLEASE_SELECT--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:PleaseSelect"))+ "&Mode=" + (this.Page as BaseApplicationPage).Encrypt("FieldValueSingleSelection") + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
-              
-              this.TrapId.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(TrapId.AutoPostBack).ToLower() + ", event); return false;";
-                  
+            this.PopulateSpeciesDropDownList(selectedValue, 100);              
                 
                   
         }
                 
         public virtual void SetBaitTypeLabel()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetCommentLabel()
                   {
                   
                     
@@ -707,6 +686,18 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                     
         }
                 
+        public virtual void SetGroupIdLabel()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetProjectIdLabel()
+                  {
+                  
+                    
+        }
+                
         public virtual void SetSexLabel()
                   {
                   
@@ -714,12 +705,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
         }
                 
         public virtual void SetSpeciesLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetTrapIdLabel()
                   {
                   
                     
@@ -887,22 +872,38 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
             // Call the Get methods for each of the user interface controls.
         
             GetBaitType();
+            GetComment();
             GetDateOfCheck();
+            GetGroupId();
+            GetProjectId();
             GetSex();
             GetSpecies();
-            GetTrapId();
         }
         
         
         public virtual void GetBaitType()
         {
-         // Retrieve the value entered by the user on the BaitType ASP:QuickSelector, and
+         // Retrieve the value entered by the user on the BaitType ASP:DropDownList, and
             // save it into the BaitType field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
             
             // Custom validation should be performed in Validate, not here.
             
             this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.BaitType), TrapRecordsTable.BaitType);			
                 			 
+        }
+                
+        public virtual void GetComment()
+        {
+            
+            // Retrieve the value entered by the user on the Comment ASP:TextBox, and
+            // save it into the Comment field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
+            
+            // Custom validation should be performed in Validate, not here.
+                    
+            // Save the value to data source
+            this.DataSource.Parse(this.Comment.Text, TrapRecordsTable.Comment);							
+                          
+                      
         }
                 
         public virtual void GetDateOfCheck()
@@ -922,9 +923,31 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                       
         }
                 
+        public virtual void GetGroupId()
+        {
+         // Retrieve the value entered by the user on the GroupId ASP:QuickSelector, and
+            // save it into the GroupId field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
+            
+            // Custom validation should be performed in Validate, not here.
+            
+            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.GroupId), TrapRecordsTable.GroupId);			
+                			 
+        }
+                
+        public virtual void GetProjectId()
+        {
+         // Retrieve the value entered by the user on the ProjectId ASP:QuickSelector, and
+            // save it into the ProjectId field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
+            
+            // Custom validation should be performed in Validate, not here.
+            
+            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.ProjectId), TrapRecordsTable.ProjectId);			
+                			 
+        }
+                
         public virtual void GetSex()
         {
-         // Retrieve the value entered by the user on the Sex ASP:QuickSelector, and
+         // Retrieve the value entered by the user on the Sex ASP:RadioButtonList, and
             // save it into the Sex field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
             
             // Custom validation should be performed in Validate, not here.
@@ -935,23 +958,12 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
                 
         public virtual void GetSpecies()
         {
-         // Retrieve the value entered by the user on the Species ASP:QuickSelector, and
+         // Retrieve the value entered by the user on the Species ASP:DropDownList, and
             // save it into the Species field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
             
             // Custom validation should be performed in Validate, not here.
             
             this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.Species), TrapRecordsTable.Species);			
-                			 
-        }
-                
-        public virtual void GetTrapId()
-        {
-         // Retrieve the value entered by the user on the TrapId ASP:QuickSelector, and
-            // save it into the TrapId field in DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
-            
-            // Custom validation should be performed in Validate, not here.
-            
-            this.DataSource.Parse(MiscUtils.GetValueSelectedPageRequest(this.TrapId), TrapRecordsTable.TrapId);			
                 			 
         }
                 
@@ -1275,34 +1287,541 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
     
         // Generate set method for buttons
         
+        public virtual WhereClause CreateWhereClause_BaitTypeDropDownList() 
+        {
+            // By default, we simply return a new WhereClause.
+            // Add additional where clauses to restrict the items shown in the dropdown list.
+            						
+            // This WhereClause is for the DatabaseTheRatTrap%dbo.BaitTypes table.
+            // Examples:
+            // wc.iAND(BaitTypesTable.BaitType, BaseFilter.ComparisonOperator.EqualsTo, "XYZ");
+            // wc.iAND(BaitTypesTable.Active, BaseFilter.ComparisonOperator.EqualsTo, "1");
+            
+            WhereClause wc = new WhereClause();
+            return wc;
+            				
+        }
+        
+        public virtual WhereClause CreateWhereClause_SexRadioButtonList() 
+        {
+            // By default, we simply return a new WhereClause.
+            // Add additional where clauses to restrict the items shown in the dropdown list.
+            						
+            // This WhereClause is for the DatabaseTheRatTrap%dbo.Sex table.
+            // Examples:
+            // wc.iAND(SexTable.Sex, BaseFilter.ComparisonOperator.EqualsTo, "XYZ");
+            // wc.iAND(SexTable.Active, BaseFilter.ComparisonOperator.EqualsTo, "1");
+            
+            WhereClause wc = new WhereClause();
+            return wc;
+            				
+        }
+        
+        public virtual WhereClause CreateWhereClause_SpeciesDropDownList() 
+        {
+            // By default, we simply return a new WhereClause.
+            // Add additional where clauses to restrict the items shown in the dropdown list.
+            						
+            // This WhereClause is for the DatabaseTheRatTrap%dbo.Species table.
+            // Examples:
+            // wc.iAND(SpeciesTable.Species, BaseFilter.ComparisonOperator.EqualsTo, "XYZ");
+            // wc.iAND(SpeciesTable.Active, BaseFilter.ComparisonOperator.EqualsTo, "1");
+            
+            WhereClause wc = new WhereClause();
+            return wc;
+            				
+        }
+        
+        // Fill the BaitType list.
+        protected virtual void PopulateBaitTypeDropDownList(string selectedValue, int maxItems) 
+        {
+            		  					                
+            this.BaitType.Items.Clear();
+            
+            // 1. Setup the static list items        
+            
+              // Add the Please Select item.
+              this.BaitType.Items.Insert(0, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+            		  			
+            // 2. Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_BaitTypeDropDownList function.
+            // It is better to customize the where clause there.
+            
+                      
+            WhereClause wc = CreateWhereClause_BaitTypeDropDownList();
+                        
+                
+            // Create the ORDER BY clause to sort based on the displayed value.							
+                
+            OrderBy orderBy = new OrderBy(false, false);
+                          orderBy.Add(BaitTypesTable.BaitType, OrderByItem.OrderDir.Asc);
+
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object> ();
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+
+            // 3. Read a total of maxItems from the database and insert them into the BaitTypeDropDownList.
+            BaitTypesRecord[] itemValues  = null;
+            if (wc.RunQuery)
+            {
+                int counter = 0;
+                int pageNum = 0;	
+                ArrayList listDuplicates = new ArrayList();
+
+                do
+                {
+                    itemValues = BaitTypesTable.GetRecords(wc, orderBy, pageNum, maxItems);
+                    foreach (BaitTypesRecord itemValue in itemValues) 
+                    {
+                        // Create the item and add to the list.
+                        string cvalue = null;
+                        string fvalue = null;
+                        if (itemValue.BaitTypeIdSpecified) 
+                        {
+                            cvalue = itemValue.BaitTypeId.ToString().ToString();
+                            if (counter < maxItems && this.BaitType.Items.FindByValue(cvalue) == null)
+                            {
+                                     
+                                Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.BaitType);
+                                if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.BaitType.IsApplyDisplayAs)
+                                    fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.BaitType);
+                                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                                    fvalue = itemValue.Format(BaitTypesTable.BaitType);
+                                    		
+
+                                if (fvalue == null || fvalue.Trim() == "") 
+                                    fvalue = cvalue;
+
+                                if (fvalue == null) {
+                                    fvalue = "";
+                                }
+
+                                fvalue = fvalue.Trim();
+
+                                if ( fvalue.Length > 50 ) {
+                                    fvalue = fvalue.Substring(0, 50) + "...";
+                                }
+
+                                ListItem dupItem = this.BaitType.Items.FindByText(fvalue);
+								
+                                if (dupItem != null) {
+                                    listDuplicates.Add(fvalue);
+                                    if (!string.IsNullOrEmpty(dupItem.Value))
+                                    {
+                                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
+                                    }
+                                }
+
+                                ListItem newItem = new ListItem(fvalue, cvalue);
+                                this.BaitType.Items.Add(newItem);
+
+                                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
+                                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
+                                }
+
+                                counter += 1;
+                            }
+                        }
+                    }
+                    pageNum++;
+                }
+                while (itemValues.Length == maxItems && counter < maxItems);
+            }
+                        
+                                        
+            // 4. Set the selected value (insert if not already present).
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.BaitType, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.BaitType, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.BaitTypes.BaitTypeId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaitTypesTable.BaitTypeId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    BaitTypesRecord[] rc = BaitTypesTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        BaitTypesRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.BaitTypeIdSpecified)
+                            cvalue = itemValue.BaitTypeId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.BaitType);
+                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.BaitType.IsApplyDisplayAs)
+                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.BaitType);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(BaitTypesTable.BaitType);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.BaitType, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+        }
+                  
+        // Fill the Sex list.
+        protected virtual void PopulateSexRadioButtonList(string selectedValue, int maxItems) 
+        {
+            		  					                
+            this.Sex.Items.Clear();
+            
+            // 1. Setup the static list items        
+            
+              // Add the Please Select item.
+              this.Sex.Items.Insert(0, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+            		  			
+            // 2. Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_SexRadioButtonList function.
+            // It is better to customize the where clause there.
+            
+                      
+            WhereClause wc = CreateWhereClause_SexRadioButtonList();
+                        
+                
+            // Create the ORDER BY clause to sort based on the displayed value.							
+                
+            OrderBy orderBy = new OrderBy(false, false);
+                          orderBy.Add(SexTable.Sex, OrderByItem.OrderDir.Asc);
+
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object> ();
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+
+            // 3. Read a total of maxItems from the database and insert them into the SexRadioButtonList.
+            SexRecord[] itemValues  = null;
+            if (wc.RunQuery)
+            {
+                int counter = 0;
+                int pageNum = 0;	
+                ArrayList listDuplicates = new ArrayList();
+
+                do
+                {
+                    itemValues = SexTable.GetRecords(wc, orderBy, pageNum, maxItems);
+                    foreach (SexRecord itemValue in itemValues) 
+                    {
+                        // Create the item and add to the list.
+                        string cvalue = null;
+                        string fvalue = null;
+                        if (itemValue.SexIdSpecified) 
+                        {
+                            cvalue = itemValue.SexId.ToString().ToString();
+                            if (counter < maxItems && this.Sex.Items.FindByValue(cvalue) == null)
+                            {
+                                     
+                                Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Sex);
+                                if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.Sex.IsApplyDisplayAs)
+                                    fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.Sex);
+                                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                                    fvalue = itemValue.Format(SexTable.Sex);
+                                    		
+
+                                if (fvalue == null || fvalue.Trim() == "") 
+                                    fvalue = cvalue;
+
+                                if (fvalue == null) {
+                                    fvalue = "";
+                                }
+
+                                fvalue = fvalue.Trim();
+
+                                if ( fvalue.Length > 50 ) {
+                                    fvalue = fvalue.Substring(0, 50) + "...";
+                                }
+
+                                ListItem dupItem = this.Sex.Items.FindByText(fvalue);
+								
+                                if (dupItem != null) {
+                                    listDuplicates.Add(fvalue);
+                                    if (!string.IsNullOrEmpty(dupItem.Value))
+                                    {
+                                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
+                                    }
+                                }
+
+                                ListItem newItem = new ListItem(fvalue, cvalue);
+                                this.Sex.Items.Add(newItem);
+
+                                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
+                                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
+                                }
+
+                                counter += 1;
+                            }
+                        }
+                    }
+                    pageNum++;
+                }
+                while (itemValues.Length == maxItems && counter < maxItems);
+            }
+                        
+                                        
+            // 4. Set the selected value (insert if not already present).
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.Sex, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.Sex, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Sex.SexId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(SexTable.SexId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    SexRecord[] rc = SexTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        SexRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.SexIdSpecified)
+                            cvalue = itemValue.SexId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Sex);
+                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.Sex.IsApplyDisplayAs)
+                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.Sex);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(SexTable.Sex);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.Sex, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+        }
+                  
+        // Fill the Species list.
+        protected virtual void PopulateSpeciesDropDownList(string selectedValue, int maxItems) 
+        {
+            		  					                
+            this.Species.Items.Clear();
+            
+            // 1. Setup the static list items        
+            
+              // Add the Please Select item.
+              this.Species.Items.Insert(0, new ListItem(this.Page.GetResourceValue("Txt:PleaseSelect", "RatTrap"), "--PLEASE_SELECT--"));
+            		  			
+            // 2. Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_SpeciesDropDownList function.
+            // It is better to customize the where clause there.
+            
+                      
+            WhereClause wc = CreateWhereClause_SpeciesDropDownList();
+                        
+                
+            // Create the ORDER BY clause to sort based on the displayed value.							
+                
+            OrderBy orderBy = new OrderBy(false, false);
+                          orderBy.Add(SpeciesTable.Species, OrderByItem.OrderDir.Asc);
+
+            System.Collections.Generic.IDictionary<string, object> variables = new System.Collections.Generic.Dictionary<string, object> ();
+            FormulaEvaluator evaluator = new FormulaEvaluator();
+
+            // 3. Read a total of maxItems from the database and insert them into the SpeciesDropDownList.
+            SpeciesRecord[] itemValues  = null;
+            if (wc.RunQuery)
+            {
+                int counter = 0;
+                int pageNum = 0;	
+                ArrayList listDuplicates = new ArrayList();
+
+                do
+                {
+                    itemValues = SpeciesTable.GetRecords(wc, orderBy, pageNum, maxItems);
+                    foreach (SpeciesRecord itemValue in itemValues) 
+                    {
+                        // Create the item and add to the list.
+                        string cvalue = null;
+                        string fvalue = null;
+                        if (itemValue.SpeciesIdSpecified) 
+                        {
+                            cvalue = itemValue.SpeciesId.ToString().ToString();
+                            if (counter < maxItems && this.Species.Items.FindByValue(cvalue) == null)
+                            {
+                                     
+                                Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Species);
+                                if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.Species.IsApplyDisplayAs)
+                                    fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.Species);
+                                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                                    fvalue = itemValue.Format(SpeciesTable.Species);
+                                    		
+
+                                if (fvalue == null || fvalue.Trim() == "") 
+                                    fvalue = cvalue;
+
+                                if (fvalue == null) {
+                                    fvalue = "";
+                                }
+
+                                fvalue = fvalue.Trim();
+
+                                if ( fvalue.Length > 50 ) {
+                                    fvalue = fvalue.Substring(0, 50) + "...";
+                                }
+
+                                ListItem dupItem = this.Species.Items.FindByText(fvalue);
+								
+                                if (dupItem != null) {
+                                    listDuplicates.Add(fvalue);
+                                    if (!string.IsNullOrEmpty(dupItem.Value))
+                                    {
+                                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
+                                    }
+                                }
+
+                                ListItem newItem = new ListItem(fvalue, cvalue);
+                                this.Species.Items.Add(newItem);
+
+                                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
+                                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
+                                }
+
+                                counter += 1;
+                            }
+                        }
+                    }
+                    pageNum++;
+                }
+                while (itemValues.Length == maxItems && counter < maxItems);
+            }
+                        
+                                        
+            // 4. Set the selected value (insert if not already present).
+              
+            if (selectedValue != null &&
+                selectedValue.Trim() != "" &&
+                !MiscUtils.SetSelectedValue(this.Species, selectedValue) &&
+                !MiscUtils.SetSelectedDisplayText(this.Species, selectedValue))
+            {
+
+                // construct a whereclause to query a record with DatabaseTheRatTrap%dbo.Species.SpeciesId = selectedValue
+                    
+                CompoundFilter filter2 = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+                WhereClause whereClause2 = new WhereClause();
+                filter2.AddFilter(new BaseClasses.Data.ColumnValueFilter(SpeciesTable.SpeciesId, selectedValue, BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+                whereClause2.AddFilter(filter2, CompoundFilter.CompoundingOperators.And_Operator);
+
+                // Execute the query
+                try
+                {
+                    SpeciesRecord[] rc = SpeciesTable.GetRecords(whereClause2, new OrderBy(false, false), 0, 1);
+                    System.Collections.Generic.IDictionary<string, object> vars = new System.Collections.Generic.Dictionary<string, object> ();
+                    // if find a record, add it to the dropdown and set it as selected item
+                    if (rc != null && rc.Length == 1)
+                    {
+                        SpeciesRecord itemValue = rc[0];
+                        string cvalue = null;
+                        string fvalue = null;                        
+                        if (itemValue.SpeciesIdSpecified)
+                            cvalue = itemValue.SpeciesId.ToString(); 
+                        Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Species);
+                        if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.Species.IsApplyDisplayAs)
+                            fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.Species);
+                        if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
+                            fvalue = itemValue.Format(SpeciesTable.Species);
+                            					
+                        if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
+                        MiscUtils.ResetSelectedItem(this.Species, new ListItem(fvalue, cvalue));                      
+                    }
+                }
+                catch
+                {
+                }
+
+                    					
+            }					
+                        
+        }
+                  
+        protected virtual void GroupId_SelectedIndexChanged(object sender, EventArgs args)
+        {
+          									
+
+        }
+                      
+                    
+        protected virtual void ProjectId_SelectedIndexChanged(object sender, EventArgs args)
+        {
+          									
+
+        }
+                      
+                    
         protected virtual void BaitType_SelectedIndexChanged(object sender, EventArgs args)
         {
-          									
-
+            // for the value inserted by quick add button or large list selector, 
+            // the value is necessary to be inserted by this event during postback 
+            string val = (string)(this.Page.Session[BaitType.ClientID + "_SelectedValue"]);
+            string displayText = (string)(this.Page.Session[BaitType.ClientID + "_SelectedDisplayText"]);
+            if (!string.IsNullOrEmpty(displayText) && !string.IsNullOrEmpty(val)) {
+	            this.BaitType.Items.Add(new ListItem(displayText, val));
+	            this.BaitType.SelectedIndex = this.BaitType.Items.Count - 1;
+	            this.Page.Session.Remove(BaitType.ClientID + "_SelectedValue");
+	            this.Page.Session.Remove(BaitType.ClientID + "_SelectedDisplayText");
+            }
+           						
         }
-                      
-                    
-        protected virtual void Sex_SelectedIndexChanged(object sender, EventArgs args)
-        {
-          									
-
-        }
-                      
-                    
+            
         protected virtual void Species_SelectedIndexChanged(object sender, EventArgs args)
         {
-          									
-
+            // for the value inserted by quick add button or large list selector, 
+            // the value is necessary to be inserted by this event during postback 
+            string val = (string)(this.Page.Session[Species.ClientID + "_SelectedValue"]);
+            string displayText = (string)(this.Page.Session[Species.ClientID + "_SelectedDisplayText"]);
+            if (!string.IsNullOrEmpty(displayText) && !string.IsNullOrEmpty(val)) {
+	            this.Species.Items.Add(new ListItem(displayText, val));
+	            this.Species.SelectedIndex = this.Species.Items.Count - 1;
+	            this.Page.Session.Remove(Species.ClientID + "_SelectedValue");
+	            this.Page.Session.Remove(Species.ClientID + "_SelectedDisplayText");
+            }
+           						
         }
-                      
-                    
-        protected virtual void TrapId_SelectedIndexChanged(object sender, EventArgs args)
+            
+        protected virtual void Sex_SelectedIndexChanged(object sender, EventArgs args)
         {
-          									
-
+            // for the value inserted by quick add button or large list selector, 
+            // the value is necessary to be inserted by this event during postback 
+            string val = (string)(this.Page.Session[Sex.ClientID + "_SelectedValue"]);
+            string displayText = (string)(this.Page.Session[Sex.ClientID + "_SelectedDisplayText"]);
+            if (!string.IsNullOrEmpty(displayText) && !string.IsNullOrEmpty(val)) {
+	            this.Sex.Items.Add(new ListItem(displayText, val));
+	            this.Sex.SelectedIndex = this.Sex.Items.Count - 1;
+	            this.Page.Session.Remove(Sex.ClientID + "_SelectedValue");
+	            this.Page.Session.Remove(Sex.ClientID + "_SelectedDisplayText");
+            }
+           						
         }
-                      
+            
+        protected virtual void Comment_TextChanged(object sender, EventArgs args)
+        {
                     
+              }
+            
         protected virtual void DateOfCheck_TextChanged(object sender, EventArgs args)
         {
                     
@@ -1420,15 +1939,27 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
        
 #region "Helper Properties"
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector BaitType {
+        public System.Web.UI.WebControls.DropDownList BaitType {
             get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "BaitType");
+                return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "BaitType");
             }
-        }              
+        }
             
         public System.Web.UI.WebControls.Literal BaitTypeLabel {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "BaitTypeLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.TextBox Comment {
+            get {
+                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Comment");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal CommentLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentLabel");
             }
         }
         
@@ -1444,11 +1975,35 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
             }
         }
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector Sex {
+        public BaseClasses.Web.UI.WebControls.QuickSelector GroupId {
             get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Sex");
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupId");
             }
         }              
+            
+        public System.Web.UI.WebControls.Literal GroupIdLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupIdLabel");
+            }
+        }
+        
+        public BaseClasses.Web.UI.WebControls.QuickSelector ProjectId {
+            get {
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectId");
+            }
+        }              
+            
+        public System.Web.UI.WebControls.Literal ProjectIdLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectIdLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.RadioButtonList Sex {
+            get {
+                return (System.Web.UI.WebControls.RadioButtonList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Sex");
+            }
+        }
             
         public System.Web.UI.WebControls.Literal SexLabel {
             get {
@@ -1456,11 +2011,11 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
             }
         }
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector Species {
+        public System.Web.UI.WebControls.DropDownList Species {
             get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Species");
+                return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Species");
             }
-        }              
+        }
             
         public System.Web.UI.WebControls.Literal SpeciesLabel {
             get {
@@ -1471,18 +2026,6 @@ public class BaseTrapRecordsRecordControl : RatTrap.UI.BaseApplicationRecordCont
         public System.Web.UI.WebControls.Literal Title0 {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Title0");
-            }
-        }
-        
-        public BaseClasses.Web.UI.WebControls.QuickSelector TrapId {
-            get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapId");
-            }
-        }              
-            
-        public System.Web.UI.WebControls.Literal TrapIdLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdLabel");
             }
         }
         

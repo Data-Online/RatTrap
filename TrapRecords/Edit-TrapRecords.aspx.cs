@@ -247,32 +247,38 @@ public partial class Edit_TrapRecords
         }
         
     
-        public BaseClasses.Web.UI.WebControls.QuickSelector BaitType;
+        public System.Web.UI.WebControls.DropDownList BaitType;
             
         public System.Web.UI.WebControls.Literal BaitTypeLabel;
         
         public ThemeButton CancelButton;
                 
+        public System.Web.UI.WebControls.Literal CommentLabel;
+        
         public System.Web.UI.WebControls.Literal DateOfCheckLabel;
+        
+        public BaseClasses.Web.UI.WebControls.QuickSelector GroupId;
+            
+        public System.Web.UI.WebControls.Literal GroupIdLabel;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
+        public BaseClasses.Web.UI.WebControls.QuickSelector ProjectId;
+            
+        public System.Web.UI.WebControls.Literal ProjectIdLabel;
+        
         public ThemeButton SaveButton;
                 
-        public BaseClasses.Web.UI.WebControls.QuickSelector Sex;
+        public System.Web.UI.WebControls.RadioButtonList Sex;
             
         public System.Web.UI.WebControls.Literal SexLabel;
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector Species;
+        public System.Web.UI.WebControls.DropDownList Species;
             
         public System.Web.UI.WebControls.Literal SpeciesLabel;
         
         public System.Web.UI.WebControls.Literal Title0;
             
-        public BaseClasses.Web.UI.WebControls.QuickSelector TrapId;
-            
-        public System.Web.UI.WebControls.Literal TrapIdLabel;
-        
         public RatTrap.UI.Controls.Edit_TrapRecords.TrapRecordsRecordControl TrapRecordsRecordControl;
           
         public ValidationSummary ValidationSummary1;

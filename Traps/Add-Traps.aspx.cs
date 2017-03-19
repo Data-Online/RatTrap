@@ -261,6 +261,10 @@ public partial class Add_Traps
         }
         
     
+        public System.Web.UI.WebControls.CheckBox Active;
+            
+        public System.Web.UI.WebControls.Literal ActiveLabel;
+        
         public ThemeButton CancelButton;
                 
         public BaseClasses.Web.UI.WebControls.QuickSelector GroupId1;

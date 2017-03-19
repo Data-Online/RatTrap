@@ -1,11 +1,11 @@
 ﻿<%@ Register Tagprefix="RatTrap" TagName="ThemeButton" Src="../Shared/ThemeButton.ascx" %>
 
-<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Edit-TrapRecords.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenu.master" Inherits="RatTrap.UI.Edit_TrapRecords" %>
 <%@ Register Tagprefix="Selectors" Namespace="RatTrap" Assembly="RatTrap" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Tagprefix="RatTrap" Namespace="RatTrap.UI.Controls.Edit_TrapRecords" Assembly="RatTrap" %>
 
+<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="false" Codebehind="Edit-TrapRecords.aspx.cs" Culture="en-NZ" MasterPageFile="../Master Pages/HorizontalMenuFull.master" Inherits="RatTrap.UI.Edit_TrapRecords" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Tagprefix="BaseClasses" Namespace="BaseClasses.Web.UI.WebControls" Assembly="BaseClasses" %><asp:Content id="PageSection" ContentPlaceHolderID="PageContent" Runat="server">
     <a id="StartOfPageContent"></a>
     <div id="scrollRegion" class="scrollRegion">              
@@ -35,7 +35,7 @@
 
                 </td><td class="panelHeaderR"></td></tr><tr><td class="panelL"></td><td>
                   <asp:panel id="CollapsibleRegion" runat="server"><table class="dBody" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
-                    <asp:panel id="TrapRecordsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="TrapIdLabel" Text="Trap">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="TrapId" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"><asp:Literal runat="server" id="DateOfCheckLabel" Text="EvaluateFormula(&quot;= \&quot;Date Checked\&quot;&quot;, true)">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+                    <asp:panel id="TrapRecordsRecordControlPanel" runat="server"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td class="tableCellLabel"><asp:Literal runat="server" id="DateOfCheckLabel" Text="EvaluateFormula(&quot;= \&quot;Date Checked\&quot;&quot;, true)">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td style="padding-right: 5px; vertical-align:top">
@@ -47,7 +47,12 @@
 </tr>
 </table>
 </span>
- </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="BaitTypeLabel" Text="Bait Type">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="BaitType" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellLabel"><asp:Literal runat="server" id="SexLabel" Text="Sex">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="Sex" redirecturl=""></BaseClasses:QuickSelector> </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="SpeciesLabel" Text="Species">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="Species" redirecturl=""></BaseClasses:QuickSelector> </td><td class="tableCellValue"></td><td class="tableCellValue"></td></tr><tr><td class="tableCellLabel"></td><td class="tableCellValue" colspan="3"> </td></tr></table></asp:panel>
+ </td><td class="tableCellLabel"><asp:Literal runat="server" id="BaitTypeLabel" Text="Bait Type">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+<asp:DropDownList runat="server" id="BaitType" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
+ </td><td class="tableCellLabel"><asp:Literal runat="server" id="SpeciesLabel" Text="Species">	</asp:Literal></td><td class="tableCellValue"><span style="white-space:nowrap;">
+<asp:DropDownList runat="server" id="Species" cssclass="field_input" onkeypress="dropDownListTypeAhead(this,false)"></asp:DropDownList></span>
+ </td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="GroupIdLabel" Text="Group">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="GroupId" redirecturl=""></BaseClasses:QuickSelector></td><td class="tableCellLabel"><asp:Literal runat="server" id="ProjectIdLabel" Text="Project">	</asp:Literal></td><td class="tableCellValue"><BaseClasses:QuickSelector runat="server" id="ProjectId" redirecturl=""></BaseClasses:QuickSelector></td><td class="tableCellLabel"><asp:Literal runat="server" id="SexLabel" Text="Sex">	</asp:Literal></td><td class="tableCellValue" rowspan="2"><asp:RadioButtonList runat="server" id="Sex" RepeatLayout="Flow"></asp:RadioButtonList></td></tr><tr><td class="tableCellLabel"><asp:Literal runat="server" id="CommentLabel" Text="Comment">	</asp:Literal></td><td class="tableCellValue" colspan="4"><asp:TextBox runat="server" id="Comment" MaxLength="200" columns="120" cssclass="field_input" rows="4" textmode="MultiLine"></asp:TextBox>&nbsp;
+<BaseClasses:TextBoxMaxLengthValidator runat="server" id="CommentTextBoxMaxLengthValidator" ControlToValidate="Comment" ErrorMessage="&lt;%# GetResourceValue(&quot;Val:ValueTooLong&quot;, &quot;RatTrap&quot;).Replace(&quot;{FieldName}&quot;, &quot;Comment&quot;) %>"></BaseClasses:TextBoxMaxLengthValidator></td></tr></table></asp:panel>
 
                   </td></tr></table>
 </asp:panel>

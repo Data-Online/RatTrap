@@ -1,6 +1,6 @@
 ﻿
-// This file implements the code-behind class for Show_TrapTypes.aspx.
-// Show_TrapTypes.Controls.vb contains the Table, Row and Record control classes
+// This file implements the code-behind class for TrapNotes_QuickSelector.aspx.
+// TrapNotes_QuickSelector.Controls.vb contains the Table, Row and Record control classes
 // for the page.  Best practices calls for overriding methods in the Row or Record control classes.
 
 #region "Using statements"    
@@ -29,15 +29,15 @@ using RatTrap.Data;
 namespace RatTrap.UI
 {
   
-public partial class Show_TrapTypes
+public partial class TrapNotes_QuickSelector
         : BaseApplicationPage
-// Code-behind class for the Show_TrapTypes page.
+// Code-behind class for the TrapNotes_QuickSelector page.
 // Place your customizations in Section 1. Do not modify Section 2.
 {
         
       #region "Section 1: Place your customizations here."
 
-      public Show_TrapTypes()
+      public TrapNotes_QuickSelector()
         {
             this.Initialize();
     
@@ -173,6 +173,17 @@ public partial class Show_TrapTypes
         }
         
     
+        [System.Web.Services.WebMethod]
+        public static string[] GetAutoCompletionList_Search(string prefixText, int count)
+        {
+            // GetSearchCompletionList gets the list of suggestions from the database.
+            // prefixText is the search text typed by the user .
+            // count specifies the number of suggestions to be returned.
+            // Customize by adding code before or after the call to  GetAutoCompletionList_Search_Base()
+            // or replace the call to GetAutoCompletionList_Search_Base().
+            return GetAutoCompletionList_Search_Base(prefixText, count);
+        }
+      
       protected override void BasePage_PreRender(object sender, EventArgs e)
       {
           base.BasePage_PreRender(sender, e);
@@ -189,52 +200,14 @@ public partial class Show_TrapTypes
 
       // Page Event Handlers - buttons, sort, links
       
-        public void EditButton_Click(object sender, EventArgs args)
-        {
-
-          // Click handler for EditButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          EditButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
-            
-        public void OKButton_Click(object sender, EventArgs args)
-        {
-
-          // Click handler for OKButton.
-          // Customize by adding code before the call or replace the call to the Base function with your own code.
-          OKButton_Click_Base(sender, args);
-          // NOTE: If the Base function redirects to another page, any code here will not be executed.
-        }
-            
     
         // Write out the Set methods
         
-        public void SetTrapTypesTabContainer()
+        public void SetSelectorTableControl()
         {
-            SetTrapTypesTabContainer_Base(); 
+            SetSelectorTableControl_Base(); 
         }
-        
-        public void SetTrapsTableControl()
-        {
-            SetTrapsTableControl_Base(); 
-        }
-        
-        public void SetTrapTypesRecordControl()
-        {
-            SetTrapTypesRecordControl_Base(); 
-        }
-        
-        public void SetEditButton()
-        {
-            SetEditButton_Base(); 
-        }              
-            
-        public void SetOKButton()
-        {
-            SetOKButton_Base(); 
-        }              
-                         
+                     
         
         // Write out the methods for DataSource
         
@@ -257,48 +230,22 @@ public partial class Show_TrapTypes
         }
         
     
-        public ThemeButtonWithArrow Actions1Button;
+        public ThemeButton AddButton;
                 
-        public System.Web.UI.WebControls.ImageButton DialogEditButton;
-        
-        public ThemeButton EditButton;
+        public ThemeButton ClearButton;
                 
-        public System.Web.UI.WebControls.ImageButton ExcelButton;
-        
-        public ThemeButtonWithArrow Filters1Button;
-                
-        public System.Web.UI.WebControls.ImageButton ImportButton;
-        
-        public System.Web.UI.WebControls.Label Label;
-        
-        public System.Web.UI.WebControls.ImageButton NewButton;
-        
-        public ThemeButton OKButton;
+        public ThemeButton CommitButton;
                 
         public System.Web.UI.WebControls.Literal PageTitle;
         
         public PaginationModern Pagination;
                 
-        public System.Web.UI.WebControls.ImageButton PDFButton;
+        public System.Web.UI.WebControls.TextBox Search;
         
-        public System.Web.UI.WebControls.Label SortByLabel1;
+        public System.Web.UI.WebControls.ImageButton SearchButton;
         
-        public System.Web.UI.WebControls.Literal Title0;
-            
-        public System.Web.UI.WebControls.Literal TrapsCountControl;
-        
-        public System.Web.UI.WebControls.Literal TrapsCountControl1;
-        
-        public RatTrap.UI.Controls.Show_TrapTypes.TrapsTableControl TrapsTableControl;
+        public RatTrap.UI.Controls.TrapNotes_QuickSelector.SelectorTableControl SelectorTableControl;
           
-        public System.Web.UI.WebControls.Literal TrapType;
-            
-        public RatTrap.UI.Controls.Show_TrapTypes.TrapTypesRecordControl TrapTypesRecordControl;
-          
-        public AjaxControlToolkit.TabContainer TrapTypesTabContainer;
-        
-        public System.Web.UI.WebControls.ImageButton WordButton;
-        
         public ValidationSummary ValidationSummary1;
 
   
@@ -320,10 +267,6 @@ public partial class Show_TrapTypes
 
           // Setup the pagination events.
         
-                    this.EditButton.Button.Click += EditButton_Click;
-                        
-                    this.OKButton.Button.Click += OKButton_Click;
-                        
           this.ClearControlsFromSession();    
     
           System.Web.HttpContext.Current.Session["isd_geo_location"] = "<location><error>LOCATION_ERROR_DISABLED</error></location>";
@@ -364,7 +307,7 @@ public partial class Show_TrapTypes
             // Check if user has access to this page.  Redirects to either sign-in page
             // or 'no access' page if not. Does not do anything if role-based security
             // is not turned on, but you can override to add your own security.
-            this.Authorize("1;2;3;4;5");
+            this.Authorize("");
              if (!this.IsPostBack)
              {
             
@@ -383,10 +326,10 @@ public partial class Show_TrapTypes
     }
 
     
-            Page.Title = "Trap Types";
+            Page.Title = "Page";
         
         if (!IsPostBack)
-            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
+            AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QSSize');", true);
         
             }
 
@@ -476,12 +419,8 @@ public partial class Show_TrapTypes
           switch (control)
           {
           
-              case "TrapsTableControl":
-                 SetTrapsTableControl();
-                 break;
-          
-              case "TrapTypesRecordControl":
-                 SetTrapTypesRecordControl();
+              case "SelectorTableControl":
+                 SetSelectorTableControl();
                  break;
                
           }
@@ -493,7 +432,7 @@ public partial class Show_TrapTypes
       public void SaveData_Base()
       {
       
-        this.TrapTypesRecordControl.SaveData();
+        this.SelectorTableControl.SaveData();
         
       }
       
@@ -566,6 +505,17 @@ public partial class Show_TrapTypes
       }  
       
         
+    public static string[] GetAutoCompletionList_Search_Base(string prefixText, int count)
+    {
+        // Since this method is a shared/static method it does not maintain information about page or controls within the page.
+        // Hence we can not invoke any method associated with any controls.
+        // So, if we need to use any control in the page we need to instantiate it.
+        RatTrap.UI.Controls.TrapNotes_QuickSelector.SelectorTableControl control = new RatTrap.UI.Controls.TrapNotes_QuickSelector.SelectorTableControl();
+        
+        return control.GetAutoCompletionList_Search(prefixText, count);
+            
+    }
+      
 
     // Load data from database into UI controls.
     // Modify LoadData in Section 1 above to customize.  Or override DataBind() in
@@ -585,13 +535,11 @@ public partial class Show_TrapTypes
                 this.DataBind();
                 
                 
-                
-            SetTrapTypesTabContainer(); 
-          
+                    
     
                 // Load and bind data for each record and table UI control.
                 
-        SetTrapTypesRecordControl();
+        SetSelectorTableControl();
         
     
                 // Load data for chart.
@@ -599,19 +547,6 @@ public partial class Show_TrapTypes
             
                 // initialize aspx controls
                 
-                SetEditButton();
-              
-                SetOKButton();
-              
-                //Set the corresponding menu item to be highlighted for this page
-                System.Web.UI.MasterPage pageMaster = this.Master;
-                if (!(pageMaster == null)) {
-                IMenuComponent menuComponent = ((IMenuComponent)(this.Master.FindControl("_Menu")));
-                    if (!(menuComponent == null)) {
-                        menuComponent.HiliteSettings = "TrapTypesMenuItem";
-                    }
-                }
-            
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -693,143 +628,21 @@ public partial class Show_TrapTypes
                 
         // Write out the Set methods
         
-        public void SetTrapTypesTabContainer_Base()           
-        
-        {
-                            
-                   
-            if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "true") 
-                MiscUtils.FindControlRecursively(this, "TrapTypesTabContainer").Visible = true;
-            else if (EvaluateFormula("URL(\"TabVisible\")").ToLower() == "false") 
-                MiscUtils.FindControlRecursively(this, "TrapTypesTabContainer").Visible = false;
-         
-  
-        }      
-      
-        public void SetTrapsTableControl_Base()           
+        public void SetSelectorTableControl_Base()           
         
         {        
-            if (TrapsTableControl.Visible)
+            if (SelectorTableControl.Visible)
             {
-                TrapsTableControl.LoadData();
-                TrapsTableControl.DataBind();
+                SelectorTableControl.LoadData();
+                SelectorTableControl.DataBind();
             }
         }
-      
-        public void SetTrapTypesRecordControl_Base()           
-        
-        {        
-            if (TrapTypesRecordControl.Visible)
-            {
-                TrapTypesRecordControl.LoadData();
-                TrapTypesRecordControl.DataBind();
-            }
-        }
-      
-        public void SetEditButton_Base()                
-              
-        {
-        
-   
-        }
-            
-        public void SetOKButton_Base()                
-              
-        {
-        
-   
-        }
-                
+          
 
         // Write out the DataSource properties and methods
                 
 
         // Write out event methods for the page events
-        
-        // event handler for Button
-        public void EditButton_Click_Base(object sender, EventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../TrapTypes/Edit-TrapTypes.aspx?TrapTypes={PK}";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
-                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.ShouldSaveControlsToSession = true;
-      this.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for Button
-        public void OKButton_Click_Base(object sender, EventArgs args)
-        {
-              
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                
-          
-                // if target is specified meaning that is opened on popup or new window
-                if (!string.IsNullOrEmpty(Page.Request["target"]))
-                {
-                    shouldRedirect = false;
-                    AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "ClosePopup", "closePopupPage();", true);                   
-                }
-      
-            } catch (Exception ex) {
-                  shouldRedirect = false;
-                  this.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-    
-            }
-            if (shouldRedirect) {
-                this.ShouldSaveControlsToSession = true;
-      this.RedirectBack();
-        
-            }
-        
-        }
-            
-            
         
       
 

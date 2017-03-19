@@ -1,6 +1,6 @@
 ﻿
-// This file implements the code-behind class for Show_Traps_Table.aspx.
-// Show_Traps_Table.Controls.vb contains the Table, Row and Record control classes
+// This file implements the code-behind class for Show_UsersGroupsLink_Table_Admin.aspx.
+// Show_UsersGroupsLink_Table_Admin.Controls.vb contains the Table, Row and Record control classes
 // for the page.  Best practices calls for overriding methods in the Row or Record control classes.
 
 #region "Using statements"    
@@ -29,15 +29,15 @@ using RatTrap.Data;
 namespace RatTrap.UI
 {
   
-public partial class Show_Traps_Table
+public partial class Show_UsersGroupsLink_Table_Admin
         : BaseApplicationPage
-// Code-behind class for the Show_Traps_Table page.
+// Code-behind class for the Show_UsersGroupsLink_Table_Admin page.
 // Place your customizations in Section 1. Do not modify Section 2.
 {
         
       #region "Section 1: Place your customizations here."
 
-      public Show_Traps_Table()
+      public Show_UsersGroupsLink_Table_Admin()
         {
             this.Initialize();
     
@@ -192,9 +192,9 @@ public partial class Show_Traps_Table
     
         // Write out the Set methods
         
-        public void SetTrapsTableControl()
+        public void SetUsersGroupsLinkTableControl()
         {
-            SetTrapsTableControl_Base(); 
+            SetUsersGroupsLinkTableControl_Base(); 
         }
                      
         
@@ -202,14 +202,18 @@ public partial class Show_Traps_Table
         
 
 
-//public void SetTrapRecordsTableControl1()
-//        {
-//            SetTrapRecordsTableControl1_Base(); 
-//        }
-//public void SetTrapRecordsTableControl1()
-//        {
-//            SetTrapRecordsTableControl1_Base(); 
-//        }
+public void SetCancelButton()
+        {
+            SetCancelButton_Base(); 
+        }              
+public void CancelButton_Click(object sender, EventArgs args)
+        {
+
+          // Click handler for CancelButton.
+          // Customize by adding code before the call or replace the call to the Base function with your own code.
+          CancelButton_Click_Base(sender, args);
+          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -227,13 +231,37 @@ public partial class Show_Traps_Table
         }
         
     
+        public ThemeButtonWithArrow Actions2Button;
+                
+        public ThemeButtonWithArrow Actions3Button;
+                
         public ThemeButtonWithArrow ActionsButton;
                 
-        public System.Web.UI.WebControls.Literal ActiveLabel1;
+        public System.Web.UI.WebControls.LinkButton ActiveLabel;
+        
+        public ThemeButton CancelButton;
+                
+        public System.Web.UI.WebControls.ImageButton DeleteButton1;
+        
+        public System.Web.UI.WebControls.Literal Description;
+            
+        public System.Web.UI.WebControls.LinkButton DescriptionLabel;
+        
+        public System.Web.UI.WebControls.ImageButton EditButton1;
         
         public System.Web.UI.WebControls.ImageButton ExcelButton;
         
+        public System.Web.UI.WebControls.ImageButton ExcelButton1;
+        
+        public System.Web.UI.WebControls.ImageButton ExcelButton2;
+        
+        public System.Web.UI.WebControls.ImageButton ExcelButton3;
+        
         public ThemeButton FilterButton;
+                
+        public ThemeButton FilterButton1;
+                
+        public ThemeButton FilterButton2;
                 
         public ThemeButtonWithArrow Filters1Button;
                 
@@ -243,23 +271,69 @@ public partial class Show_Traps_Table
                 
         public System.Web.UI.WebControls.Literal GroupIdLabel1;
         
+        public AjaxControlToolkit.TabContainer GroupsRecordControlTabContainer;
+        
         public System.Web.UI.WebControls.ImageButton ImportButton;
+        
+        public System.Web.UI.WebControls.ImageButton ImportButton1;
+        
+        public System.Web.UI.WebControls.ImageButton ImportButton2;
+        
+        public System.Web.UI.WebControls.ImageButton ImportButton3;
+        
+        public System.Web.UI.WebControls.Label Label;
         
         public System.Web.UI.WebControls.Label Label1;
         
+        public System.Web.UI.WebControls.Label Label2;
+        
+        public System.Web.UI.WebControls.Label Label3;
+        
+        public System.Web.UI.WebControls.LinkButton LocationIdLabel;
+        
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.LocationsTableControl LocationsTableControl;
+          
         public System.Web.UI.WebControls.ImageButton NewButton;
+        
+        public System.Web.UI.WebControls.ImageButton NewButton1;
+        
+        public System.Web.UI.WebControls.ImageButton NewButton2;
+        
+        public System.Web.UI.WebControls.ImageButton NewButton3;
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
-        public PaginationMedium Pagination;
+        public PaginationModern Pagination;
                 
         public PaginationModern Pagination1;
                 
         public PaginationModern Pagination2;
                 
+        public PaginationModern Pagination3;
+                
+        public PaginationModern Pagination4;
+                
         public System.Web.UI.WebControls.ImageButton PDFButton;
         
+        public System.Web.UI.WebControls.ImageButton PDFButton1;
+        
+        public System.Web.UI.WebControls.ImageButton PDFButton2;
+        
+        public System.Web.UI.WebControls.ImageButton PDFButton3;
+        
+        public System.Web.UI.WebControls.LinkButton ProjectIdLabel;
+        
+        public System.Web.UI.WebControls.LinkButton ProjectIdLabel1;
+        
+        public System.Web.UI.WebControls.Literal ProjectIdLabel2;
+        
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.ProjectsGroupsLinkTableControl ProjectsGroupsLinkTableControl;
+          
         public System.Web.UI.WebControls.ImageButton ResetButton;
+        
+        public System.Web.UI.WebControls.ImageButton ResetButton1;
+        
+        public System.Web.UI.WebControls.ImageButton ResetButton2;
         
         public System.Web.UI.WebControls.Label SortByLabel;
         
@@ -269,13 +343,35 @@ public partial class Show_Traps_Table
         
         public System.Web.UI.WebControls.Literal Title0;
             
-        public System.Web.UI.WebControls.Literal TrapsCountControl;
+        public System.Web.UI.WebControls.Literal Title1;
+            
+        public System.Web.UI.WebControls.Literal Title2;
+            
+        public System.Web.UI.WebControls.Literal Title3;
+            
+        public System.Web.UI.WebControls.Literal Title4;
+            
+        public System.Web.UI.WebControls.LinkButton TrapIdentifierIdLabel;
         
-        public RatTrap.UI.Controls.Show_Traps_Table.TrapsTableControl TrapsTableControl;
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.TrapsTableControl TrapsTableControl;
           
-        public System.Web.UI.WebControls.Literal TrapTypeIdLabel1;
+        public System.Web.UI.WebControls.LinkButton TrapTypeIdLabel1;
         
+        public System.Web.UI.WebControls.Literal TrapTypeIdLabel2;
+        
+        public System.Web.UI.WebControls.LinkButton UserIdLabel;
+        
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.UsersGroupsLinkTableControl UsersGroupsLinkTableControl;
+          
+        public RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.UsersGroupsLinkTableControl1 UsersGroupsLinkTableControl1;
+          
         public System.Web.UI.WebControls.ImageButton WordButton;
+        
+        public System.Web.UI.WebControls.ImageButton WordButton1;
+        
+        public System.Web.UI.WebControls.ImageButton WordButton2;
+        
+        public System.Web.UI.WebControls.ImageButton WordButton3;
         
         public ValidationSummary ValidationSummary1;
 
@@ -298,6 +394,8 @@ public partial class Show_Traps_Table
 
           // Setup the pagination events.
         
+                    this.CancelButton.Button.Click += CancelButton_Click;
+                        
           this.ClearControlsFromSession();    
     
           System.Web.HttpContext.Current.Session["isd_geo_location"] = "<location><error>LOCATION_ERROR_DISABLED</error></location>";
@@ -357,7 +455,7 @@ public partial class Show_Traps_Table
     }
 
     
-            Page.Title = "Traps";
+            Page.Title = "My Groups";
         
         if (!IsPostBack)
             AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "PopupScript", "openPopupPage('QPageSize');", true);
@@ -450,8 +548,8 @@ public partial class Show_Traps_Table
           switch (control)
           {
           
-              case "TrapsTableControl":
-                 SetTrapsTableControl();
+              case "UsersGroupsLinkTableControl":
+                 SetUsersGroupsLinkTableControl();
                  break;
                
           }
@@ -463,7 +561,7 @@ public partial class Show_Traps_Table
       public void SaveData_Base()
       {
       
-        this.TrapsTableControl.SaveData();
+        this.UsersGroupsLinkTableControl.SaveData();
         
       }
       
@@ -559,7 +657,7 @@ public partial class Show_Traps_Table
     
                 // Load and bind data for each record and table UI control.
                 
-        SetTrapsTableControl();
+        SetUsersGroupsLinkTableControl();
         
     
                 // Load data for chart.
@@ -567,6 +665,8 @@ public partial class Show_Traps_Table
             
                 // initialize aspx controls
                 
+                SetCancelButton();
+              
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -648,21 +748,66 @@ public partial class Show_Traps_Table
                 
         // Write out the Set methods
         
-        public void SetTrapsTableControl_Base()           
+        public void SetUsersGroupsLinkTableControl_Base()           
         
         {        
-            if (TrapsTableControl.Visible)
+            if (UsersGroupsLinkTableControl.Visible)
             {
-                TrapsTableControl.LoadData();
-                TrapsTableControl.DataBind();
+                UsersGroupsLinkTableControl.LoadData();
+                UsersGroupsLinkTableControl.DataBind();
             }
         }
-          
+      
+        public void SetCancelButton_Base()                
+              
+        {
+        
+   
+        }
+                
 
         // Write out the DataSource properties and methods
                 
 
         // Write out event methods for the page events
+        
+        // event handler for Button
+        public void CancelButton_Click_Base(object sender, EventArgs args)
+        {
+              
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                
+          
+                // if target is specified meaning that is opened on popup or new window
+                if (!string.IsNullOrEmpty(Page.Request["target"]))
+                {
+                    shouldRedirect = false;
+                    AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "ClosePopup", "closePopupPage();", true);                   
+                }
+      
+            } catch (Exception ex) {
+                  shouldRedirect = false;
+                  this.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+            if (shouldRedirect) {
+                this.ShouldSaveControlsToSession = true;
+      this.RedirectBack();
+        
+            }
+        
+        }
+            
+            
         
       
 

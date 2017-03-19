@@ -1,6 +1,6 @@
 ﻿
 // This file implements the TableControl, TableControlRow, and RecordControl classes for the 
-// Show_UsersGroupsLink_TableAdmin.aspx page.  The Row or RecordControl classes are the 
+// Show_UsersGroupsLink_Table_Admin.aspx page.  The Row or RecordControl classes are the 
 // ideal place to add code customizations. For example, you can override the LoadData, 
 // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
 
@@ -31,7 +31,7 @@ using RatTrap;
 #endregion
 
   
-namespace RatTrap.UI.Controls.Show_UsersGroupsLink_TableAdmin
+namespace RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin
 {
   
 
@@ -200,7 +200,7 @@ public class ProjectsRecordControl : BaseProjectsRecordControl
 #region "Section 2: Do not modify this section."
     
     
-// Base class for the LocationsTableControlRow control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the LocationsTableControlRow control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in LocationsTableControlRow.
 public class BaseLocationsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
 {
@@ -1260,7 +1260,7 @@ public class BaseLocationsTableControlRow : RatTrap.UI.BaseApplicationRecordCont
 }
 
   
-// Base class for the LocationsTableControl control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the LocationsTableControl control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in LocationsTableControl.
 public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
 {
@@ -3033,10 +3033,10 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
 
                 PDFReport report = new PDFReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-TableAdmin.PDFButton3.report");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table-Admin.PDFButton3.report");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
                 report.Title = "Locations";
-                // If Show-UsersGroupsLink-TableAdmin.PDFButton3.report specifies a valid report template,
+                // If Show-UsersGroupsLink-Table-Admin.PDFButton3.report specifies a valid report template,
                 // AddColumn methods will generate a report template.   
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -3164,10 +3164,10 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
 
                 WordReport report = new WordReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-TableAdmin.WordButton3.word");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table-Admin.WordButton3.word");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
                 report.Title = "Locations";
-                // If Show-UsersGroupsLink-TableAdmin.WordButton3.report specifies a valid report template,
+                // If Show-UsersGroupsLink-Table-Admin.WordButton3.report specifies a valid report template,
                 // AddColumn methods will generate a report template.
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -3599,7 +3599,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
         public virtual LocationsTableControlRow[] GetSelectedRecordControls()
         {
         
-            return (LocationsTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_TableAdmin.LocationsTableControlRow")));
+            return (LocationsTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.LocationsTableControlRow")));
           
         }
 
@@ -3660,7 +3660,7 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
 
     }
   
-// Base class for the ProjectsGroupsLinkTableControlRow control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the ProjectsGroupsLinkTableControlRow control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in ProjectsGroupsLinkTableControlRow.
 public class BaseProjectsGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationRecordControl
 {
@@ -4413,7 +4413,7 @@ public class BaseProjectsGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationR
 }
 
   
-// Base class for the ProjectsGroupsLinkTableControl control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the ProjectsGroupsLinkTableControl control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in ProjectsGroupsLinkTableControl.
 public class BaseProjectsGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableControl
 {
@@ -6032,10 +6032,10 @@ public class BaseProjectsGroupsLinkTableControl : RatTrap.UI.BaseApplicationTabl
 
                 PDFReport report = new PDFReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-TableAdmin.PDFButton1.report");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table-Admin.PDFButton1.report");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
                 report.Title = "ProjectsGroupsLink";
-                // If Show-UsersGroupsLink-TableAdmin.PDFButton1.report specifies a valid report template,
+                // If Show-UsersGroupsLink-Table-Admin.PDFButton1.report specifies a valid report template,
                 // AddColumn methods will generate a report template.   
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -6131,10 +6131,10 @@ public class BaseProjectsGroupsLinkTableControl : RatTrap.UI.BaseApplicationTabl
 
                 WordReport report = new WordReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-TableAdmin.WordButton1.word");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table-Admin.WordButton1.word");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
                 report.Title = "ProjectsGroupsLink";
-                // If Show-UsersGroupsLink-TableAdmin.WordButton1.report specifies a valid report template,
+                // If Show-UsersGroupsLink-Table-Admin.WordButton1.report specifies a valid report template,
                 // AddColumn methods will generate a report template.
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -6424,7 +6424,7 @@ public class BaseProjectsGroupsLinkTableControl : RatTrap.UI.BaseApplicationTabl
         public virtual ProjectsGroupsLinkTableControlRow[] GetSelectedRecordControls()
         {
         
-            return (ProjectsGroupsLinkTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_TableAdmin.ProjectsGroupsLinkTableControlRow")));
+            return (ProjectsGroupsLinkTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.ProjectsGroupsLinkTableControlRow")));
           
         }
 
@@ -6485,7 +6485,7 @@ public class BaseProjectsGroupsLinkTableControl : RatTrap.UI.BaseApplicationTabl
 
     }
   
-// Base class for the TrapsTableControlRow control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the TrapsTableControlRow control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in TrapsTableControlRow.
 public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
 {
@@ -7611,7 +7611,7 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
 }
 
   
-// Base class for the TrapsTableControl control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the TrapsTableControl control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in TrapsTableControl.
 public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
 {
@@ -10286,10 +10286,10 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
 
                 PDFReport report = new PDFReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-TableAdmin.PDFButton2.report");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table-Admin.PDFButton2.report");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
                 report.Title = "Traps";
-                // If Show-UsersGroupsLink-TableAdmin.PDFButton2.report specifies a valid report template,
+                // If Show-UsersGroupsLink-Table-Admin.PDFButton2.report specifies a valid report template,
                 // AddColumn methods will generate a report template.   
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -10471,10 +10471,10 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
 
                 WordReport report = new WordReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-TableAdmin.WordButton2.word");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table-Admin.WordButton2.word");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
                 report.Title = "Traps";
-                // If Show-UsersGroupsLink-TableAdmin.WordButton2.report specifies a valid report template,
+                // If Show-UsersGroupsLink-Table-Admin.WordButton2.report specifies a valid report template,
                 // AddColumn methods will generate a report template.
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -11038,7 +11038,7 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
         public virtual TrapsTableControlRow[] GetSelectedRecordControls()
         {
         
-            return (TrapsTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_TableAdmin.TrapsTableControlRow")));
+            return (TrapsTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.TrapsTableControlRow")));
           
         }
 
@@ -11099,7 +11099,7 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
 
     }
   
-// Base class for the UsersGroupsLinkTableControlRow control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the UsersGroupsLinkTableControlRow control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in UsersGroupsLinkTableControlRow.
 public class BaseUsersGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationRecordControl
 {
@@ -11882,7 +11882,7 @@ public class BaseUsersGroupsLinkTableControlRow : RatTrap.UI.BaseApplicationReco
 }
 
   
-// Base class for the UsersGroupsLinkTableControl control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the UsersGroupsLinkTableControl control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in UsersGroupsLinkTableControl.
 public class BaseUsersGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableControl
 {
@@ -13798,10 +13798,10 @@ public class BaseUsersGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableCo
 
                 PDFReport report = new PDFReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-TableAdmin.PDFButton.report");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table-Admin.PDFButton.report");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
                 report.Title = "UsersGroupsLink";
-                // If Show-UsersGroupsLink-TableAdmin.PDFButton.report specifies a valid report template,
+                // If Show-UsersGroupsLink-Table-Admin.PDFButton.report specifies a valid report template,
                 // AddColumn methods will generate a report template.   
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -13937,10 +13937,10 @@ public class BaseUsersGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableCo
 
                 WordReport report = new WordReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-TableAdmin.WordButton.word");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-UsersGroupsLink-Table-Admin.WordButton.word");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
                 report.Title = "UsersGroupsLink";
-                // If Show-UsersGroupsLink-TableAdmin.WordButton.report specifies a valid report template,
+                // If Show-UsersGroupsLink-Table-Admin.WordButton.report specifies a valid report template,
                 // AddColumn methods will generate a report template.
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -14389,7 +14389,7 @@ public class BaseUsersGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableCo
         public virtual UsersGroupsLinkTableControlRow[] GetSelectedRecordControls()
         {
         
-            return (UsersGroupsLinkTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_TableAdmin.UsersGroupsLinkTableControlRow")));
+            return (UsersGroupsLinkTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.UsersGroupsLinkTableControlRow")));
           
         }
 
@@ -14450,7 +14450,7 @@ public class BaseUsersGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableCo
 
     }
   
-// Base class for the UsersGroupsLinkTableControl1Row control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the UsersGroupsLinkTableControl1Row control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in UsersGroupsLinkTableControl1Row.
 public class BaseUsersGroupsLinkTableControl1Row : RatTrap.UI.BaseApplicationRecordControl
 {
@@ -15160,7 +15160,7 @@ public class BaseUsersGroupsLinkTableControl1Row : RatTrap.UI.BaseApplicationRec
 }
 
   
-// Base class for the UsersGroupsLinkTableControl1 control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the UsersGroupsLinkTableControl1 control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in UsersGroupsLinkTableControl1.
 public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableControl
 {
@@ -16516,7 +16516,7 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
         public virtual UsersGroupsLinkTableControl1Row[] GetSelectedRecordControls()
         {
         
-            return (UsersGroupsLinkTableControl1Row[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_TableAdmin.UsersGroupsLinkTableControl1Row")));
+            return (UsersGroupsLinkTableControl1Row[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_UsersGroupsLink_Table_Admin.UsersGroupsLinkTableControl1Row")));
           
         }
 
@@ -16577,7 +16577,7 @@ public class BaseUsersGroupsLinkTableControl1 : RatTrap.UI.BaseApplicationTableC
 
     }
   
-// Base class for the GroupsRecordControl control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the GroupsRecordControl control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in GroupsRecordControl.
 public class BaseGroupsRecordControl : RatTrap.UI.BaseApplicationRecordControl
 {
@@ -17590,7 +17590,7 @@ public class BaseGroupsRecordControl : RatTrap.UI.BaseApplicationRecordControl
 }
 
   
-// Base class for the ProjectsRecordControl control on the Show_UsersGroupsLink_TableAdmin page.
+// Base class for the ProjectsRecordControl control on the Show_UsersGroupsLink_Table_Admin page.
 // Do not modify this class. Instead override any method in ProjectsRecordControl.
 public class BaseProjectsRecordControl : RatTrap.UI.BaseApplicationRecordControl
 {

@@ -1,6 +1,6 @@
 ﻿
 // This file implements the TableControl, TableControlRow, and RecordControl classes for the 
-// Show_TrapRecords_Table.aspx page.  The Row or RecordControl classes are the 
+// Show_Traps_Table_Upload.aspx page.  The Row or RecordControl classes are the 
 // ideal place to add code customizations. For example, you can override the LoadData, 
 // CreateWhereClause, DataBind, SaveData, GetUIData, and Validate methods.
 
@@ -31,19 +31,75 @@ using RatTrap;
 #endregion
 
   
-namespace RatTrap.UI.Controls.Show_TrapRecords_Table
+namespace RatTrap.UI.Controls.Show_Traps_Table_Upload
 {
   
 
 #region "Section 1: Place your customizations here."
 
     
-public class TrapRecordsTableControlRow : BaseTrapRecordsTableControlRow
+//public class TrapNotesTableControlRow : BaseTrapNotesTableControlRow
+//{
+//      
+//        // The BaseTrapNotesTableControlRow implements code for a ROW within the
+//        // the TrapNotesTableControl table.  The BaseTrapNotesTableControlRow implements the DataBind and SaveData methods.
+//        // The loading of data is actually performed by the LoadData method in the base class of TrapNotesTableControl.
+//
+//        // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
+//        // SaveData, GetUIData, and Validate methods.
+//        
+//}
+//
+
+  
+
+//public class TrapNotesTableControl : BaseTrapNotesTableControl
+//{
+//    // The BaseTrapNotesTableControl class implements the LoadData, DataBind, CreateWhereClause
+//    // and other methods to load and display the data in a table control.
+//
+//    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+//    // The TrapNotesTableControlRow class offers another place where you can customize
+//    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+//    
+//}
+//
+
+  
+//public class TrapRecordsTableControlRow : BaseTrapRecordsTableControlRow
+//{
+//      
+//        // The BaseTrapRecordsTableControlRow implements code for a ROW within the
+//        // the TrapRecordsTableControl table.  The BaseTrapRecordsTableControlRow implements the DataBind and SaveData methods.
+//        // The loading of data is actually performed by the LoadData method in the base class of TrapRecordsTableControl.
+//
+//        // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
+//        // SaveData, GetUIData, and Validate methods.
+//        
+//}
+//
+
+  
+
+//public class TrapRecordsTableControl : BaseTrapRecordsTableControl
+//{
+//    // The BaseTrapRecordsTableControl class implements the LoadData, DataBind, CreateWhereClause
+//    // and other methods to load and display the data in a table control.
+//
+//    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+//    // The TrapRecordsTableControlRow class offers another place where you can customize
+//    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+//    
+//}
+//
+
+  
+public class TrapsTableControlRow : BaseTrapsTableControlRow
 {
       
-        // The BaseTrapRecordsTableControlRow implements code for a ROW within the
-        // the TrapRecordsTableControl table.  The BaseTrapRecordsTableControlRow implements the DataBind and SaveData methods.
-        // The loading of data is actually performed by the LoadData method in the base class of TrapRecordsTableControl.
+        // The BaseTrapsTableControlRow implements code for a ROW within the
+        // the TrapsTableControl table.  The BaseTrapsTableControlRow implements the DataBind and SaveData methods.
+        // The loading of data is actually performed by the LoadData method in the base class of TrapsTableControl.
 
         // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
         // SaveData, GetUIData, and Validate methods.
@@ -52,19 +108,65 @@ public class TrapRecordsTableControlRow : BaseTrapRecordsTableControlRow
 
   
 
-public class TrapRecordsTableControl : BaseTrapRecordsTableControl
+public class TrapsTableControl : BaseTrapsTableControl
 {
-    // The BaseTrapRecordsTableControl class implements the LoadData, DataBind, CreateWhereClause
+    // The BaseTrapsTableControl class implements the LoadData, DataBind, CreateWhereClause
     // and other methods to load and display the data in a table control.
 
     // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
-    // The TrapRecordsTableControlRow class offers another place where you can customize
+    // The TrapsTableControlRow class offers another place where you can customize
     // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
     
 }
 
   
 
+//public class TrapRecordsTableControl1 : BaseTrapRecordsTableControl1
+//{
+//    // The BaseTrapRecordsTableControl1 class implements the LoadData, DataBind, CreateWhereClause
+//    // and other methods to load and display the data in a table control.
+//
+//    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+//    // The TrapRecordsTableControl1Row class offers another place where you can customize
+//    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+//    
+//}
+//
+//public class TrapRecordsTableControl1Row : BaseTrapRecordsTableControl1Row
+//{
+//      
+//        // The BaseTrapRecordsTableControl1Row implements code for a ROW within the
+//        // the TrapRecordsTableControl1 table.  The BaseTrapRecordsTableControl1Row implements the DataBind and SaveData methods.
+//        // The loading of data is actually performed by the LoadData method in the base class of TrapRecordsTableControl1.
+//
+//        // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
+//        // SaveData, GetUIData, and Validate methods.
+//        
+//}
+//
+//public class TrapRecordsTableControl1 : BaseTrapRecordsTableControl1
+//{
+//    // The BaseTrapRecordsTableControl1 class implements the LoadData, DataBind, CreateWhereClause
+//    // and other methods to load and display the data in a table control.
+//
+//    // This is the ideal place to add your code customizations. You can override the LoadData and CreateWhereClause,
+//    // The TrapRecordsTableControl1Row class offers another place where you can customize
+//    // the DataBind, GetUIData, SaveData and Validate methods specific to each row displayed on the table.
+//    
+//}
+//
+//public class TrapRecordsTableControl1Row : BaseTrapRecordsTableControl1Row
+//{
+//      
+//        // The BaseTrapRecordsTableControl1Row implements code for a ROW within the
+//        // the TrapRecordsTableControl1 table.  The BaseTrapRecordsTableControl1Row implements the DataBind and SaveData methods.
+//        // The loading of data is actually performed by the LoadData method in the base class of TrapRecordsTableControl1.
+//
+//        // This is the ideal place to add your code customizations. For example, you can override the DataBind, 
+//        // SaveData, GetUIData, and Validate methods.
+//        
+//}
+//
 #endregion
 
   
@@ -72,11 +174,11 @@ public class TrapRecordsTableControl : BaseTrapRecordsTableControl
 #region "Section 2: Do not modify this section."
     
     
-// Base class for the TrapRecordsTableControlRow control on the Show_TrapRecords_Table page.
-// Do not modify this class. Instead override any method in TrapRecordsTableControlRow.
-public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
+// Base class for the TrapsTableControlRow control on the Show_Traps_Table_Upload page.
+// Do not modify this class. Instead override any method in TrapsTableControlRow.
+public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
 {
-        public BaseTrapRecordsTableControlRow()
+        public BaseTrapsTableControlRow()
         {
             this.Init += Control_Init;
             this.Load += Control_Load;
@@ -84,13 +186,13 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             this.EvaluateFormulaDelegate = new DataSource.EvaluateFormulaDelegate(this.EvaluateFormula);
         }
 
-        // To customize, override this method in TrapRecordsTableControlRow.
+        // To customize, override this method in TrapsTableControlRow.
         protected virtual void Control_Init(object sender, System.EventArgs e)
         {
                 
         }
 
-        // To customize, override this method in TrapRecordsTableControlRow.
+        // To customize, override this method in TrapsTableControlRow.
         protected virtual void Control_Load(object sender, System.EventArgs e)
         {      
         
@@ -104,17 +206,11 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                         
                     this.EditRowButton.Click += EditRowButton_Click;
                         
-                    this.GroupId.Click += GroupId_Click;
-                        
-                    this.ProjectId.Click += ProjectId_Click;
-                        
-                    this.TrapTypeId.Click += TrapTypeId_Click;
-                        
         }
 
         public virtual void LoadData()  
         {
-            // Load the data from the database into the DataSource DatabaseTheRatTrap%dbo.TrapRecords record.
+            // Load the data from the database into the DataSource DatabaseTheRatTrap%dbo.Traps record.
             // It is better to make changes to functions called by LoadData such as
             // CreateWhereClause, rather than making changes here.
             
@@ -123,16 +219,16 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             // used during a PostBack to load the record.
             if (this.RecordUniqueId != null && this.RecordUniqueId.Length > 0) {
               
-                this.DataSource = TrapRecordsTable.GetRecord(this.RecordUniqueId, true);
+                this.DataSource = TrapsTable.GetRecord(this.RecordUniqueId, true);
               
                 return;
             }
       
             // Since this is a row in the table, the data for this row is loaded by the 
-            // LoadData method of the BaseTrapRecordsTableControl when the data for the entire
+            // LoadData method of the BaseTrapsTableControl when the data for the entire
             // table is loaded.
             
-            this.DataSource = new TrapRecordsRecord();
+            this.DataSource = new TrapsRecord();
             
         }
 
@@ -165,26 +261,12 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
 
             // Call the Set methods for each controls on the panel
         
-                SetBaitType();
-                SetBaitTypeLabel();
-                SetComment();
-                SetCommentLabel();
-                SetDateOfCheck();
-                SetDateOfCheckLabel();
+                SetActive();
                 
                 
                 SetGroupId();
-                SetGroupIdLabel();
-                SetLocationId();
-                SetLocationIdLabel();
-                SetProjectId();
-                SetProjectIdLabel();
-                SetSex();
-                SetSexLabel();
-                SetSpecies();
-                SetSpeciesLabel();
+                SetTrapIdentifierId();
                 SetTrapTypeId();
-                SetTrapTypeIdLabel();
                 SetDeleteRowButton();
               
                 SetEditRowButton();
@@ -212,176 +294,42 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         }
         
         
-        public virtual void SetBaitType()
+        public virtual void SetActive()
         {
             
                     
-            // Set the BaitType Literal on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+            // Set the Active Literal on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
 
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.BaitType is the ASP:Literal on the webpage.
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.Active is the ASP:Literal on the webpage.
                   
-            if (this.DataSource != null && this.DataSource.BaitTypeSpecified) {
+            if (this.DataSource != null && this.DataSource.ActiveSpecified) {
                 								
-                // If the BaitType is non-NULL, then format the value.
-                // The Format method will return the Display Foreign Key As (DFKA) value
-               string formattedValue = "";
-               Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.BaitType);
-               if(_isExpandableNonCompositeForeignKey &&TrapRecordsTable.BaitType.IsApplyDisplayAs)
-                                  
-                     formattedValue = TrapRecordsTable.GetDFKA(this.DataSource.BaitType.ToString(),TrapRecordsTable.BaitType, null);
-                                    
-               if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
-                     formattedValue = this.DataSource.Format(TrapRecordsTable.BaitType);
-                                  
-                                
-                formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.BaitType.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // BaitType is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.BaitType.Text = TrapRecordsTable.BaitType.Format(TrapRecordsTable.BaitType.DefaultValue);
-            		
-            }
-            
-            // If the BaitType is NULL or blank, then use the value specified  
-            // on Properties.
-            if (this.BaitType.Text == null ||
-                this.BaitType.Text.Trim().Length == 0) {
-                // Set the value specified on the Properties.
-                this.BaitType.Text = "&nbsp;";
-            }
-                                     
-        }
-                
-        public virtual void SetComment()
-        {
-            
-                    
-            // Set the Comment Literal on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Comment is the ASP:Literal on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.CommentSpecified) {
-                								
-                // If the Comment is non-NULL, then format the value.
+                // If the Active is non-NULL, then format the value.
                 // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapRecordsTable.Comment);
+               string formattedValue = this.DataSource.Format(TrapsTable.Active);
                                 
                 formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                if(formattedValue != null){
-                    int popupThreshold = (int)(50);
-                              
-                    int maxLength = formattedValue.Length;
-                    int originalLength = maxLength;
-                    if (maxLength >= (int)(300)){
-                        // Truncate based on FieldMaxLength on Properties.
-                        maxLength = (int)(300);
-                        //First strip of all html tags:
-                        formattedValue = StringUtils.ConvertHTMLToPlainText(formattedValue);
-                        
-                    }
-                                
-                              
-                    // For fields values larger than the PopupTheshold on Properties, display a popup.
-                    if (originalLength >= popupThreshold) {
-                        String name = HttpUtility.HtmlEncode(TrapRecordsTable.Comment.Name);
-
-                        if (!HttpUtility.HtmlEncode("%ISD_DEFAULT%").Equals("%ISD_DEFAULT%")) {
-                           name = HttpUtility.HtmlEncode(this.Page.GetResourceValue("%ISD_DEFAULT%"));
-                        }
-
-                        formattedValue = "<a onclick=\'gPersist=true;\' class=\'truncatedText\' onmouseout=\'detailRolloverPopupClose();\' " +
-                            "onmouseover=\'SaveMousePosition(event); delayRolloverPopup(\"PageMethods.GetRecordFieldValue(\\\"" + "NULL" + "\\\", \\\"RatTrap.Business.TrapRecordsTable, RatTrap.Business\\\",\\\"" +
-                              (HttpUtility.UrlEncode(this.DataSource.GetID().ToString())).Replace("\\","\\\\\\\\") + "\\\", \\\"Comment\\\", \\\"Comment\\\", \\\"" +NetUtils.EncodeStringForHtmlDisplay(name.Substring(0, name.Length)) + "\\\",\\\"" + Page.GetResourceValue("Btn:Close", "RatTrap") + "\\\", " +
-                        " false, 200," +
-                            " 300, true, PopupDisplayWindowCallBackWith20);\", 500);'>" + NetUtils.EncodeStringForHtmlDisplay(formattedValue.Substring(0, Math.Min(maxLength, formattedValue.Length)));
-                        if (maxLength == (int)(300))
-                            {
-                            formattedValue = formattedValue + "..." + "</a>";
-                        }
-                        else
-                        {
-                            formattedValue = formattedValue + "</a>";
-                            
-                        }
-                    }
-                    else{
-                        if (maxLength == (int)(300)) {
-                          formattedValue = NetUtils.EncodeStringForHtmlDisplay(formattedValue.Substring(0,Math.Min(maxLength, formattedValue.Length)));
-                          formattedValue = formattedValue + "...";
-                        }
-                        
-                    }
-                }
-                
-                this.Comment.Text = formattedValue;
+                this.Active.Text = formattedValue;
                    
             } 
             
             else {
             
-                // Comment is NULL in the database, so use the Default Value.  
+                // Active is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.Comment.Text = TrapRecordsTable.Comment.Format(TrapRecordsTable.Comment.DefaultValue);
+              this.Active.Text = TrapsTable.Active.Format(TrapsTable.Active.DefaultValue);
             		
             }
             
-            // If the Comment is NULL or blank, then use the value specified  
+            // If the Active is NULL or blank, then use the value specified  
             // on Properties.
-            if (this.Comment.Text == null ||
-                this.Comment.Text.Trim().Length == 0) {
+            if (this.Active.Text == null ||
+                this.Active.Text.Trim().Length == 0) {
                 // Set the value specified on the Properties.
-                this.Comment.Text = "&nbsp;";
-            }
-                                     
-        }
-                
-        public virtual void SetDateOfCheck()
-        {
-            
-                    
-            // Set the DateOfCheck Literal on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.DateOfCheck is the ASP:Literal on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.DateOfCheckSpecified) {
-                								
-                // If the DateOfCheck is non-NULL, then format the value.
-                // The Format method will use the Display Format
-               string formattedValue = this.DataSource.Format(TrapRecordsTable.DateOfCheck);
-                                
-                formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.DateOfCheck.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // DateOfCheck is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.DateOfCheck.Text = TrapRecordsTable.DateOfCheck.Format(TrapRecordsTable.DateOfCheck.DefaultValue);
-            		
-            }
-            
-            // If the DateOfCheck is NULL or blank, then use the value specified  
-            // on Properties.
-            if (this.DateOfCheck.Text == null ||
-                this.DateOfCheck.Text.Trim().Length == 0) {
-                // Set the value specified on the Properties.
-                this.DateOfCheck.Text = "&nbsp;";
+                this.Active.Text = "&nbsp;";
             }
                                      
         }
@@ -390,29 +338,28 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         {
             
                     
-            // Set the GroupId LinkButton on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+            // Set the GroupId Literal on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
 
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.GroupId is the ASP:LinkButton on the webpage.
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.GroupId is the ASP:Literal on the webpage.
                   
             if (this.DataSource != null && this.DataSource.GroupIdSpecified) {
                 								
                 // If the GroupId is non-NULL, then format the value.
                 // The Format method will return the Display Foreign Key As (DFKA) value
                string formattedValue = "";
-               Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.GroupId);
-               if(_isExpandableNonCompositeForeignKey &&TrapRecordsTable.GroupId.IsApplyDisplayAs)
+               Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.GroupId);
+               if(_isExpandableNonCompositeForeignKey &&TrapsTable.GroupId.IsApplyDisplayAs)
                                   
-                     formattedValue = TrapRecordsTable.GetDFKA(this.DataSource.GroupId.ToString(),TrapRecordsTable.GroupId, null);
+                     formattedValue = TrapsTable.GetDFKA(this.DataSource.GroupId.ToString(),TrapsTable.GroupId, null);
                                     
                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
-                     formattedValue = this.DataSource.Format(TrapRecordsTable.GroupId);
+                     formattedValue = this.DataSource.Format(TrapsTable.GroupId);
                                   
                                 
+                formattedValue = HttpUtility.HtmlEncode(formattedValue);
                 this.GroupId.Text = formattedValue;
-                
-                  this.GroupId.ToolTip = "Go to " + this.GroupId.Text.Replace("<wbr/>", "");
                    
             } 
             
@@ -421,193 +368,56 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 // GroupId is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.GroupId.Text = TrapRecordsTable.GroupId.Format(TrapRecordsTable.GroupId.DefaultValue);
+              this.GroupId.Text = TrapsTable.GroupId.Format(TrapsTable.GroupId.DefaultValue);
             		
             }
                                
         }
                 
-        public virtual void SetLocationId()
+        public virtual void SetTrapIdentifierId()
         {
             
                     
-            // Set the LocationId Literal on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+            // Set the TrapIdentifierId Literal on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
 
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.LocationId is the ASP:Literal on the webpage.
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.TrapIdentifierId is the ASP:Literal on the webpage.
                   
-            if (this.DataSource != null && this.DataSource.LocationIdSpecified) {
+            if (this.DataSource != null && this.DataSource.TrapIdentifierIdSpecified) {
                 								
-                // If the LocationId is non-NULL, then format the value.
+                // If the TrapIdentifierId is non-NULL, then format the value.
                 // The Format method will return the Display Foreign Key As (DFKA) value
                string formattedValue = "";
-               Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.LocationId);
-               if(_isExpandableNonCompositeForeignKey &&TrapRecordsTable.LocationId.IsApplyDisplayAs)
+               Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapIdentifierId);
+               if(_isExpandableNonCompositeForeignKey &&TrapsTable.TrapIdentifierId.IsApplyDisplayAs)
                                   
-                     formattedValue = TrapRecordsTable.GetDFKA(this.DataSource.LocationId.ToString(),TrapRecordsTable.LocationId, null);
+                     formattedValue = TrapsTable.GetDFKA(this.DataSource.TrapIdentifierId.ToString(),TrapsTable.TrapIdentifierId, null);
                                     
                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
-                     formattedValue = this.DataSource.Format(TrapRecordsTable.LocationId);
+                     formattedValue = this.DataSource.Format(TrapsTable.TrapIdentifierId);
                                   
                                 
                 formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.LocationId.Text = formattedValue;
+                this.TrapIdentifierId.Text = formattedValue;
                    
             } 
             
             else {
             
-                // LocationId is NULL in the database, so use the Default Value.  
+                // TrapIdentifierId is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.LocationId.Text = TrapRecordsTable.LocationId.Format(TrapRecordsTable.LocationId.DefaultValue);
+              this.TrapIdentifierId.Text = TrapsTable.TrapIdentifierId.Format(TrapsTable.TrapIdentifierId.DefaultValue);
             		
             }
             
-            // If the LocationId is NULL or blank, then use the value specified  
+            // If the TrapIdentifierId is NULL or blank, then use the value specified  
             // on Properties.
-            if (this.LocationId.Text == null ||
-                this.LocationId.Text.Trim().Length == 0) {
+            if (this.TrapIdentifierId.Text == null ||
+                this.TrapIdentifierId.Text.Trim().Length == 0) {
                 // Set the value specified on the Properties.
-                this.LocationId.Text = "&nbsp;";
-            }
-                                     
-        }
-                
-        public virtual void SetProjectId()
-        {
-            
-                    
-            // Set the ProjectId LinkButton on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.ProjectId is the ASP:LinkButton on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.ProjectIdSpecified) {
-                								
-                // If the ProjectId is non-NULL, then format the value.
-                // The Format method will return the Display Foreign Key As (DFKA) value
-               string formattedValue = "";
-               Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.ProjectId);
-               if(_isExpandableNonCompositeForeignKey &&TrapRecordsTable.ProjectId.IsApplyDisplayAs)
-                                  
-                     formattedValue = TrapRecordsTable.GetDFKA(this.DataSource.ProjectId.ToString(),TrapRecordsTable.ProjectId, null);
-                                    
-               if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
-                     formattedValue = this.DataSource.Format(TrapRecordsTable.ProjectId);
-                                  
-                                
-                this.ProjectId.Text = formattedValue;
-                
-                  this.ProjectId.ToolTip = "Go to " + this.ProjectId.Text.Replace("<wbr/>", "");
-                   
-            } 
-            
-            else {
-            
-                // ProjectId is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.ProjectId.Text = TrapRecordsTable.ProjectId.Format(TrapRecordsTable.ProjectId.DefaultValue);
-            		
-            }
-                               
-        }
-                
-        public virtual void SetSex()
-        {
-            
-                    
-            // Set the Sex Literal on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Sex is the ASP:Literal on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.SexSpecified) {
-                								
-                // If the Sex is non-NULL, then format the value.
-                // The Format method will return the Display Foreign Key As (DFKA) value
-               string formattedValue = "";
-               Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Sex);
-               if(_isExpandableNonCompositeForeignKey &&TrapRecordsTable.Sex.IsApplyDisplayAs)
-                                  
-                     formattedValue = TrapRecordsTable.GetDFKA(this.DataSource.Sex.ToString(),TrapRecordsTable.Sex, null);
-                                    
-               if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
-                     formattedValue = this.DataSource.Format(TrapRecordsTable.Sex);
-                                  
-                                
-                formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.Sex.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // Sex is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.Sex.Text = TrapRecordsTable.Sex.Format(TrapRecordsTable.Sex.DefaultValue);
-            		
-            }
-            
-            // If the Sex is NULL or blank, then use the value specified  
-            // on Properties.
-            if (this.Sex.Text == null ||
-                this.Sex.Text.Trim().Length == 0) {
-                // Set the value specified on the Properties.
-                this.Sex.Text = "&nbsp;";
-            }
-                                     
-        }
-                
-        public virtual void SetSpecies()
-        {
-            
-                    
-            // Set the Species Literal on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
-
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.Species is the ASP:Literal on the webpage.
-                  
-            if (this.DataSource != null && this.DataSource.SpeciesSpecified) {
-                								
-                // If the Species is non-NULL, then format the value.
-                // The Format method will return the Display Foreign Key As (DFKA) value
-               string formattedValue = "";
-               Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Species);
-               if(_isExpandableNonCompositeForeignKey &&TrapRecordsTable.Species.IsApplyDisplayAs)
-                                  
-                     formattedValue = TrapRecordsTable.GetDFKA(this.DataSource.Species.ToString(),TrapRecordsTable.Species, null);
-                                    
-               if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
-                     formattedValue = this.DataSource.Format(TrapRecordsTable.Species);
-                                  
-                                
-                formattedValue = HttpUtility.HtmlEncode(formattedValue);
-                this.Species.Text = formattedValue;
-                   
-            } 
-            
-            else {
-            
-                // Species is NULL in the database, so use the Default Value.  
-                // Default Value could also be NULL.
-        
-              this.Species.Text = TrapRecordsTable.Species.Format(TrapRecordsTable.Species.DefaultValue);
-            		
-            }
-            
-            // If the Species is NULL or blank, then use the value specified  
-            // on Properties.
-            if (this.Species.Text == null ||
-                this.Species.Text.Trim().Length == 0) {
-                // Set the value specified on the Properties.
-                this.Species.Text = "&nbsp;";
+                this.TrapIdentifierId.Text = "&nbsp;";
             }
                                      
         }
@@ -616,29 +426,28 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         {
             
                     
-            // Set the TrapTypeId LinkButton on the webpage with value from the
-            // DatabaseTheRatTrap%dbo.TrapRecords database record.
+            // Set the TrapTypeId Literal on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
 
-            // this.DataSource is the DatabaseTheRatTrap%dbo.TrapRecords record retrieved from the database.
-            // this.TrapTypeId is the ASP:LinkButton on the webpage.
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.TrapTypeId is the ASP:Literal on the webpage.
                   
             if (this.DataSource != null && this.DataSource.TrapTypeIdSpecified) {
                 								
                 // If the TrapTypeId is non-NULL, then format the value.
                 // The Format method will return the Display Foreign Key As (DFKA) value
                string formattedValue = "";
-               Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.TrapTypeId);
-               if(_isExpandableNonCompositeForeignKey &&TrapRecordsTable.TrapTypeId.IsApplyDisplayAs)
+               Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapTypeId);
+               if(_isExpandableNonCompositeForeignKey &&TrapsTable.TrapTypeId.IsApplyDisplayAs)
                                   
-                     formattedValue = TrapRecordsTable.GetDFKA(this.DataSource.TrapTypeId.ToString(),TrapRecordsTable.TrapTypeId, null);
+                     formattedValue = TrapsTable.GetDFKA(this.DataSource.TrapTypeId.ToString(),TrapsTable.TrapTypeId, null);
                                     
                if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
-                     formattedValue = this.DataSource.Format(TrapRecordsTable.TrapTypeId);
+                     formattedValue = this.DataSource.Format(TrapsTable.TrapTypeId);
                                   
                                 
+                formattedValue = HttpUtility.HtmlEncode(formattedValue);
                 this.TrapTypeId.Text = formattedValue;
-                
-                  this.TrapTypeId.ToolTip = "Go to " + this.TrapTypeId.Text.Replace("<wbr/>", "");
                    
             } 
             
@@ -647,66 +456,10 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 // TrapTypeId is NULL in the database, so use the Default Value.  
                 // Default Value could also be NULL.
         
-              this.TrapTypeId.Text = TrapRecordsTable.TrapTypeId.Format(TrapRecordsTable.TrapTypeId.DefaultValue);
+              this.TrapTypeId.Text = TrapsTable.TrapTypeId.Format(TrapsTable.TrapTypeId.DefaultValue);
             		
             }
                                
-        }
-                
-        public virtual void SetBaitTypeLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetCommentLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetDateOfCheckLabel()
-                  {
-                  
-                        this.DateOfCheckLabel.Text = EvaluateFormula("\"Date Checked\"");
-                      
-                    
-        }
-                
-        public virtual void SetGroupIdLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetLocationIdLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetProjectIdLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetSexLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetSpeciesLabel()
-                  {
-                  
-                    
-        }
-                
-        public virtual void SetTrapTypeIdLabel()
-                  {
-                  
-                    
         }
                 
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
@@ -732,10 +485,14 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             {
                 
                 // add datasource as variables for formula evaluation
-                  TrapRecordsTableControl panel;
-                panel = (TrapRecordsTableControl)(this.GetParentTableControl());
+                  TrapsTableControl panel;
+                panel = (TrapsTableControl)(this.GetParentTableControl());
                   
                 e.Variables.Add("TrapRecordsCountQuery", panel.TrapRecordsCountQuery);                                                       
+                        
+                e.Variables.Add("TrapRecordsCountQuery1", panel.TrapRecordsCountQuery1);                                                       
+                        
+                e.Variables.Add("TrapsCountQuery", panel.TrapsCountQuery);                                                       
                         
             }
             
@@ -840,8 +597,8 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
                 this.DataSource.Save();
                 
                 // Set the DataChanged flag to True for the for the related panels so they get refreshed as well.
-                ((TrapRecordsTableControl)MiscUtils.GetParentControlObject(this, "TrapRecordsTableControl")).DataChanged = true;
-                ((TrapRecordsTableControl)MiscUtils.GetParentControlObject(this, "TrapRecordsTableControl")).ResetData = true;
+                ((TrapsTableControl)MiscUtils.GetParentControlObject(this, "TrapsTableControl")).DataChanged = true;
+                ((TrapsTableControl)MiscUtils.GetParentControlObject(this, "TrapsTableControl")).ResetData = true;
             }
             
       
@@ -869,29 +626,14 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
       
             // Call the Get methods for each of the user interface controls.
         
-            GetBaitType();
-            GetComment();
-            GetDateOfCheck();
+            GetActive();
             GetGroupId();
-            GetLocationId();
-            GetProjectId();
-            GetSex();
-            GetSpecies();
+            GetTrapIdentifierId();
             GetTrapTypeId();
         }
         
         
-        public virtual void GetBaitType()
-        {
-            
-        }
-                
-        public virtual void GetComment()
-        {
-            
-        }
-                
-        public virtual void GetDateOfCheck()
+        public virtual void GetActive()
         {
             
         }
@@ -901,22 +643,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             
         }
                 
-        public virtual void GetLocationId()
-        {
-            
-        }
-                
-        public virtual void GetProjectId()
-        {
-            
-        }
-                
-        public virtual void GetSex()
-        {
-            
-        }
-                
-        public virtual void GetSpecies()
+        public virtual void GetTrapIdentifierId()
         {
             
         }
@@ -927,14 +654,14 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         }
                 
 
-      // To customize, override this method in TrapRecordsTableControlRow.
+      // To customize, override this method in TrapsTableControlRow.
       
         public virtual WhereClause CreateWhereClause()
          
         {
     
-            bool hasFiltersTrapRecordsTableControl = false;
-            hasFiltersTrapRecordsTableControl = hasFiltersTrapRecordsTableControl && false; // suppress warning
+            bool hasFiltersTrapsTableControl = false;
+            hasFiltersTrapsTableControl = hasFiltersTrapsTableControl && false; // suppress warning
       
             return null;
         
@@ -964,14 +691,14 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             }
 
             KeyValue pkValue = KeyValue.XmlToKey(this.RecordUniqueId);
-          TrapRecordsTable.DeleteRecord(pkValue);
+          TrapsTable.DeleteRecord(pkValue);
           
               
             // Setting the DataChanged to True results in the page being refreshed with
             // the most recent data from the database.  This happens in PreRender event
             // based on the current sort, search and filter criteria.
-            ((TrapRecordsTableControl)MiscUtils.GetParentControlObject(this, "TrapRecordsTableControl")).DataChanged = true;
-            ((TrapRecordsTableControl)MiscUtils.GetParentControlObject(this, "TrapRecordsTableControl")).ResetData = true;
+            ((TrapsTableControl)MiscUtils.GetParentControlObject(this, "TrapsTableControl")).DataChanged = true;
+            ((TrapsTableControl)MiscUtils.GetParentControlObject(this, "TrapsTableControl")).ResetData = true;
         }
 
         protected virtual void Control_PreRender(object sender, System.EventArgs e)
@@ -1106,151 +833,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../TrapRecords/Edit-TrapRecords.aspx?TrapRecords={PK}";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
-                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-                url = this.Page.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.Page.ShouldSaveControlsToSession = true;
-      this.Page.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for LinkButton
-        public virtual void GroupId_Click(object sender, EventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Groups/Show-Groups-Table.aspx?Groups={TrapRecordsTableControlRow:FK:VFK_TrapRecords_GroupId_1}";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
-                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-                url = this.Page.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.Page.ShouldSaveControlsToSession = true;
-      this.Page.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for LinkButton
-        public virtual void ProjectId_Click(object sender, EventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../Projects/Show-Projects-Table.aspx?Projects={TrapRecordsTableControlRow:FK:VFK_TrapRecords_ProjectId_1}";
-            
-            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
-                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
-            
-        bool shouldRedirect = true;
-        string target = null;
-        if (target == null) target = ""; // avoid warning on VS
-      
-            try {
-                // Enclose all database retrieval/update code within a Transaction boundary
-                DbUtils.StartTransaction();
-                
-                url = this.ModifyRedirectUrl(url, "",true);
-                url = this.Page.ModifyRedirectUrl(url, "",true);
-              
-            } catch (Exception ex) {
-                  // Upon error, rollback the transaction
-                  this.Page.RollBackTransaction(sender);
-                  shouldRedirect = false;
-                  this.Page.ErrorOnPage = true;
-
-            // Report the error message to the end user
-            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
-    
-            } finally {
-                DbUtils.EndTransaction();
-            }
-            if (shouldRedirect) {
-                this.Page.ShouldSaveControlsToSession = true;
-      this.Page.Response.Redirect(url);
-        
-            }
-        
-        }
-            
-            
-        
-        // event handler for LinkButton
-        public virtual void TrapTypeId_Click(object sender, EventArgs args)
-        {
-              
-            // The redirect URL is set on the Properties, Custom Properties or Actions.
-            // The ModifyRedirectURL call resolves the parameters before the
-            // Response.Redirect redirects the page to the URL.  
-            // Any code after the Response.Redirect call will not be executed, since the page is
-            // redirected to the URL.
-            
-            string url = @"../TrapTypes/Show-TrapTypes.aspx?TrapTypes={TrapRecordsTableControlRow:FK:VFK_TrapRecords_TrapTypeId_1}";
+            string url = @"../Traps/Edit-Traps-Admin.aspx?Traps={PK}";
             
             if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
                 url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
@@ -1303,16 +886,16 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
         
         public String RecordUniqueId {
             get {
-                return (string)this.ViewState["BaseTrapRecordsTableControlRow_Rec"];
+                return (string)this.ViewState["BaseTrapsTableControlRow_Rec"];
             }
             set {
-                this.ViewState["BaseTrapRecordsTableControlRow_Rec"] = value;
+                this.ViewState["BaseTrapsTableControlRow_Rec"] = value;
             }
         }
         
-        public TrapRecordsRecord DataSource {
+        public TrapsRecord DataSource {
             get {
-                return (TrapRecordsRecord)(this._DataSource);
+                return (TrapsRecord)(this._DataSource);
             }
             set {
                 this._DataSource = value;
@@ -1377,42 +960,12 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
        
 #region "Helper Properties"
         
-        public System.Web.UI.WebControls.Literal BaitType {
+        public System.Web.UI.WebControls.Literal Active {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "BaitType");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Active");
             }
         }
             
-        public System.Web.UI.WebControls.Literal BaitTypeLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "BaitTypeLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.Literal Comment {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Comment");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal CommentLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "CommentLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.Literal DateOfCheck {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DateOfCheck");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal DateOfCheckLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DateOfCheckLabel");
-            }
-        }
-        
         public System.Web.UI.WebControls.ImageButton DeleteRowButton {
             get {
                 return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DeleteRowButton");
@@ -1425,78 +978,24 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             }
         }
         
-        public System.Web.UI.WebControls.LinkButton GroupId {
+        public System.Web.UI.WebControls.Literal GroupId {
             get {
-                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupId");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupId");
             }
         }
             
-        public System.Web.UI.WebControls.Literal GroupIdLabel {
+        public System.Web.UI.WebControls.Literal TrapIdentifierId {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupIdLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.Literal LocationId {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationId");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierId");
             }
         }
             
-        public System.Web.UI.WebControls.Literal LocationIdLabel {
+        public System.Web.UI.WebControls.Literal TrapTypeId {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationIdLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.LinkButton ProjectId {
-            get {
-                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectId");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeId");
             }
         }
             
-        public System.Web.UI.WebControls.Literal ProjectIdLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectIdLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.Literal Sex {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Sex");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal SexLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SexLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.Literal Species {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Species");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal SpeciesLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "SpeciesLabel");
-            }
-        }
-        
-        public System.Web.UI.WebControls.LinkButton TrapTypeId {
-            get {
-                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeId");
-            }
-        }
-            
-        public System.Web.UI.WebControls.Literal TrapTypeIdLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeIdLabel");
-            }
-        }
-        
     #endregion
 
     #region "Helper Functions"
@@ -1512,7 +1011,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
 
     public override string EvaluateExpressions(string url, string arg, bool bEncrypt)
     {
-        TrapRecordsRecord rec = null;
+        TrapsRecord rec = null;
              
             try {
                 rec = this.GetRecord();
@@ -1535,7 +1034,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
 
     public override string EvaluateExpressions(string url, string arg, bool bEncrypt,bool includeSession)
     {
-    TrapRecordsRecord rec = null;
+    TrapsRecord rec = null;
     
           try {
                rec = this.GetRecord();
@@ -1563,7 +1062,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
     }
 
         
-        public virtual TrapRecordsRecord GetRecord()
+        public virtual TrapsRecord GetRecord()
              
         {
         
@@ -1573,7 +1072,7 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
             
               if (this.RecordUniqueId != null) {
               
-                return TrapRecordsTable.GetRecord(this.RecordUniqueId, true);
+                return TrapsTable.GetRecord(this.RecordUniqueId, true);
               
             }
             
@@ -1595,12 +1094,12 @@ public class BaseTrapRecordsTableControlRow : RatTrap.UI.BaseApplicationRecordCo
 }
 
   
-// Base class for the TrapRecordsTableControl control on the Show_TrapRecords_Table page.
-// Do not modify this class. Instead override any method in TrapRecordsTableControl.
-public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableControl
+// Base class for the TrapsTableControl control on the Show_Traps_Table_Upload page.
+// Do not modify this class. Instead override any method in TrapsTableControl.
+public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
 {
          
-       public BaseTrapRecordsTableControl()
+       public BaseTrapsTableControl()
         {
             this.Init += Control_Init;
             this.Load += Control_Load;
@@ -1638,12 +1137,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             if (!this.Page.IsPostBack)
             {
                 string initialVal = "";
-                if  (this.InSession(this.DateOfCheckFromFilter)) 				
-                    initialVal = this.GetFromSession(this.DateOfCheckFromFilter);
+                if  (this.InSession(this.ActiveFilter)) 				
+                    initialVal = this.GetFromSession(this.ActiveFilter);
                 
                 else
                     
-                    initialVal = EvaluateFormula("URL(\"DateOfCheckFrom\")");
+                    initialVal = EvaluateFormula("URL(\"Active\")");
                 
                 if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
                 {
@@ -1653,29 +1152,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 if (initialVal != null && initialVal != "")		
                 {
                         
-                    this.DateOfCheckFromFilter.Text = initialVal;
-                            
-                    }
-            }
-            if (!this.Page.IsPostBack)
-            {
-                string initialVal = "";
-                if  (this.InSession(this.DateOfCheckToFilter)) 				
-                    initialVal = this.GetFromSession(this.DateOfCheckToFilter);
-                
-                else
-                    
-                    initialVal = EvaluateFormula("URL(\"DateOfCheckTo\")");
-                
-                if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
-                {
-                initialVal = "";
-                }
-              
-                if (initialVal != null && initialVal != "")		
-                {
+                    this.ActiveFilter.Items.Add(new ListItem(initialVal, initialVal));
                         
-                    this.DateOfCheckToFilter.Text = initialVal;
+                    this.ActiveFilter.SelectedValue = initialVal;
                             
                     }
             }
@@ -1722,12 +1201,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             if (!this.Page.IsPostBack)
             {
                 string initialVal = "";
-                if  (this.InSession(this.ProjectIdFilter)) 				
-                    initialVal = this.GetFromSession(this.ProjectIdFilter);
+                if  (this.InSession(this.TrapTypeIdFilter)) 				
+                    initialVal = this.GetFromSession(this.TrapTypeIdFilter);
                 
                 else
                     
-                    initialVal = EvaluateFormula("URL(\"ProjectId\")");
+                    initialVal = EvaluateFormula("URL(\"TrapTypeId\")");
                 
                 if(StringUtils.InvariantEquals(initialVal, "Search for", true) || StringUtils.InvariantEquals(initialVal, BaseClasses.Resources.AppResources.GetResourceValue("Txt:SearchForEllipsis", null), true))
                 {
@@ -1737,9 +1216,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 if (initialVal != null && initialVal != "")		
                 {
                         
-                    string[] ProjectIdFilteritemListFromSession = initialVal.Split(',');
+                    string[] TrapTypeIdFilteritemListFromSession = initialVal.Split(',');
                     int index = 0;
-                    foreach (string item in ProjectIdFilteritemListFromSession)
+                    foreach (string item in TrapTypeIdFilteritemListFromSession)
                     {
                         if (index == 0 && item.ToString().Equals(""))
                         {
@@ -1747,12 +1226,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                         }
                         else
                         {
-                            this.ProjectIdFilter.Items.Add(item);
-                            this.ProjectIdFilter.Items[index].Selected = true;
+                            this.TrapTypeIdFilter.Items.Add(item);
+                            this.TrapTypeIdFilter.Items[index].Selected = true;
                             index += 1;
                         }
                     }
-                    foreach (ListItem listItem in this.ProjectIdFilter.Items)
+                    foreach (ListItem listItem in this.TrapTypeIdFilter.Items)
                     {
                         listItem.Selected = true;
                     }
@@ -1829,9 +1308,11 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                         
             this.SortControl.SelectedIndexChanged += new EventHandler(SortControl_SelectedIndexChanged);
             
+            this.ActiveFilter.SelectedIndexChanged += new EventHandler(ActiveFilter_SelectedIndexChanged);
+            
               this.GroupIdFilter.SelectedIndexChanged += GroupIdFilter_SelectedIndexChanged;                  
                 
-              this.ProjectIdFilter.SelectedIndexChanged += ProjectIdFilter_SelectedIndexChanged;                  
+              this.TrapTypeIdFilter.SelectedIndexChanged += TrapTypeIdFilter_SelectedIndexChanged;                  
                         
         
          //' Setup events for others
@@ -1850,8 +1331,8 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                   if (wc != null && !wc.RunQuery) {
                         // Initialize an empty array of records
                       ArrayList alist = new ArrayList(0);
-                      Type myrec = typeof(RatTrap.Business.TrapRecordsRecord);
-                      this.DataSource = (TrapRecordsRecord[])(alist.ToArray(myrec));
+                      Type myrec = typeof(RatTrap.Business.TrapsRecord);
+                      this.DataSource = (TrapsRecord[])(alist.ToArray(myrec));
                       // Add records to the list if needed.
                       this.AddNewRecords();
                       this._TotalRecords = 0;
@@ -1888,7 +1369,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 if (this.AddNewRecord > 0) {
                     // Make sure to preserve the previously entered data on new rows.
                     ArrayList postdata = new ArrayList(0);
-                    foreach (TrapRecordsTableControlRow rc in this.GetRecordControls()) {
+                    foreach (TrapsTableControlRow rc in this.GetRecordControls()) {
                         if (!rc.IsNewRecord) {
                             rc.DataSource = rc.GetRecord();
                             rc.GetUIData();
@@ -1896,8 +1377,8 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                             UIData.Add(rc.PreservedUIData());
                         }
                     }
-                    Type myrec = typeof(RatTrap.Business.TrapRecordsRecord);
-                    this.DataSource = (TrapRecordsRecord[])(postdata.ToArray(myrec));
+                    Type myrec = typeof(RatTrap.Business.TrapsRecord);
+                    this.DataSource = (TrapsRecord[])(postdata.ToArray(myrec));
                 } 
                 else {
                     // Get the records from the database
@@ -1934,7 +1415,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }
         
-        public virtual TrapRecordsRecord[] GetRecords(BaseFilter join, WhereClause where, OrderBy orderBy, int pageIndex, int pageSize)
+        public virtual TrapsRecord[] GetRecords(BaseFilter join, WhereClause where, OrderBy orderBy, int pageIndex, int pageSize)
         {    
             // by default, Select * will be executed to get a list of records.  If you want to run Select Distinct with certain column only, add the column to selCols
             ColumnList selCols = new ColumnList();                 
@@ -1943,9 +1424,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // If you want to specify certain columns to be in the select statement, you can write code similar to the following:
             // However, if you don't specify PK, row button click might show an error message.
             // And make sure you write similar code in GetRecordCount as well
-            // selCols.Add(TrapRecordsTable.Column1, true);          
-            // selCols.Add(TrapRecordsTable.Column2, true);          
-            // selCols.Add(TrapRecordsTable.Column3, true);          
+            // selCols.Add(TrapsTable.Column1, true);          
+            // selCols.Add(TrapsTable.Column2, true);          
+            // selCols.Add(TrapsTable.Column3, true);          
             
 
             // If the parameters doesn't specify specific columns in the Select statement, then run Select *
@@ -1955,12 +1436,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                   
             {
               
-                return TrapRecordsTable.GetRecords(join, where, orderBy, this.PageIndex, this.PageSize);
+                return TrapsTable.GetRecords(join, where, orderBy, this.PageIndex, this.PageSize);
                  
             }
             else
             {
-                TrapRecordsTable databaseTable = new TrapRecordsTable();
+                TrapsTable databaseTable = new TrapsTable();
                 databaseTable.SelectedColumns.Clear();
                 databaseTable.SelectedColumns.AddRange(selCols);
                 
@@ -1969,7 +1450,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 ArrayList recList; 
                 orderBy.ExpandForeignKeyColums = false;
                 recList = databaseTable.GetRecordList(join, where.GetFilter(), null, orderBy, pageIndex, pageSize);
-                return (recList.ToArray(typeof(TrapRecordsRecord)) as TrapRecordsRecord[]);
+                return (recList.ToArray(typeof(TrapsRecord)) as TrapsRecord[]);
             }            
             
         }
@@ -1986,9 +1467,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // If you want to specify certain columns to be in the select statement, you can write code similar to the following:
             // However, if you don't specify PK, row button click might show an error message.
             // And make sure you write similar code in GetRecords as well
-            // selCols.Add(TrapRecordsTable.Column1, true);          
-            // selCols.Add(TrapRecordsTable.Column2, true);          
-            // selCols.Add(TrapRecordsTable.Column3, true);          
+            // selCols.Add(TrapsTable.Column1, true);          
+            // selCols.Add(TrapsTable.Column2, true);          
+            // selCols.Add(TrapsTable.Column3, true);          
 
 
             // If the parameters doesn't specify specific columns in the Select statement, then run Select *
@@ -1997,10 +1478,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             if (selCols.Count == 0)                 
                      
             
-                return TrapRecordsTable.GetRecordCount(join, where);
+                return TrapsTable.GetRecordCount(join, where);
             else
             {
-                TrapRecordsTable databaseTable = new TrapRecordsTable();
+                TrapsTable databaseTable = new TrapsTable();
                 databaseTable.SelectedColumns.Clear();
                 databaseTable.SelectedColumns.AddRange(selCols);        
                 
@@ -2034,6 +1515,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
           
                   LoadData_TrapRecordsCountQuery();
        
+                  LoadData_TrapRecordsCountQuery1();
+       
+                  LoadData_TrapsCountQuery();
+       
             // Improve performance by prefetching display as records.
             this.PreFetchForeignKeyValues();     
 
@@ -2044,7 +1529,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         
         // Bind the repeater with the list of records to expand the UI.
         
-        System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapRecordsTableControlRepeater"));
+        System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapsTableControlRepeater"));
         if (rep == null){return;}
         rep.DataSource = this.DataSource;
         rep.DataBind();
@@ -2055,7 +1540,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         {
         
             // Loop through all rows in the table, set its DataSource and call DataBind().
-            TrapRecordsTableControlRow recControl = (TrapRecordsTableControlRow)(repItem.FindControl("TrapRecordsTableControlRow"));
+            TrapsTableControlRow recControl = (TrapsTableControlRow)(repItem.FindControl("TrapsTableControlRow"));
             recControl.DataSource = this.DataSource[index];            
             if (this.UIData.Count > index)
                 recControl.PreviousUIData = this.UIData[index];
@@ -2071,28 +1556,32 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // Call the Set methods for each controls on the panel
         
                 
-                
-                SetDateOfCheckLabel1();
-                
-                
+                SetActiveFilter();
+                SetActiveLabel();
+                SetActiveLabel1();
                 
                 
                 
                 SetGroupIdFilter();
+                SetGroupIdLabel();
                 SetGroupIdLabel1();
                 
-                SetLabel();
+                SetLabel1();
                 
                 
                 
-                SetProjectIdFilter();
-                SetProjectIdLabel1();
                 
                 SetSortByLabel();
                 SetSortControl();
                 
-                SetTrapRecordsCountControl();
+                SetTrapIdentifierIdLabel();
                 
+                
+                SetTrapsCountControl();
+                
+                SetTrapTypeIdFilter();
+                SetTrapTypeIdLabel();
+                SetTrapTypeIdLabel1();
                 
                 SetExcelButton();
               
@@ -2150,13 +1639,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 return;
             }
           
-            this.Page.PregetDfkaRecords(TrapRecordsTable.BaitType, this.DataSource);
-            this.Page.PregetDfkaRecords(TrapRecordsTable.GroupId, this.DataSource);
-            this.Page.PregetDfkaRecords(TrapRecordsTable.LocationId, this.DataSource);
-            this.Page.PregetDfkaRecords(TrapRecordsTable.ProjectId, this.DataSource);
-            this.Page.PregetDfkaRecords(TrapRecordsTable.Sex, this.DataSource);
-            this.Page.PregetDfkaRecords(TrapRecordsTable.Species, this.DataSource);
-            this.Page.PregetDfkaRecords(TrapRecordsTable.TrapTypeId, this.DataSource);
+            this.Page.PregetDfkaRecords(TrapsTable.GroupId, this.DataSource);
+            this.Page.PregetDfkaRecords(TrapsTable.TrapIdentifierId, this.DataSource);
+            this.Page.PregetDfkaRecords(TrapsTable.TrapTypeId, this.DataSource);
         }
         
 
@@ -2197,6 +1682,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 // add datasource as variables for formula evaluation
                     
                 if (TrapRecordsCountQuery != null) e.Variables.Add("TrapRecordsCountQuery", TrapRecordsCountQuery);                                                       
+                    
+                if (TrapRecordsCountQuery1 != null) e.Variables.Add("TrapRecordsCountQuery1", TrapRecordsCountQuery1);                                                       
+                    
+                if (TrapsCountQuery != null) e.Variables.Add("TrapsCountQuery", TrapsCountQuery);                                                       
                     
             }
 
@@ -2259,15 +1748,13 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
 
 
             
+            this.ActiveFilter.ClearSelection();
+            
             this.GroupIdFilter.ClearSelection();
             
-            this.ProjectIdFilter.ClearSelection();
+            this.TrapTypeIdFilter.ClearSelection();
             
             this.SortControl.ClearSelection();
-            
-            this.DateOfCheckFromFilter.Text = "";
-            
-            this.DateOfCheckToFilter.Text = "";
             
             this.CurrentSortOrder.Reset();
             if (this.InSession(this, "Order_By")) {
@@ -2305,7 +1792,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             this.Pagination.PageSize.Text = this.PageSize.ToString();
             this.Pagination.TotalPages.Text = this.TotalPages.ToString();
     
-            // Bind the buttons for TrapRecordsTableControl pagination.
+            // Bind the buttons for TrapsTableControl pagination.
         
             this.Pagination.FirstPage.Enabled = !(this.PageIndex == 0);
             if (this._TotalPages < 0)             // if the total pages is not determined yet, enable last and next buttons
@@ -2331,7 +1818,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // to save their data.  This function is called by the Click handler of the
             // Save button.  The button handler should Start/Commit/End a transaction.
               
-            foreach (TrapRecordsTableControlRow recCtl in this.GetRecordControls())
+            foreach (TrapsTableControlRow recCtl in this.GetRecordControls())
             {
         
                 if (this.InDeletedRecordIds(recCtl)) {
@@ -2355,7 +1842,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             this.ResetData = true;
           
             // Set IsNewRecord to False for all records - since everything has been saved and is no longer "new"
-            foreach (TrapRecordsTableControlRow recCtl in this.GetRecordControls()){
+            foreach (TrapsTableControlRow recCtl in this.GetRecordControls()){
                 recCtl.IsNewRecord = false;
             }
       
@@ -2399,7 +1886,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         public virtual WhereClause CreateWhereClause()
         {
             // This CreateWhereClause is used for loading the data.
-            TrapRecordsTable.Instance.InnerFilter = null;
+            TrapsTable.Instance.InnerFilter = null;
             WhereClause wc = new WhereClause();
     
             // CreateWhereClause() Compose the WHERE clause consist of:
@@ -2408,21 +1895,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // 3. User selected filter criteria.
             
         
-            if (MiscUtils.IsValueSelected(this.DateOfCheckFromFilter)) {
-                string val = MiscUtils.GetSelectedValue(this.DateOfCheckFromFilter, this.GetFromSession(this.DateOfCheckFromFilter));
-                DateTime d = DateParser.ParseDate(val, DateColumn.DEFAULT_FORMAT);
-                    
-                val = d.ToShortDateString() + " " + "00:00:00";
-                wc.iAND(TrapRecordsTable.DateOfCheck, BaseFilter.ComparisonOperator.Greater_Than_Or_Equal, val, false, false);
-                    
-            }
-                      
-            if (MiscUtils.IsValueSelected(this.DateOfCheckToFilter)) {
-                string val = MiscUtils.GetSelectedValue(this.DateOfCheckToFilter, this.GetFromSession(this.DateOfCheckToFilter));
-                DateTime d = DateParser.ParseDate(val, DateColumn.DEFAULT_FORMAT);
-                    
-                val = d.ToShortDateString() + " " + "23:59:59";
-                wc.iAND(TrapRecordsTable.DateOfCheck, BaseFilter.ComparisonOperator.Less_Than_Or_Equal, val, false, false);
+            if (MiscUtils.IsValueSelected(this.ActiveFilter)) {
+                        
+                wc.iAND(TrapsTable.Active, BaseFilter.ComparisonOperator.EqualsTo, MiscUtils.GetSelectedValue(this.ActiveFilter, this.GetFromSession(this.ActiveFilter)), false, false);
                     
             }
                       
@@ -2442,17 +1917,17 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                         item.Selected = false;
                     }
                     if (item.Selected){
-                        filter.iOR(TrapRecordsTable.GroupId, BaseFilter.ComparisonOperator.EqualsTo, item.Value, false, false);
+                        filter.iOR(TrapsTable.GroupId, BaseFilter.ComparisonOperator.EqualsTo, item.Value, false, false);
                     }
                 }
                 wc.iAND(filter);
                     
             }
                       
-            if (MiscUtils.IsValueSelected(this.ProjectIdFilter)) {
+            if (MiscUtils.IsValueSelected(this.TrapTypeIdFilter)) {
                         
                 int selectedItemCount = 0;
-                foreach (ListItem item in this.ProjectIdFilter.Items){
+                foreach (ListItem item in this.TrapTypeIdFilter.Items){
                     if (item.Selected) {
                         selectedItemCount += 1;
                         
@@ -2460,12 +1935,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                     }
                 }
                 WhereClause filter = new WhereClause();
-                foreach (ListItem item in this.ProjectIdFilter.Items){
+                foreach (ListItem item in this.TrapTypeIdFilter.Items){
                     if ((item.Selected) && ((item.Value == "--ANY--") || (item.Value == "--PLEASE_SELECT--")) && (selectedItemCount > 1)){
                         item.Selected = false;
                     }
                     if (item.Selected){
-                        filter.iOR(TrapRecordsTable.ProjectId, BaseFilter.ComparisonOperator.EqualsTo, item.Value, false, false);
+                        filter.iOR(TrapsTable.TrapTypeId, BaseFilter.ComparisonOperator.EqualsTo, item.Value, false, false);
                     }
                 }
                 wc.iAND(filter);
@@ -2479,7 +1954,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         public virtual WhereClause CreateWhereClause(String searchText, String fromSearchControl, String AutoTypeAheadSearch, String AutoTypeAheadWordSeparators)
         {
             // This CreateWhereClause is used for loading list of suggestions for Auto Type-Ahead feature.
-            TrapRecordsTable.Instance.InnerFilter = null;
+            TrapsTable.Instance.InnerFilter = null;
             WhereClause wc = new WhereClause();
         
             // Compose the WHERE clause consist of:
@@ -2491,22 +1966,14 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
-            string DateOfCheckFromFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "DateOfCheckFromFilter_Ajax"];
-            if (MiscUtils.IsValueSelected(DateOfCheckFromFilterSelectedValue)) {
-                DateTime d = DateParser.ParseDate(DateOfCheckFromFilterSelectedValue, DateColumn.DEFAULT_FORMAT);
-                DateOfCheckFromFilterSelectedValue = d.ToShortDateString() + " " + "00:00:00";
-                    
-                wc.iAND(TrapRecordsTable.DateOfCheck, BaseFilter.ComparisonOperator.Greater_Than_Or_Equal, DateOfCheckFromFilterSelectedValue, false, false);
-                    
-            }         
-            string DateOfCheckToFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "DateOfCheckToFilter_Ajax"];
-            if (MiscUtils.IsValueSelected(DateOfCheckToFilterSelectedValue)) {
-                DateTime d = DateParser.ParseDate(DateOfCheckToFilterSelectedValue, DateColumn.DEFAULT_FORMAT);
-                DateOfCheckToFilterSelectedValue = d.ToShortDateString() + " " + "23:59:59";
-                    
-                wc.iAND(TrapRecordsTable.DateOfCheck, BaseFilter.ComparisonOperator.Less_Than_Or_Equal, DateOfCheckToFilterSelectedValue, false, false);
-                    
-            }         
+      String ActiveFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "ActiveFilter_Ajax"];
+            if (MiscUtils.IsValueSelected(ActiveFilterSelectedValue)) {
+
+              
+                wc.iAND(TrapsTable.Active, BaseFilter.ComparisonOperator.EqualsTo, ActiveFilterSelectedValue, false, false);
+                      
+      }
+                      
       String GroupIdFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "GroupIdFilter_Ajax"];
             if (MiscUtils.IsValueSelected(GroupIdFilterSelectedValue)) {
 
@@ -2522,7 +1989,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                             }
                             else
                             {
-                                filter.iOR(TrapRecordsTable.GroupId, BaseFilter.ComparisonOperator.EqualsTo, item, false, false);
+                                filter.iOR(TrapsTable.GroupId, BaseFilter.ComparisonOperator.EqualsTo, item, false, false);
                                 index += 1;
                             }
                         }
@@ -2531,22 +1998,22 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 
       }
                       
-      String ProjectIdFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "ProjectIdFilter_Ajax"];
-            if (MiscUtils.IsValueSelected(ProjectIdFilterSelectedValue)) {
+      String TrapTypeIdFilterSelectedValue = (String)HttpContext.Current.Session[HttpContext.Current.Session.SessionID + appRelativeVirtualPath + "TrapTypeIdFilter_Ajax"];
+            if (MiscUtils.IsValueSelected(TrapTypeIdFilterSelectedValue)) {
 
               
-        if (ProjectIdFilterSelectedValue != null){
-                        string[] ProjectIdFilteritemListFromSession = ProjectIdFilterSelectedValue.Split(',');
+        if (TrapTypeIdFilterSelectedValue != null){
+                        string[] TrapTypeIdFilteritemListFromSession = TrapTypeIdFilterSelectedValue.Split(',');
                         int index = 0;
                         WhereClause filter = new WhereClause();
-                        foreach (string item in ProjectIdFilteritemListFromSession)
+                        foreach (string item in TrapTypeIdFilteritemListFromSession)
                         {
                             if (index == 0 && item.ToString().Equals(""))
                             {
                             }
                             else
                             {
-                                filter.iOR(TrapRecordsTable.ProjectId, BaseFilter.ComparisonOperator.EqualsTo, item, false, false);
+                                filter.iOR(TrapsTable.TrapTypeId, BaseFilter.ComparisonOperator.EqualsTo, item, false, false);
                                 index += 1;
                             }
                         }
@@ -2724,52 +2191,32 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // and add to the list.
             if (!this.ResetData)
             {
-              System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapRecordsTableControlRepeater"));
+              System.Web.UI.WebControls.Repeater rep = (System.Web.UI.WebControls.Repeater)(BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapsTableControlRepeater"));
               if (rep == null){return;}
               
                 foreach (System.Web.UI.WebControls.RepeaterItem repItem in rep.Items)
                 {
                 
                 // Loop through all rows in the table, set its DataSource and call DataBind().
-                TrapRecordsTableControlRow recControl = (TrapRecordsTableControlRow)(repItem.FindControl("TrapRecordsTableControlRow"));
+                TrapsTableControlRow recControl = (TrapsTableControlRow)(repItem.FindControl("TrapsTableControlRow"));
       
             if (recControl.Visible && recControl.IsNewRecord) {
-      TrapRecordsRecord rec = new TrapRecordsRecord();
+      TrapsRecord rec = new TrapsRecord();
         
-                        if (recControl.BaitType.Text != "") {
-                            rec.Parse(recControl.BaitType.Text, TrapRecordsTable.BaitType);
-                  }
-                
-                        if (recControl.Comment.Text != "") {
-                            rec.Parse(recControl.Comment.Text, TrapRecordsTable.Comment);
-                  }
-                
-                        if (recControl.DateOfCheck.Text != "") {
-                            rec.Parse(recControl.DateOfCheck.Text, TrapRecordsTable.DateOfCheck);
+                        if (recControl.Active.Text != "") {
+                            rec.Parse(recControl.Active.Text, TrapsTable.Active);
                   }
                 
                         if (recControl.GroupId.Text != "") {
-                            rec.Parse(recControl.GroupId.Text, TrapRecordsTable.GroupId);
+                            rec.Parse(recControl.GroupId.Text, TrapsTable.GroupId);
                   }
                 
-                        if (recControl.LocationId.Text != "") {
-                            rec.Parse(recControl.LocationId.Text, TrapRecordsTable.LocationId);
-                  }
-                
-                        if (recControl.ProjectId.Text != "") {
-                            rec.Parse(recControl.ProjectId.Text, TrapRecordsTable.ProjectId);
-                  }
-                
-                        if (recControl.Sex.Text != "") {
-                            rec.Parse(recControl.Sex.Text, TrapRecordsTable.Sex);
-                  }
-                
-                        if (recControl.Species.Text != "") {
-                            rec.Parse(recControl.Species.Text, TrapRecordsTable.Species);
+                        if (recControl.TrapIdentifierId.Text != "") {
+                            rec.Parse(recControl.TrapIdentifierId.Text, TrapsTable.TrapIdentifierId);
                   }
                 
                         if (recControl.TrapTypeId.Text != "") {
-                            rec.Parse(recControl.TrapTypeId.Text, TrapRecordsTable.TrapTypeId);
+                            rec.Parse(recControl.TrapTypeId.Text, TrapsTable.TrapTypeId);
                   }
                 
               newUIDataList.Add(recControl.PreservedUIData());
@@ -2781,7 +2228,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // Add any new record to the list.
             for (int count = 1; count <= this.AddNewRecord; count++) {
               
-                newRecordList.Insert(0, new TrapRecordsRecord());
+                newRecordList.Insert(0, new TrapsRecord());
                 newUIDataList.Insert(0, new Hashtable());
               
             }
@@ -2793,8 +2240,8 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 ArrayList finalList = new ArrayList(this.DataSource);
                 finalList.InsertRange(0, newRecordList);
 
-                Type myrec = typeof(RatTrap.Business.TrapRecordsRecord);
-                this.DataSource = (TrapRecordsRecord[])(finalList.ToArray(myrec));
+                Type myrec = typeof(RatTrap.Business.TrapsRecord);
+                this.DataSource = (TrapsRecord[])(finalList.ToArray(myrec));
               
             }
             
@@ -2804,7 +2251,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         }
 
         
-        public void AddToDeletedRecordIds(TrapRecordsTableControlRow rec)
+        public void AddToDeletedRecordIds(TrapsTableControlRow rec)
         {
             if (rec.IsNewRecord) {
                 return;
@@ -2817,7 +2264,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             this.DeletedRecordIds += "[" + rec.RecordUniqueId + "]";
         }
 
-        protected virtual bool InDeletedRecordIds(TrapRecordsTableControlRow rec)            
+        protected virtual bool InDeletedRecordIds(TrapsTableControlRow rec)            
         {
             if (this.DeletedRecordIds == null || this.DeletedRecordIds.Length == 0) {
                 return (false);
@@ -2839,10 +2286,26 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
       
         // Create Set, WhereClause, and Populate Methods
         
-        public virtual void SetDateOfCheckLabel1()
+        public virtual void SetActiveLabel()
                   {
                   
-                        this.DateOfCheckLabel1.Text = EvaluateFormula("\"Date Checked\"");
+                        this.ActiveLabel.Text = EvaluateFormula("\"Active?\"");
+                      
+                    
+        }
+                
+        public virtual void SetActiveLabel1()
+                  {
+                  
+                        this.ActiveLabel1.Text = EvaluateFormula("\"Active?\"");
+                      
+                    
+        }
+                
+        public virtual void SetGroupIdLabel()
+                  {
+                  
+                        this.GroupIdLabel.Text = EvaluateFormula("\"Allocated to Group\"");
                       
                     
         }
@@ -2850,22 +2313,18 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         public virtual void SetGroupIdLabel1()
                   {
                   
+                        this.GroupIdLabel1.Text = EvaluateFormula("\"Allocated to Group\"");
+                      
                     
         }
                 
-        public virtual void SetLabel()
+        public virtual void SetLabel1()
                   {
                   
                       //Code for the text property is generated inside the .aspx file. 
                       //To override this property you can uncomment the following property and add you own value.
-                      //this.Label.Text = "Some value";
+                      //this.Label1.Text = "Some value";
                     
-                    
-        }
-                
-        public virtual void SetProjectIdLabel1()
-                  {
-                  
                     
         }
                 
@@ -2879,11 +2338,29 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                     
         }
                 
-        public virtual void SetTrapRecordsCountControl()
+        public virtual void SetTrapIdentifierIdLabel()
                   {
                   
-                        this.TrapRecordsCountControl.Text = EvaluateFormula("LOOKUP(TrapRecordsCountQuery, \"\")");
                     
+        }
+                
+        public virtual void SetTrapsCountControl()
+                  {
+                  
+                        this.TrapsCountControl.Text = EvaluateFormula("LOOKUP(TrapsCountQuery, \"\")");
+                    
+                    
+        }
+                
+        public virtual void SetTrapTypeIdLabel()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetTrapTypeIdLabel1()
+                  {
+                  
                     
         }
                 
@@ -2900,6 +2377,54 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             return wc;
         }
       
+        public virtual WhereClause CreateWhereClause_TrapRecordsCountQuery1()
+        
+        {
+            WhereClause wc = new WhereClause();
+            // Compose the WHERE clause consist of:
+            // 1. Static clause defined at design tithis.
+            // 2. User selected search criteria.
+            // 3. User selected filter criteria.
+
+                      
+            return wc;
+        }
+      
+        public virtual WhereClause CreateWhereClause_TrapsCountQuery()
+        
+        {
+            WhereClause wc = new WhereClause();
+            // Compose the WHERE clause consist of:
+            // 1. Static clause defined at design tithis.
+            // 2. User selected search criteria.
+            // 3. User selected filter criteria.
+
+          
+            // Get the static clause defined at design time on the Query Wizard
+            WhereClause qc = this.CreateQueryClause_TrapsCountQuery();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+                      
+            return wc;
+        }
+      
+        public virtual WhereClause CreateQueryClause_TrapsCountQuery()
+        
+        {
+          
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("1", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Traps_.Deleted"), EvaluateFormula("1", false), BaseClasses.Data.BaseFilter.ComparisonOperator.Not_Equals, false));
+         if (EvaluateFormula("1", false) == "--PLEASE_SELECT--" || EvaluateFormula("1", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
         public virtual void LoadData_TrapRecordsCountQuery()
         
         {
@@ -2908,7 +2433,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         
               _TrapRecordsCountQuery.DataChanged = true;
           
-              this._TrapRecordsCountQuery.Initialize("TrapRecordsCountQuery", TrapRecordsTable.Instance, 0, 0);
+              this._TrapRecordsCountQuery.Initialize("TrapRecordsCountQuery", TrapsTable.Instance, 0, 0);
             
                
               // Add the primary key of the record
@@ -2917,11 +2442,65 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
           
               // Define selects
           
+              this._TrapRecordsCountQuery.AddSelectItem(new SelectItem(TrapsTable.TrapId, TrapsTable.Instance, false, "", ""));
+              
                     this._TrapRecordsCountQuery.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, TrapRecordsTable.Instance, "TrapRecordsCount", ""), "TrapRecordsCount"));
               
               // Define joins if there are any
           
+              this._TrapRecordsCountQuery.AddJoin(TrapsTable.TrapId, TrapsTable.Instance, "", TrapRecordsTable.TrapId, TrapRecordsTable.Instance, "");
+          
               this._TrapRecordsCountQuery.LoadData(false, this._TrapRecordsCountQuery.PageSize, this._TrapRecordsCountQuery.PageIndex);                       
+                        
+        }
+      
+        public virtual void LoadData_TrapRecordsCountQuery1()
+        
+        {
+          
+              if (!(this.ResetData || this.DataChanged || _TrapRecordsCountQuery1.DataChanged) && this.Page.IsPostBack  && this.Page.Request["__EVENTTARGET"] != "isd_geo_location") return;
+        
+              _TrapRecordsCountQuery1.DataChanged = true;
+          
+              this._TrapRecordsCountQuery1.Initialize("TrapRecordsCountQuery1", TrapRecordsTable.Instance, 0, 0);
+            
+               
+              // Add the primary key of the record
+              WhereClause wc = CreateWhereClause_TrapRecordsCountQuery1();
+              this._TrapRecordsCountQuery1.WhereClause.iAND(wc);                      
+          
+              // Define selects
+          
+                    this._TrapRecordsCountQuery1.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, TrapRecordsTable.Instance, "TrapRecordsCount", ""), "TrapRecordsCount"));
+              
+              // Define joins if there are any
+          
+              this._TrapRecordsCountQuery1.LoadData(false, this._TrapRecordsCountQuery1.PageSize, this._TrapRecordsCountQuery1.PageIndex);                       
+                        
+        }
+      
+        public virtual void LoadData_TrapsCountQuery()
+        
+        {
+          
+              if (!(this.ResetData || this.DataChanged || _TrapsCountQuery.DataChanged) && this.Page.IsPostBack  && this.Page.Request["__EVENTTARGET"] != "isd_geo_location") return;
+        
+              _TrapsCountQuery.DataChanged = true;
+          
+              this._TrapsCountQuery.Initialize("TrapsCountQuery", TrapsTable.Instance, 0, 0);
+            
+               
+              // Add the primary key of the record
+              WhereClause wc = CreateWhereClause_TrapsCountQuery();
+              this._TrapsCountQuery.WhereClause.iAND(wc);                      
+          
+              // Define selects
+          
+                    this._TrapsCountQuery.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, TrapsTable.Instance, "TrapsCount", ""), "TrapsCount"));
+              
+              // Define joins if there are any
+          
+              this._TrapsCountQuery.LoadData(false, this._TrapsCountQuery.PageSize, this._TrapsCountQuery.PageIndex);                       
                         
         }
       
@@ -2934,12 +2513,37 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
              }
         }
       
+        private DataSource _TrapRecordsCountQuery1 = new DataSource();
+        public DataSource TrapRecordsCountQuery1
+        {
+            get
+            {
+                return _TrapRecordsCountQuery1;
+             }
+        }
+      
+        private DataSource _TrapsCountQuery = new DataSource();
+        public DataSource TrapsCountQuery
+        {
+            get
+            {
+                return _TrapsCountQuery;
+             }
+        }
+      
         public virtual void SetSortControl()
         {
             
                 this.PopulateSortControl(MiscUtils.GetSelectedValue(this.SortControl,  GetFromSession(this.SortControl)), 500);					
                     
 
+        }
+            
+        public virtual void SetActiveFilter()
+        {
+            
+            this.PopulateActiveFilter(MiscUtils.GetSelectedValue(this.ActiveFilter,  GetFromSession(this.ActiveFilter)), 500);					
+                                     
         }
             
         public virtual void SetGroupIdFilter()
@@ -2973,33 +2577,33 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                              
         }
             
-        public virtual void SetProjectIdFilter()
+        public virtual void SetTrapTypeIdFilter()
         {
             
-            ArrayList ProjectIdFilterselectedFilterItemList = new ArrayList();
-            string ProjectIdFilteritemsString = null;
-            if (this.InSession(this.ProjectIdFilter))
-                ProjectIdFilteritemsString = this.GetFromSession(this.ProjectIdFilter);
+            ArrayList TrapTypeIdFilterselectedFilterItemList = new ArrayList();
+            string TrapTypeIdFilteritemsString = null;
+            if (this.InSession(this.TrapTypeIdFilter))
+                TrapTypeIdFilteritemsString = this.GetFromSession(this.TrapTypeIdFilter);
             
-            if (ProjectIdFilteritemsString != null)
+            if (TrapTypeIdFilteritemsString != null)
             {
-                string[] ProjectIdFilteritemListFromSession = ProjectIdFilteritemsString.Split(',');
-                foreach (string item in ProjectIdFilteritemListFromSession)
+                string[] TrapTypeIdFilteritemListFromSession = TrapTypeIdFilteritemsString.Split(',');
+                foreach (string item in TrapTypeIdFilteritemListFromSession)
                 {
-                    ProjectIdFilterselectedFilterItemList.Add(item);
+                    TrapTypeIdFilterselectedFilterItemList.Add(item);
                 }
             }
               
             			
-            this.PopulateProjectIdFilter(MiscUtils.GetSelectedValueList(this.ProjectIdFilter, ProjectIdFilterselectedFilterItemList), 500);
+            this.PopulateTrapTypeIdFilter(MiscUtils.GetSelectedValueList(this.TrapTypeIdFilter, TrapTypeIdFilterselectedFilterItemList), 500);
                     
-              string url = this.ModifyRedirectUrl("../Projects/Projects-QuickSelector.aspx", "", true);
+              string url = this.ModifyRedirectUrl("../TrapTypes/TrapTypes-QuickSelector.aspx", "", true);
               
               url = this.Page.ModifyRedirectUrl(url, "", true);                                  
               
-              url += "?Target=" + this.ProjectIdFilter.ClientID + "&Formula=" + (this.Page as BaseApplicationPage).Encrypt("= Projects.Description")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("ProjectId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--ANY--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:All")) + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
+              url += "?Target=" + this.TrapTypeIdFilter.ClientID + "&DFKA=" + (this.Page as BaseApplicationPage).Encrypt("TrapType")+ "&IndexField=" + (this.Page as BaseApplicationPage).Encrypt("TrapTypeId")+ "&EmptyValue=" + (this.Page as BaseApplicationPage).Encrypt("--ANY--") + "&EmptyDisplayText=" + (this.Page as BaseApplicationPage).Encrypt(this.Page.GetResourceValue("Txt:All")) + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup");
               
-              this.ProjectIdFilter.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(ProjectIdFilter.AutoPostBack).ToLower() + ", event); return false;";
+              this.TrapTypeIdFilter.Attributes["onClick"] = "initializePopupPage(this, '" + url + "', " + Convert.ToString(TrapTypeIdFilter.AutoPostBack).ToLower() + ", event); return false;";
                   
                              
         }
@@ -3017,21 +2621,17 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("{Txt:PleaseSelect}"), "--PLEASE_SELECT--"));
               
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Bait Type {Txt:Ascending}"), "BaitType Asc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Bait Type {Txt:Descending}"), "BaitType Desc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comment {Txt:Ascending}"), "Comment Asc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Comment {Txt:Descending}"), "Comment Desc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Date Checked {Txt:Ascending}"), "DateOfCheck Asc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Date Checked {Txt:Descending}"), "DateOfCheck Desc"));
-              
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Ascending}"), "GroupId Asc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Descending}"), "GroupId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Ascending}"), "TrapTypeId Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Ascending}"), "Active Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Active {Txt:Descending}"), "Active Desc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Location {Txt:Ascending}"), "LocationId Asc"));
               
@@ -3041,17 +2641,13 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Project {Txt:Descending}"), "ProjectId Desc"));
               
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Sex {Txt:Ascending}"), "Sex Asc"));
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Ascending}"), "TrapIdentifierId Asc"));
               
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Sex {Txt:Descending}"), "Sex Desc"));
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Identifier {Txt:Descending}"), "TrapIdentifierId Desc"));
               
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Species {Txt:Ascending}"), "Species Asc"));
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Ascending}"), "Deleted Asc"));
               
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Species {Txt:Descending}"), "Species Desc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Ascending}"), "TrapTypeId Asc"));
-              
-                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Trap Type {Txt:Descending}"), "TrapTypeId Desc"));
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Descending}"), "Deleted Desc"));
               
             try
             {          
@@ -3067,6 +2663,97 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             if (this.SortControl.SelectedValue != null && this.SortControl.Items.FindByValue(this.SortControl.SelectedValue) == null)
                 this.SortControl.SelectedValue = null;
               
+        }
+            
+        // Get the filters' data for ActiveFilter.
+                
+        protected virtual void PopulateActiveFilter(string selectedValue, int maxItems)
+                    
+        {
+        
+            
+            //Setup the WHERE clause.
+                        
+            this.ActiveFilter.Items.Clear();
+            WhereClause wc = this.CreateWhereClause_ActiveFilter();            
+            			  			
+            // Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_ActiveFilter function.
+            // It is better to customize the where clause there.
+             
+            // Setup the static list items        
+            
+                // Add the All item.
+                this.ActiveFilter.Items.Insert(0, new ListItem(this.Page.GetResourceValue("Txt:All", "RatTrap"), "--ANY--"));
+              
+            
+            
+            OrderBy orderBy = new OrderBy(false, false);
+            orderBy.Add(TrapsTable.Active, OrderByItem.OrderDir.Asc);                
+            
+            
+            string[] values = new string[0];
+            if (wc.RunQuery)
+            {
+            
+                values = TrapsTable.GetValues(TrapsTable.Active, wc, orderBy, maxItems);
+            
+            }
+            
+            ArrayList listDuplicates = new ArrayList();
+            foreach (string cvalue in values)
+            {
+            // Create the item and add to the list.
+            string fvalue;
+            if ( TrapsTable.Active.IsColumnValueTypeBoolean()) {
+                    fvalue = cvalue;
+                }else {
+                    fvalue = TrapsTable.Active.Format(cvalue);
+                }
+                if (fvalue == null) {
+                    fvalue = "";
+                }
+
+                fvalue = fvalue.Trim();
+
+                if ( fvalue.Length > 50 ) {
+                    fvalue = fvalue.Substring(0, 50) + "...";
+                }
+
+                ListItem dupItem = this.ActiveFilter.Items.FindByText(fvalue);
+								
+                if (dupItem != null) {
+                    listDuplicates.Add(fvalue);
+                    if (!string.IsNullOrEmpty(dupItem.Value))
+                    {
+                        dupItem.Text = fvalue + " (ID " + dupItem.Value.Substring(0, Math.Min(dupItem.Value.Length,38)) + ")";
+                    }
+                }
+
+                ListItem newItem = new ListItem(fvalue, cvalue);
+                this.ActiveFilter.Items.Add(newItem);
+
+                if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
+                    newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
+                }
+            }
+
+                          
+            try
+            {
+      
+                
+                // Set the selected value.
+                MiscUtils.SetSelectedValue(this.ActiveFilter, selectedValue);
+                
+            }
+            catch
+            {
+            }
+            
+            
+            if (this.ActiveFilter.SelectedValue != null && this.ActiveFilter.Items.FindByValue(this.ActiveFilter.SelectedValue) == null)
+                this.ActiveFilter.SelectedValue = null;
+                           
         }
             
         // Get the filters' data for GroupIdFilter.
@@ -3117,9 +2804,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                             if (counter < maxItems && this.GroupIdFilter.Items.FindByValue(cvalue) == null)
                             {
                                     
-                                Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.GroupId);
-                                if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.GroupId.IsApplyDisplayAs)
-                                     fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.GroupId);
+                                Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.GroupId);
+                                if(_isExpandableNonCompositeForeignKey && TrapsTable.GroupId.IsApplyDisplayAs)
+                                     fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.GroupId);
                                 if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
                                      fvalue = itemValue.Format(GroupsTable.GroupId);
                                    					
@@ -3187,19 +2874,19 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                                
         }
             
-        // Get the filters' data for ProjectIdFilter.
+        // Get the filters' data for TrapTypeIdFilter.
                 
-        protected virtual void PopulateProjectIdFilter(ArrayList selectedValue, int maxItems)
+        protected virtual void PopulateTrapTypeIdFilter(ArrayList selectedValue, int maxItems)
                     
         {
         
             
             //Setup the WHERE clause.
                         
-            WhereClause wc = this.CreateWhereClause_ProjectIdFilter();            
-            this.ProjectIdFilter.Items.Clear();
+            WhereClause wc = this.CreateWhereClause_TrapTypeIdFilter();            
+            this.TrapTypeIdFilter.Items.Clear();
             			  			
-            // Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_ProjectIdFilter function.
+            // Set up the WHERE and the ORDER BY clause by calling the CreateWhereClause_TrapTypeIdFilter function.
             // It is better to customize the where clause there.
              
             OrderBy orderBy = new OrderBy(false, false);
@@ -3211,7 +2898,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
  
             string noValueFormat = Page.GetResourceValue("Txt:Other", "RatTrap");
 
-            ProjectsRecord[] itemValues  = null;
+            TrapTypesRecord[] itemValues  = null;
             if (wc.RunQuery)
             {
                 int counter = 0;
@@ -3222,24 +2909,24 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 do
                 {
                     
-                    itemValues = ProjectsTable.GetRecords(wc, orderBy, pageNum, maxItems);
+                    itemValues = TrapTypesTable.GetRecords(wc, orderBy, pageNum, maxItems);
                                     
-                    foreach (ProjectsRecord itemValue in itemValues) 
+                    foreach (TrapTypesRecord itemValue in itemValues) 
                     {
                         // Create the item and add to the list.
                         string cvalue = null;
                         string fvalue = null;
-                        if (itemValue.ProjectIdSpecified) 
+                        if (itemValue.TrapTypeIdSpecified) 
                         {
-                            cvalue = itemValue.ProjectId.ToString();
-                            if (counter < maxItems && this.ProjectIdFilter.Items.FindByValue(cvalue) == null)
+                            cvalue = itemValue.TrapTypeId.ToString();
+                            if (counter < maxItems && this.TrapTypeIdFilter.Items.FindByValue(cvalue) == null)
                             {
                                     
-                                Boolean _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.ProjectId);
-                                if(_isExpandableNonCompositeForeignKey && TrapRecordsTable.ProjectId.IsApplyDisplayAs)
-                                     fvalue = TrapRecordsTable.GetDFKA(itemValue, TrapRecordsTable.ProjectId);
+                                Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapTypeId);
+                                if(_isExpandableNonCompositeForeignKey && TrapsTable.TrapTypeId.IsApplyDisplayAs)
+                                     fvalue = TrapsTable.GetDFKA(itemValue, TrapsTable.TrapTypeId);
                                 if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(fvalue)))
-                                     fvalue = itemValue.Format(ProjectsTable.ProjectId);
+                                     fvalue = itemValue.Format(TrapTypesTable.TrapType);
                                    					
                                 if (fvalue == null || fvalue.Trim() == "") fvalue = cvalue;
 
@@ -3253,7 +2940,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                                    fvalue = fvalue.Substring(0, 50) + "...";
                                 }
 
-                                ListItem dupItem = this.ProjectIdFilter.Items.FindByText(fvalue);
+                                ListItem dupItem = this.TrapTypeIdFilter.Items.FindByText(fvalue);
 								
                                 if (dupItem != null) {
                                     listDuplicates.Add(fvalue);
@@ -3264,7 +2951,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                                 }
 
                                 ListItem newItem = new ListItem(fvalue, cvalue);
-                                this.ProjectIdFilter.Items.Add(newItem);
+                                this.TrapTypeIdFilter.Items.Add(newItem);
 
                                 if (listDuplicates.Contains(fvalue) &&  !string.IsNullOrEmpty(cvalue)) {
                                     newItem.Text = fvalue + " (ID " + cvalue.Substring(0, Math.Min(cvalue.Length,38)) + ")";
@@ -3290,21 +2977,32 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
             
             
-            this.ProjectIdFilter.SetFieldMaxLength(50);
+            this.TrapTypeIdFilter.SetFieldMaxLength(50);
                                  
                   
             // Add the selected value.
-            if (this.ProjectIdFilter.Items.Count == 0)
-                this.ProjectIdFilter.Items.Add(new ListItem(Page.GetResourceValue("Txt:All", "RatTrap"), "--ANY--"));
+            if (this.TrapTypeIdFilter.Items.Count == 0)
+                this.TrapTypeIdFilter.Items.Add(new ListItem(Page.GetResourceValue("Txt:All", "RatTrap"), "--ANY--"));
             
             // Mark all items to be selected.
-            foreach (ListItem item in this.ProjectIdFilter.Items)
+            foreach (ListItem item in this.TrapTypeIdFilter.Items)
             {
                 item.Selected = true;
             }
                                
         }
             
+        public virtual WhereClause CreateWhereClause_ActiveFilter()
+        {
+            // Create a where clause for the filter ActiveFilter.
+            // This function is called by the Populate method to load the items 
+            // in the ActiveFilterDropDownList
+        
+            WhereClause wc = new WhereClause();
+            return wc;
+            
+        }
+      
         public virtual WhereClause CreateWhereClause_GroupIdFilter()
         {
             // Create a where clause for the filter GroupIdFilter.
@@ -3343,36 +3041,36 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         
         }
       
-        public virtual WhereClause CreateWhereClause_ProjectIdFilter()
+        public virtual WhereClause CreateWhereClause_TrapTypeIdFilter()
         {
-            // Create a where clause for the filter ProjectIdFilter.
+            // Create a where clause for the filter TrapTypeIdFilter.
             // This function is called by the Populate method to load the items 
-            // in the ProjectIdFilterQuickSelector
+            // in the TrapTypeIdFilterQuickSelector
         
-            ArrayList ProjectIdFilterselectedFilterItemList = new ArrayList();
-            string ProjectIdFilteritemsString = null;
-            if (this.InSession(this.ProjectIdFilter))
-                ProjectIdFilteritemsString = this.GetFromSession(this.ProjectIdFilter);
+            ArrayList TrapTypeIdFilterselectedFilterItemList = new ArrayList();
+            string TrapTypeIdFilteritemsString = null;
+            if (this.InSession(this.TrapTypeIdFilter))
+                TrapTypeIdFilteritemsString = this.GetFromSession(this.TrapTypeIdFilter);
             
-            if (ProjectIdFilteritemsString != null)
+            if (TrapTypeIdFilteritemsString != null)
             {
-                string[] ProjectIdFilteritemListFromSession = ProjectIdFilteritemsString.Split(',');
-                foreach (string item in ProjectIdFilteritemListFromSession)
+                string[] TrapTypeIdFilteritemListFromSession = TrapTypeIdFilteritemsString.Split(',');
+                foreach (string item in TrapTypeIdFilteritemListFromSession)
                 {
-                    ProjectIdFilterselectedFilterItemList.Add(item);
+                    TrapTypeIdFilterselectedFilterItemList.Add(item);
                 }
             }
               
-            ProjectIdFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.ProjectIdFilter, ProjectIdFilterselectedFilterItemList); 
+            TrapTypeIdFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.TrapTypeIdFilter, TrapTypeIdFilterselectedFilterItemList); 
             WhereClause wc = new WhereClause();
-            if (ProjectIdFilterselectedFilterItemList == null || ProjectIdFilterselectedFilterItemList.Count == 0)
+            if (TrapTypeIdFilterselectedFilterItemList == null || TrapTypeIdFilterselectedFilterItemList.Count == 0)
                 wc.RunQuery = false;
             else            
             {
-                foreach (string item in ProjectIdFilterselectedFilterItemList)
+                foreach (string item in TrapTypeIdFilterselectedFilterItemList)
                 {
             	  
-                    wc.iOR(ProjectsTable.ProjectId, BaseFilter.ComparisonOperator.EqualsTo, item);                  
+                    wc.iOR(TrapTypesTable.TrapTypeId, BaseFilter.ComparisonOperator.EqualsTo, item);                  
                   
                                  
                 }
@@ -3416,9 +3114,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         
             this.SaveToSession(this.SortControl, this.SortControl.SelectedValue);
                   
-            this.SaveToSession(this.DateOfCheckFromFilter, this.DateOfCheckFromFilter.Text);
-                  
-            this.SaveToSession(this.DateOfCheckToFilter, this.DateOfCheckToFilter.Text);
+            this.SaveToSession(this.ActiveFilter, this.ActiveFilter.SelectedValue);
                   
             ArrayList GroupIdFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.GroupIdFilter, null);
             string GroupIdFilterSessionString = "";
@@ -3429,14 +3125,14 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
             this.SaveToSession(this.GroupIdFilter, GroupIdFilterSessionString);
                   
-            ArrayList ProjectIdFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.ProjectIdFilter, null);
-            string ProjectIdFilterSessionString = "";
-            if (ProjectIdFilterselectedFilterItemList != null){
-                foreach (string item in ProjectIdFilterselectedFilterItemList){
-                    ProjectIdFilterSessionString = String.Concat(ProjectIdFilterSessionString ,"," , item);
+            ArrayList TrapTypeIdFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.TrapTypeIdFilter, null);
+            string TrapTypeIdFilterSessionString = "";
+            if (TrapTypeIdFilterselectedFilterItemList != null){
+                foreach (string item in TrapTypeIdFilterselectedFilterItemList){
+                    TrapTypeIdFilterSessionString = String.Concat(TrapTypeIdFilterSessionString ,"," , item);
                 }
             }
-            this.SaveToSession(this.ProjectIdFilter, ProjectIdFilterSessionString);
+            this.SaveToSession(this.TrapTypeIdFilter, TrapTypeIdFilterSessionString);
                   
             
                     
@@ -3467,9 +3163,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
           
             this.SaveToSession(this.SortControl, this.SortControl.SelectedValue);
                   
-      this.SaveToSession("DateOfCheckFromFilter_Ajax", this.DateOfCheckFromFilter.Text);
-              
-      this.SaveToSession("DateOfCheckToFilter_Ajax", this.DateOfCheckToFilter.Text);
+      this.SaveToSession("ActiveFilter_Ajax", this.ActiveFilter.SelectedValue);
               
             ArrayList GroupIdFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.GroupIdFilter, null);
             string GroupIdFilterSessionString = "";
@@ -3480,14 +3174,14 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
             this.SaveToSession("GroupIdFilter_Ajax", GroupIdFilterSessionString);
           
-            ArrayList ProjectIdFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.ProjectIdFilter, null);
-            string ProjectIdFilterSessionString = "";
-            if (ProjectIdFilterselectedFilterItemList != null){
-                foreach (string item in ProjectIdFilterselectedFilterItemList){
-                    ProjectIdFilterSessionString = String.Concat(ProjectIdFilterSessionString ,"," , item);
+            ArrayList TrapTypeIdFilterselectedFilterItemList = MiscUtils.GetSelectedValueList(this.TrapTypeIdFilter, null);
+            string TrapTypeIdFilterSessionString = "";
+            if (TrapTypeIdFilterselectedFilterItemList != null){
+                foreach (string item in TrapTypeIdFilterselectedFilterItemList){
+                    TrapTypeIdFilterSessionString = String.Concat(TrapTypeIdFilterSessionString ,"," , item);
                 }
             }
-            this.SaveToSession("ProjectIdFilter_Ajax", ProjectIdFilterSessionString);
+            this.SaveToSession("TrapTypeIdFilter_Ajax", TrapTypeIdFilterSessionString);
           
            HttpContext.Current.Session["AppRelativeVirtualPath"] = this.Page.AppRelativeVirtualPath;
          
@@ -3500,10 +3194,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // Clear filter controls values from the session.
         
             this.RemoveFromSession(this.SortControl);
-            this.RemoveFromSession(this.DateOfCheckFromFilter);
-            this.RemoveFromSession(this.DateOfCheckToFilter);
+            this.RemoveFromSession(this.ActiveFilter);
             this.RemoveFromSession(this.GroupIdFilter);
-            this.RemoveFromSession(this.ProjectIdFilter);
+            this.RemoveFromSession(this.TrapTypeIdFilter);
             
             // Clear pagination state from session.
          
@@ -3521,7 +3214,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         {
             base.LoadViewState(savedState);
 
-            string orderByStr = (string)ViewState["TrapRecordsTableControl_OrderBy"];
+            string orderByStr = (string)ViewState["TrapsTableControl_OrderBy"];
           
             if (orderByStr != null && orderByStr.Length > 0) {
                 this.CurrentSortOrder = BaseClasses.Data.OrderBy.FromXmlString(orderByStr);
@@ -3572,7 +3265,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         {            
           
             if (this.CurrentSortOrder != null) {
-                this.ViewState["TrapRecordsTableControl_OrderBy"] = this.CurrentSortOrder.ToXmlString();
+                this.ViewState["TrapsTableControl_OrderBy"] = this.CurrentSortOrder.ToXmlString();
             }
           
 
@@ -3600,7 +3293,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               
         {
         							
-                    this.ImportButton.PostBackUrl = "../Shared/SelectFileToImport.aspx?TableName=TrapRecords" ;
+                    this.ImportButton.PostBackUrl = "../Shared/SelectFileToImport.aspx?TableName=Traps" ;
                     this.ImportButton.Attributes["onClick"] = "window.open('" + this.Page.EncryptUrlParameter(this.ImportButton.PostBackUrl) + "','importWindow', 'width=700, height=500,top=' +(screen.availHeight-500)/2 + ',left=' + (screen.availWidth-700)/2+ ', resizable=yes, scrollbars=yes,modal=yes'); return false;";
                         
    
@@ -3612,18 +3305,18 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         
               try
               {
-                    string url = "../TrapRecords/Add-TrapRecords.aspx?TabVisible=False&SaveAndNewVisible=False";
+                    string url = "../Traps/Add-Traps.aspx?TabVisible=False&SaveAndNewVisible=False";
               
                       
                     url = this.ModifyRedirectUrl(url, "", true);
                     
                     url = this.Page.ModifyRedirectUrl(url, "", true);                                  
                     
-                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(MiscUtils.FindControlRecursively(this, "TrapRecordsTableControl_PostbackTracker").ClientID);                           
+                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(MiscUtils.FindControlRecursively(this, "TrapsTableControl_PostbackTracker").ClientID);                           
                                 
                 string javascriptCall = "";
                 
-                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "TrapRecordsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
+                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "TrapsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
                        
                     this.NewButton.Attributes["onClick"] = javascriptCall + "return false;";            
                 }
@@ -3678,10 +3371,13 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
          themeButtonFiltersButton.ArrowImage.ImageUrl = "../Images/ButtonExpandArrow.png";
     
       
+            if (MiscUtils.IsValueSelected(ActiveFilter))
+                themeButtonFiltersButton.ArrowImage.ImageUrl = "../Images/ButtonCheckmark.png";
+        
             if (MiscUtils.IsValueSelected(GroupIdFilter))
                 themeButtonFiltersButton.ArrowImage.ImageUrl = "../Images/ButtonCheckmark.png";
         
-            if (MiscUtils.IsValueSelected(ProjectIdFilter))
+            if (MiscUtils.IsValueSelected(TrapTypeIdFilter))
                 themeButtonFiltersButton.ArrowImage.ImageUrl = "../Images/ButtonCheckmark.png";
         
    
@@ -3844,26 +3540,21 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               int totalRowsReturned = 0;
 
 
-              this.TotalRecords = TrapRecordsTable.GetRecordCount(join, wc);
+              this.TotalRecords = TrapsTable.GetRecordCount(join, wc);
               if (this.TotalRecords > 10000)
               {
               
                 // Add each of the columns in order of export.
                 BaseColumn[] columns = new BaseColumn[] {
-                             TrapRecordsTable.BaitType,
-             TrapRecordsTable.DateOfCheck,
-             TrapRecordsTable.Species,
-             TrapRecordsTable.Sex,
-             TrapRecordsTable.Comment,
-             TrapRecordsTable.LocationId,
-             TrapRecordsTable.ProjectId,
-             TrapRecordsTable.GroupId,
-             TrapRecordsTable.TrapTypeId,
+                             TrapsTable.TrapTypeId,
+             TrapsTable.GroupId,
+             TrapsTable.Active,
+             TrapsTable.TrapIdentifierId,
              null};
-                ExportDataToCSV exportData = new ExportDataToCSV(TrapRecordsTable.Instance,wc,orderBy,columns);
+                ExportDataToCSV exportData = new ExportDataToCSV(TrapsTable.Instance,wc,orderBy,columns);
                 exportData.StartExport(this.Page.Response, true);
 
-                DataForExport dataForCSV = new DataForExport(TrapRecordsTable.Instance, wc, orderBy, columns,join);
+                DataForExport dataForCSV = new DataForExport(TrapsTable.Instance, wc, orderBy, columns,join);
 
                 //  Read pageSize records at a time and write out the CSV file.
                 while (!done)
@@ -3901,7 +3592,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               else
               {
               // Create an instance of the ExportDataToExcel class with the table class, where clause and order by.
-              ExportDataToExcel excelReport = new ExportDataToExcel(TrapRecordsTable.Instance, wc, orderBy);
+              ExportDataToExcel excelReport = new ExportDataToExcel(TrapsTable.Instance, wc, orderBy);
               // Add each of the columns in order of export.
               // To customize the data type, change the second parameter of the new ExcelColumn to be
               // a format string from Excel's Format Cell menu. For example "dddd, mmmm dd, yyyy h:mm AM/PM;@", "#,##0.00"
@@ -3913,16 +3604,11 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
 
               int width = 0;
               int columnCounter = 0;
-              DataForExport data = new DataForExport(TrapRecordsTable.Instance, wc, orderBy, null,join);
-                           data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.BaitType, "Default"));
-             data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.DateOfCheck, "Short Date"));
-             data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.Species, "Default"));
-             data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.Sex, "Default"));
-             data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.Comment, "Default"));
-             data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.LocationId, "Default"));
-             data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.ProjectId, "Default"));
-             data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.GroupId, "Default"));
-             data.ColumnList.Add(new ExcelColumn(TrapRecordsTable.TrapTypeId, "Default"));
+              DataForExport data = new DataForExport(TrapsTable.Instance, wc, orderBy, null,join);
+                           data.ColumnList.Add(new ExcelColumn(TrapsTable.TrapTypeId, "Default"));
+             data.ColumnList.Add(new ExcelColumn(TrapsTable.GroupId, "Default"));
+             data.ColumnList.Add(new ExcelColumn(TrapsTable.Active, "Default"));
+             data.ColumnList.Add(new ExcelColumn(TrapsTable.TrapIdentifierId, "Default"));
 
 
               //  First write out the Column Headers
@@ -3958,7 +3644,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               Boolean _isExpandableNonCompositeForeignKey = col.DisplayColumn.TableDefinition.IsExpandableNonCompositeForeignKey(col.DisplayColumn);
               if (_isExpandableNonCompositeForeignKey && col.DisplayColumn.IsApplyDisplayAs)
               {
-                val = TrapRecordsTable.GetDFKA(rec.GetValue(col.DisplayColumn).ToString(), col.DisplayColumn, null) as string;
+                val = TrapsTable.GetDFKA(rec.GetValue(col.DisplayColumn).ToString(), col.DisplayColumn, null) as string;
                 if (String.IsNullOrEmpty(val as string))
                 {
                   val = rec.Format(col.DisplayColumn);
@@ -4032,7 +3718,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../TrapRecords/Add-TrapRecords.aspx?TabVisible=False&SaveAndNewVisible=False";
+            string url = @"../Traps/Add-Traps.aspx?TabVisible=False&SaveAndNewVisible=False";
             
         bool shouldRedirect = true;
         string target = null;
@@ -4060,11 +3746,11 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             if (shouldRedirect) {
                 this.Page.ShouldSaveControlsToSession = true;
       
-                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(MiscUtils.FindControlRecursively(this, "TrapRecordsTableControl_PostbackTracker").ClientID);                           
+                    url = url + "&RedirectStyle=" + (this.Page as BaseApplicationPage).Encrypt("Popup") + "&Target=" + (this.Page as BaseApplicationPage).Encrypt(MiscUtils.FindControlRecursively(this, "TrapsTableControl_PostbackTracker").ClientID);                           
                                 
                 string javascriptCall = "";
                 
-                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "TrapRecordsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
+                    javascriptCall = "initializePopupPage(document.getElementById('" + MiscUtils.FindControlRecursively(this, "TrapsTableControl_PostbackTracker").ClientID + "'), '" + url + "', true, event);";                                      
                 AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "NewButton_Click", javascriptCall, true);
         
             }
@@ -4084,10 +3770,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
 
                 PDFReport report = new PDFReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-TrapRecords-Table.PDFButton.report");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-Traps-Table-Upload.PDFButton.report");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
-                report.Title = "TrapRecords";
-                // If Show-TrapRecords-Table.PDFButton.report specifies a valid report template,
+                report.Title = "Traps";
+                // If Show-Traps-Table-Upload.PDFButton.report specifies a valid report template,
                 // AddColumn methods will generate a report template.   
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -4095,15 +3781,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 // The 3rd parameter represents the text format of the column detail
                 // The 4th parameter represents the horizontal alignment of the column detail
                 // The 5th parameter represents the relative width of the column
-                 report.AddColumn(TrapRecordsTable.BaitType.Name, ReportEnum.Align.Left, "${BaitType}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapRecordsTable.DateOfCheck.Name, ReportEnum.Align.Left, "${DateOfCheck}", ReportEnum.Align.Left, 20);
-                 report.AddColumn(TrapRecordsTable.Species.Name, ReportEnum.Align.Left, "${Species}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapRecordsTable.Sex.Name, ReportEnum.Align.Left, "${Sex}", ReportEnum.Align.Left, 15);
-                 report.AddColumn(TrapRecordsTable.Comment.Name, ReportEnum.Align.Left, "${Comment}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapRecordsTable.LocationId.Name, ReportEnum.Align.Left, "${LocationId}", ReportEnum.Align.Left, 17);
-                 report.AddColumn(TrapRecordsTable.ProjectId.Name, ReportEnum.Align.Left, "${ProjectId}", ReportEnum.Align.Left, 20);
-                 report.AddColumn(TrapRecordsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 16);
-                 report.AddColumn(TrapRecordsTable.TrapTypeId.Name, ReportEnum.Align.Left, "${TrapTypeId}", ReportEnum.Align.Left, 18);
+                 report.AddColumn(TrapsTable.TrapTypeId.Name, ReportEnum.Align.Left, "${TrapTypeId}", ReportEnum.Align.Left, 28);
+                 report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 16);
+                 report.AddColumn(TrapsTable.Active.Name, ReportEnum.Align.Left, "${Active}", ReportEnum.Align.Left, 15);
+                 report.AddColumn(TrapsTable.TrapIdentifierId.Name, ReportEnum.Align.Left, "${TrapIdentifierId}", ReportEnum.Align.Left, 28);
 
   
                 int rowsPerQuery = 5000;
@@ -4113,7 +3794,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 report.ApplicationPath = this.Page.MapPath(Page.Request.ApplicationPath);
 
                 
-                ColumnList columns = TrapRecordsTable.GetColumnList();
+                ColumnList columns = TrapsTable.GetColumnList();
                 
                 WhereClause whereClause = null;
                 whereClause = CreateWhereClause();
@@ -4121,16 +3802,16 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 BaseFilter joinFilter = CreateCompoundJoinFilter();
                 
                 int pageNum = 0;
-                int totalRows = TrapRecordsTable.GetRecordCount(joinFilter,whereClause);
-                TrapRecordsRecord[] records = null;
+                int totalRows = TrapsTable.GetRecordCount(joinFilter,whereClause);
+                TrapsRecord[] records = null;
                 
                 do
                 {
                     
-                    records = TrapRecordsTable.GetRecords(joinFilter,whereClause, orderBy, pageNum, rowsPerQuery);
+                    records = TrapsTable.GetRecords(joinFilter,whereClause, orderBy, pageNum, rowsPerQuery);
                      if (records != null && records.Length > 0 && whereClause.RunQuery)
                     {
-                        foreach ( TrapRecordsRecord record in records)
+                        foreach ( TrapsRecord record in records)
                     
                         {
                             // AddData method takes four parameters   
@@ -4138,97 +3819,44 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                             // The 2nd parameter represent the data value
                             // The 3rd parameter represent the default alignment of column using the data
                             // The 4th parameter represent the maximum length of the data value being shown
-                                                 if (BaseClasses.Utils.MiscUtils.IsNull(record.BaitType)){
-                                 report.AddData("${BaitType}", "",ReportEnum.Align.Left, 300);
+                                                 if (BaseClasses.Utils.MiscUtils.IsNull(record.TrapTypeId)){
+                                 report.AddData("${TrapTypeId}", "",ReportEnum.Align.Left, 300);
                              }else{
                                  Boolean _isExpandableNonCompositeForeignKey;
                                  String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.BaitType);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.BaitType.ToString(), TrapRecordsTable.BaitType,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.BaitType.IsApplyDisplayAs){
-                                     report.AddData("${BaitType}", _DFKA,ReportEnum.Align.Left, 300);
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapTypeId);
+                                 _DFKA = TrapsTable.GetDFKA(record.TrapTypeId.ToString(), TrapsTable.TrapTypeId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.TrapTypeId.IsApplyDisplayAs){
+                                     report.AddData("${TrapTypeId}", _DFKA,ReportEnum.Align.Left, 300);
                                  }else{
-                                     report.AddData("${BaitType}", record.Format(TrapRecordsTable.BaitType), ReportEnum.Align.Left, 300);
-                                 }
-                             }
-                             report.AddData("${DateOfCheck}", record.Format(TrapRecordsTable.DateOfCheck), ReportEnum.Align.Left, 300);
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.Species)){
-                                 report.AddData("${Species}", "",ReportEnum.Align.Left, 300);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Species);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.Species.ToString(), TrapRecordsTable.Species,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.Species.IsApplyDisplayAs){
-                                     report.AddData("${Species}", _DFKA,ReportEnum.Align.Left, 300);
-                                 }else{
-                                     report.AddData("${Species}", record.Format(TrapRecordsTable.Species), ReportEnum.Align.Left, 300);
-                                 }
-                             }
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.Sex)){
-                                 report.AddData("${Sex}", "",ReportEnum.Align.Left, 300);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Sex);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.Sex.ToString(), TrapRecordsTable.Sex,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.Sex.IsApplyDisplayAs){
-                                     report.AddData("${Sex}", _DFKA,ReportEnum.Align.Left, 300);
-                                 }else{
-                                     report.AddData("${Sex}", record.Format(TrapRecordsTable.Sex), ReportEnum.Align.Left, 300);
-                                 }
-                             }
-                             report.AddData("${Comment}", record.Format(TrapRecordsTable.Comment), ReportEnum.Align.Left, 300);
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.LocationId)){
-                                 report.AddData("${LocationId}", "",ReportEnum.Align.Left, 300);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.LocationId);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.LocationId.ToString(), TrapRecordsTable.LocationId,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.LocationId.IsApplyDisplayAs){
-                                     report.AddData("${LocationId}", _DFKA,ReportEnum.Align.Left, 300);
-                                 }else{
-                                     report.AddData("${LocationId}", record.Format(TrapRecordsTable.LocationId), ReportEnum.Align.Left, 300);
-                                 }
-                             }
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.ProjectId)){
-                                 report.AddData("${ProjectId}", "",ReportEnum.Align.Left);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.ProjectId);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.ProjectId.ToString(), TrapRecordsTable.ProjectId,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.ProjectId.IsApplyDisplayAs){
-                                     report.AddData("${ProjectId}", _DFKA,ReportEnum.Align.Left);
-                                 }else{
-                                     report.AddData("${ProjectId}", record.Format(TrapRecordsTable.ProjectId), ReportEnum.Align.Left);
+                                     report.AddData("${TrapTypeId}", record.Format(TrapsTable.TrapTypeId), ReportEnum.Align.Left, 300);
                                  }
                              }
                              if (BaseClasses.Utils.MiscUtils.IsNull(record.GroupId)){
-                                 report.AddData("${GroupId}", "",ReportEnum.Align.Left);
+                                 report.AddData("${GroupId}", "",ReportEnum.Align.Left, 300);
                              }else{
                                  Boolean _isExpandableNonCompositeForeignKey;
                                  String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.GroupId);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.GroupId.ToString(), TrapRecordsTable.GroupId,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.GroupId.IsApplyDisplayAs){
-                                     report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left);
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.GroupId);
+                                 _DFKA = TrapsTable.GetDFKA(record.GroupId.ToString(), TrapsTable.GroupId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.GroupId.IsApplyDisplayAs){
+                                     report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left, 300);
                                  }else{
-                                     report.AddData("${GroupId}", record.Format(TrapRecordsTable.GroupId), ReportEnum.Align.Left);
+                                     report.AddData("${GroupId}", record.Format(TrapsTable.GroupId), ReportEnum.Align.Left, 300);
                                  }
                              }
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.TrapTypeId)){
-                                 report.AddData("${TrapTypeId}", "",ReportEnum.Align.Left);
+                             report.AddData("${Active}", record.Format(TrapsTable.Active), ReportEnum.Align.Left, 300);
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.TrapIdentifierId)){
+                                 report.AddData("${TrapIdentifierId}", "",ReportEnum.Align.Left, 300);
                              }else{
                                  Boolean _isExpandableNonCompositeForeignKey;
                                  String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.TrapTypeId);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.TrapTypeId.ToString(), TrapRecordsTable.TrapTypeId,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.TrapTypeId.IsApplyDisplayAs){
-                                     report.AddData("${TrapTypeId}", _DFKA,ReportEnum.Align.Left);
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapIdentifierId);
+                                 _DFKA = TrapsTable.GetDFKA(record.TrapIdentifierId.ToString(), TrapsTable.TrapIdentifierId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.TrapIdentifierId.IsApplyDisplayAs){
+                                     report.AddData("${TrapIdentifierId}", _DFKA,ReportEnum.Align.Left, 300);
                                  }else{
-                                     report.AddData("${TrapTypeId}", record.Format(TrapRecordsTable.TrapTypeId), ReportEnum.Align.Left);
+                                     report.AddData("${TrapIdentifierId}", record.Format(TrapsTable.TrapIdentifierId), ReportEnum.Align.Left, 300);
                                  }
                              }
 
@@ -4266,17 +3894,15 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
               
             try {
                 
+              this.ActiveFilter.ClearSelection();
+            
               this.GroupIdFilter.ClearSelection();
             
-              this.ProjectIdFilter.ClearSelection();
+              this.TrapTypeIdFilter.ClearSelection();
             
            
             this.SortControl.ClearSelection();
           
-              this.DateOfCheckFromFilter.Text = "";
-            
-              this.DateOfCheckToFilter.Text = "";
-            
               this.CurrentSortOrder.Reset();
               if (this.InSession(this, "Order_By"))
                   this.CurrentSortOrder = OrderBy.FromXmlString(this.GetFromSession(this, "Order_By", null));
@@ -4317,10 +3943,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
 
                 WordReport report = new WordReport();
 
-                report.SpecificReportFileName = Page.Server.MapPath("Show-TrapRecords-Table.WordButton.word");
+                report.SpecificReportFileName = Page.Server.MapPath("Show-Traps-Table-Upload.WordButton.word");
                 // report.Title replaces the value tag of page header and footer containing ${ReportTitle}
-                report.Title = "TrapRecords";
-                // If Show-TrapRecords-Table.WordButton.report specifies a valid report template,
+                report.Title = "Traps";
+                // If Show-Traps-Table-Upload.WordButton.report specifies a valid report template,
                 // AddColumn methods will generate a report template.
                 // Each AddColumn method-call specifies a column
                 // The 1st parameter represents the text of the column header
@@ -4328,15 +3954,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 // The 3rd parameter represents the text format of the column detail
                 // The 4th parameter represents the horizontal alignment of the column detail
                 // The 5th parameter represents the relative width of the column
-                 report.AddColumn(TrapRecordsTable.BaitType.Name, ReportEnum.Align.Left, "${BaitType}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapRecordsTable.DateOfCheck.Name, ReportEnum.Align.Left, "${DateOfCheck}", ReportEnum.Align.Left, 20);
-                 report.AddColumn(TrapRecordsTable.Species.Name, ReportEnum.Align.Left, "${Species}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapRecordsTable.Sex.Name, ReportEnum.Align.Left, "${Sex}", ReportEnum.Align.Left, 15);
-                 report.AddColumn(TrapRecordsTable.Comment.Name, ReportEnum.Align.Left, "${Comment}", ReportEnum.Align.Left, 28);
-                 report.AddColumn(TrapRecordsTable.LocationId.Name, ReportEnum.Align.Left, "${LocationId}", ReportEnum.Align.Left, 17);
-                 report.AddColumn(TrapRecordsTable.ProjectId.Name, ReportEnum.Align.Left, "${ProjectId}", ReportEnum.Align.Left, 20);
-                 report.AddColumn(TrapRecordsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 16);
-                 report.AddColumn(TrapRecordsTable.TrapTypeId.Name, ReportEnum.Align.Left, "${TrapTypeId}", ReportEnum.Align.Left, 18);
+                 report.AddColumn(TrapsTable.TrapTypeId.Name, ReportEnum.Align.Left, "${TrapTypeId}", ReportEnum.Align.Left, 28);
+                 report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 16);
+                 report.AddColumn(TrapsTable.Active.Name, ReportEnum.Align.Left, "${Active}", ReportEnum.Align.Left, 15);
+                 report.AddColumn(TrapsTable.TrapIdentifierId.Name, ReportEnum.Align.Left, "${TrapIdentifierId}", ReportEnum.Align.Left, 28);
 
                 WhereClause whereClause = null;
                 whereClause = CreateWhereClause();
@@ -4348,116 +3969,63 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 int rowsPerQuery = 5000;
                 int pageNum = 0;
                 int recordCount = 0;
-                int totalRows = TrapRecordsTable.GetRecordCount(joinFilter,whereClause);
+                int totalRows = TrapsTable.GetRecordCount(joinFilter,whereClause);
 
                 report.Page = Page.GetResourceValue("Txt:Page", "RatTrap");
                 report.ApplicationPath = this.Page.MapPath(Page.Request.ApplicationPath);
 
-                ColumnList columns = TrapRecordsTable.GetColumnList();
-                TrapRecordsRecord[] records = null;
+                ColumnList columns = TrapsTable.GetColumnList();
+                TrapsRecord[] records = null;
                 do
                 {
-                    records = TrapRecordsTable.GetRecords(joinFilter,whereClause, orderBy, pageNum, rowsPerQuery);
+                    records = TrapsTable.GetRecords(joinFilter,whereClause, orderBy, pageNum, rowsPerQuery);
                     if (records != null && records.Length > 0 && whereClause.RunQuery)
                     {
-                        foreach ( TrapRecordsRecord record in records)
+                        foreach ( TrapsRecord record in records)
                         {
                             // AddData method takes four parameters
                             // The 1st parameter represents the data format
                             // The 2nd parameter represents the data value
                             // The 3rd parameter represents the default alignment of column using the data
                             // The 4th parameter represents the maximum length of the data value being shown
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.BaitType)){
-                                 report.AddData("${BaitType}", "",ReportEnum.Align.Left, 300);
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.TrapTypeId)){
+                                 report.AddData("${TrapTypeId}", "",ReportEnum.Align.Left, 300);
                              }else{
                                  Boolean _isExpandableNonCompositeForeignKey;
                                  String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.BaitType);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.BaitType.ToString(), TrapRecordsTable.BaitType,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.BaitType.IsApplyDisplayAs){
-                                     report.AddData("${BaitType}", _DFKA,ReportEnum.Align.Left, 300);
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapTypeId);
+                                 _DFKA = TrapsTable.GetDFKA(record.TrapTypeId.ToString(), TrapsTable.TrapTypeId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.TrapTypeId.IsApplyDisplayAs){
+                                     report.AddData("${TrapTypeId}", _DFKA,ReportEnum.Align.Left, 300);
                                  }else{
-                                     report.AddData("${BaitType}", record.Format(TrapRecordsTable.BaitType), ReportEnum.Align.Left, 300);
-                                 }
-                             }
-                             report.AddData("${DateOfCheck}", record.Format(TrapRecordsTable.DateOfCheck), ReportEnum.Align.Left, 300);
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.Species)){
-                                 report.AddData("${Species}", "",ReportEnum.Align.Left, 300);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Species);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.Species.ToString(), TrapRecordsTable.Species,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.Species.IsApplyDisplayAs){
-                                     report.AddData("${Species}", _DFKA,ReportEnum.Align.Left, 300);
-                                 }else{
-                                     report.AddData("${Species}", record.Format(TrapRecordsTable.Species), ReportEnum.Align.Left, 300);
-                                 }
-                             }
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.Sex)){
-                                 report.AddData("${Sex}", "",ReportEnum.Align.Left, 300);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.Sex);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.Sex.ToString(), TrapRecordsTable.Sex,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.Sex.IsApplyDisplayAs){
-                                     report.AddData("${Sex}", _DFKA,ReportEnum.Align.Left, 300);
-                                 }else{
-                                     report.AddData("${Sex}", record.Format(TrapRecordsTable.Sex), ReportEnum.Align.Left, 300);
-                                 }
-                             }
-                             report.AddData("${Comment}", record.Format(TrapRecordsTable.Comment), ReportEnum.Align.Left, 300);
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.LocationId)){
-                                 report.AddData("${LocationId}", "",ReportEnum.Align.Left, 300);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.LocationId);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.LocationId.ToString(), TrapRecordsTable.LocationId,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.LocationId.IsApplyDisplayAs){
-                                     report.AddData("${LocationId}", _DFKA,ReportEnum.Align.Left, 300);
-                                 }else{
-                                     report.AddData("${LocationId}", record.Format(TrapRecordsTable.LocationId), ReportEnum.Align.Left, 300);
-                                 }
-                             }
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.ProjectId)){
-                                 report.AddData("${ProjectId}", "",ReportEnum.Align.Left);
-                             }else{
-                                 Boolean _isExpandableNonCompositeForeignKey;
-                                 String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.ProjectId);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.ProjectId.ToString(), TrapRecordsTable.ProjectId,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.ProjectId.IsApplyDisplayAs){
-                                     report.AddData("${ProjectId}", _DFKA,ReportEnum.Align.Left);
-                                 }else{
-                                     report.AddData("${ProjectId}", record.Format(TrapRecordsTable.ProjectId), ReportEnum.Align.Left);
+                                     report.AddData("${TrapTypeId}", record.Format(TrapsTable.TrapTypeId), ReportEnum.Align.Left, 300);
                                  }
                              }
                              if (BaseClasses.Utils.MiscUtils.IsNull(record.GroupId)){
-                                 report.AddData("${GroupId}", "",ReportEnum.Align.Left);
+                                 report.AddData("${GroupId}", "",ReportEnum.Align.Left, 300);
                              }else{
                                  Boolean _isExpandableNonCompositeForeignKey;
                                  String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.GroupId);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.GroupId.ToString(), TrapRecordsTable.GroupId,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.GroupId.IsApplyDisplayAs){
-                                     report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left);
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.GroupId);
+                                 _DFKA = TrapsTable.GetDFKA(record.GroupId.ToString(), TrapsTable.GroupId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.GroupId.IsApplyDisplayAs){
+                                     report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left, 300);
                                  }else{
-                                     report.AddData("${GroupId}", record.Format(TrapRecordsTable.GroupId), ReportEnum.Align.Left);
+                                     report.AddData("${GroupId}", record.Format(TrapsTable.GroupId), ReportEnum.Align.Left, 300);
                                  }
                              }
-                             if (BaseClasses.Utils.MiscUtils.IsNull(record.TrapTypeId)){
-                                 report.AddData("${TrapTypeId}", "",ReportEnum.Align.Left);
+                             report.AddData("${Active}", record.Format(TrapsTable.Active), ReportEnum.Align.Left, 300);
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.TrapIdentifierId)){
+                                 report.AddData("${TrapIdentifierId}", "",ReportEnum.Align.Left, 300);
                              }else{
                                  Boolean _isExpandableNonCompositeForeignKey;
                                  String _DFKA = "";
-                                 _isExpandableNonCompositeForeignKey = TrapRecordsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapRecordsTable.TrapTypeId);
-                                 _DFKA = TrapRecordsTable.GetDFKA(record.TrapTypeId.ToString(), TrapRecordsTable.TrapTypeId,null);
-                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapRecordsTable.TrapTypeId.IsApplyDisplayAs){
-                                     report.AddData("${TrapTypeId}", _DFKA,ReportEnum.Align.Left);
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapIdentifierId);
+                                 _DFKA = TrapsTable.GetDFKA(record.TrapIdentifierId.ToString(), TrapsTable.TrapIdentifierId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.TrapIdentifierId.IsApplyDisplayAs){
+                                     report.AddData("${TrapIdentifierId}", _DFKA,ReportEnum.Align.Left, 300);
                                  }else{
-                                     report.AddData("${TrapTypeId}", record.Format(TrapRecordsTable.TrapTypeId), ReportEnum.Align.Left);
+                                     report.AddData("${TrapIdentifierId}", record.Format(TrapsTable.TrapIdentifierId), ReportEnum.Align.Left, 300);
                                  }
                              }
 
@@ -4566,7 +4134,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                   if (SelVal1 != "" )
                   {
                   SelVal1 = SelVal1.Replace(words1[words1.Length - 1], "").TrimEnd();
-                  foreach (BaseClasses.Data.BaseColumn ColumnNam in TrapRecordsTable.GetColumns())
+                  foreach (BaseClasses.Data.BaseColumn ColumnNam in TrapsTable.GetColumns())
                   {
                   if (ColumnNam.Name.ToUpper().Equals(SelVal1))
                   {
@@ -4576,11 +4144,11 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                   }
 
                 
-                OrderByItem sd = this.CurrentSortOrder.Find(TrapRecordsTable.GetColumnByName(SelVal1));
+                OrderByItem sd = this.CurrentSortOrder.Find(TrapsTable.GetColumnByName(SelVal1));
                 if (sd == null || this.CurrentSortOrder.Items != null)
                 {
                 // First time sort, so add sort order for Discontinued.
-                if (TrapRecordsTable.GetColumnByName(SelVal1) != null)
+                if (TrapsTable.GetColumnByName(SelVal1) != null)
                 {
                   this.CurrentSortOrder.Reset();
                 }
@@ -4589,17 +4157,17 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 if ((this.CurrentSortOrder).GetType() == typeof(GeoOrderBy)) this.CurrentSortOrder = new OrderBy(true, false);
 
                 
-                  if (SelVal1 != "--PLEASE_SELECT--" && TrapRecordsTable.GetColumnByName(SelVal1) != null)
+                  if (SelVal1 != "--PLEASE_SELECT--" && TrapsTable.GetColumnByName(SelVal1) != null)
                   {
                     if (words1[words1.Length - 1].Contains("ASC"))
                   {
-                  this.CurrentSortOrder.Add(TrapRecordsTable.GetColumnByName(SelVal1),OrderByItem.OrderDir.Asc);
+                  this.CurrentSortOrder.Add(TrapsTable.GetColumnByName(SelVal1),OrderByItem.OrderDir.Asc);
                     }
                     else
                     {
                       if (words1[words1.Length - 1].Contains("DESC"))
                   {
-                  this.CurrentSortOrder.Add(TrapRecordsTable.GetColumnByName(SelVal1),OrderByItem.OrderDir.Desc );
+                  this.CurrentSortOrder.Add(TrapsTable.GetColumnByName(SelVal1),OrderByItem.OrderDir.Desc );
                       }
                     }
                   }
@@ -4607,6 +4175,17 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
                 }
                 this.DataChanged = true;
               				
+        }
+            
+        // event handler for FieldFilter
+        protected virtual void ActiveFilter_SelectedIndexChanged(object sender, EventArgs args)
+        {
+            // Setting the DataChanged to True results in the page being refreshed with
+            // the most recent data from the database.  This happens in PreRender event
+            // based on the current sort, search and filter criteria.
+            this.DataChanged = true;
+            
+           				
         }
             
         // event handler for FieldFilter
@@ -4621,7 +4200,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         }
             
         // event handler for FieldFilter
-        protected virtual void ProjectIdFilter_SelectedIndexChanged(object sender, EventArgs args)
+        protected virtual void TrapTypeIdFilter_SelectedIndexChanged(object sender, EventArgs args)
         {
             // Setting the DataChanged to True results in the page being refreshed with
             // the most recent data from the database.  This happens in PreRender event
@@ -4641,7 +4220,7 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             get {
                 if (_TotalRecords < 0)
                 {
-                    _TotalRecords = TrapRecordsTable.GetRecordCount(CreateCompoundJoinFilter(), CreateWhereClause());
+                    _TotalRecords = TrapsTable.GetRecordCount(CreateCompoundJoinFilter(), CreateWhereClause());
                 }
                 return (this._TotalRecords);
             }
@@ -4693,10 +4272,10 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }
         
-        public  TrapRecordsRecord[] DataSource {
+        public  TrapsRecord[] DataSource {
              
             get {
-                return (TrapRecordsRecord[])(base._DataSource);
+                return (TrapsRecord[])(base._DataSource);
             }
             set {
                 this._DataSource = value;
@@ -4711,21 +4290,21 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }
         
-        public System.Web.UI.WebControls.TextBox DateOfCheckFromFilter {
+        public System.Web.UI.WebControls.DropDownList ActiveFilter {
             get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DateOfCheckFromFilter");
+                return (System.Web.UI.WebControls.DropDownList)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ActiveFilter");
             }
         }
         
-        public System.Web.UI.WebControls.Literal DateOfCheckLabel1 {
+        public System.Web.UI.WebControls.Literal ActiveLabel {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DateOfCheckLabel1");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ActiveLabel");
             }
         }
         
-        public System.Web.UI.WebControls.TextBox DateOfCheckToFilter {
+        public System.Web.UI.WebControls.Literal ActiveLabel1 {
             get {
-                return (System.Web.UI.WebControls.TextBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DateOfCheckToFilter");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ActiveLabel1");
             }
         }
         
@@ -4753,6 +4332,12 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }              
         
+        public System.Web.UI.WebControls.Literal GroupIdLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupIdLabel");
+            }
+        }
+        
         public System.Web.UI.WebControls.Literal GroupIdLabel1 {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupIdLabel1");
@@ -4765,9 +4350,9 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }
         
-        public System.Web.UI.WebControls.Label Label {
+        public System.Web.UI.WebControls.Label Label1 {
             get {
-                return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Label");
+                return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Label1");
             }
         }
         
@@ -4786,18 +4371,6 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         public System.Web.UI.WebControls.ImageButton PDFButton {
             get {
                 return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "PDFButton");
-            }
-        }
-        
-        public BaseClasses.Web.UI.WebControls.QuickSelector ProjectIdFilter {
-            get {
-                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectIdFilter");
-            }
-        }              
-        
-        public System.Web.UI.WebControls.Literal ProjectIdLabel1 {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectIdLabel1");
             }
         }
         
@@ -4825,9 +4398,33 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }
         
-        public System.Web.UI.WebControls.Literal TrapRecordsCountControl {
+        public System.Web.UI.WebControls.Literal TrapIdentifierIdLabel {
             get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapRecordsCountControl");
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierIdLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.Literal TrapsCountControl {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapsCountControl");
+            }
+        }
+        
+        public BaseClasses.Web.UI.WebControls.QuickSelector TrapTypeIdFilter {
+            get {
+                return (BaseClasses.Web.UI.WebControls.QuickSelector)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeIdFilter");
+            }
+        }              
+        
+        public System.Web.UI.WebControls.Literal TrapTypeIdLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeIdLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.Literal TrapTypeIdLabel1 {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeIdLabel1");
             }
         }
         
@@ -4855,13 +4452,13 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         {
             bool needToProcess = AreAnyUrlParametersForMe(url, arg);
             if (needToProcess) {
-                TrapRecordsTableControlRow recCtl = this.GetSelectedRecordControl();
+                TrapsTableControlRow recCtl = this.GetSelectedRecordControl();
                 if (recCtl == null && url.IndexOf("{") >= 0) {
                     // Localization.
                     throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
                 }
 
-        TrapRecordsRecord rec = null;
+        TrapsRecord rec = null;
                 if (recCtl != null) {
                     rec = recCtl.GetRecord();
                 }
@@ -4876,13 +4473,13 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
         {
             bool needToProcess = AreAnyUrlParametersForMe(url, arg);
             if (needToProcess) {
-                TrapRecordsTableControlRow recCtl = this.GetSelectedRecordControl();
+                TrapsTableControlRow recCtl = this.GetSelectedRecordControl();
                 if (recCtl == null && url.IndexOf("{") >= 0) {
                     // Localization.
                     throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
                 }
 
-        TrapRecordsRecord rec = null;
+        TrapsRecord rec = null;
                 if (recCtl != null) {
                     rec = recCtl.GetRecord();
                 }
@@ -4900,29 +4497,29 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             return url;
         }
           
-        public virtual TrapRecordsTableControlRow GetSelectedRecordControl()
+        public virtual TrapsTableControlRow GetSelectedRecordControl()
         {
         
             return null;
           
         }
 
-        public virtual TrapRecordsTableControlRow[] GetSelectedRecordControls()
+        public virtual TrapsTableControlRow[] GetSelectedRecordControls()
         {
         
-            return (TrapRecordsTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_TrapRecords_Table.TrapRecordsTableControlRow")));
+            return (TrapsTableControlRow[])((new ArrayList()).ToArray(Type.GetType("RatTrap.UI.Controls.Show_Traps_Table_Upload.TrapsTableControlRow")));
           
         }
 
         public virtual void DeleteSelectedRecords(bool deferDeletion)
         {
-            TrapRecordsTableControlRow[] recordList = this.GetSelectedRecordControls();
+            TrapsTableControlRow[] recordList = this.GetSelectedRecordControls();
             if (recordList.Length == 0) {
                 // Localization.
                 throw new Exception(Page.GetResourceValue("Err:NoRecSelected", "RatTrap"));
             }
             
-            foreach (TrapRecordsTableControlRow recCtl in recordList)
+            foreach (TrapsTableControlRow recCtl in recordList)
             {
                 if (deferDeletion) {
                     if (!recCtl.IsNewRecord) {
@@ -4945,11 +4542,11 @@ public class BaseTrapRecordsTableControl : RatTrap.UI.BaseApplicationTableContro
             }
         }
 
-        public virtual TrapRecordsTableControlRow[] GetRecordControls()
+        public virtual TrapsTableControlRow[] GetRecordControls()
         {
-            Control[] recCtrls = BaseClasses.Utils.MiscUtils.FindControlsRecursively(this, "TrapRecordsTableControlRow");
-	          List<TrapRecordsTableControlRow> list = new List<TrapRecordsTableControlRow>();
-	          foreach (TrapRecordsTableControlRow recCtrl in recCtrls) {
+            Control[] recCtrls = BaseClasses.Utils.MiscUtils.FindControlsRecursively(this, "TrapsTableControlRow");
+	          List<TrapsTableControlRow> list = new List<TrapsTableControlRow>();
+	          foreach (TrapsTableControlRow recCtrl in recCtrls) {
 		          list.Add(recCtrl);
 	          }
 	          return list.ToArray();

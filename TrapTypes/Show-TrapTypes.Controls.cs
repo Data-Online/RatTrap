@@ -118,6 +118,10 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                         
                     this.GroupId.Click += GroupId_Click;
                         
+                    this.LocationId.Click += LocationId_Click;
+                        
+                    this.ProjectId.Click += ProjectId_Click;
+                        
         }
 
         public virtual void LoadData()  
@@ -173,10 +177,18 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
 
             // Call the Set methods for each controls on the panel
         
+                SetActive();
+                SetActiveLabel();
                 
                 
                 SetGroupId();
                 SetGroupIdLabel();
+                SetLocationId();
+                SetLocationIdLabel();
+                SetProjectId();
+                SetProjectIdLabel();
+                SetTrapIdentifierId();
+                SetTrapIdentifierIdLabel();
                 SetDeleteRowButton();
               
                 SetEditRowButton();
@@ -204,6 +216,46 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         }
         
         
+        public virtual void SetActive()
+        {
+            
+                    
+            // Set the Active Literal on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.Active is the ASP:Literal on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.ActiveSpecified) {
+                								
+                // If the Active is non-NULL, then format the value.
+                // The Format method will use the Display Format
+               string formattedValue = this.DataSource.Format(TrapsTable.Active);
+                                
+                formattedValue = HttpUtility.HtmlEncode(formattedValue);
+                this.Active.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // Active is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.Active.Text = TrapsTable.Active.Format(TrapsTable.Active.DefaultValue);
+            		
+            }
+            
+            // If the Active is NULL or blank, then use the value specified  
+            // on Properties.
+            if (this.Active.Text == null ||
+                this.Active.Text.Trim().Length == 0) {
+                // Set the value specified on the Properties.
+                this.Active.Text = "&nbsp;";
+            }
+                                     
+        }
+                
         public virtual void SetGroupId()
         {
             
@@ -245,11 +297,165 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                                
         }
                 
+        public virtual void SetLocationId()
+        {
+            
+                    
+            // Set the LocationId LinkButton on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.LocationId is the ASP:LinkButton on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.LocationIdSpecified) {
+                								
+                // If the LocationId is non-NULL, then format the value.
+                // The Format method will return the Display Foreign Key As (DFKA) value
+               string formattedValue = "";
+               Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.LocationId);
+               if(_isExpandableNonCompositeForeignKey &&TrapsTable.LocationId.IsApplyDisplayAs)
+                                  
+                     formattedValue = TrapsTable.GetDFKA(this.DataSource.LocationId.ToString(),TrapsTable.LocationId, null);
+                                    
+               if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
+                     formattedValue = this.DataSource.Format(TrapsTable.LocationId);
+                                  
+                                
+                this.LocationId.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // LocationId is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.LocationId.Text = TrapsTable.LocationId.Format(TrapsTable.LocationId.DefaultValue);
+            		
+            }
+                               
+        }
+                
+        public virtual void SetProjectId()
+        {
+            
+                    
+            // Set the ProjectId LinkButton on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.ProjectId is the ASP:LinkButton on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.ProjectIdSpecified) {
+                								
+                // If the ProjectId is non-NULL, then format the value.
+                // The Format method will return the Display Foreign Key As (DFKA) value
+               string formattedValue = "";
+               Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.ProjectId);
+               if(_isExpandableNonCompositeForeignKey &&TrapsTable.ProjectId.IsApplyDisplayAs)
+                                  
+                     formattedValue = TrapsTable.GetDFKA(this.DataSource.ProjectId.ToString(),TrapsTable.ProjectId, null);
+                                    
+               if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
+                     formattedValue = this.DataSource.Format(TrapsTable.ProjectId);
+                                  
+                                
+                this.ProjectId.Text = formattedValue;
+                
+                  this.ProjectId.ToolTip = "Go to " + this.ProjectId.Text.Replace("<wbr/>", "");
+                   
+            } 
+            
+            else {
+            
+                // ProjectId is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.ProjectId.Text = TrapsTable.ProjectId.Format(TrapsTable.ProjectId.DefaultValue);
+            		
+            }
+                               
+        }
+                
+        public virtual void SetTrapIdentifierId()
+        {
+            
+                    
+            // Set the TrapIdentifierId Literal on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.TrapIdentifierId is the ASP:Literal on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.TrapIdentifierIdSpecified) {
+                								
+                // If the TrapIdentifierId is non-NULL, then format the value.
+                // The Format method will return the Display Foreign Key As (DFKA) value
+               string formattedValue = "";
+               Boolean _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapIdentifierId);
+               if(_isExpandableNonCompositeForeignKey &&TrapsTable.TrapIdentifierId.IsApplyDisplayAs)
+                                  
+                     formattedValue = TrapsTable.GetDFKA(this.DataSource.TrapIdentifierId.ToString(),TrapsTable.TrapIdentifierId, null);
+                                    
+               if ((!_isExpandableNonCompositeForeignKey) || (String.IsNullOrEmpty(formattedValue)))
+                     formattedValue = this.DataSource.Format(TrapsTable.TrapIdentifierId);
+                                  
+                                
+                formattedValue = HttpUtility.HtmlEncode(formattedValue);
+                this.TrapIdentifierId.Text = formattedValue;
+                   
+            } 
+            
+            else {
+            
+                // TrapIdentifierId is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+        
+              this.TrapIdentifierId.Text = TrapsTable.TrapIdentifierId.Format(TrapsTable.TrapIdentifierId.DefaultValue);
+            		
+            }
+            
+            // If the TrapIdentifierId is NULL or blank, then use the value specified  
+            // on Properties.
+            if (this.TrapIdentifierId.Text == null ||
+                this.TrapIdentifierId.Text.Trim().Length == 0) {
+                // Set the value specified on the Properties.
+                this.TrapIdentifierId.Text = "&nbsp;";
+            }
+                                     
+        }
+                
+        public virtual void SetActiveLabel()
+                  {
+                  
+                        this.ActiveLabel.Text = EvaluateFormula("\"Active?\"");
+                      
+                    
+        }
+                
         public virtual void SetGroupIdLabel()
                   {
                   
                         this.GroupIdLabel.Text = EvaluateFormula("\"Allocated to Group\"");
                       
+                    
+        }
+                
+        public virtual void SetLocationIdLabel()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetProjectIdLabel()
+                  {
+                  
+                    
+        }
+                
+        public virtual void SetTrapIdentifierIdLabel()
+                  {
+                  
                     
         }
                 
@@ -275,6 +481,14 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             if (includeDS)
             {
                 
+                // add datasource as variables for formula evaluation
+                  TrapsTableControl panel;
+                panel = (TrapsTableControl)(this.GetParentTableControl());
+                  
+                e.Variables.Add("TrapsCountQuery", panel.TrapsCountQuery);                                                       
+                        
+                e.Variables.Add("TrapsCountQuery1", panel.TrapsCountQuery1);                                                       
+                        
             }
             
             // All variables referred to in the formula are expected to be
@@ -359,6 +573,20 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                     throw new Exception(Page.GetResourceValue("Err:RecChangedByOtherUser", "RatTrap"));
                 }
             }
+        TrapTypesRecordControl parentCtrl;
+      
+            parentCtrl = (TrapTypesRecordControl)this.Page.FindControlRecursively("TrapTypesRecordControl");
+          
+        if (parentCtrl != null && parentCtrl.DataSource == null) {
+        // Load the record if it is not loaded yet.
+        parentCtrl.LoadData();
+        }
+        if (parentCtrl == null || parentCtrl.DataSource == null) {
+        // Get the error message from the application resource file.
+        throw new Exception(Page.GetResourceValue("Err:NoParentRecId", "RatTrap"));
+        }
+        
+          this.DataSource.TrapTypeId = parentCtrl.DataSource.TrapTypeId;
         
           
             // 2. Perform any custom validation.
@@ -407,11 +635,35 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
       
             // Call the Get methods for each of the user interface controls.
         
+            GetActive();
             GetGroupId();
+            GetLocationId();
+            GetProjectId();
+            GetTrapIdentifierId();
         }
         
         
+        public virtual void GetActive()
+        {
+            
+        }
+                
         public virtual void GetGroupId()
+        {
+            
+        }
+                
+        public virtual void GetLocationId()
+        {
+            
+        }
+                
+        public virtual void GetProjectId()
+        {
+            
+        }
+                
+        public virtual void GetTrapIdentifierId()
         {
             
         }
@@ -647,7 +899,75 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../Groups/Show-Groups.aspx?Groups={TrapsTableControlRow:FK:FK_Traps_Groups1}";
+            string url = @"../Groups/Show-Groups-Table.aspx?Groups={TrapsTableControlRow:FK:FK_Traps_Groups1}";
+            
+            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
+                url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
+            
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+                url = this.ModifyRedirectUrl(url, "",true);
+                url = this.Page.ModifyRedirectUrl(url, "",true);
+              
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.Page.RollBackTransaction(sender);
+                  shouldRedirect = false;
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+            if (shouldRedirect) {
+                this.Page.ShouldSaveControlsToSession = true;
+      this.Page.Response.Redirect(url);
+        
+            }
+        
+        }
+            
+            
+        
+        // event handler for LinkButton
+        public virtual void LocationId_Click(object sender, EventArgs args)
+        {
+              
+            try {
+                
+            } catch (Exception ex) {
+                  this.Page.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+    
+        }
+            
+            
+        
+        // event handler for LinkButton
+        public virtual void ProjectId_Click(object sender, EventArgs args)
+        {
+              
+            // The redirect URL is set on the Properties, Custom Properties or Actions.
+            // The ModifyRedirectURL call resolves the parameters before the
+            // Response.Redirect redirects the page to the URL.  
+            // Any code after the Response.Redirect call will not be executed, since the page is
+            // redirected to the URL.
+            
+            string url = @"../Projects/Show-Projects-Table.aspx?Projects={TrapsTableControlRow:FK:FK_Traps_Projects}";
             
             if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"]))
                 url += "&RedirectStyle=" + this.Page.Request["RedirectStyle"];
@@ -774,6 +1094,18 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
        
 #region "Helper Properties"
         
+        public System.Web.UI.WebControls.Literal Active {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Active");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal ActiveLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ActiveLabel");
+            }
+        }
+        
         public System.Web.UI.WebControls.ImageButton DeleteRowButton {
             get {
                 return (System.Web.UI.WebControls.ImageButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "DeleteRowButton");
@@ -795,6 +1127,42 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
         public System.Web.UI.WebControls.Literal GroupIdLabel {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "GroupIdLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.LinkButton LocationId {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationId");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal LocationIdLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "LocationIdLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.LinkButton ProjectId {
+            get {
+                return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectId");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal ProjectIdLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ProjectIdLabel");
+            }
+        }
+        
+        public System.Web.UI.WebControls.Literal TrapIdentifierId {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierId");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal TrapIdentifierIdLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapIdentifierIdLabel");
             }
         }
         
@@ -880,7 +1248,7 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             
             // Localization.
             
-            throw new Exception(Page.GetResourceValue("Err:RetrieveRec", "RatTrap"));
+            return null;
                 
         }
 
@@ -1201,6 +1569,10 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
           
           //  LoadData for DataSource for chart and report if they exist
           
+                  LoadData_TrapsCountQuery();
+       
+                  LoadData_TrapsCountQuery1();
+       
             // Improve performance by prefetching display as records.
             this.PreFetchForeignKeyValues();     
 
@@ -1246,6 +1618,8 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 
                 SetSortByLabel1();
                 SetSortControl1();
+                
+                
                 
                 SetExcelButton();
               
@@ -1300,6 +1674,9 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
             }
           
             this.Page.PregetDfkaRecords(TrapsTable.GroupId, this.DataSource);
+            this.Page.PregetDfkaRecords(TrapsTable.LocationId, this.DataSource);
+            this.Page.PregetDfkaRecords(TrapsTable.ProjectId, this.DataSource);
+            this.Page.PregetDfkaRecords(TrapsTable.TrapIdentifierId, this.DataSource);
         }
         
 
@@ -1337,6 +1714,12 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
             if (includeDS)
             {
                 
+                // add datasource as variables for formula evaluation
+                    
+                if (TrapsCountQuery != null) e.Variables.Add("TrapsCountQuery", TrapsCountQuery);                                                       
+                    
+                if (TrapsCountQuery1 != null) e.Variables.Add("TrapsCountQuery1", TrapsCountQuery1);                                                       
+                    
             }
 
             // All variables referred to in the formula are expected to be
@@ -1537,7 +1920,23 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
             // 2. User selected search criteria.
             // 3. User selected filter criteria.
             
-             
+        
+      KeyValue selectedRecordKeyValue = new KeyValue();
+    RatTrap.UI.Controls.Show_TrapTypes.TrapTypesRecordControl trapTypesRecordControlObj = (MiscUtils.FindControlRecursively(this.Page , "TrapTypesRecordControl") as RatTrap.UI.Controls.Show_TrapTypes.TrapTypesRecordControl);
+          
+              if (trapTypesRecordControlObj != null && trapTypesRecordControlObj.GetRecord() != null && trapTypesRecordControlObj.GetRecord().IsCreated)
+              {
+              wc.iAND(TrapsTable.TrapTypeId, BaseFilter.ComparisonOperator.EqualsTo, trapTypesRecordControlObj.GetRecord().TrapTypeId.ToString());
+              selectedRecordKeyValue.AddElement(TrapsTable.TrapTypeId.InternalName, trapTypesRecordControlObj.GetRecord().TrapTypeId.ToString());
+              }
+              else
+              {
+              wc.RunQuery = false;
+              return wc;
+              }
+            
+      HttpContext.Current.Session["TrapsTableControlWhereClause"] = selectedRecordKeyValue.ToXmlString();
+         
             return wc;
         }
         
@@ -1555,6 +1954,19 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
             
             String appRelativeVirtualPath = (String)HttpContext.Current.Session["AppRelativeVirtualPath"];
             
+      string selectedRecordInTrapTypesRecordControl = HttpContext.Current.Session["TrapsTableControlWhereClause"] as string;
+      
+      if (selectedRecordInTrapTypesRecordControl != null && KeyValue.IsXmlKey(selectedRecordInTrapTypesRecordControl))
+      {
+      KeyValue selectedRecordKeyValue = KeyValue.XmlToKey(selectedRecordInTrapTypesRecordControl);
+      
+      if (selectedRecordKeyValue != null && selectedRecordKeyValue.ContainsColumn(TrapsTable.TrapTypeId))
+      {
+      wc.iAND(TrapsTable.TrapTypeId, BaseFilter.ComparisonOperator.EqualsTo, selectedRecordKeyValue.GetColumnValue(TrapsTable.TrapTypeId).ToString());
+      }
+    
+      }
+    
             // Adds clauses if values are selected in Filter controls which are configured in the page.
           
 
@@ -1738,8 +2150,24 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
             if (recControl.Visible && recControl.IsNewRecord) {
       TrapsRecord rec = new TrapsRecord();
         
+                        if (recControl.Active.Text != "") {
+                            rec.Parse(recControl.Active.Text, TrapsTable.Active);
+                  }
+                
                         if (recControl.GroupId.Text != "") {
                             rec.Parse(recControl.GroupId.Text, TrapsTable.GroupId);
+                  }
+                
+                        if (recControl.LocationId.Text != "") {
+                            rec.Parse(recControl.LocationId.Text, TrapsTable.LocationId);
+                  }
+                
+                        if (recControl.ProjectId.Text != "") {
+                            rec.Parse(recControl.ProjectId.Text, TrapsTable.ProjectId);
+                  }
+                
+                        if (recControl.TrapIdentifierId.Text != "") {
+                            rec.Parse(recControl.TrapIdentifierId.Text, TrapsTable.TrapIdentifierId);
                   }
                 
               newUIDataList.Add(recControl.PreservedUIData());
@@ -1819,6 +2247,146 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                     
         }
                 
+        public virtual WhereClause CreateWhereClause_TrapsCountQuery()
+        
+        {
+            WhereClause wc = new WhereClause();
+            // Compose the WHERE clause consist of:
+            // 1. Static clause defined at design tithis.
+            // 2. User selected search criteria.
+            // 3. User selected filter criteria.
+
+          
+            // Get the static clause defined at design time on the Query Wizard
+            WhereClause qc = this.CreateQueryClause_TrapsCountQuery();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+                      
+            return wc;
+        }
+      
+        public virtual WhereClause CreateWhereClause_TrapsCountQuery1()
+        
+        {
+            WhereClause wc = new WhereClause();
+            // Compose the WHERE clause consist of:
+            // 1. Static clause defined at design tithis.
+            // 2. User selected search criteria.
+            // 3. User selected filter criteria.
+
+          
+            // Get the static clause defined at design time on the Query Wizard
+            WhereClause qc = this.CreateQueryClause_TrapsCountQuery1();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+                      
+            return wc;
+        }
+      
+        public virtual WhereClause CreateQueryClause_TrapsCountQuery()
+        
+        {
+          
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("1", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Traps_.Deleted"), EvaluateFormula("1", false), BaseClasses.Data.BaseFilter.ComparisonOperator.Not_Equals, false));
+         if (EvaluateFormula("1", false) == "--PLEASE_SELECT--" || EvaluateFormula("1", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
+        public virtual WhereClause CreateQueryClause_TrapsCountQuery1()
+        
+        {
+          
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("1", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Traps_.Deleted"), EvaluateFormula("1", false), BaseClasses.Data.BaseFilter.ComparisonOperator.Not_Equals, false));
+            if (EvaluateFormula("1", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Traps_.Active"), EvaluateFormula("1", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("1", false) == "--PLEASE_SELECT--" || EvaluateFormula("1", false) == "--ANY--") whereClause.RunQuery = false;
+         if (EvaluateFormula("1", false) == "--PLEASE_SELECT--" || EvaluateFormula("1", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
+        public virtual void LoadData_TrapsCountQuery()
+        
+        {
+          
+              if (!(this.ResetData || this.DataChanged || _TrapsCountQuery.DataChanged) && this.Page.IsPostBack  && this.Page.Request["__EVENTTARGET"] != "isd_geo_location") return;
+        
+              _TrapsCountQuery.DataChanged = true;
+          
+              this._TrapsCountQuery.Initialize("TrapsCountQuery", TrapsTable.Instance, 0, 0);
+            
+               
+              // Add the primary key of the record
+              WhereClause wc = CreateWhereClause_TrapsCountQuery();
+              this._TrapsCountQuery.WhereClause.iAND(wc);                      
+          
+              // Define selects
+          
+                    this._TrapsCountQuery.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, TrapsTable.Instance, "TrapsCount", ""), "TrapsCount"));
+              
+              // Define joins if there are any
+          
+              this._TrapsCountQuery.LoadData(false, this._TrapsCountQuery.PageSize, this._TrapsCountQuery.PageIndex);                       
+                        
+        }
+      
+        public virtual void LoadData_TrapsCountQuery1()
+        
+        {
+          
+              if (!(this.ResetData || this.DataChanged || _TrapsCountQuery1.DataChanged) && this.Page.IsPostBack  && this.Page.Request["__EVENTTARGET"] != "isd_geo_location") return;
+        
+              _TrapsCountQuery1.DataChanged = true;
+          
+              this._TrapsCountQuery1.Initialize("TrapsCountQuery1", TrapsTable.Instance, 0, 0);
+            
+               
+              // Add the primary key of the record
+              WhereClause wc = CreateWhereClause_TrapsCountQuery1();
+              this._TrapsCountQuery1.WhereClause.iAND(wc);                      
+          
+              // Define selects
+          
+                    this._TrapsCountQuery1.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, TrapsTable.Instance, "TrapsCount", ""), "TrapsCount"));
+              
+              // Define joins if there are any
+          
+              this._TrapsCountQuery1.LoadData(false, this._TrapsCountQuery1.PageSize, this._TrapsCountQuery1.PageIndex);                       
+                        
+        }
+      
+        private DataSource _TrapsCountQuery = new DataSource();
+        public DataSource TrapsCountQuery
+        {
+            get
+            {
+                return _TrapsCountQuery;
+             }
+        }
+      
+        private DataSource _TrapsCountQuery1 = new DataSource();
+        public DataSource TrapsCountQuery1
+        {
+            get
+            {
+                return _TrapsCountQuery1;
+             }
+        }
+      
         public virtual void SetSortControl1()
         {
             
@@ -2286,6 +2854,10 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // Add each of the columns in order of export.
                 BaseColumn[] columns = new BaseColumn[] {
                              TrapsTable.GroupId,
+             TrapsTable.Active,
+             TrapsTable.LocationId,
+             TrapsTable.ProjectId,
+             TrapsTable.TrapIdentifierId,
              null};
                 ExportDataToCSV exportData = new ExportDataToCSV(TrapsTable.Instance,wc,orderBy,columns);
                 exportData.StartExport(this.Page.Response, true);
@@ -2342,6 +2914,10 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
               int columnCounter = 0;
               DataForExport data = new DataForExport(TrapsTable.Instance, wc, orderBy, null,join);
                            data.ColumnList.Add(new ExcelColumn(TrapsTable.GroupId, "Default"));
+             data.ColumnList.Add(new ExcelColumn(TrapsTable.Active, "Default"));
+             data.ColumnList.Add(new ExcelColumn(TrapsTable.LocationId, "Default"));
+             data.ColumnList.Add(new ExcelColumn(TrapsTable.ProjectId, "Default"));
+             data.ColumnList.Add(new ExcelColumn(TrapsTable.TrapIdentifierId, "Default"));
 
 
               //  First write out the Column Headers
@@ -2515,6 +3091,10 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // The 4th parameter represents the horizontal alignment of the column detail
                 // The 5th parameter represents the relative width of the column
                  report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 16);
+                 report.AddColumn(TrapsTable.Active.Name, ReportEnum.Align.Left, "${Active}", ReportEnum.Align.Left, 15);
+                 report.AddColumn(TrapsTable.LocationId.Name, ReportEnum.Align.Left, "${LocationId}", ReportEnum.Align.Left, 17);
+                 report.AddColumn(TrapsTable.ProjectId.Name, ReportEnum.Align.Left, "${ProjectId}", ReportEnum.Align.Left, 28);
+                 report.AddColumn(TrapsTable.TrapIdentifierId.Name, ReportEnum.Align.Left, "${TrapIdentifierId}", ReportEnum.Align.Left, 28);
 
   
                 int rowsPerQuery = 5000;
@@ -2560,6 +3140,46 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                                      report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left);
                                  }else{
                                      report.AddData("${GroupId}", record.Format(TrapsTable.GroupId), ReportEnum.Align.Left);
+                                 }
+                             }
+                             report.AddData("${Active}", record.Format(TrapsTable.Active), ReportEnum.Align.Left, 300);
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.LocationId)){
+                                 report.AddData("${LocationId}", "",ReportEnum.Align.Left);
+                             }else{
+                                 Boolean _isExpandableNonCompositeForeignKey;
+                                 String _DFKA = "";
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.LocationId);
+                                 _DFKA = TrapsTable.GetDFKA(record.LocationId.ToString(), TrapsTable.LocationId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.LocationId.IsApplyDisplayAs){
+                                     report.AddData("${LocationId}", _DFKA,ReportEnum.Align.Left);
+                                 }else{
+                                     report.AddData("${LocationId}", record.Format(TrapsTable.LocationId), ReportEnum.Align.Left);
+                                 }
+                             }
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.ProjectId)){
+                                 report.AddData("${ProjectId}", "",ReportEnum.Align.Left);
+                             }else{
+                                 Boolean _isExpandableNonCompositeForeignKey;
+                                 String _DFKA = "";
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.ProjectId);
+                                 _DFKA = TrapsTable.GetDFKA(record.ProjectId.ToString(), TrapsTable.ProjectId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.ProjectId.IsApplyDisplayAs){
+                                     report.AddData("${ProjectId}", _DFKA,ReportEnum.Align.Left);
+                                 }else{
+                                     report.AddData("${ProjectId}", record.Format(TrapsTable.ProjectId), ReportEnum.Align.Left);
+                                 }
+                             }
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.TrapIdentifierId)){
+                                 report.AddData("${TrapIdentifierId}", "",ReportEnum.Align.Left, 300);
+                             }else{
+                                 Boolean _isExpandableNonCompositeForeignKey;
+                                 String _DFKA = "";
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapIdentifierId);
+                                 _DFKA = TrapsTable.GetDFKA(record.TrapIdentifierId.ToString(), TrapsTable.TrapIdentifierId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.TrapIdentifierId.IsApplyDisplayAs){
+                                     report.AddData("${TrapIdentifierId}", _DFKA,ReportEnum.Align.Left, 300);
+                                 }else{
+                                     report.AddData("${TrapIdentifierId}", record.Format(TrapsTable.TrapIdentifierId), ReportEnum.Align.Left, 300);
                                  }
                              }
 
@@ -2614,6 +3234,10 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // The 4th parameter represents the horizontal alignment of the column detail
                 // The 5th parameter represents the relative width of the column
                  report.AddColumn(TrapsTable.GroupId.Name, ReportEnum.Align.Left, "${GroupId}", ReportEnum.Align.Left, 16);
+                 report.AddColumn(TrapsTable.Active.Name, ReportEnum.Align.Left, "${Active}", ReportEnum.Align.Left, 15);
+                 report.AddColumn(TrapsTable.LocationId.Name, ReportEnum.Align.Left, "${LocationId}", ReportEnum.Align.Left, 17);
+                 report.AddColumn(TrapsTable.ProjectId.Name, ReportEnum.Align.Left, "${ProjectId}", ReportEnum.Align.Left, 28);
+                 report.AddColumn(TrapsTable.TrapIdentifierId.Name, ReportEnum.Align.Left, "${TrapIdentifierId}", ReportEnum.Align.Left, 28);
 
                 WhereClause whereClause = null;
                 whereClause = CreateWhereClause();
@@ -2655,6 +3279,46 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                                      report.AddData("${GroupId}", _DFKA,ReportEnum.Align.Left);
                                  }else{
                                      report.AddData("${GroupId}", record.Format(TrapsTable.GroupId), ReportEnum.Align.Left);
+                                 }
+                             }
+                             report.AddData("${Active}", record.Format(TrapsTable.Active), ReportEnum.Align.Left, 300);
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.LocationId)){
+                                 report.AddData("${LocationId}", "",ReportEnum.Align.Left);
+                             }else{
+                                 Boolean _isExpandableNonCompositeForeignKey;
+                                 String _DFKA = "";
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.LocationId);
+                                 _DFKA = TrapsTable.GetDFKA(record.LocationId.ToString(), TrapsTable.LocationId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.LocationId.IsApplyDisplayAs){
+                                     report.AddData("${LocationId}", _DFKA,ReportEnum.Align.Left);
+                                 }else{
+                                     report.AddData("${LocationId}", record.Format(TrapsTable.LocationId), ReportEnum.Align.Left);
+                                 }
+                             }
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.ProjectId)){
+                                 report.AddData("${ProjectId}", "",ReportEnum.Align.Left);
+                             }else{
+                                 Boolean _isExpandableNonCompositeForeignKey;
+                                 String _DFKA = "";
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.ProjectId);
+                                 _DFKA = TrapsTable.GetDFKA(record.ProjectId.ToString(), TrapsTable.ProjectId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.ProjectId.IsApplyDisplayAs){
+                                     report.AddData("${ProjectId}", _DFKA,ReportEnum.Align.Left);
+                                 }else{
+                                     report.AddData("${ProjectId}", record.Format(TrapsTable.ProjectId), ReportEnum.Align.Left);
+                                 }
+                             }
+                             if (BaseClasses.Utils.MiscUtils.IsNull(record.TrapIdentifierId)){
+                                 report.AddData("${TrapIdentifierId}", "",ReportEnum.Align.Left, 300);
+                             }else{
+                                 Boolean _isExpandableNonCompositeForeignKey;
+                                 String _DFKA = "";
+                                 _isExpandableNonCompositeForeignKey = TrapsTable.Instance.TableDefinition.IsExpandableNonCompositeForeignKey(TrapsTable.TrapIdentifierId);
+                                 _DFKA = TrapsTable.GetDFKA(record.TrapIdentifierId.ToString(), TrapsTable.TrapIdentifierId,null);
+                                 if (_isExpandableNonCompositeForeignKey &&  ( _DFKA  != null)  &&  TrapsTable.TrapIdentifierId.IsApplyDisplayAs){
+                                     report.AddData("${TrapIdentifierId}", _DFKA,ReportEnum.Align.Left, 300);
+                                 }else{
+                                     report.AddData("${TrapIdentifierId}", record.Format(TrapsTable.TrapIdentifierId), ReportEnum.Align.Left, 300);
                                  }
                              }
 
@@ -3168,6 +3832,10 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
               
             // LoadData for DataSource for chart and report if they exist
           
+                  LoadData_TrapsCountQuery2();
+       
+                  LoadData_TrapsCountQuery3();
+       
             // Store the checksum. The checksum is used to
             // ensure the record was not changed by another user.
             if (this.DataSource.GetCheckSumValue() != null)
@@ -3177,9 +3845,13 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
             // Call the Set methods for each controls on the panel
         
                 
+                SetLabel();
+                
+                SetTrapsCountControl();
+                SetTrapsCountControl1();
+                
                 
                 SetTrapType();
-                SetTrapTypeLabel();
                 SetDialogEditButton();
               
 
@@ -3201,7 +3873,19 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
             // their parent ids from their parent UI controls.
             bool shouldResetControl = false;
             if (shouldResetControl) { }; // prototype usage to void compiler warnings
-            
+            TrapsTableControl recTrapsTableControl = (TrapsTableControl)(MiscUtils.FindControlRecursively(this.Page, "TrapsTableControl"));
+        
+          if (shouldResetControl || this.Page.IsPageRefresh)
+          {
+             recTrapsTableControl.ResetControl();
+          }
+        
+        recTrapsTableControl.TrapsCountQuery.DataChanged = true;    
+        
+        recTrapsTableControl.TrapsCountQuery1.DataChanged = true;    
+                  
+        this.Page.SetControl("TrapsTableControl");
+        
         }
         
         
@@ -3245,9 +3929,29 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
                                      
         }
                 
-        public virtual void SetTrapTypeLabel()
+        public virtual void SetLabel()
                   {
                   
+                      //Code for the text property is generated inside the .aspx file. 
+                      //To override this property you can uncomment the following property and add you own value.
+                      //this.Label.Text = "Some value";
+                    
+                    
+        }
+                
+        public virtual void SetTrapsCountControl()
+                  {
+                  
+                        this.TrapsCountControl.Text = EvaluateFormula("LOOKUP(TrapsCountQuery2, TrapTypeId)");
+                    
+                    
+        }
+                
+        public virtual void SetTrapsCountControl1()
+                  {
+                  
+                        this.TrapsCountControl1.Text = EvaluateFormula("LOOKUP(TrapsCountQuery3, TrapTypeId)");
+                    
                     
         }
                 
@@ -3273,6 +3977,12 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
             if (includeDS)
             {
                 
+                // add datasource as variables for formula evaluation
+                  
+                if (TrapsCountQuery2 != null) e.Variables.Add("TrapsCountQuery2", TrapsCountQuery2);                                                       
+                        
+                if (TrapsCountQuery3 != null) e.Variables.Add("TrapsCountQuery3", TrapsCountQuery3);                                                       
+                        
             }
             
             // All variables referred to in the formula are expected to be
@@ -3399,6 +4109,8 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
             
             this.CheckSum = "";
             // For Master-Detail relationships, save data on the Detail table(s)            
+          TrapsTableControl recTrapsTableControl = (TrapsTableControl)(MiscUtils.FindControlRecursively(this.Page, "TrapsTableControl"));
+        recTrapsTableControl.SaveData();
           
         }
 
@@ -3637,6 +4349,152 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
             return isAdded;
         }
         
+        private DataSource _TrapsCountQuery2 = new DataSource();
+        public DataSource TrapsCountQuery2
+        {
+            get
+            {
+                return _TrapsCountQuery2;
+             }
+        }
+      
+        private DataSource _TrapsCountQuery3 = new DataSource();
+        public DataSource TrapsCountQuery3
+        {
+            get
+            {
+                return _TrapsCountQuery3;
+             }
+        }
+      
+        public virtual void LoadData_TrapsCountQuery2()
+        
+        {
+          
+              if (!(this.ResetData || this.DataChanged || _TrapsCountQuery2.DataChanged) && this.Page.IsPostBack  && this.Page.Request["__EVENTTARGET"] != "isd_geo_location") return;
+        
+              _TrapsCountQuery2.DataChanged = true;
+          
+              this._TrapsCountQuery2.Initialize("TrapsCountQuery2", TrapTypesTable.Instance, 0, 0);                                            
+              
+               
+              // Add the primary key of the record
+              WhereClause wc = CreateWhereClause_TrapsCountQuery2();
+              this._TrapsCountQuery2.WhereClause.iAND(wc);                      
+          
+              // Define selects
+          
+              this._TrapsCountQuery2.AddSelectItem(new SelectItem(TrapTypesTable.TrapTypeId, TrapTypesTable.Instance, false, "", ""));
+              
+                    this._TrapsCountQuery2.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, TrapsTable.Instance, "TrapsCount", ""), "TrapsCount"));
+              
+              // Define joins if there are any
+          
+              this._TrapsCountQuery2.AddJoin(TrapTypesTable.TrapTypeId, TrapTypesTable.Instance, "", TrapsTable.TrapTypeId, TrapsTable.Instance, "");
+          
+              this._TrapsCountQuery2.LoadData(false, this._TrapsCountQuery2.PageSize, this._TrapsCountQuery2.PageIndex);                       
+                        
+        }
+      
+        public virtual void LoadData_TrapsCountQuery3()
+        
+        {
+          
+              if (!(this.ResetData || this.DataChanged || _TrapsCountQuery3.DataChanged) && this.Page.IsPostBack  && this.Page.Request["__EVENTTARGET"] != "isd_geo_location") return;
+        
+              _TrapsCountQuery3.DataChanged = true;
+          
+              this._TrapsCountQuery3.Initialize("TrapsCountQuery3", TrapTypesTable.Instance, 0, 0);                                            
+              
+               
+              // Add the primary key of the record
+              WhereClause wc = CreateWhereClause_TrapsCountQuery3();
+              this._TrapsCountQuery3.WhereClause.iAND(wc);                      
+          
+              // Define selects
+          
+              this._TrapsCountQuery3.AddSelectItem(new SelectItem(TrapTypesTable.TrapTypeId, TrapTypesTable.Instance, false, "", ""));
+              
+                    this._TrapsCountQuery3.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, TrapsTable.Instance, "TrapsCount", ""), "TrapsCount"));
+              
+              // Define joins if there are any
+          
+              this._TrapsCountQuery3.AddJoin(TrapTypesTable.TrapTypeId, TrapTypesTable.Instance, "", TrapsTable.TrapTypeId, TrapsTable.Instance, "");
+          
+              this._TrapsCountQuery3.LoadData(false, this._TrapsCountQuery3.PageSize, this._TrapsCountQuery3.PageIndex);                       
+                        
+        }
+      
+        public virtual WhereClause CreateWhereClause_TrapsCountQuery2()
+        
+        {
+            WhereClause wc = new WhereClause();
+            // Compose the WHERE clause consist of:
+            // 1. Static clause defined at design tithis.
+            // 2. User selected search criteria.
+            // 3. User selected filter criteria.
+
+          
+            // Get the static clause defined at design time on the Query Wizard
+            WhereClause qc = this.CreateQueryClause_TrapsCountQuery2();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+                      
+            return wc;
+        }
+      
+        public virtual WhereClause CreateWhereClause_TrapsCountQuery3()
+        
+        {
+            WhereClause wc = new WhereClause();
+            // Compose the WHERE clause consist of:
+            // 1. Static clause defined at design tithis.
+            // 2. User selected search criteria.
+            // 3. User selected filter criteria.
+
+          
+            // Get the static clause defined at design time on the Query Wizard
+            WhereClause qc = this.CreateQueryClause_TrapsCountQuery3();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+                      
+            return wc;
+        }
+      
+        public virtual WhereClause CreateQueryClause_TrapsCountQuery2()
+        
+        {
+          
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("0", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Traps_.Deleted"), EvaluateFormula("0", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("0", false) == "--PLEASE_SELECT--" || EvaluateFormula("0", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
+        public virtual WhereClause CreateQueryClause_TrapsCountQuery3()
+        
+        {
+          
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("0", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"Traps_.Deleted"), EvaluateFormula("0", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("0", false) == "--PLEASE_SELECT--" || EvaluateFormula("0", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
     
         public virtual void Validate()
         {
@@ -3920,9 +4778,27 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
             }
         }
         
+        public System.Web.UI.WebControls.Label Label {
+            get {
+                return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Label");
+            }
+        }
+        
         public System.Web.UI.WebControls.Literal Title0 {
             get {
                 return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Title0");
+            }
+        }
+        
+        public System.Web.UI.WebControls.Literal TrapsCountControl {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapsCountControl");
+            }
+        }
+        
+        public System.Web.UI.WebControls.Literal TrapsCountControl1 {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapsCountControl1");
             }
         }
         
@@ -3932,12 +4808,6 @@ public class BaseTrapTypesRecordControl : RatTrap.UI.BaseApplicationRecordContro
             }
         }
             
-        public System.Web.UI.WebControls.Literal TrapTypeLabel {
-            get {
-                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeLabel");
-            }
-        }
-        
     #endregion
 
     #region "Helper Functions"

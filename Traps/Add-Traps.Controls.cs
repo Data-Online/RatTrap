@@ -97,6 +97,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                 
               this.TrapTypeId.SelectedIndexChanged += TrapTypeId_SelectedIndexChanged;
             
+              this.Active.CheckedChanged += Active_CheckedChanged;
+            
         }
 
         public virtual void LoadData()  
@@ -173,6 +175,8 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
 
             // Call the Set methods for each controls on the panel
         
+                SetActive();
+                SetActiveLabel();
                 SetGroupId1();
                 SetGroupIdLabel();
                 
@@ -203,6 +207,33 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
         }
         
         
+        public virtual void SetActive()
+        {
+            
+                    
+            // Set the Active CheckBox on the webpage with value from the
+            // DatabaseTheRatTrap%dbo.Traps database record.
+
+            // this.DataSource is the DatabaseTheRatTrap%dbo.Traps record retrieved from the database.
+            // this.Active is the ASP:CheckBox on the webpage.
+                  
+            if (this.DataSource != null && this.DataSource.ActiveSpecified) {
+                							
+                // If the Active is non-NULL, then format the value.
+                // The Format method will use the Display Format
+                this.Active.Checked = this.DataSource.Active;
+                    				
+            } else {
+            
+                // Active is NULL in the database, so use the Default Value.  
+                // Default Value could also be NULL.
+                if (!this.DataSource.IsCreated) 
+                    this.Active.Checked = TrapsTable.Active.ParseValue(TrapsTable.Active.DefaultValue).ToBoolean();                
+                    									
+            }
+            
+        }
+                
         public virtual void SetGroupId1()
         {
             				
@@ -459,6 +490,14 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
                   
         }
                 
+        public virtual void SetActiveLabel()
+                  {
+                  
+                        this.ActiveLabel.Text = EvaluateFormula("\"Active?\"");
+                      
+                    
+        }
+                
         public virtual void SetGroupIdLabel()
                   {
                   
@@ -635,12 +674,24 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
       
             // Call the Get methods for each of the user interface controls.
         
+            GetActive();
             GetGroupId1();
             GetTrapIdentifierId();
             GetTrapTypeId();
         }
         
         
+        public virtual void GetActive()
+        {	
+        		
+            // Retrieve the value entered by the user on the Active ASP:CheckBox, and
+            // save it into the Active field in DataSource DatabaseTheRatTrap%dbo.Traps record.
+            // Custom validation should be performed in Validate, not here.
+            
+            this.DataSource.Active = this.Active.Checked;						
+                    
+        }
+                
         public virtual void GetGroupId1()
         {
          // Retrieve the value entered by the user on the GroupId ASP:QuickSelector, and
@@ -1187,6 +1238,11 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
            						
         }
             
+        protected virtual void Active_CheckedChanged(object sender, EventArgs args)
+        {
+           						
+        }
+            
   
         private Hashtable _PreviousUIData = new Hashtable();
         public virtual Hashtable PreviousUIData {
@@ -1298,6 +1354,18 @@ public class BaseTrapsRecordControl : RatTrap.UI.BaseApplicationRecordControl
         }
        
 #region "Helper Properties"
+        
+        public System.Web.UI.WebControls.CheckBox Active {
+            get {
+                return (System.Web.UI.WebControls.CheckBox)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Active");
+            }
+        }
+            
+        public System.Web.UI.WebControls.Literal ActiveLabel {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "ActiveLabel");
+            }
+        }
         
         public BaseClasses.Web.UI.WebControls.QuickSelector GroupId1 {
             get {

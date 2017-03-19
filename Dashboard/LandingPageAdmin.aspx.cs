@@ -273,6 +273,17 @@ public void TrapRecordsButton_Click(object sender, ImageClickEventArgs args)
           TrapRecordsButton_Click_Base(sender, args);
           // NOTE: If the Base function redirects to another page, any code here will not be executed.
         }
+public void SetTrapsButton1()
+        {
+            SetTrapsButton1_Base(); 
+        }              
+public void TrapsButton1_Click(object sender, ImageClickEventArgs args)
+        {
+          // Click handler for TrapsButton1.
+          // Customize by adding code before the call or replace the call to the Base function with your own code.
+          TrapsButton1_Click_Base(sender, args);
+          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -304,6 +315,8 @@ public void TrapRecordsButton_Click(object sender, ImageClickEventArgs args)
         
         public System.Web.UI.WebControls.Label Label5;
         
+        public System.Web.UI.WebControls.Label Label6;
+        
         public System.Web.UI.WebControls.ImageButton MyGroupsButton;
         
         public System.Web.UI.WebControls.Literal PageTitle;
@@ -313,6 +326,8 @@ public void TrapRecordsButton_Click(object sender, ImageClickEventArgs args)
         public System.Web.UI.WebControls.ImageButton TrapRecordsButton;
         
         public System.Web.UI.WebControls.ImageButton TrapsButton;
+        
+        public System.Web.UI.WebControls.ImageButton TrapsButton1;
         
         public System.Web.UI.WebControls.ImageButton UsersButton;
         
@@ -346,6 +361,8 @@ public void TrapRecordsButton_Click(object sender, ImageClickEventArgs args)
                     this.TrapRecordsButton.Click += TrapRecordsButton_Click;
                         
                     this.TrapsButton.Click += TrapsButton_Click;
+                        
+                    this.TrapsButton1.Click += TrapsButton1_Click;
                         
                     this.UsersButton.Click += UsersButton_Click;
                         
@@ -615,6 +632,8 @@ public void TrapRecordsButton_Click(object sender, ImageClickEventArgs args)
               
                 SetTrapsButton();
               
+                SetTrapsButton1();
+              
                 SetUsersButton();
               
     } catch (Exception ex) {
@@ -733,6 +752,13 @@ public void TrapRecordsButton_Click(object sender, ImageClickEventArgs args)
    
         }
             
+        public void SetTrapsButton1_Base()                
+              
+        {
+        
+   
+        }
+            
         public void SetUsersButton_Base()                
               
         {
@@ -804,7 +830,7 @@ public void TrapRecordsButton_Click(object sender, ImageClickEventArgs args)
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../UsersGroupsLink/Show-UsersGroupsLink-TableAdmin.aspx";
+            string url = @"../UsersGroupsLink/Show-UsersGroupsLink-Table-Admin.aspx";
             
             if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
                 url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
@@ -948,7 +974,55 @@ public void TrapRecordsButton_Click(object sender, ImageClickEventArgs args)
             // Any code after the Response.Redirect call will not be executed, since the page is
             // redirected to the URL.
             
-            string url = @"../Traps/Show-Traps-Table.aspx";
+            string url = @"../Traps/Edit-Traps-Table-Admin.aspx";
+            
+            if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
+                url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
+            
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+            //This method is initially empty to implement custom click handler.
+      
+                url = this.ModifyRedirectUrl(url, "",true);
+              
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.RollBackTransaction(sender);
+                  shouldRedirect = false;
+                  this.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+            if (shouldRedirect) {
+      this.Response.Redirect(url);
+        
+            }
+        
+        }
+            
+            
+        
+        // event handler for ImageButton
+        public void TrapsButton1_Click_Base(object sender, ImageClickEventArgs args)
+        {
+              
+            // The redirect URL is set on the Properties, Custom Properties or Actions.
+            // The ModifyRedirectURL call resolves the parameters before the
+            // Response.Redirect redirects the page to the URL.  
+            // Any code after the Response.Redirect call will not be executed, since the page is
+            // redirected to the URL.
+            
+            string url = @"../Traps/Show-Traps-Table-Upload.aspx";
             
             if (!string.IsNullOrEmpty(this.Page.Request["RedirectStyle"])) 
                 url += "?RedirectStyle=" + this.Page.Request["RedirectStyle"];
