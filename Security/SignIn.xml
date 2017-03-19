@@ -1,31 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ComponentDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.ironspeed.com/designer">
+<ComponentDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ironspeed.com/designer">
   <Generator>Iron Speed Designer</Generator>
   <Version>12.2.0</Version>
   <Self>
     <Name>SignIn</Name>
     <Type>Page</Type>
     <SubType>DotNet</SubType>
-    <MasterLayout>../Master Pages/HorizontalMenu.master</MasterLayout>
+    <MasterLayout>../Master Pages/HorizontalNoMenu.master</MasterLayout>
     <NewWindowMasterLayout>../Master Pages/Blank.master</NewWindowMasterLayout>
     <PopupMasterLayout>../Master Pages/Popup.master</PopupMasterLayout>
+    <PopupCssClass>QPageSize</PopupCssClass>
     <GenerateDirectory>Security</GenerateDirectory>
-    <Layout>Security\SignIn.html</Layout>
+    <Layout>Security\SignIn.xml</Layout>
     <DisplayName>SignIn</DisplayName>
     <Description />
-    <CheckSum></CheckSum>
+    <CheckSum />
   </Self>
   <ComposedOf>
-    <ContainedComponent>
-      <Name>PageTitle</Name>
-      <Type>Literal</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>Text</Name>
-          <Value>{Title:SignIn}</Value>
-        </Attribute>
-      </PassthroughAttributes>
-    </ContainedComponent>
     <ContainedComponent>
       <Name>AutomaticallySignIn</Name>
       <Type>Selection</Type>
@@ -123,6 +114,29 @@
       </PassthroughAttributes>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>Image</Name>
+      <Type>Image</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>alt</Name>
+          <Value>Txt:PageHeader</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>ImageURL</Name>
+          <Value>../Images/ImageSignIn.png</Value>
+        </Attribute>
+        <Attribute>
+          <Name>style</Name>
+          <Value>border-width:0px;</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Width</Name>
+          <Value>300px</Value>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>LoginMessage</Name>
       <Type>Label</Type>
       <PassthroughAttributes>
@@ -154,6 +168,16 @@
           <Name>Button-ToolTip</Name>
           <Value>Btn:OK</Value>
           <Type>ResourceReference</Type>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>PageTitle</Name>
+      <Type>Literal</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>{Title:SignIn}</Value>
         </Attribute>
       </PassthroughAttributes>
     </ContainedComponent>
@@ -293,25 +317,6 @@
         <Attribute>
           <Name>Text</Name>
           <Value>Txt:UserName</Value>
-          <Type>ResourceReference</Type>
-        </Attribute>
-      </PassthroughAttributes>
-    </ContainedComponent>
-    <ContainedComponent>
-      <Name>Image</Name>
-      <Type>Image</Type>
-      <PassthroughAttributes>
-        <Attribute>
-          <Name>ImageURL</Name>
-          <Value>../Images/SignInPageGraphic.jpg</Value>
-        </Attribute>
-        <Attribute>
-          <Name>style</Name>
-          <Value>border-width:0px;</Value>
-        </Attribute>
-        <Attribute>
-          <Name>alt</Name>
-          <Value>Txt:PageHeader</Value>
           <Type>ResourceReference</Type>
         </Attribute>
       </PassthroughAttributes>

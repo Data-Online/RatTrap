@@ -81,6 +81,10 @@
           <Name>style</Name>
           <Value>border-width:0px;</Value>
         </Attribute>
+        <Attribute>
+          <Name>Width</Name>
+          <Value>200px</Value>
+        </Attribute>
       </PassthroughAttributes>
     </ContainedComponent>
     <ContainedComponent>
@@ -333,6 +337,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;
@@ -344,6 +349,7 @@
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
     &lt;/Row&gt;
     &lt;Row&gt;
       &lt;Cell&gt;

@@ -230,15 +230,15 @@ public partial class SignOut
     
          private static string cultureui = "";
     
-        public System.Web.UI.WebControls.Literal PageTitle;
-        
         public System.Web.UI.WebControls.Literal DialogTitle;
             
         public ThemeButton ForgetSignInButton;
                 
-        public System.Web.UI.WebControls.Label SignOutMessage;
-        
         public System.Web.UI.WebControls.Image Image;
+        
+        public System.Web.UI.WebControls.Literal PageTitle;
+        
+        public System.Web.UI.WebControls.Label SignOutMessage;
         
         public ValidationSummary ValidationSummary1;
 

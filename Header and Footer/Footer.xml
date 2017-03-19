@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ComponentDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ironspeed.com/designer">
   <Generator>Iron Speed Designer</Generator>
   <Version>12.2.0</Version>
   <Self>
     <Name>Footer</Name>
     <Type>Footer</Type>
+    <SubType>DotNet</SubType>
+    <PopupCssClass>QPageSize</PopupCssClass>
     <GenerateDirectory>Header and Footer</GenerateDirectory>
     <Layout>Header and Footer\Footer.html</Layout>
     <DisplayName>Footer</DisplayName>
@@ -17,7 +19,7 @@
       <PassthroughAttributes>
         <Attribute>
           <Name>Text</Name>
-          <Value>Copyright &amp;copy; 2015 Your Company Name. All rights reserved.</Value>
+          <Value>Copyright &amp;copy 2017. All rights reserved.</Value>
         </Attribute>
       </PassthroughAttributes>
     </ContainedComponent>

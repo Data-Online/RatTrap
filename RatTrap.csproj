@@ -737,17 +737,22 @@
     <Compile Include="Traps\Show-Traps-Table-Upload.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.aspx.cs" >
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.aspx.cs">
       <DependentUpon>Show-UsersGroupsLink-Table-Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.Controls.cs" >
+    <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BaseClasses\Readme.txt" />
     <Content Include="Default.aspx" />
+    <Content Include="Images\ImageSignIn.png" />
+    <Content Include="Images\Projects.png" />
+    <Content Include="Images\TrapRecords.png" />
+    <Content Include="Images\Traps.png" />
+    <Content Include="Images\UploadTrapData.png" />
     <Content Include="Web.config" />
     <Content Include="Header and Footer\EmailHeader.ascx" />
     <Content Include="Header and Footer\Footer.ascx" />
@@ -1083,7 +1088,8 @@
     <Content Include="TrapNotes\TrapNotes-QuickSelector.aspx" />
     <Content Include="Traps\Edit-Traps-Admin.aspx" />
     <Content Include="Traps\Show-Traps-Table-Upload.aspx" />
-    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.aspx"  />
+    <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.aspx" />
+    <Content Include="Master Pages\HorizontalNoMenu.master" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">
