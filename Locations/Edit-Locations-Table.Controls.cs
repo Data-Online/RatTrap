@@ -2100,6 +2100,22 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Address {Txt:Descending}"), "Address Desc"));
               
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Ascending}"), "UpdatedOn Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Descending}"), "UpdatedOn Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Ascending}"), "CreatedBy Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Descending}"), "CreatedBy Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Ascending}"), "CreatedOn Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Descending}"), "CreatedOn Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Ascending}"), "UpdatedBy Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Descending}"), "UpdatedBy Desc"));
+              
             try
             {          
                 // Set the selected value.
@@ -5255,6 +5271,22 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Ascending}"), "Deleted Asc"));
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Descending}"), "Deleted Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Ascending}"), "UpdatedOn Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Descending}"), "UpdatedOn Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Ascending}"), "CreatedBy Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Descending}"), "CreatedBy Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Ascending}"), "CreatedOn Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Descending}"), "CreatedOn Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Ascending}"), "UpdatedBy Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Descending}"), "UpdatedBy Desc"));
               
             try
             {          

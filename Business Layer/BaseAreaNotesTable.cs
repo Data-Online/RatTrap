@@ -61,6 +61,10 @@ public class BaseAreaNotesTable : PrimaryKeyTable
         AreaNotesIdColumn.CodeName = "AreaNotesId";
         NoteColumn.CodeName = "Note";
         AreaIdColumn.CodeName = "AreaId";
+        UpdatedByColumn.CodeName = "UpdatedBy";
+        UpdatedOnColumn.CodeName = "UpdatedOn";
+        CreatedByColumn.CodeName = "CreatedBy";
+        CreatedOnColumn.CodeName = "CreatedOn";
 
         
     }
@@ -142,6 +146,106 @@ public class BaseAreaNotesTable : PrimaryKeyTable
         get
         {
             return AreaNotesTable.Instance.AreaIdColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's AreaNotes_.UpdatedBy column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn UpdatedByColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[3];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's AreaNotes_.UpdatedBy column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn UpdatedBy
+    {
+        get
+        {
+            return AreaNotesTable.Instance.UpdatedByColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's AreaNotes_.UpdatedOn column object.
+    /// </summary>
+    public BaseClasses.Data.DateColumn UpdatedOnColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.DateColumn)this.TableDefinition.ColumnList[4];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's AreaNotes_.UpdatedOn column object.
+    /// </summary>
+    public static BaseClasses.Data.DateColumn UpdatedOn
+    {
+        get
+        {
+            return AreaNotesTable.Instance.UpdatedOnColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's AreaNotes_.CreatedBy column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn CreatedByColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[5];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's AreaNotes_.CreatedBy column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn CreatedBy
+    {
+        get
+        {
+            return AreaNotesTable.Instance.CreatedByColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's AreaNotes_.CreatedOn column object.
+    /// </summary>
+    public BaseClasses.Data.DateColumn CreatedOnColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.DateColumn)this.TableDefinition.ColumnList[6];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's AreaNotes_.CreatedOn column object.
+    /// </summary>
+    public static BaseClasses.Data.DateColumn CreatedOn
+    {
+        get
+        {
+            return AreaNotesTable.Instance.CreatedOnColumn;
         }
     }
     
@@ -672,12 +776,20 @@ public class BaseAreaNotesTable : PrimaryKeyTable
         //Convenience method for creating a record
         public KeyValue NewRecord(
         string NoteValue, 
-        string AreaIdValue
+        string AreaIdValue, 
+        string UpdatedByValue, 
+        string UpdatedOnValue, 
+        string CreatedByValue, 
+        string CreatedOnValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
                     rec.SetString(NoteValue, NoteColumn);
         rec.SetString(AreaIdValue, AreaIdColumn);
+        rec.SetString(UpdatedByValue, UpdatedByColumn);
+        rec.SetString(UpdatedOnValue, UpdatedOnColumn);
+        rec.SetString(CreatedByValue, CreatedByColumn);
+        rec.SetString(CreatedOnValue, CreatedOnColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

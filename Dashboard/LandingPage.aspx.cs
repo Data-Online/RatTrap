@@ -263,6 +263,52 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
 //          TrapsButton_Click_Base(sender, args);
 //          // NOTE: If the Base function redirects to another page, any code here will not be executed.
 //        }
+//public void SetTrapsTableControl()
+//        {
+//            SetTrapsTableControl_Base(); 
+//        }
+//public void SetUsersGroupsLinkTableControl()
+//        {
+//            SetUsersGroupsLinkTableControl_Base(); 
+//        }
+//public void SetUsersGroupsLinkTableControl1()
+//        {
+//            SetUsersGroupsLinkTableControl1_Base(); 
+//        }
+//[System.Web.Services.WebMethod]
+//        public static string[] GetAutoCompletionList_GroupsSearchText(string prefixText, int count)
+//        {
+//            // GetGroupsSearchTextCompletionList gets the list of suggestions from the database.
+//            // prefixText is the search text typed by the user .
+//            // count specifies the number of suggestions to be returned.
+//            // Customize by adding code before or after the call to  GetAutoCompletionList_GroupsSearchText_Base()
+//            // or replace the call to GetAutoCompletionList_GroupsSearchText_Base().
+//            return GetAutoCompletionList_GroupsSearchText_Base(prefixText, count);
+//        }
+//public void SetView_Trap_SummaryTableControl()
+//        {
+//            SetView_Trap_SummaryTableControl_Base(); 
+//        }
+public WhereClause CreateWhereClause_View_Trap_SummaryCountQuery()
+        {
+            return CreateWhereClause_View_Trap_SummaryCountQuery_Base();
+        }
+public void LoadData_View_Trap_SummaryCountQuery()
+        {
+            LoadData_View_Trap_SummaryCountQuery_Base();
+        }        
+//public void SetView_Trap_SummaryCountChart()
+//        {
+//            SetView_Trap_SummaryCountChart_Base();
+//        }
+//public WhereClause CreateQueryClause_View_Trap_SummaryCountQuery()
+//        {
+//            return CreateQueryClause_View_Trap_SummaryCountQuery_Base(); 
+//        }
+public void SetUsersGroupsLinkTableControl()
+        {
+            SetUsersGroupsLinkTableControl_Base(); 
+        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -286,6 +332,12 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
         
         public System.Web.UI.WebControls.Literal PageTitle;
         
+        public InfinitePagination Pagination;
+                
+        public System.Web.UI.WebControls.Literal Title0;
+            
+        public RatTrap.UI.Controls.LandingPage.UsersGroupsLinkTableControl UsersGroupsLinkTableControl;
+          
         public ValidationSummary ValidationSummary1;
 
   
@@ -329,7 +381,9 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
         protected void BasePage_PreRender_Base(object sender, System.EventArgs e)
         {
             // Load data for each record and table UI control.
-                  
+        
+                  LoadData_View_Trap_SummaryCountQuery();
+                 
             // Data bind for each chart UI control.
           
         }
@@ -458,6 +512,17 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
       {
           // Load data for each record and table UI control.
         
+                  LoadData_View_Trap_SummaryCountQuery();
+       
+          switch (control)
+          {
+          
+              case "UsersGroupsLinkTableControl":
+                 SetUsersGroupsLinkTableControl();
+                 break;
+               
+          }
+        
       }
       
     
@@ -465,6 +530,8 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
       public void SaveData_Base()
       {
       
+        this.UsersGroupsLinkTableControl.SaveData();
+        
       }
       
      
@@ -530,7 +597,9 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
               AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "QPopupCreateHeader", "QPopupCreateHeader();", true);          
                  
             // Load data for each record and table UI control.
-                  
+        
+                  LoadData_View_Trap_SummaryCountQuery();
+                 
             // Data bind for each chart UI control.
               
       }  
@@ -559,9 +628,13 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
     
                 // Load and bind data for each record and table UI control.
                 
+        SetUsersGroupsLinkTableControl();
+        
     
                 // Load data for chart.
                 
+                  LoadData_View_Trap_SummaryCountQuery();
+       
             
                 // initialize aspx controls
                 
@@ -597,6 +670,10 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
             if (includeDS)
             {
                 
+                // add datasource as variables for formula evaluation
+                    
+                if (View_Trap_SummaryCountQuery != null && View_Trap_SummaryCountQuery.Initialized) e.Variables.Add("View_Trap_SummaryCountQuery", View_Trap_SummaryCountQuery);                                                       
+                    
             }
 
             
@@ -648,6 +725,16 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
                 
         // Write out the Set methods
         
+        public void SetUsersGroupsLinkTableControl_Base()           
+        
+        {        
+            if (UsersGroupsLinkTableControl.Visible)
+            {
+                UsersGroupsLinkTableControl.LoadData();
+                UsersGroupsLinkTableControl.DataBind();
+            }
+        }
+      
         public void SetMyGroupsButton_Base()                
               
         {
@@ -657,7 +744,58 @@ public void MyGroupsButton_Click(object sender, ImageClickEventArgs args)
                 
 
         // Write out the DataSource properties and methods
-                
+        
+        private DataSource _View_Trap_SummaryCountQuery = new DataSource();
+        public DataSource View_Trap_SummaryCountQuery
+        {
+            get
+            {
+                return _View_Trap_SummaryCountQuery;
+             }
+        }
+      
+        public void LoadData_View_Trap_SummaryCountQuery_Base()
+        
+        {
+          
+              if (!(_View_Trap_SummaryCountQuery.DataChanged) && this.Page.IsPostBack  && this.Page.Request["__EVENTTARGET"] != "isd_geo_location") return;
+        
+              _View_Trap_SummaryCountQuery.DataChanged = true;
+          
+              this._View_Trap_SummaryCountQuery.Initialize("View_Trap_SummaryCountQuery", View_Trap_SummaryView.Instance, 0, 0);                                            
+              
+               
+              // Add the primary key of the record
+              WhereClause wc = CreateWhereClause_View_Trap_SummaryCountQuery();
+              this._View_Trap_SummaryCountQuery.WhereClause.iAND(wc);                      
+          
+              // Define selects
+          
+              this._View_Trap_SummaryCountQuery.AddSelectItem(new SelectItem(View_Trap_SummaryView.Species, View_Trap_SummaryView.Instance, false, "", ""));
+              
+                    this._View_Trap_SummaryCountQuery.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, View_Trap_SummaryView.Instance, "View_Trap_SummaryCount", ""), "View_Trap_SummaryCount"));
+              
+              // Define joins if there are any
+          
+              this._View_Trap_SummaryCountQuery.AddAggregateOrderBy("View_Trap_SummaryCount", OrderByItem.OrderDir.Desc);
+              
+              this._View_Trap_SummaryCountQuery.LoadData(false, this._View_Trap_SummaryCountQuery.PageSize, this._View_Trap_SummaryCountQuery.PageIndex);                       
+                        
+        }
+      
+        public WhereClause CreateWhereClause_View_Trap_SummaryCountQuery_Base()
+        
+        {
+            WhereClause wc = new WhereClause();
+            // Compose the WHERE clause consist of:
+            // 1. Static clause defined at design tithis.
+            // 2. User selected search criteria.
+            // 3. User selected filter criteria.
+
+                      
+            return wc;
+        }
+              
 
         // Write out event methods for the page events
         

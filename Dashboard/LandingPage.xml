@@ -19,6 +19,61 @@
   </Self>
   <ComposedOf>
     <ContainedComponent>
+      <Name>GroupId</Name>
+      <Type>FieldValue</Type>
+      <Field>GroupId</Field>
+      <FieldValueStyle>Literal</FieldValueStyle>
+      <Table>DatabaseTheRatTrap%dbo.UsersGroupsLink</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FieldMaxLength</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>HTMLEncodeValue</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplySaveToField</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupDisplay</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupThreshold</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowHeight</Name>
+          <Value>200</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowPersist</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowScrollBar</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowTitle</Name>
+          <Value>%ISD_DEFAULT%</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowWidth</Name>
+          <Value>300</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>UsersGroupsLinkTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>Label2</Name>
       <Type>Label</Type>
       <PassthroughAttributes>
@@ -61,6 +116,53 @@
       </PassthroughAttributes>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>Pagination</Name>
+      <Type>Pagination</Type>
+      <Layout>..\Shared\InfinitePagination.ascx</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FirstPage-Consumers</Name>
+          <Value>UsersGroupsLinkTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:TableControl</Name>
+          <Value>UsersGroupsLinkTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>LastPage-Consumers</Name>
+          <Value>UsersGroupsLinkTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NextPage-Consumers</Name>
+          <Value>UsersGroupsLinkTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PageSizeButton-Consumers</Name>
+          <Value>UsersGroupsLinkTableControl</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PreviousPage-Consumers</Name>
+          <Value>UsersGroupsLinkTableControl</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>UsersGroupsLinkTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Title0</Name>
+      <Type>Html</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>HtmlEncodeWhiteSpace</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>&lt;%#String.Concat("Catch Summary by Group") %&gt;</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>UsersGroupsLinkTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>UpdatePanel1</Name>
       <Type>UpdatePanel</Type>
       <PassthroughAttributes>
@@ -69,6 +171,465 @@
           <Value>True</Value>
         </Attribute>
       </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>UserId0</Name>
+      <Type>FieldValue</Type>
+      <Field>UserId</Field>
+      <FieldValueStyle>Literal</FieldValueStyle>
+      <Table>DatabaseTheRatTrap%dbo.UsersGroupsLink</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>FieldMaxLength</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>HTMLEncodeValue</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:ApplySaveToField</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>Parent</Value>
+        </Attribute>
+        <Attribute>
+          <Name>NullValueText</Name>
+          <Value>&amp;nbsp;</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupDisplay</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupThreshold</Name>
+          <Value>Default</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowHeight</Name>
+          <Value>200</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowPersist</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowScrollBar</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowTitle</Name>
+          <Value>%ISD_DEFAULT%</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PopupWindowWidth</Name>
+          <Value>300</Value>
+        </Attribute>
+        <Attribute>
+          <Name>TextFormat</Name>
+          <Value>{0}</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Visible</Name>
+          <Value>False</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>UsersGroupsLinkTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>UsersGroupsLinkTableControl</Name>
+      <Type>Table</Type>
+      <PanelStyle>ShowGallery</PanelStyle>
+      <Table>DatabaseTheRatTrap%dbo.UsersGroupsLink</Table>
+      <QueryDefinition>
+        <WhereClause>
+          <Position>1</Position>
+          <TableAlias>DatabaseTheRatTrap%dbo.UsersGroupsLink_</TableAlias>
+          <Field>[DatabaseTheRatTrap%dbo.UsersGroupsLink_].[UserId]</Field>
+          <Operator>=</Operator>
+          <Operand>
+            <Type>Formula</Type>
+            <Value>USERID()</Value>
+          </Operand>
+          <CompareDFKA>No</CompareDFKA>
+          <IgnoreBlankString>Yes</IgnoreBlankString>
+        </WhereClause>
+        <Operators>
+          <Operator xsi:nil="true" />
+        </Operators>
+        <TableAliases>
+          <Alias>
+            <AliasName>DatabaseTheRatTrap%dbo.UsersGroupsLink_</AliasName>
+            <TableName>DatabaseTheRatTrap%dbo.UsersGroupsLink</TableName>
+          </Alias>
+        </TableAliases>
+      </QueryDefinition>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>HasScrolling</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>HideDataUntilSearched</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InitialRowDisplayStyle</Name>
+          <Value>FirstRowExpanded</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>TableOrQuery</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSourceArg</Name>
+          <Value />
+        </Attribute>
+        <Attribute>
+          <Name>NumberOfColumns</Name>
+          <Value>3</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PageSize</Name>
+          <Value>10</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PaginationCurrentPage</Name>
+          <Value>Pagination-CurrentPage</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PaginationPageSize</Name>
+          <Value>Pagination-PageSize</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PaginationTotalItems</Name>
+          <Value>Pagination-TotalItems</Value>
+        </Attribute>
+        <Attribute>
+          <Name>PaginationTotalPages</Name>
+          <Value>Pagination-TotalPages</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <OrderBys />
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>View_Trap_SummaryCountChart1</Name>
+      <Type>Aspx</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>BackgroundColor</Name>
+          <Value>White</Value>
+        </Attribute>
+        <Attribute>
+          <Name>BarWidth</Name>
+          <Value>15</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ChartHeight</Name>
+          <Value>300</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ChartType</Name>
+          <Value>Column</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ChartWidth</Name>
+          <Value>300</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Color</Name>
+          <Value>Blue</Value>
+        </Attribute>
+        <Attribute>
+          <Name>CustomProperties</Name>
+          <Value />
+        </Attribute>
+        <Attribute>
+          <Name>DataSourceName</Name>
+          <Value>View_Trap_SummaryCountQuery2</Value>
+        </Attribute>
+        <Attribute>
+          <Name>FontColor</Name>
+          <Value>Black</Value>
+        </Attribute>
+        <Attribute>
+          <Name>FontType</Name>
+          <Value>Arial</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Formula:ChartTitle</Name>
+          <Value>"Trap Summary" + "  x  " + "Species"</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Formula:DataPointURL</Name>
+          <Value>"../view_Trap-Summary/Show-View-Trap-Summary-Table.aspx?Species=" + UrlEncode(Species.ToString())</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Formula:IndexLabel</Name>
+          <Value>Species</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Formula:IndexTitle</Name>
+          <Value>"Species"</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Formula:LegendURL</Name>
+          <Value>"../view_Trap-Summary/Show-View-Trap-Summary-Table.aspx?Species=" + UrlEncode(Species.ToString())</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Formula:RemainderLabel</Name>
+          <Value>Resource("Txt:RemainderLabel")</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Formula:ValueData</Name>
+          <Value>View_Trap_SummaryCount</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Formula:ValueTitle</Name>
+          <Value>"Trap Summary"</Value>
+        </Attribute>
+        <Attribute>
+          <Name>GeneratePercentage</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>GridColor</Name>
+          <Value>LightGray</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalLabelColor</Name>
+          <Value>White</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:TreatAs</Name>
+          <Value>FieldValue</Value>
+        </Attribute>
+        <Attribute>
+          <Name>LabelFormat</Name>
+          <Value>0</Value>
+        </Attribute>
+        <Attribute>
+          <Name>LargestFirst</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Palette</Name>
+          <Value>Bright</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ShowInsideBar</Name>
+          <Value>Label inside bar</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ShowTitle</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ShowXAxisTitle</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ShowYAxisTitle</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>ToolTip</Name>
+          <Value>Trap Summary  x  Species</Value>
+        </Attribute>
+        <Attribute>
+          <Name>UseDefaultColorScheme</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>UsePalette</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>XAxisLabelAngle</Name>
+          <Value>-50</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>UsersGroupsLinkTableControl</InsideControl>
+      <ControlClass>System.Web.UI.DataVisualization.Charting.Chart</ControlClass>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>View_Trap_SummaryCountQuery</Name>
+      <Type>DataSource</Type>
+      <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>DataReaderSortBy</Name>
+          <Value>View_Trap_SummaryCount Desc</Value>
+        </Attribute>
+        <Attribute>
+          <Name>GenerateReminder</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value />
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSourceArg</Name>
+          <Value />
+        </Attribute>
+      </PassthroughAttributes>
+      <Selects>
+        <Select>
+          <Position>0</Position>
+          <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+          <Field>Species</Field>
+          <SelectAs />
+          <SQLOperation>None</SQLOperation>
+          <SetDistinct>false</SetDistinct>
+        </Select>
+        <Select>
+          <Position>1</Position>
+          <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+          <SelectAs>View_Trap_SummaryCount</SelectAs>
+          <SQLOperation>COUNT</SQLOperation>
+          <SetDistinct>false</SetDistinct>
+        </Select>
+      </Selects>
+      <OrderBys>
+        <OrderBy>
+          <Position>0</Position>
+          <ColumnName>View_Trap_SummaryCount</ColumnName>
+          <Direction>Desc</Direction>
+        </OrderBy>
+      </OrderBys>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>View_Trap_SummaryCountQuery1</Name>
+      <Type>DataSource</Type>
+      <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>DataReaderSortBy</Name>
+          <Value>View_Trap_SummaryCount Desc</Value>
+        </Attribute>
+        <Attribute>
+          <Name>GenerateReminder</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value />
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSourceArg</Name>
+          <Value />
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>UsersGroupsLinkTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+      <Selects>
+        <Select>
+          <Position>0</Position>
+          <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+          <Field>Species</Field>
+          <SelectAs />
+          <SQLOperation>None</SQLOperation>
+          <SetDistinct>false</SetDistinct>
+        </Select>
+        <Select>
+          <Position>1</Position>
+          <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+          <SelectAs>View_Trap_SummaryCount</SelectAs>
+          <SQLOperation>COUNT</SQLOperation>
+          <SetDistinct>false</SetDistinct>
+        </Select>
+      </Selects>
+      <OrderBys>
+        <OrderBy>
+          <Position>0</Position>
+          <ColumnName>View_Trap_SummaryCount</ColumnName>
+          <Direction>Desc</Direction>
+        </OrderBy>
+      </OrderBys>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>View_Trap_SummaryCountQuery2</Name>
+      <Type>DataSource</Type>
+      <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>GenerateReminder</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Top</Name>
+          <Value>0</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>UsersGroupsLinkTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+      <Querys>
+        <Query>
+          <LeftQueryContent>
+            <Type>TableField</Type>
+            <Prefix>DatabaseTheRatTrap%dbo.UsersGroupsLink</Prefix>
+            <Suffix>UserGroupsId</Suffix>
+          </LeftQueryContent>
+          <RightQueryContent>
+            <Type>Control</Type>
+            <Prefix>UsersGroupsLinkTableControl</Prefix>
+            <Suffix>UserGroupsId</Suffix>
+          </RightQueryContent>
+          <ForeignKeyName />
+        </Query>
+      </Querys>
+      <Selects>
+        <Select>
+          <Position>0</Position>
+          <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+          <Field>Species</Field>
+          <SelectAs />
+          <SQLOperation>None</SQLOperation>
+          <SetDistinct>false</SetDistinct>
+        </Select>
+        <Select>
+          <Position>1</Position>
+          <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+          <Field />
+          <SelectAs>View_Trap_SummaryCount</SelectAs>
+          <SQLOperation>COUNT</SQLOperation>
+          <SetDistinct>false</SetDistinct>
+        </Select>
+      </Selects>
+      <Joins>
+        <JoinList>
+          <TableToJoin>DatabaseTheRatTrap%dbo.view_Trap-Summary</TableToJoin>
+          <TableToJoinAlias />
+        </JoinList>
+        <JoinList>
+          <Join>
+            <Position>0</Position>
+            <TableToJoin>DatabaseTheRatTrap%dbo.UsersGroupsLink</TableToJoin>
+            <LeftJoinContent>
+              <Table>DatabaseTheRatTrap%dbo.view_Trap-Summary</Table>
+              <Field>GroupId</Field>
+            </LeftJoinContent>
+            <RightJoinContent>
+              <Table>DatabaseTheRatTrap%dbo.UsersGroupsLink</Table>
+              <Field>GroupId</Field>
+            </RightJoinContent>
+          </Join>
+          <TableToJoin>DatabaseTheRatTrap%dbo.UsersGroupsLink</TableToJoin>
+          <TableToJoinAlias />
+        </JoinList>
+      </Joins>
+      <OrderBys>
+        <OrderBy>
+          <Position>0</Position>
+          <ColumnName>View_Trap_SummaryCount</ColumnName>
+          <Direction>Desc</Direction>
+        </OrderBy>
+      </OrderBys>
     </ContainedComponent>
   </ComposedOf>
   <LayoutDefinition>&lt;![CDATA[&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -121,6 +682,27 @@
       &lt;/Cell&gt;
       &lt;RowAttributes /&gt;
     &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;amp;nbsp;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:TABLE NAME="UsersGroupsLinkTableControl"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
     &lt;Epilog&gt;
       &lt;Value&gt;
       &amp;lt;/GEN:UPDATEPANEL&amp;gt;
@@ -149,6 +731,388 @@
       &lt;Attribute&gt;
         &lt;Name&gt;class&lt;/Name&gt;
         &lt;AttributeValue&gt;updatePanelContent&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="UsersGroupsLinkTableControl" Type="TablePanel" PanelControlName="UsersGroupsLinkTableControl"&gt;
+    &lt;Prolog /&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" class="panelTLSpace" alt="" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelTL&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelT&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" class="panelTRSpace" alt="" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelTR&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelHeaderL&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                  &amp;lt;GEN:PANEL NAME="Header"/&amp;gt;
+                &lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;dh&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelHeaderR&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelL&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                  &amp;lt;asp:panel id="CollapsibleRegion" runat="server"&amp;gt;&amp;lt;GEN:PANEL NAME="Panel"/&amp;gt;&amp;lt;/asp:panel&amp;gt;
+                &lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelR&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelL&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                    &amp;lt;GEN:PAGINATION NAME="Pagination"&amp;gt;&amp;lt;/GEN:PAGINATION&amp;gt;
+                    &amp;lt;!--To change the position of the pagination control, please search for "prspace" on the Online Help for instruction. --&amp;gt;
+                  &lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelPaginationC&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelR&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" class="panelBLSpace" alt="" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelBL&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelB&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" class="panelBRSpace" alt="" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;panelBR&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;class&lt;/Name&gt;
+        &lt;AttributeValue&gt;dv&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="Header" Type="PanelHeader" PanelControlName="UsersGroupsLinkTableControl"&gt;
+    &lt;Prolog /&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;dhel&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:PANEL NAME="TitleRegion"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;dhb&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;dhb&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;dher&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;img src="../Images/space.gif" alt=""/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;dher&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;width&lt;/Name&gt;
+        &lt;AttributeValue&gt;100%&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="TitleRegion" PanelControlName="UsersGroupsLinkTableControl"&gt;
+    &lt;Prolog /&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                        &amp;lt;GEN:HTML NAME="Title0"/&amp;gt;
+                      &lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;dht&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;valign&lt;/Name&gt;
+            &lt;AttributeValue&gt;middle&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="Panel" PanelControlName="UsersGroupsLinkTableControl"&gt;
+    &lt;Prolog /&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;
+                    &amp;lt;GEN:PANEL NAME="Fields"/&amp;gt;
+                  &lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;tre&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;class&lt;/Name&gt;
+        &lt;AttributeValue&gt;dBody&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;width&lt;/Name&gt;
+        &lt;AttributeValue&gt;100%&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="Fields" Type="TableGridGallery" PanelControlName="UsersGroupsLinkTableControl"&gt;
+    &lt;Prolog /&gt;
+    &lt;Row Type="Header"&gt;
+      &lt;Cell&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;thc&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;style&lt;/Name&gt;
+            &lt;AttributeValue&gt;display:none&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;colspan&lt;/Name&gt;
+            &lt;AttributeValue&gt;3&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes&gt;
+        &lt;Attribute&gt;
+          &lt;Name&gt;class&lt;/Name&gt;
+          &lt;AttributeValue&gt;tch&lt;/AttributeValue&gt;
+        &lt;/Attribute&gt;
+      &lt;/RowAttributes&gt;
+    &lt;/Row&gt;
+    &lt;Row Type="Repeater"&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:FIELDVALUE NAME="UserId0" /&amp;gt; &amp;lt;br /&amp;gt;
+&amp;lt;GEN:FIELDVALUE NAME="GroupId" /&amp;gt; &amp;lt;br /&amp;gt;
+&amp;lt;asp:chart id="View_Trap_SummaryCountChart1"  AlternateText ="Trap Summary  x  Species" width="300" height="300" runat="server" enableviewstate="true"/&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;mediumText&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;style&lt;/Name&gt;
+            &lt;AttributeValue&gt;width:33%;text-align:center;&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;width&lt;/Name&gt;
+        &lt;AttributeValue&gt;100%&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;onkeydown&lt;/Name&gt;
+        &lt;AttributeValue&gt;captureUpDownKey(this, event)&lt;/AttributeValue&gt;
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;

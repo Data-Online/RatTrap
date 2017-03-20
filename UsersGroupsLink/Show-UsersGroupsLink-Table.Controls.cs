@@ -2370,6 +2370,22 @@ public class BaseLocationsTableControl : RatTrap.UI.BaseApplicationTableControl
               
                 this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Address {Txt:Descending}"), "Address Desc"));
               
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Ascending}"), "UpdatedOn Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Descending}"), "UpdatedOn Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Ascending}"), "CreatedBy Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Descending}"), "CreatedBy Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Ascending}"), "CreatedOn Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Descending}"), "CreatedOn Desc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Ascending}"), "UpdatedBy Asc"));
+              
+                this.SortControl2.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Descending}"), "UpdatedBy Desc"));
+              
             try
             {          
                 // Set the selected value.
@@ -6605,6 +6621,7 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 SetProjectId1();
                 SetTrapIdentifierId();
                 SetTrapRecordsCountControl();
+                SetTrapRecordsCountControl1();
                 SetTrapTypeId();
                 SetDeleteRowButton1();
               
@@ -6859,6 +6876,14 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                     
         }
                 
+        public virtual void SetTrapRecordsCountControl1()
+                  {
+                  
+                        this.TrapRecordsCountControl1.Text = EvaluateFormula("LOOKUP(TrapRecordsCountQuery1, TrapId)");
+                    
+                    
+        }
+                
         public BaseClasses.Data.DataSource.EvaluateFormulaDelegate EvaluateFormulaDelegate;
 
         public virtual string EvaluateFormula(string formula, BaseClasses.Data.BaseRecord dataSourceForEvaluate, string format, System.Collections.Generic.IDictionary<string, object> variables, bool includeDS, FormulaEvaluator e)
@@ -6886,6 +6911,8 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
                 panel = (TrapsTableControl)(this.GetParentTableControl());
                   
                 e.Variables.Add("TrapRecordsCountQuery", panel.TrapRecordsCountQuery);                                                       
+                        
+                e.Variables.Add("TrapRecordsCountQuery1", panel.TrapRecordsCountQuery1);                                                       
                         
             }
             
@@ -7529,6 +7556,12 @@ public class BaseTrapsTableControlRow : RatTrap.UI.BaseApplicationRecordControl
             }
         }
         
+        public System.Web.UI.WebControls.Literal TrapRecordsCountControl1 {
+            get {
+                return (System.Web.UI.WebControls.Literal)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapRecordsCountControl1");
+            }
+        }
+        
         public System.Web.UI.WebControls.LinkButton TrapTypeId {
             get {
                 return (System.Web.UI.WebControls.LinkButton)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "TrapTypeId");
@@ -8044,6 +8077,8 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
           
                   LoadData_TrapRecordsCountQuery();
        
+                  LoadData_TrapRecordsCountQuery1();
+       
             // Improve performance by prefetching display as records.
             this.PreFetchForeignKeyValues();     
 
@@ -8089,6 +8124,7 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 
                 
                 SetLabel1();
+                SetLabel4();
                 SetLocationIdLabel();
                 
                 
@@ -8101,6 +8137,7 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 SetSortControl1();
                 
                 SetTrapIdentifierIdLabel();
+                
                 
                 SetTrapTypeIdFilter1();
                 SetTrapTypeIdLabel1();
@@ -8210,6 +8247,8 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 // add datasource as variables for formula evaluation
                     
                 if (TrapRecordsCountQuery != null) e.Variables.Add("TrapRecordsCountQuery", TrapRecordsCountQuery);                                                       
+                    
+                if (TrapRecordsCountQuery1 != null) e.Variables.Add("TrapRecordsCountQuery1", TrapRecordsCountQuery1);                                                       
                     
             }
 
@@ -8844,6 +8883,16 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                     
         }
                 
+        public virtual void SetLabel4()
+                  {
+                  
+                      //Code for the text property is generated inside the .aspx file. 
+                      //To override this property you can uncomment the following property and add you own value.
+                      //this.Label4.Text = "Some value";
+                    
+                    
+        }
+                
         public virtual void SetLocationIdLabel()
                   {
                   
@@ -8907,6 +8956,41 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
             return wc;
         }
       
+        public virtual WhereClause CreateWhereClause_TrapRecordsCountQuery1()
+        
+        {
+            WhereClause wc = new WhereClause();
+            // Compose the WHERE clause consist of:
+            // 1. Static clause defined at design tithis.
+            // 2. User selected search criteria.
+            // 3. User selected filter criteria.
+
+          
+            // Get the static clause defined at design time on the Query Wizard
+            WhereClause qc = this.CreateQueryClause_TrapRecordsCountQuery1();
+            if (qc != null) {
+                wc.iAND(qc);
+            }
+                      
+            return wc;
+        }
+      
+        public virtual WhereClause CreateQueryClause_TrapRecordsCountQuery1()
+        
+        {
+          
+            // Create a where clause for the Static clause defined at design time.
+            CompoundFilter filter = new CompoundFilter(CompoundFilter.CompoundingOperators.And_Operator, null);
+            WhereClause whereClause = new WhereClause();
+            
+            if (EvaluateFormula("UserId()", false) != "")filter.AddFilter(new BaseClasses.Data.ColumnValueFilter(BaseClasses.Data.BaseTable.CreateInstance(@"RatTrap.Business.TrapRecordsTable, RatTrap.Business").TableDefinition.ColumnList.GetByUniqueName(@"TrapRecords_.CreatedBy"), EvaluateFormula("UserId()", false), BaseClasses.Data.BaseFilter.ComparisonOperator.EqualsTo, false));
+         if (EvaluateFormula("UserId()", false) == "--PLEASE_SELECT--" || EvaluateFormula("UserId()", false) == "--ANY--") whereClause.RunQuery = false;
+
+            whereClause.AddFilter(filter, CompoundFilter.CompoundingOperators.And_Operator);
+    
+            return whereClause;
+        }
+          
         public virtual void LoadData_TrapRecordsCountQuery()
         
         {
@@ -8936,12 +9020,50 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                         
         }
       
+        public virtual void LoadData_TrapRecordsCountQuery1()
+        
+        {
+          
+              if (!(this.ResetData || this.DataChanged || _TrapRecordsCountQuery1.DataChanged) && this.Page.IsPostBack  && this.Page.Request["__EVENTTARGET"] != "isd_geo_location") return;
+        
+              _TrapRecordsCountQuery1.DataChanged = true;
+          
+              this._TrapRecordsCountQuery1.Initialize("TrapRecordsCountQuery1", TrapsTable.Instance, 0, 0);
+            
+               
+              // Add the primary key of the record
+              WhereClause wc = CreateWhereClause_TrapRecordsCountQuery1();
+              this._TrapRecordsCountQuery1.WhereClause.iAND(wc);                      
+          
+              // Define selects
+          
+              this._TrapRecordsCountQuery1.AddSelectItem(new SelectItem(TrapsTable.TrapId, TrapsTable.Instance, false, "", ""));
+              
+                    this._TrapRecordsCountQuery1.AddSelectItem(new SelectItem(SelectItem.Operation.COUNT, new SelectItem(SelectItem.ItemType.AllColumns, TrapRecordsTable.Instance, "TrapRecordsCount", ""), "TrapRecordsCount"));
+              
+              // Define joins if there are any
+          
+              this._TrapRecordsCountQuery1.AddJoin(TrapsTable.TrapId, TrapsTable.Instance, "", TrapRecordsTable.TrapId, TrapRecordsTable.Instance, "");
+          
+              this._TrapRecordsCountQuery1.LoadData(false, this._TrapRecordsCountQuery1.PageSize, this._TrapRecordsCountQuery1.PageIndex);                       
+                        
+        }
+      
         private DataSource _TrapRecordsCountQuery = new DataSource();
         public DataSource TrapRecordsCountQuery
         {
             get
             {
                 return _TrapRecordsCountQuery;
+             }
+        }
+      
+        private DataSource _TrapRecordsCountQuery1 = new DataSource();
+        public DataSource TrapRecordsCountQuery1
+        {
+            get
+            {
+                return _TrapRecordsCountQuery1;
              }
         }
       
@@ -9051,6 +9173,22 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Ascending}"), "Deleted Asc"));
               
                 this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Deleted {Txt:Descending}"), "Deleted Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Ascending}"), "UpdatedOn Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Descending}"), "UpdatedOn Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Ascending}"), "CreatedBy Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Descending}"), "CreatedBy Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Ascending}"), "CreatedOn Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Descending}"), "CreatedOn Desc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Ascending}"), "UpdatedBy Asc"));
+              
+                this.SortControl1.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Descending}"), "UpdatedBy Desc"));
               
             try
             {          
@@ -10888,6 +11026,12 @@ public class BaseTrapsTableControl : RatTrap.UI.BaseApplicationTableControl
         public System.Web.UI.WebControls.Label Label1 {
             get {
                 return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Label1");
+            }
+        }
+        
+        public System.Web.UI.WebControls.Label Label4 {
+            get {
+                return (System.Web.UI.WebControls.Label)BaseClasses.Utils.MiscUtils.FindControlRecursively(this, "Label4");
             }
         }
         
@@ -13018,6 +13162,22 @@ public class BaseUsersGroupsLinkTableControl : RatTrap.UI.BaseApplicationTableCo
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Ascending}"), "GroupId Asc"));
               
                 this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Group {Txt:Descending}"), "GroupId Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Ascending}"), "UpdatedOn Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated On {Txt:Descending}"), "UpdatedOn Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Ascending}"), "CreatedBy Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created By {Txt:Descending}"), "CreatedBy Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Ascending}"), "CreatedOn Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Created On {Txt:Descending}"), "CreatedOn Desc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Ascending}"), "UpdatedBy Asc"));
+              
+                this.SortControl.Items.Add(new ListItem(this.Page.ExpandResourceValue("Updated By {Txt:Descending}"), "UpdatedBy Desc"));
               
             try
             {          
@@ -16784,6 +16944,7 @@ public class BaseGroupsRecordControl : RatTrap.UI.BaseApplicationRecordControl
             if (shouldResetControl || this.Page.IsPageRefresh)
               TrapsTableControl.ResetControl();
           TrapsTableControl.TrapRecordsCountQuery.DataChanged = true;    
+        TrapsTableControl.TrapRecordsCountQuery1.DataChanged = true;    
                   
         SetTrapsTableControl();
 

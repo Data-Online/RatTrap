@@ -296,6 +296,18 @@
     <Compile Include="BaseLocationsRecord.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View_Trap_SummaryView.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseView_Trap_SummaryView.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View_Trap_SummaryRecord.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseView_Trap_SummaryRecord.cs" >
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data Access Layer\RatTrap.Data.csproj">

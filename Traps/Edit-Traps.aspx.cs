@@ -336,7 +336,7 @@ public partial class Edit_Traps
         
         public System.Web.UI.WebControls.CheckBox ToggleAll2;
         
-        public BaseClasses.Web.UI.WebControls.QuickSelector TrapIdentifierId;
+        public System.Web.UI.WebControls.Literal TrapIdentifierId;
             
         public System.Web.UI.WebControls.Literal TrapIdentifierIdLabel;
         
@@ -348,11 +348,9 @@ public partial class Edit_Traps
           
         public AjaxControlToolkit.TabContainer TrapsTabContainer;
         
-        public System.Web.UI.WebControls.DropDownList TrapTypeId;
+        public System.Web.UI.WebControls.Literal TrapTypeId;
             
         public System.Web.UI.WebControls.Literal TrapTypeIdLabel;
-        
-        public System.Web.UI.WebControls.LinkButton UserIdLabel;
         
         public ValidationSummary ValidationSummary1;
 

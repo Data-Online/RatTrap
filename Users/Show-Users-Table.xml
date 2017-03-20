@@ -121,6 +121,43 @@
       <InsideControl>UsersTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>CancelButton</Name>
+      <Type>Button</Type>
+      <Layout>..\Shared\ThemeButton.ascx</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Button-CausesValidation</Name>
+          <Value>False</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-CommandName</Name>
+          <Value>Redirect</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Consumers</Name>
+          <Value>page</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-RedirectURL</Name>
+          <Value>Back</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Text</Name>
+          <Value>Btn:Cancel</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Button-ToolTip</Name>
+          <Value>Btn:Cancel</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>PostBack</Name>
+          <Value>False</Value>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>DeleteRowButton</Name>
       <Type>ImageButton</Type>
       <PassthroughAttributes>
@@ -1950,6 +1987,43 @@
       <InsideControl>GroupsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>SaveButton2</Name>
+      <Type>Button</Type>
+      <Layout>..\Shared\ThemeButton.ascx</Layout>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>Button-CausesValidation</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-CommandName</Name>
+          <Value>UpdateData</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Consumers</Name>
+          <Value>page</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-RedirectURL</Name>
+          <Value>Back</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Button-Text</Name>
+          <Value>Btn:Save</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>Button-ToolTip</Name>
+          <Value>Btn:Save</Value>
+          <Type>ResourceReference</Type>
+        </Attribute>
+        <Attribute>
+          <Name>PostBack</Name>
+          <Value>True</Value>
+        </Attribute>
+      </PassthroughAttributes>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>SearchButton</Name>
       <Type>ImageButton</Type>
       <PassthroughAttributes>
@@ -2555,6 +2629,38 @@
           <Name>Description Desc</Name>
           <Value>Description {Txt:Descending}</Value>
         </Item>
+        <Item>
+          <Name>UpdatedOn Asc</Name>
+          <Value>Updated On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedOn Desc</Name>
+          <Value>Updated On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Asc</Name>
+          <Value>Created By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Desc</Name>
+          <Value>Created By {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Asc</Name>
+          <Value>Created On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Desc</Name>
+          <Value>Created On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Asc</Name>
+          <Value>Updated By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Desc</Name>
+          <Value>Updated By {Txt:Descending}</Value>
+        </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
         <Attribute>
@@ -2608,6 +2714,38 @@
         <Item>
           <Name>GroupName Desc</Name>
           <Value>Group Name {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedOn Asc</Name>
+          <Value>Updated On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedOn Desc</Name>
+          <Value>Updated On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Asc</Name>
+          <Value>Created By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Desc</Name>
+          <Value>Created By {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Asc</Name>
+          <Value>Created On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Desc</Name>
+          <Value>Created On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Asc</Name>
+          <Value>Updated By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Desc</Name>
+          <Value>Updated By {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
@@ -2883,6 +3021,18 @@
                         &amp;lt;GEN:TABLE NAME="UsersTableControl"&amp;gt;&amp;lt;/GEN:TABLE&amp;gt;
             &lt;/Value&gt;
         &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:PANEL NAME="PageButtons" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;class&lt;/Name&gt;
+            &lt;AttributeValue&gt;recordPanelButtonsAlignment&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+        &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;RowAttributes /&gt;
     &lt;/Row&gt;
@@ -5677,7 +5827,11 @@
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
+          &lt;/Attribute&gt;
+          &lt;Attribute&gt;
+            &lt;Name&gt;style&lt;/Name&gt;
+            &lt;AttributeValue&gt;text-align:left;&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -5686,7 +5840,7 @@
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
-            &lt;AttributeValue&gt;tableCellLabel&lt;/AttributeValue&gt;
+            &lt;AttributeValue&gt;tableCellValue&lt;/AttributeValue&gt;
           &lt;/Attribute&gt;
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
@@ -5752,6 +5906,64 @@
       &lt;Attribute&gt;
         &lt;Name&gt;onkeydown&lt;/Name&gt;
         &lt;AttributeValue&gt;captureUpDownKey(this, event)&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="PageButtons" Type="PageButton"&gt;
+    &lt;Prolog /&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:PANEL NAME="PageButtonsPanel" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;class&lt;/Name&gt;
+        &lt;AttributeValue&gt;pageButtonsContainer&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+    &lt;/TableAttributes&gt;
+  &lt;/Layout&gt;
+  &lt;Layout Name="PageButtonsPanel" Type="BlankPanel"&gt;
+    &lt;Prolog /&gt;
+    &lt;Row&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:BUTTON NAME="SaveButton2" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;Cell&gt;
+        &lt;Value&gt;&amp;lt;GEN:BUTTON NAME="CancelButton" /&amp;gt;&lt;/Value&gt;
+        &lt;CellAttributes /&gt;
+      &lt;/Cell&gt;
+      &lt;RowAttributes /&gt;
+    &lt;/Row&gt;
+    &lt;Epilog /&gt;
+    &lt;TableAttributes&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellpadding&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;cellspacing&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
+      &lt;/Attribute&gt;
+      &lt;Attribute&gt;
+        &lt;Name&gt;border&lt;/Name&gt;
+        &lt;AttributeValue&gt;0&lt;/AttributeValue&gt;
       &lt;/Attribute&gt;
     &lt;/TableAttributes&gt;
   &lt;/Layout&gt;

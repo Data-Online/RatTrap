@@ -235,6 +235,66 @@ public partial class Show_Users_Table
         
 
 
+//public void SetSaveButton2()
+//        {
+//            SetSaveButton2_Base(); 
+//        }              
+//public void SetCancelButton()
+//        {
+//            SetCancelButton_Base(); 
+//        }              
+//public void SaveButton2_Click(object sender, EventArgs args)
+//        {
+//
+//          // Click handler for SaveButton2.
+//          // Customize by adding code before the call or replace the call to the Base function with your own code.
+//          SaveButton2_Click_Base(sender, args);
+//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+//        }
+//public void CancelButton_Click(object sender, EventArgs args)
+//        {
+//
+//          // Click handler for CancelButton.
+//          // Customize by adding code before the call or replace the call to the Base function with your own code.
+//          CancelButton_Click_Base(sender, args);
+//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+//        }
+//public void SetOKButton()
+//        {
+//            SetOKButton_Base(); 
+//        }              
+//public void OKButton_Click(object sender, EventArgs args)
+//        {
+//
+//          // Click handler for OKButton.
+//          // Customize by adding code before the call or replace the call to the Base function with your own code.
+//          OKButton_Click_Base(sender, args);
+//          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+//        }
+public void SetSaveButton2()
+        {
+            SetSaveButton2_Base(); 
+        }              
+public void SetCancelButton()
+        {
+            SetCancelButton_Base(); 
+        }              
+public void SaveButton2_Click(object sender, EventArgs args)
+        {
+
+          // Click handler for SaveButton2.
+          // Customize by adding code before the call or replace the call to the Base function with your own code.
+          SaveButton2_Click_Base(sender, args);
+          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+        }
+public void CancelButton_Click(object sender, EventArgs args)
+        {
+
+          // Click handler for CancelButton.
+          // Customize by adding code before the call or replace the call to the Base function with your own code.
+          CancelButton_Click_Base(sender, args);
+          // NOTE: If the Base function redirects to another page, any code here will not be executed.
+        }
 #endregion
 
 #region "Section 2: Do not modify this section."
@@ -257,6 +317,8 @@ public partial class Show_Users_Table
         public ThemeButtonWithArrow Actions2Button;
                 
         public ThemeButtonWithArrow ActionsButton;
+                
+        public ThemeButton CancelButton;
                 
         public System.Web.UI.WebControls.LinkButton DescriptionLabel;
         
@@ -316,6 +378,8 @@ public partial class Show_Users_Table
         
         public System.Web.UI.WebControls.ImageButton SaveButton1;
         
+        public ThemeButton SaveButton2;
+                
         public System.Web.UI.WebControls.ImageButton SearchButton;
         
         public System.Web.UI.WebControls.ImageButton SearchButton1;
@@ -369,6 +433,10 @@ public partial class Show_Users_Table
 
           // Setup the pagination events.
         
+                    this.CancelButton.Button.Click += CancelButton_Click;
+                        
+                    this.SaveButton2.Button.Click += SaveButton2_Click;
+                        
           this.ClearControlsFromSession();    
     
           System.Web.HttpContext.Current.Session["isd_geo_location"] = "<location><error>LOCATION_ERROR_DISABLED</error></location>";
@@ -383,7 +451,9 @@ public partial class Show_Users_Table
 
         private void Base_RegisterPostback()
         {
-                
+        
+              this.RegisterPostBackTrigger(MiscUtils.FindControlRecursively(this,"SaveButton2"));
+                                
         }
 
         protected void BasePage_PreRender_Base(object sender, System.EventArgs e)
@@ -671,6 +741,10 @@ public partial class Show_Users_Table
             
                 // initialize aspx controls
                 
+                SetCancelButton();
+              
+                SetSaveButton2();
+              
     } catch (Exception ex) {
     // An error has occured so display an error message.
     BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "Page_Load_Error_Message", ex.Message);
@@ -761,12 +835,135 @@ public partial class Show_Users_Table
                 UsersTableControl.DataBind();
             }
         }
-          
+      
+        public void SetCancelButton_Base()                
+              
+        {
+        
+   
+        }
+            
+        public void SetSaveButton2_Base()                
+              
+        {
+        
+                    this.SaveButton2.Button.Attributes.Add("onclick", "SubmitHRefOnce(this, \"" + this.GetResourceValue("Txt:SaveRecord", "RatTrap") + "\");");
+                  
+   
+        }
+                
 
         // Write out the DataSource properties and methods
                 
 
         // Write out event methods for the page events
+        
+        // event handler for Button
+        public void CancelButton_Click_Base(object sender, EventArgs args)
+        {
+              
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                
+          
+                // if target is specified meaning that is opened on popup or new window
+                if (!string.IsNullOrEmpty(Page.Request["target"]))
+                {
+                    shouldRedirect = false;
+                    AjaxControlToolkit.ToolkitScriptManager.RegisterStartupScript(this, this.GetType(), "ClosePopup", "closePopupPage();", true);                   
+                }
+      
+            } catch (Exception ex) {
+                  shouldRedirect = false;
+                  this.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+    
+            }
+            if (shouldRedirect) {
+                this.ShouldSaveControlsToSession = true;
+      this.RedirectBack();
+        
+            }
+        
+        }
+            
+            
+        
+        // event handler for Button
+        public void SaveButton2_Click_Base(object sender, EventArgs args)
+        {
+              
+        bool shouldRedirect = true;
+        string target = null;
+        if (target == null) target = ""; // avoid warning on VS
+      
+            try {
+                // Enclose all database retrieval/update code within a Transaction boundary
+                DbUtils.StartTransaction();
+                
+        
+              if (!this.IsPageRefresh)
+              {
+                  this.SaveData();
+              }
+
+          this.CommitTransaction(sender);
+            string field = "";
+            string formula = "";
+            string displayFieldName = "";
+            string value = "";
+            if(value == null) value = ""; // added to remove warning from VS
+            string id = ""; 
+            if(id == null) id = ""; //added to avoid warning in VS
+            
+            // retrieve necessary URL parameters
+            if (!String.IsNullOrEmpty(Page.Request["Target"]) )
+                target = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Target");
+            if (!String.IsNullOrEmpty(Page.Request["IndexField"]))
+                field = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("IndexField");
+            if (!String.IsNullOrEmpty(Page.Request["Formula"]))
+                formula = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("Formula");
+            if (!String.IsNullOrEmpty(Page.Request["DFKA"]))
+                displayFieldName = (this.Page as BaseApplicationPage).GetDecryptedURLParameter("DFKA");
+            
+            if (!string.IsNullOrEmpty(target) && !string.IsNullOrEmpty(field))
+            {
+          
+           }
+           else if (!string.IsNullOrEmpty(target))
+           {
+                BaseClasses.Utils.MiscUtils.RegisterAddButtonScript(this, target, null, null);           
+                shouldRedirect = false;       
+           }
+         
+            } catch (Exception ex) {
+                  // Upon error, rollback the transaction
+                  this.RollBackTransaction(sender);
+                  shouldRedirect = false;
+                  this.ErrorOnPage = true;
+
+            // Report the error message to the end user
+            BaseClasses.Utils.MiscUtils.RegisterJScriptAlert(this, "BUTTON_CLICK_MESSAGE", ex.Message);
+    
+            } finally {
+                DbUtils.EndTransaction();
+            }
+            if (shouldRedirect) {
+                this.ShouldSaveControlsToSession = true;
+      this.RedirectBack();
+        
+            }
+        
+        }
+            
+            
         
       
 

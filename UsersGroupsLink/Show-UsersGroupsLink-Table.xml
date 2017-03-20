@@ -1613,7 +1613,7 @@
         </Attribute>
         <Attribute>
           <Name>Text</Name>
-          <Value>#Trap Records</Value>
+          <Value>#Trap Records Entered</Value>
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>TrapsTableControl</InsideControl>
@@ -1647,6 +1647,21 @@
         </Attribute>
       </PassthroughAttributes>
       <InsideControl>ProjectsGroupsLinkTableControl</InsideControl>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>Label4</Name>
+      <Type>Label</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>InternalUse:TreatAs</Name>
+          <Value>FieldValue</Value>
+        </Attribute>
+        <Attribute>
+          <Name>Text</Name>
+          <Value>group / own</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>TrapsTableControl</InsideControl>
     </ContainedComponent>
     <ContainedComponent>
       <Name>Latitude</Name>
@@ -3021,6 +3036,38 @@
           <Name>GroupId Desc</Name>
           <Value>Group {Txt:Descending}</Value>
         </Item>
+        <Item>
+          <Name>UpdatedOn Asc</Name>
+          <Value>Updated On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedOn Desc</Name>
+          <Value>Updated On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Asc</Name>
+          <Value>Created By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Desc</Name>
+          <Value>Created By {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Asc</Name>
+          <Value>Created On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Desc</Name>
+          <Value>Created On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Asc</Name>
+          <Value>Updated By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Desc</Name>
+          <Value>Updated By {Txt:Descending}</Value>
+        </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
         <Attribute>
@@ -3115,6 +3162,38 @@
           <Name>Deleted Desc</Name>
           <Value>Deleted {Txt:Descending}</Value>
         </Item>
+        <Item>
+          <Name>UpdatedOn Asc</Name>
+          <Value>Updated On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedOn Desc</Name>
+          <Value>Updated On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Asc</Name>
+          <Value>Created By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Desc</Name>
+          <Value>Created By {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Asc</Name>
+          <Value>Created On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Desc</Name>
+          <Value>Created On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Asc</Name>
+          <Value>Updated By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Desc</Name>
+          <Value>Updated By {Txt:Descending}</Value>
+        </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
         <Attribute>
@@ -3208,6 +3287,38 @@
         <Item>
           <Name>Address Desc</Name>
           <Value>Address {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedOn Asc</Name>
+          <Value>Updated On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedOn Desc</Name>
+          <Value>Updated On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Asc</Name>
+          <Value>Created By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Desc</Name>
+          <Value>Created By {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Asc</Name>
+          <Value>Created On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Desc</Name>
+          <Value>Created On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Asc</Name>
+          <Value>Updated By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Desc</Name>
+          <Value>Updated By {Txt:Descending}</Value>
         </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
@@ -3492,6 +3603,26 @@
       <InsideItemTemplate>true</InsideItemTemplate>
     </ContainedComponent>
     <ContainedComponent>
+      <Name>TrapRecordsCountControl1</Name>
+      <Type>Literal</Type>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>InternalUse:ApplyInitializeFormula</Name>
+          <Value>True</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:InitializeFormula</Name>
+          <Value>LOOKUP(TrapRecordsCountQuery1, TrapId)</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:TreatAs</Name>
+          <Value>FieldValue</Value>
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>TrapsTableControl</InsideControl>
+      <InsideItemTemplate>true</InsideItemTemplate>
+    </ContainedComponent>
+    <ContainedComponent>
       <Name>TrapRecordsCountQuery</Name>
       <Type>DataSource</Type>
       <Table>DatabaseTheRatTrap%dbo.Traps</Table>
@@ -3530,6 +3661,84 @@
           <TableToJoinAlias />
         </JoinList>
       </Joins>
+    </ContainedComponent>
+    <ContainedComponent>
+      <Name>TrapRecordsCountQuery1</Name>
+      <Type>DataSource</Type>
+      <Table>DatabaseTheRatTrap%dbo.Traps</Table>
+      <QueryDefinition>
+        <WhereClause>
+          <Position>1</Position>
+          <TableAlias>DatabaseTheRatTrap%dbo.TrapRecords_</TableAlias>
+          <Field>[DatabaseTheRatTrap%dbo.TrapRecords_].[CreatedBy]</Field>
+          <Operator>=</Operator>
+          <Operand>
+            <Type>Formula</Type>
+            <Value>UserId()</Value>
+          </Operand>
+          <IgnoreBlankString>Yes</IgnoreBlankString>
+        </WhereClause>
+        <Operators>
+          <Operator xsi:nil="true" />
+        </Operators>
+        <TableAliases>
+          <Alias>
+            <AliasName>DatabaseTheRatTrap%dbo.TrapRecords_</AliasName>
+            <TableName>DatabaseTheRatTrap%dbo.TrapRecords</TableName>
+          </Alias>
+          <Alias>
+            <AliasName>DatabaseTheRatTrap%dbo.Traps_</AliasName>
+            <TableName>DatabaseTheRatTrap%dbo.Traps</TableName>
+          </Alias>
+        </TableAliases>
+      </QueryDefinition>
+      <PassthroughAttributes>
+        <Attribute>
+          <Name>InternalUse:DataSource</Name>
+          <Value>TableOrQuery</Value>
+        </Attribute>
+        <Attribute>
+          <Name>InternalUse:DataSourceArg</Name>
+          <Value />
+        </Attribute>
+      </PassthroughAttributes>
+      <InsideControl>TrapsTableControl</InsideControl>
+      <Selects>
+        <Select>
+          <Position>0</Position>
+          <Table>DatabaseTheRatTrap%dbo.Traps</Table>
+          <Field>TrapId</Field>
+          <SelectAs />
+          <SQLOperation>None</SQLOperation>
+          <SetDistinct>false</SetDistinct>
+        </Select>
+        <Select>
+          <Position>1</Position>
+          <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
+          <SelectAs>TrapRecordsCount</SelectAs>
+          <SQLOperation>COUNT</SQLOperation>
+          <SetDistinct>false</SetDistinct>
+        </Select>
+      </Selects>
+      <Joins>
+        <JoinList>
+          <Join>
+            <Position>0</Position>
+            <TableToJoin>DatabaseTheRatTrap%dbo.TrapRecords</TableToJoin>
+            <LeftJoinContent>
+              <Table>DatabaseTheRatTrap%dbo.Traps</Table>
+              <Field>TrapId</Field>
+            </LeftJoinContent>
+            <RightJoinContent>
+              <Table>DatabaseTheRatTrap%dbo.TrapRecords</Table>
+              <Field>TrapId</Field>
+            </RightJoinContent>
+          </Join>
+          <TableToJoin>DatabaseTheRatTrap%dbo.TrapRecords</TableToJoin>
+          <TableToJoinAlias />
+        </JoinList>
+      </Joins>
+      <OrderBys />
     </ContainedComponent>
     <ContainedComponent>
       <Name>TrapsCountControl</Name>
@@ -6279,7 +6488,8 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:LABEL Name="Label1" /&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:LABEL NAME="Label1" /&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;GEN:LABEL NAME="Label4" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;
@@ -6366,7 +6576,8 @@
         &lt;/CellAttributes&gt;
       &lt;/Cell&gt;
       &lt;Cell&gt;
-        &lt;Value&gt;&amp;lt;GEN:LITERAL NAME="TrapRecordsCountControl"/&amp;gt;&lt;/Value&gt;
+        &lt;Value&gt;&amp;lt;GEN:LITERAL NAME="TrapRecordsCountControl" /&amp;gt; / 
+&amp;lt;GEN:LITERAL NAME="TrapRecordsCountControl1" /&amp;gt;&lt;/Value&gt;
         &lt;CellAttributes&gt;
           &lt;Attribute&gt;
             &lt;Name&gt;class&lt;/Name&gt;

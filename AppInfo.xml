@@ -24788,7 +24788,7 @@
             <description>Indicates display orientation of X-axis labels. 0 angle means horizontal label, -90 angle means vertical, -50 angle means diagonal</description>
           </option>
           <option name="ShowInsideChart" readonly="False" feature="Charting" displayorder="2">
-            <value>Value at bar end</value>
+            <value>Label inside bar</value>
             <datatype>System.String</datatype>
             <defaultvalue>Value at bar end</defaultvalue>
             <displayname>Show Inside Chart</displayname>
@@ -24831,14 +24831,14 @@
           <displayname>Outside Table Rows</displayname>
           <description>Specifies settings for charts present outside table rows.</description>
           <option name="OutsideRepeaterHeight" readonly="False" feature="Charting" displayorder="1">
-            <value>500</value>
+            <value>300</value>
             <datatype>System.UInt32</datatype>
             <defaultvalue>500</defaultvalue>
             <displayname>Height</displayname>
             <description>Specifies the height of the chart image in pixels outside table rows.</description>
           </option>
           <option name="OutsideRepeaterWidth" readonly="False" feature="Charting" displayorder="2">
-            <value>500</value>
+            <value>300</value>
             <datatype>System.UInt32</datatype>
             <defaultvalue>500</defaultvalue>
             <displayname>Width </displayname>

@@ -918,6 +918,38 @@
           <Name>Description Desc</Name>
           <Value>Description {Txt:Descending}</Value>
         </Item>
+        <Item>
+          <Name>UpdatedOn Asc</Name>
+          <Value>Updated On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedOn Desc</Name>
+          <Value>Updated On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Asc</Name>
+          <Value>Created By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedBy Desc</Name>
+          <Value>Created By {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Asc</Name>
+          <Value>Created On {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>CreatedOn Desc</Name>
+          <Value>Created On {Txt:Descending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Asc</Name>
+          <Value>Updated By {Txt:Ascending}</Value>
+        </Item>
+        <Item>
+          <Name>UpdatedBy Desc</Name>
+          <Value>Updated By {Txt:Descending}</Value>
+        </Item>
       </SpecifiedItems>
       <PassthroughAttributes>
         <Attribute>

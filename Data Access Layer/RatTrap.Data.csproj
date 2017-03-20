@@ -251,6 +251,15 @@
     <Compile Include="BaseLocationsSqlTable.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View_Trap_SummaryDefinition.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View_Trap_SummarySqlView.cs" >
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseView_Trap_SummarySqlView.cs" >
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

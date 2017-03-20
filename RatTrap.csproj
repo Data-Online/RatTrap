@@ -744,6 +744,23 @@
     <Compile Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.Controls.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="view_Trap-Summary\Show-View-Trap-Summary-Table.aspx.cs">
+      <DependentUpon>Show-View-Trap-Summary-Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view_Trap-Summary\Show-View-Trap-Summary-Table.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="view_Trap-Summary\View-Trap-Summary-QuickSelector.aspx.cs">
+      <DependentUpon>View-Trap-Summary-QuickSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view_Trap-Summary\View-Trap-Summary-QuickSelector.Controls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboard\LandingPage.Controls.cs" >
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BaseClasses\Readme.txt" />
@@ -1090,6 +1107,8 @@
     <Content Include="Traps\Show-Traps-Table-Upload.aspx" />
     <Content Include="UsersGroupsLink\Show-UsersGroupsLink-Table-Admin.aspx" />
     <Content Include="Master Pages\HorizontalNoMenu.master" />
+    <Content Include="view_Trap-Summary\Show-View-Trap-Summary-Table.aspx" />
+    <Content Include="view_Trap-Summary\View-Trap-Summary-QuickSelector.aspx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Global.asax.resx">

@@ -69,6 +69,10 @@ public class BaseTrapsTable : PrimaryKeyTable
         TrapIdentifierIdColumn.CodeName = "TrapIdentifierId";
         DeletedColumn.CodeName = "Deleted";
         DeletedColumn.DefaultValue = EvaluateFormula("\"0\"");
+        UpdatedByColumn.CodeName = "UpdatedBy";
+        UpdatedOnColumn.CodeName = "UpdatedOn";
+        CreatedByColumn.CodeName = "CreatedBy";
+        CreatedOnColumn.CodeName = "CreatedOn";
 
         
     }
@@ -288,6 +292,106 @@ public class BaseTrapsTable : PrimaryKeyTable
         get
         {
             return TrapsTable.Instance.DeletedColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.UpdatedBy column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn UpdatedByColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[8];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.UpdatedBy column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn UpdatedBy
+    {
+        get
+        {
+            return TrapsTable.Instance.UpdatedByColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.UpdatedOn column object.
+    /// </summary>
+    public BaseClasses.Data.DateColumn UpdatedOnColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.DateColumn)this.TableDefinition.ColumnList[9];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.UpdatedOn column object.
+    /// </summary>
+    public static BaseClasses.Data.DateColumn UpdatedOn
+    {
+        get
+        {
+            return TrapsTable.Instance.UpdatedOnColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.CreatedBy column object.
+    /// </summary>
+    public BaseClasses.Data.NumberColumn CreatedByColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.NumberColumn)this.TableDefinition.ColumnList[10];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.CreatedBy column object.
+    /// </summary>
+    public static BaseClasses.Data.NumberColumn CreatedBy
+    {
+        get
+        {
+            return TrapsTable.Instance.CreatedByColumn;
+        }
+    }
+    
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.CreatedOn column object.
+    /// </summary>
+    public BaseClasses.Data.DateColumn CreatedOnColumn
+    {
+        get
+        {
+            return (BaseClasses.Data.DateColumn)this.TableDefinition.ColumnList[11];
+        }
+    }
+    
+
+    
+    /// <summary>
+    /// This is a convenience property that provides direct access to the table's Traps_.CreatedOn column object.
+    /// </summary>
+    public static BaseClasses.Data.DateColumn CreatedOn
+    {
+        get
+        {
+            return TrapsTable.Instance.CreatedOnColumn;
         }
     }
     
@@ -823,7 +927,11 @@ public class BaseTrapsTable : PrimaryKeyTable
         string LocationIdValue, 
         string ProjectIdValue, 
         string TrapIdentifierIdValue, 
-        string DeletedValue
+        string DeletedValue, 
+        string UpdatedByValue, 
+        string UpdatedOnValue, 
+        string CreatedByValue, 
+        string CreatedOnValue
     )
         {
             IPrimaryKeyRecord rec = (IPrimaryKeyRecord)this.CreateRecord();
@@ -834,6 +942,10 @@ public class BaseTrapsTable : PrimaryKeyTable
         rec.SetString(ProjectIdValue, ProjectIdColumn);
         rec.SetString(TrapIdentifierIdValue, TrapIdentifierIdColumn);
         rec.SetString(DeletedValue, DeletedColumn);
+        rec.SetString(UpdatedByValue, UpdatedByColumn);
+        rec.SetString(UpdatedOnValue, UpdatedOnColumn);
+        rec.SetString(CreatedByValue, CreatedByColumn);
+        rec.SetString(CreatedOnValue, CreatedOnColumn);
 
 
             rec.Create(); //update the DB so any DB-initialized fields (like autoincrement IDs) can be initialized

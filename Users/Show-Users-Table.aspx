@@ -205,7 +205,7 @@
 <asp:LinkButton runat="server" id="DescriptionLabel" tooltip="Sort by Description" Text="Description" CausesValidation="False">	</asp:LinkButton></th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th><th class="thc">&nbsp;</th></tr><asp:Repeater runat="server" id="Roles1TableControlRepeater">		<ITEMTEMPLATE>		<RatTrap:Roles1TableControlRow runat="server" id="Roles1TableControlRow">
 <tr><td class="tableCellSelectCheckbox">
                       <asp:CheckBox runat="server" id="SelectRow1" onclick="moveToThisTableRow(this);">	</asp:CheckBox>
-                    </td><td class="tableCellLabel"></td><td class="tableCellValue"><asp:Literal runat="server" id="RoleName"></asp:Literal></td><td class="tableCellLabel"><asp:Literal runat="server" id="Description"></asp:Literal></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:Roles1TableControlRow>
+                    </td><td class="tableCellLabel"></td><td class="tableCellLabel" style="text-align:left;"><asp:Literal runat="server" id="RoleName"></asp:Literal></td><td class="tableCellValue"><asp:Literal runat="server" id="Description"></asp:Literal></td><td class="tableCellValue"></td><td class="tableCellLabel"></td><td class="tableCellValue"></td></tr><tr><td class="tableRowDivider" colspan="7"></td></tr></RatTrap:Roles1TableControlRow>
 </ITEMTEMPLATE>
 
 </asp:Repeater>
@@ -238,7 +238,9 @@
 	<asp:hiddenfield id="UsersTableControl_PostbackTracker" runat="server" />
 </RatTrap:UsersTableControl>
 
-            </td></tr></table>
+            </td></tr><tr><td class="recordPanelButtonsAlignment"><table cellpadding="0" cellspacing="0" border="0" class="pageButtonsContainer"><tr><td><table cellpadding="0" cellspacing="0" border="0"><tr><td><RatTrap:ThemeButton runat="server" id="SaveButton2" button-causesvalidation="True" button-commandname="UpdateData" button-text="&lt;%# GetResourceValue(&quot;Btn:Save&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:Save&quot;, &quot;RatTrap&quot;) %>" postback="True"></RatTrap:ThemeButton></td><td><RatTrap:ThemeButton runat="server" id="CancelButton" button-causesvalidation="False" button-commandname="Redirect" button-text="&lt;%# GetResourceValue(&quot;Btn:Cancel&quot;, &quot;RatTrap&quot;) %>" button-tooltip="&lt;%# GetResourceValue(&quot;Btn:Cancel&quot;, &quot;RatTrap&quot;) %>" postback="False"></RatTrap:ThemeButton></td></tr></table>
+</td></tr></table>
+</td></tr></table>
       </ContentTemplate>
 </asp:UpdatePanel>
 

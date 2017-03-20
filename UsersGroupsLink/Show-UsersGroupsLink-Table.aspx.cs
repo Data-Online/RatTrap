@@ -275,6 +275,8 @@ public partial class Show_UsersGroupsLink_Table
         
         public System.Web.UI.WebControls.Label Label3;
         
+        public System.Web.UI.WebControls.Label Label4;
+        
         public System.Web.UI.WebControls.LinkButton LocationIdLabel;
         
         public RatTrap.UI.Controls.Show_UsersGroupsLink_Table.LocationsTableControl LocationsTableControl;
